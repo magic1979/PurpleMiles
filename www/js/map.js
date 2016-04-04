@@ -67,9 +67,9 @@ function onDeviceReady() {
 								  var lng = localStorage.getItem("lng"); //  "12.364947"  "12.364947"
 
 								  
-								  var destIcon = new google.maps.MarkerImage("images/gps.png", null, null, null, new google.maps.Size(28,40));
-								  var figpIcon = new google.maps.MarkerImage("images/gps.png", null, null, null, new google.maps.Size(36,32));
-								  var casinoIcon = new google.maps.MarkerImage("images/gps.png", null, null, null, new google.maps.Size(60,48));
+								  var destIcon = new google.maps.MarkerImage("img/gps.png", null, null, null, new google.maps.Size(28,40));
+								  var figpIcon = new google.maps.MarkerImage("img/gps.png", null, null, null, new google.maps.Size(36,32));
+								  var casinoIcon = new google.maps.MarkerImage("img/gps.png", null, null, null, new google.maps.Size(60,48));
 
 									  var beaches = [];
 									  var posizione = 1;
@@ -122,7 +122,7 @@ function onDeviceReady() {
                                               type: 'poly'
                                               };
                                               
-                                              var img = new google.maps.MarkerImage("images/car.png", null, null, null, new google.maps.Size(26,50));
+                                              var img = new google.maps.MarkerImage("img/car.png", null, null, null, new google.maps.Size(26,50));
 		
 		
                                               var latlng = new google.maps.LatLng (lat, lng);
@@ -583,7 +583,7 @@ function onResume() {
 	
 	setTimeout(function() {
 	   localStorage.setItem("geostory", "NO")
-	   onDeviceReady();
+	   resetta();
 	}, 0);
 }
 
