@@ -206,6 +206,11 @@ function onDeviceReady() {
 														   //label: ''+ beach[1] +','+ beach[2] +'',
 														   zIndex: beach[3]
 														   });
+													   
+													   			google.maps.event.addListener(ido, 'click', function() {					
+                                                                 infowindow.setContent(this.content);
+                                                                 infowindow.open(map, this);
+                                                              });
 															  
 															  
 															  }
@@ -228,7 +233,10 @@ function onDeviceReady() {
 																   zIndex: beach[3]
 																   });
 
-															  
+															  	 google.maps.event.addListener(marker0, 'click', function() {					
+                                                                 infowindow.setContent(this.content);
+                                                                 infowindow.open(map, this);
+                                                              });
 															  
 															  
 															  }
@@ -253,6 +261,12 @@ function onDeviceReady() {
 															   //label: ''+ beach[1] +','+ beach[2] +'',
 															   zIndex: beach[3]
 															   });
+																
+																google.maps.event.addListener(marker, 'click', function() {					
+                                                                 infowindow.setContent(this.content);
+                                                                 infowindow.open(map, this);
+                                                              });
+														   
 															   }
 															   if(i==2){
 																  marker2 = new google.maps.Marker (
@@ -268,6 +282,11 @@ function onDeviceReady() {
 																		//label: ''+ beach[1] +','+ beach[2] +'',
 																		zIndex: beach[3]
 																		});
+																	
+																google.maps.event.addListener(marker2, 'click', function() {					
+                                                                 infowindow.setContent(this.content);
+                                                                 infowindow.open(map, this);
+                                                              });
 															   }
 															  else
 															  {
@@ -284,6 +303,7 @@ function onDeviceReady() {
 															//label: ''+ beach[1] +','+ beach[2] +'',
 															zIndex: beach[3]
 															});
+														
 															  }
 																
 															  //markers.push(marker);
@@ -300,27 +320,9 @@ function onDeviceReady() {
 															  });
 															  infowindow.open(map, marker);*/
 																  
-															google.maps.event.addListener(ido, 'click', function() {					
-                                                                 infowindow.setContent(this.content);
-                                                                 infowindow.open(map, this);
-                                                              });
-															google.maps.event.addListener(marker, 'click', function() {					
-                                                                 infowindow.setContent(this.content);
-                                                                 infowindow.open(map, this);
-                                                              });
-															google.maps.event.addListener(marker1, 'click', function() {					
-                                                                 infowindow.setContent(this.content);
-                                                                 infowindow.open(map, this);
-                                                              });
-															google.maps.event.addListener(marker2, 'click', function() {					
-                                                                 infowindow.setContent(this.content);
-                                                                 infowindow.open(map, this);
-                                                              });
 
-															  
+														  
                                                               google.maps.event.addListener(marker3, 'click', function() {
-																 //flightPath.setMap(null);
-																 //infowindow.close(map, this);//hide the infowindow
 																							
                                                                  infowindow.setContent(this.content);
                                                                  infowindow.open(map, this);
@@ -438,7 +440,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><b><a data-theme="b" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home" href="javascript:nodiv()">CHIUDI</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
+	controlText.innerHTML = '<br><b><a href="javascript:nodiv()">CHIUDI</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
