@@ -43,8 +43,7 @@ var app = {
 		//PUSH
 		//login()
 		
-		navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {frequency: 3000, enableHighAccuracy: true});
-		
+		navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		
 		cordova.plugins.backgroundMode.enable();
 		

@@ -21,7 +21,8 @@ function onDeviceReady() {
         var geostory = localStorage.getItem("geostory");
         
     if (geostory == 'NO'){
-        var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 50000 });
+        //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 50000 });
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
         
         function onSuccess(position) {
             var ciao = position.coords.latitude;
@@ -35,7 +36,8 @@ function onDeviceReady() {
         
         
         function onError(error) {
-            var watchID = navigator.geolocation.watchPosition(onSuccess, onError1, { timeout: 80000 });
+            //var watchID = navigator.geolocation.watchPosition(onSuccess, onError1, { timeout: 80000 });
+			navigator.geolocation.getCurrentPosition(onSuccess, onError1, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
         }
         
         function onError1(error) {
@@ -421,7 +423,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><b><a href="javascript:nodiv()">Center Map</b><br><input type="text">';
+	controlText.innerHTML = '<br><b><a href="javascript:nodiv()">Center Map</a></b><br><input type="text">';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
@@ -608,7 +610,9 @@ function deg2rad(deg) {
 function resetta() {
 	//$("#btn").click();
 	
-	var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, { timeout: 50000 });
+	//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, { timeout: 50000 });
+	navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	
         
         function onSuccess2(position) {
             var ciao = position.coords.latitude;
@@ -622,7 +626,8 @@ function resetta() {
         
         
         function onError2(error) {
-            var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+            //var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+			navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
         }
         
         function onError3(error) {
