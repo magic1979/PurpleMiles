@@ -37,28 +37,26 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		//document.addEventListener("pause", onPause, false);
-		//StatusBar.styleDefault();
 		
 		//PUSH
-		//login()
+
 		
-		navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+		navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {frequency: 3000, enableHighAccuracy: true});
 		
 		cordova.plugins.backgroundMode.enable();
 		
 		cordova.plugins.backgroundMode.onactivate = function () {
 			
-				//var myTimer = setInterval(onPause3, 3000);
-			
-			    //onPause();
+				var myTimer = setInterval(onPause3, 3000);
 
 				// Modify the currently displayed notification
 				cordova.plugins.backgroundMode.configure({
-					text:'Rilevo Posizione Purplemiles'
+				text:'22Doing heavy tasks.'
 														 
 				});
+			
 		}
+		
 		
     }
 }
@@ -178,7 +176,7 @@ function Successo(imageData) {
 	
 	var image000 = document.getElementById('foto');
 	image000.src = localStorage.getItem("Foto1");
-
+	
 }
 
 function win(r) {
@@ -189,22 +187,26 @@ function win(r) {
 }
 
 function fail(error) {
-	alert("An error has occurred: Code = " = error.code);
+	alert("An error has occurred: Code = " + error.code);
 }
 
 function gpsonSuccess(position){
 	
+	//alert(ciao)
+	
 	var ciao = position.coords.latitude;
 	var ciao1 = position.coords.longitude;
 	
-	//$("#distanza").html("<span style = 'font-size: 18px;'>"+ ciao +","+ ciao1 +"</span>");
+	//alert(ciao)
 	
-	var latitudine = localStorage.setItem("lat",ciao);
-	var longitudine = localStorage.setItem("lng",ciao1);
-	
-	localStorage.setItem("geostory", "SI")
+	$("#distanza").html("<span style = 'font-size: 18px;'>"+ ciao +","+ ciao1 +"</span>");
 	
 	//onBackgroundSuccess2(position)
+	
+	localStorage.setItem("lat", ciao)
+    localStorage.setItem("lng", ciao1)
+            
+    localStorage.setItem("geostory", "SI")
 	
 }
 
@@ -268,8 +270,6 @@ function onPause() {
 	
 	//var myTimer = setInterval(onPause3, 2000);
 	
-	$("#distanza2").html("<span style = 'font-size: 18px;'>in back</span>");
-	
 }
 
 function onPause3() {
@@ -296,11 +296,8 @@ function onPause3() {
 	
 	$("#distanza3").html("<span style = 'font-size: 18px;'>"+ ora +","+ minuti +","+ secondi +"</span>");
 	
-	//if(secondi==10){
-		//clearInterval(myTimer);
-	//}
-	
-	$.ajax({
+
+	/*$.ajax({
 		   type:"GET",
 		   url:"http://gtechplay.com/mycollection/www/Posizione.asp",
 		   contentType: "application/json",
@@ -319,39 +316,6 @@ function onPause3() {
 		   
 		   
 		   },
-		   dataType:"jsonp"});
+		   dataType:"jsonp"});*/
 	
 }
-
-function gomappa() {
-	
-	launchnavigator.navigate([41.873932, 12.476754]);
-	
-}
-
-function login() {
-	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www/check_login.php",
-		   contentType: "application/json",
-		   data: {email:"salvatore.bruni@gmail.com"},
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				alert(item.Token)
-			});
-		   
-		   
-		   },
-		   error: function(){
-		   
-		   
-		   },
-		   dataType:"jsonp"});
-	
-}
-

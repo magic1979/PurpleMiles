@@ -423,7 +423,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><b><a href="javascript:nodiv()">Center Map</a></b><br><input type="text">';
+	controlText.innerHTML = '<br><b><a href="javascript:nodiv()">Center Map</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
@@ -610,8 +610,8 @@ function deg2rad(deg) {
 function resetta() {
 	//$("#btn").click();
 	
-	//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, { timeout: 50000 });
-	navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, { timeout: 50000 });
+	//navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
         
         function onSuccess2(position) {
