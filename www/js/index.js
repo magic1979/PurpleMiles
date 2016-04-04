@@ -37,6 +37,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+		 document.addEventListener("resume", onResume, false);
 		
 		//PUSH
 		
@@ -342,3 +343,10 @@ function onPause3() {
 		   dataType:"jsonp"});*/
 	
 }
+
+function onResume() {
+	setTimeout(function() {
+	   window.location.href = "map.html?id=1";
+	}, 0);
+}
+

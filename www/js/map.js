@@ -3,6 +3,8 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
+	IDPage = getParameterByName('id');
+	
 	//var markers = [];
 	var map;
     
@@ -127,7 +129,7 @@ function onDeviceReady() {
 		
                                               var latlng = new google.maps.LatLng (lat, lng);
                                               var options = {
-                                              zoom : 16,
+                                              zoom : 14,
                                               center : latlng,
                                               mapTypeId : google.maps.MapTypeId.ROADMAP
                                               
@@ -141,7 +143,7 @@ function onDeviceReady() {
                                                               $(".spinner").show();
                                                               
                                                               var options = {
-                                                              zoom : 16,
+                                                              zoom : 14,
                                                               center : latlng,
                                                               mapTypeId : google.maps.MapTypeId.ROADMAP,
 															  scrollwheel	: false,
@@ -190,6 +192,7 @@ function onDeviceReady() {
 																  ido = new google.maps.Marker ({
 																   map : map,
 																   icon: icon,
+																   optimized: false,
 																   animation : google.maps.Animation.DROP,
 																   position : myLatLng,
 																   content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="javascript:chiama('+ beach[5] +')">Cliccami</a></div>',
@@ -215,6 +218,7 @@ function onDeviceReady() {
 															  marker = new google.maps.Marker ({
 															   map : map,
 															   icon: icon,
+															   optimized: false,
 															   animation : google.maps.Animation.DROP,
 															   position : myLatLng,
 															   content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="javascript:chiama('+ beach[5] +')">Cliccami</a></div>',
@@ -312,9 +316,12 @@ function onDeviceReady() {
         
     }
 	
-	var myTimer = setInterval(resetta, 30000);
+	var myTimer = setInterval(resetta, 15000);
 	
-	//$("#btn").click();
+	
+	if(IDPage==1){
+		$("#btn").click();
+	}
 }
 
 function chiama(km) {
@@ -532,9 +539,11 @@ function deg2rad(deg) {
 
 function resetta() {
 	//$("#btn").click();
+	//marker.setMap(null);
+	ido.setVisible(false);
 	
-	var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, { timeout: 50000 });
-	//navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, { timeout: 50000 });
+	navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
         
         function onSuccess2(position) {
@@ -545,6 +554,13 @@ function resetta() {
             localStorage.setItem("lng", ciao1)
             
             localStorage.setItem("geostory", "SI")
+			
+			var latlng = new google.maps.LatLng(ciao, ciao1);
+		
+		    setTimeout(function() {
+				ido.setPosition(latlng);
+				ido.setVisible(true);
+			}, 200);
         }
         
         
@@ -562,13 +578,9 @@ function resetta() {
                 'Attenzione',            // title
                 'OK'                  // buttonName
                );
-        
-            $(".spinner").hide();
+        	
+			ido.setVisible(true);
         }
-		
-		var latlng = new google.maps.LatLng(localStorage.getItem("lat"), localStorage.getItem("lng"));
-		
-		ido.setPosition(latlng);
 															  
 	 //}
 	
@@ -719,3 +731,9 @@ function resetta() {
 	
 }
 
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+						  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+						  results = regex.exec(location.search);
+						  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+						  }
