@@ -3,11 +3,8 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
-	var markers = [];
+	//var markers = [];
 	var map;
-    
-    StatusBar.overlaysWebView(false);
-    StatusBar.backgroundColorByHexString("#RRGGBB");
     
     $('body').on('touchmove', function (e) {
         e.preventDefault();
@@ -17,8 +14,6 @@ function onDeviceReady() {
     $(".spinner").show();
     var connectionStatus = false;
     connectionStatus = navigator.onLine ? 'online' : 'offline';
-    
-
     
     if(connectionStatus=='online'){
         $('#noconn').hide();
