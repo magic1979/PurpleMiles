@@ -196,16 +196,16 @@ function onDeviceReady() {
 															  ido = new google.maps.Marker (
 																							   {
 																							   
-																							   map : map,
-																							   icon: icon,
-																							   animation : google.maps.Animation.DROP,
-																							   position : myLatLng,
-																							   content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="javascript:chiama('+ beach[5] +')">Cliccami</a></div>',
-																							   shape: shape,
-																							   title: beach[0],
-																							   //label: ''+ beach[1] +','+ beach[2] +'',
-																							   zIndex: beach[3]
-																							   });
+														   map : map,
+														   icon: icon,
+														   animation : google.maps.Animation.DROP,
+														   position : myLatLng,
+														   content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="javascript:chiama('+ beach[5] +')">Cliccami</a></div>',
+														   shape: shape,
+														   title: beach[0],
+														   //label: ''+ beach[1] +','+ beach[2] +'',
+														   zIndex: beach[3]
+														   });
 															  
 															  
 															  }
@@ -215,18 +215,18 @@ function onDeviceReady() {
 															  
 															  
 															    marker0 = new google.maps.Marker (
-																						   {
-																						   
-																						   map : map,
-																						   icon: icon,
-																						   animation : google.maps.Animation.DROP,
-																						   position : myLatLng,
-																						   content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="javascript:chiama('+ beach[5] +')">Cliccami</a></div>',
-																						   shape: shape,
-																						   title: beach[0],
-																						   //label: ''+ beach[1] +','+ beach[2] +'',
-																						   zIndex: beach[3]
-																						   });
+																   {
+																   
+																   map : map,
+																   icon: icon,
+																   animation : google.maps.Animation.DROP,
+																   position : myLatLng,
+																   content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="javascript:chiama('+ beach[5] +')">Cliccami</a></div>',
+																   shape: shape,
+																   title: beach[0],
+																   //label: ''+ beach[1] +','+ beach[2] +'',
+																   zIndex: beach[3]
+																   });
 
 															  
 															  
@@ -438,7 +438,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><b><a href="javascript:nodiv()">Center Map</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
+	controlText.innerHTML = '<br><b><a data-theme="b" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home" href="javascript:nodiv()">CHIUDI</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
