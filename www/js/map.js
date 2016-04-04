@@ -69,9 +69,9 @@ function onDeviceReady() {
 								  var lng = localStorage.getItem("lng"); //  "12.364947"  "12.364947"
 
 								  
-								  var destIcon = new google.maps.MarkerImage("img/gps.png", null, null, null, new google.maps.Size(28,40));
-								  var figpIcon = new google.maps.MarkerImage("img/gps.png", null, null, null, new google.maps.Size(36,32));
-								  var casinoIcon = new google.maps.MarkerImage("img/gps.png", null, null, null, new google.maps.Size(60,48));
+								  var destIcon = new google.maps.MarkerImage("img/omino.png", null, null, null, new google.maps.Size(26,50));
+								  var figpIcon = new google.maps.MarkerImage("img/omino.png", null, null, null, new google.maps.Size(26,50));
+								  var casinoIcon = new google.maps.MarkerImage("img/omino.png", null, null, null, new google.maps.Size(26,50));
 
 									  var beaches = [];
 									  var posizione = 1;
@@ -191,9 +191,9 @@ function onDeviceReady() {
                                                               
                                                               
                                                               if (i==0) {
-                                                                icon = img;
+                                                              icon = img;
 															  
-															  marker = new google.maps.Marker (
+															  ido = new google.maps.Marker (
 																							   {
 																							   
 																							   map : map,
@@ -211,10 +211,10 @@ function onDeviceReady() {
 															  }
                                                               else {
                                                                 if (beach[4]==1){
-                                                                    icon = figpIcon;
+                                                                icon = figpIcon;
 															  
 															  
-															  ido = new google.maps.Marker (
+															    marker0 = new google.maps.Marker (
 																						   {
 																						   
 																						   map : map,
@@ -232,13 +232,13 @@ function onDeviceReady() {
 															  
 															  
 															  }
-                                                                else if (beach[4]==2){
-                                                                    icon = casinoIcon;
-                                                                }
-                                                                else{
-                                                                    icon = destIcon;
+                                                              else if (beach[4]==2){
+                                                                  icon = casinoIcon;
+                                                               }
+                                                               else{
+                                                                icon = destIcon;
 															  
-															  if(i==1){
+															    if(i==1){
 															  
 															     marker = new google.maps.Marker (
 																 {
@@ -299,9 +299,26 @@ function onDeviceReady() {
 																content: beach[5]
 															  });
 															  infowindow.open(map, marker);*/
+																  
+															google.maps.event.addListener(ido, 'click', function() {					
+                                                                 infowindow.setContent(this.content);
+                                                                 infowindow.open(map, this);
+                                                              });
+															google.maps.event.addListener(marker, 'click', function() {					
+                                                                 infowindow.setContent(this.content);
+                                                                 infowindow.open(map, this);
+                                                              });
+															google.maps.event.addListener(marker1, 'click', function() {					
+                                                                 infowindow.setContent(this.content);
+                                                                 infowindow.open(map, this);
+                                                              });
+															google.maps.event.addListener(marker2, 'click', function() {					
+                                                                 infowindow.setContent(this.content);
+                                                                 infowindow.open(map, this);
+                                                              });
 
 															  
-                                                              google.maps.event.addListener(marker, 'click', function() {
+                                                              google.maps.event.addListener(marker3, 'click', function() {
 																 //flightPath.setMap(null);
 																 //infowindow.close(map, this);//hide the infowindow
 																							
@@ -310,9 +327,7 @@ function onDeviceReady() {
 																
 																var lati = this.getPosition().lat();
 																var lngi = this.getPosition().lng();
-
-																 //alert(lati)
-																							
+													
 																var flightPlanCoordinates = [
 																	 {lat: localStorage.getItem("lat"), lng: localStorage.getItem("lng")},
 																	 {lat: parseFloat(lati), lng: parseFloat(lngi)}
@@ -645,7 +660,7 @@ function resetta() {
 		
 		var latlng = new google.maps.LatLng(localStorage.getItem("lat"), localStorage.getItem("lng"));
 		
-		marker.setPosition(latlng);
+		ido.setPosition(latlng);
 															  
 	 //}
 	
