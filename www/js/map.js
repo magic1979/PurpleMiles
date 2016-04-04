@@ -141,7 +141,7 @@ function onDeviceReady() {
                                                               $(".spinner").show();
                                                               
                                                               var options = {
-                                                              zoom : 12,
+                                                              zoom : 16,
                                                               center : latlng,
                                                               mapTypeId : google.maps.MapTypeId.ROADMAP,
 															  scrollwheel	: false,
