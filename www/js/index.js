@@ -72,7 +72,7 @@ var app = {
 			
 				var myTimer = setInterval(onPause3, 3000);
 
-				// Modify the currently displayed notification
+				// Modify the currently displayed notification 
 				cordova.plugins.backgroundMode.configure({
 				text:'22Doing heavy tasks.'
 														 
