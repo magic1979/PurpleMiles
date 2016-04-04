@@ -39,6 +39,29 @@ var app = {
     receivedEvent: function(id) {
 		
 		//PUSH
+		
+		/*if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
+			
+			if(isMobileScreenWidth < 768){
+				window.location.href = "testPHONEB.html";
+				$(".spinner").hide();
+				return;
+				
+			}
+			else
+			{
+				window.location.href = "test.html";
+				$(".spinner").hide();
+				return;
+			}
+			
+		}*/
+			
+		$(document).on("touchend", "#inizia", function(e){
+			//$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
+			window.location.href = "map.html";
+			//carica2()
+		});
 
 		
 		navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {frequency: 3000, enableHighAccuracy: true});
