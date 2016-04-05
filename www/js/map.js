@@ -154,8 +154,7 @@ function onDeviceReady() {
 															  //draggable	: false
                                                               
                                                               };
-                                                              map = new google.maps.Map($content[0], options);
-                                                              localStorage.setItem("map",map);
+                                                              map = new google.maps.Map(document.getElementById('map-canvas'), options);
                                                               
                                                               $.mobile.changePage ($("#win2"));
                                                               setTimeout(function() {
@@ -234,7 +233,7 @@ function onDeviceReady() {
 															  infowindow.open(map, marker);*/
 																  
 
-                                                              google.maps.event.addListener(marker, 'click', function() {
+                                                               google.maps.event.addListener(marker, 'click', function() {
 																							
                                                                  infowindow.setContent(this.content);
                                                                  infowindow.open(map, this);
@@ -257,6 +256,17 @@ function onDeviceReady() {
 																
 																flightPath.setMap(map);*/
                                                               });
+														  
+															  map.addListener('center_changed', function() {
+																// 3 seconds after the center of the map has changed, pan back to the
+																// marker.
+																
+																setTimeout(function() {
+																	map.panTo(ido.getPosition());
+																}, 300);
+																
+																
+															  });
 
                                                               }
 															  
@@ -594,20 +604,27 @@ function resetta1() {
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
-	var destIcon2 = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
-	var map = localStorage.getItem("map");
-	
+											  
 	var lat = parseFloat("41.882792");
 	var lng = parseFloat("12.487373" );
 	
 	var latlng = new google.maps.LatLng(lat, lng);
 	
-		setTimeout(function() {
-			ido.setPosition(latlng);
-			map.setCenter(latlng);
-			ido.setIcon('https://maps.google.com/mapfiles/kml/shapes/schools_maps.png');
-			//ido.setVisible(true);
-		}, 300);
+    var options = {
+	  zoom : 14,
+	  center : latlng,
+	  mapTypeId : google.maps.MapTypeId.ROADMAP,
+	  scrollwheel	: false,
+	  zoomControl: true
+	  };
+				
+	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	
+	setTimeout(function() {
+		ido.setPosition(latlng);
+		map.setCenter(latlng);
+		marker.setIcon('https://maps.google.com/mapfiles/kml/shapes/schools_maps.png');
+	}, 300);
 								  								  
 }
 
