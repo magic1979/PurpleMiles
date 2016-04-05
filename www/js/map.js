@@ -155,7 +155,7 @@ function onDeviceReady() {
                                                               
                                                               };
                                                               map = new google.maps.Map($content[0], options);
-                                                              
+                                                              localStorage.setItem("map",map);
                                                               
                                                               $.mobile.changePage ($("#win2"));
                                                               setTimeout(function() {
@@ -316,7 +316,7 @@ function onDeviceReady() {
         
     }
 	
-	var myTimer = setInterval(resetta(map), 15000);
+	var myTimer = setInterval(resetta, 15000);
 	
 	
 	if(IDPage==1){
@@ -537,7 +537,7 @@ function deg2rad(deg) {
 	return deg * (Math.PI/180)
 }
 
-function resetta(map) {
+function resetta() {
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
@@ -550,6 +550,7 @@ function resetta(map) {
 		setTimeout(function() {
 			ido.setPosition(latlng);
 			map.setCenter(latlng);
+			ido.setIcon('https://maps.google.com/mapfiles/kml/shapes/schools_maps.png');
 			//ido.setVisible(true);
 		}, 300);
 								  
@@ -589,19 +590,22 @@ function resetta(map) {
 															  
 }
 
-function resetta1(map) {
+function resetta1() {
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
+	var destIcon2 = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
+	var map = localStorage.getItem("map");
 	
-	var lat = parseFloat("41.875163");
-	var lng = parseFloat("12.479495" );
+	var lat = parseFloat("41.882792");
+	var lng = parseFloat("12.487373" );
 	
 	var latlng = new google.maps.LatLng(lat, lng);
 	
 		setTimeout(function() {
 			ido.setPosition(latlng);
 			map.setCenter(latlng);
+			ido.setIcon('https://maps.google.com/mapfiles/kml/shapes/schools_maps.png');
 			//ido.setVisible(true);
 		}, 300);
 								  								  
