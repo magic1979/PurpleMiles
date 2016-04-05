@@ -316,7 +316,7 @@ function onDeviceReady() {
         
     }
 	
-	var myTimer = setInterval(resetta, 15000);
+	var myTimer = setInterval(resetta(map), 15000);
 	
 	
 	if(IDPage==1){
@@ -537,13 +537,13 @@ function deg2rad(deg) {
 	return deg * (Math.PI/180)
 }
 
-function resetta() {
+function resetta(map) {
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
 	
-	var lat = localStorage.getItem("lat");  //  "41.783780"  "41.783780"
-	var lng = localStorage.getItem("lng"); //  "12.364947"  "12.364947"
+	var lat = parseFloat("41.876217");
+	var lng = parseFloat("12.480997" );
 	
 	var latlng = new google.maps.LatLng(lat, lng);
 	
@@ -587,6 +587,24 @@ function resetta() {
         	
         }*/
 															  
+}
+
+function resetta1(map) {
+	//$("#btn").click();
+	//marker.setMap(null);
+	//ido.setVisible(false);
+	
+	var lat = parseFloat("41.875163");
+	var lng = parseFloat("12.479495" );
+	
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+		setTimeout(function() {
+			ido.setPosition(latlng);
+			map.setCenter(latlng);
+			//ido.setVisible(true);
+		}, 300);
+								  								  
 }
 
 function getParameterByName(name) {
