@@ -154,7 +154,7 @@ function onDeviceReady() {
 															  //draggable	: false
                                                               
                                                               };
-                                                              map = new google.maps.Map(document.getElementById('map-canvas'), options);
+                                                              map = new google.maps.Map($content[0], options);
                                                               
                                                               $.mobile.changePage ($("#win2"));
                                                               setTimeout(function() {
@@ -257,14 +257,13 @@ function onDeviceReady() {
 																flightPath.setMap(map);*/
                                                               });
 														  
-															  map.addListener('center_changed', function() {
+															   google.maps.event.addListener(map, 'center_changed', function() {
 																// 3 seconds after the center of the map has changed, pan back to the
 																// marker.
 																
 																setTimeout(function() {
 																	map.panTo(ido.getPosition());
 																}, 300);
-																
 																
 															  });
 
@@ -609,16 +608,6 @@ function resetta1() {
 	var lng = parseFloat("12.487373" );
 	
 	var latlng = new google.maps.LatLng(lat, lng);
-	
-    var options = {
-	  zoom : 14,
-	  center : latlng,
-	  mapTypeId : google.maps.MapTypeId.ROADMAP,
-	  scrollwheel	: false,
-	  zoomControl: true
-	  };
-				
-	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	
 	setTimeout(function() {
 		ido.setPosition(latlng);
