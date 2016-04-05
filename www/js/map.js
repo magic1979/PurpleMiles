@@ -321,7 +321,8 @@ function onDeviceReady() {
         
     }
 	
-	//var myTimer = setInterval(resetta, 15000);
+	//var myTimer = setInterval(resetta1, 15000);
+	resetta1();
 	
 	
 	if(IDPage==1){
@@ -518,7 +519,7 @@ function onResume() {
 	
 	setTimeout(function() {
 	   localStorage.setItem("geostory", "NO")
-	   resetta();
+	   resetta1();
 	}, 0);
 }
 
@@ -598,15 +599,17 @@ function resetta1() {
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
 											  
-	var lat = parseFloat("41.882792");
-	var lng = parseFloat("12.487373" );
+	//var lat = parseFloat("41.882792");
+	//var lng = parseFloat("12.487373" );
 	
-	localStorage.setItem("lat", lat)
-    localStorage.setItem("lng", lng)
+	//localStorage.setItem("lat", lat)
+    //localStorage.setItem("lng", lng)
+	//ido.setPosition(latlng);
 	
 	var latlng = new google.maps.LatLng(lat, lng);
-	ido.setPosition(latlng);
 	
 	var $content = $("#win2 div:jqmData(role=content)");
     $content.height (getRealContentHeight());
@@ -638,17 +641,42 @@ function resetta1() {
 	   //label: ''+ beach[1] +','+ beach[2] +'',
 	   zIndex: 10
 	   });
+   
+
+	   var centerControlDiv = document.createElement('div');
+	   centerControlDiv.setAttribute('id', 'sopra');
+	   var centerControl = new CenterControl(centerControlDiv, map);
+	  
+	   centerControlDiv.index = 1;
+	   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+	   
 		
 		setInterval(function() {
-			var lat = parseFloat("41.866727");
-			var lng = parseFloat("12.479149" );
-	
-			var latlng = new google.maps.LatLng(lat, lng);	
+			navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });	
+		}, 3000);
+		
+		function onSuccess2(position) {
+            var ciao = position.coords.latitude;
+            var ciao1 = position.coords.longitude;
+            
+			var latlng = new google.maps.LatLng(ciao, ciao1);
 			
 			ido.setPosition(latlng);
 			map.setCenter(latlng);
-		}, 3000);
-	
+        }
+        
+
+        function onError2(error) {
+            //var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+			navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+        }
+        
+		
+        function onError3(error) {
+            localStorage.setItem("geostory", "NO")
+            
+			window.location.href = "index.html";
+        }
 }
 
 function getParameterByName(name) {
