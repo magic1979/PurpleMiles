@@ -256,16 +256,13 @@ function onDeviceReady() {
 																flightPath.setMap(map);*/
                                                               });
 														  
-															   google.maps.event.addListener(map, 'center_changed', function() {
-																// 3 seconds after the center of the map has changed, pan back to the
-																// marker.
-																
+															   /*google.maps.event.addListener(map, 'center_changed', function() {
+															
 																setTimeout(function() {
-																	map.setCenter(new google.maps.LatLng (localStorage.getItem("lat"), localStorage.getItem("lng")));
-																	//setCenter  panTo
+																	//map.panTo();
 																}, 300);
 																
-															  });
+															  });*/
 
                                                               }
 															  
@@ -289,7 +286,6 @@ function onDeviceReady() {
     
     else{
         $('#noconn').show();
-        
         
         var tabella = '<table align="center" border="0" width="310px" height="60px" class="conn">';
         tabella = tabella + '<tr><td align="center" width="50px"><img src="images/wire.png" width="32px"></td><td align="left"><font color="white" size="2">Nessuna connessione attiva</font></td><td><a href="javascript:verificawifi()"><div width="40px" class="home"></div></a></td></tr>';
@@ -325,7 +321,7 @@ function onDeviceReady() {
         
     }
 	
-	var myTimer = setInterval(resetta, 15000);
+	//var myTimer = setInterval(resetta, 15000);
 	
 	
 	if(IDPage==1){
@@ -362,7 +358,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><b><a href="javascript:nodiv()">CHIUDI</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
+	controlText.innerHTML = '<br><b><a href="javascript:resetta()">MUOVI</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
@@ -560,8 +556,7 @@ function resetta() {
 	ido.setPosition(latlng);
 	//map.setCenter(latlng);
 	
-	clearInterval(myTimer);
-								  
+						  
 	/*navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
         
@@ -623,10 +618,6 @@ function resetta1() {
 	  zoomControl: true
   
 	  };
-	   var shape = {
-		  coord: [1, 1, 1, 20, 18, 20, 18 , 1],
-		  type: 'poly'
-		};
       
 	  map = new google.maps.Map($content[0], options);
                                                               
@@ -639,29 +630,24 @@ function resetta1() {
 	   ido = new google.maps.Marker ({
 	   map : map,
 	   icon: icon,
+	   content:'<div class="popup">Tua Powsizione</div>',
 	   optimized: false,
-	   animation : google.maps.Animation.DROP,
 	   position : latlng,
-	   content:'<div class="popup">Tua Posizione<br>Km0<br></div>',
-	   shape: shape,
 	   title: 'Tua Posizione',
 	   //label: ''+ beach[1] +','+ beach[2] +'',
-	   zIndex: '1'
+	   zIndex: 10
 	   });
 		
-		
-		var ciccio = setInterval(frame, 3000);
+		setInterval(function() {
+			var lat = parseFloat("41.882792");
+			var lng = parseFloat("12.487373" );
 	
-		var lat = parseFloat("41.882792");
-		var lng = parseFloat("12.487373" );
-	
-		var latlng = new google.maps.LatLng(lat, lng);
-	
-		function frame() {
+			var latlng = new google.maps.LatLng(lat, lng);	
+			
 			ido.setPosition(latlng);
 			map.setCenter(latlng);
-		}
-		
+		}, 3000);
+	
 }
 
 function getParameterByName(name) {
