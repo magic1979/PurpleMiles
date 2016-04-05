@@ -540,10 +540,20 @@ function deg2rad(deg) {
 function resetta() {
 	//$("#btn").click();
 	//marker.setMap(null);
-	ido.setVisible(false);
+	//ido.setVisible(false);
 	
-	//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, { timeout: 50000 });
-	navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var lat = localStorage.getItem("lat");  //  "41.783780"  "41.783780"
+	var lng = localStorage.getItem("lng"); //  "12.364947"  "12.364947"
+	
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+		setTimeout(function() {
+			ido.setPosition(latlng);
+			map.setCenter(latlng);
+			//ido.setVisible(true);
+		}, 300);
+								  
+	/*navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
         
         function onSuccess2(position) {
@@ -559,7 +569,8 @@ function resetta() {
 		
 		    setTimeout(function() {
 				ido.setPosition(latlng);
-				ido.setVisible(true);
+				map.setCenter(latlng);
+				//ido.setVisible(true);
 			}, 300);
         }
         
@@ -572,163 +583,10 @@ function resetta() {
         function onError3(error) {
             localStorage.setItem("geostory", "NO")
             
-            navigator.notification.alert(
-               'Non riesco a rilevare la tua posizione',  // message
-                alertDismissed,         // callback
-                'Attenzione',            // title
-                'OK'                  // buttonName
-               );
+			window.location.href = "index.html";
         	
-			ido.setVisible(true);
-        }
+        }*/
 															  
-	 //}
-	
-	//alert(markers.lenght)
-	
-	//alert()
-	
-	/*var lat = "41.783780"//localStorage.getItem("lat");  "41.783780"
-	var lng = "12.364947"//localStorage.getItem("lng");  "12.364947"
-	
-	
-	var destIcon = new google.maps.MarkerImage("images/pin.png", null, null, null, new google.maps.Size(28,40));
-	var figpIcon = new google.maps.MarkerImage("images/pin_figp.png", null, null, null, new google.maps.Size(36,32));
-	var casinoIcon = new google.maps.MarkerImage("images/casino.png", null, null, null, new google.maps.Size(60,48));
-	
-	var beaches = [];
-	var posizione = 1;
-	var distanza = "";
-	
-	beaches.push(['Tua Position',lat,lng,1])
-	
-	$.ajax({
-		   type:"GET",
-		   url:"http://www.pokeranswer.it/www/Check_Room.asp",
-		   contentType: "application/json",
-		   data: {ID: "Lazio"},
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  
-				  posizione = (posizione+1);
-				  
-				  distanza = getDistance(lat,lng,item.lat,item.lng).toFixed(1);
-				  
-				  beaches.push(["<h2>"+item.Room+"</h2><br>"+item.Indirizzo,item.lat,item.lng,posizione,item.figp,distanza])
-				  
-				  });
-		   
-		   for (var i = 0; i < beaches.length; i++) {
-		   var beach = beaches[i];
-		   }
-		   
-		   //$("#btn").click();
-		   
-		   },
-		   error: function(){
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete22, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		   
-		   },
-		   dataType:"jsonp"});
-	
-	
-	var shape = {
-	coord: [1, 1, 1, 20, 18, 20, 18 , 1],
-	type: 'poly'
-	};
-	
-	var img = new google.maps.MarkerImage("images/gps.png", null, null, null, new google.maps.Size(22,22));
-	
-	
-	var latlng = new google.maps.LatLng (lat, lng);
-	var options = {
-		zoom : 10,
-		center : latlng,
-		mapTypeId : google.maps.MapTypeId.ROADMAP
-		
-	};
-	
-					var $content = $("#win2 div:jqmData(role=content)");
-					$content.height (getRealContentHeight());
-	
-					
-					var options = {
-					zoom : 10,
-					center : latlng,
-					mapTypeId : google.maps.MapTypeId.ROADMAP,
-					scrollwheel	: false,
-					zoomControl: true
-					
-					};
-					var map = new google.maps.Map($content[0], options);
-	
-	
-					for (var i = 0; i < beaches.length; i++) {
-						
-					
-					var beach = beaches[i];
-						
-					
-					var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
-					
-					
-					if (i==0) {
-					icon = img;
-					}
-					else {
-					if (beach[4]==1){
-					icon = figpIcon;
-					}
-					else if (beach[4]==2){
-					icon = casinoIcon;
-					}
-					else{
-					icon = destIcon;
-					}
-					}
-					
-					marker = new google.maps.Marker (
-													 
-													 {
-													 map : map,
-													 icon: icon,
-													 animation : google.maps.Animation.DROP,
-													 position : myLatLng,
-													 content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="javascript:chiama('+ beach[5] +')">Cliccami</a></div>',
-													 shape: shape,
-													 title: beach[0],
-													 //label: ''+ beach[1] +','+ beach[2] +'',
-													 zIndex: beach[3]
-													 });
-					
-					
-					var infowindow = new google.maps.InfoWindow({
-					 content: beach[5]
-					 });
-					 infowindow.open(map, marker);
-					
-					
-					google.maps.event.addListener(marker, 'click', function() {
-												  
-												  infowindow.setContent(this.content);
-												  infowindow.open(map, this);
-												  
-					});
-					
-						//alert(beach[1])
-					
-					}*/
-	
 }
 
 function getParameterByName(name) {
