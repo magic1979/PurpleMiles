@@ -71,9 +71,9 @@ function onDeviceReady() {
 								  var lng = localStorage.getItem("lng"); //  "12.364947"  "12.364947"
 
 								  
-								  var destIcon = new google.maps.MarkerImage("img/omino.png", null, null, null, new google.maps.Size(26,50));
-								  var figpIcon = new google.maps.MarkerImage("img/omino.png", null, null, null, new google.maps.Size(26,50));
-								  var casinoIcon = new google.maps.MarkerImage("img/omino.png", null, null, null, new google.maps.Size(26,50));
+								  var destIcon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
+								  var figpIcon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
+								  var casinoIcon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
 
 									  var beaches = [];
 									  var posizione = 1;
@@ -560,7 +560,7 @@ function resetta() {
 		    setTimeout(function() {
 				ido.setPosition(latlng);
 				ido.setVisible(true);
-			}, 200);
+			}, 300);
         }
         
         
