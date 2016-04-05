@@ -690,6 +690,33 @@ function resetta1() {
             
 			window.location.href = "index.html";
         }
+		
+	var contentString1 =
+	
+	'<div class="popup">'+
+	'<h2> My Pub</h2>'+
+	'<p>Example Strasse n.1</b>'+
+	
+	//'<small><b>Lat.</b> 52.520196, <b>Lon.</b> 13.406067</small></p>'+
+	//'<a target="_blank" href="http://www.marchettidesign.net">'+
+	//'Visit Web Site &#187;</a> '+
+	
+	'</div>';
+	
+	var infowindow = new google.maps.InfoWindow({
+		content: contentString1,
+		maxWidth: 200,
+		maxHeight: 150,
+	});
+
+	
+	google.maps.event.addListener(marker, 'click', function() {
+								  
+		infowindow.setContent(this.content);
+		infowindow.open(map, this);
+								  
+	});
+
 }
 
 function getParameterByName(name) {
