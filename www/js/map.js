@@ -8,11 +8,10 @@ function onDeviceReady() {
 	//var markers = [];
 	var map;
     
-    $('body').on('touchmove', function (e) {
+    /*$('body').on('touchmove', function (e) {
         e.preventDefault();
-     });
+     });*/
     
-    $('#footer').show();
     $(".spinner").show();
     var connectionStatus = false;
     connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -129,7 +128,7 @@ function onDeviceReady() {
 		
                                               var latlng = new google.maps.LatLng (lat, lng);
                                               var options = {
-                                              zoom : 14,
+                                              zoom : 16,
                                               center : latlng,
                                               mapTypeId : google.maps.MapTypeId.ROADMAP
                                               
@@ -143,7 +142,7 @@ function onDeviceReady() {
                                                               $(".spinner").show();
                                                               
                                                               var options = {
-                                                              zoom : 14,
+                                                              zoom : 16,
                                                               center : latlng,
                                                               mapTypeId : google.maps.MapTypeId.ROADMAP,
 															  scrollwheel	: false,
@@ -262,7 +261,8 @@ function onDeviceReady() {
 																// marker.
 																
 																setTimeout(function() {
-																	map.panTo(ido.getPosition());
+																	map.setCenter(new google.maps.LatLng (localStorage.getItem("lat"), localStorage.getItem("lng")));
+																	//setCenter  panTo
 																}, 300);
 																
 															  });
@@ -400,8 +400,6 @@ function sidiv() {
 }
 
 
-
-
 function alertDismissed() {
     $(".spinner").hide();
 }
@@ -425,43 +423,43 @@ function codeLatLng(lati,lngi) {
     var latlng = new google.maps.LatLng(lat, lng);
     
     geocoder.geocode({'latLng': latlng}, function(results, status) {
-                     if (status == google.maps.GeocoderStatus.OK) {
-                     if (results[1]) {
-                     
-                        var tabella = '<table align="center" border="0" width="310px" height="60px">';
-                        tabella = tabella + '<tr><td align="center" width="50px"><a href="maps:daddr=41.913010,12.442009&saddr=41.875094,12.478151"><img src="images/pin.png" width="32px"></a></td><td align="left"><font color="white" size="2">'+ results[1].formatted_address +'</font></td></tr>';
-                        tabella = tabella + '</table>';
-                     
-                        var viadotto = results[1].formatted_address;
-                     
-                        localStorage.setItem("Via", viadotto)
-                     
-                        $('#classifica').html('');
-                        $(".spinner").hide();
-                        //funzioneradar();
-                     
-                     } else {
-                     navigator.notification.alert(
-                       'Non riesco a rilevare la tua posizione',  // message
-                        alertDismissed,         // callback
-                        'Attenzione',            // title
-                        'OK'                  // buttonName
-                     );
-                        $(".spinner").hide();
-                        //funzioneradar();
-                     }
-                     } else {
-                     navigator.notification.alert(
-                       'Non riesco a rilevare la tua posizione',  // message
-                         alertDismissed,         // callback
-                         'Attenzione',            // title
-                         'OK'                  // buttonName
-                     );
-                     
-                        $(".spinner").hide();
-                        //funzioneradar();
-                     }
-                     });
+	 if (status == google.maps.GeocoderStatus.OK) {
+	 if (results[1]) {
+	 
+		/*var tabella = '<table align="center" border="0" width="310px" height="60px">';
+		tabella = tabella + '<tr><td align="center" width="50px"><a href="maps:daddr=41.913010,12.442009&saddr=41.875094,12.478151"><img src="images/pin.png" width="32px"></a></td><td align="left"><font color="white" size="2">'+ results[1].formatted_address +'</font></td></tr>';
+		tabella = tabella + '</table>';*/
+	 
+		var viadotto = results[1].formatted_address;
+	 
+		localStorage.setItem("Via", viadotto)
+	 
+		$('#classifica').html('');
+		$(".spinner").hide();
+		//funzioneradar();
+	 
+	 } else {
+	  /*navigator.notification.alert(
+	   'Non riesco a rilevare la tua posizione',  // message
+		alertDismissed,         // callback
+		'Attenzione',            // title
+		'OK'                  // buttonName
+	  );*/
+		$(".spinner").hide();
+		//funzioneradar();
+	 }
+	 } else {
+	  /*navigator.notification.alert(
+	   'Non riesco a rilevare la tua posizione',  // message
+		 alertDismissed,         // callback
+		 'Attenzione',            // title
+		 'OK'                  // buttonName
+	 );*/
+	 
+		$(".spinner").hide();
+		//funzioneradar();
+	 }
+	 });
 }
 
 function funzioneradar() {
@@ -551,13 +549,18 @@ function resetta() {
 	//marker.setMap(null);
 	//ido.setVisible(false);
 	
-	var lat = parseFloat("41.876217");
-	var lng = parseFloat("12.480997" );
+	var lat = parseFloat("41.866727");
+	var lng = parseFloat("12.479149" );
+	
+	localStorage.setItem("lat", lat)
+    localStorage.setItem("lng", lng)
 	
 	var latlng = new google.maps.LatLng(lat, lng);
 	
 	ido.setPosition(latlng);
 	//map.setCenter(latlng);
+	
+	clearInterval(myTimer);
 								  
 	/*navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
@@ -603,6 +606,9 @@ function resetta1() {
 	var lat = parseFloat("41.882792");
 	var lng = parseFloat("12.487373" );
 	
+	localStorage.setItem("lat", lat)
+    localStorage.setItem("lng", lng)
+	
 	var latlng = new google.maps.LatLng(lat, lng);
 	ido.setPosition(latlng);
 	
@@ -610,13 +616,17 @@ function resetta1() {
     $content.height (getRealContentHeight());
                                                               
 	  var options = {
-	  zoom : 14,
+	  zoom : 16,
 	  center : latlng,
 	  mapTypeId : google.maps.MapTypeId.ROADMAP,
 	  scrollwheel	: false,
 	  zoomControl: true
   
 	  };
+	   var shape = {
+		  coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+		  type: 'poly'
+		};
       
 	  map = new google.maps.Map($content[0], options);
                                                               
@@ -624,8 +634,34 @@ function resetta1() {
 		 google.maps.event.trigger(map, "resize");
 		 map.setCenter(latlng);
 	  }, 300);
-
-			  								  
+	  
+	  var icon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));  
+	   ido = new google.maps.Marker ({
+	   map : map,
+	   icon: icon,
+	   optimized: false,
+	   animation : google.maps.Animation.DROP,
+	   position : latlng,
+	   content:'<div class="popup">Tua Posizione<br>Km0<br></div>',
+	   shape: shape,
+	   title: 'Tua Posizione',
+	   //label: ''+ beach[1] +','+ beach[2] +'',
+	   zIndex: '1'
+	   });
+		
+		
+		var ciccio = setInterval(frame, 3000);
+	
+		var lat = parseFloat("41.882792");
+		var lng = parseFloat("12.487373" );
+	
+		var latlng = new google.maps.LatLng(lat, lng);
+	
+		function frame() {
+			ido.setPosition(latlng);
+			map.setCenter(latlng);
+		}
+		
 }
 
 function getParameterByName(name) {
