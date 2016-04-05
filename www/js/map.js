@@ -556,6 +556,7 @@ function resetta() {
 	ido.setPosition(latlng);
 	//map.setCenter(latlng);
 	
+	
 						  
 	/*navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
