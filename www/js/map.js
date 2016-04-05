@@ -639,8 +639,8 @@ function resetta1() {
 	   });
 		
 		setInterval(function() {
-			var lat = parseFloat("41.882792");
-			var lng = parseFloat("12.487373" );
+			var lat = parseFloat("41.866727");
+			var lng = parseFloat("12.479149" );
 	
 			var latlng = new google.maps.LatLng(lat, lng);	
 			
