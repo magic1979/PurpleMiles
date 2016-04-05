@@ -186,8 +186,8 @@ function onDeviceReady() {
                                                               var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
                                                               
                                                               if (i==0) {
-                                                              icon = img;  
-																  ido = new google.maps.Marker ({
+                                                              	icon = img;  
+																  marker = new google.maps.Marker ({
 																   map : map,
 																   icon: icon,
 																   optimized: false,
@@ -213,7 +213,7 @@ function onDeviceReady() {
 																	}
                                                               }
 															  				  
-															  marker = new google.maps.Marker ({
+															  ido = new google.maps.Marker ({
 															   map : map,
 															   icon: icon,
 															   optimized: false,
@@ -322,8 +322,11 @@ function onDeviceReady() {
     }
 	
 	//var myTimer = setInterval(resetta1, 15000);
-	resetta1();
 	
+	 setTimeout(function() {
+		 resetta1();
+	  }, 1000);
+	  
 	
 	if(IDPage==1){
 		$("#btn").click();
@@ -359,7 +362,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><b><a href="javascript:resetta()">MUOVI</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
+	controlText.innerHTML = '<br><b><a href="javascript:resetta1()">MUOVI</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
@@ -554,7 +557,7 @@ function resetta() {
 	
 	var latlng = new google.maps.LatLng(lat, lng);
 	
-	ido.setPosition(latlng);
+	marker.setPosition(latlng);
 	//map.setCenter(latlng);
 	
 	
@@ -631,7 +634,7 @@ function resetta1() {
 	  }, 300);
 	  
 	  var icon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));  
-	   ido = new google.maps.Marker ({
+	   marker = new google.maps.Marker ({
 	   map : map,
 	   icon: icon,
 	   content:'<div class="popup">Tua Powsizione</div>',
@@ -641,7 +644,13 @@ function resetta1() {
 	   //label: ''+ beach[1] +','+ beach[2] +'',
 	   zIndex: 10
 	   });
-   
+	   
+	    google.maps.event.addListener(marker, 'click', function() {
+																							
+           infowindow.setContent(this.content);
+           infowindow.open(map, this);
+																
+        });
 
 	   var centerControlDiv = document.createElement('div');
 	   centerControlDiv.setAttribute('id', 'sopra');
@@ -661,8 +670,11 @@ function resetta1() {
             
 			var latlng = new google.maps.LatLng(ciao, ciao1);
 			
-			ido.setPosition(latlng);
+			marker.setPosition(latlng);
 			map.setCenter(latlng);
+			
+			localStorage.setItem("lat", ciao)
+            localStorage.setItem("lng", ciao1)
         }
         
 
