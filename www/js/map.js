@@ -187,7 +187,7 @@ function onDeviceReady() {
                                                               
                                                               if (i==0) {
                                                               	icon = img;  
-																  marker = new google.maps.Marker ({
+																  marker2 = new google.maps.Marker ({
 																   map : map,
 																   icon: icon,
 																   optimized: false,
@@ -232,12 +232,12 @@ function onDeviceReady() {
 															  infowindow.open(map, marker);*/
 																  
 
-                                                               google.maps.event.addListener(marker, 'click', function() {
+                                                               /*google.maps.event.addListener(marker, 'click', function() {
 																							
                                                                  infowindow.setContent(this.content);
                                                                  infowindow.open(map, this);
 																
-																/*var lati = this.getPosition().lat();
+																var lati = this.getPosition().lat();
 																var lngi = this.getPosition().lng();
 													
 																var flightPlanCoordinates = [
@@ -253,8 +253,8 @@ function onDeviceReady() {
 																	  });
 																
 																
-																flightPath.setMap(map);*/
-                                                              });
+																flightPath.setMap(map);
+                                                              });*/
 														  
 															   /*google.maps.event.addListener(map, 'center_changed', function() {
 															
@@ -324,7 +324,8 @@ function onDeviceReady() {
 	//var myTimer = setInterval(resetta1, 15000);
 	
 	 setTimeout(function() {
-		 resetta1();
+		 //resetta1();
+		 $("#resetta").click();
 	  }, 1000);
 	  
 	
@@ -544,7 +545,7 @@ function deg2rad(deg) {
 	return deg * (Math.PI/180)
 }
 
-function resetta() {
+function resetta2() {
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
@@ -637,7 +638,7 @@ function resetta1() {
 	   marker = new google.maps.Marker ({
 	   map : map,
 	   icon: icon,
-	   content:'<div class="popup">Tua Powsizione</div>',
+	   content:'<div class="popup">Tua Posizione</div>',
 	   optimized: false,
 	   position : latlng,
 	   title: 'Tua Posizione',
@@ -662,7 +663,7 @@ function resetta1() {
 		
 		setInterval(function() {
 			navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });	
-		}, 3000);
+		}, 15000);
 		
 		function onSuccess2(position) {
             var ciao = position.coords.latitude;
