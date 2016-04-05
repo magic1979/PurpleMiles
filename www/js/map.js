@@ -257,15 +257,15 @@ function onDeviceReady() {
 																flightPath.setMap(map);*/
                                                               });
 														  
-															   //google.maps.event.addListener(map, 'center_changed', function() {
+															   google.maps.event.addListener(map, 'center_changed', function() {
 																// 3 seconds after the center of the map has changed, pan back to the
 																// marker.
 																
-																/*setTimeout(function() {
+																setTimeout(function() {
 																	map.panTo(ido.getPosition());
-																}, 300);*/
+																}, 300);
 																
-															  //});
+															  });
 
                                                               }
 															  
