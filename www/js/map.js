@@ -556,12 +556,8 @@ function resetta() {
 	
 	var latlng = new google.maps.LatLng(lat, lng);
 	
-		setTimeout(function() {
-			ido.setPosition(latlng);
-			map.setCenter(latlng);
-			ido.setIcon('https://maps.google.com/mapfiles/kml/shapes/schools_maps.png');
-			//ido.setVisible(true);
-		}, 300);
+	ido.setPosition(latlng);
+	//map.setCenter(latlng);
 								  
 	/*navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
@@ -608,13 +604,28 @@ function resetta1() {
 	var lng = parseFloat("12.487373" );
 	
 	var latlng = new google.maps.LatLng(lat, lng);
+	ido.setPosition(latlng);
 	
-	setTimeout(function() {
-		ido.setPosition(latlng);
-		map.setCenter(latlng);
-		marker.setIcon('https://maps.google.com/mapfiles/kml/shapes/schools_maps.png');
-	}, 300);
-								  								  
+	var $content = $("#win2 div:jqmData(role=content)");
+    $content.height (getRealContentHeight());
+                                                              
+	  var options = {
+	  zoom : 14,
+	  center : latlng,
+	  mapTypeId : google.maps.MapTypeId.ROADMAP,
+	  scrollwheel	: false,
+	  zoomControl: true
+  
+	  };
+      
+	  map = new google.maps.Map($content[0], options);
+                                                              
+	  setTimeout(function() {
+		 google.maps.event.trigger(map, "resize");
+		 map.setCenter(latlng);
+	  }, 300);
+
+			  								  
 }
 
 function getParameterByName(name) {
