@@ -187,7 +187,7 @@ function onDeviceReady() {
                                                               
                                                               if (i==0) {
                                                               	icon = img;  
-																  marker2 = new google.maps.Marker ({
+																  marker = new google.maps.Marker ({
 																   map : map,
 																   icon: icon,
 																   optimized: false,
@@ -213,7 +213,7 @@ function onDeviceReady() {
 																	}
                                                               }
 															  				  
-															  ido = new google.maps.Marker ({
+															  marker = new google.maps.Marker ({
 															   map : map,
 															   icon: icon,
 															   optimized: false,
@@ -225,6 +225,13 @@ function onDeviceReady() {
 															   //label: ''+ beach[1] +','+ beach[2] +'',
 															   zIndex: beach[3]
 															   });
+															   
+															   google.maps.event.addListener(marker, 'click', function() {
+																							
+																   infowindow.setContent(this.content);
+																   infowindow.open(map, this);
+																
+        														});
 															  
 															  /*var infowindow = new google.maps.InfoWindow({
 																content: beach[5]
@@ -324,9 +331,9 @@ function onDeviceReady() {
 	//var myTimer = setInterval(resetta1, 15000);
 	
 	 setTimeout(function() {
-		 //resetta1();
-		 $("#resetta").click();
-	  }, 1000);
+		 resetta1();
+		 //$("#resetta").click();
+	  }, 3000);
 	  
 	
 	if(IDPage==1){
@@ -638,20 +645,13 @@ function resetta1() {
 	   marker = new google.maps.Marker ({
 	   map : map,
 	   icon: icon,
-	   content:'<div class="popup">Tua Posizione</div>',
+	   content:'<div class="popup">Start</div>',
 	   optimized: false,
 	   position : latlng,
 	   title: 'Tua Posizione',
 	   //label: ''+ beach[1] +','+ beach[2] +'',
 	   zIndex: 10
 	   });
-	   
-	    google.maps.event.addListener(marker, 'click', function() {
-																							
-           infowindow.setContent(this.content);
-           infowindow.open(map, this);
-																
-        });
 
 	   var centerControlDiv = document.createElement('div');
 	   centerControlDiv.setAttribute('id', 'sopra');
