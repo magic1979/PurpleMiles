@@ -17,9 +17,17 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("touchend", "#mappa6", function(e){
-		$("#btn").click();
+		//$("#btn").click();
+		resetta1();
 	});
-		
+	
+	$(document).on("touchend", "#XX", function(e){
+		window.location.href = "index.html";
+	});
+	
+	$(document).on("touchend", "#XXX", function(e){
+		window.location.href = "index.html";
+	});
     
     $(".spinner").show();
     var connectionStatus = false;
@@ -89,7 +97,8 @@ function onDeviceReady() {
                                               
                                       beaches.push(['Tua Posizione',lat,lng,1])
                                               
-								  $.ajax({
+										//LEGGO TUTTO
+										/*$.ajax({
 										 type:"GET",
 										 url:"http://www.pokeranswer.it/www/Check_Room.asp",
 										 contentType: "application/json",
@@ -106,15 +115,12 @@ function onDeviceReady() {
 											distanza = getDistance(lat,lng,item.lat,item.lng).toFixed(1);
 											
 											beaches.push(["<h2>"+item.Room+"</h2><br>"+item.Indirizzo,item.lat,item.lng,posizione,item.figp,distanza])
-
 										  });
 										 
 										 for (var i = 0; i < beaches.length; i++) {
 											var beach = beaches[i];
 										 }
-										 
-										 //$("#btn").click();
-										 
+										 					 
 										 },
 										 error: function(){
 										 
@@ -126,7 +132,7 @@ function onDeviceReady() {
 										  );
 										 
 										 },
-										 dataType:"jsonp"});
+										 dataType:"jsonp"});*/
         
                                               var shape = {
                                               coord: [1, 1, 1, 20, 18, 20, 18 , 1],
@@ -282,12 +288,12 @@ function onDeviceReady() {
                                                               }
 															  
 															  //DIV IN ALTO 41.873729, 12.478138  41.783692, 12.364979
-															  var centerControlDiv = document.createElement('div');
+															  /*var centerControlDiv = document.createElement('div');
 															  centerControlDiv.setAttribute('id', 'sopra');
 															  var centerControl = new CenterControl(centerControlDiv, map);
 															  
 															  centerControlDiv.index = 1;
-															  map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+															  map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);*/
 															  
                                                               $(".spinner").hide();
 															  
@@ -378,7 +384,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><b><a href="javascript:resetta1()">MUOVI</a></b><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
+	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><br><br><input type="text" value="'+ localStorage.getItem("Via") +'">';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
@@ -450,7 +456,7 @@ function codeLatLng(lati,lngi) {
 	 
 		localStorage.setItem("Via", viadotto)
 	 
-		$('#classifica').html('');
+		//$('#classifica').html('');
 		$(".spinner").hide();
 		//funzioneradar();
 	 
