@@ -15,6 +15,10 @@ function onDeviceReady() {
 	$(document).on("touchend", "#resetta", function(e){
 		window.location.href = "index.html";
 	});
+	
+	$(document).on("touchend", "#mappa6", function(e){
+		$("#btn").click();
+	});
 		
     
     $(".spinner").show();
@@ -646,7 +650,7 @@ function resetta1() {
 		 map.setCenter(latlng);
 	  }, 1000);
 	  
-	  var icon = new google.maps.MarkerImage("img/car.png", null, null, null, new google.maps.Size(28,40));  
+	  var icon = new google.maps.MarkerImage("img/car.png", null, null, null, new google.maps.Size(26,50));  
 	   marker = new google.maps.Marker ({
 	   map : map,
 	   icon: icon,
