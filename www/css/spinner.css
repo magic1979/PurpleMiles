@@ -13,10 +13,10 @@
    -moz-animation: rotation .8s infinite linear;
    -o-animation: rotation .8s infinite linear;
    animation: rotation .8s infinite linear;
-   border-left:6px solid rgba(62,109,72,.15);
-   border-right:6px solid rgba(62,109,72,.15);
-   border-bottom:6px solid rgba(62,109,72,.15);
-   border-top:6px solid rgba(62,109,72,.8);
+   border-left:6px solid rgba(204,51,204,.15);
+   border-right:6px solid rgba(204,51,204,.15);
+   border-bottom:6px solid rgba(204,51,204,.15);
+   border-top:6px solid rgba(204,51,204,.8);
    border-radius:100%;
    z-index: 9999;
 }

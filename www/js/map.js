@@ -11,6 +11,11 @@ function onDeviceReady() {
     /*$('body').on('touchmove', function (e) {
         e.preventDefault();
      });*/
+	
+	$(document).on("touchend", "#resetta", function(e){
+		window.location.href = "index.html";
+	});
+		
     
     $(".spinner").show();
     var connectionStatus = false;
