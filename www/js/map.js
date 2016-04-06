@@ -635,11 +635,12 @@ function resetta1() {
 	  };
       
 	  map = new google.maps.Map($content[0], options);
-                                                              
+      
+	  $.mobile.changePage ($("#win2"));
 	  setTimeout(function() {
 		 google.maps.event.trigger(map, "resize");
 		 map.setCenter(latlng);
-	  }, 300);
+	  }, 1000);
 	  
 	  var icon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));  
 	   marker = new google.maps.Marker ({
