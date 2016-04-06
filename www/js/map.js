@@ -243,7 +243,6 @@ function onDeviceReady() {
 															  });
 															  infowindow.open(map, marker);*/
 																  
-
                                                                /*google.maps.event.addListener(marker, 'click', function() {
 																							
                                                                  infowindow.setContent(this.content);
@@ -287,6 +286,11 @@ function onDeviceReady() {
 															  map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 															  
                                                               $(".spinner").hide();
+															  
+															  	 setTimeout(function() {
+																	 resetta1();
+																	 //$("#resetta").click();
+																  }, 3000);
                                                               
                                                               });
         
@@ -335,11 +339,6 @@ function onDeviceReady() {
 	
 	//var myTimer = setInterval(resetta1, 15000);
 	
-	 setTimeout(function() {
-		 resetta1();
-		 //$("#resetta").click();
-	  }, 3000);
-	  
 	
 	if(IDPage==1){
 		$("#btn").click();
@@ -647,7 +646,7 @@ function resetta1() {
 		 map.setCenter(latlng);
 	  }, 1000);
 	  
-	  var icon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));  
+	  var icon = new google.maps.MarkerImage("img/car.png", null, null, null, new google.maps.Size(28,40));  
 	   marker = new google.maps.Marker ({
 	   map : map,
 	   icon: icon,
