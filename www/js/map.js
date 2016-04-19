@@ -3,6 +3,16 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
+	var email = localStorage.getItem("email");
+	
+	
+	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
+		
+		window.location.href = "Login.html";
+		
+	}
+	
+	
 	var last_click_time = new Date().getTime();
 	
 	document.addEventListener("tap", function (e) {
@@ -358,9 +368,6 @@ function onDeviceReady() {
                                                               
                                                               });
         
-    $("#gps2").bind ("click", function (event){
-        window.location.href = "Finder.html";
-    });
     
 }
     
@@ -689,7 +696,7 @@ function resetta1(focus) {
 	
 	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
 		
-		window.location.href = "login.html";
+		window.location.href = "Login.html";
 		
 	}
 	
