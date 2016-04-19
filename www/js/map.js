@@ -140,14 +140,8 @@ function onDeviceReady() {
         $(".spinner").hide();
     }
 		
-								//41.783780, 12.364947
-								navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-		
 								  var lat = localStorage.getItem("lat");  //  "41.783780"  "41.783780" localStorage.getItem("lat")
 								  var lng = localStorage.getItem("lng"); //  "12.364947"  "12.364947" localStorage.getItem("lng")
-		
-								  localStorage.setItem("lat", lat)
-								  localStorage.setItem("lng", lng)
 		
 		
 								  codeLatLng(lat,lng);
@@ -719,7 +713,7 @@ function resetta1(focus) {
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
-	var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, { timeout: 80000 });
 	
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -943,7 +937,7 @@ function resetta1(focus) {
 	   
 	if(focus==1){
 		refreshIntervalId = setInterval(function() {
-					var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 }); 
+					var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, { timeout: 80000 }); 
 					
 					var lat = localStorage.getItem("lat");
 					var lng = localStorage.getItem("lng");
