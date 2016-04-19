@@ -39,18 +39,6 @@ var app = {
     receivedEvent: function(id) {
 		 document.addEventListener("resume", onResume, false);
 		
-		//localStorage.setItem("email", "");
-		//localStorage.setItem("email2", "");
-		
-		/*var email = localStorage.getItem("email");
-		
-		
-		if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
-			
-			window.location.href = "login.html";
-			
-		}*/
-		
 		//PUSH
 		
 		/*if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
@@ -73,7 +61,6 @@ var app = {
 		$(document).on("touchend", "#inizia", function(e){
 			//$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
 			window.location.href = "map.html";
-		    if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 			//carica2()
 		});
 

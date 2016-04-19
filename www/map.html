@@ -155,6 +155,23 @@
 						  
 					  }
 					  
+					  .div555 {
+						  position: absolute;
+						  z-index: 20;
+						  bottom: 30px;
+						  left: 0;
+						  width: 100%;
+						  height: 5%;
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  
+					  }
+					  
+					  
 					  .div55 {
 						  position: absolute;
 						  z-index: 20;
@@ -167,6 +184,87 @@
 						  
 						  text-align: center;
 						  font-weight: bold;
+						  
+						  
+					  }
+					  
+					  .div56 {
+						  background-color: #cc33cc;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						 
+						  width: 200px;
+						  height: 130px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 100;
+					  }
+					  
+					  .div563 {
+						  background-color: #cc33cc;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 200px;
+						  height: 130px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 112;
+					  }
+					  
+					  .div57 {
+						  background-color: #FFF;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 240px;
+						  height: 400px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
 					  
 					  #map_geolocation label { width: auto; display:inline; }
@@ -179,16 +277,76 @@
 						.custom-btn2 {
 							width: 280px;
 						}
+					  
+					  .custom-close {
+						  background-color: #cc33cc;
+						  width: 55px;
+						  font-size: 18px;
+						  
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-pass {
+						  background-color: #cc33cc;
+						  width: 35px;
+						  font-size: 18px;
+						  
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
 						
 						.custom-btn3 {
 							background-color: #cc33cc;
 							width: 120px;
 							font-size: 18px;
 							
+							color:#FFF;
+							
+							text-decoration: none;
+							text-shadow:0 0 0;
+							
+							font-family: ubuntu, helvetica, arial;
+							
+							padding: 5 5 5 5;
+							
 							border-radius: 5px;
 							-moz-border-radius: 5px; /* firefox */
 							-webkit-border-radius: 5px; /* safari, chrome */
 						}
+					  
+					  .custom-btn4 {
+						  background-color: #cc33cc;
+						  width: 120px;
+						  font-size: 18px;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
 						
 						.tabella {
 							background-color: #FFF;
@@ -249,7 +407,7 @@
 			<table width="90%" height="440px" border="0" valign="center" align="center" class="tabella">
 				<tr>
 					<td width="100%" align="center">
-						<a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br>
+						<a id="mappa6" href="javascript:resetta1()" rel="external"><img src="img/Volante.png" width="120px"></a><br>
 						<b>Voglio essere autista</b><br>
 						<table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table>  
 					</td>
@@ -268,22 +426,7 @@
 				</tr>	
 			</table>
              
-            <!--<ul id="online" data-role="listview" data-inset="true" data-theme="a">
-                <li><a id="mappa5" href="javascript:mappatura()" rel="external"><img src="img/car.png">
-                    <h2>&nbsp;Autista</h2>
-                    <p>Autista</p></a>
-                </li>
-            </ul>
-            
-            <ul id="online" data-role="listview" data-inset="true" data-theme="a">
-                <li><a id="gps5" href="#" rel="external"><img src="img/omino.png">
-                    <h2>&nbsp;Passeggero</h2>
-                    <p>Passeggero</p></a>
-                </li>
-            </ul>-->
-			
-		
-            
+
             <!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
                 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
             </div>-->
@@ -308,11 +451,99 @@
 			
 			<div data-role="content"></div>
 			
-			<table width="100%" border="0" align="center" valign="center" class="div55" >
+			<table id="blob" width="100%" border="0" align="center" valign="center" class="div56" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="ric1" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>Richiesta</b></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+			</table>
+			
+			<table id="blob3" width="100%" border="0" align="center" valign="center" class="div562" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="ric2" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>Richiesta2</b></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+			</table>
+			
+			<table id="blob2" width="100%" border="0" align="center" valign="center" class="div57" style="display:none">
+				<tr><td align="right"><a id="xchiudi1" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/xx.png" width="30"></a></td></tr>
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<p id="quando"></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<p id="Da"></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<p id="Ad"></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<p id="Note"></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="risp" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi 2</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi 3</font></a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="close" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a><a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella 2</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella 3</font></a>
+
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+			</table>
+
+			
+			
+			<table id="btninizia" width="100%" border="0" align="center" valign="center" class="div55" >
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px"><tr><td width="100px" align="center">
-						<a id="resetta" href="#" data-role="button" data-theme="b" class="custom-btn3">Inizia</a>
+						<a id="inizia" href="#" data-role="button" data-theme="b" class="custom-btn3">Inizia</a>
+						</td></tr></table>
+					</td>
+				</tr>
+				
+			</table>
+			
+			<!--Iconcoine-->
+			
+			<table id="btnpass" width="100%" border="0" align="center" valign="center" class="div555" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="200px"><tr><td width="200px" align="left">
+							<a id="pass1" href="#" data-theme="b" class="custom-pass" style="display:none">&nbsp;1&nbsp;</a>&nbsp;&nbsp;&nbsp;<a id="pass2" href="#" data-theme="b" class="custom-pass" style="display:none">&nbsp;2&nbsp;</a>&nbsp;&nbsp;&nbsp;<a id="pass3" href="#" data-theme="b" class="custom-pass" style="display:none">&nbsp;3&nbsp;</a>&nbsp;&nbsp;&nbsp;<a id="esci" href="#" data-theme="b" class="custom-pass">EXIT</a>
 						</td></tr></table>
 					</td>
 				</tr>
@@ -326,25 +557,77 @@
         </div>
 		
 		<div data-role=page id=home3 class="div2">
-			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3">
-				
-			 <span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
-			 </div>-->
-			<div id="noconn" align="center" style="display:none"></div>
-			<a data-role=button id=verifica data-theme="b" style="display:none">Verifica Connessione</a>
-			
+			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
+			<table border="0" valign="center" align="center" class="transbox">
+				<tr>
+					<td align="center" width="30%">
+						<img src="img/Logo.png" width="60">
+							</td>
+					<td align="center" width="50%">
+						<table class="tabella1"><tr><td><font color="#FFF">NickName</font></td></tr></table>
+					</td>
+					<td align="right" width="20%">
+						<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="25px"></a>
+					</td>
+				</tr>
+			</table>
 			
 			<div data-role=content class="div2">
-				<div class="div2"><table align="right" width="80px"><tr><td valign="center" align="right"><font  color="white" size="2"><div id="fiches"></div></font></td></tr></table></div>
-				
-				<a data-role=button id=btn data-theme="b" style="display:none">Display map2</a><br>
-				<a data-role=button id=gps2 data-theme="b" style="display:none">Gps E Dintorni2</a><br>
-				
+
 			</div>
+			
 			<div class="spinner" id="spinner"></div>
 			
-			<center><img src="img/Logo.png" width="80"><br></center>
-			
+			<table width="90%" height="440px" border="0" valign="center" align="center" class="tabella">
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<br><b>RISPONDI</b><br>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<a id="#" href="#" data-theme="b" class="custom-pass">Gratis</a>
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<a id="#" href="#" data-theme="b" class="custom-pass">Offerta Libera</a>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center">
+						<a id="#" href="#" data-theme="b" class="custom-pass">Importo</a>
+					</td>
+					<td width="50%" align="center">
+						<input text="text">
+					</td>
+				</tr>
+
+				<tr>
+					<td width="100%" align="left" colspan="2">
+						<table ><tr><td><font color="#000">Note</font></td></tr></table>
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<textarea cols="30" rows="10"></textarea>
+					</td>
+				</tr>
+			</table>
+			<br><br>
+			<table width="100%" border="0" align="center" valign="center" class="div55" >
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px"><tr><td width="100px" align="center">
+							<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn3">Invia</a>
+						</td></tr></table>
+					</td>
+				</tr>
+				
+			</table>
+
+
 			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
 				 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
 				 </div>-->

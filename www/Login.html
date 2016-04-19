@@ -5,13 +5,14 @@
 		<meta property="og:locale" content="en_US" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			
-		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" href="font.css">
 			
 		<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.2.min.css" />
-		<link rel="stylesheet" href="themes/BetaApp.css" />
+		<link rel="stylesheet" href="themes/Purples.css" />
 		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 		<link rel="stylesheet" href="css/spinner.css" />
 		
@@ -59,6 +60,7 @@
 			-webkit-text-size-adjust:none;
 			font-family:helvetica;
 		}
+		
 		
 		#wrapper2 {
 			position: absolute;
@@ -205,7 +207,7 @@
 			}
 		
 			.div1 {
-				background-color: #488354;
+				background-color: #e260fe;
 				height: 52px;
 				border: none;
 				
@@ -411,61 +413,10 @@ a {text-decoration:none;}
     </head>
     <body>
 		
-		<div id="page" data-role="page" class="div2" >
-			
-			<div id="wrapper">
-				<div id="scroller">
-					<center>
-						<ul id="thelist">
-							<li>
-								<table border="0" align="center">
-								<tr>
-									<td align="center"><img src="Logo.png" width="140"></td>
-								</tr>
-								<tr>
-									<td align="center">
-										A robot must obey any orders given to it by human beings, except where such orders would conflict with the First Law
-									</td>
-								</tr>
-								<tr>
-									<td align="center">
-										<a id="loginbutton" onclick="#" href="test.html" class="btn2" rel="external"><font color="#000">Login</font></a>
-									</td>
-								</tr>
-							</table>
-							</li>
-							<li><strong>2.</strong> <em>A robot must obey any orders given to it by human beings, except where such orders would conflict with the First Law.</em></li>
-							<li><strong>3.</strong> <em>A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.</em></li>
-							<li><strong>Zeroth Law:</strong> <em>A robot may not harm humanity, or, by inaction, allow humanity to come to harm.</em></li>
-							<li><strong>Lyuben Dilov's Forth law:</strong> <em>A robot must establish its identity as a robot in all cases.</em></li>
-							<li><strong>Harry Harrison's Forth law:</strong> <em>A robot must reproduce. As long as such reproduction does not interfere with the First or Second or Third Law.</em></li>
-							<li><strong>Nikola Kesarovski's Fifth law:</strong> <em>A robot must know it is a robot.</em></li>
-						</ul>
-					</center>
-				</div>
-			</div>
-			
-			<table align="center"><tr><td>
-				<div align="center">
-					
-					<ul id="indicator" align="center">
-						<li class="active">1</li>
-						<li>2</li>
-						<li>3</li>
-						<li>4</li>
-						<li>5</li>
-						<li>6</li>
-						<li>7</li>
-					</ul>
-					
-				</div>
-			</td></tr></table>
-			
-		</div>
 		
-		<div id="page4" data-role="page" class="div2" >
+		<div id="page" data-role="page" class="div2" >
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true" >
-				<table align="center" width="100%" valign="center" border="0"><tr><td></td></tr><tr><td align="center" valign="center"><img src="img/LogoWhite.png"  height="36px"></td></tr></table>
+				<table align="center" width="100%" valign="center" border="0"><tr><td></td></tr><tr><td align="center" valign="center"><img src="img/Logo.png"  height="36px"></td></tr></table>
 			</div>
 			<div class="spinner" id="spinner"></div>
 
@@ -482,7 +433,7 @@ a {text-decoration:none;}
 						 <form name="formia2" action="entra2.asp" method="post">
 							 <input type="text" data-role="none" name="email" id="email" value="" placeholder="Email" class="scrivo">
 							 <input type="password" data-role="none" name="password" id="password" value="" placeholder="Password" class="scrivo">
-							 <a href="javascript:login();" id="#" data-role="button" class="custom-btn" data-theme="c"><font color="green" size="4">Accedi</font></a>
+							 <a href="#" id="accedi" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="4">Accedi</font></a>
 						</form>
 					</td>
 				</tr>
@@ -521,11 +472,12 @@ a {text-decoration:none;}
 			</table>-->
 			
 			</center>
+						
 			
 		</div>
 		</div>
 		
-			<div data-role="footer" data-theme="a" align="center" data-position="fixed" data-tap-toggle="false" class="div2">
+			<!--<div data-role="footer" data-theme="a" align="center" data-position="fixed" data-tap-toggle="false" class="div2">
 				<table id="idfooter4" width="100%" align="center">
 					<td width="50%" align="center">
 						<a href="#page6" id="#" data-role="button" class="custom-btn3">Iscriviti</a>
@@ -542,7 +494,7 @@ a {text-decoration:none;}
 		
 		<div id="page6" data-role="page" class="div2" >
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1">
-				<table align="center" width="100%" valign="center" border="0"><tr><td></td></tr><tr><td align="center" valign="center"><img src="img/LogoWhite.png" height="36px"></td></tr></table>
+				<table align="center" width="100%" valign="center" border="0"><tr><td></td></tr><tr><td align="center" valign="center"><img src="img/Logo.png" height="36px"></td></tr></table>
 			</div>
 			<br><br>
 			<div class="spinner" id="spinner"></div>
@@ -556,11 +508,8 @@ a {text-decoration:none;}
 						<input type="text" data-role="none" name="emailreg" id="emailreg" value="" placeholder="Email" class="scrivo">
 						<input type="text" data-role="none" name="pinreg" id="pinreg" value="" placeholder="Password" class="scrivo">
 						<input type="text" data-role="none" name="nome" id="nome" value="" placeholder="Nome" class="scrivo">
-						<input type="text" data-role="none" name="cognome" id="cognome" value="" placeholder="Cognome" class="scrivo">
-						<!--<input type="text" data-role="none" name="indirizzo" id="indirizzo" value="" placeholder="Indirizzo" class="scrivo">-->
-						<input type="text" data-role="none" name="citta" id="citta" value="" placeholder="Citta" class="scrivo" class="scrivo">
-									
-						<a href="#" id="#" data-role="button" data-theme="c" class="custom-btn"><font color="green" size="4">Iscriviti</font></a>
+															
+						<a href="#" id="iscriviti" data-role="button" data-theme="c" class="custom-btn"><font color="e260fe" size="4">Iscriviti</font></a>
 					 </form>
 					</td>
 				</tr>
@@ -576,6 +525,7 @@ a {text-decoration:none;}
 	</td>
 </tr>
 </table>
+
 			
 			<div data-role="footer" align="center" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1">
 				<table id="idfooter4" width="100%" align="center">

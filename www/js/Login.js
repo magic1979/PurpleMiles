@@ -3,52 +3,21 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	
-	//ipad
-	var isMobileScreenWidth = (screen.width / window.devicePixelRatio)
-	if(isMobileScreenWidth < 768){
-		
-		if(isMobileScreenWidth < 500){
-			//iphone 4s
-		}
-		$("#pad010").show();
-		$("#pad020").show();
-		
-	}
-	else
-	{
-		
-		//$("#wrapper").removeClass("wrapper").addClass("wrapperIPAD");
-		//$("#scroller").removeClass("scroller").addClass("scrollerIPAD");
-		
-		 //$("#li1").removeClass("ciccio").addClass("ciccioIPAD");
-		 //$("#li2").removeClass("ciccio2").addClass("ciccioIPAD");
-		 //$("#li3").removeClass("ciccio3").addClass("ciccioIPAD");
-		$("#pad01").show();
-		$("#pad02").show();
-		
-		$("#verde").removeClass("circolare").addClass("circolareIPAD");
-		$("#stampante").attr("width", "240");
-		$("#logo").attr("width", "300");
-		
-	}
 	
-	last_click_time = new Date().getTime();
+	$(document).on("touchend", "#accedi", function(e){
+		//window.location.href = "map.html";
+		login();
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		
+	});
 	
-	document.addEventListener('click', function (e) {
-							  
-							  click_time = e['timeStamp'];
-							  
-							  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-							  
-							  e.preventDefault();
-							  
-							  return false;
-							  
-							  }
-							  
-							  last_click_time = click_time;
-							  
-							  }, true);
+	$(document).on("touchend", "#iscriviti", function(e){
+				   //window.location.href = "map.html";
+				   iscriviti();
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   });
+	
 
 		document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
 		document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
@@ -76,6 +45,8 @@ function onDeviceReady() {
 			
 			document.getElementById("email").value = localStorage.getItem("email2")
 			
+			$(".spinner").hide();
+			
 		}
 		else{
 			
@@ -86,27 +57,6 @@ function onDeviceReady() {
 					'OK'                  // buttonName
                  );
 		}
-		
-	var myScroll;
-
-		myScroll = new iScroll('wrapper', {
-			snap: true,
-			momentum: false,
-			hScrollbar: false,
-			onScrollEnd: function () {
-				document.querySelector('#indicator > li.active').className = '';
-				document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-			}
-		 });
-
-
-	document.addEventListener('DOMContentLoaded', loaded, false);
-	
-	setTimeout (function(){
-		myScroll.refresh();
-    }, 1000);
-		
-		
     }
 	
 
@@ -175,9 +125,9 @@ function LoginVera(email,pin){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/mycollection/www/check_login.asp",
+		   url:"http://purplemiles.com/www/check_login.php?email="+ email +"&password="+ pin +"",
 		   contentType: "application/json",
-		   data: {email:email,pin:pin},
+		   //data: {email:email,pin:pin},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -186,11 +136,12 @@ function LoginVera(email,pin){
 		   $.each(result, function(i,item){
 				//alert(item.Token);
 				  
-				if (item.Token == 1024){
+				if (item.Token == 1){
 				  localStorage.setItem("email", email);
 				  localStorage.setItem("email2", email);
+				  localStorage.setItem("id_autista", item.id);
 
-				  window.location.href = "index.html";
+				  window.location.href = "map.html";
 				  
 				}
 				else{
@@ -226,8 +177,6 @@ function iscriviti(){
 	var emailreg = self.document.formia.emailreg.value;
 	var pinreg = self.document.formia.pinreg.value;
 	var nomereg = self.document.formia.nome.value;
-	var cognome = self.document.formia.cognome.value;
-	var citta = self.document.formia.citta.value;
 	
 	if (emailreg == "") {
 		navigator.notification.alert(
@@ -260,27 +209,6 @@ function iscriviti(){
 		return;
 	}
 	
-	if (cognome == "") {
-		navigator.notification.alert(
-									 'inserire il cognome',  // message
-									 alertDismissed,         // callback
-									 'Cognome',            // title
-									 'OK'                  // buttonName
-									 );
-		return;
-	}
-	
-	
-	if (citta == "") {
-		navigator.notification.alert(
-									 'inserire una citta',  // message
-									 alertDismissed,         // callback
-									 'Citta',            // title
-									 'OK'                  // buttonName
-									 );
-		return;
-	}
-	
 	
 	EmailAddr = self.document.formia.emailreg.value;
 	Filtro = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
@@ -305,9 +233,9 @@ function iscriviti(){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/mycollection/www/Check_Reg.asp",
+		   url:"http://purplemiles.com/www/check_reg_autista.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"",
 		   contentType: "application/json",
-		   data: {email:emailreg,nome:nomereg,cognome:cognome,citta:citta,pin:pinreg},
+		   //data: {email:emailreg,nickname:nomereg,pin:pinreg},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
