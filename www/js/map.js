@@ -43,7 +43,7 @@ function onDeviceReady() {
 	var prefi2000;
 	
 	$(document).on("touchend", "#esci", function(e){
-		resetta1();
+		window.location.href = "map.html";
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
@@ -581,7 +581,7 @@ function getRealContentHeight() {
 	var content = $.mobile.activePage.find("div[data-role='content']:visible:visible");
 	var viewport_height = $(window).height();
     
-	var content_height = viewport_height - header.outerHeight() - 1;//footer.outerHeight(); -48
+	var content_height = viewport_height - header.outerHeight() - 5;//footer.outerHeight(); -48
 	if((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
 		content_height -= (content.outerHeight() - content.height());
 	}
@@ -605,7 +605,7 @@ function verificawifi(){
 function onResume() {
 	
 	setTimeout(function() {
-	   resetta1(1);
+	   window.location.href = "index.html";
 	}, 200);
 }
 
