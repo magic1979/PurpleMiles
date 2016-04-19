@@ -581,7 +581,7 @@ function getRealContentHeight() {
 	var content = $.mobile.activePage.find("div[data-role='content']:visible:visible");
 	var viewport_height = $(window).height();
     
-	var content_height = viewport_height - header.outerHeight() - 48;//footer.outerHeight(); -48
+	var content_height = viewport_height - header.outerHeight() - 1;//footer.outerHeight(); -48
 	if((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
 		content_height -= (content.outerHeight() - content.height());
 	}
@@ -605,9 +605,8 @@ function verificawifi(){
 function onResume() {
 	
 	setTimeout(function() {
-	   localStorage.setItem("geostory", "NO")
-	   resetta1();
-	}, 0);
+	   resetta1(1);
+	}, 200);
 }
 
 function getDistance(lat1,lon1,lat2,lon2) {
