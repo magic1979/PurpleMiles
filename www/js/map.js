@@ -581,7 +581,7 @@ function getRealContentHeight() {
 	var content = $.mobile.activePage.find("div[data-role='content']:visible:visible");
 	var viewport_height = $(window).height();
     
-	var content_height = viewport_height - header.outerHeight() ;//footer.outerHeight(); -48
+	var content_height = viewport_height - header.outerHeight() - 48;//footer.outerHeight(); -48
 	if((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
 		content_height -= (content.outerHeight() - content.height());
 	}
@@ -1049,12 +1049,6 @@ function resetta1(focus) {
 						   },
 						   error: function(){
 						   
-						   navigator.notification.alert(
-														'Possibile errore di rete, riprova tra qualche minuto.',  // message
-														alertDismissed,         // callback
-														'Attenzione',           // title
-														'Done'                  // buttonName
-														);
 						   
 						   },
 						   dataType:"jsonp"});
