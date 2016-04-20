@@ -719,7 +719,7 @@ function resetta1(focus) {
 	  });	//----------------
 	
 
-	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, { timeout: 80000 });
+	navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -947,7 +947,7 @@ function resetta1(focus) {
 		$("#btninizia").hide();
 		
 		refreshIntervalId = setInterval(function() {
-					var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, { timeout: 80000 });
+					navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 										
 					var lat = localStorage.getItem("lat");
 					var lng = localStorage.getItem("lng");
@@ -1272,7 +1272,7 @@ function resetta1(focus) {
 
         function onError2(error) {
             //var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
-			navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+			navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
         }
         
 		
@@ -2004,6 +2004,34 @@ function chiudi22(id) {
 		$("#blob").hide();
 
 }
+
+function onSuccess(position) {
+            var ciao = position.coords.latitude;
+            var ciao1 = position.coords.longitude;
+            
+            localStorage.setItem("lat", ciao)
+            localStorage.setItem("lng", ciao1)
+            
+            localStorage.setItem("geostory", "SI")
+        }
+        
+        
+        function onError(error) {
+			navigator.geolocation.getCurrentPosition(onSuccess, onError1, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+        }
+        
+        function onError1(error) {
+            localStorage.setItem("geostory", "NO")
+            
+            navigator.notification.alert(
+               'Non riesco a rilevare la tua posizione',
+                alertDismissed,
+                'Attenzione',
+                'OK'
+               );
+        
+            $(".spinner").hide();
+        }
 
 function getParameterByName(name) {
 	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
