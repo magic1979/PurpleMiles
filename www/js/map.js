@@ -8,7 +8,7 @@ function onDeviceReady() {
 	
 	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
 		
-		window.location.href = "login.html";
+		window.location.href = "Login.html";
 		
 	}
 	
