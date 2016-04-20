@@ -173,6 +173,9 @@ function onDeviceReady() {
 								  //var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
 								  //var lng = "12.373529"; //  "12.364947"  "12.364947" localStorage.getItem("lng")
 		
+								  //localStorage.setItem("lat", lat)
+								  //localStorage.setItem("lng", lng)
+		
 		
 								  codeLatLng(lat,lng);
 
@@ -704,8 +707,7 @@ function resetta2() {
 }
 
 function resetta1(focus) {
-
-
+	
 	//PRESS TO MARKER
 	$(function(){
    $(document).bind( "taphold", tapholdHandler );
@@ -719,7 +721,7 @@ function resetta1(focus) {
 	  });	//----------------
 	
 
-	navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -782,7 +784,7 @@ function resetta1(focus) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&lat=41.770447&lng=12.373529&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"},
 		   timeout: 7000,
@@ -947,13 +949,13 @@ function resetta1(focus) {
 		$("#btninizia").hide();
 		
 		refreshIntervalId = setInterval(function() {
-					navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+					var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 										
-					var lat = localStorage.getItem("lat");
-					var lng = localStorage.getItem("lng");
+					//var lat = localStorage.getItem("lat");
+					//var lng = localStorage.getItem("lng");
 										
-					//var lat = parseFloat("41.777525");
-					//var lng = parseFloat("12.364673" );
+					var lat = parseFloat("41.777525");
+					var lng = parseFloat("12.364673" );
 					
 					var beaches1 = [];
 					var posizione = 1;
@@ -963,7 +965,7 @@ function resetta1(focus) {
 					
 					$.ajax({
 						   type:"GET",
-						   url:"http://purplemiles.com/www/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&lat=41.777525&lng=12.364673&id_autista="+ localStorage.getItem("id_autista") +"",
+						   url:"http://purplemiles.com/www/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
 						   contentType: "application/json",
 						   //data: {ID: "Lazio"}, LIMIT 10
 						   timeout: 7000,
@@ -1209,7 +1211,7 @@ function resetta1(focus) {
 				localStorage.setItem("lng", lng)*/
 					
 			//navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-		}, 30000);
+		}, 10000);
 	}
 	
 	
@@ -1272,7 +1274,7 @@ function resetta1(focus) {
 
         function onError2(error) {
             //var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
-			navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+			navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
         }
         
 		
@@ -1302,11 +1304,11 @@ function magia(utente,pass) {
 
 	//refreshIntervalId33 = setInterval(function() {
 	
-			//var lat = parseFloat("41.777525");
-			//var lng = parseFloat("12.364673" );
-			
-			var lat = localStorage.getItem("lat");
-			var lng = localStorage.getItem("lng");
+			//var lat = localStorage.getItem("lat");
+			//var lng = localStorage.getItem("lng");
+	
+			var lat = parseFloat("41.777525");
+			var lng = parseFloat("12.364673" );
 	
 				var beaches = [];
 				var posizione = 1;
@@ -1316,7 +1318,7 @@ function magia(utente,pass) {
 				
 				$.ajax({
 					   type:"GET",
-					   url:"http://purplemiles.com/www/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat=41.777525&lng=12.364673&id_richiesta="+ pass +"",
+					   url:"http://purplemiles.com/www/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"",
 					   contentType: "application/json",
 					   //data: {ID: "Lazio"}, LIMIT 10
 					   timeout: 7000,
@@ -1634,7 +1636,7 @@ function richiesta1(id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat=41.777525&lng=12.364673&id_richiesta="+ id +"",
+		   url:"http://purplemiles.com/www/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -1738,7 +1740,7 @@ function richiesta2(id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat=41.777525&lng=12.364673&id_richiesta="+ id +"",
+		   url:"http://purplemiles.com/www/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -1842,7 +1844,7 @@ function richiesta3(id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat=41.777525&lng=12.364673&id_richiesta="+ id +"",
+		   url:"http://purplemiles.com/www/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -2004,34 +2006,6 @@ function chiudi22(id) {
 		$("#blob").hide();
 
 }
-
-function onSuccess(position) {
-            var ciao = position.coords.latitude;
-            var ciao1 = position.coords.longitude;
-            
-            localStorage.setItem("lat", ciao)
-            localStorage.setItem("lng", ciao1)
-            
-            localStorage.setItem("geostory", "SI")
-        }
-        
-        
-        function onError(error) {
-			navigator.geolocation.getCurrentPosition(onSuccess, onError1, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-        }
-        
-        function onError1(error) {
-            localStorage.setItem("geostory", "NO")
-            
-            navigator.notification.alert(
-               'Non riesco a rilevare la tua posizione',
-                alertDismissed,
-                'Attenzione',
-                'OK'
-               );
-        
-            $(".spinner").hide();
-        }
 
 function getParameterByName(name) {
 	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
