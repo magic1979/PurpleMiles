@@ -1302,11 +1302,11 @@ function magia(utente,pass) {
 
 	//refreshIntervalId33 = setInterval(function() {
 	
-			//var lat = localStorage.getItem("lat");
-			//var lng = localStorage.getItem("lng");
+			var lat = localStorage.getItem("lat");
+			var lng = localStorage.getItem("lng");
 	
-			var lat = parseFloat("41.777525");
-			var lng = parseFloat("12.364673" );
+			//var lat = parseFloat("41.777525");
+			//var lng = parseFloat("12.364673" );
 	
 				var beaches = [];
 				var posizione = 1;
