@@ -3,6 +3,15 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
+	var email = localStorage.getItem("email");
+	
+	
+	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
+		
+		window.location.href = "login.html";
+		
+	}
+	
 	localStorage.setItem("palla1", "0")
 	localStorage.setItem("palla2", "0")
 	
@@ -695,15 +704,8 @@ function resetta2() {
 }
 
 function resetta1(focus) {
-	var email = localStorage.getItem("email");
-	
-	
-	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
-		
-		window.location.href = "login.html";
-		
-	}
-	
+
+
 	//PRESS TO MARKER
 	$(function(){
    $(document).bind( "taphold", tapholdHandler );
