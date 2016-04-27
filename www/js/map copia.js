@@ -39,7 +39,6 @@ function onDeviceReady() {
 	isTabHolded=false;
 	
 	IDPage = getParameterByName('id');
-	ODPage = getParameterByName('od');
 	
 	//var markers = [];
 	var map;
@@ -164,12 +163,12 @@ function onDeviceReady() {
     }
 		
 		
-								  var lat = localStorage.getItem("lat");
-								  var lng = localStorage.getItem("lng");
+								  //var lat = localStorage.getItem("lat");
+								  //var lng = localStorage.getItem("lng");
 		
 		
-								  //var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
-								  //var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
+								  var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
+								  var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
 		
 								  localStorage.setItem("lat", lat)
 								  localStorage.setItem("lng", lng)
@@ -429,12 +428,6 @@ function onDeviceReady() {
 	
 	if(IDPage==1){
 		window.location.href = "#win2";
-		if(ODPage==1){
-			//localStorage.setItem("ODPage", "1")
-		}
-		else{
-			//localStorage.setItem("ODPage", "0")
-		}
 		resetta1(1);
 	}
 }
@@ -673,15 +666,15 @@ function resetta1(focus) {
 
 	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
-	var lat = localStorage.getItem("lat");
-	var lng = localStorage.getItem("lng");
+	//var lat = localStorage.getItem("lat");
+	//var lng = localStorage.getItem("lng");
 	
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
 	
-	//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
-	//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
+	var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
+	var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
 	
 	//localStorage.setItem("lat", lat)
     //localStorage.setItem("lng", lng)
@@ -949,14 +942,14 @@ function resetta1(focus) {
 		$("#btninizia").hide();
 		
 		refreshIntervalId = setInterval(function() {
-					var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+					//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 										
-					var lat = localStorage.getItem("lat");
-					var lng = localStorage.getItem("lng");
+					//var lat = localStorage.getItem("lat");
+					//var lng = localStorage.getItem("lng");
 										
 										
-					//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
-					//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
+					var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
+					var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
 					
 					var beaches1 = [];
 					var posizione = 1;
@@ -1254,10 +1247,8 @@ function resetta1(focus) {
 							   
 								//se leggo=0
 								if((k==1) && (localStorage.getItem("palla1")!=1)){
-								  
-							    //if(localStorage.getItem("ODPage")=="0"){
 								  palla1()
-							    //}
+							   
 							   
 							      /*$(document).on("tap", "#pass1", function(e){
 											//window.location.href = "#index3";
@@ -1361,12 +1352,11 @@ function resetta1(focus) {
 		function onSuccess2(position) {
             var ciao = position.coords.latitude;
             var ciao1 = position.coords.longitude;
+            
+			var latlng = new google.maps.LatLng(ciao, ciao1);
 			
-			//alert(ciao)
-			//var latlng = new google.maps.LatLng(ciao, ciao1);
-			
-			//marker.setPosition(latlng);
-			//map.setCenter(latlng);
+			marker.setPosition(latlng);
+			map.setCenter(latlng);
 			
 			localStorage.setItem("lat", ciao)
             localStorage.setItem("lng", ciao1)
@@ -1564,24 +1554,20 @@ function magia(utente,pass) {
 function magia2C(utente,pass) {
 clearInterval(refreshIntervalId);
 	
-
-refreshIntervalId33 = setInterval(function() {
-								  
-	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-										
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
-								  
+	
 	var beaches = [];
 	var posizione = 1;
 	var distanza = "";
-								  
+	
 	beaches.push(['Tua Posizione',lat,lng,1,0,0,0])
+
+refreshIntervalId33 = setInterval(function() {
 	
-	var centromap = new google.maps.LatLng(lat, lng, posizione);
 	
-	//var lat = localStorage.getItem("lat");
-	//var lng = localStorage.getItem("lng");
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
 	
 	//var lat = parseFloat("41.8337871");
 	//var lng = parseFloat("12.4757278" );
@@ -1628,7 +1614,6 @@ refreshIntervalId33 = setInterval(function() {
 											 for (var i = 0; i < beaches.length; i++) {
 											 var beach = beaches[i];
 											 
-											 var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
 											 //cambiare icona
 											 
 											 if(utente==1){
@@ -1700,12 +1685,12 @@ refreshIntervalId33 = setInterval(function() {
 											 //clearInterval(refreshIntervalId);
 											 
 											 //richiesta(pass);
-											 map.setCenter(centromap);
+											 
 											 
 											 }, 1000);
 	
 	
-}, 10000);
+}, 5000);
 	
 	$(document).on("tap", "#esci", function(e){
 				   //$("#btninizia").show();
@@ -1723,41 +1708,10 @@ refreshIntervalId33 = setInterval(function() {
 				   setTimeout(function() {
 							  //localStorage.setItem("geostory", "NO")
 							  clearInterval(refreshIntervalId33);
-							  window.location.href = "map.html?id=1&od=1";
+							  window.location.href = "map.html?id=1";
 							  //start();
 							  }, 200);
 				   });
-	
-	
-	//---------------------------
-	
-	
-	function onSuccess2(position) {
-		var ciao = position.coords.latitude;
-		var ciao1 = position.coords.longitude;
-		
-		//alert(ciao)
-		//var latlng = new google.maps.LatLng(ciao, ciao1);
-		
-		//marker.setPosition(latlng);
-		//map.setCenter(latlng);
-		
-		localStorage.setItem("lat", ciao)
-		localStorage.setItem("lng", ciao1)
-	}
-	
-	
-	function onError2(error) {
-		//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
-		navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
-	}
-	
-	function onError3(error) {
-		localStorage.setItem("geostory", "NO")
-		
-		window.location.href = "index.html";
-	}
-
 
 }
 
@@ -1790,7 +1744,7 @@ function cancella(id){
 			    setTimeout(function() {
 					   //localStorage.setItem("geostory", "NO")
 					   clearInterval(refreshIntervalId33);
-					   window.location.href = "map.html?id=1&od=0";
+					   window.location.href = "map.html?id=1";
 					   //start();
 				}, 200);
 			

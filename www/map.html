@@ -336,6 +336,62 @@
 						  -moz-border-radius: 5px; /* firefox */
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
+					  
+					  .custom-pass1 {
+						  background-color: #FFA500;
+						  width: 35px;
+						  font-size: 18px;
+						  
+						  color: #000;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  .custom-pass2 {
+						  background-color: #00A86B;
+						  width: 35px;
+						  font-size: 18px;
+						  
+						  color: #000;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-pass3 {
+						  background-color: #DC143C;
+						  width: 35px;
+						  font-size: 18px;
+						  
+						  color: #000;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
 						
 						.custom-btn3 {
 							background-color: #cc33cc;
@@ -394,7 +450,6 @@
                      </style>
                       
                       <script src="https://maps.googleapis.com/maps/api/js?v=3.6exp&sensor=true"></script>
-							
     </head>
     <body>
         <script type="text/javascript" src="phonegap.js"></script>
@@ -450,8 +505,7 @@
 					</td>
 				</tr>	
 			</table>
-             
-
+			
             <!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
                 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
             </div>-->
@@ -503,7 +557,6 @@
 						</table>
 					</td>
 				</tr>
-				
 			</table>
 			
 			<table id="blob2" width="100%" border="0" align="center" valign="center" class="div57" style="display:none">
@@ -535,14 +588,21 @@
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi 2</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi 3</font></a>
+									<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
+									<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi 2</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi 3</font></a>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">GPS</font></a>
+									<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">GPS</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">GPS</font></a>
 								</td>
 							</tr>
 							
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a><a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella 2</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella 3</font></a>
-
+									<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
+									<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella 2</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella 3</font></a>
 								</td>
 							</tr>
 						</table>
@@ -551,8 +611,6 @@
 				
 			</table>
 
-			
-			
 			<table id="btninizia" width="100%" border="0" align="center" valign="center" class="div55" >
 				<tr>
 					<td width="100%" align="center">
@@ -605,7 +663,9 @@
 			
 			<div class="spinner" id="spinner"></div>
 			
-			<table width="90%" height="440px" border="0" valign="center" align="center" class="tabella">
+			<form name="formia" action="entra.asp" method="post">
+			
+			<table width="90%" height="400px" border="0" valign="center" align="center" class="tabella">
 				<tr>
 					<td width="100%" align="center" colspan="2">
 						<br><b>RISPONDI</b><br>
@@ -627,7 +687,7 @@
 						<a id="#" href="#" data-theme="b" class="custom-pass">Importo</a>
 					</td>
 					<td width="50%" align="center">
-						<input text="text">
+						<input type="text" data-role="none" name="soldini" id="soldini" value="" placeholder="Nome" class="scrivo">
 					</td>
 				</tr>
 
@@ -642,8 +702,9 @@
 					</td>
 				</tr>
 			</table>
-			<br><br>
-			<table width="100%" border="0" align="center" valign="center" class="div55" >
+			</form>
+			<br>
+			<table width="100%" border="0" align="center" valign="center" >
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px"><tr><td width="100px" align="center">
@@ -653,7 +714,6 @@
 				</tr>
 				
 			</table>
-
 
 			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
 				 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>

@@ -125,7 +125,7 @@ function LoginVera(email,pin){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www/check_login.php?email="+ email +"&password="+ pin +"",
+		   url:"http://purplemiles.com/www2/check_login.php?email="+ email +"&password="+ pin +"",
 		   contentType: "application/json",
 		   //data: {email:email,pin:pin},
 		   timeout: 7000,
@@ -233,7 +233,7 @@ function iscriviti(){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www/check_reg_autista.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"",
+		   url:"http://purplemiles.com/www2/check_reg_autista.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"",
 		   contentType: "application/json",
 		   //data: {email:emailreg,nickname:nomereg,pin:pinreg},
 		   timeout: 7000,
@@ -334,7 +334,7 @@ function onPrompt(results) {
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/mycollection/www/Check_RecPassword.asp",
+			   url:"http://www.gtechplay.com/mycollection/www2/Check_RecPassword.asp",
 			   contentType: "application/json",
 			   data: {email:results.input1},
 			   timeout: 7000,
