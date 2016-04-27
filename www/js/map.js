@@ -2006,7 +2006,7 @@ function richiesta1(id) {
 				  $(document).on("tap", "#gps1", function(e){
 						//clearInterval(refreshIntervalId);
 						
-						alert(item.lat+","+item.lng);
+						//alert(item.lat+","+item.lng);
 						
 						var addressLongLat = item.lat+","+item.lng;
 	
@@ -2153,7 +2153,12 @@ function richiesta2(id) {
 				  
 				  $(document).on("tap", "#gps22", function(e){
 								 //clearInterval(refreshIntervalId);
-								 alert(item.lat+","+item.lng);
+								 var addressLongLat = item.lat+","+item.lng;
+	
+	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
+	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
+	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	
 								 $("#blob2").hide();
 								 
 								 e.stopImmediatePropagation();
@@ -2276,7 +2281,12 @@ function richiesta3(id) {
 				  
 				  $(document).on("tap", "#gps3", function(e){
 								 //clearInterval(refreshIntervalId);
-								 alert(item.lat+","+item.lng);
+								 var addressLongLat = item.lat+","+item.lng;
+	
+	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
+	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
+	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	
 								 $("#blob2").hide();
 								 
 								 e.stopImmediatePropagation();
