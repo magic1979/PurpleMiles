@@ -429,12 +429,6 @@ function onDeviceReady() {
 	
 	if(IDPage==1){
 		window.location.href = "#win2";
-		if(ODPage==1){
-			//localStorage.setItem("ODPage", "1")
-		}
-		else{
-			//localStorage.setItem("ODPage", "0")
-		}
 		resetta1(1);
 	}
 }
@@ -1721,11 +1715,11 @@ refreshIntervalId33 = setInterval(function() {
 				   //clearInterval(refreshIntervalId33);
 				   
 				   setTimeout(function() {
-							  //localStorage.setItem("geostory", "NO")
-							  clearInterval(refreshIntervalId33);
-							  window.location.href = "map.html?id=1&od=1";
-							  //start();
-							  }, 200);
+					//localStorage.setItem("geostory", "NO")
+					clearInterval(refreshIntervalId33);
+					//window.location.href = "map.html?id=1&od=1";
+					onResume();
+					}, 200);
 				   });
 	
 	
@@ -1790,8 +1784,9 @@ function cancella(id){
 			    setTimeout(function() {
 					   //localStorage.setItem("geostory", "NO")
 					   clearInterval(refreshIntervalId33);
-					   window.location.href = "map.html?id=1&od=0";
+					   //window.location.href = "map.html?id=1&od=0";
 					   //start();
+					   onResume();
 				}, 200);
 			
 			    e.stopImmediatePropagation();
@@ -2010,7 +2005,15 @@ function richiesta1(id) {
 				  
 				  $(document).on("tap", "#gps1", function(e){
 						//clearInterval(refreshIntervalId);
+						
 						alert(item.lat+","+item.lng);
+						
+						var addressLongLat = item.lat+","+item.lng;
+	
+	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
+	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
+	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+						
 						$("#blob2").hide();
 								 
 						e.stopImmediatePropagation();
