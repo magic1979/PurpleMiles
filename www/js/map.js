@@ -1571,7 +1571,7 @@ refreshIntervalId33 = setInterval(function() {
 												
 												beaches.push(["<h2>"+item.nick+"</h2><br>"+item.partenza,item.lat,item.lng,posizione,item.rating,item.distanza,item.id_richiesta])
 												
-												alert(utente + item.stato)
+												//alert(utente + item.stato)
 												
 											if(utente==1){
 												if(item.stato==1){
@@ -2511,7 +2511,6 @@ function inviopasseggero(come){
 				  
 				  if(item.Token==1){
 					
-					location.reload();
 					onResume();
 				  
 				  }
