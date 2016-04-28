@@ -358,19 +358,7 @@ function onDeviceReady() {
 															  });*/
 
                                                               }
-															  
-															  //DIV IN ALTO 41.873729, 12.478138  41.783692, 12.364979
-															  var centerControlDiv = document.createElement('div');
-															  centerControlDiv.setAttribute('id', 'sopra');
-															  var centerControl = new CenterControl(centerControlDiv, map);
-															  
-															  centerControlDiv.index = 1;
-															  map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-															  
-                                                              $(".spinner").hide();
-                                                              
-                                                              });
-
+															                                                    
 }
     
     else{
@@ -590,7 +578,7 @@ function resetta1(focus) {
     connectionStatus = navigator.onLine ? 'online' : 'offline';
     
     if(connectionStatus=='online'){
-
+	
 	//window.plugins.insomnia.keepAwake();
 	
 	//PRESS TO MARKER
@@ -1325,22 +1313,26 @@ function resetta1(focus) {
 			window.location.href = "index.html";
         }
 	
+		
 }
-else
-{
-	
-	//CONNESSIONE ERRORE
-	navigator.notification.alert(
+    
+    else{
+		
+		navigator.notification.alert(
 			'Possibile errore di rete, riprova tra qualche minuto.',  // message
 			alertDismissed,         // callback
 			'Attenzione',           // title
 			'Done'                  // buttonName
 		);
 									
-	window.location.href = "index.html";
+		window.location.href = "index.html";
+		
+        $('#noconn').show();
 
-}
+        $(".spinner").hide();
 
+    }
+		
 }
 
 function magia(utente,pass) {
@@ -2492,7 +2484,7 @@ function inviopasseggero(come){
 				  
 				  if(item.Token==1){
 					
-					window.location.reload(true);
+					//window.location.reload(true);
 					onResume();
 				  
 				  }

@@ -38,6 +38,8 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 		 document.addEventListener("resume", onResume, false);
+		 
+		 window.plugins.insomnia.keepAwake();
 		
 		//localStorage.setItem("email", "");
 		//localStorage.setItem("email2", "");
