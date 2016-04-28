@@ -591,8 +591,7 @@ function resetta1(focus) {
     
     if(connectionStatus=='online'){
 
-	
-	window.plugins.insomnia.keepAwake();
+	//window.plugins.insomnia.keepAwake();
 	
 	//PRESS TO MARKER
 	$(function(){
