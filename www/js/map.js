@@ -3,7 +3,6 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
-
 	var email = localStorage.getItem("email");
 	
 	
@@ -36,6 +35,7 @@ function onDeviceReady() {
 							  last_click_time = click_time;
 							  
 							  }, true);
+	
 	
 	isTabHolded=false;
 	
@@ -86,7 +86,8 @@ function onDeviceReady() {
 		chiudix();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
-		
+	
+	
 	$(document).on("tap", "#gratis", function(e){
 		inviopasseggero(1);
 
@@ -110,6 +111,7 @@ function onDeviceReady() {
 		
         var geostory = localStorage.getItem("geostory");
 		
+        
     if (geostory == 'NO'){
 		navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
         
@@ -163,8 +165,10 @@ function onDeviceReady() {
 								  localStorage.setItem("lng", lng)
 		
 
+								  codeLatLng(lat,lng);
 
-								 /* var destIcon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
+		
+								  var destIcon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
 								  var figpIcon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
 								  var casinoIcon = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(28,40));
 
@@ -172,7 +176,7 @@ function onDeviceReady() {
 									  var posizione = 1;
 									  var distanza = "";
                                               
-                                      beaches.push(['Tua Posizione',lat,lng,1])*/
+                                      beaches.push(['Tua Posizione',lat,lng,1])
                                               
 								  /*$.ajax({
 										 type:"GET",
@@ -213,7 +217,7 @@ function onDeviceReady() {
 										 },
 										 dataType:"jsonp"});*/
         
-                                              /*var shape = {
+                                              var shape = {
                                               coord: [1, 1, 1, 20, 18, 20, 18 , 1],
                                               type: 'poly'
                                               };
@@ -226,11 +230,11 @@ function onDeviceReady() {
                                               center : latlng,
                                               mapTypeId : google.maps.MapTypeId.ROADMAP
                                               
-                                              };*/
+                                              };
         
                                               $("#btn").bind ("click", function (event)
                                                               {
-                                                              /*var $content = $("#win2 div:jqmData(role=content)");
+                                                              var $content = $("#win2 div:jqmData(role=content)");
                                                               $content.height (getRealContentHeight());
                                                               
                                                               $(".spinner").show();
@@ -270,7 +274,7 @@ function onDeviceReady() {
                                                               
                                                               var beach = beaches[i];
                                                               
-                                                              var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);*/
+                                                              var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
                                                               
                                                               /*if (i==0) {
                                                               	icon = img;  
@@ -325,6 +329,7 @@ function onDeviceReady() {
 															  });
 															  infowindow.open(map, marker);*/
 																  
+
                                                                /*google.maps.event.addListener(marker, 'click', function() {
 																							
                                                                  infowindow.setContent(this.content);
@@ -358,24 +363,34 @@ function onDeviceReady() {
 															  });*/
 
                                                               }
-															                                                    
+															  
+															  //DIV IN ALTO 41.873729, 12.478138  41.783692, 12.364979
+															  var centerControlDiv = document.createElement('div');
+															  centerControlDiv.setAttribute('id', 'sopra');
+															  var centerControl = new CenterControl(centerControlDiv, map);
+															  
+															  centerControlDiv.index = 1;
+															  map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+															  
+                                                              $(".spinner").hide();
+                                                              
+                                                              });
+		
+    
 }
     
     else{
-		
-		navigator.notification.alert(
-			'Possibile errore di rete, riprova tra qualche minuto.',  // message
-			alertDismissed,         // callback
-			'Attenzione',           // title
-			'Done'                  // buttonName
-		);
-									
-		window.location.href = "index.html";
-		
         $('#noconn').show();
-
-        $(".spinner").hide();
-
+		
+		 navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+        
+		window.location.href = "index.html";
+        
     }
 	  
 	
@@ -515,6 +530,35 @@ function codeLatLng(lati,lngi) {
 	 });
 }
 
+function funzioneradar() {
+$(function() {
+  
+  var $rad = $('#rad'),
+  $obj = $('.obj'),
+  deg = 0,
+  rad = 75; //   = 321/2
+  
+  $obj.each(function(){
+            var data = $(this).data(),
+            pos = {X:data.x, Y:data.y},
+            getAtan = Math.atan2(pos.X-rad, pos.Y-rad),
+            getDeg = ~~(-getAtan/(Math.PI/180) + 180);
+            $(this).css({left:pos.X, top:pos.Y}).attr('data-atDeg', getDeg);
+            });
+  
+  (function rotate() {
+   $rad.css({transform: 'rotate('+ deg +'deg)'});
+   $('[data-atDeg='+deg+']').stop().fadeTo(0,1).fadeTo(1700,0.2);
+   
+   // LOOP
+   setTimeout(function() {
+              deg = ++deg%360;
+              rotate();
+              }, 25);
+   })();
+  });
+}
+
 function getRealContentHeight() {
 	var header = $.mobile.activePage.find("div[data-role='header']:visible");
 	var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
@@ -548,7 +592,7 @@ function onResume() {
 	setTimeout(function() {
 	   //localStorage.setItem("geostory", "NO")
 	   //clearInterval(refreshIntervalId);
-	   //window.location.reload(true);
+			   
 	   resetta1(1);
 	}, 200);
 }
@@ -573,13 +617,6 @@ function deg2rad(deg) {
 
 
 function resetta1(focus) {
-	
-	var connectionStatus = false;
-    connectionStatus = navigator.onLine ? 'online' : 'offline';
-    
-    if(connectionStatus=='online'){
-	
-	//window.plugins.insomnia.keepAwake();
 	
 	//PRESS TO MARKER
 	$(function(){
@@ -721,6 +758,8 @@ function resetta1(focus) {
 				  }
 				  }
 
+				  
+				  
 				posizione = (posizione+1);
 				  
 			});
@@ -876,10 +915,11 @@ function resetta1(focus) {
 		$("#btninizia").hide();
 		
 		refreshIntervalId = setInterval(function() {
-			var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+					//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 										
 					var lat = localStorage.getItem("lat");
 					var lng = localStorage.getItem("lng");
+										
 										
 					//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
 					//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
@@ -888,6 +928,7 @@ function resetta1(focus) {
 					var posizione = 1;
 					var distanza = "";
 
+					
 					beaches1.push(['Tua Posizione',lat,lng,1,0,0,0])
 					
 					var centromap = new google.maps.LatLng(lat, lng, posizione);
@@ -909,6 +950,7 @@ function resetta1(focus) {
 								    $("#pass2").hide();
 								    $("#pass3").hide();
 								  }
+								  
 								  
 								  if(item.Token==4){
 								   $("#pass1").hide();
@@ -984,7 +1026,8 @@ function resetta1(focus) {
 											  
 									});
 								  
-
+								  
+								  
 								  $("#pass1").show();
 								  $("#pass2").hide();
 								  $("#pass3").hide();
@@ -1150,7 +1193,8 @@ function resetta1(focus) {
 								  
 						   });
 						   
-  
+						   
+						   
 						   },
 						   error: function(){
 						   
@@ -1211,6 +1255,7 @@ function resetta1(focus) {
 							   
 							   }
 
+							   
 								//se leggo=0
 								//if(k==2 && localStorage.getItem("palla2")!=1){
 									//palla2()
@@ -1313,26 +1358,6 @@ function resetta1(focus) {
 			window.location.href = "index.html";
         }
 	
-		
-}
-    
-    else{
-		
-		navigator.notification.alert(
-			'Possibile errore di rete, riprova tra qualche minuto.',  // message
-			alertDismissed,         // callback
-			'Attenzione',           // title
-			'Done'                  // buttonName
-		);
-									
-		window.location.href = "index.html";
-		
-        $('#noconn').show();
-
-        $(".spinner").hide();
-
-    }
-		
 }
 
 function magia(utente,pass) {
@@ -1514,7 +1539,7 @@ clearInterval(refreshIntervalId);
 
 refreshIntervalId33 = setInterval(function() {
 								  
-	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 										
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -1617,7 +1642,9 @@ refreshIntervalId33 = setInterval(function() {
 												}
 											}
 												
-		
+
+												
+												
 												posizione = (posizione+1);
 												
 												}
@@ -2484,7 +2511,7 @@ function inviopasseggero(come){
 				  
 				  if(item.Token==1){
 					
-					//window.location.reload(true);
+					location.reload();
 					onResume();
 				  
 				  }
