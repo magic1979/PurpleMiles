@@ -111,5 +111,7 @@
 		<plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4" source="pgb" />
 		<plugin name="de.appplant.cordova.plugin.email-composer" spec="0.8.2" source="pgb" />
 		<plugin name="com.ionic.keyboard" spec="1.0.3" source="pgb" />
+		<plugin name="nl.x-services.plugins.insomnia" spec="4.0.1" source="pgb" />
+		<plugin name="com.sharinglabs.cordova.plugin.cache" spec="1.0.0" source="pgb" />
 		
 	</widget>
