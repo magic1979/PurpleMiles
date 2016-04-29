@@ -12,9 +12,28 @@ function onDeviceReady() {
 		
 	}
 	
+	IDPage = getParameterByName('id');
+	ODPage = getParameterByName('od');
+	
+	
+	/*if(localStorage.getItem("exitto")==1){
+		
+		localStorage.setItem("exit", "1")
+		
+		localStorage.setItem("exitto", "0")
+		
+		resetta1(1);
+		
+	}*/
+	
+	
 	localStorage.setItem("palla1", "0")
 	localStorage.setItem("palla2", "0")
-	localStorage.setItem("exit", "0")
+	
+	if(IDPage!=1){
+	  localStorage.setItem("exit", "0")
+	}
+
 	
 	//alert(localStorage.getItem("id_autista"))
 	
@@ -39,50 +58,12 @@ function onDeviceReady() {
 	
 	isTabHolded=false;
 	
-	IDPage = getParameterByName('id');
-	ODPage = getParameterByName('od');
 	
 	//var markers = [];
 	var map;
 	var refreshIntervalId;
 	var refreshIntervalId33;
 	var prefi2000;
-	
-		$(document).on("tap", "#risp1", function(e){
-  
-		   //window.location.href = "#home3";
-		   
-		   e.stopImmediatePropagation();
-		   
-		   e.preventDefault();
-		   
-		   $.mobile.changePage ($("#home3"));
-		   
-		   $("#blob2").hide();
-		   
-		   return false;
-	});
-	
-		$(document).on("tap", "#risp2", function(e){
-			 e.stopImmediatePropagation();
-   
-			e.preventDefault();
-   
-		    $.mobile.changePage ($("#home3"));
-		   
-		    $("#blob2").hide();
-		 });
-	
-		 
-		$(document).on("tap", "#risp3", function(e){
-			 e.stopImmediatePropagation();
-   
-			e.preventDefault();
-   
-		    $.mobile.changePage ($("#home3"));
-		   
-		    $("#blob2").hide();
-		 });
 	
 	
 	$(document).on("tap", "#inizia", function(e){
@@ -113,11 +94,9 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("tap", "#back3", function(e){
-		e.stopImmediatePropagation();
-												 
-		e.preventDefault();
-		
 		inviopasseggero(3);
+		//window.location.href = "#win2";
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
 	$(document).on("tap", "#xchiudi", function(e){
@@ -127,28 +106,25 @@ function onDeviceReady() {
 	
 	
 	$(document).on("tap", "#gratis", function(e){
-									
-		e.stopImmediatePropagation();
-												 
-		e.preventDefault();
-		
 		inviopasseggero(1);
-												 
-	});
-	
-	$(document).on("tap", "#offerta", function(e){
-		
-		e.stopImmediatePropagation();
-												 
-		e.preventDefault();
-		
-		inviopasseggero(2);
 
 	});
 	
-	//$(document).on("touchend", "#XXX", function(e){
-				  // window.location.href = "index.html";
-	//});
+	$(document).on("tap", "#offerta", function(e){
+		inviopasseggero(2);
+	});
+	
+
+	
+	
+	if(IDPage==1){
+		window.location.href = "#win2";
+		resetta1(1);
+	}
+	
+	
+	
+	
     
     $(".spinner").show();
     var connectionStatus = false;
@@ -159,6 +135,7 @@ function onDeviceReady() {
 		
         var geostory = localStorage.getItem("geostory");
 		
+        
     if (geostory == 'NO'){
 		navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
         
@@ -427,23 +404,23 @@ function onDeviceReady() {
 }
     
     else{
-        $('#noconn').show();
-		
-		 navigator.notification.alert(
+		navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Done'                  // buttonName
 										);
-        
+		
+		
 		window.location.href = "index.html";
-        
+		
+		
     }
-	  
 	
-	if(IDPage==1){
+	
+	if(IDPage==2){
 		window.location.href = "#win2";
-		resetta1(1);
+		resetta2();
 	}
 }
 
@@ -512,6 +489,7 @@ function sidiv() {
 	map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 	
 }
+
 
 function alertDismissed() {
     $(".spinner").hide();
@@ -678,7 +656,7 @@ function resetta1(focus) {
 	  });	//----------------
 	
 
-	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -856,6 +834,7 @@ function resetta1(focus) {
 												  
 												  });
 
+
 					}
 					
 			if(focus==1){
@@ -939,6 +918,7 @@ function resetta1(focus) {
 
 			  }
 					
+					
 
 					}
 					
@@ -957,6 +937,7 @@ function resetta1(focus) {
 	   
 	if(focus==1){
 		$("#btninizia").hide();
+		$("#loading").show();
 		
 		refreshIntervalId = setInterval(function() {
 					//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
@@ -1022,7 +1003,9 @@ function resetta1(focus) {
 								  }
 								  else
 								  {
+									$("#loading").hide();
 								    $("#esci").show();
+								  
 								  }
 								  
 								  if(item.Token==1){
@@ -1035,6 +1018,19 @@ function resetta1(focus) {
 								  
 
 								  if(posizione==1){
+								  
+								  $(document).on("tap", "#pass1", function(e){
+												 //window.location.href = "#index3";
+												 
+												 
+													//localStorage.setItem("geostory", "NO")
+													clearInterval(refreshIntervalId);
+												 
+													richiesta1(item.id_richiesta);
+												 
+												 });
+								  
+								  
 								  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
 								  
 								  marker1.setMap(null);
@@ -1097,20 +1093,21 @@ function resetta1(focus) {
 								  }
 
 								  
-								  $(document).on("tap", "#pass1", function(e){
-												 //window.location.href = "#index3";
-
-											
-													//localStorage.setItem("geostory", "NO")
-													clearInterval(refreshIntervalId);
-															
-													richiesta1(item.id_richiesta);
-
-												 });
 
 								  }
 								  
 								  if(posizione==2){
+								  $(document).on("tap", "#pass2", function(e){
+												 //window.location.href = "#index3";
+												 
+												 //localStorage.setItem("geostory", "NO")
+												 clearInterval(refreshIntervalId);
+												 
+												 richiesta2(item.id_richiesta);
+												 
+												 
+												 });
+								  
 								  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
 								  
 								  marker3.setMap(null);
@@ -1158,21 +1155,19 @@ function resetta1(focus) {
 								  
 
 								  
-								  
-								    $(document).on("tap", "#pass2", function(e){
-												 //window.location.href = "#index3";
-
-												//localStorage.setItem("geostory", "NO")
-											    clearInterval(refreshIntervalId);
-															  
-												richiesta2(item.id_richiesta);
-
-
-												 });
-								  
 								  }
 								  
 								  if(posizione==3){
+								  $(document).on("tap", "#pass3", function(e){
+												 //window.location.href = "#index3";
+												 
+												 //localStorage.setItem("geostory", "NO")
+												 clearInterval(refreshIntervalId);
+												 
+												 richiesta3(item.id_richiesta);
+												 
+												 });
+								  
 								  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
 								  
 								  marker4.setMap(null);
@@ -1217,17 +1212,8 @@ function resetta1(focus) {
 								  $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
 								  }
 
-
+ 
 								  
-								  $(document).on("tap", "#pass3", function(e){
-										//window.location.href = "#index3";
-
-															//localStorage.setItem("geostory", "NO")
-															clearInterval(refreshIntervalId);
-															
-															richiesta3(item.id_richiesta);
-
-									});
 								  
 								  }
 								  
@@ -1528,7 +1514,6 @@ function magia(utente,pass) {
 															 //label: ''+ beach[1] +','+ beach[2] +'',
 															 zIndex: beach[3]
 															 });*/
-						   
 
 							 }
 						   
@@ -1538,6 +1523,11 @@ function magia(utente,pass) {
 						   
 						      marker3.setVisible(true);
 						      marker3.setIcon(icon2);
+						   
+						     var isVisible4 = marker4.getVisible();
+						      if(isVisible4){
+							  marker4.setVisible(false);
+						     }
 						   
 							 
 						    }
@@ -1583,7 +1573,7 @@ clearInterval(refreshIntervalId);
 
 refreshIntervalId33 = setInterval(function() {
 								  
-	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 										
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -1855,9 +1845,11 @@ refreshIntervalId33 = setInterval(function() {
 				   //$("#btninizia").show();
 				   //$("#esci").hide();
 				   
-				   localStorage.setItem("palla1", "1")
-				   localStorage.setItem("palla2", "0")
-				   localStorage.setItem("exit", "1")
+				   //localStorage.setItem("palla1", "1")
+				   //localStorage.setItem("palla2", "0")
+				   //localStorage.setItem("exit", "1")
+				   
+				   localStorage.setItem("exitto", "1")
 				   
 				   clearInterval(refreshIntervalId33);
 				   
@@ -1869,7 +1861,9 @@ refreshIntervalId33 = setInterval(function() {
 				   //}, 200);
 				   
 				   //window.location.href = "#win2";
-				   resetta1(1);
+				   //onDeviceReady();
+				   
+				   window.location.href = "map.html?id=1";
 	});
 	
 	
@@ -1923,36 +1917,30 @@ function cancella(id){
 			if(item.Token==1){
 			   // window.location.href = "map.html?id=1";
 			
-			   $("#pass1").hide();
+			   /*$("#pass1").hide();
 			   $("#pass2").hide();
 			   $("#pass3").hide();
 			   $("#esci").hide();
 
 			
-			    $("#btninizia").show();
+			$("#btninizia").show();*/
 			
-					//localStorage.setItem("geostory", "NO")
-				     //clearInterval(refreshIntervalId33);
-					//window.location.href = "map.html?id=1&od=1";
-					onResume();
-
-			    //resetta1();
-			    //setTimeout(function() {
-					   //localStorage.setItem("geostory", "NO")
-					   //clearInterval(refreshIntervalId33);
-					   //window.location.href = "map.html?id=1&od=0";
-					   //start();
-					   //onResume();
-				//}, 200);
+			localStorage.setItem("exitto", "1")
 			
-			    //e.stopImmediatePropagation();
+			clearInterval(refreshIntervalId33);
 			
-			    //e.preventDefault();
+			//setTimeout(function() {
+			//localStorage.setItem("geostory", "NO")
+			//clearInterval(refreshIntervalId33);
+			//window.location.href = "map.html?id=1";
+			//onResume();
+			//}, 200);
 			
-			    //return false;
+			//window.location.href = "#win2";
+			//onDeviceReady();
 			
-			    //clearInterval(refreshIntervalId33);
-				//resetta1(1);
+			window.location.href = "map.html?id=1";
+			
 			}
 			else{
 			 navigator.notification.alert(
@@ -2075,6 +2063,7 @@ function start() {
 	//chiamo e setto a 1 lo stato dell'autista (ok lavoro)
 	
 	$("#btninizia").hide();
+	$("#loading").show();
 	
 	resetta1(1);
 	
@@ -2113,7 +2102,7 @@ function resetta22() {
 	
 }
 
-function richiesta1(id1) {
+function richiesta1(id) {
 
 	$("#risp1").show();
 	$("#risp2").hide();
@@ -2121,13 +2110,13 @@ function richiesta1(id1) {
 	$("#risp3").hide();
 	$("#gps3").hide();
 	
-	localStorage.setItem("id_richiesta", id1)
+	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id1 +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -2219,14 +2208,14 @@ function richiesta1(id1) {
 	
 	$(document).on("tap", "#xchiudi1", function(e){
 		clearInterval(refreshIntervalId);
-		magia(1,id1)
+		magia(1,id)
 		$("#blob2").hide();
-	   
-	   e.stopImmediatePropagation();
-	   
-	   e.preventDefault();
-	   
-	   return false;
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
 
 	});
 
@@ -2234,20 +2223,32 @@ function richiesta1(id1) {
 		$("#pass1").hide();
 				   
 		//localStorage.setItem("palla1", "0")
-		cancella(id1)
+		cancella(id)
 		$("#blob2").hide();
 				   
-	   e.stopImmediatePropagation();
-	   
-	   e.preventDefault();
-	   
-	   return false;
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
 
+	});
+	
+	$(document).on("tap", "#risp1", function(e){
+				   $("#blob2").hide();
+				   window.location.href = "map3.html";
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
 	});
 	
 }
 
-function richiesta2(id2) {
+function richiesta2(id) {
 	
 	$("#risp1").hide();
 	$("#gps1").hide();
@@ -2256,13 +2257,13 @@ function richiesta2(id2) {
 	$("#gps3").hide();
 	
 	//alert(2)
-	localStorage.setItem("id_richiesta", id2)
+	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id2 +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -2347,14 +2348,14 @@ function richiesta2(id2) {
 	
 	$(document).on("tap", "#xchiudi2", function(e){
 				   clearInterval(refreshIntervalId);
-				   magia(2,id2)
+				   magia(2,id)
 				   $("#blob2").hide();
 				   
 				   });
 
 	$(document).on("tap", "#close2", function(e){
 	$("#pass2").hide();
-	cancella(id2)
+	cancella(id)
 	$("#blob2").hide();
 		
 	e.stopImmediatePropagation();
@@ -2364,10 +2365,15 @@ function richiesta2(id2) {
 	return false;
 	});
 	
+	$(document).on("tap", "#risp2", function(e){
+				   $("#blob2").hide();
+				    window.location.href = "map3.html";
+				   
+				   });
 	
 }
 
-function richiesta3(id3) {
+function richiesta3(id) {
 	
 	$("#risp3").show();
 	$("#risp2").hide();
@@ -2376,13 +2382,13 @@ function richiesta3(id3) {
 	$("#gps1").hide();
 	
 	//alert(2)
-	localStorage.setItem("id_richiesta", id3)
+	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id3 +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -2469,14 +2475,14 @@ function richiesta3(id3) {
 	
 	$(document).on("tap", "#xchiudi3", function(e){
 				   clearInterval(refreshIntervalId);
-				   magia(3,id3)
+				   magia(3,id)
 				   $("#blob2").hide();
 
 				   });
 	
 	$(document).on("tap", "#close3", function(e){
 				   $("#pass3").hide();
-				   cancella(id3)
+				   cancella(id)
 				   $("#blob2").hide();
 				   e.stopImmediatePropagation();
 				   
@@ -2485,7 +2491,13 @@ function richiesta3(id3) {
 				   return false;
 
 				   });
+	
+	$(document).on("tap", "#risp3", function(e){
+				   $("#blob2").hide();
+				    window.location.href = "map3.html";
 
+				   });
+	
 }
 
 
@@ -2531,7 +2543,7 @@ function inviopasseggero(come){
 		   $.each(result, function(i,item){
 				  
 				  if(item.Token==1){
-					
+
 					onResume();
 				  
 				  }
@@ -2563,7 +2575,6 @@ function inviopasseggero(come){
 }
 
 
-
 function chiudix() {
 	
 	$("#blob2").hide();
@@ -2574,6 +2585,8 @@ function chiudi22(id) {
 	
 		$("#blob").hide();
 }
+
+
 
 function getParameterByName(name) {
 	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
