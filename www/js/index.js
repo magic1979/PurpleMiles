@@ -81,8 +81,8 @@ var app = {
 
 		
 		//----------GEO ---------------
-		//navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {frequency: 3000, enableHighAccuracy: true});
-		var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+		navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+		//var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		
 		//var lat = "41.8337871";  //  "41.783780"  "41.783780" localStorage.getItem("lat")  41.770447
 		//var lng = "12.4757278";  //  "12.364947"  "12.364947" localStorage.getItem("lng")  12.373529
@@ -91,6 +91,7 @@ var app = {
 		//localStorage.setItem("lng", lng);
 		
 		//localStorage.setItem("geostory", "SI")
+		//localStorage.setItem("exitto", "0")
 		
 		//-----------------------------
 		
@@ -244,16 +245,12 @@ function fail(error) {
 
 function gpsonSuccess(position){
 	
-	//alert(ciao)
 	
 	var ciao = position.coords.latitude;
 	var ciao1 = position.coords.longitude;
 	
-	//alert(ciao)
-	
 	$("#distanza").html("<span style = 'font-size: 18px;'>"+ ciao +","+ ciao1 +"</span>");
 	
-	//onBackgroundSuccess2(position)
 	
 	localStorage.setItem("lat", ciao)
     localStorage.setItem("lng", ciao1)
