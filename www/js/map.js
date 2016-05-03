@@ -304,8 +304,9 @@ function getKey(key){
 	}
 	
 	if (keycode ==13){
-		
-		inviopasseggero(3);
+		setTimeout(function() {
+			inviopasseggero(3);
+		},1500);
 		
 	}
 	
