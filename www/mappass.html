@@ -320,10 +320,28 @@
 					  
 					  .custom-pass {
 						  background-color: #cc33cc;
-						  width: 35px;
+						  width: 100px;
 						  font-size: 18px;
 						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
 						  color:#FFF;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  .custom-pass11 {
+						  background-color: #FFA500;
+						  width: 100px;
+						  font-size: 18px;
+						  
+						  color: #FFF;
 						  
 						  text-decoration: none;
 						  text-shadow:0 0 0;
@@ -338,11 +356,11 @@
 					  }
 					  
 					  .custom-pass1 {
-						  background-color: #FFA500;
-						  width: 35px;
+						  background-color: #cc33cc;
+						  width: 25px;
 						  font-size: 18px;
 						  
-						  color: #000;
+						  color: #FFF;
 						  
 						  text-decoration: none;
 						  text-shadow:0 0 0;
@@ -357,7 +375,7 @@
 					  }
 					  .custom-pass2 {
 						  background-color: #00A86B;
-						  width: 35px;
+						  width: 25px;
 						  font-size: 18px;
 						  
 						  color: #000;
@@ -395,7 +413,7 @@
 						
 						.custom-btn3 {
 							background-color: #cc33cc;
-							width: 120px;
+							width: 100%;
 							font-size: 18px;
 							
 							color:#FFF;
@@ -453,7 +471,7 @@
 									
 						}
 						.tabella1 {
-							background-color:#cc33cc;;
+							background-color:#cc33cc;
 							border: 1px solid #000;
 							border-color: #FFF;
 							
@@ -465,6 +483,7 @@
 						}
 					  
 					  .scrivo {
+						  background-color:#ffffff;
 						  display: block;
 						  width: 90%;
 						  margin: 0px;
@@ -486,80 +505,90 @@
     </head>
     <body>
         <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/map.js"></script>
+        <script type="text/javascript" src="js/mappass.js"></script>
         <div id="geolocation"></div>
         
-        <div data-role=page id=home class="div2">
-            <!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3">
-				
-                <span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
-            </div>-->
-            <div id="noconn" align="center" style="display:none"></div>
-            <a data-role=button id=verifica data-theme="b" style="display:none">Verifica Connessione</a>
-			<table border="0" valign="center" align="center" class="transbox">
-				<tr>
-                	<td align="center" width="30%">
-                    	<img src="img/Logo.png" width="60">
-                    </td>
-					<td align="center" width="50%">
-                    	<table class="tabella1"><tr><td><font color="#FFF">NickName</font></td></tr></table>
-                    </td>
-					<td align="right" width="20%">
-                    	<a id="XX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a>
-                    </td>
-                </tr>
-			</table>
-            
-            <div data-role=content class="div2">
-                <a data-role=button id=btn data-theme="b" style="display:none">Display map</a><br>
-                <a data-role=button id=gps2 data-theme="b" style="display:none">Gps E Dintorni</a><br>
-            </div>
-			
-            <div class="spinner" id="spinner"></div>
+<div data-role=page id=home class="div2">
 
-			<table id="tblhome" width="90%" height="480px" border="0" valign="center" align="center" class="tabella">
-				<tr height="48%">
-					<td width="100%" align="center">
-						<a id="mappa6" href="javascript:resetta1()" rel="external"><img src="img/Volante.png" width="120px"></a><br>
-						<b>Voglio essere autista</b><br>
-						<table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table>  
-					</td>
-				</tr>			
-				<tr height="2%">
-					<td width="100%" align="center">
-						
-					</td>
-				</tr>
-				<tr height="48%">
-					<td width="100%" align="center">
-						<a href="mappass.html" rel="external"><img src="img/Valigia.png" width="120px"></a><br>
-						<b>Voglio essere passeggero</b><br>
-						<table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table>
-					</td>
-				</tr>	
-			</table>
-			
-            <!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
-                <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
-            </div>-->
-            
-        </div>
-        
+<table border="0" valign="center" align="center" class="transbox">
+	<tr>
+		<td align="center" >
+			<a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass11">Quando</a>
+		</td>
+		<td align="center" >
+			<a data-role="button" id="da" href="#" data-theme="b" class="custom-pass1">Da</a>
+		</td>
+		<td align="center" >
+			<a data-role="button" id="piu" href="#" data-theme="b" class="custom-pass1">+</a>
+		</td>
+		<td align="right" >
+			<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="25px"></a>
+		</td>
+	</tr>
+</table>
+
+<div data-role=content class="div2">
+	
+</div>
+
+ <div class="spinner" id="spinner"></div>
+
+  <form name="formia" action="entra.asp" method="post">
+	
+	<table id="tblhome" width="90%" height="400px" border="0" valign="center" align="center" class="tabella">
+		<tr>
+			<td width="100%" align="center" colspan="3">
+				<br><b>QUANDO</b><br>
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="100%" align="center" colspan="3">
+				<a data-role="button" id="adesso" href="#" data-theme="b" class="custom-pass">Adesso</a>
+			</td>
+		</tr>
+		<tr>
+			<td width="40%" align="center" >
+				<a data-role="button" id="alle" href="#" data-theme="b" class="custom-pass">Alle</a>
+			</td>
+			<td width="30%" align="center" >
+				<input id="ora" name="ora" type="text" value="" class="scrivo" placeholder="ora">
+			</td>
+			<td width="30%" align="center" >
+				<input id="minuti" name="minuti" type="text" value="" class="scrivo" placeholder="minuti">
+			</td>
+		</tr>
+		<tr>
+			<td width="100%" align="center" colspan="3">
+				<a data-role="button" id="oggi" href="#" data-theme="b" class="custom-pass">Oggi</a><br>
+				<a data-role="button" id="domani" href="#" data-theme="b" class="custom-pass">Domani</a>
+			</td>
+		</tr>
+		<tr>
+			<td width="40%" align="center">
+				<a id="calendario" data-role="button" href="#" data-theme="b" class="custom-pass">Calendario</a>
+			</td>
+			<td width="30%" align="center">
+				<input id="mese" name="mese" type="text" value="" class="scrivo" placeholder="ora">
+			</td>
+			<td width="30%" align="center">
+				<input id="giorno" name="giorno" type="text" value="" class="scrivo" placeholder="ora">
+			</td>
+		</tr>
+		
+
+		<tr>
+			<td width="100%" align="center" colspan="3">
+				<a id="inviarichiesta" href="#" data-role="button" data-theme="b" class="custom-pass">Invia</a>
+			</td>
+		</tr>
+	 </table>
+  </form>
+
+
+</div>
+		
         <div data-role=page id="win2" data-add-back-btn=true class="div2">
-            
-			<!--<table width="100%" border="0" valign="center" align="center" class="transbox">
-				<tr>
-					<td width="100%" align="left">
-						<a href="javascript:sidiv();" data-theme="b" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
-					</td>
-				</tr>
-				
-			</table>
-			
-			<div data-role="header" rel="external" align="center" data-theme="b" data-position="fixed" class="div3">
-                <a href="javascript:sidiv();" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
-                <span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
-            </div>-->
 			
 			<div data-role="content"></div>
 			
@@ -576,20 +605,6 @@
 					</td>
 				</tr>
 				
-			</table>
-			
-			<table id="blob3" width="100%" border="0" align="center" valign="center" class="div562" style="display:none">
-				<tr>
-					<td width="100%" align="center">
-						<table align="center" width="100px" height="100%">
-							<tr>
-								<td width="100px" align="center" valign="center">
-									<a id="ric2" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>Richiesta2</b></font></a>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
 			</table>
 			
 			<table id="blob2" width="100%" border="0" align="center" valign="center" class="div57" style="display:none">
@@ -647,9 +662,11 @@
 			<table id="btninizia" width="100%" border="0" align="center" valign="center" class="div55" >
 				<tr>
 					<td width="100%" align="center">
-						<table align="center" width="100px"><tr><td width="100px" align="center">
-						<a id="inizia" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Inizia</b></font></a>
-						</td></tr></table>
+						<table align="center" width="200px" class="tabella"><tr><td width="100px" align="center">
+						  <input id="viale" name="viale" type="text" value="">
+					      <input id="destinazione" name="destinazione" type="text" value="" placeholder="destinazione" style="display:none">
+						</td></tr>
+					   </table>
 					</td>
 				</tr>
 				
@@ -663,25 +680,10 @@
 						</td></tr></table>
 					</td>
 				</tr>
-				
 			</table>
 			
 			<!--Iconcoine-->
 			
-			<table id="btnpass" width="100%" border="0" align="center" valign="center" class="div555" style="display:none">
-				<tr>
-					<td width="100%" align="center">
-						<table align="center" width="200px"><tr><td width="200px" align="left">
-							<a id="pass1" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;1&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass2" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;2&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass3" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;3&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="esci" href="#" data-theme="b" class="custom-pass"><font color="#fff">EXIT</font></a>
-						</td></tr></table>
-					</td>
-				</tr>
-				
-			</table>
-			
-			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
-				<a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
-			</div> /footer -->
 
         </div>
 		
@@ -689,14 +691,11 @@
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			<table border="0" valign="center" align="center" class="transbox">
 				<tr>
-					<td align="center" width="30%">
-						<img src="img/Logo.png" width="60">
-							</td>
-					<td align="center" width="50%">
-						<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome3"></div></font></td></tr></table>
+					<td align="center">
+						<a data-role="button" id="annulla" href="#" data-theme="b" class="custom-pass11">Annulla</a>
 					</td>
-					<td align="right" width="20%">
-						<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="25px"></a>
+					<td align="center" id="btnofferte" style="display:none">
+						<a data-role="button" id="offerte" href="#" data-theme="b" class="custom-pass">Offerte</a>
 					</td>
 				</tr>
 			</table>
@@ -707,46 +706,44 @@
 			
 			<div class="spinner" id="spinner"></div>
 			
-			<form name="formia" action="entra.asp" method="post">
+			<form name="formia3" action="entra.asp" method="post">
 			
 			<table id="tblhome3" width="90%" height="400px" border="0" valign="center" align="center" class="tabella">
 				<tr>
-					<td width="100%" align="center" colspan="2">
-						<br><b>RISPONDI</b><br>
+					<td width="80%" align="center" colspan="2">
+						<br><b>ANTEPRIMA</b><br>
 					</td>
 				</tr>
 				
 				<tr>
-					<td width="100%" align="center" colspan="2">
-						<a data-role="button" id="gratis" href="#" data-theme="b" class="custom-btn3">Gratis</a>
+					<td width="80%" align="center" colspan="2">
+						<input id="viale3" name="viale3" type="text" value="">
 					</td>
 				</tr>
 				<tr>
-					<td width="100%" align="center" colspan="2">
-						<a data-role="button" id="offerta" href="#" data-theme="b" class="custom-btn3">Offerta Libera</a>
+					<td width="80%" align="center" >
+						<input id="destinazione3" name="destinazione3" type="text" value="" placeholder="destinazione" >
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center">
-						<a id="back4" data-role="button" href="#" data-theme="b" class="custom-btn3">Importo</a>
-					</td>
-					<td width="50%" align="center">
-						<input type="text" data-role="none" name="soldini" id="soldini" value="" placeholder="Importo" class="scrivo">
-					</td>
-				</tr>
-
-				<tr>
-					<td width="100%" align="left" colspan="2">
-						<table ><tr><td><font color="#000">Note</font></td></tr></table>
+					<td width="80%" align="center" >
+						Cani, Gatti
 					</td>
 				</tr>
 				<tr>
-					<td width="100%" align="center" colspan="2">
-						<textarea cols="30" rows="10" class="scrivo" placeholder="Note"></textarea>
+					<td width="80%" align="center" >
+						Note varie
 					</td>
 				</tr>
 				<tr>
-					<td width="100%" align="center" colspan="2">
+					<td width="80%" align="center" >
+						Accessori
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td width="50%" align="center" >
 						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn3">Invia</a>
 					</td>
 				</tr>
