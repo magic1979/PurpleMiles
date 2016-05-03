@@ -91,13 +91,10 @@ function onDeviceReady() {
 	}
 	
 	$(document).on("touchstart", "#back3", function(e){
-		alert("http://purplemiles.com/www2/check_richiesta.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"")
+		//alert("http://purplemiles.com/www2/check_richiesta.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"")
 		
-	    $("#btnofferte").show();
-	    $.mobile.changePage ($("#home3"));
-		return;
 		
-		/*$.ajax({
+		$.ajax({
 			   type:"GET",
 			   url:"http://purplemiles.com/www2/check_richiesta.php?email="+ localStorage.getItem("email") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"",
 			   contentType: "application/json",
@@ -119,6 +116,8 @@ function onDeviceReady() {
 					   );
 					  
 					  $("#btnofferte").show();
+					  $.mobile.changePage ($("#home3"));
+					  return;
 				  }
 					  
 				});
@@ -137,7 +136,7 @@ function onDeviceReady() {
 				onResume();
 			   
 			   },
-			   dataType:"jsonp"});*/
+			   dataType:"jsonp"});
 		
 	});
 	
