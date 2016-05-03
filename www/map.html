@@ -184,7 +184,7 @@
 						  bottom: 30px;
 						  left: 0;
 						  width: 100%;
-						  height: 5%;
+						  height: 10%;
 						  padding: 0;
 						  color: #000;
 						  
@@ -217,12 +217,14 @@
 						  z-index: 30;
 						  bottom: 60px;
 						 
-						  width: 200px;
-						  height: 130px;
+						  width: 270px;
+						  height: 260px;
 						  color: #000;
 						  
 						  text-align: center;
 						  font-weight: bold;
+						  
+						  font-size: 22px;
 						  
 						  top:50%;
 						  left:50%;
@@ -318,10 +320,11 @@
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
 					  
-					  .custom-pass {
-						  background-color: #cc33cc;
-						  width: 35px;
-						  font-size: 18px;
+					  .custom-pass9 {
+						  background-color: #fff;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
 						  
 						  color:#FFF;
 						  
@@ -332,15 +335,40 @@
 						  
 						  padding: 5 5 5 5;
 						  
+						  border: 2px solid #cc33cc;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-pass {
+						  background-color: #cc33cc;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
+						  
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
+						  
 						  border-radius: 5px;
 						  -moz-border-radius: 5px; /* firefox */
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
 					  
 					  .custom-pass1 {
-						  background-color: #FFA500;
-						  width: 35px;
-						  font-size: 18px;
+						  background-color: #ff6600;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
 						  
 						  color: #000;
 						  
@@ -350,6 +378,8 @@
 						  font-family: ubuntu, helvetica, arial;
 						  
 						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
 						  
 						  border-radius: 5px;
 						  -moz-border-radius: 5px; /* firefox */
@@ -357,8 +387,9 @@
 					  }
 					  .custom-pass2 {
 						  background-color: #00A86B;
-						  width: 35px;
-						  font-size: 18px;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
 						  
 						  color: #000;
 						  
@@ -368,6 +399,8 @@
 						  font-family: ubuntu, helvetica, arial;
 						  
 						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
 						  
 						  border-radius: 5px;
 						  -moz-border-radius: 5px; /* firefox */
@@ -376,8 +409,9 @@
 					  
 					  .custom-pass3 {
 						  background-color: #DC143C;
-						  width: 35px;
-						  font-size: 18px;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
 						  
 						  color: #000;
 						  
@@ -387,6 +421,8 @@
 						  font-family: ubuntu, helvetica, arial;
 						  
 						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
 						  
 						  border-radius: 5px;
 						  -moz-border-radius: 5px; /* firefox */
@@ -508,8 +544,9 @@
                     	<a id="XX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a>
                     </td>
                 </tr>
+
 			</table>
-            
+            <br>
             <div data-role=content class="div2">
                 <a data-role=button id=btn data-theme="b" style="display:none">Display map</a><br>
                 <a data-role=button id=gps2 data-theme="b" style="display:none">Gps E Dintorni</a><br>
@@ -536,7 +573,12 @@
 						<b>Voglio essere passeggero</b><br>
 						<table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table>
 					</td>
-				</tr>	
+				</tr>
+				<tr height="10%">
+					<td width="100%" align="center">
+						
+					</td>
+				</tr>
 			</table>
 			
             <!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
@@ -569,7 +611,7 @@
 						<table align="center" width="100px" height="100%">
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<a id="ric1" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>Richiesta</b></font></a>
+									<a id="ric1" href="#" data-role="button" data-theme="b" class="custom-btn4"><font size="3" color="#fff"><b>Richiesta</b></font></a>
 								</td>
 							</tr>
 						</table>
@@ -622,20 +664,20 @@
 							<tr>
 								<td width="100px" align="center" valign="center">
 									<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
-									<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi 2</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi 3</font></a>
+									<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
 								</td>
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">GPS</font></a>
-									<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">GPS</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">GPS</font></a>
+									<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
+									<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
 								</td>
 							</tr>
 							
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
-									<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella 2</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella 3</font></a>
+									<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif1">Rifiuta</div></font></a>
+									<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif2">Rifiuta</div></font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif3">Rifiuta</div></font></a>
 								</td>
 							</tr>
 						</table>
@@ -672,7 +714,7 @@
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="200px"><tr><td width="200px" align="left">
-							<a id="pass1" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;1&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass2" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;2&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass3" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;3&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="esci" href="#" data-theme="b" class="custom-pass"><font color="#fff">EXIT</font></a>
+							<a id="pass1" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;1&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass2" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;2&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass3" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;3&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="esci" href="#" data-theme="b" class="custom-pass9"><font color="#cc33cc">&#8592;</font></a>
 						</td></tr></table>
 					</td>
 				</tr>

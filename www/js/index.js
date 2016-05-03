@@ -38,8 +38,6 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 		 document.addEventListener("resume", onResume, false);
-		 
-		 window.plugins.insomnia.keepAwake();
 		
 		//localStorage.setItem("email", "");
 		//localStorage.setItem("email2", "");
@@ -72,7 +70,7 @@ var app = {
 			
 		}*/
 			
-		$(document).on("touchend", "#inizia", function(e){
+		$(document).on("touchstart", "#inizia", function(e){
 			//$.mobile.changePage( "#page3", { transition: "slide", changeHash: false });
 			window.location.href = "map.html";
 		    if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
@@ -81,11 +79,12 @@ var app = {
 
 		
 		//----------GEO ---------------
+
 		navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 		//var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		
-		//var lat = "41.8337871";  //  "41.783780"  "41.783780" localStorage.getItem("lat")  41.770447
-		//var lng = "12.4757278";  //  "12.364947"  "12.364947" localStorage.getItem("lng")  12.373529
+		//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
+		//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
 		
 		//localStorage.setItem("lat", lat);
 		//localStorage.setItem("lng", lng);
@@ -107,7 +106,6 @@ var app = {
 				text:'22Doing heavy tasks.'
 														 
 				});
-			
 		}
 		
 		
@@ -249,7 +247,7 @@ function gpsonSuccess(position){
 	var ciao = position.coords.latitude;
 	var ciao1 = position.coords.longitude;
 	
-	$("#distanza").html("<span style = 'font-size: 18px;'>"+ ciao +","+ ciao1 +"</span>");
+	//$("#distanza").html("<span style = 'font-size: 18px;'>"+ ciao +","+ ciao1 +"</span>");
 	
 	
 	localStorage.setItem("lat", ciao)
@@ -262,7 +260,12 @@ function gpsonSuccess(position){
 
 function gpsonError(){
 	
-	//alert()
+	 navigator.notification.alert(
+													'Possibile errore GPS, assicurati di avere il gps del telefono attivato.',  // message
+													alertDismissed,         // callback
+													'Attenzione',           // title
+													'Done'                  // buttonName
+													);
 	
 }
 
@@ -373,5 +376,9 @@ function onResume() {
 	setTimeout(function() {
 	   window.location.href = "map.html?id=1";
 	}, 0);
+}
+
+function alertDismissed() {
+   
 }
 

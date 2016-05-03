@@ -3,7 +3,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
-	var height = getRealContentHeight();
+	var height = getRealContentHeight()-60;
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
 	
@@ -53,6 +53,7 @@ function onDeviceReady() {
 	var map;
 	var refreshIntervalId;
 	var refreshIntervalId33;
+	var refreshPos;
 	var prefi2000;
 	var item1;
 	var item2;
@@ -70,7 +71,10 @@ function onDeviceReady() {
 	$(document).on("tap", "#esci", function(e){
 
 				   
-				   localStorage.setItem("exitto", "1")
+				   $("#pass1").hide();
+				   $("#pass2").hide();
+				   $("#pass3").hide();
+				   $("#esci").hide();
 
 				   
 				   for(i=0; i<10000; i++)
@@ -256,9 +260,9 @@ function CenterControl(controlDiv, map) {
 	// Set CSS for the control border.
 	var controlUI = document.createElement('div');
 	controlUI.style.backgroundColor = 'transparent';
-	controlUI.style.border = '1px solid #fff';
+	controlUI.style.border = '0px solid #fff';
 	controlUI.style.borderRadius = '3px';
-	controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+	controlUI.style.boxShadow = '0 0px 0px rgba(0,0,0,.3)';
 	controlUI.style.cursor = 'pointer';
 	controlUI.style.marginBottom = '22px';
 	controlUI.style.textAlign = 'center';
@@ -276,9 +280,10 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">';
+	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
+	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
 	//var g = document.createElement('div');
 	//g.id ='sopra':
 	//controlUI.appendChild(g);
@@ -300,9 +305,7 @@ function getKey(key){
 	
 	if (keycode ==13){
 		
-		document.activeElement.blur();
-		$("input").blur()
-		return false;
+		inviopasseggero(3);
 		
 	}
 	
@@ -519,7 +522,7 @@ function resetta1(focus) {
 	
 	if(connectionStatus=='online'){
 
-	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -533,7 +536,6 @@ function resetta1(focus) {
 	
 	//localStorage.setItem("lat", lat)
     //localStorage.setItem("lng", lng)
-	//ido.setPosition(latlng);
 
 	
 	var latlng = new google.maps.LatLng(lat, lng, 1);
@@ -676,7 +678,7 @@ function resetta1(focus) {
 					
 					
 					if(i==0){
-						 var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(30,50));
+						 var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
 						 //alert(myLatLng + beach[0])
 					
 					
@@ -843,6 +845,8 @@ function resetta1(focus) {
 		$("#pass3").hide();
 		
 		timer()
+		
+		posizionegps()
 
 	}
 	
@@ -888,6 +892,27 @@ function resetta1(focus) {
 	}*/
 	
 	//---------------------------
+		
+		function onSuccess22(position) {
+			
+			//alert("timer22")
+			
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
+			
+			localStorage.setItem("lat", lat)
+			localStorage.setItem("lng", lng)
+			
+			//var lat = localStorage.getItem("lat");
+			//var lng = localStorage.getItem("lng");
+			var latlng = new google.maps.LatLng(lat, lng);
+			
+			marker2.setPosition(latlng);
+			map.setCenter(latlng);
+			
+			//localStorage.setItem("lat", ciao)
+			//localStorage.setItem("lng", ciao1)
+		}
 
 		
 		function onSuccess2(position) {
@@ -905,7 +930,7 @@ function resetta1(focus) {
 			var latlng = new google.maps.LatLng(lat, lng);
 			
 			marker2.setPosition(latlng);
-			map.setCenter(latlng);
+			//map.setCenter(latlng);
 			
 			//localStorage.setItem("lat", ciao)
             //localStorage.setItem("lng", ciao1)
@@ -922,21 +947,30 @@ function resetta1(focus) {
             
 			window.location.href = "index.html";
         }
+		
+		
+function posizionegps(){
+
+	refreshPos = setInterval(function() {
+		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+		//onSuccess2();
+	}, 2000);
+}
 	
 	
 function timer(){
-	$("#pass1").hide();
-	$("#pass2").hide();
-	$("#pass3").hide();
 	
 	refreshIntervalId = setInterval(function() {
-									var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+									//$("#pass1").hide();
+									//$("#pass2").hide();
+									//$("#pass3").hide();
 									
-									//onSuccess2();
+									var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+									
+									//onSuccess22();
 									
 									var lat = localStorage.getItem("lat");
 									var lng = localStorage.getItem("lng");
-									
 									
 									//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
 									//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
@@ -1056,8 +1090,8 @@ function timer(){
 												  
 												  
 												  $("#pass1").show();
-												  $("#pass2").hide();
-												  $("#pass3").hide();
+												  //$("#pass2").hide();
+												  //$("#pass3").hide();
 												  
 												  if(item.stato==3){
 												  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
@@ -1232,7 +1266,7 @@ function timer(){
 											   var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
 											   
 											   if(k==0){
-											   var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(30,50));
+											   var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
 											   var icon2 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
 											   //alert(myLatLng + beach[0])
 											   marker2.setPosition(myLatLng);
@@ -1378,7 +1412,7 @@ function magia(utente,pass) {
 						   var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
 						   
 						   if(i==0){
-						   var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(30,50));
+						   var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
 						   
 						   marker2.setPosition(myLatLng);
 						   
@@ -1558,11 +1592,9 @@ function magia(utente,pass) {
 			window.clearInterval(i);
 		}
 		
-		//alert();
+		posizionegps2();
 		
-		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-		
-		//onSuccess2();
+		//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		
 		var lat = localStorage.getItem("lat");
 		var lng = localStorage.getItem("lng");
@@ -1703,9 +1735,9 @@ function magia(utente,pass) {
 		
 		refreshIntervalId33 = setInterval(function() {
 										  
-										  var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+										  var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 										  
-										  //onSuccess2();
+										  //onSuccess22();
 										  
 										  var lat = localStorage.getItem("lat");
 										  var lng = localStorage.getItem("lng");
@@ -2009,10 +2041,17 @@ function magia(utente,pass) {
 		
 		//---------------------------
 		
-		
-		function onSuccess2(position) {
+		function posizionegps2(){
 			
-			//alert("timer2")
+			refreshPos = setInterval(function() {
+				var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+				//onSuccess2();
+			}, 2000);
+		
+		}
+		
+		function onSuccess22(position) {
+			
 			var lat = position.coords.latitude;
 			var lng = position.coords.longitude;
 			
@@ -2025,6 +2064,28 @@ function magia(utente,pass) {
 			
 			marker2.setPosition(latlng);
 			map.setCenter(latlng);
+			
+			//marker.setPosition(latlng);
+			//map.setCenter(latlng);
+			
+			//localStorage.setItem("lat", ciao)
+			//localStorage.setItem("lng", ciao1)
+		}
+		
+		function onSuccess2(position) {
+			
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
+			
+			localStorage.setItem("lat", lat)
+			localStorage.setItem("lng", lng)
+			
+			//var lat = localStorage.getItem("lat");
+			//var lng = localStorage.getItem("lng");
+			var latlng = new google.maps.LatLng(lat, lng);
+			
+			marker2.setPosition(latlng);
+			//map.setCenter(latlng);
 			
 			//marker.setPosition(latlng);
 			//map.setCenter(latlng);
@@ -2054,8 +2115,8 @@ function magia(utente,pass) {
 
 function magia3() {
 	var pass = item1;
-	
-	magia(1,pass)
+	$("#blob").hide();
+	//magia(1,pass)
 }
 
 
@@ -2302,7 +2363,7 @@ function richiesta1() {
 				  
 				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
 				  
-				  $("#Ad").html("<b>Ad:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
+				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
 				  
 				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
 				  
@@ -2314,6 +2375,7 @@ function richiesta1() {
 				  if(item.stato==2){
 				  //alert(item.stato)
 				  $("#gps1").show();
+				  $("#rif1").html("Annulla");
 				  
 				  $(document).on("tap", "#gps1", function(e){
 						//clearInterval(refreshIntervalId);
@@ -2338,6 +2400,7 @@ function richiesta1() {
 				  
 				  }
 				  else{
+					$("#rif1").html("Rifiuta");
 					$("#gps1").hide();
 				  }
 				  
@@ -2450,7 +2513,7 @@ function richiesta2() {
 				  
 				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
 				  
-				  $("#Ad").html("<b>Ad:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
+				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
 				  
 				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
 				  
@@ -2459,6 +2522,7 @@ function richiesta2() {
 				  if(item.stato==2){
 				  //alert(item.stato)
 				  $("#gps22").show();
+				  $("#rif2").html("Annulla");
 				  
 				  $(document).on("tap", "#gps22", function(e){
 								 //clearInterval(refreshIntervalId);
@@ -2478,6 +2542,9 @@ function richiesta2() {
 								 
 								 });
 				  
+				  }
+				  else{
+					$("#rif2").html("Rifiuta");
 				  }
 				  }
 
@@ -2576,7 +2643,7 @@ function richiesta3() {
 				  
 				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
 				  
-				  $("#Ad").html("<b>Ad:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
+				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
 				  
 				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
 				  
@@ -2587,6 +2654,7 @@ function richiesta3() {
 				  if(item.stato==2){
 				  //alert(item.stato)
 				  $("#gps3").show();
+				  $("#rif3").html("Annulla");
 				  
 				  $(document).on("tap", "#gps3", function(e){
 								 //clearInterval(refreshIntervalId);
@@ -2608,7 +2676,8 @@ function richiesta3() {
 				  
 				  }
 				  else{
-				  $("#gps2").hide();
+				  //$("#gps2").hide();
+				  $("#rif3").html("Rifiuta");
 				  }
 				  
 				  }
