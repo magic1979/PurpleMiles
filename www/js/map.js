@@ -27,25 +27,6 @@ function onDeviceReady() {
 	  localStorage.setItem("exit", "0")
 	}
 
-
-	
-	var last_click_time = new Date().getTime();
-	
-	document.addEventListener("tap", function (e) {
-							  
-							  var click_time = e['timeStamp'];
-							  
-							  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-							  
-							  e.preventDefault();
-							  
-							  return false;
-							  
-							  }
-							  
-							  last_click_time = click_time;
-							  
-							  }, true);
 	
 	isTabHolded=false;
 	
@@ -58,23 +39,56 @@ function onDeviceReady() {
 	var item1;
 	var item2;
 	var item3;
+	var variabile;
 	
-	$(document).on("tap", "#pass1", function(e){ richiesta1() });
-	$(document).on("tap", "#pass2", function(e){ richiesta2() });
-	$(document).on("tap", "#pass3", function(e){ richiesta3() });
+	var nick1;
+	var quando1;
+	var ora1;
+	var partenza1;
+	var arrivo1;
+	var distanza1;
+	var stato1;
+	var lat1;
+	var lng1;
+	
+	var nick2;
+	var quando2;
+	var ora2;
+	var partenza2;
+	var arrivo2;
+	var distanza2;
+	var stato2;
+	var lat2;
+	var lng2;
+	
+	var nick3;
+	var quando3;
+	var ora3;
+	var partenza3;
+	var arrivo3;
+	var distanza3;
+	var stato3;
+	var lat3;
+	var lng3;
+	
+	
+	$(document).on("touchstart", "#pass1", function(e){ richiesta1() });
+	$(document).on("touchstart", "#pass2", function(e){ richiesta2() });
+	$(document).on("touchstart", "#pass3", function(e){ richiesta3() });
 	
 	$(document).on("tap", "#ric1", function(e){
 		magia3()
 	});
 
 	
-	$(document).on("tap", "#esci", function(e){
+	$(document).on("touchstart", "#esci", function(e){
 
-				   
 				   $("#pass1").hide();
 				   $("#pass2").hide();
 				   $("#pass3").hide();
 				   $("#esci").hide();
+				   
+				   $("#blob2").hide();
 
 				   
 				   for(i=0; i<10000; i++)
@@ -82,21 +96,25 @@ function onDeviceReady() {
 				     window.clearInterval(i);
 				   }
 				   
-				   onResume();
+				   resetta1(1);
 
    });
 	
 	
-	$(document).on("tap", "#inizia", function(e){
+	$(document).on("touchstart", "#inizia", function(e){
 		start();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
     
-	$(document).on("tap", "#resetta", function(e){
+	$(document).on("touchstart", "#resetta", function(e){
 		window.location.href = "index.html";
 	});
 	
-	$(document).on("tap", "#mappa6", function(e){
+	$(document).on("touchstart", "#mappa7", function(e){
+		window.location.href = "mappass.html";
+	});
+	
+	$(document).on("touchstart", "#mappa6", function(e){
 				   
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -152,6 +170,11 @@ function onDeviceReady() {
 	$(document).on("tap", "#offerta", function(e){
 		inviopasseggero(2);
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
+	
+	$(document).on("touchstart", "#ricarica", function(e){
+		centragps();
+	if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
 
@@ -280,7 +303,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table>';
+	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="ricarica" href="#" rel="external"><img src="img/pin.png" width="25px"></a>&nbsp;&nbsp;<a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -295,6 +318,49 @@ function CenterControl(controlDiv, map) {
 	
 }
 
+
+function onSuccess5(position) {
+	
+	//alert("timer")
+	
+	var lat = position.coords.latitude;
+	var lng = position.coords.longitude;
+	
+	localStorage.setItem("lat", lat)
+	localStorage.setItem("lng", lng)
+	
+	//var lat = localStorage.getItem("lat");
+	//var lng = localStorage.getItem("lng");
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+	marker2.setPosition(latlng);
+	map.setCenter(latlng);
+	
+}
+
+
+function onError5(error) {
+	//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+	navigator.geolocation.watchPosition(onSuccess5, onError5, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+}
+
+function onError5(error) {
+	localStorage.setItem("geostory", "NO")
+	
+	window.location.href = "index.html";
+}
+
+
+function centragps(){
+
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	
+	//onSuccess5()
+
+}
+
+
+
 function getKey(key){
 	if ( key == null ) {
 		keycode = event.keyCode;
@@ -304,9 +370,8 @@ function getKey(key){
 	}
 	
 	if (keycode ==13){
-		setTimeout(function() {
-			inviopasseggero(3);
-		},1500);
+		
+		inviopasseggero(3);
 		
 	}
 	
@@ -528,6 +593,7 @@ function resetta1(focus) {
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
 	
+
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
@@ -584,10 +650,83 @@ function resetta1(focus) {
 	beaches.push(['Tua Posizione',lat,lng,1,0,0])
 	
 	//alert("http://purplemiles.com/www2/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"");
+		
+		var myLatLng = new google.maps.LatLng(lat, lng, 1);
+		
+		var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
+		//alert(myLatLng + beach[0])
+		
+		
+		marker2 = new google.maps.Marker ({
+										  map : map,
+										  icon: icon,
+										  optimized: false,
+										  position : myLatLng,
+										  content:'<div class="popup">Tua Posizione</div>',
+										  title: '1',
+										  //label: ''+ beach[1] +','+ beach[2] +'',
+										  zIndex: 1
+										  });
+		
+		google.maps.event.addListener(marker2, 'click', function() {
+									  
+									  infowindow.setContent(this.content);
+									  infowindow.open(map, this);
+									  
+									  });
+		
+		var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
+		var iconnn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
+		
+		// marker1.setMap(null);
+		
+		
+		marker1 = new google.maps.Marker ({
+										  map : map,
+										  icon: icon,
+										  optimized: false,
+										  position : myLatLng,
+										  //content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
+										  title: '',
+										  //label: ''+ beach[1] +','+ beach[2] +'',
+										  zIndex: -10
+										  });
+		
+		marker3 = new google.maps.Marker ({
+										  map : map,
+										  icon: iconn,
+										  optimized: false,
+										  position : myLatLng,
+										  //content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
+										  title: '',
+										  //label: ''+ beach[1] +','+ beach[2] +'',
+										  zIndex: -11
+										  });
+		
+		marker4 = new google.maps.Marker ({
+										  map : map,
+										  icon: iconnn,
+										  optimized: false,
+										  position : myLatLng,
+										  //content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
+										  title: '',
+										  //label: ''+ beach[1] +','+ beach[2] +'',
+										  zIndex: -12
+										  });
+		
+	if(focus==1){
+		$("#btninizia").hide();
+		$("#pass1").hide();
+		$("#pass2").hide();
+		$("#pass3").hide();
+		$("#esci").hide();
+		$("#blob2").hide();
+		
+		//$("#loading").show();
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_autistaV2.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"},
 		   timeout: 7000,
@@ -597,15 +736,72 @@ function resetta1(focus) {
 		   
 		   $.each(result, function(i,item){
 				  
+				  if(item.Token==3){
+				  $("#pass1").hide();
+				  $("#pass2").hide();
+				  $("#pass3").hide();
+				  }
+				  
+				  
+				  if(item.Token==4){
+				  $("#pass1").hide();
+				  $("#pass2").hide();
+				  $("#pass3").hide();
+				  $("#esci").hide();
+				  
+				  //resetta1(1);
+				  
+				  
+				  marker1.setMap(null);
+				  
+				  var isVisible3 = marker3.getVisible();
+				  if(isVisible3){
+				  marker3.setMap(null);
+				  }
+				  
+				  
+				  var isVisible4 = marker4.getVisible();
+				  if(isVisible4){
+				  marker4.setMap(null);
+				  }
+				  
+				  
+				  
+				  }
+				  
+				  
 				  distanza = getDistance(lat,lng,item.lat,item.lng).toFixed(1);
 				  
 				  beaches.push(["<h2>"+item.nick+"</h2><br>"+item.partenza,item.lat,item.lng,posizione,item.rating,item.distanza,item.id_pass])
 				  
 				  
 				if(posizione==1){
+				  item1 = item.id_richiesta;
+				  
+				  nick1 = item.nick
+				  quando1 = item.quando
+				  ora1 = item.ora
+				  partenza1 = item.partenza
+				  arrivo1 = item.arrivo
+				  distanza1 = item.distanza
+				  stato1 = item.stato
+				  lng1 = item.lng
+				  lat1 = item.lat
+				  
+				  
+				  $("#pass1").show();
+				  $("#esci").show();
+				  
+				  if(item.stato==3){
+				  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
+				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
+				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
+				  }
 				  
 				  if(item.stato==1){
 				  $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
+				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
+				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
 				  }
 				  if(item.stato==0){
 				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass");
@@ -615,13 +811,55 @@ function resetta1(focus) {
 				  if(item.stato==2){
 				  $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
 				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
+				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
 				  }
+
+				  
+				  var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+				  var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
+				  var iconnn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
+				  
+						// marker1.setMap(null);
+				  var myLatLng1 = new google.maps.LatLng(item.lat,item.lng, 1);
+				  
+				  marker1 = new google.maps.Marker ({
+													map : map,
+													icon: icon,
+													optimized: false,
+													position : myLatLng1,
+													content:'<div class="popup">'+item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">Cliccami</a></div>',
+													title: '1',
+													//label: ''+ beach[1] +','+ beach[2] +'',
+													zIndex: -1
+													});
+				  
 				}
 				  
 				if(posizione==2){
+				  item2 = item.id_richiesta;
+				  
+				  nick2 = item.nick
+				  quando2 = item.quando
+				  ora2 = item.ora
+				  partenza2 = item.partenza
+				  arrivo2 = item.arrivo
+				  distanza2 = item.distanza
+				  stato2 = item.stato
+				  lng2 = item.lng
+				  lat2 = item.lat
+				  
+				  $("#pass2").show();
+				  
+				  if(item.stato==3){
+				  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
+				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
+				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
+				  }
 				  
 				  if(item.stato==1){
 				  $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
+				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
+				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
 				  }
 				  if(item.stato==0){
 				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass");
@@ -631,12 +869,55 @@ function resetta1(focus) {
 				  if(item.stato==2){
 				  $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
 				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
+				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
 				  }
+
+				  
+				  var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+				  //alert(myLatLng + beach[0] + beach[5])
+				  
+				  var myLatLng2 = new google.maps.LatLng(item.lat,item.lng, 1);
+				  
+				  //marker3.setMap(null);
+				  
+						marker3 = new google.maps.Marker ({
+														  map : map,
+														  icon: icon,
+														  optimized: false,
+														  position : myLatLng2,
+														  content:'<div class="popup">'+item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">Cliccami</a></div>',
+														  title: '2',
+														  //label: ''+ beach[1] +','+ beach[2] +'',
+														  zIndex: -10
+														  });
+
+				  
 				}
 				  if(posizione==3){
+				  item3 = item.id_richiesta;
+				  
+				  nick3 = item.nick
+				  quando3 = item.quando
+				  ora3 = item.ora
+				  partenza3 = item.partenza
+				  arrivo3 = item.arrivo
+				  distanza3 = item.distanza
+				  stato3 = item.stato
+				  lng3 = item.lng
+				  lat3 = item.lat
+				  
+				  $("#pass3").show();
+				  
+				  if(item.stato==3){
+				  $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
+				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
+				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
+				  }
 				  
 				  if(item.stato==1){
 				  $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
+				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
+				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
 				  }
 				  if(item.stato==0){
 				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass");
@@ -646,9 +927,27 @@ function resetta1(focus) {
 				  if(item.stato==2){
 				  $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
 				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
+				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
 				  }
+				  
+				  var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+				  //alert(myLatLng + beach[0] + beach[5])
+				  
+				  var myLatLng3 = new google.maps.LatLng(item.lat,item.lng, 1);
+				  
+				  //marker4.setMap(null);
+				  marker4 = new google.maps.Marker ({
+													map : map,
+													icon: icon,
+													optimized: false,
+													position : myLatLng3,
+													content:'<div class="popup">'+item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">Cliccami</a></div>',
+													title: '4',
+													//label: ''+ beach[1] +','+ beach[2] +'',
+													zIndex: -100
+													});
+				  
 				  }
-
 
 				posizione = (posizione+1);
 				  
@@ -667,160 +966,7 @@ function resetta1(focus) {
 		   
 		   },
 		   dataType:"jsonp"});
-	
-	
-		 setTimeout(function() {
-				for (var i = 0; i < beaches.length; i++) {
-					var beach = beaches[i];
-					
-					numero = beaches.length;
-					
-					var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
-					
-					
-					if(i==0){
-						 var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
-						 //alert(myLatLng + beach[0])
-					
-					
-						marker2 = new google.maps.Marker ({
-													 map : map,
-													 icon: icon,
-													 optimized: false,
-													 position : myLatLng,
-													 content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="javascript:chiama('+ beach[5] +')">Cliccami</a></div>',
-													 title: beach[0],
-													 //label: ''+ beach[1] +','+ beach[2] +'',
-													 zIndex: beach[3]
-													 });
-					
-					google.maps.event.addListener(marker2, 'click', function() {
-												  
-												  infowindow.setContent(this.content);
-												  infowindow.open(map, this);
-												  
-												  });
 
-
-					}
-					
-			if(focus==1){
-					if(i==1){
-						 var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
-					     var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
-					     var iconnn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
-					
-						// marker1.setMap(null);
-					
-
-						 marker1 = new google.maps.Marker ({
-													 map : map,
-													 icon: icon,
-													 optimized: false,
-													 position : myLatLng,
-													 content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
-													 title: beach[0],
-													 //label: ''+ beach[1] +','+ beach[2] +'',
-													 zIndex: beach[3]
-													 });
-					
-					marker3 = new google.maps.Marker ({
-													  map : map,
-													  icon: iconn,
-													  optimized: false,
-													  position : myLatLng,
-													  //content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
-													  title: beach[0],
-													  //label: ''+ beach[1] +','+ beach[2] +'',
-													  zIndex: -10
-													  });
-					
-					marker4 = new google.maps.Marker ({
-													  map : map,
-													  icon: iconnn,
-													  optimized: false,
-													  position : myLatLng,
-													  //content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
-													  title: beach[0],
-													  //label: ''+ beach[1] +','+ beach[2] +'',
-													  zIndex: -100
-													  });
-					
-					
-						//markers.push(marker)
-					
-						/* google.maps.event.addListener(marker1, 'click', function() {
-												  
-							infowindow.setContent(this.content);
-							infowindow.open(map, this);
-													  
-						});*/
-					
-					}
-					if(i==2){
-						 var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
-						 //alert(myLatLng + beach[0] + beach[5])
-					
-					    marker3.setMap(null);
-					
-						marker3 = new google.maps.Marker ({
-													 map : map,
-													 icon: icon,
-													 optimized: false,
-													 position : myLatLng,
-													 content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
-													 title: beach[0],
-													 //label: ''+ beach[1] +','+ beach[2] +'',
-													 zIndex: beach[3]
-													 });
-					
-					
-						 //markers.push(marker)
-					
-						/* google.maps.event.addListener(marker3, 'click', function() {
-												  
-												  infowindow.setContent(this.content);
-												  infowindow.open(map, this);
-												  
-												  });*/
-
-					}
-					
-					if(i==3){
-					var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
-					//alert(myLatLng + beach[0] + beach[5])
-					
-					marker4.setMap(null);
-					marker4 = new google.maps.Marker ({
-													  map : map,
-													  icon: icon,
-													  optimized: false,
-													  position : myLatLng,
-													  content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
-													  title: beach[0],
-													  //label: ''+ beach[1] +','+ beach[2] +'',
-													  zIndex: beach[3]
-													  });
-					
-					
-					//markers.push(marker)
-					
-					/*google.maps.event.addListener(marker4, 'click', function() {
-												  
-												  infowindow.setContent(this.content);
-												  infowindow.open(map, this);
-												  
-												  });*/
-					
-					}
-
-			  }
-
-		    }
-					
-					
-		 }, 1000);
-	
 	
 		//$("#blob1").attr("href", "javascript:alert()");
 
@@ -831,19 +977,6 @@ function resetta1(focus) {
 	   centerControlDiv.index = 1;
 	   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 	
-	   
-	if(focus==1){
-		$("#btninizia").hide();
-		$("#pass1").hide();
-		$("#pass2").hide();
-		$("#pass3").hide();
-		$("#esci").hide();
-		
-		$("#loading").show();
-		
-		$("#pass1").hide();
-		$("#pass2").hide();
-		$("#pass3").hide();
 		
 		timer()
 		
@@ -955,7 +1088,7 @@ function posizionegps(){
 	refreshPos = setInterval(function() {
 		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		//onSuccess2();
-	}, 2000);
+	}, 3000);
 }
 	
 	
@@ -966,9 +1099,14 @@ function timer(){
 									//$("#pass2").hide();
 									//$("#pass3").hide();
 									
-									var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+									//var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 									
 									//onSuccess22();
+	var connectionStatus = false;
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+									
+	if(connectionStatus=='online'){
+									
 									
 									var lat = localStorage.getItem("lat");
 									var lng = localStorage.getItem("lng");
@@ -990,7 +1128,7 @@ function timer(){
 									
 									$.ajax({
 										   type:"GET",
-										   url:"http://purplemiles.com/www2/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
+										   url:"http://purplemiles.com/www2/check_richiesta_autistaV2.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
 										   contentType: "application/json",
 										   //data: {ID: "Lazio"}, LIMIT 10
 										   timeout: 7000,
@@ -1046,7 +1184,22 @@ function timer(){
 												  
 												  if(posizione==1){
 												  item1 = item.id_richiesta;
-												  //alert("pos1" + item.id_richiesta);
+												  
+												  nick1 = item.nick
+												  quando1 = item.quando
+												  ora1 = item.ora
+												  partenza1 = item.partenza
+												  arrivo1 = item.arrivo
+												  distanza1 = item.distanza
+												  stato1 = item.stato
+												  lng1 = item.lng
+												  lat1 = item.lat
+												  
+												  if(localStorage.getItem("palla1")!=1){
+											   
+												     palla1()
+												  
+											       }
 												  
 												  /*$(document).on("tap", "#pass1", function(e){
 																 //window.location.href = "#index3";
@@ -1091,8 +1244,8 @@ function timer(){
 												  
 												  
 												  $("#pass1").show();
-												  //$("#pass2").hide();
-												  //$("#pass3").hide();
+												  $("#pass2").hide();
+												  $("#pass3").hide();
 												  
 												  if(item.stato==3){
 												  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
@@ -1122,6 +1275,18 @@ function timer(){
 												  
 												  if(posizione==2){
 												  item2 = item.id_richiesta;
+												  
+												  nick2 = item.nick
+												  quando2 = item.quando
+												  ora2 = item.ora
+												  partenza2 = item.partenza
+												  arrivo2 = item.arrivo
+												  distanza2 = item.distanza
+												  stato2 = item.stato
+												  lng2 = item.lng
+												  lat2 = item.lat
+												  
+												  
 												  /*$(document).on("tap", "#pass2", function(e){
 																 //window.location.href = "#index3";
 																 
@@ -1160,7 +1325,7 @@ function timer(){
 																				});
 												  
 												  $("#pass2").show();
-												  //$("#pass3").hide();
+												  $("#pass3").hide();
 												  
 												  if(item.stato==3){
 												  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
@@ -1189,6 +1354,16 @@ function timer(){
 												  }
 												  
 												  if(posizione==3){
+												  
+												  nick3 = item.nick
+												  quando3 = item.quando
+												  ora3 = item.ora
+												  partenza3 = item.partenza
+												  arrivo3 = item.arrivo
+												  distanza3 = item.distanza
+												  stato3 = item.stato
+												  lng3 = item.lng
+												  lat3 = item.lat
 												  
 												  item3 = item.id_richiesta;
 												  
@@ -1259,50 +1434,12 @@ function timer(){
 										   },
 										   dataType:"jsonp"});
 									
-									setTimeout(function() {
-											   
-											   for (var k = 0; k < beaches1.length; k++) {
-											   var beach = beaches1[k];
-											   
-											   var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
-											   
-											   if(k==0){
-											   var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
-											   var icon2 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
-											   //alert(myLatLng + beach[0])
-											   marker2.setPosition(myLatLng);
-											   
-											   //alert(beaches1.length + "--" + beach[6])
-											   //marker2.setIcon(icon2);
-											   
-											   }
-											   else{
-											   
-											   var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
-											   }
-											   
-											   
-											   //se leggo=0
-											   if((k==1) && (localStorage.getItem("palla1")!=1)){
-											   
-											     palla1()
+									//setTimeout(function() {
 
-											   }
-											   
-											   if(k==2){
-											   
-											   
-											   }
-											   
-											   
-											   }
-											   
-											   codeLatLng(lat,lng);
-											   map.setCenter(centromap);
-											   //timer2()
+										//map.setCenter(centromap);
 
-								 }, 1000);
-
+								    //}, 1000);
+			}
 																		
 			}, 8000);
 	
@@ -1314,805 +1451,426 @@ function timer(){
 }
 
 
-
-function magia(utente,pass) {
-	// marker[pass].setVisible(false);
-	// devo prendere ID pass e far vedere solo lui nella mappa
+function magia2C(utente,pass) {
 	
-	var connectionStatus = false;
-	connectionStatus = navigator.onLine ? 'online' : 'offline';
-	
-	if(connectionStatus=='online'){
-
-	
-	clearInterval(refreshIntervalId);
-		for(i=0; i<10000; i++)
-		{
-			window.clearInterval(i);
-		}
-	
-	//refreshIntervalId33 = setInterval(function() {
-	
-	chiudi22(utente);
-	
-	/*var infowindow = new google.maps.InfoWindow({
-												content: contentString1,
-												maxWidth: 200,
-												maxHeight: 150,
-												});*/
-
-	//refreshIntervalId33 = setInterval(function() {
-									  
-			//alert("magia");
-	
-			var lat = localStorage.getItem("lat");
-			var lng = localStorage.getItem("lng");
-	
-	        //var lat = parseFloat("41.8337871");
-	        //var lng = parseFloat("12.4757278" );
-	
-				var beaches = [];
-				var posizione = 1;
-				var distanza = "";
-									  
-				var centromap = new google.maps.LatLng(lat, lng, posizione);
-				
-				beaches.push(['Tua Posizione',lat,lng,1,0,0,0,0])
-		
-		//alert("http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"")
-									  
-				
-				$.ajax({
-					   type:"GET",
-					   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"",
-					   contentType: "application/json",
-					   //data: {ID: "Lazio"}, LIMIT 10
-					   timeout: 7000,
-					   jsonp: 'callback',
-					   crossDomain: true,
-					   success:function(result){
-					   
-					   $.each(result, function(i,item){
-							  
-							  if(item.Token==1){
-							  
-							  
-							  distanza = getDistance(lat,lng,item.lat,item.lng).toFixed(1);
-							  
-							  beaches.push(["<h2>"+item.nick+"</h2><br>"+item.partenza,item.lat,item.lng,posizione,item.rating,item.distanza,item.id_richiesta,item.stato])
-							  
-							  posizione = (posizione+1);
-							  
-							  }
-							  else{
-								//marker1.setMap(null);
-							  }
-							  
-						});
-					   
-								  
-					   
-					   },
-					   error: function(){
-					   
-					   /*navigator.notification.alert(
-													'Possibile errore di rete, riprova tra qualche minuto.',  // message
-													alertDismissed,         // callback
-													'Attenzione',           // title
-													'Done'                  // buttonName
-													);*/
-					   
-					   },
-					   dataType:"jsonp"});
-				
-				setTimeout(function() {
-						   for (var i = 0; i < beaches.length; i++) {
-						   var beach = beaches[i];
-						   
-						   
-						   var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
-						   
-						   if(i==0){
-						   var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
-						   
-						   marker2.setPosition(myLatLng);
-						   
-
-						   }
-						   else{
-							//cambiare icona
-						     var icon2 = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(30,40));
-						   
-							
-							 if(utente==1){
-							   //marker1.set('content', '<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a id="marke1" href="#">RISPONDI</a></div>');
-							    //marker1.setMap(null);
-						   
-						   if(beach[7]==1){
-						   $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-						   $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-						   $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
-						   }
-						   if(beach[7]==0){
-						   $("#pass1").removeClass("custom-pass1").addClass("custom-pass");
-						   $("#pass1").removeClass("custom-pass2").addClass("custom-pass");
-						   $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
-						   }
-						   if(beach[7]==2){
-						   $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-						   $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-						   $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
-						   }
-						   if(beach[7]==3){
-						   $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
-						   $("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
-						   $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
-						   }
-						   
-						     setTimeout(function() {
-								magia2C(utente,pass);
-							 }, 500);
-						   
-						        marker1.setVisible(true);
-								marker1.setIcon(icon2);
-						   
-						        var isVisible3 = marker3.getVisible();
-						        if(isVisible3){
-						          marker3.setVisible(false);
-								}
-						   
-						   
-								var isVisible4 = marker4.getVisible();
-						        if(isVisible4){
-						          marker4.setVisible(false);
-								}
-						   
-						        /*marker1 = new google.maps.Marker ({
-															 map : map,
-															 icon: icon2,
-															 optimized: false,
-															 position : myLatLng,
-															 content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">RICHIESTA</a></div>',
-															 title: beach[0],
-															 //label: ''+ beach[1] +','+ beach[2] +'',
-															 zIndex: beach[3]
-															 });*/
-
-							 }
-						   
-							if(utente==2){
-							  //marker1.set('content', '<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a id="marke1" href="#">RISPONDI</a></div>');
-						   
-						   if(beach[7]==1){
-						   $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-						   $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-						   $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
-						   }
-						   if(beach[7]==0){
-						   $("#pass2").removeClass("custom-pass1").addClass("custom-pass");
-						   $("#pass2").removeClass("custom-pass2").addClass("custom-pass");
-						   $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
-						   }
-						   if(beach[7]==2){
-						   $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-						   $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-						   $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
-						   }
-						   if(beach[7]==3){
-						   $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
-						   $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
-						   $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
-						   }
-						   
-						      setTimeout(function() {
-								magia2C(utente,pass);
-							  }, 500);
-						   
-						      marker1.setVisible(false);
-						   
-						      marker3.setVisible(true);
-						      marker3.setIcon(icon2);
-						   
-						     var isVisible4 = marker4.getVisible();
-						      if(isVisible4){
-							  marker4.setVisible(false);
-						     }
-						   
-							 
-						    }
-						   
-						   if(utente==3){
-							  //marker1.set('content', '<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a id="marke1" href="#">RISPONDI</a></div>');
-						   
-						   if(beach[7]==1){
-						   $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-						   $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-						   $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
-						   }
-						   if(beach[7]==0){
-						   $("#pass3").removeClass("custom-pass1").addClass("custom-pass");
-						   $("#pass3").removeClass("custom-pass2").addClass("custom-pass");
-						   $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
-						   }
-						   if(beach[7]==2){
-						   $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
-						   $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-						   $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
-						   }
-						   if(beach[7]==3){
-						   $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
-						   $("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
-						   $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
-						   }
-						   
-						      setTimeout(function() {
-								magia2C(utente,pass);
-							   }, 500);
-						   
-							 marker1.setVisible(false);
-							 marker3.setVisible(false);
-						   
-							 marker4.setVisible(true);
-							 marker4.setIcon(icon2);
-
-						   
-						   }
-
-
-						   }
-						   
-
-						   }
-						   
-						   
-						   //codeLatLng(lat,lng);
-						   map.setCenter(centromap);
-						   
-						   $("#XXX").attr("href", "index.html");
-						   
-						   
-						   
-						   //clearInterval(refreshIntervalId);
-						   
-						   //richiesta(pass);
-						   
-						   clearInterval(refreshIntervalId);
-						   
-						   
-						   
-					}, 1000);
-	
-		//}, 10000);
-	
-
-	
-	function magia2C(utente,pass) {
-		clearInterval(refreshIntervalId);
-		for(i=0; i<10000; i++)
-		{
-			window.clearInterval(i);
-		}
-		
-		posizionegps2();
-		
-		//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-		
-		var lat = localStorage.getItem("lat");
-		var lng = localStorage.getItem("lng");
-		
-		var posizione = 1;
-		var distanza = "";
-		
-		
-		var centromap = new google.maps.LatLng(lat, lng, posizione);
-		
-		$.ajax({
-			   type:"GET",
-			   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"",
-			   contentType: "application/json",
-			   timeout: 7000,
-			   jsonp: 'callback',
-			   crossDomain: true,
-			   success:function(result){
-			   
-			   $.each(result, function(i,item){
-					  
-					  if(item.Token==1){
-					  
-					  
-					  if(utente==1){
-					  
-					  localStorage.setItem("id_richietaP1",item.id_richiesta)
-					  
-					  $("#pass2").hide();
-					  $("#pass3").hide();
-					  
-					  if(item.stato==1){
-					  $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-					  $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-					  $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
-					  }
-					  if(item.stato==0){
-					  $("#pass1").removeClass("custom-pass1").addClass("custom-pass");
-					  $("#pass1").removeClass("custom-pass2").addClass("custom-pass");
-					  $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
-					  }
-					  if(item.stato==2){
-					  $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-					  $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-					  $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
-					  }
-					  if(item.stato==3){
-					  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
-					  $("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
-					  $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
-					  }
-					  }
-					  
-					  if(utente==2){
-					  localStorage.setItem("id_richietaP2",item.id_richiesta)
-					  $("#pass1").hide();
-					  $("#pass3").hide();
-					  $("#pass2").show();
-					  
-					  if(item.stato==1){
-					  $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-					  $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-					  $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
-					  }
-					  if(item.stato==0){
-					  $("#pass2").removeClass("custom-pass1").addClass("custom-pass");
-					  $("#pass2").removeClass("custom-pass2").addClass("custom-pass");
-					  $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
-					  }
-					  if(item.stato==2){
-					  $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-					  $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-					  $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
-					  }
-					  if(item.stato==3){
-					  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
-					  $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
-					  $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
-					  }
-					  }
-					  
-					  if(utente==3){
-					  localStorage.setItem("id_richietaP3",item.id_richiesta)
-					  $("#pass1").hide();
-					  $("#pass2").hide();
-					  $("#pass3").show();
-					  
-					  if(item.stato==1){
-					  $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-					  $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-					  $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
-					  }
-					  if(item.stato==0){
-					  $("#pass3").removeClass("custom-pass1").addClass("custom-pass");
-					  $("#pass3").removeClass("custom-pass2").addClass("custom-pass");
-					  $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
-					  }
-					  if(item.stato==2){
-					  $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
-					  $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-					  $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
-					  }
-					  if(item.stato==3){
-					  $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
-					  $("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
-					  $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
-					  }
-					  }
-					  
-
-					  posizione = (posizione+1);
-					  
-					  }
-					  else{
-					  //marker1.setMap(null);
-					  }
-					  
-					  });
-			   
-			   
-			   },
-			   error: function(){
-			   
-			   navigator.notification.alert(
-											'Possibile errore di rete, riprova tra qualche minuto.',  // message
-											alertDismissed,         // callback
-											'Attenzione',           // title
-											'Done'                  // buttonName
-											);
-			   
-			   },
-			   dataType:"jsonp"});
-		
-		
-		
-		localStorage.setItem("fatto","1")
-		
-		
-		refreshIntervalId33 = setInterval(function() {
-										  
-										  var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-										  
-										  //onSuccess22();
-										  
-										  var lat = localStorage.getItem("lat");
-										  var lng = localStorage.getItem("lng");
-										  
-										  var posizione = 1;
-										  var distanza = "";
-										  
-										  
-										  var centromap = new google.maps.LatLng(lat, lng, posizione);
-										  
-										  $.ajax({
-												 type:"GET",
-												 url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"",
-												 //url:"http://purplemiles.com/www2/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
-												 contentType: "application/json",
-												 //data: {ID: "Lazio"}, LIMIT 10
-												 timeout: 7000,
-												 jsonp: 'callback',
-												 crossDomain: true,
-												 success:function(result){
-												 
-												 $.each(result, function(i,item){
-														
-														if(item.Token==1){
-														
-														//distanza = getDistance(lat,lng,item.lat,item.lng).toFixed(1);
-
-														//alert(utente + item.stato)
-														
-														/*if(localStorage.getItem("fatto")=="1"){
-														 if((posizione==1) && (localStorage.getItem("id_richietaP1")!=item.id_richiesta)){
-														  navigator.notification.alert(
-																					 'Richiesta Respinta o Cancellata.',  // message
-																					 alertDismissed,         // callback
-																					 'Attenzione',           // title
-																					 'ok'                  // buttonName
-																					 );
-														  window.location.href = "map2.html?id=1";
-														  return;
-														 }
-														 else{
-
-														 }
-														}*/
-														
-														if(utente==1){
-														
-														localStorage.setItem("id_richietaP1",item.id_richiesta)
-														
-												        $("#pass2").hide();
-												        $("#pass3").hide();
-														
-														if(item.stato==1){
-														$("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-														$("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-														$("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
-														}
-														if(item.stato==0){
-														$("#pass1").removeClass("custom-pass1").addClass("custom-pass");
-														$("#pass1").removeClass("custom-pass2").addClass("custom-pass");
-														$("#pass1").removeClass("custom-pass3").addClass("custom-pass");
-														}
-														if(item.stato==2){
-														$("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-														$("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-														$("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
-														}
-														if(item.stato==3){
-														$("#pass1").removeClass("custom-pass").addClass("custom-pass3");
-														$("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
-														$("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
-														}
-														}
-														
-														if(utente==2){
-														localStorage.setItem("id_richietaP2",item.id_richiesta)
-														$("#pass1").hide();
-														$("#pass3").hide();
-														$("#pass2").show();
-														
-														if(item.stato==1){
-														$("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-														$("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-														$("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
-														}
-														if(item.stato==0){
-														$("#pass2").removeClass("custom-pass1").addClass("custom-pass");
-														$("#pass2").removeClass("custom-pass2").addClass("custom-pass");
-														$("#pass2").removeClass("custom-pass3").addClass("custom-pass");
-														}
-														if(item.stato==2){
-														$("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-														$("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-														$("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
-														}
-														if(item.stato==3){
-														$("#pass2").removeClass("custom-pass").addClass("custom-pass3");
-														$("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
-														$("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
-														}
-														}
-														
-														if(utente==3){
-														localStorage.setItem("id_richietaP3",item.id_richiesta)
-														$("#pass1").hide();
-														$("#pass2").hide();
-														$("#pass3").show();
-														
-														if(item.stato==1){
-														$("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-														$("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-														$("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
-														}
-														if(item.stato==0){
-														$("#pass3").removeClass("custom-pass1").addClass("custom-pass");
-														$("#pass3").removeClass("custom-pass2").addClass("custom-pass");
-														$("#pass3").removeClass("custom-pass3").addClass("custom-pass");
-														}
-														if(item.stato==2){
-														$("#pass3").removeClass("custom-pass").addClass("custom-pass2");
-														$("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-														$("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
-														}
-														if(item.stato==3){
-														$("#pass3").removeClass("custom-pass").addClass("custom-pass3");
-														$("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
-														$("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
-														}
-														}
-														
-														
-														
-														
-														posizione = (posizione+1);
-														
-														}
-														else{
-														//marker1.setMap(null);
-														}
-														
-														});
-												 
-												 
-												 },
-												 error: function(){
-												 
-												 /*navigator.notification.alert(
-																			  'Possibile errore di rete, riprova tra qualche minuto.',  // message
-																			  alertDismissed,         // callback
-																			  'Attenzione',           // title
-																			  'Done'                  // buttonName
-																			  );*/
-												 
-												 },
-												 dataType:"jsonp"});
-										  
-										  
-										  //var lat = localStorage.getItem("lat");
-										  //var lng = localStorage.getItem("lng");
-										  
-										  //var lat = parseFloat("41.8337871");
-										  //var lng = parseFloat("12.4757278" );
-										  
-										  map.setCenter(centromap);
-										  
-										  localStorage.setItem("fatto","1")
-										  
-										  //alert("magic2");
-										  
-										  
-										  /*var posizione = 1;
-										   
-										   $.ajax({
-										   type:"GET",
-										   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"",
-										   contentType: "application/json",
-										   timeout: 7000,
-										   jsonp: 'callback',
-										   crossDomain: true,
-										   success:function(result){
-										   
-										   $.each(result, function(i,item){
-										   
-										   
-										   if(item.Token==1){
-										   
-										   
-										   beaches.push(["<h2>"+item.nick+"</h2><br>"+item.partenza,item.lat,item.lng,posizione,item.rating,item.distanza,item.stato])
-										   
-										   posizione = (posizione+1);
-										   
-										   if(utente==1){
-										   
-										   if(item.stato==1){
-										   $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-										   $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-										   $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
-										   }
-										   if(item.stato==0){
-										   $("#pass1").removeClass("custom-pass1").addClass("custom-pass");
-										   $("#pass1").removeClass("custom-pass2").addClass("custom-pass");
-										   $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
-										   }
-										   if(item.stato==2){
-										   $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-										   $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-										   $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
-										   }
-										   if(item.stato==3){
-										   $("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
-										   $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
-										   $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
-										   }
-										   
-										   
-										   }
-										   
-										   if(utente==2){
-										   if(item.stato==1){
-										   $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-										   $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-										   $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
-										   }
-										   if(item.stato==0){
-										   $("#pass2").removeClass("custom-pass1").addClass("custom-pass");
-										   $("#pass2").removeClass("custom-pass2").addClass("custom-pass");
-										   $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
-										   }
-										   if(item.stato==2){
-										   $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-										   $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-										   $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
-										   }
-										   if(item.stato==3){
-										   $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
-										   $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
-										   $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
-										   }
-										   
-										   
-										   }
-										   
-										   if(utente==3){
-										   
-										   if(item.stato==1){
-										   $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-										   $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-										   $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
-										   }
-										   if(item.stato==0){
-										   $("#pass3").removeClass("custom-pass1").addClass("custom-pass");
-										   $("#pass3").removeClass("custom-pass2").addClass("custom-pass");
-										   $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
-										   }
-										   if(item.stato==2){
-										   $("#pass33").removeClass("custom-pass").addClass("custom-pass2");
-										   $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-										   $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
-										   }
-										   if(item.stato==3){
-										   $("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
-										   $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
-										   $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
-										   }
-										   
-										   }
-										   
-										   }
-										   else{
-										   
-										   }
-										   
-										   });
-										   
-										   
-										   },
-										   error: function(){
-										   
-										   
-										   },
-										   dataType:"jsonp"});
-										   setTimeout(function() {
-										   for (var i = 0; i < beaches.length; i++) {
-										   var beach = beaches[i];
-										   
-										   var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
-										   
-										   
-										   }
-										   
-										   
-										   
-										   map.setCenter(centromap);
-										   
-										   }, 1000);*/
-										  
-										  
-										  }, 10000);
-		
-		
-		
-		//---------------------------
-		
-		function posizionegps2(){
-			
-			refreshPos = setInterval(function() {
-				var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-				//onSuccess2();
-			}, 2000);
-		
-		}
-		
-		function onSuccess22(position) {
-			
-			var lat = position.coords.latitude;
-			var lng = position.coords.longitude;
-			
-			localStorage.setItem("lat", lat)
-			localStorage.setItem("lng", lng)
-			
-			//var lat = localStorage.getItem("lat");
-			//var lng = localStorage.getItem("lng");
-			var latlng = new google.maps.LatLng(lat, lng);
-			
-			marker2.setPosition(latlng);
-			map.setCenter(latlng);
-			
-			//marker.setPosition(latlng);
-			//map.setCenter(latlng);
-			
-			//localStorage.setItem("lat", ciao)
-			//localStorage.setItem("lng", ciao1)
-		}
-		
-		function onSuccess2(position) {
-			
-			var lat = position.coords.latitude;
-			var lng = position.coords.longitude;
-			
-			localStorage.setItem("lat", lat)
-			localStorage.setItem("lng", lng)
-			
-			//var lat = localStorage.getItem("lat");
-			//var lng = localStorage.getItem("lng");
-			var latlng = new google.maps.LatLng(lat, lng);
-			
-			marker2.setPosition(latlng);
-			//map.setCenter(latlng);
-			
-			//marker.setPosition(latlng);
-			//map.setCenter(latlng);
-			
-			//localStorage.setItem("lat", ciao)
-			//localStorage.setItem("lng", ciao1)
-		}
-		
-		
-		function onError2(error) {
-			//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
-			navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
-		}
-		
-		function onError3(error) {
-			localStorage.setItem("geostory", "NO")
-			
-			window.location.href = "index.html";
-		}
-		
-		
+	for(i=0; i<10000; i++)
+	{
+		window.clearInterval(i);
 	}
-		
-  }
+	
+	posizionegps2();
+	
+	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
+	
+	var posizione = 1;
+	var distanza = "";
+	
+	
+	var centromap = new google.maps.LatLng(lat, lng, posizione);
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   contentType: "application/json",
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				  if(item.Token==1){
+				  
+				  //cambiare icona
+				  var icon2 = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(30,40));
+				  
+				  if(utente==1){
+				  stato1 = item.stato
+				  localStorage.setItem("id_richietaP1",item.id_richiesta)
+				  
+				  $("#pass2").hide();
+				  $("#pass3").hide();
+				  
+				  if(item.stato==1){
+				  $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
+				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
+				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+				  }
+				  if(item.stato==0){
+				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass");
+				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass");
+				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
+				  }
+				  if(item.stato==2){
+				  $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
+				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
+				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
+				  }
+				  if(item.stato==3){
+				  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
+				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
+				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
+				  }
+				  
+				  marker1.setVisible(true);
+				  marker1.setIcon(icon2);
+				  
+				  var isVisible3 = marker3.getVisible();
+				  if(isVisible3){
+				  marker3.setVisible(false);
+				  }
+				  
+				  
+				  var isVisible4 = marker4.getVisible();
+				  if(isVisible4){
+				  marker4.setVisible(false);
+				  
 
+				  }
+				  
+				  
+				  
+				  }
+				  
+				  if(utente==2){
+				  stato2 = item.stato
+				  localStorage.setItem("id_richietaP2",item.id_richiesta)
+				  $("#pass1").hide();
+				  $("#pass3").hide();
+				  $("#pass2").show();
+				  
+				  if(item.stato==1){
+				  $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
+				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
+				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
+				  }
+				  if(item.stato==0){
+				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass");
+				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass");
+				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
+				  }
+				  if(item.stato==2){
+				  $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
+				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
+				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
+				  }
+				  if(item.stato==3){
+				  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
+				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
+				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
+				  }
+				  
+				  marker1.setVisible(false);
+				  
+				  marker3.setVisible(true);
+				  marker3.setIcon(icon2);
+				  
+				  var isVisible4 = marker4.getVisible();
+				  if(isVisible4){
+				  marker4.setVisible(false);
+				  }
+				  
+				  
+				  }
+				  
+				  if(utente==3){
+				  stato3 = item.stato
+				  localStorage.setItem("id_richietaP3",item.id_richiesta)
+				  $("#pass1").hide();
+				  $("#pass2").hide();
+				  $("#pass3").show();
+				  
+				  if(item.stato==1){
+				  $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
+				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
+				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
+				  }
+				  if(item.stato==0){
+				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass");
+				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass");
+				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
+				  }
+				  if(item.stato==2){
+				  $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
+				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
+				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
+				  }
+				  if(item.stato==3){
+				  $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
+				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
+				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
+				  }
+				  
+				  marker1.setVisible(false);
+				  marker3.setVisible(false);
+				  
+				  marker4.setVisible(true);
+				  marker4.setIcon(icon2);
+				  
+				  }
+				  
+				  
+				  posizione = (posizione+1);
+				  
+				  }
+				  else{
+				  //marker1.setMap(null);
+				  }
+				  
+				  });
+		   
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   },
+		   dataType:"jsonp"});
+	
+	
+	
+	localStorage.setItem("fatto","1")
+	
+	
+	refreshIntervalId33 = setInterval(function() {
+									  
+									  //var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+									  
+									  //onSuccess22();
+									  
+									  var lat = localStorage.getItem("lat");
+									  var lng = localStorage.getItem("lng");
+									  
+									  var posizione = 1;
+									  var distanza = "";
+									  
+									  
+									  var centromap = new google.maps.LatLng(lat, lng, posizione);
+									  
+									  $.ajax({
+											 type:"GET",
+											 url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"",
+											 //url:"http://purplemiles.com/www2/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
+											 contentType: "application/json",
+											 //data: {ID: "Lazio"}, LIMIT 10
+											 timeout: 7000,
+											 jsonp: 'callback',
+											 crossDomain: true,
+											 success:function(result){
+											 
+											 $.each(result, function(i,item){
+													
+													if(item.Token==1){
+													
+													
+													if(utente==1){
+													stato1 = item.stato
+													localStorage.setItem("id_richietaP1",item.id_richiesta)
+													
+													$("#pass2").hide();
+													$("#pass3").hide();
+													
+													if(item.stato==1){
+													$("#pass1").removeClass("custom-pass").addClass("custom-pass1");
+													$("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
+													$("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+													}
+													if(item.stato==0){
+													$("#pass1").removeClass("custom-pass1").addClass("custom-pass");
+													$("#pass1").removeClass("custom-pass2").addClass("custom-pass");
+													$("#pass1").removeClass("custom-pass3").addClass("custom-pass");
+													}
+													if(item.stato==2){
+													$("#pass1").removeClass("custom-pass").addClass("custom-pass2");
+													$("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
+													$("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
+													}
+													if(item.stato==3){
+													$("#pass1").removeClass("custom-pass").addClass("custom-pass3");
+													$("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
+													$("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
+													}
+													}
+													
+													if(utente==2){
+													stato2 = item.stato
+													localStorage.setItem("id_richietaP2",item.id_richiesta)
+													$("#pass1").hide();
+													$("#pass3").hide();
+													$("#pass2").show();
+													
+													if(item.stato==1){
+													$("#pass2").removeClass("custom-pass").addClass("custom-pass1");
+													$("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
+													$("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
+													}
+													if(item.stato==0){
+													$("#pass2").removeClass("custom-pass1").addClass("custom-pass");
+													$("#pass2").removeClass("custom-pass2").addClass("custom-pass");
+													$("#pass2").removeClass("custom-pass3").addClass("custom-pass");
+													}
+													if(item.stato==2){
+													$("#pass2").removeClass("custom-pass").addClass("custom-pass2");
+													$("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
+													$("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
+													}
+													if(item.stato==3){
+													$("#pass2").removeClass("custom-pass").addClass("custom-pass3");
+													$("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
+													$("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
+													}
+													}
+													
+													if(utente==3){
+													stato3 = item.stato
+													localStorage.setItem("id_richietaP3",item.id_richiesta)
+													$("#pass1").hide();
+													$("#pass2").hide();
+													$("#pass3").show();
+													
+													if(item.stato==1){
+													$("#pass3").removeClass("custom-pass").addClass("custom-pass1");
+													$("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
+													$("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
+													}
+													if(item.stato==0){
+													$("#pass3").removeClass("custom-pass1").addClass("custom-pass");
+													$("#pass3").removeClass("custom-pass2").addClass("custom-pass");
+													$("#pass3").removeClass("custom-pass3").addClass("custom-pass");
+													}
+													if(item.stato==2){
+													$("#pass3").removeClass("custom-pass").addClass("custom-pass2");
+													$("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
+													$("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
+													}
+													if(item.stato==3){
+													$("#pass3").removeClass("custom-pass").addClass("custom-pass3");
+													$("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
+													$("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
+													}
+													}
+													
+													
+													
+													
+													posizione = (posizione+1);
+													
+													}
+													else{
+													//marker1.setMap(null);
+													}
+													
+													});
+											 
+											 
+											 },
+											 error: function(){
+											 
+											 /*navigator.notification.alert(
+											  'Possibile errore di rete, riprova tra qualche minuto.',  // message
+											  alertDismissed,         // callback
+											  'Attenzione',           // title
+											  'Done'                  // buttonName
+											  );*/
+											 
+											 },
+											 dataType:"jsonp"});
+									  
+									  
+									  //var lat = localStorage.getItem("lat");
+									  //var lng = localStorage.getItem("lng");
+									  
+									  //var lat = parseFloat("41.8337871");
+									  //var lng = parseFloat("12.4757278" );
+									  
+									  //map.setCenter(centromap);
+									  
+									  localStorage.setItem("fatto","1")
+									  
+									  
+									  
+									  }, 10000);
+	
+	
+	
+	//---------------------------
+	
+	function posizionegps2(){
+		
+		refreshPos = setInterval(function() {
+			var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+				//onSuccess2();
+			}, 3000);
+	}
+	
+	function onSuccess22(position) {
+		
+		var lat = position.coords.latitude;
+		var lng = position.coords.longitude;
+		
+		localStorage.setItem("lat", lat)
+		localStorage.setItem("lng", lng)
+		
+		//var lat = localStorage.getItem("lat");
+		//var lng = localStorage.getItem("lng");
+		var latlng = new google.maps.LatLng(lat, lng);
+		
+		marker2.setPosition(latlng);
+		//map.setCenter(latlng);
+		
+		//marker.setPosition(latlng);
+		//map.setCenter(latlng);
+		
+		//localStorage.setItem("lat", ciao)
+		//localStorage.setItem("lng", ciao1)
+	}
+	
+	function onSuccess2(position) {
+		
+		var lat = position.coords.latitude;
+		var lng = position.coords.longitude;
+		
+		localStorage.setItem("lat", lat)
+		localStorage.setItem("lng", lng)
+		
+		//var lat = localStorage.getItem("lat");
+		//var lng = localStorage.getItem("lng");
+		var latlng = new google.maps.LatLng(lat, lng);
+		
+		marker2.setPosition(latlng);
+		//map.setCenter(latlng);
+		
+		//marker.setPosition(latlng);
+		//map.setCenter(latlng);
+		
+		//localStorage.setItem("lat", ciao)
+		//localStorage.setItem("lng", ciao1)
+	}
+	
+	
+	function onError2(error) {
+		//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+		navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+	}
+	
+	function onError3(error) {
+		localStorage.setItem("geostory", "NO")
+		
+		window.location.href = "index.html";
+	}
+	
+	
 }
+
 
 function magia3() {
 	var pass = item1;
@@ -2199,92 +1957,7 @@ function cancella(id){
 function casa(){
 	window.location.href = "map.html";
 	
-	// + interval
-	/*var lat = localStorage.getItem("lat");
-	var lng = localStorage.getItem("lng");
-	
-	var beaches = [];
-	var posizione = 1;
-	var distanza = "";
-	
-	beaches.push(['Tua Posizione',lat,lng,1,0,0])
-	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista.php?email=salvatore.bruni@gmail.com&lat=41.777525&lng=12.364673",
-		   contentType: "application/json",
-		   //data: {ID: "Lazio"}, LIMIT 10
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  
-				  posizione = (posizione+1);
-				  
-				  distanza = getDistance(lat,lng,item.lat,item.lng).toFixed(1);
-				  
-				  beaches.push(["<h2>"+item.nick+"</h2><br>"+item.partenza,item.lat,item.lng,posizione,item.rating,item.distanza])
-				  
-				  
-				  });
-		   
-		   
-		   },
-		   error: function(){
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		   
-		   },
-		   dataType:"jsonp"});
-	
-	setTimeout(function() {
-			   for (var i = 0; i < beaches.length; i++) {
-			   var beach = beaches[i];
-			   
-			   
-			   var myLatLng = new google.maps.LatLng(beach[1], beach[2], beach[3]);
-			   
-			   if(i==0){
-			   var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(30,50));
-			   //alert(myLatLng + beach[0])
-			   marker2.setPosition(myLatLng);
-			   
-
-			   }
-			   else{
-			   var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
-			   }
-			   
-			   //se leggo=0
-			   if(i==1 && localStorage.getItem("palla1")!=1){
-			   palla1()
-			   }
-			   
-
-				marker1.setVisible(true);
-
-				marker.setVisible(true);
-
-			   
-			   
-			   $("#pass"+i+"").attr("href", "javascript:magia("+ i +")");
-			   $("#ric"+i+"").attr("href", "javascript:magia("+ i +")");
-			   
-			   }
-			   
-			   codeLatLng(lat,lng);
-			   map.setCenter(myLatLng);
-			   
-			   
-		}, 1000);*/
-}
+	}
 
 function start() {
 	//chiamo e setto a 1 lo stato dell'autista (ok lavoro)
@@ -2331,7 +2004,7 @@ function resetta22() {
 
 function richiesta1() {
 	id = item1
-
+	
 	$("#risp1").show();
 	$("#risp2").hide();
 	$("#gps22").hide();
@@ -2342,52 +2015,32 @@ function richiesta1() {
 	
 	$("#blob2").show();
 	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
-		   contentType: "application/json",
-		   //data: {ID: "Lazio"}, LIMIT 10
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
 				  
-				  if(item.Token==1){
+				  $("#nickblob").html("<font color='#cc33cc'>"+ nick1 +"</font>");
+				  localStorage.setItem("id_nick", nick1)
+				  $("#nickhome3").html(nick1);
 				  
-				  $("#nickblob").html("<font color='#cc33cc'>"+ item.nick +"</font>");
-				  localStorage.setItem("id_nick", item.nick)
-				  $("#nickhome3").html(item.nick);
+				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ quando1 +", "+ ora1 +"</font>");
 				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ item.quando +", "+ item.ora +"</font>");
+				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ partenza1 +"</font>");
 				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
+				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ arrivo1 +"</font>");
 				  
-				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
+				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza1 +"</font>");
 				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
-				  
-				  if(item.stato!=0){
-				    //alert(id)
+				  if(stato1!=0){
 					$("#risp1").hide();
 				  }
 				  
-				  if(item.stato==2){
-				  //alert(item.stato)
+				  if(stato1==2){
 				  $("#gps1").show();
 				  $("#rif1").html("Annulla");
 				  
 				  $(document).on("tap", "#gps1", function(e){
-						//clearInterval(refreshIntervalId);
 						
-						//alert(item.lat+","+item.lng);
-						
-						var addressLongLat = item.lat+","+item.lng;
+						var addressLongLat = lat1+","+lng1;
 	
-	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
-	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
-	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+						window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 						
 						$("#blob2").hide();
 								 
@@ -2404,29 +2057,6 @@ function richiesta1() {
 					$("#rif1").html("Rifiuta");
 					$("#gps1").hide();
 				  }
-				  
-				  }
-				  else{
-				  //marker1.setMap(null);
-				  }
-				  
-			});
-		   
-		   
-		   },
-		   error: function(){
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		   
-		   $("#blob2").show();
-		   
-		   },
-		   dataType:"jsonp"});
 	
 	
 	$("#close1").show();
@@ -2437,11 +2067,15 @@ function richiesta1() {
 	$("#xchiudi2").hide();
 	$("#xchiudi3").hide();
 	
+	$("#xchiudi11").show();
+	$("#xchiudi22").hide();
+	$("#xchiudi33").hide();
 	
-	$(document).on("tap", "#xchiudi1", function(e){
+	
+	$(document).on("touchstart", "#xchiudi1", function(e){
 		
 		$("#blob2").hide();
-		magia(1,id)
+		magia2C(1,id)
 		
 				   
 				   e.stopImmediatePropagation();
@@ -2451,8 +2085,20 @@ function richiesta1() {
 				   return false;
 
 	});
+	
+	$(document).on("touchstart", "#xchiudi11", function(e){
+				   
+				   $("#blob2").hide();
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+	});
 
-	$(document).on("tap", "#close1", function(e){
+	$(document).on("touchstart", "#close1", function(e){
 		$("#pass1").hide();
 				   
 		$("#blob2").hide();
@@ -2466,7 +2112,7 @@ function richiesta1() {
 
 	});
 	
-	$(document).on("tap", "#risp1", function(e){
+	$(document).on("touchstart", "#risp1", function(e){
 				   
 				   $("#blob2").hide();
 				   $.mobile.changePage ($("#home3"));
@@ -2489,49 +2135,36 @@ function richiesta2() {
 	$("#risp3").hide();
 	$("#gps3").hide();
 	
-	//alert(2)
 	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
-		   contentType: "application/json",
-		   //data: {ID: "Lazio"}, LIMIT 10
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
+
 				  
-				  if(item.Token==1){
+				  $("#nickblob").html("<font color='#cc33cc'>"+ nick2 +"</font>");
 				  
-				  $("#nickblob").html("<font color='#cc33cc'>"+ item.nick +"</font>");
+				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ quando2 +", "+ ora2 +"</font>");
 				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ item.quando +", "+ item.ora +"</font>");
+				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ partenza2 +"</font>");
 				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
+				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ arrivo2 +"</font>");
 				  
-				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
+				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza2 +"</font>");
 				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
-				  
-				  if(item.stato!=0){
+				  if(stato2!=0){
 					$("#risp2").hide();
-				  if(item.stato==2){
-				  //alert(item.stato)
-				  $("#gps22").show();
-				  $("#rif2").html("Annulla");
+				  }
+					  
+				  if(stato2==2){
+					  
+				   $("#gps22").show();
+				   $("#rif2").html("Annulla");
 				  
-				  $(document).on("tap", "#gps22", function(e){
-								 //clearInterval(refreshIntervalId);
-								 var addressLongLat = item.lat+","+item.lng;
-	
-	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
-	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
-	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+					  $(document).on("tap", "#gps22", function(e){
+
+								 var addressLongLat = lat2+","+lng2;
+
+	                            window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -2541,38 +2174,14 @@ function richiesta2() {
 								 
 								 return false;
 								 
-								 });
+						});
 				  
 				  }
 				  else{
 					$("#rif2").html("Rifiuta");
 				  }
-				  }
 
-				  
-				  }
-				  else{
-				  //marker1.setMap(null);
-				  }
-				  
-						});
-		   
-		   
-		   },
-		   error: function(){
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		   
-		   $("#blob2").show();
-		   
-		   },
-		   dataType:"jsonp"});
-	
+
 	$("#close2").show();
 	$("#close1").hide();
 	$("#close3").hide();
@@ -2581,16 +2190,24 @@ function richiesta2() {
 	$("#xchiudi1").hide();
 	$("#xchiudi3").hide();
 	
+	$("#xchiudi22").show();
+	$("#xchiudi11").hide();
+	$("#xchiudi33").hide();
 	
-	
-	$(document).on("tap", "#xchiudi2", function(e){
-				   clearInterval(refreshIntervalId);
+	$(document).on("touchstart", "#xchiudi2", function(e){
+
 				   $("#blob2").hide();
-				   magia(2,id)
+				   magia2C(2,id)
 				   
 				   });
+	
+	$(document).on("touchstart", "#xchiudi22", function(e){
+				   
+				   $("#blob2").hide();
+				   
+	});
 
-	$(document).on("tap", "#close2", function(e){
+	$(document).on("touchstart", "#close2", function(e){
 	$("#pass2").hide();
 	$("#blob2").hide();
 	cancella(id)
@@ -2603,7 +2220,7 @@ function richiesta2() {
 	return false;
 	});
 	
-	$(document).on("tap", "#risp2", function(e){
+	$(document).on("touchstart", "#risp2", function(e){
 				   $("#blob2").hide();
 				    $.mobile.changePage ($("#home3"));
 				   
@@ -2624,46 +2241,31 @@ function richiesta3() {
 	
 	$("#blob2").show();
 	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
-		   contentType: "application/json",
-		   //data: {ID: "Lazio"}, LIMIT 10
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
+
+				  $("#nickblob").html("<font color='#cc33cc'>"+ nick3 +"</font>");
 				  
-				  if(item.Token==1){
+				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ quando3 +", "+ ora3 +"</font>");
 				  
-				  $("#nickblob").html("<font color='#cc33cc'>"+ item.nick +"</font>");
+				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ partenza3 +"</font>");
 				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ item.quando +", "+ item.ora +"</font>");
+				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ arrivo3 +"</font>");
 				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
+				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza3 +"</font>");
 				  
-				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
-				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
-				  
-				  if(item.stato!=0){
+				  if(stato3!=0){
 				    $("#risp3").hide();
 				  }
 				  
-				  if(item.stato==2){
-				  //alert(item.stato)
+				  if(stato3==2){
 				  $("#gps3").show();
 				  $("#rif3").html("Annulla");
 				  
 				  $(document).on("tap", "#gps3", function(e){
-								 //clearInterval(refreshIntervalId);
-								 var addressLongLat = item.lat+","+item.lng;
+
+						var addressLongLat = lat3+","+lng3;
 	
-	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
-	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
-	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	
+	                             window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -2673,36 +2275,14 @@ function richiesta3() {
 								 
 								 return false;
 								 
-								 });
+						 });
 				  
 				  }
 				  else{
-				  //$("#gps2").hide();
-				  $("#rif3").html("Rifiuta");
+				    $("#rif3").html("Rifiuta");
 				  }
 				  
-				  }
-				  else{
-				  //marker1.setMap(null);
-				  }
-				  
-						});
-		   
-		   
-		   },
-		   error: function(){
-		   
-		   /*navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		   
-		   $("#blob2").show();*/
-		   
-		   },
-		   dataType:"jsonp"});
+				 
 	
 	$("#close3").show();
 	$("#close2").hide();
@@ -2712,13 +2292,21 @@ function richiesta3() {
 	$("#xchiudi2").hide();
 	$("#xchiudi1").hide();
 	
+	$("#xchiudi33").show();
+	$("#xchiudi22").hide();
+	$("#xchiudi11").hide();
+	
 	
 	$(document).on("tap", "#xchiudi3", function(e){
-				   clearInterval(refreshIntervalId);
-				   $("#blob2").hide();
-				   magia(3,id)
+		$("#blob2").hide();
+		magia2C(3,id)
 
-				   });
+	});
+	
+	$(document).on("tap", "#xchiudi33", function(e){
+			$("#blob2").hide();
+				   
+		});
 	
 	$(document).on("tap", "#close3", function(e){
 				   $("#pass3").hide();

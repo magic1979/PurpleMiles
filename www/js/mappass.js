@@ -24,7 +24,7 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("tap", "#XX3", function(e){
-		onResume();
+		window.location.href = "index.html";
 	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
@@ -69,7 +69,7 @@ function onDeviceReady() {
 	if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#a1", function(e){
+	$(document).on("touchstart", "#a1", function(e){
 				   
 				   $("#viale").hide();
 				   $("#destinazione").show();
@@ -79,6 +79,13 @@ function onDeviceReady() {
 				   
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   });
+	
+	$(document).on("touchstart", "#ad", function(e){
+				   
+		onResume();
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
+	
 	
 	function start() {
 		//chiamo e setto a 1 lo stato dell'autista (ok lavoro)
@@ -96,7 +103,7 @@ function onDeviceReady() {
 		
 		$.ajax({
 			   type:"GET",
-			   url:"http://purplemiles.com/www2/check_richiesta.php?email="+ localStorage.getItem("email") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"",
+			   url:"http://purplemiles.com/www2/check_richiesta.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"",
 			   contentType: "application/json",
 			   //data: {ID: "Lazio"}, LIMIT 10
 			   timeout: 7000,
@@ -312,9 +319,9 @@ function CenterControl(controlDiv, map) {
 	// Set CSS for the control border.
 	var controlUI = document.createElement('div');
 	controlUI.style.backgroundColor = 'transparent';
-	controlUI.style.border = '1px solid #fff';
-	controlUI.style.borderRadius = '3px';
-	controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+	controlUI.style.border = '0px solid #fff';
+	controlUI.style.borderRadius = '0px';
+	controlUI.style.boxShadow = '0 0px 0px rgba(0,0,0,.3)';
 	controlUI.style.cursor = 'pointer';
 	controlUI.style.marginBottom = '22px';
 	controlUI.style.textAlign = 'center';
@@ -333,7 +340,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
 	//controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table width="100%" align="center"><tr><td align="center" width="50%">DA</td><td align="center" width="50%">A</td></tr><tr><td align="center" width="50%"><input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'"></td></tr><tr><td align="center" width="50%"><input id="citta" name="citta" type="text" value="Roma"></td></tr></table>';
-	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XX3" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table border="0" valign="center" align="center" ><tr><td align="center" ><a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass1">Quando</a></td><td align="center" ><a data-role="button" id="da" href="#" data-theme="b" class="custom-pass11">Da</a></td><td align="center" ><a data-role="button" id="a1" href="#" data-theme="b" class="custom-pass1">A</a></td><td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="custom-pass1">+</a></td><td align="center" ><a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass1">Anteprima</a></td></tr></table>';
+	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XX3" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table border="0" valign="center" align="center" ><tr><td align="center" ><a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass1"><font color="#fff">Quando</font></a></td><td align="center" ><a data-role="button" id="da" href="#" data-theme="b" class="custom-pass11">Da</a></td><td align="center" ><a data-role="button" id="a1" href="#" data-theme="b" class="custom-pass1"><font color="#fff">A</font></a></td><td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="custom-pass1"><font color="#fff">+</font></a></td><td align="center" ><a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass1"><font color="#fff">Anteprima</font></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
