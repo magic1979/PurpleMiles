@@ -683,7 +683,7 @@ function resetta1(focus) {
 		
 		marker1 = new google.maps.Marker ({
 										  map : map,
-										  icon: icon,
+										  icon: iconn,
 										  optimized: false,
 										  position : myLatLng,
 										  //content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
@@ -977,8 +977,10 @@ function resetta1(focus) {
 	   centerControlDiv.index = 1;
 	   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 	
-		posizionegps()
+		
 		timer()
+		
+		posizionegps()
 
 	}
 	
@@ -1026,6 +1028,10 @@ function resetta1(focus) {
 	//---------------------------
 		
 		function onSuccess2(position) {
+			var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
+			var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
+			
+			marker2.setIcon(iconn);
 			
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
@@ -1037,6 +1043,7 @@ function resetta1(focus) {
 			//var lng = localStorage.getItem("lng");
 			var latlng = new google.maps.LatLng(lat, lng);
 			
+			marker2.setIcon(icon);
 			marker2.setPosition(latlng);
 			//map.setCenter(latlng);
 			
@@ -1060,7 +1067,8 @@ function resetta1(focus) {
 function posizionegps(){
 
 	refreshPos = setInterval(function() {
-		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+
+		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		//onSuccess2();
 	}, 3000);
 }
@@ -1080,11 +1088,10 @@ function timer(){
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 									
 	if(connectionStatus=='online'){
-									
-									
+									var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
 									var lat = localStorage.getItem("lat");
 									var lng = localStorage.getItem("lng");
-									
+		
 									//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
 									//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
 									
@@ -1094,7 +1101,6 @@ function timer(){
 									
 									$("#loading").hide();
 									$("#esci").show();
-									
 									
 									beaches1.push(['Tua Posizione',lat,lng,1,0,0,0])
 									
@@ -1109,6 +1115,10 @@ function timer(){
 										   jsonp: 'callback',
 										   crossDomain: true,
 										   success:function(result){
+											   
+											marker1.setIcon(iconn);
+											marker3.setIcon(iconn);
+											marker4.setIcon(iconn);
 										   
 										   $.each(result, function(i,item){
 												  
@@ -1190,13 +1200,10 @@ function timer(){
 																 });*/
 												  
 												  
-												  
 												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
 												  
 												  marker1.setMap(null);
 
-
-												  
 												  marker1 = new google.maps.Marker ({
 																					map : map,
 																					icon: icon3,
@@ -1781,40 +1788,67 @@ function magia2C(utente,pass) {
 	function posizionegps2(){
 		
 		refreshPos = setInterval(function() {
-			var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError33, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+			var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 				//onSuccess2();
 			}, 3000);
 	}
 	
 	function onSuccess22(position) {
+			var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
+			var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
+			
+			marker2.setIcon(iconn);
+			
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+			
+			localStorage.setItem("lat", lat)
+			localStorage.setItem("lng", lng)
+			
+			//var lat = localStorage.getItem("lat");
+			//var lng = localStorage.getItem("lng");
+			var latlng = new google.maps.LatLng(lat, lng);
+			
+			marker2.setIcon(icon);
+			marker2.setPosition(latlng);
+			//map.setCenter(latlng);
+			
+			//localStorage.setItem("lat", ciao)
+            //localStorage.setItem("lng", ciao1)
+	}
+	
+	function onSuccess2(position) {
 		
-		var lat = position.coords.latitude;
-		var lng = position.coords.longitude;
-		
-		localStorage.setItem("lat", lat)
-		localStorage.setItem("lng", lng)
-		
-		//var lat = localStorage.getItem("lat");
-		//var lng = localStorage.getItem("lng");
-		var latlng = new google.maps.LatLng(lat, lng);
-		
-		marker2.setPosition(latlng);
-		//map.setCenter(latlng);
-		
-		//marker.setPosition(latlng);
-		//map.setCenter(latlng);
-		
-		//localStorage.setItem("lat", ciao)
-		//localStorage.setItem("lng", ciao1)
+			var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
+			var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
+			
+			marker2.setIcon(iconn);
+			
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+			
+			localStorage.setItem("lat", lat)
+			localStorage.setItem("lng", lng)
+			
+			//var lat = localStorage.getItem("lat");
+			//var lng = localStorage.getItem("lng");
+			var latlng = new google.maps.LatLng(lat, lng);
+			
+			marker2.setIcon(icon);
+			marker2.setPosition(latlng);
+			//map.setCenter(latlng);
+			
+			//localStorage.setItem("lat", ciao)
+            //localStorage.setItem("lng", ciao1)
 	}
 	
 	
-	function onError33(error) {
+	function onError2(error) {
 		//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
-		navigator.geolocation.watchPosition(onSuccess22, onError333, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+		navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
 	}
 	
-	function onError333(error) {
+	function onError3(error) {
 		localStorage.setItem("geostory", "NO")
 		
 		window.location.href = "index.html";
