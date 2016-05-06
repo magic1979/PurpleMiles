@@ -303,7 +303,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="ricarica" href="#" rel="external"><img src="img/pin.png" width="25px"></a>&nbsp;&nbsp;<a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table>';
+	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="ricarica" href="#" rel="external"><img src="img/ico_mirino.png" width="25px"></a>&nbsp;&nbsp;<a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -653,7 +653,7 @@ function resetta1(focus) {
 		
 		var myLatLng = new google.maps.LatLng(lat, lng, 1);
 		
-		var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(50,50));
+		var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(60,60));
 		//alert(myLatLng + beach[0])
 		
 		
@@ -830,7 +830,7 @@ function resetta1(focus) {
 													content:'<div class="popup">'+item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">Cliccami</a></div>',
 													title: '1',
 													//label: ''+ beach[1] +','+ beach[2] +'',
-													zIndex: -1
+													zIndex: -11
 													});
 				  
 				}
@@ -888,7 +888,7 @@ function resetta1(focus) {
 														  content:'<div class="popup">'+item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">Cliccami</a></div>',
 														  title: '2',
 														  //label: ''+ beach[1] +','+ beach[2] +'',
-														  zIndex: -10
+														  zIndex: -12
 														  });
 
 				  
@@ -944,7 +944,7 @@ function resetta1(focus) {
 													content:'<div class="popup">'+item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">Cliccami</a></div>',
 													title: '4',
 													//label: ''+ beach[1] +','+ beach[2] +'',
-													zIndex: -100
+													zIndex: -13
 													});
 				  
 				  }
@@ -1028,9 +1028,7 @@ function resetta1(focus) {
 	//---------------------------
 		
 		function onSuccess22(position) {
-			
-			//alert("timer22")
-			
+			var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(60,60));
 			var lat = position.coords.latitude;
 			var lng = position.coords.longitude;
 			
@@ -1041,7 +1039,20 @@ function resetta1(focus) {
 			//var lng = localStorage.getItem("lng");
 			var latlng = new google.maps.LatLng(lat, lng);
 			
-			marker2.setPosition(latlng);
+			marker2.setMap(null);
+			
+			marker2 = new google.maps.Marker ({
+				map : map,
+				icon: icon,
+				optimized: false,
+				position : latlng,
+				content:'<div class="popup">Tua Posizione</div>',
+				title: '1',
+				//label: ''+ beach[1] +','+ beach[2] +'',
+				zIndex: 1
+			});
+
+    		marker2.setPosition(latlng);
 			map.setCenter(latlng);
 			
 			//localStorage.setItem("lat", ciao)
@@ -1050,8 +1061,7 @@ function resetta1(focus) {
 
 		
 		function onSuccess2(position) {
-			
-			//alert("timer")
+			var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(60,60));
 			
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
@@ -1062,6 +1072,19 @@ function resetta1(focus) {
 			//var lat = localStorage.getItem("lat");
 			//var lng = localStorage.getItem("lng");
 			var latlng = new google.maps.LatLng(lat, lng);
+			
+			marker2 = new google.maps.Marker ({
+				map : map,
+				icon: icon,
+				optimized: false,
+				position : latlng,
+				content:'<div class="popup">Tua Posizione</div>',
+				title: '1',
+				//label: ''+ beach[1] +','+ beach[2] +'',
+				zIndex: 1
+			});
+		
+			marker2.setMap(null);
 			
 			marker2.setPosition(latlng);
 			//map.setCenter(latlng);
@@ -1088,7 +1111,7 @@ function posizionegps(){
 	refreshPos = setInterval(function() {
 		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		//onSuccess2();
-	}, 3000);
+	}, 5000);
 }
 	
 	
@@ -1231,7 +1254,7 @@ function timer(){
 																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">GPS</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
-																					zIndex: posizione
+																					zIndex: -10
 																					});
 												  
 												  google.maps.event.addListener(marker1, 'click', function() {
@@ -1314,7 +1337,7 @@ function timer(){
 																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">GPS</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
-																					zIndex: posizione
+																					zIndex: -11
 																					});
 												  
 												  google.maps.event.addListener(marker3, 'click', function() {
@@ -1384,7 +1407,7 @@ function timer(){
 																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">GPS</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
-																					zIndex: posizione
+																					zIndex: -12
 																					});
 												  
 												  google.maps.event.addListener(marker4, 'click', function() {
@@ -1809,11 +1832,11 @@ function magia2C(utente,pass) {
 		refreshPos = setInterval(function() {
 			var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 				//onSuccess2();
-			}, 3000);
+			}, 5000);
 	}
 	
 	function onSuccess22(position) {
-		
+		var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(60,60));
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
 		
@@ -1824,6 +1847,18 @@ function magia2C(utente,pass) {
 		//var lng = localStorage.getItem("lng");
 		var latlng = new google.maps.LatLng(lat, lng);
 		
+			marker2 = new google.maps.Marker ({
+				map : map,
+				icon: icon,
+				optimized: false,
+				position : latlng,
+				content:'<div class="popup">Tua Posizione</div>',
+				title: '1',
+				//label: ''+ beach[1] +','+ beach[2] +'',
+				zIndex: 1
+			});
+		
+		marker2.setMap(null);
 		marker2.setPosition(latlng);
 		//map.setCenter(latlng);
 		
@@ -1835,7 +1870,7 @@ function magia2C(utente,pass) {
 	}
 	
 	function onSuccess2(position) {
-		
+		var icon = new google.maps.MarkerImage("img/autista.png", null, null, null, new google.maps.Size(60,60));
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
 		
@@ -1846,6 +1881,18 @@ function magia2C(utente,pass) {
 		//var lng = localStorage.getItem("lng");
 		var latlng = new google.maps.LatLng(lat, lng);
 		
+			marker2 = new google.maps.Marker ({
+				map : map,
+				icon: icon,
+				optimized: false,
+				position : latlng,
+				content:'<div class="popup">Tua Posizione</div>',
+				title: '1',
+				//label: ''+ beach[1] +','+ beach[2] +'',
+				zIndex: 1
+			});
+		
+		marker2.setMap(null);
 		marker2.setPosition(latlng);
 		//map.setCenter(latlng);
 		
