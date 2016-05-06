@@ -977,10 +977,8 @@ function resetta1(focus) {
 	   centerControlDiv.index = 1;
 	   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 	
-		
-		timer()
-		
 		posizionegps()
+		timer()
 
 	}
 	
