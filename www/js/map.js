@@ -1025,31 +1025,7 @@ function resetta1(focus) {
 	
 	//---------------------------
 		
-		function onSuccess22(position) {
-			
-			//alert("timer22")
-			
-			var lat = position.coords.latitude;
-			var lng = position.coords.longitude;
-			
-			localStorage.setItem("lat", lat)
-			localStorage.setItem("lng", lng)
-			
-			//var lat = localStorage.getItem("lat");
-			//var lng = localStorage.getItem("lng");
-			var latlng = new google.maps.LatLng(lat, lng);
-			
-			marker2.setPosition(latlng);
-			map.setCenter(latlng);
-			
-			//localStorage.setItem("lat", ciao)
-			//localStorage.setItem("lng", ciao1)
-		}
-
-		
 		function onSuccess2(position) {
-			
-			//alert("timer")
 			
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
@@ -1084,7 +1060,7 @@ function resetta1(focus) {
 function posizionegps(){
 
 	refreshPos = setInterval(function() {
-		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError2, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		//onSuccess2();
 	}, 3000);
 }
@@ -1805,7 +1781,7 @@ function magia2C(utente,pass) {
 	function posizionegps2(){
 		
 		refreshPos = setInterval(function() {
-			var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+			var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError33, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 				//onSuccess2();
 			}, 3000);
 	}
@@ -1832,35 +1808,13 @@ function magia2C(utente,pass) {
 		//localStorage.setItem("lng", ciao1)
 	}
 	
-	function onSuccess2(position) {
-		
-		var lat = position.coords.latitude;
-		var lng = position.coords.longitude;
-		
-		localStorage.setItem("lat", lat)
-		localStorage.setItem("lng", lng)
-		
-		//var lat = localStorage.getItem("lat");
-		//var lng = localStorage.getItem("lng");
-		var latlng = new google.maps.LatLng(lat, lng);
-		
-		marker2.setPosition(latlng);
-		//map.setCenter(latlng);
-		
-		//marker.setPosition(latlng);
-		//map.setCenter(latlng);
-		
-		//localStorage.setItem("lat", ciao)
-		//localStorage.setItem("lng", ciao1)
-	}
 	
-	
-	function onError2(error) {
+	function onError33(error) {
 		//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
-		navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+		navigator.geolocation.watchPosition(onSuccess22, onError333, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
 	}
 	
-	function onError3(error) {
+	function onError333(error) {
 		localStorage.setItem("geostory", "NO")
 		
 		window.location.href = "index.html";
