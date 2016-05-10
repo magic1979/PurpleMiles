@@ -263,8 +263,9 @@ function gpsonSuccess(position){
 	var ciao1 = position.coords.longitude;
 	var gradi = position.coords.heading;
 	
-	alert(Math.round(position.coords.heading));
 	var posizione = Math.round(50.7490417480469)
+	
+	alert(posizione)
 	
 	if((posizione > 0)&&(posizione <= 10)){
 		$("#rispondi").html("<img src='img_autista/car_010.png'>")
