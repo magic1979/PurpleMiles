@@ -21,7 +21,7 @@ function onDeviceReady() {
 	IDPage = getParameterByName('id');
 	ODPage = getParameterByName('od');
 	
-	$(document).on("tap", "#imgcalendario", function(e){
+	$(document).on("touchstart", "#imgcalendario", function(e){
 		mostracal();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
@@ -1534,7 +1534,7 @@ function mostracal(){
 		
 	date: new Date(),
 		
-	mode: 'datetime',
+	mode: 'date',
 		
 	doneButtonLabel: 'OK',
 	doneButtonColor: '#000000',

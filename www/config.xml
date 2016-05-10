@@ -6,7 +6,7 @@
 		version   = "1.0">
 		<name>PurpleMiles</name>
 		<description>Purplemiles, Passaggi</description>
-		<author href="http://www.app-piu.it" email="info@app-piu.it">
+		<author href="http://purplemiles.com" email="demo@purplemiles.com">
 			MondoWeb srl
 		</author>
 		<preference name="phonegap-version" value="cli-5.2.0" />
@@ -33,11 +33,11 @@
 		<preference name="android-targetSdkVersion" value="11" />
 		<preference name="android-installLocation" value="auto" />
 		<preference name="SplashScreenDelay" value="10000" />
-		<preference name="ErrorUrl" value="http://www.app-piu.it"/>
+		<preference name="ErrorUrl" value="http://www.purplemiles.com"/>
 		<preference name="BackgroundColor" value="#707070"/>
 		<preference name="KeepRunning" value="true"/>
 		<preference name="DisallowOverscroll" value="true"/>
-		<preference name="LoadingDialog" value="C'è Pizza per te,Loading"/> 
+		<preference name="LoadingDialog" value="purpleMiles,Loading"/> 
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="true" />
 		<gap:platform name="android" />
@@ -108,11 +108,11 @@
 		<access origin="https://gstatic.com" subdomains="true"  />
 		<access origin="http://googleapis.com" subdomains="true"  />
 		
-		<plugin name="com.sharinglabs.cordova.plugin.datepicker" spec="1.1.3" source="pgb" />
 		<plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4" source="pgb" />
 		<plugin name="de.appplant.cordova.plugin.email-composer" spec="0.8.2" source="pgb" />
 		<plugin name="com.ionic.keyboard" spec="1.0.3" source="pgb" />
 		<plugin name="com.sharinglabs.cordova.plugin.cache" spec="1.0.0" source="pgb" />
 		<plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
+		<gap:plugin name="cordova-plugin-datepicker" source="npm" />
 		
 	</widget>
