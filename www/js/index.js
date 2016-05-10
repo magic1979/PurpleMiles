@@ -90,9 +90,9 @@ var app = {
 		
 		//----------GEO ---------------
 
-		//navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+		navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 		
-		var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+		//var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		
 		//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
 		//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
@@ -263,9 +263,9 @@ function gpsonSuccess(position){
 	var ciao1 = position.coords.longitude;
 	var gradi = position.coords.heading;
 	
-	var posizione = Math.round(50.7490417480469)
+	var posizione = Math.round(gradi)
 	
-	alert(posizione)
+	//alert(posizione)
 	
 	if((posizione > 0)&&(posizione <= 10)){
 		$("#rispondi").html("<img src='img_autista/car_010.png'>")
@@ -392,7 +392,7 @@ function gpsonSuccess(position){
 		  'Timestamp: '         + position.timestamp                + '\n');*/
 	
 	
-	//$("#distanza").html("<span style = 'font-size: 18px;'>"+ position.coords.speed +","+ position.coords.heading  +"</span>");
+	$("#distanza").html("<span style = 'font-size: 18px;'>"+ posizione +"</span>");
 
 	
 }
