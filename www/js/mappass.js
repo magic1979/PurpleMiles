@@ -21,7 +21,7 @@ function onDeviceReady() {
 	IDPage = getParameterByName('id');
 	ODPage = getParameterByName('od');
 	
-	$(document).on("touchstart", "#imgcalendario", function(e){
+	$(document).on("tap", "#imgcalendario", function(e){
 		mostracal();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
@@ -47,12 +47,25 @@ function onDeviceReady() {
 		$("#viale").show();
 		$("#destinazione").hide();
 				   
-		//$("#da").removeClass("custom-pass1").addClass("custom-pass11");
-		//$("#a").removeClass("custom-pass11").addClass("custom-pass1");
+		$("#da").removeClass("bottoni").addClass("bottoni1");
+		$("#a").removeClass("bottoni1").addClass("bottoni");
 				   
 		onResume();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
+	
+	$(document).on("touchstart", "#da1", function(e){
+				   localStorage.setItem("destination", "0")
+				   
+				   $("#viale").show();
+				   $("#destinazione").hide();
+				   
+				   $("#da1").removeClass("bottoni").addClass("bottoni1");
+				   $("#a").removeClass("bottoni1").addClass("bottoni");
+				   
+				   onResume();
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   });
 	
 	$(document).on("tap", "#adesso", function(e){
 	 onResume();
@@ -110,8 +123,8 @@ function onDeviceReady() {
 				   $("#viale").hide();
 				   $("#destinazione").show();
 				   
-				   $("#da").removeClass("custom-pass11").addClass("custom-pass1");
-				   $("#a1").removeClass("custom-pass1").addClass("custom-pass11");
+				   $("#da1").removeClass("bottoni1").addClass("bottoni");
+				   $("#a1").removeClass("bottoni").addClass("bottoni1");
 				   
 				   
 				   resetta(1);
@@ -217,7 +230,7 @@ function onDeviceReady() {
 			navigator.notification.alert(
 			  'inserire un Indirizzo di destinazione',  // message
 				alertDismissed,         // callback
-				'Pin',            // title
+				'Attenzione',            // title
 				'OK'                  // buttonName
 			);
 		    
@@ -389,7 +402,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
 	//controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table width="100%" align="center"><tr><td align="center" width="50%">DA</td><td align="center" width="50%">A</td></tr><tr><td align="center" width="50%"><input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'"></td></tr><tr><td align="center" width="50%"><input id="citta" name="citta" type="text" value="Roma"></td></tr></table>';
-	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XX3" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass"><font color="#fff">Quando</font></a></td><td align="center" ><a data-role="button" id="da" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;Da&nbsp;</font></a></td><td align="center" ><a data-role="button" id="a1" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a></td><td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a></td><td align="center" ><a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass"><font color="#fff">Anteprima</font></a></td></tr></table>';
+	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XX3" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass"><font color="#fff">Quando</font></a></td><td align="center" ><a data-role="button" id="da1" href="#" data-theme="b" class="bottoni1"><font color="#fff">&nbsp;Da&nbsp;</font></a></td><td align="center" ><a data-role="button" id="a1" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a></td><td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a></td><td align="center" ><a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass"><font color="#fff">Anteprima</font></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//var g = document.createElement('div');
@@ -716,6 +729,8 @@ function resetta1(focus) {
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
 	if(connectionStatus=='online'){
+		
+	$("#da").removeClass("bottoni").addClass("bottoni1");
 
 	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
@@ -1438,14 +1453,14 @@ function vediofferte(){
 				  
 				  if(item.stato==2){
 				  
-				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br>Prezzo:"+ item.importo +"<br>Partenza:"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
 				   if(item.stato==1){
-					 $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br>Prezzo:"+ item.importo +"<br>Partenza:"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+					 $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
 				  
 				  if(item.stato==0){
-					 $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br>Prezzo:"+ item.importo +"<br>Partenza:"+ item.partenza +"</td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr></table>");
+					 $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
 
 				  

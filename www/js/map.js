@@ -3,9 +3,12 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
+	var altezzatbl = getRealContentHeight()-60;
 	var height = getRealContentHeight()-60;
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
+	
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br><b>Voglio essere autista</b><br><table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table></td></tr><tr height="2%"><td width="100%" align="center"> </td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><br><b>Voglio essere passeggero</b><br><table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
@@ -1004,10 +1007,11 @@ function resetta1(focus) {
 	   centerControlDiv.index = 1;
 	   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 	
+		navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 		
 		timer()
 		
-		posizionegps()
+		//posizionegps()
 
 	}
 	
@@ -1250,9 +1254,6 @@ function posizionegps(){
 function timer(){
 	
 	refreshIntervalId = setInterval(function() {
-									//$("#pass1").hide();
-									//$("#pass2").hide();
-									//$("#pass3").hide();
 									
 									//var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 									
@@ -1738,7 +1739,7 @@ function magia2C(utente,pass) {
 		window.clearInterval(i);
 	}
 	
-	posizionegps2();
+	//posizionegps2();
 	
 	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	

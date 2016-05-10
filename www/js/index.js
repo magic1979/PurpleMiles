@@ -392,7 +392,7 @@ function gpsonSuccess(position){
 		  'Timestamp: '         + position.timestamp                + '\n');*/
 	
 	
-	$("#distanza").html("<span style = 'font-size: 18px;'>"+ posizione +"</span>");
+	//$("#distanza").html("<span style = 'font-size: 18px;'>"+ posizione +"</span>");
 
 	
 }
