@@ -240,6 +240,94 @@
 						  z-index: 100;
 					  }
 					  
+					  .div562 {
+						  background-color: #fff;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 270px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 100;
+					  }
+					  
+					  .div5621 {
+						  background-color: #fff;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 270px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 110;
+					  }
+					  
+					  .div5622 {
+						  background-color: #fff;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 270px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 120;
+					  }
+
+
 					  .div563 {
 						  background-color: #cc33cc;
 						  position: absolute;
@@ -489,7 +577,7 @@
 									
 						}
 						.tabella1 {
-							background-color:#cc33cc;;
+							background-color:#cc33cc;
 							border: 1px solid #000;
 							border-color: #FFF;
 							
@@ -515,6 +603,23 @@
 						  -webkit-border-radius:0px;
 						  @include border-radius(0);
 					  }
+					  
+					  .conteggiotempo {
+						  background-color: #cc33cc;
+						  z-index: 30;
+						  
+						  width: 90%;
+						  height: 30px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+
 
                      </style>
                       
@@ -538,7 +643,7 @@
                     	<img src="img/Logo.png" width="60">
                     </td>
 					<td align="center" width="50%">
-                    	<table class="tabella1"><tr><td><font color="#FFF">NickName</font></td></tr></table>
+                    	<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome">NickName</div></font></td></tr></table>
                     </td>
 					<td align="right" width="20%">
                     	<a id="XX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a>
@@ -554,7 +659,7 @@
 			
             <div class="spinner" id="spinner"></div>
 
-			<table id="tblhome" width="90%" height="480px" border="0" valign="center" align="center" class="tabella">
+			<table id="tblhome" width="90%" height="100%" border="0" valign="center" align="center" class="tabella">
 				<tr height="48%">
 					<td width="100%" align="center">
 						<a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br>
@@ -620,13 +725,103 @@
 				
 			</table>
 			
+			<table id="blob5" width="100%" border="0" align="center" valign="center" class="div5621" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<div class="custom-pass2"><font color="#fff">&nbsp;3&nbsp;</font></div>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#cc33cc" size="5"><b><div id="timer3"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#000" size="3"><b><div id="viaaccetta5"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="accettatime3" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>ACCETTA</b></font></a>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="rifiuta3" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>RIFIUTA</b></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			
+			<table id="blob4" width="100%" border="0" align="center" valign="center" class="div5622" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<div class="custom-pass2"><font color="#fff">&nbsp;2&nbsp;</font></div>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#cc33cc" size="5"><b><div id="timer2"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#000" size="3"><b><div id="viaaccetta2"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="accettatime2" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>ACCETTA</b></font></a>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="rifiuta2" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>RIFIUTA</b></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			
 			<table id="blob3" width="100%" border="0" align="center" valign="center" class="div562" style="display:none">
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px" height="100%">
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<a id="ric2" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>Richiesta2</b></font></a>
+									<div class="custom-pass2"><font color="#fff">&nbsp;1&nbsp;</font></div>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#cc33cc" size="5"><b><div id="timer1"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#000" size="3"><b><div id="viaaccetta3"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="accettatime" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>ACCETTA</b></font></a>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="rifiuta1" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>RIFIUTA</b></font></a>
 								</td>
 							</tr>
 						</table>
@@ -666,6 +861,15 @@
 									<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
 								</td>
 							</tr>
+							<!--<tr>
+								<td width="100px" align="center" valign="center">
+									<table>
+										<tr><td align="center">
+											<a id="conteggio1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#000">30 Accetta</font></a><a id="conteggio22" data-theme="b" data-role="button" class="custom-btn4" style="display:none"><font color="#fff">00:30</font></a><a id="conteggio3" data-theme="b" data-role="button" class="custom-btn4" style="display:none"><font color="#fff">00:30</font></a>
+										</td></tr>
+									</table>
+								</td>
+							</tr>-->
 							<tr>
 								<td width="100px" align="center" valign="center">
 									<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
@@ -750,7 +954,7 @@
 			
 			<form name="formia" action="entra.asp" method="post">
 			
-			<table id="tblhome3" width="90%" height="400px" border="0" valign="center" align="center" class="tabella">
+			<table id="tblhome3" width="90%" height="" border="0" valign="center" align="center" class="tabella">
 				<tr>
 					<td width="100%" align="center" colspan="2">
 						<br><b>RISPONDI</b><br>

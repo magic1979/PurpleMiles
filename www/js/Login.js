@@ -121,11 +121,13 @@ function login() {
 
 function LoginVera(email,pin){
 	//alert(email+pin);
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
 	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_login.php?email="+ email +"&password="+ pin +"",
+		   url:"http://purplemiles.com/www2/check_accesso.php?email="+ email +"&pin="+ pin +"&lat="+ lat +"&lon="+ lng +"",
 		   contentType: "application/json",
 		   //data: {email:email,pin:pin},
 		   timeout: 7000,
@@ -139,7 +141,11 @@ function LoginVera(email,pin){
 				if (item.Token == 1){
 				  localStorage.setItem("email", email);
 				  localStorage.setItem("email2", email);
-				  localStorage.setItem("id_autista", item.id);
+				  localStorage.setItem("emailpass", email);
+				  localStorage.setItem("id_autista", item.id_autista);
+				  localStorage.setItem("nick", item.nick);
+				  localStorage.setItem("id_pass", item.id_passeggero);
+				  localStorage.setItem("nickpass", item.nick);
 
 				  window.location.href = "map.html";
 				  
@@ -233,7 +239,7 @@ function iscriviti(){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_reg_autista.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"",
+		   url:"http://purplemiles.com/www2/check_registrazione.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"",
 		   contentType: "application/json",
 		   //data: {email:emailreg,nickname:nomereg,pin:pinreg},
 		   timeout: 7000,
@@ -251,7 +257,6 @@ function iscriviti(){
 											   'Done'                  // buttonName
 											   );
 				  
-				  window.location.href = "#page.html";
 				  
 				  }
 				  else{
@@ -266,7 +271,7 @@ function iscriviti(){
 				  });
 		   
 		   $(".spinner").hide();
-		   window.location.href = "index.html";
+		   window.location.href = "#page";
 		   
 		   },
 		   error: function(){
