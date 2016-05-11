@@ -21,6 +21,8 @@ onDeviceReady: function() {
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
 	
+	window.plugins.insomnia.keepAwake();
+	
 	var lat = "41.889191";
 	var lng = "12.492475";
 	
@@ -165,7 +167,8 @@ receivedEvent: function(id) {
 	  connectionStatus = navigator.onLine ? 'online' : 'offline';
 				   
 	  if(connectionStatus=='online'){
-				   
+		startgps()
+		
 		resetta1();
 	  }
 	  else
