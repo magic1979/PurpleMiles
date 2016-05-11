@@ -5,14 +5,14 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchend", "#accedi", function(e){
-		//window.location.href = "map.html";
+		//window.location.href = "index.html";
 		login();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 		
 	});
 	
 	$(document).on("touchend", "#iscriviti", function(e){
-				   //window.location.href = "map.html";
+				   //window.location.href = "index.html";
 				   iscriviti();
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
@@ -147,7 +147,7 @@ function LoginVera(email,pin){
 				  localStorage.setItem("id_pass", item.id_passeggero);
 				  localStorage.setItem("nickpass", item.nick);
 
-				  window.location.href = "map.html";
+				  window.location.href = "index.html";
 				  
 				}
 				else{

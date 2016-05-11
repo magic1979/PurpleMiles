@@ -5,6 +5,10 @@ function onDeviceReady() {
 	
 	var destination;
 	
+	var item;
+	var autista;
+	var richiesta;
+	
 	var height = getRealContentHeight()-60;
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
@@ -1453,10 +1457,34 @@ function vediofferte(){
 				  
 				  if(item.stato==2){
 				  
-				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				  
+				  $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
+								 accettaofferta(2,item.id_richiesta,item.id_autista)
+								 if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+								 });
+				  
+				  $(document).on("touchstart", "#rifiuta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
+								 accettaofferta(3,item.id_richiesta,item.id_autista)
+								 if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+								 });
+
+				  
+				  
 				  }
 				   if(item.stato==1){
-					 $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+					 $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				  
+				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
+						accettaofferta(2,item.id_richiesta,item.id_autista)
+						if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+					 });
+				  
+				    $(document).on("touchstart", "#rifiuta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
+						accettaofferta(3,item.id_richiesta,item.id_autista)
+						if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+					});
+					
 				  }
 				  
 				  if(item.stato==0){
@@ -1464,15 +1492,6 @@ function vediofferte(){
 				  }
 
 				  
-				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"", function(e){
-					   accettaofferta(2,item.id_richiesta,item.id_autista)
-					   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-					});
-				  
-				    $(document).on("touchstart", "#rifiuta"+ item.id_richiesta +"", function(e){
-				       accettaofferta(3,item.id_richiesta,item.id_autista)
-				       if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-					});
 
 				  }
 				  

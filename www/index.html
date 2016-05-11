@@ -1,321 +1,1011 @@
-<!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-		
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-		
-		<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.2.min.css" />
-		<link rel="stylesheet" href="themes/Purples.css" />
-		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-		<link rel="stylesheet" href="css/spinner.css" />
-		
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-				
-		<script src="jquery-1.10.2.min.js"></script>
-		<script src="js/jquery.mobile-1.4.2.min.js"></script>
-				
-		
-		<style>
-			* {
-				-webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-			}
-		
-		body {
-			-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-			-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-			-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-			background-color:#E4E4E4;
-			background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-			background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-			background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-			background-image:-webkit-gradient(
-			linear,
-			left top,
-			left bottom,
-			color-stop(0, #A7A7A7),
-			color-stop(0.51, #E4E4E4)
-			);
-			background-attachment:fixed;
-			font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-			font-size:12px;
-			margin:0px;
-			padding:0px;
-			text-transform:uppercase;
-		}
-		
-		#home { width: 100%; height: 100%; padding: 0; }
-		.div2 {
-			background-image: url("img/sfondo.jpg");
-			background-color: #9d3434;
-		}
-		body.iOS7 {
-			-webkit-transform: translate3d(0, 20px, 0);
-		}
-		.div3 {
-			background: rgb(125,126,125, 0.9); /* Old browsers */
-			background: -moz-linear-gradient(top, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
-			background: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
-		}
-		
-		.div33 {
-			margin: 30px;
-			background-color: #ffffff;
-			border: 1px solid black;
-			opacity: 0.6;
-			filter: alpha(opacity=60); /* For IE8 and earlier */
-		}
-		
-		div.transbox {
-			background-color: #ffffff;
-			border: 1px solid black;
-			opacity: 0.6;
-			filter: alpha(opacity=60);
-			
-			position: absolute;
-			z-index: 2;
-			top:0px;
-			left:0px;
-			width:100%;
-			height: 8%;
-			padding: 0;
-			color: #000;
-			
-			text-align: center;
-			font-weight: bold;
-			
-		}
-		
-		.div55 {
-			position: absolute;
-			z-index: 20;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 5%;
-			padding: 0;
-			color: #000;
-			
-			text-align: center;
-			font-weight: bold;
-		}
+        <title>Geolocation</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+                        
+                        <link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.2.min.css" />
+                        <link rel="stylesheet" href="themes/Purples.css" />
+                        <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+                        <link rel="stylesheet" href="css/spinner.css" />
+                        
+                        <meta name="apple-mobile-web-app-capable" content="yes">
+                        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+                                
+                            <script src="jquery-1.10.2.min.js"></script>
+                            <script src="js/jquery.mobile-1.4.2.min.js"></script>
+                      <style>
+						  
+						  body {
+							  -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+							  -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+							  -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+							  background-color:#E4E4E4;
+							  background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+							  background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+							  background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+							  background-image:-webkit-gradient(
+							  linear,
+							  left top,
+							  left bottom,
+							  color-stop(0, #A7A7A7),
+							  color-stop(0.51, #E4E4E4)
+							  );
+							  background-attachment:fixed;
+							  font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+							  font-size:12px;
+							  margin:0px;
+							  padding:0px;
+						  }
 
-		#win2 {
-			max-width: none;
-		}
-		
-		#radar{
-			position:relative;
-			width:150px;
-			height:150px;
-			background:#222 url(images/vY6Tl.png);
-			border-radius:150px;
-			overflow:hidden;
-		}
-		#rad{
-			position:absolute;
-			width:150px;
-			height:150px; background:url(images/fbgUD.png);
-		}
-		.obj{
-			background:#cf5;
-			position:absolute;
-			border-radius:10px;
-			width:4px;
-			height:4px;
-			margin-top:-2px;
-			margin-left:-2px;
-			box-shadow:0 0 10px 5px rgba(100,255,0,0.5);
-			opacity:0.2;
-		}
-		#content {
-			padding: 0;
-			<!--position : absolute !important;
-			top : 40px !important;
-			right : 0;
-			bottom : 45px !important;
-			left : 0 !important;-->
-		}
-		.circolare {
-			width: 110px;
-			height: 110px;
-			border-radius:999em;
-			-moz-border-radius:999em;
-			-webkit-border-radius:999em;
-			-o-border-radius: 999em;
-			
-			-webkit-box-shadow: 0px 0px 0.5px 1px #000;
-			-moz-box-shadow: 0px 0px 0.5px 1px #000;
-			box-shadow: 0px 0px 0.5px 1px #000;
-		}
-		.conn {
-			font-size: 9pt;
-			color:#FFF;
-			background-color: #9d3434;
-		}
-		.home {
-			background-color: #9d3434;
-			background-image: url(images/right.png);
-			background-size: 20px 20px;
-			background-repeat: no-repeat;
-			background-position:center;
-			
-			height:40px;
-			width:40px;
-			border-radius:999em;
-			-moz-border-radius:999em;
-			-webkit-border-radius:999em;
-			-o-border-radius: 999em;
-			
-			-webkit-box-shadow: 0px 0px 0.5px 1px #FFF;
-			-moz-box-shadow: 0px 0px 0.5px 1px #FFF;
-			box-shadow: 0px 0px 0.5px 1px #FFF;
-		}
-		
-		.home:active {
-			background-color: #000000;
-			border-radius:999em;
-			-moz-border-radius:999em;
-			-webkit-border-radius:999em;
-			-o-border-radius: 999em;
-			
-			-webkit-box-shadow: 0px 0px 0.5px 1px #000;
-			-moz-box-shadow: 0px 0px 0.5px 1px #000;
-			box-shadow: 0px 0px 0.5px 1px #000;
-		}
-		
-		.banner {
-			left: 5px;
-			bottom:60px;
-			position: fixed;
-			
-			-moz-border-radius: 10px;
-			-webkit-border-radius: 10px;
-			-o-border-radius: 10px;
-		}
-		
-		.sopra {
-			background-color: #ffffff;
-			left: 50px;
-			height:100px;
-			width:100px;
-			
-			-moz-border-radius: 10px;
-			-webkit-border-radius: 10px;
-			-o-border-radius: 10px;
-			
-			z-index: 10;
-		}
-		
-		#map_geolocation label { width: auto; display:inline; }
-		#map_geolocation img { max-height: none; max-width: none; }
-		
-		.custom-btn {
-			width: 280px;
-		}
-		
-		.custom-btn2 {
-			width: 280px;
-		}
-		
-		.custom-btn3 {
-			background-color: #cc33cc;
-			width: 120px;
-			font-size: 18px;
-			
-			color:#FFF;
-			
-			text-decoration: none;
-			text-shadow:0 0 0;
-			
-			font-family: ubuntu, helvetica, arial;
-			
-			padding: 5 5 5 5;
-			
-			border-radius: 5px;
-			-moz-border-radius: 5px; /* firefox */
-			-webkit-border-radius: 5px; /* safari, chrome */
-		}
-		
-		</style>
-  
+
+						.div2 {
+							background-image: url("img/sfondo.jpg");
+							background-color: #9d3434;
+						}
+
+                      .div3 {
+                          background: rgb(125,126,125); /* Old browsers */
+                          background: -moz-linear-gradient(top, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+                          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+                          background: -webkit-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+                          background: -o-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+                          background: -ms-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
+                          background: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
+                          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+                      }
+						#win2 {
+							max-width: none;
+						}
+                      
+                      #radar{
+                          position:relative;
+                          width:150px;
+                          height:150px;
+                          background:#222 url(images/vY6Tl.png);
+                          border-radius:150px;
+                          overflow:hidden;
+                      }
+                      #rad{
+                          position:absolute;
+                          width:150px;
+                          height:150px; background:url(images/fbgUD.png);
+                      }
+                      .obj{
+                          background:#cf5;
+                          position:absolute;
+                          border-radius:10px;
+                          width:4px;
+                          height:4px;
+                          margin-top:-2px;
+                          margin-left:-2px;
+                          box-shadow:0 0 10px 5px rgba(100,255,0,0.5);
+                          opacity:0.2;
+                      }
+                      #content {
+                          padding: 0;
+                          <!--position : absolute !important;
+                          top : 0px !important;
+                          right : 0;
+                          bottom : 0px !important;
+                          left : 0 !important;-->
+                      }
+                      .circolare {
+                          width: 110px;
+                          height: 110px;
+                          border-radius:999em;
+                          -moz-border-radius:999em;
+                          -webkit-border-radius:999em;
+                          -o-border-radius: 999em;
+                          
+                          -webkit-box-shadow: 0px 0px 0.5px 1px #000;
+                          -moz-box-shadow: 0px 0px 0.5px 1px #000;
+                          box-shadow: 0px 0px 0.5px 1px #000;
+                      }
+                      .conn {
+                          font-size: 9pt;
+                          color:#FFF;
+                          background-color: #9d3434;
+                      }
+                      .home {
+                          background-color: #9d3434;
+                          background-image: url(images/right.png);
+                          background-size: 20px 20px;
+                          background-repeat: no-repeat;
+                          background-position:center;
+                          
+                          height:40px;
+                          width:40px;
+                          border-radius:999em;
+                          -moz-border-radius:999em;
+                          -webkit-border-radius:999em;
+                          -o-border-radius: 999em;
+                          
+                          -webkit-box-shadow: 0px 0px 0.5px 1px #FFF;
+                          -moz-box-shadow: 0px 0px 0.5px 1px #FFF;
+                          box-shadow: 0px 0px 0.5px 1px #FFF;
+                      }
+                      
+                      .home:active {
+                          background-color: #000000;
+                          border-radius:999em;
+                          -moz-border-radius:999em;
+                          -webkit-border-radius:999em;
+                          -o-border-radius: 999em;
+                          
+                          -webkit-box-shadow: 0px 0px 0.5px 1px #000;
+                          -moz-box-shadow: 0px 0px 0.5px 1px #000;
+                          box-shadow: 0px 0px 0.5px 1px #000;
+                      }
+                      
+                      .banner {
+                          left: 5px;
+                          bottom:60px;
+                          position: fixed;
+                          
+                          -moz-border-radius: 10px;
+                          -webkit-border-radius: 10px;
+                          -o-border-radius: 10px;
+                      }
+					  
+					  .sopra {
+						  background-color: #ffffff;
+						  left: 50px;
+						  height:100px;
+						  width:100px;
+						  
+						  -moz-border-radius: 10px;
+						  -webkit-border-radius: 10px;
+						  -o-border-radius: 10px;
+						  
+						  z-index: 10;
+					  }
+					  
+					  .transbox {
+						  
+						  position: absolute;
+						  z-index: 2;
+						  top:0px;
+						  left:0px;
+						  width:95%;
+						  height: 8%;
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+					  }
+					  
+					  .div555 {
+						  position: absolute;
+						  z-index: 20;
+						  bottom: 30px;
+						  left: 0;
+						  width: 100%;
+						  height: 10%;
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  
+					  }
+					  
+					  
+					  .div55 {
+						  position: absolute;
+						  z-index: 20;
+						  bottom: 30px;
+						  left: 0;
+						  width: 100%;
+						  height: 5%;
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  
+					  }
+					  
+					  .div56 {
+						  background-color: #cc33cc;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						 
+						  width: 270px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 100;
+					  }
+					  
+					  .div562 {
+						  background-color: #fff;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 270px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 100;
+					  }
+					  
+					  .div5621 {
+						  background-color: #fff;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 270px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 110;
+					  }
+					  
+					  .div5622 {
+						  background-color: #fff;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 270px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 120;
+					  }
+
+
+					  .div563 {
+						  background-color: #cc33cc;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 200px;
+						  height: 130px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 112;
+					  }
+					  
+					  .div57 {
+						  background-color: #FFF;
+						  position: absolute;
+						  z-index: 30;
+						  bottom: 60px;
+						  
+						  width: 240px;
+						  height: 400px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  top:50%;
+						  left:50%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  #map_geolocation label { width: auto; display:inline; }
+					  #map_geolocation img { max-height: none; max-width: none; }
+					  
+					  .custom-btn {
+							width: 280px;
+						}
+						
+						.custom-btn2 {
+							width: 280px;
+						}
+					  
+					  .custom-close {
+						  background-color: #cc33cc;
+						  width: 55px;
+						  font-size: 18px;
+						  
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-pass9 {
+						  background-color: #fff;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
+						  
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #cc33cc;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-pass {
+						  background-color: #cc33cc;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
+						  
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-pass1 {
+						  background-color: #ff6600;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
+						  
+						  color: #000;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  .custom-pass2 {
+						  background-color: #00A86B;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
+						  
+						  color: #000;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-pass3 {
+						  background-color: #DC143C;
+						  width: 50px;
+						  height: 50px;
+						  font-size: 22px;
+						  
+						  color: #000;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+						
+						.custom-btn3 {
+							background-color: #cc33cc;
+							width: 120px;
+							font-size: 18px;
+							
+							color:#FFF;
+							
+							text-decoration: none;
+							text-shadow:0 0 0;
+							
+							font-family: ubuntu, helvetica, arial;
+							
+							padding: 5 5 5 5;
+							
+							border-radius: 5px;
+							-moz-border-radius: 5px; /* firefox */
+							-webkit-border-radius: 5px; /* safari, chrome */
+						}
+					  
+					  .custom-btn4 {
+						  background-color: #cc33cc;
+						  width: 120px;
+						  font-size: 18px;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  color:#FFF;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-btn5 {
+						  background-color: #ffffff;
+						  width: 120px;
+						  font-size: 14px;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  color:#000000;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+						
+						.tabella {
+							background-color: #FFF;
+							border: 1px solid #000;
+							border-color: #cc33cc;
+									
+						}
+						.tabella1 {
+							background-color:#cc33cc;
+							border: 1px solid #000;
+							border-color: #FFF;
+							
+							padding: 0 5 0 5;
+
+							border-radius: 5px;
+							-moz-border-radius: 5px; /* firefox */
+							-webkit-border-radius: 5px; /* safari, chrome */
+						}
+					  
+					  .scrivo {
+						  display: block;
+						  width: 90%;
+						  margin: 0px;
+						  border: solid 0.5px #dcdcdc;
+						  font-family: sans-serif;
+						  font-size: 20px;
+						  appearance: none;
+						  box-shadow: none;
+						  border-radius: none;
+						  
+						  -webkit-appearance: none;
+						  -webkit-border-radius:0px;
+						  @include border-radius(0);
+					  }
+					  
+					  .conteggiotempo {
+						  background-color: #cc33cc;
+						  z-index: 30;
+						  
+						  width: 90%;
+						  height: 30px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+
+
+                     </style>
+                      
+                      <script src="https://maps.googleapis.com/maps/api/js?v=3.6exp&sensor=true"></script>
     </head>
     <body>
-	<div data-role=page id=home class="div2">
-		
-		<!--<div data-role="header" rel="external" align="center" data-position="fixed" >
-			<a href="javascript:sidiv();" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
-			<span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
-		</div> -->
-		
-		<table width="100%" border="0" valign="center" align="center" class="transbox">
-			<tr>
-				<td width="100%" align="left">
-					<!--<a href="#" data-theme="b" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>-->
-				</td>
-			</tr>
-			
-		</table>
-		
-		<br><center>
-		<img src="img/Logo.png" width="220"><br>
-			
-			
-			<div id="distanza"></div>
-			<div id="distanza2"></div>
-			<div id="distanza3"></div>
-			
-			<img id="foto" src="">
-			
-			<!--<br><a href="javascript:scatta()">SCATTA</a><br><br>
-			<br> <a href="javascript:getFoto()">SCATTA</a><br>-->
-			
-            <div id="rispondi"><img src="img_autista/car_000.png"></div>
-			<br>
-			<a id="inizia" data-role="button" data-theme="b" class="custom-btn3" href="#" rel="external">INIZIA</a>
-			<br><br>
-			<a id="esci" data-role="button" data-theme="b" class="custom-btn3" href="#" rel="external">ESCI</a>
-		
-		<!--<table width="100%" border="0" align="center" valign="center" class="div55" >
-			<tr>
-				<td align="center">
-					<a href="#"><img id="ita" src="img/ITA.png" height="30"></a>&nbsp;&nbsp;<a href="javascript:alert('in costruzione')"><img id="ing" src="img/ING.png" height="30"></a>
-				</td>
-			</tr>
-		</table>-->
-	</div>
-
-        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        <div id="geolocation"></div>
+        
+        <div data-role=page id=home class="div2">
+            <!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3">
+				
+                <span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
+            </div>-->
+            <div id="noconn" align="center" style="display:none"></div>
+            <a data-role=button id=verifica data-theme="b" style="display:none">Verifica Connessione</a>
+			<table border="0" valign="center" align="center" class="transbox">
+				<tr>
+                	<td align="center" width="30%">
+                    	<img src="img/Logo.png" width="60">
+                    </td>
+					<td align="center" width="50%">
+                    	<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome">NickName</div></font></td></tr></table>
+                    </td>
+					<td align="right" width="20%">
+                    	<a id="XX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a>
+                    </td>
+                </tr>
+
+			</table>
+            <br>
+            <div data-role=content class="div2">
+                <a data-role=button id=btn data-theme="b" style="display:none">Display map</a><br>
+                <a data-role=button id=gps2 data-theme="b" style="display:none">Gps E Dintorni</a><br>
+            </div>
+			
+            <div class="spinner" id="spinner"></div>
+			
+			 <div id="tblhome"></div>
+
+			<!--<table id="tblhome" width="90%" height="100%" border="0" valign="center" align="center" class="tabella">
+				<tr height="48%">
+					<td width="100%" align="center">
+						<a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br>
+						<b>Voglio essere autista</b><br>
+						<table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table>  
+					</td>
+				</tr>			
+				<tr height="2%">
+					<td width="100%" align="center">
+						
+					</td>
+				</tr>
+				<tr height="48%">
+					<td width="100%" align="center">
+						<a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><br>
+						<b>Voglio essere passeggero</b><br>
+						<table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table>
+					</td>
+				</tr>
+				<tr height="10%">
+					<td width="100%" align="center">
+						
+					</td>
+				</tr>
+			</table>-->
+			
+            <!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
+                <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+            </div>-->
+            
+        </div>
+        
+        <div data-role=page id="win2" data-add-back-btn=true class="div2">
+            
+			<!--<table width="100%" border="0" valign="center" align="center" class="transbox">
+				<tr>
+					<td width="100%" align="left">
+						<a href="javascript:sidiv();" data-theme="b" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
+					</td>
+				</tr>
+				
+			</table>
+			
+			<div data-role="header" rel="external" align="center" data-theme="b" data-position="fixed" class="div3">
+                <a href="javascript:sidiv();" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
+                <span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
+            </div>-->
+			
+			<div data-role="content"></div>
+			
+			<table id="blob" width="100%" border="0" align="center" valign="center" class="div56" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="ric1" href="#" data-role="button" data-theme="b" class="custom-btn4"><font size="3" color="#fff"><b>Richiesta</b></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+			</table>
+			
+			<table id="blob5" width="100%" border="0" align="center" valign="center" class="div5621" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<div class="custom-pass2"><font color="#fff">&nbsp;3&nbsp;</font></div>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#cc33cc" size="5"><b><div id="timer3"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#000" size="3"><b><div id="viaaccetta5"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="accettatime3" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>ACCETTA</b></font></a>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="rifiuta3" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>RIFIUTA</b></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			
+			<table id="blob4" width="100%" border="0" align="center" valign="center" class="div5622" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<div class="custom-pass2"><font color="#fff">&nbsp;2&nbsp;</font></div>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#cc33cc" size="5"><b><div id="timer2"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#000" size="3"><b><div id="viaaccetta2"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="accettatime2" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>ACCETTA</b></font></a>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="rifiuta2" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>RIFIUTA</b></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			
+			<table id="blob3" width="100%" border="0" align="center" valign="center" class="div562" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<div class="custom-pass2"><font color="#fff">&nbsp;1&nbsp;</font></div>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#cc33cc" size="5"><b><div id="timer1"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<font color="#000" size="3"><b><div id="viaaccetta3"></div></b></font>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="accettatime" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>ACCETTA</b></font></a>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="rifiuta1" href="#" data-role="button" data-theme="b" class="custom-btn4"><font color="#fff"><b>RIFIUTA</b></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			
+			<table id="blob2" width="100%" border="0" align="center" valign="center" class="div57" style="display:none">
+				<tr><td align="left" width="50%"><a id="xchiudi1" href="#" style="display:none"><img src="img/pin.png" width="30"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/pin.png" width="30"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/pin.png" width="30"></a></td><td align="right" width="50%"><a id="xchiudi11" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi22" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi33" href="#" style="display:none"><img src="img/xx.png" width="30"></a></td></tr>
+				<tr><td align="center" colspan="2"><b><div id="nickblob"></div></b></td></tr>
+				<tr>
+					<td width="100%" align="left" colspan="2">
+						<table align="center" width="100px" height="100%">
+							<tr>
+								<td width="100px" align="left" valign="center">
+									<p id="quando"></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="left" valign="center">
+									<p id="Da"></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="left" valign="center">
+									<p id="Ad"></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="left" valign="center">
+									<p id="Note"></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
+									<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
+								</td>
+							</tr>
+							<!--<tr>
+								<td width="100px" align="center" valign="center">
+									<table>
+										<tr><td align="center">
+											<a id="conteggio1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#000">30 Accetta</font></a><a id="conteggio22" data-theme="b" data-role="button" class="custom-btn4" style="display:none"><font color="#fff">00:30</font></a><a id="conteggio3" data-theme="b" data-role="button" class="custom-btn4" style="display:none"><font color="#fff">00:30</font></a>
+										</td></tr>
+									</table>
+								</td>
+							</tr>-->
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
+									<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="100px" align="center" valign="center">
+									<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif1">Rifiuta</div></font></a>
+									<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif2">Rifiuta</div></font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif3">Rifiuta</div></font></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+			</table>
+
+			<table id="btninizia" width="100%" border="0" align="center" valign="center" class="div55" >
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px"><tr><td width="100px" align="center">
+						<a id="inizia" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Inizia</b></font></a>
+						</td></tr></table>
+					</td>
+				</tr>
+				
+			</table>
+			
+			<table id="loading" width="100%" border="0" align="center" valign="center" class="div55" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="100px"><tr><td width="100px" align="center">
+							<a data-theme="b" class="custom-btn5" ><font color="#000000">Loading...</font></a>
+						</td></tr></table>
+					</td>
+				</tr>
+				
+			</table>
+			
+			<!--Iconcoine-->
+			
+			<table id="btnpass" width="100%" border="0" align="center" valign="center" class="div555" style="display:none">
+				<tr>
+					<td width="100%" align="center">
+						<table align="center" width="200px"><tr><td width="200px" align="left">
+							<a id="pass1" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;1&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass2" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;2&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass3" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;3&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="esci" href="#" data-theme="b" class="custom-pass9"><font color="#cc33cc">&#8592;</font></a>
+						</td></tr></table>
+					</td>
+				</tr>
+				
+			</table>
+			
+			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
+				<a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+			</div> /footer -->
+
+        </div>
+		
+		<div data-role=page id=home3 class="div2">
+			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
+			<table border="0" valign="center" align="center" class="transbox">
+				<tr>
+					<td align="center" width="30%">
+						<img src="img/Logo.png" width="60">
+							</td>
+					<td align="center" width="50%">
+						<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome3"></div></font></td></tr></table>
+					</td>
+					<td align="right" width="20%">
+						<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="25px"></a>
+					</td>
+				</tr>
+			</table>
+			
+			<div data-role=content class="div2">
+
+			</div>
+			
+			<div class="spinner" id="spinner"></div>
+			
+			<form name="formia" action="entra.asp" method="post">
+			
+			<table id="tblhome3" width="90%" height="" border="0" valign="center" align="center" class="tabella">
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<br><b>RISPONDI</b><br>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<a data-role="button" id="gratis" href="#" data-theme="b" class="custom-btn3">Gratis</a>
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<a data-role="button" id="offerta" href="#" data-theme="b" class="custom-btn3">Offerta Libera</a>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center">
+						<font size="4">Importo</fint>
+					</td>
+					<td width="50%" align="center">
+						<input type="text" data-role="none" name="soldini" id="soldini" value="" placeholder="Importo" class="scrivo">
+					</td>
+				</tr>
+
+				<tr>
+					<td width="100%" align="left" colspan="2">
+						<table ><tr><td><font color="#000">Note</font></td></tr></table>
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<textarea cols="30" rows="10" class="scrivo" placeholder="Note"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" align="center" colspan="2">
+						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn3">Invia</a>
+					</td>
+				</tr>
+			</table>
+			</form>
+		
+			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
+				 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+				 </div>-->
+				
+		</div>
+		
+
     </body>
 </html>
