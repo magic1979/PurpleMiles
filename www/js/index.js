@@ -1097,7 +1097,9 @@ function resetta1(focus) {
 			
 	    localStorage.setItem("lat", lat)
 		localStorage.setItem("lng", lng)
-			
+
+		//var zoom = map.getZoom();
+	    //$content.style.webkitTransform = 'translateZ(0px)';
 		//var lat = localStorage.getItem("lat");
 		//var lng = localStorage.getItem("lng");
 		var latlng = new google.maps.LatLng(lat, lng);
