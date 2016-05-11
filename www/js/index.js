@@ -660,8 +660,6 @@ function resetta1(focus) {
 	
 	var $content = $("#win2 div:jqmData(role=content)");
     $content.height (getRealContentHeight());
-	
-	//$content.style.webkitTransform = 'translateZ(0px)';
                                                               
 	  var options = {
 	  zoom : 13,
@@ -1102,7 +1100,7 @@ function resetta1(focus) {
 			
 		//var lat = localStorage.getItem("lat");
 		//var lng = localStorage.getItem("lng");
-		var latlng = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
+		var latlng = new google.maps.LatLng(lat, lng);
 		
 		if(muoviti==1){
 			//setTimeout (function(){
