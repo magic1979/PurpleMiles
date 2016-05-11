@@ -21,6 +21,9 @@ onDeviceReady: function() {
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
 	
+	var lat = "41.889191";
+	var lng = "12.492475";
+	
 	var altezzatbl = getRealContentHeight()-60;
 	var height = getRealContentHeight()-60;
 	$("#tblhome").attr("height",height);
@@ -152,17 +155,17 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart", "#mappa6", function(e){
 				   
-	var connectionStatus = false;
-	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	  var connectionStatus = false;
+	  connectionStatus = navigator.onLine ? 'online' : 'offline';
 				   
-	if(connectionStatus=='online'){
+	  if(connectionStatus=='online'){
 				   
 		resetta1();
-	}
-	else
-	{
+	  }
+	  else
+	  {
 		window.location.href = "index.html";
-	}
+	  }
 				   
 				   
 	});
@@ -271,7 +274,9 @@ receivedEvent: function(id) {
 		//codeLatLng(lat,lng);
 		
 		$(".spinner").hide();
-}
+		
+		//resetta1();
+    }
     
     else{
 		navigator.notification.alert(
