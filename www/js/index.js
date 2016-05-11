@@ -1,9 +1,25 @@
-document.addEventListener('deviceready', onDeviceReady, false);
-
-function onDeviceReady() {
+var app = {
+	// Application Constructor
+initialize: function() {
+	this.bindEvents();
+},
+	// Bind Event Listeners
+	//
+	// Bind any events that are required on startup. Common events are:
+	// 'load', 'deviceready', 'offline', and 'online'.
+bindEvents: function() {
+	document.addEventListener('deviceready', this.onDeviceReady, false);
+},
+	// deviceready Event Handler
+	//
+	// The scope of 'this' is the event. In order to call the 'receivedEvent'
+	// function, we must explicitly call 'app.receivedEvent(...);'
+onDeviceReady: function() {
+	app.receivedEvent('deviceready');
+},
+	// Update DOM on a Received Event
+receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
-	
-	window.plugins.insomnia.keepAwake();
 	
 	var altezzatbl = getRealContentHeight()-60;
 	var height = getRealContentHeight()-60;
@@ -197,9 +213,9 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("touchstart", "#back4", function(e){
-				   inviopasseggero(3);
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				   });
+		inviopasseggero(3);
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
 	
 	$(document).on("tap", "#xchiudi", function(e){
 		chiudix();
@@ -238,63 +254,23 @@ function onDeviceReady() {
     
     if(connectionStatus=='online'){
         $('#noconn').hide();
+
 		
-        var geostory = localStorage.getItem("geostory");
+		startgps();
 		
-        
-    if (geostory == 'NO'){
-		navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-        
-        function onSuccess(position) {
-            var ciao = position.coords.latitude;
-            var ciao1 = position.coords.longitude;
-            
-            localStorage.setItem("lat", ciao)
-            localStorage.setItem("lng", ciao1)
-            
-            localStorage.setItem("geostory", "SI")
-        }
-        
-        
-        function onError(error) {
-			navigator.geolocation.getCurrentPosition(onSuccess, onError1, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-        }
-        
-        function onError1(error) {
-            localStorage.setItem("geostory", "NO")
-            
-            navigator.notification.alert(
-               'Non riesco a rilevare la tua posizione',
-                alertDismissed,
-                'Attenzione',
-                'OK'
-               );
-        
-            $(".spinner").hide();
-        }
-    }
-    else{
-        var latitudine = localStorage.getItem("lat");
-        var longitudine = localStorage.getItem("lng");
-        
-        localStorage.setItem("geostory", "SI")
-        
-        $(".spinner").hide();
-    }
+	    var lat = localStorage.getItem("lat");
+		var lng = localStorage.getItem("lng");
 		
+		//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
+		//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
 		
-			var lat = localStorage.getItem("lat");
-			var lng = localStorage.getItem("lng");
-		
-			//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
-			//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
-		
-			localStorage.setItem("lat", lat)
-			localStorage.setItem("lng", lng)
+		//localStorage.setItem("lat", lat)
+		//localStorage.setItem("lng", lng)
 		
 
-			codeLatLng(lat,lng);
-    
+		//codeLatLng(lat,lng);
+		
+		$(".spinner").hide();
 }
     
     else{
@@ -316,6 +292,8 @@ function onDeviceReady() {
 		window.location.href = "#win2";
 		resetta2();
 	}
+}
+	
 }
 
 function chiama(km) {
@@ -363,24 +341,37 @@ function CenterControl(controlDiv, map) {
 }
 
 
-function onSuccess5(position) {
-	
-	//alert("timer")
+function onSuccess55(position) {
 	
 	var lat = position.coords.latitude;
 	var lng = position.coords.longitude;
 	
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
+}
+
+
+// START GPS
+
+function onError55(error) {
+	//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+	navigator.geolocation.watchPosition(onSuccess55, onError56, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+}
+
+function onError56(error) {
 	
-	//var lat = localStorage.getItem("lat");
-	//var lng = localStorage.getItem("lng");
-	var latlng = new google.maps.LatLng(lat, lng);
+	//window.location.href = "index.html";
+}
+
+
+function startgps(){
 	
-	marker2.setPosition(latlng);
-	map.setCenter(latlng);
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess55, onError55, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 }
+
+
+// CENTRA MAP
 
 
 function onError5(error) {
@@ -400,7 +391,7 @@ function centragps(){
 
 	var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
-	onSuccess5()
+	//onSuccess5()
 
 }
 
@@ -1086,6 +1077,12 @@ function resetta1(focus) {
 	//---------------------------
 		
 		function onSuccess2(position) {
+			
+		var connectionStatus = false;
+		connectionStatus = navigator.onLine ? 'online' : 'offline';
+			
+		if(connectionStatus=='online'){
+			
 			var icon = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
 			marker2.setIcon(icon);
 			
@@ -1251,9 +1248,9 @@ function resetta1(focus) {
 				map.setCenter(latlng);
 				//alert(muoviti);
 			}
+		}
 			
-			
-        }
+	}
         
 
         function onError2(error) {
