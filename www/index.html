@@ -250,6 +250,7 @@
 						  height: 260px;
 						  color: #000;
 						  
+						  
 						  text-align: center;
 						  font-weight: bold;
 						  
@@ -268,6 +269,20 @@
 						  
 						  z-index: 100;
 					  }
+					  
+					   .tbldiv {
+						  position: absolute;
+						  z-index: 300;
+						  
+						  width: 100%;
+						  height: 150px;
+						  color: #000;
+						  overflow-y: scroll;
+						  
+						  font-size: 16px;
+
+					  }
+					  
 					  
 					  .div5621 {
 						  background-color: #fff;
@@ -837,24 +852,43 @@
 					<td width="100%" align="left" colspan="2">
 						<table align="center" width="100px" height="100%">
 							<tr>
-								<td width="100px" align="left" valign="center">
-									<p id="quando"></p>
-								</td>
-							</tr>
-							<tr>
-								<td width="100px" align="left" valign="center">
-									<p id="Da"></p>
-								</td>
-							</tr>
-							<tr>
-								<td width="100px" align="left" valign="center">
-									<p id="Ad"></p>
-								</td>
-							</tr>
-							<tr>
-								<td width="100px" align="left" valign="center">
-									<p id="Note"></p>
-								</td>
+								<table align="center" width="100%" height="150px" class="tbldiv">
+									<tr>
+										<td width="100px" align="left" valign="center">
+											<p id="quando"></p>
+										</td>
+									</tr>
+									<tr>
+										<td width="100px" align="left" valign="center">
+											<p id="Da"></p>
+										</td>
+									</tr>
+									<tr>
+										<td width="100px" align="left" valign="center">
+											<p id="Ad"></p>
+										</td>
+									</tr>
+									<tr>
+										<td width="100px" align="left" valign="center">
+											<p id="Note"></p>
+										</td>
+									</tr>
+									<tr>
+										<td width="100px" align="left" valign="center">
+											<p id="">Altro</p>
+										</td>
+									</tr>
+									<tr>
+										<td width="100px" align="left" valign="center">
+											<p id="">Altro</p>
+										</td>
+									</tr>
+									<tr>
+										<td width="100px" align="left" valign="center">
+											<p id="">Altro</p>
+										</td>
+									</tr>
+								</table>
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
@@ -862,15 +896,7 @@
 									<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
 								</td>
 							</tr>
-							<!--<tr>
-								<td width="100px" align="center" valign="center">
-									<table>
-										<tr><td align="center">
-											<a id="conteggio1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#000">30 Accetta</font></a><a id="conteggio22" data-theme="b" data-role="button" class="custom-btn4" style="display:none"><font color="#fff">00:30</font></a><a id="conteggio3" data-theme="b" data-role="button" class="custom-btn4" style="display:none"><font color="#fff">00:30</font></a>
-										</td></tr>
-									</table>
-								</td>
-							</tr>-->
+
 							<tr>
 								<td width="100px" align="center" valign="center">
 									<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
