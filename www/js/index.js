@@ -24,6 +24,12 @@ receivedEvent: function(id) {
 	var lat = "41.889191";
 	var lng = "12.492475";
 	
+	localStorage.setItem("lat", lat)
+	localStorage.setItem("lng", lng)
+	
+	startgps();
+	
+	
 	var altezzatbl = getRealContentHeight()-60;
 	var height = getRealContentHeight()-60;
 	$("#tblhome").attr("height",height);
