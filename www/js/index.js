@@ -661,7 +661,7 @@ function resetta1(focus) {
 	var $content = $("#win2 div:jqmData(role=content)");
     $content.height (getRealContentHeight());
 	
-	$content.style.webkitTransform = 'translateZ(0px)';
+	//$content.style.webkitTransform = 'translateZ(0px)';
                                                               
 	  var options = {
 	  zoom : 13,
