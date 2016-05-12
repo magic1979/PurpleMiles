@@ -115,4 +115,10 @@
 		<plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
 		<gap:plugin name="cordova-plugin-datepicker" source="npm" />
 		
+		<gap:config-file platform="android" parent="/manifest" mode="add" xmlns:android="http://schemas.android.com/apk/res/android">
+			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    		<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+		</gap:config-file>
+		
 	</widget>
