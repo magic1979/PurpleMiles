@@ -29,9 +29,9 @@ receivedEvent: function(id) {
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
 	
-	navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
-	//startgps();
+	startgps();
 	
 	
 	var altezzatbl = getRealContentHeight()-60;
@@ -253,7 +253,7 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("touchstart", "#XX", function(e){
+	$(document).on("touchstart", "#ChiudiXX", function(e){
 				   navigator.notification.confirm(
 								'Confermi di voler fare logout',  // message
 								onConfirm,              // callback to invoke with index of button pressed
@@ -268,7 +268,13 @@ receivedEvent: function(id) {
 			localStorage.setItem("emailpass", "");
 			window.location.href = "Login.html";
 			
-			return;
+			e.stopImmediatePropagation();
+				   
+		    e.preventDefault();
+				   
+		    return false;
+				   
+			if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 		}
 		/*}else{
 			e.preventDefault();
@@ -396,7 +402,7 @@ receivedEvent: function(id) {
         $('#noconn').hide();
 
 		
-		//startgps();
+		startgps();
 		
 	    var lat = localStorage.getItem("lat");
 		var lng = localStorage.getItem("lng");
