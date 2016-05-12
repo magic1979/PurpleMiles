@@ -23,15 +23,15 @@ receivedEvent: function(id) {
 	
 	window.plugins.insomnia.keepAwake();
 	
-	var lat = "41.889191";
-	var lng = "12.492475";
+	navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
-	localStorage.setItem("lat", lat)
-	localStorage.setItem("lng", lng)
+	//var lat = "41.889191";
+	//var lng = "12.492475";
 	
-	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	//localStorage.setItem("lat", lat)
+	//localStorage.setItem("lng", lng)
 	
-	startgps();
+	//startgps();
 	
 	
 	var altezzatbl = getRealContentHeight()-60;
@@ -268,13 +268,7 @@ receivedEvent: function(id) {
 			localStorage.setItem("emailpass", "");
 			window.location.href = "Login.html";
 			
-			e.stopImmediatePropagation();
-				   
-		    e.preventDefault();
-				   
-		    return false;
-				   
-			if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+			return;
 		}
 		/*}else{
 			e.preventDefault();
@@ -449,11 +443,10 @@ function gpsonSuccess(position){
 	
 	var lat = position.coords.latitude;
 	var lng = position.coords.longitude;
-	var gradi = position.coords.heading;
-	
+
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
-	localStorage.setItem("gradi", gradi)
+
 	
 	//alert()
 	
@@ -888,7 +881,7 @@ function resetta1(focus) {
 	
 	if(connectionStatus=='online'){
 
-	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -1175,9 +1168,18 @@ function resetta1(focus) {
 				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
 				  }
 				  if(item.stato==2){
-				  $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
+				  
+				  if(item.accettata==1){
+				   $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
+				   $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
+				   $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
+				  }
+				  else{
+				   $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
+				   $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
+				   $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+				  }
+				  
 				  }
 
 				  
@@ -1233,9 +1235,18 @@ function resetta1(focus) {
 				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
 				  }
 				  if(item.stato==2){
-				  $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
+				  
+				  if(item.accettata==1){
+				   $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
+				   $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
+				   $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
+				  }
+				  else{
+				   $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
+				   $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
+				   $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
+				  }
+				  
 				  }
 
 				  
@@ -1291,9 +1302,18 @@ function resetta1(focus) {
 				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
 				  }
 				  if(item.stato==2){
-				  $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
-				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
+				  
+				  if(item.accettata==1){
+				   $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
+				   $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
+				   $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
+				  }
+				  else{
+				   $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
+				   $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
+				   $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
+				  }
+				  
 				  }
 				  
 				  var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
@@ -1792,11 +1812,18 @@ function timer(){
 												  $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
 												  }
 												  if(item.stato==2){
-												  $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-												  $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-												  $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
 												  
-													//alert(accetta3)
+												  if(item.accettata==1){
+												   $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
+												   $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
+												   $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
+												  }
+												  else{
+												   $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
+												   $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
+												   $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+												  }
+												  
 												  
 												   if(item.accettata==0){
 												    $("#blob3").show();
@@ -1820,6 +1847,10 @@ function timer(){
 												  setTimeout(tick, 1000);
 												  } else {
 												  $("#blob3").hide();
+												  
+												  scadutaofferta(0,item.id_richiesta,item.id_autista)
+												  
+												  //resetta1(1)
 												  //rifiuta1()
 												  //alert("finito");
 												  //if(mins > 1){
@@ -1838,9 +1869,6 @@ function timer(){
 												  }
 												   else{
 													$("#blob3").hide();
-												    $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-												    $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-												    $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
 												   }
 												  }
 												  
@@ -1919,9 +1947,17 @@ function timer(){
 												  $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
 												  }
 												  if(item.stato==2){
-												  $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-												  $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-												  $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
+												  
+												  if(item.accettata==1){
+												   $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
+												   $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
+												   $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
+												  }
+												  else{
+												   $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
+												   $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
+												   $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
+												  }
 												  
 												  if(item.accettata==0){
 												   $("#blob4").show();
@@ -1961,10 +1997,7 @@ function timer(){
 												  countdown2(0);
 												  }
 												  else{
-												  $("#blob4").hide();
-												  $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-												  $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-												  $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
+												    $("#blob4").hide();
 												  }
 
 												     }
@@ -2031,9 +2064,17 @@ function timer(){
 												  $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
 												  }
 												  if(item.stato==2){
-												  $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
-												  $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-												  $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
+												  
+												  if(item.accettata==1){
+												   $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
+												   $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
+												   $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
+												  }
+												  else{
+												   $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
+												   $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
+												   $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
+												  }
 												  
 												  if(item.accettata==0){
 												  $("#blob5").show();
@@ -2073,10 +2114,7 @@ function timer(){
 												  countdown3(0);
 												  }
 												  else{
-												  $("#blob5").hide();
-												  $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-												  $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-												  $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
+												    $("#blob5").hide();
 												  }
 												  
 										
@@ -2113,6 +2151,47 @@ function timer(){
 
  }
 	
+}
+
+
+function scadutaofferta(id,id_richiesta,id_autista){
+	
+	alert("Scaduta")
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_confermapasseggeroS1.php?conferma="+ id +"&id_richiesta="+ id_richiesta +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				  if(item.Token==1){
+  
+				    resetta1(1)
+				  }
+				  
+				  });
+		   
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   onResume();
+		   
+		   },
+		   dataType:"jsonp"});
 }
 
 
@@ -2782,6 +2861,8 @@ function casa(){
 
 function start() {
 	//chiamo e setto a 1 lo stato dell'autista (ok lavoro)
+	$("#setGPS").hide();
+	$("#Modifica").hide();
 	
 	$("#btninizia").hide();
 	$("#loading").show();

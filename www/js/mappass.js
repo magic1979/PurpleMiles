@@ -231,9 +231,16 @@ function onDeviceReady() {
 					   );
 					  
 					  $("#btnofferte").show();
-					  $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
-					  vediofferte()
-					  return;
+					  $.mobile.changePage( "#home", { transition: "slide", changeHash: false });
+					  
+					  //vediofferte()
+					  e.stopImmediatePropagation();
+				   
+				      e.preventDefault();
+				   
+				      return false;
+				   
+				      if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				  }
 					  
 				});
@@ -1472,6 +1479,7 @@ function inviopasseggero(come){
 
 function vediofferte(){
 	$("#offerte4").html("");
+	$("#timer2").show();
 	//alert("Vedo");
 	
 	for(i=0; i<10000; i++)
@@ -1497,28 +1505,38 @@ function vediofferte(){
 				  
 				  if(item.stato==2){
 				  
-				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><br><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><br><b>Prezzo:</b>"+ item.importo +"<br><b>Quando:</b>"+ item.quando +"<br><br><b>Partenza:</b>"+ item.partenza +"<br><b>Arrivo:</b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  
-				  $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
-					accettaofferta(2,item.id_richiesta,item.id_autista)
-					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				  });
-				  
-				  $(document).on("touchstart", "#rifiuta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
-						accettaofferta(3,item.id_richiesta,item.id_autista)
-						if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				  });
-				  
-				  
-				  for(i=0; i<10000; i++)
-				  {
-				    window.clearInterval(i);
+				  if(item.accettata==1){
+				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo:</b>"+ item.importo +"<br><b>Quando:</b>"+ item.quando +"<br><br><b>Partenza:</b>"+ item.partenza +"<br><b>Arrivo:</b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				  }
+				  else{
+				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo:</b>"+ item.importo +"<br><b>Quando:</b>"+ item.quando +"<br><br><b>Partenza:</b>"+ item.partenza +"<br><b>Arrivo:</b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
 				  
+				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
+					  accettaofferta(2,item.id_richiesta,item.id_autista)
+					  if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				    });
+				  
+					$(document).on("touchstart", "#rifiuta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
+						accettaofferta(3,item.id_richiesta,item.id_autista)
+						if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				    });
+				  
+				  if(item.confermata==0){
+				  
 				  if(item.accettata==0){
+				  
+				   for(i=0; i<10000; i++)
+				   {
+				    window.clearInterval(i);
+				   }
+				  
+				   localStorage.setItem("accettato","0")
+				   //$("#timer2").show();
 
 				   function countdown2(minutes) {
-				   var seconds = 10;
+				   var seconds = 8;
 				   var mins = minutes
 				   function tick() {
 				   var counter = document.getElementById("timer2");
@@ -1529,12 +1547,12 @@ function vediofferte(){
 				   if( seconds > 0 ) {
 				   setTimeout(tick, 1000);
 				   } else {
+				  
+				     $("#timer2").hide();
+				     //vediofferte()
 				     scadutaofferta(0,item.id_richiesta,item.id_autista)
 					 return false;
-				     //vediofferte();
-					 //rifiuta2()
-					 //alert("finito");
-					 //if(mins > 1){
+
 				  
 					 // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
 					 //setTimeout(function () { countdown(mins - 1); }, 1000);
@@ -1546,6 +1564,8 @@ function vediofferte(){
 				   }
 				  
 				   countdown2(0);
+				  }
+				  
 				  }
 				  
 				  }
@@ -1593,7 +1613,6 @@ function vediofferte(){
 	
 	refreshPos = setInterval(function() {
 		vediofferte()
-		//onSuccess2();
 	}, 5000);
 	
 	//setTimeout( function() {
@@ -1657,7 +1676,7 @@ function scadutaofferta(id,id_richiesta,id_autista){
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_confermapasseggeroS1.php?conferma="+ id +"&id_richiesta="+ id_richiesta +"&id_autista="+ id_autista +"",
+		   url:"http://purplemiles.com/www2/check_confermapasseggeroS1A.php?conferma="+ id +"&id_richiesta="+ id_richiesta +"&id_autista="+ id_autista +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -1668,15 +1687,7 @@ function scadutaofferta(id,id_richiesta,id_autista){
 		   $.each(result, function(i,item){
 				  
 				  if(item.Token==1){
-				  
-				  navigator.notification.alert(
-											   'Richiesta Elaborata.',  // message
-											   alertDismissed,         // callback
-											   'OK',           // title
-											   'Done'                  // buttonName
-											   );
-				  
-				  
+
 				  vediofferte()
 				  }
 				  
