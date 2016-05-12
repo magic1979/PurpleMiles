@@ -21,13 +21,15 @@ onDeviceReady: function() {
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
 	
+	window.plugins.insomnia.keepAwake();
+	
+	var lat = "41.889191";
+	var lng = "12.492475";
+	
+	localStorage.setItem("lat", lat)
+	localStorage.setItem("lng", lng)
+	
 	navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-	
-	//var lat = "41.889191";
-	//var lng = "12.492475";
-	
-	//localStorage.setItem("lat", lat)
-	//localStorage.setItem("lng", lng)
 	
 	//startgps();
 	
@@ -394,7 +396,7 @@ receivedEvent: function(id) {
         $('#noconn').hide();
 
 		
-		startgps();
+		//startgps();
 		
 	    var lat = localStorage.getItem("lat");
 		var lng = localStorage.getItem("lng");
