@@ -690,7 +690,7 @@ function centragps(){
 	muoviti = 1;
 	localStorage.setItem("muoviti", "1");
 
-	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 
 }
 
