@@ -21,15 +21,26 @@ onDeviceReady: function() {
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
 	
+	
+	/*document.addEventListener('backKeyDown', function(e) {
+ 		alert ('pulsante in costruzione');
+ 	}, false);*/
+		
+
+	document.addEventListener('backbutton', function(e) {
+ 		alert ('pulsante in costruzione');
+ 	}, false);
+	
+	
 	window.plugins.insomnia.keepAwake();
 	
-	navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	//var lat = "41.889191";
 	//var lng = "12.492475";
 	
-	//localStorage.setItem("lat", lat)
-	//localStorage.setItem("lng", lng)
+	localStorage.setItem("lat", "41.889191")
+	localStorage.setItem("lng", "12.492475")
 	
 	//startgps();
 	
@@ -282,6 +293,26 @@ receivedEvent: function(id) {
 		}*/
 	}
 	
+	$(document).on("touchstart", "#esciapp", function(e){
+				   navigator.notification.confirm(
+								'Confermi di voler chiudere',  // message
+								onConfirm2,              // callback to invoke with index of button pressed
+								'Logout',            // title
+								'Si,No'      // buttonLabels
+								);
+	});
+	
+	function onConfirm2(button) {
+		if(button==1){    //If User selected No, then we just do nothing
+			localStorage.setItem("email", "");
+			localStorage.setItem("emailpass", "");
+			
+			navigator.app.exitApp();
+			
+			return;
+		}
+	}
+	
 	$(document).on("tap", "#XXX", function(e){
 		window.location.href = "index.html";
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
@@ -439,7 +470,6 @@ receivedEvent: function(id) {
 }
 
 function gpsonSuccess(position){
-	
 	
 	var lat = position.coords.latitude;
 	var lng = position.coords.longitude;
@@ -630,10 +660,16 @@ function onError5(error) {
 function centragps(){
 	muoviti = 1;
 
-	var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
+	
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+	map.panTo(latlng);
+	
+	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 
 }
-
 
 
 /*function getKey(key){
@@ -921,13 +957,14 @@ function resetta1(focus) {
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
 	if(connectionStatus=='online'){
-
-	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
+	 if(localStorage.getItem("setGPS") == 0){
+	  var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	 }
+	 
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
 	
-
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
@@ -2994,7 +3031,7 @@ function richiesta1() {
 				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza1 +"</font>");
 	
 	              if(stato1==0){
-		            $("#4img").html("<img src='img/1_viola.png' width='30'>");
+		            $("#4img").html("<img src='img/1_viola.png' width='40'>");
 	              }
 	
 				  if(stato1!=0){
@@ -3002,13 +3039,13 @@ function richiesta1() {
 				  }
 	
 				  if(stato1==1){
-					  $("#4img").html("<img src='img/1_giallo.png' width='30'>");
+					  $("#4img").html("<img src='img/1_giallo.png' width='40'>");
 				  }
 
 				  if(stato1==2){
 				   $("#gps1").show();
 				   $("#rif1").html("Annulla");
-				   $("#4img").html("<img src='img/1_verde.png' width='30'>");
+				   $("#4img").html("<img src='img/1_verde.png' width='40'>");
 				  
 				   $(document).on("tap", "#gps1", function(e){
 						
@@ -3133,7 +3170,7 @@ function richiesta2() {
 				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza2 +"</font>");
 	
 				  if(stato2==0){
-					 $("#4img").html("<img src='img/2_viola.png' width='30'>");
+					 $("#4img").html("<img src='img/2_viola.png' width='40'>");
 				  }
 	
 				  if(stato2!=0){
@@ -3141,14 +3178,14 @@ function richiesta2() {
 				  }
 	
 				  if(stato2==1){
-					 $("#4img").html("<img src='img/2_giallo.png' width='30'>");
+					 $("#4img").html("<img src='img/2_giallo.png' width='40'>");
 				  }
 	
 				  if(stato2==2){
 					  
 				   $("#gps22").show();
 				   $("#rif2").html("Annulla");
-				   $("#4img").html("<img src='img/2_verde.png' width='30'>");
+				   $("#4img").html("<img src='img/2_verde.png' width='40'>");
 				  
 					  $(document).on("tap", "#gps22", function(e){
 
@@ -3247,7 +3284,7 @@ function richiesta3() {
 				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza3 +"</font>");
 	
 	if(stato3==0){
-		$("#4img").html("<img src='img/3_viola.png' width='30'>");
+		$("#4img").html("<img src='img/3_viola.png' width='40'>");
 	}
 	
 				  if(stato3!=0){
@@ -3255,13 +3292,13 @@ function richiesta3() {
 				  }
 	
 	if(stato3==1){
-		$("#4img").html("<img src='img/3_giallo.png' width='30'>");
+		$("#4img").html("<img src='img/3_giallo.png' width='40'>");
 	}
 	
 				  if(stato3==2){
 				  $("#gps3").show();
 				  $("#rif3").html("Annulla");
-				  $("#4img").html("<img src='img/3_verde.png' width='30'>");
+				  $("#4img").html("<img src='img/3_verde.png' width='40'>");
 				  
 				  $(document).on("tap", "#gps3", function(e){
 
