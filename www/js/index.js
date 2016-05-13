@@ -1713,14 +1713,14 @@ function resetta1(focus) {
 				var icon = new google.maps.MarkerImage("img_autista/car_000.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
 			}
 			
-            //var lat = position.coords.latitude;
-            //var lng = position.coords.longitude;
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
 			
-			//localStorage.setItem("lat", lat)
-			//localStorage.setItem("lng", lng)
+			localStorage.setItem("lat", lat)
+			localStorage.setItem("lng", lng)
 			
-			var lat = localStorage.getItem("lat");
-			var lng = localStorage.getItem("lng");
+			//var lat = localStorage.getItem("lat");
+			//var lng = localStorage.getItem("lng");
 			var latlng = new google.maps.LatLng(lat, lng);
 			
 			marker2.setIcon(icon);
