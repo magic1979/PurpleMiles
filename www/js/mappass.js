@@ -753,7 +753,7 @@ function resetta1(focus) {
 		
 	$("#da").removeClass("bottoni").addClass("bottoni1");
 
-	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -762,11 +762,11 @@ function resetta1(focus) {
 	//marker.setMap(null);
 	//ido.setVisible(false);
 	
-	var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
-	var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
+	//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
+	//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
 	
-	localStorage.setItem("lat", lat)
-    localStorage.setItem("lng", lng)
+	//localStorage.setItem("lat", lat)
+    //localStorage.setItem("lng", lng)
 	//ido.setPosition(latlng);
 
 	
