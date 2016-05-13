@@ -529,6 +529,47 @@ function CenterControl(controlDiv, map) {
 	
 }
 
+function CenterControl2(controlDiv, map) {
+	
+	// Set CSS for the control border.
+	var controlUI = document.createElement('div');
+	controlUI.style.backgroundColor = 'transparent';
+	controlUI.style.border = '0px solid #fff';
+	controlUI.style.borderRadius = '3px';
+	controlUI.style.boxShadow = '0 0px 0px rgba(0,0,0,.3)';
+	controlUI.style.cursor = 'pointer';
+	controlUI.style.marginBottom = '22px';
+	controlUI.style.textAlign = 'center';
+	controlUI.title = 'Click to recenter the map';
+	controlUI.style.height = '60px';
+	controlUI.style.width = '320px';
+	//controlUI.style.display = 'none';
+	controlDiv.appendChild(controlUI);
+	
+	// Set CSS for the control interior.
+	var controlText = document.createElement('div');
+	controlText.style.color = 'rgb(25,25,25)';
+	controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+	controlText.style.fontSize = '12px';
+	controlText.style.lineHeight = '30px';
+	controlText.style.paddingLeft = '5px';
+	controlText.style.paddingRight = '5px';
+	controlText.innerHTML = '<br><table width="100%" border="0"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="30px"></a></td></tr></table>';
+	controlUI.appendChild(controlText);
+	
+	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
+	//var g = document.createElement('div');
+	//g.id ='sopra':
+	//controlUI.appendChild(g);
+	// Setup the click event listeners: simply set the map to Chicago.
+	//controlUI.addEventListener('click', function() {
+	//alert();
+	//map.setCenter(chicago);
+	//});
+	
+}
+
+
 
 // START GPS
 
@@ -1064,17 +1105,29 @@ function resetta1(focus) {
 			
 			//---------------------------
 		
-		
+	if(focus!=1){
 		var centerControlDiv = document.createElement('div');
 		centerControlDiv.setAttribute('id', 'sopra');
 		var centerControl = new CenterControl(centerControlDiv, map);
 		
 		centerControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+	}
 
 		
 	if(focus==1){
 		$("#btninizia").hide();
+		$("#setGPS").hide();
+		$("#Modifica").hide();
+		
+		var centerControlDiv2 = document.createElement('div');
+		centerControlDiv2.setAttribute('id', 'sopra');
+		var centerControl2 = new CenterControl2(centerControlDiv2, map);
+		
+		centerControlDiv2.index = 1;
+		map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv2);
+		
+		
 		$("#pass1").hide();
 		$("#pass2").hide();
 		$("#pass3").hide();
