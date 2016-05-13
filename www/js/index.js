@@ -660,15 +660,17 @@ function onError5(error) {
 
 function centragps(){
 	muoviti = 1;
+	
+	//localStorage.setItem("muoviti", "1");
 
-	var lat = localStorage.getItem("lat");
-	var lng = localStorage.getItem("lng");
+	//var lat = localStorage.getItem("lat");
+	//var lng = localStorage.getItem("lng");
 	
-	var latlng = new google.maps.LatLng(lat, lng);
+	//var latlng = new google.maps.LatLng(lat, lng);
 	
-	map.panTo(latlng);
+	//map.panTo(latlng);
 	
-	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 
 }
 
@@ -1049,7 +1051,7 @@ function resetta1(focus) {
 		var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
 		var iconnn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
 		
-		// marker1.setMap(null);
+		// marker1.setMap(null); centro mappa
 		
 		
 		marker1 = new google.maps.Marker ({
@@ -2251,7 +2253,7 @@ function timer(){
 
 function scadutaofferta(id,id_richiesta,id_autista){
 	
-	alert("Scaduta")
+	//alert(" ")
 	
 	$.ajax({
 		   type:"GET",
