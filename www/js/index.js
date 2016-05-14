@@ -26,7 +26,7 @@ receivedEvent: function(id) {
 	
 	//ANDROID -------------------------------------------------------
 	
-	document.addEventListener('backbutton', function(e) {
+	/*document.addEventListener('backbutton', function(e) {
 							  navigator.notification.confirm(
 															 'Confermi di voler chiudere',  // message
 															 onConfirm2,              // callback to invoke with index of button pressed
@@ -48,7 +48,7 @@ receivedEvent: function(id) {
 	}
 	
 	
-	window.plugins.insomnia.keepAwake();
+	window.plugins.insomnia.keepAwake();*/
 	
 	//----------------------------------------------------------------
 	
@@ -890,6 +890,16 @@ function centragps(){
 	var latlng = new google.maps.LatLng(lat, lng);
 	
 	map.panTo(latlng);
+	
+	if (watchID != null) {
+		navigator.geolocation.clearWatch(watchID);
+		watchID = null;
+	}
+	
+	setTimeout(function() {
+	  muoviti = 1;
+	  var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+	}, 2000);
 	
 	//CLEAR POSITION
 
