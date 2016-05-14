@@ -21,8 +21,10 @@ onDeviceReady: function() {
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
 	
+	
 	navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
+	//ANDROID -------------------------------------------------------
 	
 	document.addEventListener('backbutton', function(e) {
 							  navigator.notification.confirm(
@@ -48,6 +50,7 @@ receivedEvent: function(id) {
 	
 	window.plugins.insomnia.keepAwake();
 	
+	//----------------------------------------------------------------
 	
 	var lat = "41.889191";
 	var lng = "12.492475";
@@ -55,7 +58,49 @@ receivedEvent: function(id) {
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
 	
-	//startgps();
+	
+	
+	$(".spinner").show();
+	var connectionStatus = false;
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	
+	if(connectionStatus=='online'){
+		$('#noconn').hide();
+		
+		
+		startgps();
+		
+		var lat = localStorage.getItem("lat");
+		var lng = localStorage.getItem("lng");
+		
+		//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
+		//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
+		
+		//localStorage.setItem("lat", lat)
+		//localStorage.setItem("lng", lng)
+		
+		
+		//codeLatLng(lat,lng);
+		
+		$(".spinner").hide();
+		
+	}
+	
+	else{
+		navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		
+		
+		//window.location.href = "index.html";
+		
+		
+	}
+
+	
 	
 	//localStorage.setItem("lat", "41.889191")
 	//localStorage.setItem("lng", "12.492475")
@@ -139,6 +184,10 @@ receivedEvent: function(id) {
 	var setGPS;
 	localStorage.setItem("setGPS","0")
 	localStorage.setItem("muoviti","1")
+	
+	var watchID = null;
+	var watchID2 = null;
+	var watchID5 = null;
 	
 	
 	$(document).on("touchstart", "#pass1", function(e){
@@ -447,46 +496,6 @@ receivedEvent: function(id) {
     });
 	
 
-    $(".spinner").show();
-    var connectionStatus = false;
-    connectionStatus = navigator.onLine ? 'online' : 'offline';
-    
-    if(connectionStatus=='online'){
-        $('#noconn').hide();
-
-		
-		startgps();
-		
-	    var lat = localStorage.getItem("lat");
-		var lng = localStorage.getItem("lng");
-		
-		//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
-		//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
-		
-		//localStorage.setItem("lat", lat)
-		//localStorage.setItem("lng", lng)
-		
-
-		//codeLatLng(lat,lng);
-		
-		$(".spinner").hide();
-		
-    }
-    
-    else{
-		navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		
-		
-		//window.location.href = "index.html";
-		
-		
-    }
-	
 	
 	if(IDPage==2){
 		window.location.href = "#win2";
@@ -638,6 +647,7 @@ function onSuccess55(position) {
 	
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
+	
 }
 
 
@@ -654,14 +664,162 @@ function onError56(error) {
 
 function startgps(){
 	
-	var watchID = navigator.geolocation.getCurrentPosition(onSuccess55, onError55, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID1 = navigator.geolocation.getCurrentPosition(onSuccess55, onError55, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 }
 
 
-// CENTRA MAP
+// CENTRA MAP ------------------------------
 
 function onSuccess5(position) {
+	
+	var icon = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
+	marker2.setIcon(icon);
+	
+	var posizione = Math.round(position.coords.heading);
+	
+	if((posizione > 0)&&(posizione <= 10)){
+		var icon = new google.maps.MarkerImage("img_autista/car_010.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 10)&&(posizione <= 20)){
+		var icon = new google.maps.MarkerImage("img_autista/car_020.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 20)&&(posizione <= 30)){
+		//$("#rispondi").html("<img src='img_autista/car_030.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_030.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 30)&&(posizione <= 40)){
+		//$("#rispondi").html("<img src='img_autista/car_040.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_040.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 40)&&(posizione <= 50)){
+		//$("#rispondi").html("<img src='img_autista/car_050.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_050.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 50)&&(posizione <= 60)){
+		//$("#rispondi").html("<img src='img_autista/car_060.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_060.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 60)&&(posizione <= 70)){
+		//$("#rispondi").html("<img src='img_autista/car_070.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_070.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 70)&&(posizione <= 80)){
+		//$("#rispondi").html("<img src='img_autista/car_080.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_080.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 80)&&(posizione <= 90)){
+		//$("#rispondi").html("<img src='img_autista/car_090.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_090.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 90)&&(posizione <= 100)){
+		//$("#rispondi").html("<img src='img_autista/car_100.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_100.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 100)&&(posizione <= 110)){
+		//$("#rispondi").html("<img src='img_autista/car_110.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_110.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 110)&&(posizione <= 120)){
+		//$("#rispondi").html("<img src='img_autista/car_120.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_120.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 120)&&(posizione <= 130)){
+		//$("#rispondi").html("<img src='img_autista/car_130.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_130.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 130)&&(posizione <= 140)){
+		//$("#rispondi").html("<img src='img_autista/car_140.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_140.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 140)&&(posizione <= 150)){
+		//$("#rispondi").html("<img src='img_autista/car_150.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_150.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 150)&&(posizione <= 160)){
+		//$("#rispondi").html("<img src='img_autista/car_160.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_160.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 160)&&(posizione <= 170)){
+		//$("#rispondi").html("<img src='img_autista/car_170.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_170.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 170)&&(posizione <= 180)){
+		//$("#rispondi").html("<img src='img_autista/car_180.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_180.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 180)&&(posizione <= 190)){
+		//$("#rispondi").html("<img src='img_autista/car_190.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_190.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 190)&&(posizione <= 200)){
+		//$("#rispondi").html("<img src='img_autista/car_200.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_200.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 200)&&(posizione <= 210)){
+		//$("#rispondi").html("<img src='img_autista/car_210.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_210.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 210)&&(posizione <= 220)){
+		//$("#rispondi").html("<img src='img_autista/car_220.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_220.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 220)&&(posizione <= 230)){
+		//$("#rispondi").html("<img src='img_autista/car_230.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_230.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 230)&&(posizione <= 240)){
+		//$("#rispondi").html("<img src='img_autista/car_240.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_240.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 240)&&(posizione <= 250)){
+		//$("#rispondi").html("<img src='img_autista/car_250.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_250.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 250)&&(posizione <= 260)){
+		//$("#rispondi").html("<img src='img_autista/car_260.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_260.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 260)&&(posizione <= 270)){
+		//$("#rispondi").html("<img src='img_autista/car_270.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_270.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 270)&&(posizione <= 280)){
+		//$("#rispondi").html("<img src='img_autista/car_280.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_280.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 280)&&(posizione <= 290)){
+		//$("#rispondi").html("<img src='img_autista/car_290.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_290.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 290)&&(posizione <= 300)){
+		//$("#rispondi").html("<img src='img_autista/car_300.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_300.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 300)&&(posizione <= 310)){
+		//$("#rispondi").html("<img src='img_autista/car_310.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_310.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 310)&&(posizione <= 320)){
+		//$("#rispondi").html("<img src='img_autista/car_320.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_320.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 320)&&(posizione <= 330)){
+		//$("#rispondi").html("<img src='img_autista/car_330.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_330.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 330)&&(posizione <= 340)){
+		//$("#rispondi").html("<img src='img_autista/car_340.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_340.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else if((posizione > 340)&&(posizione <= 350)){
+		//$("#rispondi").html("<img src='img_autista/car_350.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_350.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
+	else{
+		//$("#rispondi").html("<img src='img_autista/car_000.png'>")
+		var icon = new google.maps.MarkerImage("img_autista/car_000.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+	}
 	
 	var lat = position.coords.latitude;
 	var lng = position.coords.longitude;
@@ -669,31 +827,61 @@ function onSuccess5(position) {
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
 	
+	//var lat = localStorage.getItem("lat");
+	//var lng = localStorage.getItem("lng");
 	var latlng = new google.maps.LatLng(lat, lng);
 	
+	marker2.setIcon(icon);
+	marker2.setPosition(latlng);
+	
+
+	//map.setCenter(latlng);
 	map.panTo(latlng);
+	
+	//alert("seguo")
+
+	
 }
+
 
 function onError5(error) {
 	//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
 	navigator.geolocation.watchPosition(onSuccess55, onError5, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
 }
 
-function onError5(error) {
+
+
+function test5(position) {
 	
-	window.location.href = "index.html";
+	//alert("Arrivo")
+	
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+
+	map.panTo(latlng);
 }
 
 
 function centragps(){
 	muoviti = 1;
 	localStorage.setItem("muoviti", "1");
+	
+	//CLEAR POSITION
 
-	var watchID = navigator.geolocation.getCurrentPosition(onSuccess5, onError5, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	var watchID5 = navigator.geolocation.watchPosition(onSuccess5, onError5, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+	
+	if (watchID2 != null) {
+		navigator.geolocation.clearWatch(watchID2);
+		watchID2 = null;
+	}
+	
+	//test5()
 
 }
 
-
+//--------------------------------------------
 
 /*function getKey(key){
 	if ( key == null ) {
@@ -737,15 +925,6 @@ function sidiv() {
 
 function alertDismissed() {
     $(".spinner").hide();
-}
-
-function onConfirm(button) {
-    $(".spinner").hide();
-    
-    if (button==1){
-        window.location.href = "Token.html";
-    }
-    
 }
 
 
@@ -913,15 +1092,14 @@ function verificawifi(){
 }
 
 function onResume() {
+	app.initialize();
 	
-	var connectionStatus = false;
+	/*var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
 	if(connectionStatus=='online'){
 	
 	setTimeout(function() {
-	   //localStorage.setItem("geostory", "NO")
-	   //clearInterval(refreshIntervalId);
 		
 		for(i=0; i<10000; i++)
 		{
@@ -933,8 +1111,8 @@ function onResume() {
 		
 	}
 	else{
-		//window.location.href = "index.html";
-	}
+
+	}*/
 }
 
 function getDistance(lat1,lon1,lat2,lon2) {
@@ -982,7 +1160,7 @@ function resetta1(focus) {
 	if(connectionStatus=='online'){
 
 	 if(localStorage.getItem("setGPS") == 0){
-	   var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	   var watchID11 = navigator.geolocation.getCurrentPosition(onSuccess55, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 		 
 		//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
 		//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
@@ -1036,6 +1214,18 @@ function resetta1(focus) {
 	$(document).on("touchmove", map, function(e){
 		muoviti=2;
 		localStorage.setItem("muoviti", "2")
+				   
+		// CLEAR WATCH 5
+		//navigator.geolocation.clearWatch(watchID5);
+		
+		//test2()
+				   
+		var watchID2 = navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+				   
+		if (watchID5 != null) {
+		  navigator.geolocation.clearWatch(watchID5);
+		  watchID5 = null;
+		}
 	});
 		
 		
@@ -1478,14 +1668,18 @@ function resetta1(focus) {
 	  //alert(localStorage.getItem("setGPS"))
 		
 		
-		
 	  if(localStorage.getItem("setGPS") == 0){
-	   navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+	   
+	   //navigator.geolocation.clearWatch(watchID5);
+	   var watchID5 = navigator.geolocation.watchPosition(onSuccess5, onError5, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+		  
 	   var lat = localStorage.getItem("lat");
 	   var lng = localStorage.getItem("lng");
 		  
 		var latlng = new google.maps.LatLng(lat, lng);
 		map.panTo(latlng);
+		  
+		//test5()
 		  
 	  }
 	  else{
@@ -1511,9 +1705,7 @@ function resetta1(focus) {
 	  }
 		
 		
-		
 		timer()
-		
 		
 		//posizionegps()
 
@@ -1561,6 +1753,11 @@ function resetta1(focus) {
 	}*/
 	
 	//---------------------------
+		
+		function test2(error) {
+			alert("Libero")
+		}
+		
 		
 		function onSuccess2(position) {
 			
@@ -1725,13 +1922,12 @@ function resetta1(focus) {
 			marker2.setIcon(icon);
 			marker2.setPosition(latlng);
 			
-			if(localStorage.getItem("muoviti")=="1"){
+			//if(localStorage.getItem("muoviti")=="1"){
 				//map.setCenter(latlng);
-				map.panTo(latlng);
-				//alert(muoviti);
-			}
+				//map.panTo(latlng);
+			//}
 			
-			//alert(localStorage.getItem("muoviti"))
+			//alert("free")
 			
 	}
         
@@ -1785,6 +1981,9 @@ function timer(){
 									
 									$("#loading").hide();
 									$("#btnpass").show();
+									$("#pass1").hide();
+									$("#pass2").hide();
+									$("#pass3").hide();
 									//$("#esci").show();
 									
 									beaches1.push(['Tua Posizione',lat,lng,1,0,0,0])
