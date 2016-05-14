@@ -853,31 +853,48 @@ function onError5(error) {
 
 function test5(position) {
 	
+	var lat = position.coords.latitude;
+	var lng = position.coords.longitude;
+	
+	localStorage.setItem("lat", lat)
+	localStorage.setItem("lng", lng)
+	
 	//alert("Arrivo")
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
 	
-	var lat = localStorage.getItem("lat");
-	var lng = localStorage.getItem("lng");
-	var latlng = new google.maps.LatLng(lat, lng);
+	//var latlng = new google.maps.LatLng(lat, lng);
 	
-
-	map.panTo(latlng);
+	//map.panTo(latlng);
 }
 
 
 function centragps(){
 	muoviti = 1;
-	localStorage.setItem("muoviti", "1");
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	muoviti = 1;
+	
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
+	
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+	map.panTo(latlng);
 	
 	//CLEAR POSITION
 
-	var watchID5 = navigator.geolocation.watchPosition(onSuccess5, onError5, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
-	
-	if (watchID2 != null) {
-		navigator.geolocation.clearWatch(watchID2);
-		watchID2 = null;
-	}
-	
-	//test5()
+	//var watchID = navigator.geolocation.watchPosition(test5, onError5, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+
 
 }
 
@@ -1212,20 +1229,20 @@ function resetta1(focus) {
 
 		
 	$(document).on("touchmove", map, function(e){
-		muoviti=2;
-		localStorage.setItem("muoviti", "2")
+		muoviti=0;
+	    muoviti=0;
+	    muoviti=0;
+		muoviti=0;
+		muoviti=0;
+		muoviti=0;
+		muoviti=0;
+		muoviti=0;
+		muoviti=0;
+		muoviti=0;
 				   
 		// CLEAR WATCH 5
 		//navigator.geolocation.clearWatch(watchID5);
-		
-		//test2()
-				   
-		var watchID2 = navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
-				   
-		if (watchID5 != null) {
-		  navigator.geolocation.clearWatch(watchID5);
-		  watchID5 = null;
-		}
+
 	});
 		
 		
@@ -1669,9 +1686,10 @@ function resetta1(focus) {
 		
 		
 	  if(localStorage.getItem("setGPS") == 0){
-	   
 	   //navigator.geolocation.clearWatch(watchID5);
-	   var watchID5 = navigator.geolocation.watchPosition(onSuccess5, onError5, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+		
+	   //posizionegps()
+	   var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 		  
 	   var lat = localStorage.getItem("lat");
 	   var lng = localStorage.getItem("lng");
@@ -1706,8 +1724,6 @@ function resetta1(focus) {
 		
 		
 		timer()
-		
-		//posizionegps()
 
 	}
 	
@@ -1753,10 +1769,6 @@ function resetta1(focus) {
 	}*/
 	
 	//---------------------------
-		
-		function test2(error) {
-			alert("Libero")
-		}
 		
 		
 		function onSuccess2(position) {
@@ -1922,12 +1934,13 @@ function resetta1(focus) {
 			marker2.setIcon(icon);
 			marker2.setPosition(latlng);
 			
-			//if(localStorage.getItem("muoviti")=="1"){
+			if(muoviti==1){
 				//map.setCenter(latlng);
-				//map.panTo(latlng);
-			//}
+				map.panTo(latlng);
+			}
 			
-			//alert("free")
+
+			//alert(muoviti)
 			
 	}
         
@@ -1947,8 +1960,8 @@ function posizionegps(){
 
 	refreshPos = setInterval(function() {
 
-		//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-		onSuccess2();
+		var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+
 	}, 3000);
 }
 	
