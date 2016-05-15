@@ -183,6 +183,7 @@
 						  z-index: 2;
 						  top:20px;
 						  width:95%;
+						  height: 100%;
 
 						  padding: 0;
 						  color: #000;
@@ -958,7 +959,7 @@
 					<td width="75%" align="left">
 						<table align="center" width="200px" border="0">
 							<tr>
-								<td width="200px" align="left">
+								<td width="200px" align="center">
 									<a id="pass1" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;1&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass2" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;2&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass3" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;3&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="esci" href="#" data-theme="b" class="custom-pass9"><font color="#cc33cc">&#8592;</font></a>
 								</td>
 							</tr>
@@ -1050,7 +1051,8 @@
 		
 		<div data-role=page id=home4 class="div2">
 			<table border="0" hight="30px"><tr><td></td></tr></table>
-			<table border="0" valign="center" align="center" class="transbox4">
+			
+			<table border="0" width="100%" align="center">
 				<tr>
 					<td align="center" width="25%">
 						<div id="4img"><img src="img/ico_viola.png" width="30"></div>
@@ -1062,10 +1064,14 @@
 						<a id="ritorna" href="#"><img src="img/xx.png" width="30"></a>
 					</td>
 				</tr>
-				<table border="0" hight="30px"><tr><td></td></tr></table>
+			</table>
+			
+			<table border="0" hight="30px"><tr><td></td></tr></table>
+			
+			<table width="100%" align="center">
 				<tr>
 					<td width="100%" align="left" colspan="3">
-						<table border="0" align="center" width="300px" height="100%" class="div57">
+						<table width="95%" align="center" class="div57">
 							<tr>
 								<td width="250px" align="left" valign="center">
 									<table border="0" hight="20px"><tr><td></td></tr></table>
@@ -1122,30 +1128,35 @@
 								</td>
 							</tr>
 
-							<tr>
-								<td width="250px" align="center" valign="center">
-									<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
-									<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
-								</td>
-							</tr>
-							
-							<tr>
-								<td width="250px" align="center" valign="center">
-									<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
-									<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
-								</td>
-							</tr>
-							
-							<tr>
-								<td width="250px" align="center" valign="center">
-									<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif1">Rifiuta</div></font></a>
-									<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif2">Rifiuta</div></font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif3">Rifiuta</div></font></a>
-								</td>
-							</tr>
+
 						</table>
 					</td>
 				</tr>
+
 				
+			</table>
+			
+			<table border="0" hight="30px"><tr><td></td></tr></table>
+			
+			<table border="0" width="100%" align="center">
+			<tr>
+				<td align="center" width="100%">
+					<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
+					<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" width="100%">
+					<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
+					<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" width="100%">
+					<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif1">Rifiuta</div></font></a>
+					<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif2">Rifiuta</div></font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif3">Rifiuta</div></font></a>
+				</td>
+			</tr>
 			</table>
 			
 		</div>
@@ -1153,6 +1164,8 @@
 
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		
+		<script type='application/javascript' src='js/fastclick.js'></script>
 		
 		<script type="text/javascript">
 			app.initialize();

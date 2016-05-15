@@ -21,12 +21,16 @@ onDeviceReady: function() {
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
 	
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
 	
-	navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
+	
+	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	//ANDROID -------------------------------------------------------
 	
-	/*document.addEventListener('backbutton', function(e) {
+	document.addEventListener('backbutton', function(e) {
 							  navigator.notification.confirm(
 															 'Confermi di voler chiudere',  // message
 															 onConfirm2,              // callback to invoke with index of button pressed
@@ -48,7 +52,7 @@ receivedEvent: function(id) {
 	}
 	
 	
-	window.plugins.insomnia.keepAwake();*/
+	window.plugins.insomnia.keepAwake();
 	
 	//----------------------------------------------------------------
 	
@@ -1696,9 +1700,7 @@ function resetta1(focus) {
 		
 		
 	  if(localStorage.getItem("setGPS") == 0){
-	   //navigator.geolocation.clearWatch(watchID5);
-		
-	   //posizionegps()
+
 	   var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 		  
 	   var lat = localStorage.getItem("lat");
@@ -1979,14 +1981,10 @@ function posizionegps(){
 function timer(){
 	
 	refreshIntervalId = setInterval(function() {
-									
-		//alert(document.getElementById("modificastart").value);
-									
-		//alert()
+
 									
 		//var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 									
-	   //onSuccess22();
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 									
@@ -2004,9 +2002,7 @@ function timer(){
 									
 									$("#loading").hide();
 									$("#btnpass").show();
-									$("#pass1").hide();
-									$("#pass2").hide();
-									$("#pass3").hide();
+
 									//$("#esci").show();
 									
 									beaches1.push(['Tua Posizione',lat,lng,1,0,0,0])
@@ -2321,6 +2317,7 @@ function timer(){
 												  if( seconds > 0 ) {
 												  setTimeout(tick, 1000);
 												  } else {
+												  scadutaofferta(0,item.id_richiesta,item.id_autista)
 												  $("#blob4").hide();
 												  //rifiuta2()
 												  //alert("finito");
@@ -2438,6 +2435,7 @@ function timer(){
 												  if( seconds > 0 ) {
 												  setTimeout(tick, 1000);
 												  } else {
+												  scadutaofferta(0,item.id_richiesta,item.id_autista)
 												  $("#blob5").hide();
 												  //rifiuta3()
 												  //alert("finito");
@@ -2497,7 +2495,7 @@ function timer(){
 
 function scadutaofferta(id,id_richiesta,id_autista){
 	
-	alert("Scaduta")
+	//alert("Scaduta")
 	
 	$.ajax({
 		   type:"GET",
@@ -2516,7 +2514,7 @@ function scadutaofferta(id,id_richiesta,id_autista){
 				    resetta1(1)
 				  }
 				  
-				  });
+			});
 		   
 		   
 		   },
@@ -3647,12 +3645,7 @@ function accetta11() {
 				  
 				  }
 				  else{
-				  navigator.notification.alert(
-											   'Richiesta Annullata.',  // message
-											   alertDismissed,         // callback
-											   'Attenzione',           // title
-											   'Done'                  // buttonName
-											   );
+				  
 				  
 				  }
 				  });
@@ -3706,12 +3699,7 @@ function accetta22() {
 				  
 				  }
 				  else{
-				  navigator.notification.alert(
-											   'Richiesta Annullata.',  // message
-											   alertDismissed,         // callback
-											   'Attenzione',           // title
-											   'Done'                  // buttonName
-											   );
+				  
 				  
 				  }
 				  });
@@ -3757,12 +3745,7 @@ function accetta33() {
 				  
 				  }
 				  else{
-				  navigator.notification.alert(
-											   'Richiesta Annullata.',  // message
-											   alertDismissed,         // callback
-											   'Attenzione',           // title
-											   'Done'                  // buttonName
-											   );
+				 
 				  
 				  }
 				  });

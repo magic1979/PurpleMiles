@@ -3,6 +3,10 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+	
 	var destination;
 	
 	var item;
@@ -981,412 +985,6 @@ function start() {
 
 
 
-function richiesta1() {
-	id = item1
-
-	$("#risp1").show();
-	$("#risp2").hide();
-	$("#gps22").hide();
-	$("#risp3").hide();
-	$("#gps3").hide();
-	
-	localStorage.setItem("id_richiesta", id)
-	
-	$("#blob2").show();
-	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
-		   contentType: "application/json",
-		   //data: {ID: "Lazio"}, LIMIT 10
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  
-				  if(item.Token==1){
-				  
-				  $("#nickblob").html("<font color='#cc33cc'>"+ item.nick +"</font>");
-				  localStorage.setItem("id_nick", item.nick)
-				  $("#nickhome3").html(item.nick);
-				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ item.quando +", "+ item.ora +"</font>");
-				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
-				  
-				  $("#Ad").html("<b>Ad:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
-				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
-				  
-				  if(item.stato!=0){
-				    //alert(id)
-					$("#risp1").hide();
-				  }
-				  
-				  if(item.stato==2){
-				  //alert(item.stato)
-				  $("#gps1").show();
-				  
-				  $(document).on("tap", "#gps1", function(e){
-						//clearInterval(refreshIntervalId);
-						
-						//alert(item.lat+","+item.lng);
-						
-						var addressLongLat = item.lat+","+item.lng;
-	
-	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
-	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
-	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
-						
-						$("#blob2").hide();
-								 
-						e.stopImmediatePropagation();
-								 
-						e.preventDefault();
-								 
-						return false;
-								 
-					});
-				  
-				  }
-				  else{
-					$("#gps1").hide();
-				  }
-				  
-				  }
-				  else{
-				  //marker1.setMap(null);
-				  }
-				  
-			});
-		   
-		   
-		   },
-		   error: function(){
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		   
-		   $("#blob2").show();
-		   
-		   },
-		   dataType:"jsonp"});
-	
-	
-	$("#close1").show();
-	$("#close2").hide();
-	$("#close3").hide();
-	
-	$("#xchiudi1").show();
-	$("#xchiudi2").hide();
-	$("#xchiudi3").hide();
-	
-	
-	$(document).on("tap", "#xchiudi1", function(e){
-		
-		$("#blob2").hide();
-		magia(1,id)
-		
-				   
-				   e.stopImmediatePropagation();
-				   
-				   e.preventDefault();
-				   
-				   return false;
-
-	});
-
-	$(document).on("tap", "#close1", function(e){
-		$("#pass1").hide();
-				   
-		$("#blob2").hide();
-		cancella(id)
-				   
-				   e.stopImmediatePropagation();
-				   
-				   e.preventDefault();
-				   
-				   return false;
-
-	});
-	
-	$(document).on("tap", "#risp1", function(e){
-				   
-				   $("#blob2").hide();
-				   $.mobile.changePage ($("#home3"));
-				   
-				   e.stopImmediatePropagation();
-				   
-				   e.preventDefault();
-				   
-				   return false;
-				   
-	});
-	
-}
-
-function richiesta2() {
-	id = item2
-	$("#risp1").hide();
-	$("#gps1").hide();
-	$("#risp2").show();
-	$("#risp3").hide();
-	$("#gps3").hide();
-	
-	//alert(2)
-	localStorage.setItem("id_richiesta", id)
-	
-	$("#blob2").show();
-	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
-		   contentType: "application/json",
-		   //data: {ID: "Lazio"}, LIMIT 10
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  
-				  if(item.Token==1){
-				  
-				  $("#nickblob").html("<font color='#cc33cc'>"+ item.nick +"</font>");
-				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ item.quando +", "+ item.ora +"</font>");
-				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
-				  
-				  $("#Ad").html("<b>Ad:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
-				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
-				  
-				  if(item.stato!=0){
-					$("#risp2").hide();
-				  if(item.stato==2){
-				  //alert(item.stato)
-				  $("#gps22").show();
-				  
-				  $(document).on("tap", "#gps22", function(e){
-								 //clearInterval(refreshIntervalId);
-								 var addressLongLat = item.lat+","+item.lng;
-	
-	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
-	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
-	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
-	
-								 $("#blob2").hide();
-								 
-								 e.stopImmediatePropagation();
-								 
-								 e.preventDefault();
-								 
-								 return false;
-								 
-								 });
-				  
-				  }
-				  }
-
-				  
-				  }
-				  else{
-				  //marker1.setMap(null);
-				  }
-				  
-						});
-		   
-		   
-		   },
-		   error: function(){
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		   
-		   $("#blob2").show();
-		   
-		   },
-		   dataType:"jsonp"});
-	
-	$("#close2").show();
-	$("#close1").hide();
-	$("#close3").hide();
-	
-	$("#xchiudi2").show();
-	$("#xchiudi1").hide();
-	$("#xchiudi3").hide();
-	
-	
-	
-	$(document).on("tap", "#xchiudi2", function(e){
-				   clearInterval(refreshIntervalId);
-				   $("#blob2").hide();
-				   magia(2,id)
-				   
-				   });
-
-	$(document).on("tap", "#close2", function(e){
-	$("#pass2").hide();
-	$("#blob2").hide();
-	cancella(id)
-	
-		
-	e.stopImmediatePropagation();
-		
-	e.preventDefault();
-		
-	return false;
-	});
-	
-	$(document).on("tap", "#risp2", function(e){
-				   $("#blob2").hide();
-				    $.mobile.changePage ($("#home3"));
-				   
-				   });
-	
-}
-
-function richiesta3() {
-	id = item3
-	$("#risp3").show();
-	$("#risp2").hide();
-	$("#gps22").hide();
-	$("#risp1").hide();
-	$("#gps1").hide();
-	
-	//alert(2)
-	localStorage.setItem("id_richiesta", id)
-	
-	$("#blob2").show();
-	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
-		   contentType: "application/json",
-		   //data: {ID: "Lazio"}, LIMIT 10
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  
-				  if(item.Token==1){
-				  
-				  $("#nickblob").html("<font color='#cc33cc'>"+ item.nick +"</font>");
-				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ item.quando +", "+ item.ora +"</font>");
-				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ item.partenza +"</font>");
-				  
-				  $("#Ad").html("<b>Ad:</b><font color='#cc33cc'>"+ item.arrivo +"</font>");
-				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ item.distanza +"</font>");
-				  
-				  if(item.stato!=0){
-				    $("#risp3").hide();
-				  }
-				  
-				  if(item.stato==2){
-				  //alert(item.stato)
-				  $("#gps3").show();
-				  
-				  $(document).on("tap", "#gps3", function(e){
-								 //clearInterval(refreshIntervalId);
-								 var addressLongLat = item.lat+","+item.lng;
-	
-	//var refff = window.open("http://www.google.com/maps?q=220, Via Zoe Fontana, Roma", '_system');
-	//"http://maps.google.com/maps?daddr=41.929622,12.608878&dirflg=r"
-	window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
-	
-								 $("#blob2").hide();
-								 
-								 e.stopImmediatePropagation();
-								 
-								 e.preventDefault();
-								 
-								 return false;
-								 
-								 });
-				  
-				  }
-				  else{
-				  $("#gps2").hide();
-				  }
-				  
-				  }
-				  else{
-				  //marker1.setMap(null);
-				  }
-				  
-						});
-		   
-		   
-		   },
-		   error: function(){
-		   
-		   /*navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
-		   
-		   $("#blob2").show();*/
-		   
-		   },
-		   dataType:"jsonp"});
-	
-	$("#close3").show();
-	$("#close2").hide();
-	$("#close1").hide();
-	
-	$("#xchiudi3").show();
-	$("#xchiudi2").hide();
-	$("#xchiudi1").hide();
-	
-	
-	$(document).on("tap", "#xchiudi3", function(e){
-				   clearInterval(refreshIntervalId);
-				   $("#blob2").hide();
-				   magia(3,id)
-
-				   });
-	
-	$(document).on("tap", "#close3", function(e){
-				   $("#pass3").hide();
-				   $("#blob2").hide();
-				   
-				   cancella(id)
-
-				   e.stopImmediatePropagation();
-				   
-				   e.preventDefault();
-				   
-				   return false;
-
-				   });
-	
-	$(document).on("tap", "#risp3", function(e){
-				   $("#blob2").hide();
-				   $.mobile.changePage ($("#home3"));
-
-				   });
-	
-}
-
-
 function inviopasseggero(come){
 	
 	if(come==1){
@@ -1523,9 +1121,11 @@ function vediofferte(){
 						if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				    });
 				  
-				  if(item.confermata==0){
+				  if(item.stato==2){
 				  
 				  if(item.accettata==0){
+				  
+				  if(item.confermata==0){
 				  
 				   for(i=0; i<10000; i++)
 				   {
@@ -1536,7 +1136,7 @@ function vediofferte(){
 				   //$("#timer2").show();
 
 				   function countdown2(minutes) {
-				   var seconds = 8;
+				   var seconds = 40;
 				   var mins = minutes
 				   function tick() {
 				   var counter = document.getElementById("timer2");
@@ -1564,6 +1164,8 @@ function vediofferte(){
 				   }
 				  
 				   countdown2(0);
+				  }
+				  
 				  }
 				  
 				  }
@@ -1640,15 +1242,7 @@ function accettaofferta(id,id_richiesta,id_autista){
 				  
 				  if(item.Token==1){
 				  
-				    navigator.notification.alert(
-											   'Richiesta Elaborata.',  // message
-											   alertDismissed,         // callback
-											   'OK',           // title
-											   'Done'                  // buttonName
-											   );
-				  
-				  
-				  vediofferte()
+				    vediofferte()
 				  }
 				  
 			});
