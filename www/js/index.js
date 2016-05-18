@@ -30,7 +30,7 @@ receivedEvent: function(id) {
 	
 	//ANDROID -------------------------------------------------------
 	
-	/*document.addEventListener('backbutton', function(e) {
+	document.addEventListener('backbutton', function(e) {
 							  navigator.notification.confirm(
 															 'Confermi di voler chiudere',  // message
 															 onConfirm2,              // callback to invoke with index of button pressed
@@ -56,7 +56,7 @@ receivedEvent: function(id) {
 	}
 	
 	
-	window.plugins.insomnia.keepAwake();*/
+	window.plugins.insomnia.keepAwake();
 	
 	//----------------------------------------------------------------
 	
@@ -201,6 +201,26 @@ receivedEvent: function(id) {
 	var watchID = null;
 	var watchID2 = null;
 	var watchID5 = null;
+	
+		
+	$(document).on("tap", "#esciapp", function(e){
+				   
+	 telephoneNumber.get(function(result) {
+        alert("result = " + result);
+    	}, function() {
+        console.log("error");
+     });
+				   
+	   	  e.stopImmediatePropagation();
+				   
+		  e.preventDefault();
+				   
+		  return false;
+				   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
 	
 	$(document).on("tap", "#profiloperc", function(e){
 				   
