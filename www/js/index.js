@@ -30,7 +30,7 @@ receivedEvent: function(id) {
 	
 	//ANDROID -------------------------------------------------------
 	
-	document.addEventListener('backbutton', function(e) {
+	/*document.addEventListener('backbutton', function(e) {
 							  navigator.notification.confirm(
 															 'Confermi di voler chiudere',  // message
 															 onConfirm2,              // callback to invoke with index of button pressed
@@ -47,21 +47,27 @@ receivedEvent: function(id) {
 			
 			navigator.app.exitApp();
 			
-			return;
+			e.stopImmediatePropagation();
+	 
+			e.preventDefault();
+	 
+			return false;
 		}
 	}
 	
 	
-	window.plugins.insomnia.keepAwake();
+	window.plugins.insomnia.keepAwake();*/
 	
 	//----------------------------------------------------------------
 	
-	var lat = "41.889191";
-	var lng = "12.492475";
+	//var lat = "41.889191";
+	//var lng = "12.492475";
 	
-	localStorage.setItem("lat", lat)
-	localStorage.setItem("lng", lng)
+	//localStorage.setItem("lat", lat)
+	//localStorage.setItem("lng", lng)
 	
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
 	
 	
 	$(".spinner").show();
@@ -74,8 +80,8 @@ receivedEvent: function(id) {
 		
 		startgps();
 		
-		var lat = localStorage.getItem("lat");
-		var lng = localStorage.getItem("lng");
+		//var lat = localStorage.getItem("lat");
+		//var lng = localStorage.getItem("lng");
 		
 		//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
 		//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
@@ -115,10 +121,6 @@ receivedEvent: function(id) {
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
 	
-	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br><b>Voglio essere autista</b><br><table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table></td></tr><tr height="2%"><td width="100%" align="center"> </td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><br><b>Voglio essere passeggero</b><br><table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
-	
-	$("#nickhome").html(localStorage.getItem("nick"));
-	$("#nickhome3").html(localStorage.getItem("nick"));
 	
 	var email = localStorage.getItem("email");
 	
@@ -139,6 +141,13 @@ receivedEvent: function(id) {
 	if(IDPage!=1){
 	  localStorage.setItem("exit", "0")
 	}
+	
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br><b>Voglio essere autista</b><br><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4">Profilo 19%</font></td></tr></table></td><td> <img src="img/stelle.png" width="90"></td></tr></table></td></tr><tr height="2%"><td width="100%" align="center"> </td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><br><b>Voglio essere passeggero</b><br><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4">Profilo 46%</font></td></tr></table></td><td> <img src="img/stelle.png" width="90"></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
+	
+	$("#nickhome").html(localStorage.getItem("nick"));
+	$("#nickhome3").html(localStorage.getItem("nick"));
+	
+	$("#tblhome").fadeIn("slow")
 
 	
 	isTabHolded=false;
@@ -192,6 +201,46 @@ receivedEvent: function(id) {
 	var watchID = null;
 	var watchID2 = null;
 	var watchID5 = null;
+	
+	$(document).on("tap", "#profiloperc", function(e){
+				   
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
+				   
+	   	  e.stopImmediatePropagation();
+				   
+		  e.preventDefault();
+				   
+		  return false;
+				   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	$(document).on("tap", "#profiloperc2", function(e){
+				   
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
+				   
+	   	  e.stopImmediatePropagation();
+				   
+		  e.preventDefault();
+				   
+		  return false;
+				   
+		  if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	$(document).on("touchstart", "#lista", function(e){
+				   lista5();
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
 	
 	
 	$(document).on("touchstart", "#pass1", function(e){
@@ -260,7 +309,6 @@ receivedEvent: function(id) {
 				   $("#esci").hide();
 				   
 				   $("#blob2").hide();
-
 				   
 				   for(i=0; i<10000; i++)
 				   {
@@ -281,6 +329,10 @@ receivedEvent: function(id) {
 				   $("#btnGPS").removeClass("custom-btn3").addClass("custom-btnGPS");
 				   $("#Modifica").removeClass("custom-btnModifica").addClass("custom-btn3");
 				   
+				   
+				   buttongps();
+				   
+				   
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -295,6 +347,8 @@ receivedEvent: function(id) {
 				   setGPS = 1;
 				   localStorage.setItem("setGPS","1")
 				   
+				   
+				   document.getElementById("modificastart").value = "";
 				   $("#modificastart").show();
 				   
 				   $("#btnGPS").removeClass("custom-btnGPS").addClass("custom-btn3");
@@ -321,6 +375,19 @@ receivedEvent: function(id) {
 		return false;
 				   
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	$(document).on("touchstart", "#ritorna5", function(e){
+				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
     
@@ -365,13 +432,22 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("touchstart", "#ChiudiXX", function(e){
+	$(document).on("tap", "#ChiudiXX", function(e){
 				   navigator.notification.confirm(
-								'Confermi di voler fare logout',  // message
+								'Vuoi disconnetterti come utente '+ localStorage.getItem("nick") +'',  // message
 								onConfirm,              // callback to invoke with index of button pressed
 								'Logout',            // title
-								'Conferma,No'      // buttonLabels
+								'Conferma,Annulla'      // buttonLabels
 								);
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
 	});
 	
 	function onConfirm(button) {
@@ -396,7 +472,14 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#XXX", function(e){
 		window.location.href = "index.html";
-		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
 	$(document).on("tap", "#XX3", function(e){
@@ -413,6 +496,21 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart", "#inizia", function(e){
+				   
+				   if(localStorage.getItem("setGPS") == 1){
+				   
+				     if (document.getElementById("modificastart").value == "") {
+				         navigator.notification.alert(
+												'inserire Indirizzo Valido o usare il GPS',  // message
+												alertDismissed,         // callback
+												'Indirizzo',            // title
+												'OK'                  // buttonName
+												);
+				   
+				         return;
+				       }
+				   }
+				   
 				   start();
 				   e.stopImmediatePropagation();
 				   
@@ -421,9 +519,9 @@ receivedEvent: function(id) {
 				   return false;
 				   
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				   });
+	});
 	
-	$(document).on("touchstart", "#back3", function(e){
+	$(document).on("tap", "#back3", function(e){
 		inviopasseggero(3);
 				   e.stopImmediatePropagation();
 				   
@@ -434,7 +532,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("touchstart", "#back4", function(e){
+	$(document).on("tap", "#back4", function(e){
 		inviopasseggero(3);
 				   e.stopImmediatePropagation();
 				   
@@ -457,8 +555,9 @@ receivedEvent: function(id) {
 	});
 	
 	
-	$(document).on("touchstart", "#gratis", function(e){
-		inviopasseggero(1);
+	$(document).on("tap", "#gratis", function(e){
+		          inviopasseggero(1);
+				   
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -468,8 +567,9 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("touchstart", "#offerta", function(e){
-		inviopasseggero(2);
+	$(document).on("tap", "#offerta", function(e){
+		           inviopasseggero(2);
+				   
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -585,7 +685,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><table width="100%" border="0"><tr><td align="right" colspan="2"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="30px"></a></td></tr><tr><td align="center" width="25%"><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a></td><td align="left" width="75%"><a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table>';
+	controlText.innerHTML = '<br><table width="100%" border="0"><tr><td align="right" colspan="2"><a id="XXX" href="#" rel="external"><img src="img/xx.png" width="35px"></a></td></tr><tr><td align="center" width="25%"><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a></td><td align="left" width="75%"><a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -625,7 +725,7 @@ function CenterControl2(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><table width="100%" border="0"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="30px"></a></td></tr></table>';
+	controlText.innerHTML = '<br><table width="100%" border="0"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="35px"></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -637,6 +737,42 @@ function CenterControl2(controlDiv, map) {
 	//alert();
 	//map.setCenter(chicago);
 	//});
+	
+}
+
+
+
+function onSuccess555(position) {
+	
+	var lat = position.coords.latitude;
+	var lng = position.coords.longitude;
+	
+	localStorage.setItem("lat", lat)
+	localStorage.setItem("lng", lng)
+	
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+	marker2.setPosition(latlng);
+	
+	map.panTo(latlng);
+	
+}
+
+
+function onError555(error) {
+	//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+	//navigator.geolocation.watchPosition(onSuccess555, onError565, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+}
+
+function onError565(error) {
+	
+	//window.location.href = "index.html";
+}
+
+
+function buttongps(){
+	
+	var watchID15 = navigator.geolocation.getCurrentPosition(onSuccess555, onError555, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 }
 
@@ -914,7 +1050,7 @@ function centragps(){
 
 //--------------------------------------------
 
-/*function getKey(key){
+function getKey(key){
 	if ( key == null ) {
 		keycode = event.keyCode;
 		
@@ -923,12 +1059,14 @@ function centragps(){
 	}
 	
 	if (keycode ==13){
-		
+ 
+     setTimeout(function() {
 		inviopasseggero(3);
-		
+	 }, 200);
+	
 	}
 	
-}*/
+}
 
 function cambiap() {
     $('#footer').show();
@@ -1355,7 +1493,7 @@ function resetta1(focus) {
 				if(localStorage.getItem("tappato")=="0"){
 				  if(localStorage.getItem("setGPS") == 1){
 					if (isTabHolded){
-						var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+						var icon = new google.maps.MarkerImage("img/autista.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
 						
 						marker2.setMap(null);
 						
@@ -1479,8 +1617,8 @@ function resetta1(focus) {
 				  lat1 = item.lat
 				  
 				  
-				  $("#pass1").show();
-				  $("#esci").show();
+				  //$("#pass1").show();
+				  //$("#esci").show();
 				  
 				  if(item.stato==3){
 				  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
@@ -1547,7 +1685,7 @@ function resetta1(focus) {
 				  lng2 = item.lng
 				  lat2 = item.lat
 				  
-				  $("#pass2").show();
+				  //$("#pass2").show();
 				  
 				  if(item.stato==3){
 				  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
@@ -1615,7 +1753,7 @@ function resetta1(focus) {
 				  lng3 = item.lng
 				  lat3 = item.lat
 				  
-				  $("#pass3").show();
+				  //$("#pass3").show();
 				  
 				  if(item.stato==3){
 				  $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
@@ -3200,6 +3338,7 @@ function casa(){
 
 function start() {
 	//chiamo e setto a 1 lo stato dell'autista (ok lavoro)
+	
 	$("#setGPS").hide();
 	$("#Modifica").hide();
 	
@@ -3271,13 +3410,13 @@ function richiesta1() {
 				  localStorage.setItem("id_nick", nick1)
 				  $("#nickhome3").html(nick1);
 				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ quando1 +", "+ ora1 +"</font>");
+				  $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando1 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora1 +"</font>");
 				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ partenza1 +"</font>");
+				  $("#Da").html("<b>Da: </b><font color='#cc33cc'>"+ partenza1 +"</font>");
 				  
-				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ arrivo1 +"</font>");
+				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo1 +"</font>");
 				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza1 +"</font>");
+				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza1 +"</font>");
 	
 	              if(stato1==0){
 		            $("#4img").html("<img src='img/1_viola.png' width='30'>");
@@ -3410,13 +3549,13 @@ function richiesta2() {
 				  
 				  $("#nickblob").html("<font color='#cc33cc'>"+ nick2 +"</font>");
 				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ quando2 +", "+ ora2 +"</font>");
+				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando2 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora2 +"</font>");
 				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ partenza2 +"</font>");
+				  $("#Da").html("<b>Da: </b><font color='#cc33cc'>"+ partenza2 +"</font>");
 				  
-				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ arrivo2 +"</font>");
+				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo2 +"</font>");
 				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza2 +"</font>");
+				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza2 +"</font>");
 	
 				  if(stato2==0){
 					 $("#4img").html("<img src='img/2_viola.png' width='30'>");
@@ -3524,13 +3663,13 @@ function richiesta3() {
 
 				  $("#nickblob").html("<font color='#cc33cc'>"+ nick3 +"</font>");
 				  
-				  $("#quando").html("<b>Quando:</b><font color='#cc33cc'>"+ quando3 +", "+ ora3 +"</font>");
+				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando3 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora3 +"</font>");
 				  
-				  $("#Da").html("<b>Da:</b><font color='#cc33cc'>"+ partenza3 +"</font>");
+				  $("#Da").html("<b>Da: </b><font color='#cc33cc'>"+ partenza3 +"</font>");
 				  
-				  $("#Ad").html("<b>A:</b><font color='#cc33cc'>"+ arrivo3 +"</font>");
+				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo3 +"</font>");
 				  
-				  $("#Note").html("<b>Note:</b><font color='#cc33cc'>"+ distanza3 +"</font>");
+				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza3 +"</font>");
 	
 	if(stato3==0){
 		$("#4img").html("<img src='img/3_viola.png' width='30'>");
@@ -3619,6 +3758,55 @@ function richiesta3() {
 	
 }
 
+function lista5() {
+	
+	$.mobile.changePage( "#home5", { transition: "slide", changeHash: false });
+
+	$("#nickhome5").html(localStorage.getItem("nick"));
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_stato2.php?id_autista="+ localStorage.getItem("id_autista") +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				  if(item.Token==1){
+				  
+				  $("#offerte5").html("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr></table>");
+				  }
+				  else{
+					 $("#offerte5").html("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><img src='img/Logo.png' width='160px'><br></td></tr><tr><td align='center'>Nessuna Richiesta Posticipata<br></td></tr></table>")
+				  }
+			});
+		   
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   onResume();
+		   
+		   },
+		   dataType:"jsonp"});
+	
+	
+	
+	
+
+}
+
 // ACCETTA - RIFIUTA
 
 
@@ -3641,14 +3829,19 @@ function accetta11() {
 				  if(item.Token==1){
 				   //alert(item.Token)
 				  
-				  resetta1(1);
+				    resetta1(1);
 				  
 				  }
 				  else{
-				  
+				    navigator.notification.alert(
+											   'Richiesta elaborata da altro utente.',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',           // title
+											   'Done'                  // buttonName
+											   );
 				  
 				  }
-				  });
+			});
 		   
 		   
 		   },
@@ -3699,7 +3892,12 @@ function accetta22() {
 				  
 				  }
 				  else{
-				  
+				    navigator.notification.alert(
+											   'Richiesta elaborata da altro utente.',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',           // title
+											   'Done'                  // buttonName
+											   );
 				  
 				  }
 				  });
@@ -3745,7 +3943,12 @@ function accetta33() {
 				  
 				  }
 				  else{
-				 
+				    navigator.notification.alert(
+											   'Richiesta elaborata da altro utente.',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',           // title
+											   'Done'                  // buttonName
+											   );
 				  
 				  }
 				  });
@@ -3847,6 +4050,14 @@ function inviopasseggero(come){
 				  //onDeviceReady();
 				  
 				  $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+				  
+				  e.stopImmediatePropagation();
+				  
+				  e.preventDefault();
+				  
+				  alert("ok");
+				  
+				  
 				  
 				  //window.location.href = "map2.html?id=1";
 				  

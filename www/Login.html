@@ -20,31 +20,27 @@
 		<script src="js/jquery-ui.min.js"></script>
 		<script src="js/jquery.mobile-1.4.2.min.js"></script>
 		
-		<script type="text/javascript" src="js/iscroll4.js"></script>
-		
+		<script type="text/javascript" src="js/iscroll.js"></script>
 		
 		<script type="text/javascript">
 			
 			var myScroll;
 			
-
-				myScroll = new iScroll('wrapper', {
-									   snap: true,
-									   momentum: false,
-									   hScrollbar: false,
-									   onScrollEnd: function () {
-									   document.querySelector('#indicator > li.active').className = '';
-									   document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-									   }
-				});
-
+			function loaded () {
+				myScroll = new IScroll('#wrapper', { click: true });
+				setTimeout (function(){
+							myScroll.refresh();
+							}, 1500);
+			}
 		
-		document.addEventListener('DOMContentLoaded', loaded, false);
+		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
 		
-			</script>
-
-
-        <title>FoodApp</title>
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+		
+		</script>
+		
+		
+		<title>FoodApp</title>
 		
 		<style type="text/css" media="all">
 
@@ -62,18 +58,18 @@
 		}
 		
 		
-		#wrapper2 {
+		#wrapper {
 			position: absolute;
 			z-index: 1;
 			top: 45px;
-			bottom: 48px;
+			bottom: 0px;
 			left: 0;
 			width: 100%;
 			background: #fff;
 			overflow: hidden;
 		}
 		
-		#scroller2 {
+		#scroller {
 			position: absolute;
 			z-index: 1;
 			-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -95,111 +91,31 @@
 			text-size-adjust: none;
 		}
 		
-		#wrapper {
-			width:320px;
-			height:360px;
-			
-			float:center;
-			position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
-			z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
-			overflow:hidden;
-			
-			background:#fff;
-			-webkit-border-radius:10px;
-			-moz-border-radius:10px;
-			-o-border-radius:10px;
-			border-radius:10px;
-			
-		}
-		
-		#scroller {
-			width:2100px;
-			height:100%;
-			float:left;
-			padding:0;
-		}
-		
 		#scroller ul {
-			list-style:none;
-			display:block;
-			float:left;
-			width:100%;
-			height:100%;
-			padding:0;
-			margin:0;
-			text-align:center;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			text-align: left;
 		}
 		
 		#scroller li {
-			-webkit-box-sizing:border-box;
-			-moz-box-sizing:border-box;
-			-o-box-sizing:border-box;
-			box-sizing:border-box;
-			display:block; float:left;
-			width:320px; height:360px;
-			text-align:center;
-			font-family:georgia;
-			font-size:18px;
-			line-height:140%;
+			padding: 0 10px;
+			height: 40px;
+			line-height: 40px;
+			border-bottom: 1px solid #fff;
+			border-top: 1px solid #fff;
+			background-color: #fff;
+			font-size: 14px;
 		}
 		
-		#nav {
-			/*width:320px;
-			 float:left;*/
-		}
 		
-		#prev, #next {
-			float:center;
-			font-weight:bold;
-			font-size:14px;
-			padding:5px 0;
-			width:80px;
-		}
 		
-		#next {
-			float:right;
-			text-align:right;
-		}
-		
-		#indicator, #indicator > li {
-			display:block; float:left;
-			list-style:none;
-			padding:0; margin:0;
-		}
-		
-		#indicator {
-			width:110px;
-			padding:12px 0 0 30px;
-			
-			margin:4px;
-		}
-		
-		#indicator > li {
-			text-indent:-9999em;
-			width:8px; height:8px;
-			-webkit-border-radius:4px;
-			-moz-border-radius:4px;
-			-o-border-radius:4px;
-			border-radius:4px;
-			background:#ddd;
-			overflow:hidden;
-			margin-right:4px;
-		}
-		
-		#indicator > li.active {
-			background:#888;
-		}
-		
-		#indicator > li:last-child {
-			margin:0;
-		}
-
-		
-			</style>
+	    </style>
 		
 		<style>
-
-		
+			
+			
 			.ui-mobile, .ui-mobile .ui-page, .ui-mobile [data-role="page"],
 			.ui-mobile [data-role="dialog"], .ui-page, .ui-mobile .ui-page-active {
 				overflow: hidden;
@@ -419,39 +335,61 @@ a {text-decoration:none;}
 				<table align="center" width="100%" valign="center" border="0"><tr><td></td></tr><tr><td align="center" valign="center"><img src="img/Logo.png"  height="36px"></td></tr></table>
 			</div>
 			<div class="spinner" id="spinner"></div>
+			
+			<div id="wrapper">
+				<div id="scroller">
 
-				
-			<div id="wrapper2">
-				<div id="scroller2">
-					<br><br><br>
-						
-					<center>
-				
-			<table id="formreg" align="center" width="320px">
+
+			<br><center>
+			<img src="img/Logo.png" width="160px"><br>
+
+
+			<table id="formreg" align="center" width="90%">
 				<tr id="campireg">
-					<td colspan="2" width="320px" align="center">
+					<td colspan="2" width="320px" align="left">
 						 <form name="formia2" action="entra2.asp" method="post">
-							 <input type="text" data-role="none" name="email" id="email" value="" placeholder="Email" class="scrivo">
-							 <input type="password" data-role="none" name="password" id="password" value="" placeholder="Password" class="scrivo">
-							 <a href="#" id="accedi" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="4">Accedi</font></a>
-						</form>
+						 Email<br><input type="text" data-role="none" name="email" id="email" value="" placeholder="Email" class="scrivo">
+						
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<br>
+						&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="70%" align="left">
-						&nbsp;&nbsp;<a href="javascript:EmailDimenticata()"><font size="2" color="#000">Hai dimenticato la Password?</font></a>
+					<td colspan="2" align="left">
+						Password<br><input type="password" data-role="none" name="password" id="password" value="" placeholder="Password" class="scrivo">
 					</td>
-					
-					<td width="30%" align="right">
-						<a href="#page6"><font size="2" color="#000">Iscriviti ora</font></a>&nbsp;&nbsp;
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<a href="#" id="accedi" data-role="button" class="custom-btn" data-theme="b"><font color="#FFF" size="4">Accedi</font></a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<a id="recuperopsw" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3">Recupero Password?</font></a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<a id="regsito" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3">Iscriviti Ora</font></a>
 					</td>
 				</tr>
 				
+
+				</form>
 				<tr>
 					<td colspan="2" align="center">
 						<br>
@@ -472,10 +410,10 @@ a {text-decoration:none;}
 			</table>-->
 			
 			</center>
-						
 			
 		</div>
-		</div>
+			</div>
+			
 		
 			<!--<div data-role="footer" data-theme="a" align="center" data-position="fixed" data-tap-toggle="false" class="div2">
 				<table id="idfooter4" width="100%" align="center">

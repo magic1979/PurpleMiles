@@ -26,6 +26,8 @@ function onDeviceReady() {
 		
 	}
 	
+	$("#tblhome").fadeIn("slow")
+	
 	IDPage = getParameterByName('id');
 	ODPage = getParameterByName('od');
 	
@@ -81,8 +83,24 @@ function onDeviceReady() {
 				   });
 	
 	$(document).on("tap", "#adesso", function(e){
-	 onResume();
-	 if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   localStorage.setItem("destination", "0")
+				   
+				   $("#viale").show();
+				   $("#destinazione").hide();
+				   
+				   $("#da").removeClass("bottoni").addClass("bottoni1");
+				   $("#a").removeClass("bottoni1").addClass("bottoni");
+				   
+	               onResume();
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
 	});
 	
 	$(document).on("touchstart", "#quando", function(e){
@@ -209,15 +227,27 @@ function onDeviceReady() {
 		
 	}
 	
+	
 	$(document).on("touchstart", "#back3", function(e){
-		//alert("http://purplemiles.com/www2/check_richiesta.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"")
 		
+		if(document.getElementById("datacal3").value == "ORA"){
+				   
+		var indirizzo = document.getElementById("viale3").value.replace("'", "")
+		var destinazione = document.getElementById("destinazione3").value.replace("'", "")
+		var passeggeri = document.getElementById("passeggeri").value.replace("'", "")
+		var animali = document.getElementById("animali").value.replace("'", "")
+		var fumatori = document.getElementById("fumatori").value.replace("'", "")
+		var meno18 = document.getElementById("meno18").value.replace("'", "")
+		var disabili = document.getElementById("disabili").value.replace("'", "")
+		var bambini = document.getElementById("bambini").value.replace("'", "")
+		var wifi = document.getElementById("wifi").value.replace("'", "")
+		var portapacchi = document.getElementById("portapacchi").value.replace("'", "")
 		
+
 		$.ajax({
 			   type:"GET",
-			   url:"http://purplemiles.com/www2/check_richiesta3.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"",
+			   url:"http://purplemiles.com/www2/check_richiesta3.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ indirizzo +"&indirizzo2="+ destinazione +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"",
 			   contentType: "application/json",
-			   //data: {ID: "Lazio"}, LIMIT 10
 			   timeout: 7000,
 			   jsonp: 'callback',
 			   crossDomain: true,
@@ -228,16 +258,15 @@ function onDeviceReady() {
 				  if(item.Token==1){
 					  
 					  navigator.notification.alert(
-					   'Richiesta Inviata',  // message
-					   alertDismissed,         // callback
-					   'OK',           // title
-					   'Done'                  // buttonName
+					   'Richiesta Inviata',
+					   alertDismissed,
+					   'OK',
+					   'Done'
 					   );
 					  
 					  $("#btnofferte").show();
 					  $.mobile.changePage( "#home", { transition: "slide", changeHash: false });
 					  
-					  //vediofferte()
 					  e.stopImmediatePropagation();
 				   
 				      e.preventDefault();
@@ -254,24 +283,152 @@ function onDeviceReady() {
 			   error: function(){
 			   
 			   navigator.notification.alert(
-				'Possibile errore di rete, riprova tra qualche minuto.',  // message
-				alertDismissed,         // callback
-				'Attenzione',           // title
-				'Done'                  // buttonName
+				'Possibile errore di rete, riprova tra qualche minuto.',
+				alertDismissed,
+				'Attenzione',
+				'Done'
 				);
 				
 				onResume();
 			   
 			   },
 			   dataType:"jsonp"});
+			}
+			else{
+				   //alert("http://purplemiles.com/www2/check_richiesta_pos.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"&data="+ document.getElementById("datacal3").value +"&ora="+ document.getElementById("orario3").value +"&minuti="+ document.getElementById("minuti3").value +"")
+				   
+				   //alert(document.getElementById("datacal3").value)
+				   
+				   
+				   $.ajax({
+						  type:"GET",
+						  url:"http://purplemiles.com/www2/check_richiesta_pos.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"&data="+ document.getElementById("datacal3").value +"&ora=08&minuti=00&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"",
+						  contentType: "application/json",
+						  timeout: 7000,
+						  jsonp: 'callback',
+						  crossDomain: true,
+						  success:function(result){
+						  
+						  $.each(result, function(i,item){
+								 
+								 if(item.Token==1){
+								 
+								 navigator.notification.alert(
+															  'Richiesta Inviata',
+															  alertDismissed,
+															  'OK',
+															  'Done'
+															  );
+								 
+								 $("#btnofferte").show();
+								 $.mobile.changePage( "#home", { transition: "slide", changeHash: false });
+								 
+								 e.stopImmediatePropagation();
+								 
+								 e.preventDefault();
+								 
+								 return false;
+								 
+								 if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+								 }
+								 
+								 });
+						  
+						  
+						  },
+						  error: function(){
+						  
+						  navigator.notification.alert(
+													   'Possibile errore di rete, riprova tra qualche minuto.',
+													   alertDismissed,
+													   'Attenzione',
+													   'Done'
+													   );
+						  
+						  onResume();
+						  
+						  },
+						  dataType:"jsonp"});
+				   
+			}
 		
 	});
 	
+	
+	
+	$(document).on("touchstart", "#inviarichiesta", function(e){
+				   
+				   if (document.getElementById("datacal").value == "") {
+				    navigator.notification.alert(
+							'inserire una data valida',  // message
+							alertDismissed,         // callback
+							'Data',            // title
+							'OK'                  // buttonName
+					);
+				   return;
+				   }
+				   
+				   if (document.getElementById("Orario").value == "--") {
+				   navigator.notification.alert(
+												'inserire un orario valido',  // message
+												alertDismissed,         // callback
+												'Data',            // title
+												'OK'                  // buttonName
+												);
+				   return;
+				   }
+				   
+				   if (document.getElementById("Minuti").value == "--") {
+				   navigator.notification.alert(
+												'inserire un orario valido',  // message
+												alertDismissed,         // callback
+												'Data',            // title
+												'OK'                  // buttonName
+												);
+				   return;
+				   }
+				   
+				   localStorage.setItem("destination", "0")
+				   
+				   $("#viale").show();
+				   $("#destinazione").hide();
+				   
+				   $("#da").removeClass("bottoni").addClass("bottoni1");
+				   $("#a").removeClass("bottoni1").addClass("bottoni");
+				   
+				   onResume();
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
+
 
 	
 	$(document).on("tap", "#anteprima", function(e){
 		localStorage.setItem("viale", document.getElementById("viale").value);
 		localStorage.setItem("destinazione", document.getElementById("destinazione").value);
+				   
+		localStorage.setItem("datacal", document.getElementById("datacal").value);
+		localStorage.setItem("orario", document.getElementById("Orario").value);
+		localStorage.setItem("minuti", document.getElementById("Minuti").value);
+				   
+				  
+				   
+				   if(document.getElementById("datacal").value==""){
+				     document.getElementById("datacal3").value = "ORA";
+				   }
+				   else{
+				     document.getElementById("datacal3").value = document.getElementById("datacal").value;
+				     document.getElementById("orario3").value = document.getElementById("Orario").value;
+				     document.getElementById("minuti3").value = document.getElementById("Minuti").value;
+				   }
+				   
+				   
 		document.getElementById("viale3").value = document.getElementById("viale").value;
 		document.getElementById("destinazione3").value = document.getElementById("destinazione").value;
 				   
@@ -296,6 +453,9 @@ function onDeviceReady() {
 		    
 				   return;
 		}
+				   
+	    
+		$("#posticipata").html(" <b>Quando:</b> " + document.getElementById("datacal3").value + "<br> <b>Ora:</b>" + document.getElementById("orario3").value + " " + document.getElementById("minuti3").value);
 
 				   
 		$.mobile.changePage ($("#home3"));
@@ -425,8 +585,10 @@ function CenterControl(controlDiv, map) {
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
 	//controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table width="100%" align="center"><tr><td align="center" width="50%">DA</td><td align="center" width="50%">A</td></tr><tr><td align="center" width="50%"><input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'"></td></tr><tr><td align="center" width="50%"><input id="citta" name="citta" type="text" value="Roma"></td></tr></table>';
-	controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XX3" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass"><font color="#fff">Quando</font></a></td><td align="center" ><a data-role="button" id="da1" href="#" data-theme="b" class="bottoni1"><font color="#fff">&nbsp;Da&nbsp;</font></a></td><td align="center" ><a data-role="button" id="a1" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a></td><td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a></td><td align="center" ><a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass"><font color="#fff">Anteprima</font></a></td></tr></table>';
+	controlText.innerHTML = '<table width="100%" class="xalto"><tr><td align="right">&nbsp;</td></tr><tr><td align="right"><a id="XX3" href="index.html" rel="external"><img src="img/xx.png" width="35px"></a><br></td></tr></table><br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass"><font color="#fff">Quando</font></a></td><td align="center" ><a data-role="button" id="da1" href="#" data-theme="b" class="bottoni1"><font color="#fff">&nbsp;Da&nbsp;</font></a></td><td align="center" ><a data-role="button" id="a1" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a></td><td align="center" ><a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass"><font color="#fff">Anteprima</font></a></td></tr></table>';
 	controlUI.appendChild(controlText);
+	
+	//<td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a></td>
 	
 	//var g = document.createElement('div');
 	//g.id ='sopra':
@@ -735,6 +897,10 @@ function deg2rad(deg) {
 
 function resetta1(focus) {
 	
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
+	
+	
 	//PRESS TO MARKER
 	$(function(){
    $(document).bind( "taphold", tapholdHandler );
@@ -759,9 +925,6 @@ function resetta1(focus) {
 
 	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
-	var lat = localStorage.getItem("lat");
-	var lng = localStorage.getItem("lng");
-	
 	//$("#btn").click();
 	//marker.setMap(null);
 	//ido.setVisible(false);
@@ -772,6 +935,9 @@ function resetta1(focus) {
 	//localStorage.setItem("lat", lat)
     //localStorage.setItem("lng", lng)
 	//ido.setPosition(latlng);
+		
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
 
 	
 	var latlng = new google.maps.LatLng(lat, lng, 1);
@@ -1085,11 +1251,10 @@ function vediofferte(){
 		window.clearInterval(i);
 	}
 	
-	//alert("http://purplemiles.com/www2/check_richiesta_passeggero.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"")
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_passeggero.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -1105,10 +1270,10 @@ function vediofferte(){
 				  
 				  
 				  if(item.accettata==1){
-				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo:</b>"+ item.importo +"<br><b>Quando:</b>"+ item.quando +"<br><br><b>Partenza:</b>"+ item.partenza +"<br><b>Arrivo:</b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
 				  else{
-				    $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo:</b>"+ item.importo +"<br><b>Quando:</b>"+ item.quando +"<br><br><b>Partenza:</b>"+ item.partenza +"<br><b>Arrivo:</b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
 				  
 				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
@@ -1133,7 +1298,13 @@ function vediofferte(){
 				   }
 				  
 				   localStorage.setItem("accettato","0")
-				   //$("#timer2").show();
+				  
+				   refreshPos = setInterval(function() {
+										   
+					 controllaseautistaaccetta(item.id_richiesta,item.id_autista);
+										   
+				   }, 5000);
+
 
 				   function countdown2(minutes) {
 				   var seconds = 40;
@@ -1150,10 +1321,15 @@ function vediofferte(){
 				  
 				     $("#timer2").hide();
 				     //vediofferte()
+				  
+				     for(i=0; i<10000; i++)
+				    {
+				     window.clearInterval(i);
+				    }
+
 				     scadutaofferta(0,item.id_richiesta,item.id_autista)
 					 return false;
 
-				  
 					 // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
 					 //setTimeout(function () { countdown(mins - 1); }, 1000);
 				  
@@ -1172,7 +1348,7 @@ function vediofferte(){
 				  
 				  }
 				   if(item.stato==1){
-					 $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  
 				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
 						accettaofferta(2,item.id_richiesta,item.id_autista)
@@ -1187,7 +1363,7 @@ function vediofferte(){
 				  }
 				  
 				  if(item.stato==0){
-					 $("#offerte4").append("<br><table height='100%' width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass'>"+ item.nick +"</div><img src='img/stelle.png' width='80'><br><b>Prezzo:</b>"+ item.importo +"<br><b>Partenza:</b>"+ item.partenza +"</td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass'>"+ item.nick +"</div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
 
 				  
@@ -1223,6 +1399,50 @@ function vediofferte(){
 
 	
 }
+
+function controllaseautistaaccetta(id_richiesta,id_autista){
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_controllaseaccettata.php?id_richiesta="+ id_richiesta +"&id_autista="+ id_autista +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				if(item.accettata==1){
+				  
+				  for(i=0; i<10000; i++)
+				  {
+				     window.clearInterval(i);
+				  }
+				  
+				  vediofferte()
+				}
+				  
+			});
+		   
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   onResume();
+		   
+		   },
+		   dataType:"jsonp"});
+}
+
 
 function accettaofferta(id,id_richiesta,id_autista){
 	
@@ -1337,7 +1557,9 @@ function mostracal(){
 					var datta11 = datta10.replace("Jul","Luglio")
 					var datta12 = datta11.replace("Aug","Agosto")
 					
-		document.getElementById("datacal").value = datta12
+		//document.getElementById("datacal").value = datta12
+		
+		document.getElementById("datacal").value = datta
 					
 	});
 }

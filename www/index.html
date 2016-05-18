@@ -473,6 +473,29 @@
 						  -moz-border-radius: 5px; /* firefox */
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
+					  .custom-pass22 {
+						  background-color: #00A86B;
+						  width: 70%;
+						  height: 30px;
+						  font-size: 22px;
+						  
+						  color: #000;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+
+
 					  .custom-pass2 {
 						  background-color: #00A86B;
 						  width: 50px;
@@ -696,7 +719,7 @@
 			
             <!--<div class="spinner" id="spinner"></div>-->
 			
-			 <div id="tblhome"></div>
+			 <div id="tblhome" style="display:none"></div>
 
 			<!--<table id="tblhome" width="90%" height="100%" border="0" valign="center" align="center" class="tabella">
 				<tr height="48%">
@@ -953,17 +976,20 @@
 			
 			<table id="btnpass" width="100%" border="0" align="center" valign="center" class="div555" style="display:none">
 				<tr>
-					<td width="25%" align="center">
+					<td width="55px" align="right">
 						<a id="ricarica" href="#" rel="external"><img src="img/ico_mirino.png" width="45px"></a>
 					</td>
-					<td width="75%" align="left">
-						<table align="center" width="200px" border="0">
+					<td width="220px" align="left">
+						<table align="center"border="0" width="220px">
 							<tr>
-								<td width="200px" align="center">
-									<a id="pass1" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;1&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass2" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;2&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="pass3" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;3&nbsp;</font></a>&nbsp;&nbsp;&nbsp;<a id="esci" href="#" data-theme="b" class="custom-pass9"><font color="#cc33cc">&#8592;</font></a>
+								<td align="center">
+									<a id="pass1" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;1&nbsp;</font></a>&nbsp;&nbsp;<a id="pass2" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;2&nbsp;</font></a>&nbsp;&nbsp;<a id="pass3" href="#" data-theme="b" class="custom-pass" style="display:none"><font color="#fff">&nbsp;3&nbsp;</font></a>&nbsp;&nbsp;<a id="lista" href="#" data-theme="b" class="custom-pass9"><font color="#cc33cc"><img src="img/List.png" width="20px"></font></a>
 								</td>
 							</tr>
 						</table>
+					</td>
+					<td width="100%" align="right">
+						
 					</td>
 				</tr>
 				
@@ -1071,7 +1097,7 @@
 			<table width="100%" align="center">
 				<tr>
 					<td width="100%" align="left" colspan="3">
-						<table width="95%" align="center" class="div57">
+						<table width="90%" align="center" class="div57">
 							<tr>
 								<td width="250px" align="left" valign="center">
 									<table border="0" hight="20px"><tr><td></td></tr></table>
@@ -1089,42 +1115,52 @@
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="Ad"></p><br>
+									<p id="Ad"></p>
 								</td>
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="">Distanza</p>
+									<p id="distanza"></p>
 								</td>
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="">Passeggeri</p>
+									<p id="passeggeri">Passeggeri: No</p>
 								</td>
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="">Bagaglio</p>
+									<p id="fumatori">Fumatori:  No</p>
 								</td>
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="">Assicurazione</p>
+									<p id="animali">Animali:  No</p>
 								</td>
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="">Pagamento</p><br>
+									<p id="meno18">Meno 18 anni:  No</p>
 								</td>
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="Note"></p>
+									<p id="disabili">Disabili:  No</p>
 								</td>
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="">Altro</p>
+									<p id="bambini">Bambini:  No</p>
+								</td>
+							</tr>
+							<tr>
+								<td width="250px" align="left" valign="center">
+									<p id="wifi">WiFi:  No</p>
+								</td>
+							</tr>
+							<tr>
+								<td width="250px" align="left" valign="center">
+									<p id="note">Note:  --</p>
 								</td>
 							</tr>
 
@@ -1160,6 +1196,36 @@
 			</table>
 			
 		</div>
+		
+		<div data-role=page id=home5 class="div2">
+			<table border="0" hight="30px"><tr><td></td></tr></table>
+			
+			<table border="0" width="100%" align="center">
+				<tr>
+					<td align="center" width="25%">
+						<img src="img/Logo.png" width="60">
+					</td>
+					<td align="center" width="50%">
+						<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome5">NickName</div></font></td></tr></table>
+					</td>
+					<td align="center" width="25%">
+						<a id="ritorna5" href="#"><img src="img/xx.png" width="30"></a>
+					</td>
+				</tr>
+			</table>
+			
+			<table border="0" hight="30px"><tr><td></td></tr></table>
+			
+			<div data-role=content class="div2">
+				
+			</div>
+
+				
+			<div id="offerte5" ></div>
+
+
+		</div>
+
 
 
 		<script type="text/javascript" src="phonegap.js"></script>

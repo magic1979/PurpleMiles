@@ -194,6 +194,11 @@
 						  
 					  }
 					  
+					  .xalto {
+						  z-index: 20;
+						  top:10px;
+					  }
+					  
 					  
 					  .div55 {
 						  position: absolute;
@@ -585,9 +590,9 @@
 		<td align="center" >
 			<a data-role="button" id="ad" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a>
 		</td>
-		<td align="center" >
+		<!--<td align="center" >
 			<a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a>
-		</td>
+		</td>-->
 		<td align="right" >
 			<a data-role="button" id="offerte" href="#" data-theme="b" class="custom-pass11">Vedi</a>
 		</td>
@@ -602,7 +607,7 @@
 
   <form name="formia" action="entra.asp" method="post">
 	<table id="spazioipad" height="30px"><tr><td></td></tr></table>
-	<table id="tblhome" width="90%" height="" border="0" valign="center" align="center" class="tabella">
+	<table id="tblhome" width="90%" height="" border="0" valign="center" align="center" class="tabella" style="display:none">
 		<tr>
 			<td width="100%" align="right" colspan="4">
 				<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="35px"></a>
@@ -610,7 +615,7 @@
 		</tr>
 		<tr>
 			<td width="100%" align="center" colspan="4">
-				<font size="5">QUANDO</font><br>
+				<font size="5"><b>QUANDO</b></font><br>
 			</td>
 		</tr>
 		
@@ -620,28 +625,30 @@
 			</td>
 		</tr>
 		<tr>
+			<td width="100%" align="center" colspan="4"> o
+				<!--<a data-role="button" id="oggi" href="#" data-theme="b" class="custom-pass">Oggi</a><br>-->
+				<!--<a data-role="button" id="domani" href="#" data-theme="b" class="custom-pass">Domani</a>-->
+			</td>
+		</tr>
+		
+		<tr>
 			<td width="25%" align="center" >
 				<font size="4">Alle</font>
 			</td>
 			<td width="25%" align="center" >
-				<select id="Orario" data-theme="c"><option selected>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>01</option></select>
+				<select id="Orario" data-theme="c"><option selected>--</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>01</option></select>
 			</td>
 			<td width="25%" align="center" >
-				<select id="Minuti" data-theme="c"><option selected>00</option><option>15</option><option>30</option><option>45</option>
+				<select id="Minuti" data-theme="c"><option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>
 			</td>
 			<td width="25%" align="center" >
 				<img src="img/clock.png" width="30">
 			</td>
 		</tr>
-		<tr>
-			<td width="100%" align="center" colspan="4">
-				<a data-role="button" id="oggi" href="#" data-theme="b" class="custom-pass">Oggi</a><br>
-				<a data-role="button" id="domani" href="#" data-theme="b" class="custom-pass">Domani</a>
-			</td>
-		</tr>
+
 		<tr>
 			<td width="75%" align="center" colspan="3">
-				<input id="datacal" name="datacal" type="text" value="" placeholder="data">
+				<input id="datacal" name="datacal" type="text" value="" placeholder="data" readonly>
 			</td>
 			<td width="25%" align="center" colspan="1">
 				<img id="imgcalendario" src="img/calendar.png" width="30">
@@ -772,7 +779,7 @@
 					</td>
 				</tr>
 			</table>
-			
+			<table id="spazioipad" height="30px"><tr><td></td></tr></table>
 			<div data-role=content class="div2">
 
 			</div>
@@ -783,60 +790,64 @@
 			
 			<table id="tblhome3" width="90%" height="" border="0" valign="center" align="center" class="tabella">
 				<tr>
-					<td width="80%" align="center" colspan="2">
-						<br><b>ANTEPRIMA</b><br>
-					</td>
-				</tr>
-				
-				<tr>
-					<td width="80%" align="center" colspan="2">
-						<input id="viale3" name="viale3" type="text" value="">
+					<td width="100%" align="center" colspan="2">
+						<br><!--<b>ANTEPRIMA</b>-->
 					</td>
 				</tr>
 				<tr>
-					<td width="80%" align="center" >
-						<input id="destinazione3" name="destinazione3" type="text" value="" placeholder="destinazione" >
+					<td width="100%" align="left" colspan="2">
+						<input id="datacal3" name="datacal3" type="hidden" value="" readonly><input id="orario3" name="orario3" type="hidden" value="" readonly><input id="minuti3" name="minuti3" type="hidden" value="" readonly>
+						<div id="posticipata"></div>
 					</td>
 				</tr>
 				<tr>
-					<td width="80%" align="center" >
+					<td width="100%" align="left" colspan="2">
+						<b>Partenza</b><br><input id="viale3" name="viale3" type="text" value="">
+					</td>
+				</tr>
+				<tr>
+					<td width="100%" align="left" colspan="2">
+						<b>Arrivo</b><br><input id="destinazione3" name="destinazione3" type="text" value="" placeholder="destinazione" >
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
 						<input id="passeggeri" name="passeggeri" type="text" value="" placeholder="passeggeri">
 					</td>
-				</tr>
-				<tr>
-					<td width="80%" align="center" >
+					<td width="50%" align="center" >
 						<input id="fumatori" name="fumatori" type="text" value="" placeholder="fumatori">
 					</td>
 				</tr>
+
 				<tr>
-					<td width="80%" align="center" >
+					<td width="50%" align="center" >
 						<input id="animali" name="animali" type="text" value="" placeholder="animali">
 					</td>
-				</tr>
-				<tr>
-					<td width="80%" align="center" >
+					<td width="50%" align="center" >
 						<input id="meno18" name="meno18" type="text" value="" placeholder="meno 18 anni">
 				   </td>
 				</tr>
-				<tr>
-					<td width="80%" align="center" >
-						<input id="disabili" name="disabili" type="text" value="" placeholder="disabili">
-					</td>
-				</tr>
-				<tr>
-					<td width="80%" align="center" >
-						<input id="bambini" name="bambini" type="text" value="" placeholder="bambini">
-							</td>
-				</tr>
-				<tr>
-					<td width="80%" align="center" >
-						<input id="wifi" name="wifi" type="text" value="" placeholder="wifi">
-					</td>
-				</tr>
-				
-				
+
 				<tr>
 					<td width="50%" align="center" >
+						<input id="disabili" name="disabili" type="text" value="" placeholder="disabili">
+					</td>
+					<td width="50%" align="center" >
+						<input id="bambini" name="bambini" type="text" value="" placeholder="bambini">
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
+						<input id="wifi" name="wifi" type="text" value="" placeholder="wifi">
+					</td>
+					<td width="50%" align="center" >
+						<input id="portapacchi" name="portapacchi" type="text" value="" placeholder="portapacchi">
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td width="100%" align="center" colspan="2">
 						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn4">Invia</a>
 					</td>
 				</tr>
