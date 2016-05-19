@@ -206,10 +206,24 @@ receivedEvent: function(id) {
 	$(document).on("tap", "#esciapp", function(e){
 				   
 	 telephoneNumber.get(function(result) {
-        alert("result = " + result);
+        alert(result);
     	}, function() {
-        console.log("error");
+        alert("error1");
      });
+				   
+		  e.stopImmediatePropagation();
+				   
+		  e.preventDefault();
+				   
+		  return false;
+				   
+		  if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	$(document).on("tap", "#nickhome", function(e){
+				   
+		 window.plugins.sim.getSimInfo(successSIM, errorCallback);
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -217,9 +231,17 @@ receivedEvent: function(id) {
 				   
 		  return false;
 				   
-		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		  if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
+	
+	function successSIM(result) {
+		alert(result);
+	}
+ 
+	function errorCallback(error) {
+		alert(error);
+	}
 	
 	
 	$(document).on("tap", "#profiloperc", function(e){
