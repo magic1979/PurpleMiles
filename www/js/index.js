@@ -204,9 +204,13 @@ receivedEvent: function(id) {
 	
 		
 	$(document).on("tap", "#esciapp", function(e){
-				   
+	 
+	 var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+	 
+	 
 	 telephoneNumber.get(function(result) {
         alert(result);
+		alert(result.line1Number);
     	}, function() {
         alert("error1");
      });
