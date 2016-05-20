@@ -266,6 +266,27 @@ receivedEvent: function(id) {
 				   
 	});
 	
+	
+	$(document).on("tap", "#esciapp", function(e){
+				   
+		  var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+			telephoneNumber.get(function(result) {
+			alert("result = " + result);
+			}, function(error) {
+			alert("error = " + error.code);
+			});
+				   
+	   	  e.stopImmediatePropagation();
+				   
+		  e.preventDefault();
+				   
+		  return false;
+				   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	
 	$(document).on("tap", "#profiloperc2", function(e){
 				   
 		  var ref = window.open('http://www.purplemiles.com/www/profile.php?id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
