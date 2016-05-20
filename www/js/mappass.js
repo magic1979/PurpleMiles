@@ -135,7 +135,7 @@ function onDeviceReady() {
 	$(document).on("touchstart", "#offerte", function(e){
 	    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 		
-		$("#offerte4").html("");
+		//$("#offerte4").html("");
 		
 		vediofferte()
 		//alert("in costruzione")
@@ -1299,7 +1299,6 @@ function inviopasseggero(come){
 }
 
 function vediofferte(){
-	$("#offerte4").html("");
 	$("#timer2").show();
 	//alert("Vedo");
 	
@@ -1322,6 +1321,8 @@ function vediofferte(){
 		   $.each(result, function(i,item){
 				  
 				  if(item.Token==1){
+					  
+				   $("#offerte4").html("");
 				  
 				  if(item.stato==2){
 				  
