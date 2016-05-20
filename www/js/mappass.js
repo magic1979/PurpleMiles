@@ -134,7 +134,9 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart", "#offerte", function(e){
 	    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
-		//$.mobile.changePage ($("#home4"));
+		
+		$("#offerte4").html("");
+		
 		vediofferte()
 		//alert("in costruzione")
 				   e.stopImmediatePropagation();

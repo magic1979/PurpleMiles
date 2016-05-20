@@ -3353,7 +3353,7 @@ function cancella(id){
 			
 			//window.location.href = "#win2";
 			//onDeviceReady();
-			
+			$("#loading").show();
 			resetta1(1);
 			//window.location.href = "map2.html?id=1";
 			
