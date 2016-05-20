@@ -223,7 +223,7 @@
 						  text-align: center;
 						  font-weight: bold;
 						  
-						  
+						  border: 0px solid #000;
 					  }
 					  
 					  .div56 {
@@ -944,9 +944,9 @@
 			</table>-->
 
 			<table id="btninizia" width="100%" border="0" align="center" valign="center" class="div55" >
-				<tr>
+				<tr id="modificastart2" style="display:none">
 					<td width="100%" align="center">
-						<table align="center" width="220px"><tr><td width="100px" align="center">
+						<table align="center" width="220px" ><tr><td width="100px" align="center">
 							<input id="modificastart" name="modificastart" type="text" value="" class="scrivo" placeholder="scrivi posizione" style="display:none">
 						</td></tr></table>
 					</td>
@@ -1003,6 +1003,8 @@
 		
 		<div data-role=page id=home3 class="div2">
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
+			<table border="0" hight="30px"><tr><td></td></tr></table>
+			
 			<table border="0" valign="center" align="center" class="transbox">
 				<tr>
 					<td align="center" width="30%">
@@ -1017,15 +1019,16 @@
 				</tr>
 			</table>
 			
-			<div data-role=content class="div2">
-
-			</div>
+			<div data-role=content class="div2"></div>
 			
 			<div class="spinner" id="spinner"></div>
 			
+			<table border="0" hight="30px"><tr><td></td></tr></table>
+			<br><br>
+			
 			<form name="formia" action="entra.asp" method="post">
 			
-			<table id="tblhome3" width="90%" height="" border="0" valign="center" align="center" class="tabella">
+			<table width="90%" align="center" class="div57">
 				<tr>
 					<td width="100%" align="center" colspan="2">
 						<br><b>RISPONDI</b><br>
@@ -1163,7 +1166,12 @@
 									<p id="note">Note:  --</p>
 								</td>
 							</tr>
-
+							
+							<tr>
+								<td width="250px" align="left" valign="center">
+									<div id="code1" style="display:none"></div><div id="code2" style="display:none"></div><div id="code3" style="display:none"></div>
+								</td>
+							</tr>
 
 						</table>
 					</td>
@@ -1181,6 +1189,7 @@
 					<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
 				</td>
 			</tr>
+
 			<tr>
 				<td align="center" width="100%">
 					<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
@@ -1189,8 +1198,13 @@
 			</tr>
 			<tr>
 				<td align="center" width="100%">
-					<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif1">Rifiuta</div></font></a>
-					<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif2">Rifiuta</div></font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif3">Rifiuta</div></font></a>
+					<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rifiuta1</font></a>
+					<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rifiuta2</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rifiuta3</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" width="100%">
+					<a id="chat1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Chat</font></a><a id="chat2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Chat</font></a><a id="chat3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Chat</font></a>
 				</td>
 			</tr>
 			</table>

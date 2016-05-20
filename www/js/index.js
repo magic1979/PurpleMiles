@@ -26,11 +26,13 @@ receivedEvent: function(id) {
 	}, false);
 	
 	
+	window.plugins.insomnia.keepAwake();
+	
 	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	//ANDROID -------------------------------------------------------
 	
-	document.addEventListener('backbutton', function(e) {
+	/*document.addEventListener('backbutton', function(e) {
 							  navigator.notification.confirm(
 															 'Confermi di voler chiudere',  // message
 															 onConfirm2,              // callback to invoke with index of button pressed
@@ -56,7 +58,7 @@ receivedEvent: function(id) {
 	}
 	
 	
-	window.plugins.insomnia.keepAwake();
+	*/
 	
 	//----------------------------------------------------------------
 	
@@ -142,13 +144,58 @@ receivedEvent: function(id) {
 	  localStorage.setItem("exit", "0")
 	}
 	
-	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br><b>Voglio essere autista</b><br><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4">Profilo 19%</font></td></tr></table></td><td> <img src="img/stelle.png" width="90"></td></tr></table></td></tr><tr height="2%"><td width="100%" align="center"> </td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><br><b>Voglio essere passeggero</b><br><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4">Profilo 46%</font></td></tr></table></td><td> <img src="img/stelle.png" width="90"></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br><b>Voglio essere autista</b><br><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="100%" align="center"> </td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><br><b>Voglio essere passeggero</b><br><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
 	
 	$("#tblhome").fadeIn("slow")
+	
+	
+	//STELLE
+	
 
+	if(parseInt(localStorage.getItem("stelleautista"))==0){
+		$("#stelleautista").html("<img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if(parseInt(localStorage.getItem("stelleautista"))==1){
+		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseInt(localStorage.getItem("stelleautista"))==2) {
+		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseInt(localStorage.getItem("stelleautista"))==3) {
+		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseInt(localStorage.getItem("stelleautista"))==4) {
+		$("#stelleautista").html(ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseInt(localStorage.getItem("stelleautista"))==5) {
+		$("#stelleautista").html(ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'>")
+	}
+	
+	
+	
+	if(parseInt(localStorage.getItem("stellepass"))==0){
+		$("#stellepass").html("<img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if(parseInt(localStorage.getItem("stellepass"))==1){
+		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseInt(localStorage.getItem("stellepass"))==2) {
+		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseInt(localStorage.getItem("stellepass"))==3) {
+		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseInt(localStorage.getItem("stellepass"))==4) {
+		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseInt(localStorage.getItem("stellepass"))==5) {
+		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'>")
+	}
+	
+	
 	
 	isTabHolded=false;
 	
@@ -172,6 +219,7 @@ receivedEvent: function(id) {
 	var stato1;
 	var lat1;
 	var lng1;
+	var cod1;
 	
 	var nick2;
 	var quando2;
@@ -182,6 +230,7 @@ receivedEvent: function(id) {
 	var stato2;
 	var lat2;
 	var lng2;
+	var cod2;
 	
 	var nick3;
 	var quando3;
@@ -192,6 +241,7 @@ receivedEvent: function(id) {
 	var stato3;
 	var lat3;
 	var lng3;
+	var cod3;
 	
 	var muoviti;
 	var setGPS;
@@ -201,52 +251,6 @@ receivedEvent: function(id) {
 	var watchID = null;
 	var watchID2 = null;
 	var watchID5 = null;
-	
-		
-	$(document).on("tap", "#esciapp", function(e){
-	 
-	 var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
-	 
-	 
-	 telephoneNumber.get(function(result) {
-        alert(result);
-		alert(result.line1Number);
-    	}, function() {
-        alert("error1");
-     });
-				   
-		  e.stopImmediatePropagation();
-				   
-		  e.preventDefault();
-				   
-		  return false;
-				   
-		  if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				   
-	});
-	
-	$(document).on("tap", "#nickhome", function(e){
-				   
-		 window.plugins.sim.getSimInfo(successSIM, errorCallback);
-				   
-	   	  e.stopImmediatePropagation();
-				   
-		  e.preventDefault();
-				   
-		  return false;
-				   
-		  if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				   
-	});
-	
-	function successSIM(result) {
-		alert(result);
-	}
- 
-	function errorCallback(error) {
-		alert(error);
-	}
-	
 	
 	$(document).on("tap", "#profiloperc", function(e){
 				   
@@ -371,6 +375,7 @@ receivedEvent: function(id) {
 				   localStorage.setItem("setGPS","0")
 				   
 				   $("#modificastart").hide();
+				   $("#modificastart2").hide();
 				   
 				   $("#btnGPS").removeClass("custom-btn3").addClass("custom-btnGPS");
 				   $("#Modifica").removeClass("custom-btnModifica").addClass("custom-btn3");
@@ -396,6 +401,7 @@ receivedEvent: function(id) {
 				   
 				   document.getElementById("modificastart").value = "";
 				   $("#modificastart").show();
+				   $("#modificastart2").show();
 				   
 				   $("#btnGPS").removeClass("custom-btnGPS").addClass("custom-btn3");
 				   $("#Modifica").removeClass("custom-btn3").addClass("custom-btnModifica");
@@ -1593,7 +1599,7 @@ function resetta1(focus) {
 		$("#pass1").hide();
 		$("#pass2").hide();
 		$("#pass3").hide();
-		//$("#esci").hide();
+		$("#esci").hide();
 		$("#blob2").hide();
 		
 		//$("#loading").show();
@@ -2187,7 +2193,7 @@ function timer(){
 									$("#loading").hide();
 									$("#btnpass").show();
 
-									//$("#esci").show();
+									$("#esci").hide();
 									
 									beaches1.push(['Tua Posizione',lat,lng,1,0,0,0])
 									
@@ -2265,6 +2271,7 @@ function timer(){
 												  stato1 = item.stato
 												  lng1 = item.lng
 												  lat1 = item.lat
+												  cod1 = item.cod_autista
 												  
 												  if(localStorage.getItem("palla1")!=1){
 											   
@@ -2363,7 +2370,7 @@ function timer(){
 												  var current_minutes = 0;
 												  seconds--;
 												  counter.innerHTML =
-												  current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+												  "<font size='5'>"+current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds)+"</font>";
 												  if( seconds > 0 ) {
 												  setTimeout(tick, 1000);
 												  } else {
@@ -2409,7 +2416,7 @@ function timer(){
 												  stato2 = item.stato
 												  lng2 = item.lng
 												  lat2 = item.lat
-												  
+												  cod2 = item.cod_autista
 												  
 												  /*$(document).on("tap", "#pass2", function(e){
 																 //window.location.href = "#index3";
@@ -2537,6 +2544,7 @@ function timer(){
 												  stato3 = item.stato
 												  lng3 = item.lng
 												  lat3 = item.lat
+												  cod3 = item.cod_autista
 												  
 												  item3 = item.id_richiesta;
 												  
@@ -3346,7 +3354,7 @@ function cancella(id){
 			//window.location.href = "#win2";
 			//onDeviceReady();
 			
-			onResume();
+			resetta1(1);
 			//window.location.href = "map2.html?id=1";
 			
 			}
@@ -3387,6 +3395,7 @@ function start() {
 	
 	$("#setGPS").hide();
 	$("#Modifica").hide();
+	$("#esci").hide();
 	
 	$("#btninizia").hide();
 	$("#loading").show();
@@ -3446,15 +3455,29 @@ function richiesta1() {
 	$("#risp3").hide();
 	$("#gps3").hide();
 	
+	$("#close3").hide();
+	$("#close2").hide();
+	$("#close1").show();
+	
+	$("#code1").hide();
+	$("#code1").html("");
+	$("#code2").hide();
+	$("#code2").html("");
+	$("#code3").hide();
+	$("#code3").html("");
+	
+	$("#chat1").hide();
+	$("#chat2").hide();
+	$("#chat3").hide();
+	
 	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
 				  
-				  $("#nickblob").html("<font color='#cc33cc'>"+ nick1 +"</font>");
-	              $("#nickhome4").html("<font color='#fff'>"+ nick1 +"</font>");
+				  $("#nickhome4").html("<font color='#fff'>"+ nick1 +"</font>");
 				  localStorage.setItem("id_nick", nick1)
-				  $("#nickhome3").html(nick1);
+				  $("#nickhome3").html("<font color='#fff'>"+ nick1 +"</font>");
 				  
 				  $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando1 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora1 +"</font>");
 				  
@@ -3463,6 +3486,7 @@ function richiesta1() {
 				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo1 +"</font>");
 				  
 				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza1 +"</font>");
+	
 	
 	              if(stato1==0){
 		            $("#4img").html("<img src='img/1_viola.png' width='30'>");
@@ -3477,8 +3501,20 @@ function richiesta1() {
 				  }
 
 				  if(stato1==2){
+					  
 				   $("#gps1").show();
-				   $("#rif1").html("Annulla");
+					  
+				   $("#code1").show();
+				   $("#code1").html("<b>Codice Commento : " + cod1 + "</b>");
+					  
+				   $("#chat1").show();
+					  
+				   $("#risp1").hide();
+					  
+					  $("#close3").hide();
+					  $("#close2").hide();
+					  $("#close1").hide();
+					  
 				   $("#4img").html("<img src='img/1_verde.png' width='30'>");
 				  
 				   $(document).on("tap", "#gps1", function(e){
@@ -3503,15 +3539,14 @@ function richiesta1() {
 						  //conteggio dei 30 secondi
 					  }
 					 
-					$("#rif1").html("Rifiuta");
 					$("#gps1").hide();
+					  
+					$("#close1").show();
+					$("#close2").hide();
+					$("#close3").hide();
+					
 				  }
 	
-	
-	
-	$("#close1").show();
-	$("#close2").hide();
-	$("#close3").hide();
 	
 	$("#xchiudi1").show();
 	$("#xchiudi2").hide();
@@ -3587,13 +3622,28 @@ function richiesta2() {
 	$("#risp3").hide();
 	$("#gps3").hide();
 	
+	$("#code1").hide();
+	$("#code1").html("");
+	$("#code2").hide();
+	$("#code2").html("");
+	$("#code3").hide();
+	$("#code3").html("");
+	
+	$("#close3").hide();
+	$("#close2").show();
+	$("#close1").hide();
+	
+	$("#chat1").hide();
+	$("#chat2").hide();
+	$("#chat3").hide();
+	
 	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
-
 				  
-				  $("#nickblob").html("<font color='#cc33cc'>"+ nick2 +"</font>");
+				  $("#nickhome4").html("<font color='#fff'>"+ nick2 +"</font>");
+				  $("#nickhome3").html("<font color='#fff'>"+ nick2 +"</font>");
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando2 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora2 +"</font>");
 				  
@@ -3602,6 +3652,7 @@ function richiesta2() {
 				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo2 +"</font>");
 				  
 				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza2 +"</font>");
+	
 	
 				  if(stato2==0){
 					 $("#4img").html("<img src='img/2_viola.png' width='30'>");
@@ -3618,8 +3669,18 @@ function richiesta2() {
 				  if(stato2==2){
 					  
 				   $("#gps22").show();
-				   $("#rif2").html("Annulla");
+				   $("#risp2").hide();
+					  
+				   $("#code2").show();
+				   $("#code2").html("<b>Codice Commento : " + cod2 + "</b>");
+					  
 				   $("#4img").html("<img src='img/2_verde.png' width='30'>");
+					  
+				   $("#chat2").show();
+					  
+					  $("#close3").hide();
+					  $("#close2").hide();
+					  $("#close1").hide();
 				  
 					  $(document).on("tap", "#gps22", function(e){
 
@@ -3640,12 +3701,14 @@ function richiesta2() {
 				  }
 				  else{
 					$("#rif2").html("Rifiuta");
+					  
+					  $("#close2").show();
+					  $("#close1").hide();
+					  $("#close3").hide();
 				  }
 
 
-	$("#close2").show();
-	$("#close1").hide();
-	$("#close3").hide();
+
 	
 	$("#xchiudi2").show();
 	$("#xchiudi1").hide();
@@ -3701,13 +3764,29 @@ function richiesta3() {
 	$("#risp1").hide();
 	$("#gps1").hide();
 	
+	$("#close3").show();
+	$("#close2").hide();
+	$("#close1").hide();
+	
+	$("#code1").hide();
+	$("#code1").html("");
+	$("#code2").hide();
+	$("#code2").html("");
+	$("#code3").hide();
+	$("#code3").html("");
+	
+	$("#chat1").hide();
+	$("#chat2").hide();
+	$("#chat3").hide();
+	
 	//alert(2)
 	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
 
-				  $("#nickblob").html("<font color='#cc33cc'>"+ nick3 +"</font>");
+				  $("#nickhome4").html("<font color='#fff'>"+ nick3 +"</font>");
+				  $("#nickhome3").html("<font color='#fff'>"+ nick3 +"</font>");
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando3 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora3 +"</font>");
 				  
@@ -3729,10 +3808,20 @@ function richiesta3() {
 		$("#4img").html("<img src='img/3_giallo.png' width='30'>");
 	}
 	
+	
 				  if(stato3==2){
 				  $("#gps3").show();
-				  $("#rif3").html("Annulla");
+				  $("#risp3").hide();
+				  $("#code3").show();
+					  
+				  $("#code3").html("<b>Codice Commento : " + cod3 + "</b>");
+				  $("#chat3").show();
+					  
 				  $("#4img").html("<img src='img/3_verde.png' width='30'>");
+				  
+				  $("#close3").hide();
+				  $("#close2").hide();
+				  $("#close1").hide();
 				  
 				  $(document).on("tap", "#gps3", function(e){
 
@@ -3754,13 +3843,11 @@ function richiesta3() {
 				  }
 				  else{
 				    $("#rif3").html("Rifiuta");
+					  
 				  }
 				  
 				 
 	
-	$("#close3").show();
-	$("#close2").hide();
-	$("#close1").hide();
 	
 	$("#xchiudi3").show();
 	$("#xchiudi2").hide();
@@ -3859,6 +3946,8 @@ function lista5() {
 function accetta11() {
 	id = item1
 	$("#blob3").hide();
+	$("#loading").show();
+	$("#esci").hide();
 	
 	$.ajax({
 		   type:"GET",
@@ -3918,6 +4007,8 @@ function accetta22() {
 	id = item2
 	
 	$("#blob4").hide();
+	$("#loading").show();
+	$("#esci").hide();
 	
 	$.ajax({
 		   type:"GET",
@@ -3969,6 +4060,8 @@ function accetta33() {
 	id = item3
 	
 	$("#blob5").hide();
+	$("#loading").show();
+	$("#esci").hide();
 	
 	$.ajax({
 		   type:"GET",

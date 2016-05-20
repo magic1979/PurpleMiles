@@ -2,7 +2,69 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
-	$("body").bind('touchmove', function(e){e.preventDefault()})
+	//$("body").bind('touchmove', function(e){e.preventDefault()})
+	
+	if(localStorage.getItem("lingua")=="it"){
+	  document.getElementById("lingua").value = "it"
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		document.getElementById("lingua").value = "en"
+	}
+	
+	/*if(localStorage.getItem("fuso")=="it"){
+		document.getElementById("fuso").value = "it"
+	}
+	else if(localStorage.getItem("fuso")=="en"){
+		document.getElementById("fuso").value = "en"
+	}*/
+	
+
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+	
+	$(document).on("tap", "#conferma", function(e){
+		//window.location.href = "#page6";
+		localStorage.setItem("lingua", document.getElementById("lingua").value);
+		localStorage.setItem("fuso", document.getElementById("fuso").value);
+		
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	$(document).on("tap", "#impostazioni", function(e){
+				   window.location.href = "#page6";
+
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+    });
+	
+	$(document).on("tap", "#home", function(e){
+			window.location.href = "#page";
+
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
 	
 	
 	$(document).on("touchend", "#accedi", function(e){
@@ -77,6 +139,8 @@ function onDeviceReady() {
 			//document.getElementById("email").value = "F10620"
 			//document.getElementById("password").value = "ivQ0MQ4N"
 			
+			//prendifuso()
+			
 			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 			
 			document.getElementById("email").value = localStorage.getItem("email2")
@@ -94,6 +158,56 @@ function onDeviceReady() {
                  );
 		}
     }
+
+
+function prendifuso(nazione){
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/prendifuso.php",
+		   contentType: "application/json",
+		   //data: {email:email,pin:pin},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  //alert(item.Token);
+				  
+				  if (item.Token == 1){
+					
+				  
+				  }
+				  else{
+				   navigator.notification.alert(
+											   'Errore di rete',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Done'                  // buttonName@
+											   );
+				  }
+				  });
+		   
+		   $(".spinner").hide();
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto',  // message
+										alertDismissed,         // callback
+										'Attenzione',            // title
+										'Done'                  // buttonName
+										);
+		   
+		   },
+		   dataType:"jsonp"});
+	
+}
+
 
 function getKey(key){
  if ( key == null ) {
@@ -200,6 +314,13 @@ function LoginVera(email,pin){
 				  localStorage.setItem("nick", item.nick);
 				  localStorage.setItem("id_pass", item.id_passeggero);
 				  localStorage.setItem("nickpass", item.nick);
+				  
+				  localStorage.setItem("stelleautista", item.voto_autista);
+				  localStorage.setItem("stellepass", item.voto_passeggero);
+				  localStorage.setItem("md5", item.md5);
+				  localStorage.setItem("perc_autista", item.perc_aut);
+				  localStorage.setItem("perc_pass", item.perc_pass);
+				  
 
 				  window.location.href = "index.html";
 				  

@@ -169,7 +169,7 @@
 						  top:0px;
 						  left:0px;
 						  width:98%;
-						  height: 8%;
+
 						  padding: 0;
 						  color: #000;
 						  
@@ -380,6 +380,25 @@
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
 					  
+					  .custom-pass12 {
+						  background-color: #00A86B;
+						  width: 90px;
+						  font-size: 18px;
+						  
+						  color: #FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 1 5 1;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
 					  .custom-pass1 {
 						  background-color: #cc33cc;
 						  width: 25px;
@@ -528,6 +547,46 @@
 						  -moz-border-radius: 5px; /* firefox */
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
+					  
+					  .custom-pass9 {
+						  background-color: #fff;
+						  width: 50px;
+						  height: 30px;
+						  top:5px;
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #cc33cc;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
+					  .custom-btnGPS {
+						  background-color: #f0e1ff;
+						  width: 120px;
+						  font-size: 18px;
+						  
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
 						
 						.tabella {
 							top:100px;
@@ -582,19 +641,19 @@
 
 	<tr>
 		<td align="center" >
-			<a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass11"><font color="#fff">Quando</font></a>
+			<a data-role="button" id="quando" href="#" data-theme="e" class="custom-pass12"><font color="#fff">Quando</font></a>
 		</td>
-		<td align="center" >
+		<td align="left" >
 			<a data-role="button" id="da" href="#" data-theme="b" class="bottoni"><font color="#fff">Da</font></a>
 		</td>
-		<td align="center" >
-			<a data-role="button" id="ad" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a>
+		<td align="left" >
+			<a data-role="button" id="#" href="#" data-theme="d" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a>
 		</td>
-		<!--<td align="center" >
+		<td align="left" >
 			<a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a>
-		</td>-->
-		<td align="right" >
-			<a data-role="button" id="offerte" href="#" data-theme="b" class="custom-pass11">Vedi</a>
+		</td>
+		<td align="left" valign="center">
+			<a id="offerte" href="#" data-theme="b" class="custom-pass9"><font color="#cc33cc"><img src="img/List.png" width="15px"></font></a>
 		</td>
 	</tr>
 </table>
@@ -636,7 +695,7 @@
 				<font size="4">Alle</font>
 			</td>
 			<td width="25%" align="center" >
-				<select id="Orario" data-theme="c"><option selected>--</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>01</option></select>
+				<select id="Orario" data-theme="c"><option selected>--</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option></select>
 			</td>
 			<td width="25%" align="center" >
 				<select id="Minuti" data-theme="c"><option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>
@@ -769,16 +828,37 @@
 		<div data-role=page id=home3 class="div2">
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			<table border="0" valign="center" align="center" class="transbox">
+				
+				<tr>
+					<td align="center" >
+						<a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass12"><font color="#fff">Quando</font></a>
+					</td>
+					<td align="left" >
+						<a data-role="button" id="da" href="#" data-theme="b" class="bottoni"><font color="#fff">Da</font></a>
+					</td>
+					<td align="left" >
+						<a data-role="button" id="#" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a>
+					</td>
+					<td align="left" >
+						<a data-role="button" id="piu" href="#" data-theme="e" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a>
+					</td>
+					<td align="left" valign="center">
+						<a id="offerte" href="#" data-theme="b" class="custom-pass9"><font color="#cc33cc"><img src="img/List.png" width="15px"></font></a>
+					</td>
+				</tr>
+			</table>
+
+			<!--<table border="0" valign="center" align="center" class="transbox">
 				<tr>
 					<td align="center">
 						<a data-role="button" id="annulla" href="#" data-theme="b" class="custom-pass11">Annulla</a>
 					</td>
-					<!-- style="display:none" -->
 					<td align="center" id="btnofferte" >
 						<a data-role="button" id="offerte" href="#" data-theme="b" class="custom-pass">Offerte</a>
 					</td>
 				</tr>
-			</table>
+			</table>-->
+			
 			<table id="spazioipad" height="30px"><tr><td></td></tr></table>
 			<div data-role=content class="div2">
 
@@ -802,53 +882,108 @@
 				</tr>
 				<tr>
 					<td width="100%" align="left" colspan="2">
-						<b>Partenza</b><br><input id="viale3" name="viale3" type="text" value="">
+						<b>Partenza</b><br><input id="viale3" name="viale3" type="text" value="" readonly>
 					</td>
 				</tr>
 				<tr>
 					<td width="100%" align="left" colspan="2">
-						<b>Arrivo</b><br><input id="destinazione3" name="destinazione3" type="text" value="" placeholder="destinazione" >
+						<b>Arrivo</b><br><input id="destinazione3" name="destinazione3" type="text" value="" placeholder="destinazione" readonly>
 					</td>
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						<input id="passeggeri" name="passeggeri" type="text" value="" placeholder="passeggeri">
+						Passeggeri
 					</td>
 					<td width="50%" align="center" >
-						<input id="fumatori" name="fumatori" type="text" value="" placeholder="fumatori">
-					</td>
-				</tr>
-
-				<tr>
-					<td width="50%" align="center" >
-						<input id="animali" name="animali" type="text" value="" placeholder="animali">
-					</td>
-					<td width="50%" align="center" >
-						<input id="meno18" name="meno18" type="text" value="" placeholder="meno 18 anni">
-				   </td>
-				</tr>
-
-				<tr>
-					<td width="50%" align="center" >
-						<input id="disabili" name="disabili" type="text" value="" placeholder="disabili">
-					</td>
-					<td width="50%" align="center" >
-						<input id="bambini" name="bambini" type="text" value="" placeholder="bambini">
+						<select id="passeggeri" name="passeggeri" data-role="flipswitch" data-theme="b">
+							<option>No</option>
+							<option>Si</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						<input id="wifi" name="wifi" type="text" value="" placeholder="wifi">
+						Fumatori
 					</td>
 					<td width="50%" align="center" >
-						<input id="portapacchi" name="portapacchi" type="text" value="" placeholder="portapacchi">
+						<select id="fumatori" name="fumatori" data-role="flipswitch" data-theme="b">
+							<option>No</option>
+							<option>Si</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
+						Animali
+					</td>
+					<td width="50%" align="center" >
+						<select id="animali" name="animali" data-role="flipswitch" data-theme="b">
+							<option>No</option>
+							<option>Si</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
+						Meno 18 anni
+					</td>
+					<td width="50%" align="center" >
+						<select id="meno18" name="meno18" data-role="flipswitch" data-theme="b">
+							<option>No</option>
+							<option>Si</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
+						Disabili
+					</td>
+					<td width="50%" align="center" >
+						<select id="disabili" name="disabili" data-role="flipswitch" data-theme="b">
+							<option>No</option>
+							<option>Si</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
+						Bambini
+					</td>
+					<td width="50%" align="center" >
+						<select id="bambini" name="bambini" data-role="flipswitch" data-theme="b">
+							<option>No</option>
+							<option>Si</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
+						WiFi
+					</td>
+					<td width="50%" align="center" >
+						<select id="wifi" name="wifi" data-role="flipswitch" data-theme="b">
+							<option>No</option>
+							<option>Si</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
+						Portapacchi
+					</td>
+					<td width="50%" align="center" >
+						<select id="portapacchi" name="portapacchi" data-role="flipswitch" data-theme="b">
+							<option>No</option>
+							<option>Si</option>
+						</select>
 					</td>
 				</tr>
 				
 				
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn4">Invia</a>
+						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn4" >Invia</a>
+						<!--<a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass12"><font color="#fff">Anteprima</font></a>-->
 					</td>
 				</tr>
 			</table>
