@@ -760,9 +760,9 @@ function getKey(key){
 	
 	if (keycode ==13){
 		
-		document.activeElement.blur();
-		$("input").blur()
-		return false;
+	setTimeout(function() {
+		inviachat()
+	 }, 200);
 		
 	}
 	
