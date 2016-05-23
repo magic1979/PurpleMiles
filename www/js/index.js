@@ -1688,7 +1688,7 @@ function resetta1(focus) {
 				if(localStorage.getItem("tappato")=="0"){
 				  if(localStorage.getItem("setGPS") == 1){
 					if (isTabHolded){
-						var icon = new google.maps.MarkerImage("img/autista.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
+						var icon = new google.maps.MarkerImage("img/autista.png", null, null, new google.maps.Point(30, 30), new google.maps.Size(60,60));
 						
 						marker2.setMap(null);
 						
@@ -2460,19 +2460,19 @@ function timer(){
 												  
 												  
 												 
-												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(40,50));
+												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,40));
 												  if(item.stato==3){
 
 												  }
 												  
 												  if(item.stato==1){
-													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_1.png", null, null, null, new google.maps.Size(60,60));
+													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_1.png", null, null, null, new google.maps.Size(40,40));
 												  }
 												  if(item.stato==0){
-													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_1.png", null, null, null, new google.maps.Size(60,60));
+													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_1.png", null, null, null, new google.maps.Size(40,40));
 												  }
 												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/marker_verde_1.png", null, null, null, new google.maps.Size(60,60));
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_1.png", null, null, null, new google.maps.Size(40,40));
 												  }
 												  
 												  marker1.setMap(null);
@@ -2616,19 +2616,19 @@ function timer(){
 												    $("#lista").show();
 												  }
 												  
-												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(40,50));
+												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,40));
 												  if(item.stato==3){
 												  
 												  }
 												  
 												  if(item.stato==1){
-													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_2.png", null, null, null, new google.maps.Size(60,60));
+													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_2.png", null, null, null, new google.maps.Size(40,40));
 												  }
 												  if(item.stato==0){
-													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_2.png", null, null, null, new google.maps.Size(60,60));
+													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_2.png", null, null, null, new google.maps.Size(40,40));
 												  }
 												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/marker_verde_2.png", null, null, null, new google.maps.Size(60,60));
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_2.png", null, null, null, new google.maps.Size(40,40));
 												  }
 
 												  
@@ -2746,19 +2746,19 @@ function timer(){
 												  
 												  item3 = item.id_richiesta;
 												  
-												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,40));
 												  if(item.stato==3){
 												  
 												  }
 												  
 												  if(item.stato==1){
-													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_3.png", null, null, null, new google.maps.Size(60,60));
+													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_3.png", null, null, null, new google.maps.Size(40,40));
 												  }
 												  if(item.stato==0){
-													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_3.png", null, null, null, new google.maps.Size(60,60));
+													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_3.png", null, null, null, new google.maps.Size(40,40));
 												  }
 												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/marker_verde_3.png", null, null, null, new google.maps.Size(60,60));
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_3.png", null, null, null, new google.maps.Size(40,40));
 												  }
 
 												  
@@ -2892,6 +2892,14 @@ function timer(){
 
 								    //}, 1000);
 			}
+	else{
+		for(i=0; i<10000; i++)
+		{
+		 window.clearInterval(i);
+		}
+													
+		timer();									
+	}
 																		
 			}, 8000);
 	
@@ -2983,10 +2991,10 @@ function magia2C(utente,pass) {
 				  if(item.Token==1){
 				  
 				  //cambiare icona
-				  var icon2a = new google.maps.MarkerImage("img/marker_rosso_1.png", null, null, null, new google.maps.Size(60,60));
+				  var icon2a = new google.maps.MarkerImage("img/marker_rosso_1.png", null, null, null, new google.maps.Size(40,40));
 				  
 				  if(utente==1){
-				  var icon2 = new google.maps.MarkerImage("img/marker_rosso_1.png", null, null, null, new google.maps.Size(60,60));
+				  var icon2 = new google.maps.MarkerImage("img/marker_rosso_1.png", null, null, null, new google.maps.Size(40,40));
 				  stato1 = item.stato
 				  localStorage.setItem("id_richietaP1",item.id_richiesta)
 				  
@@ -3035,7 +3043,7 @@ function magia2C(utente,pass) {
 				  }
 				  
 				  if(utente==2){
-				  var icon3a = new google.maps.MarkerImage("img/marker_rosso_2.png", null, null, null, new google.maps.Size(60,60));
+				  var icon3a = new google.maps.MarkerImage("img/marker_rosso_2.png", null, null, null, new google.maps.Size(40,40));
 				  stato2 = item.stato
 				  localStorage.setItem("id_richietaP2",item.id_richiesta)
 				  $("#pass1").hide();
@@ -3077,7 +3085,7 @@ function magia2C(utente,pass) {
 				  }
 				  
 				  if(utente==3){
-				  var icon4a = new google.maps.MarkerImage("img/marker_rosso_3.png", null, null, null, new google.maps.Size(60,60));
+				  var icon4a = new google.maps.MarkerImage("img/marker_rosso_3.png", null, null, null, new google.maps.Size(40,40));
 				  stato3 = item.stato
 				  localStorage.setItem("id_richietaP3",item.id_richiesta)
 				  $("#pass1").hide();
@@ -3892,7 +3900,7 @@ function richiesta2() {
 	$("#blob2").show();
 	
 				  
-				  $("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#'>"+ nick2 +"</a></font>");
+				  $("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'>"+ nick2 +"</a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick2 +"</font>");
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando2 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora2 +"</font>");
@@ -4079,7 +4087,7 @@ function richiesta3() {
 	$("#blob2").show();
 	
 
-				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#'>"+ nick3 +"</a></font>");
+				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'>"+ nick3 +"</a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick3 +"</font>");
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando3 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora3 +"</font>");
