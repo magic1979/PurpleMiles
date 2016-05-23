@@ -189,6 +189,7 @@ function onDeviceReady() {
 	$(document).on("touchstart", "#offerte", function(e){
 	    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 		//$.mobile.changePage ($("#home4"));
+		$("#spinner4").show();
 		vediofferte()
 		//alert("in costruzione")
 				   e.stopImmediatePropagation();
@@ -344,7 +345,7 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchstart", "#back3", function(e){
-		$("#spinner6").show();
+		$("#spinner7").show();
 		
 		if(document.getElementById("datacal7").value == "ORA"){
 				   
@@ -378,7 +379,7 @@ function onDeviceReady() {
 			   $.each(result, function(i,item){
 					  
 				  if(item.Token==1){
-					  $("#spinner6").hide();
+					  $("#spinner7").hide();
 					  
 					  navigator.notification.alert(
 					   'Richiesta Inviata',
@@ -435,7 +436,7 @@ function onDeviceReady() {
 						  $.each(result, function(i,item){
 								 
 								 if(item.Token==1){
-								 $("#spinner6").hide();
+								 $("#spinner7").hide();
 									 
 								 navigator.notification.alert(
 															  'Richiesta Inviata',
@@ -1468,7 +1469,7 @@ function inviopasseggero(come){
 
 
 function vediofferte(){
-
+	
 	$("#timer2").show();
 	//alert("Vedo");
 	
@@ -1490,9 +1491,11 @@ function vediofferte(){
 		   
 		   if(localStorage.getItem("risppass")==JSON.stringify(result)){
 		     //alert("Uguali")
+			   $("#spinner4").hide();
 		   }
 		   else{
 		   $("#offerte4").html("");
+		   $("#spinner4").hide();
 		   
 		   $.each(result, function(i,item){
 				  
@@ -1680,8 +1683,8 @@ function chatting(id) {
 	$.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
 	
 	setTimeout(function() {
-			   $("#tblchat").fadeIn(1500)
-			   }, 500);
+	 $("#tblchat").fadeIn(1000)
+    }, 500);
 	
 	
 	//alert("http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ id +"&last_id=0")

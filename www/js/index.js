@@ -3900,7 +3900,7 @@ function richiesta2() {
 	$("#blob2").show();
 	
 				  
-				  $("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'>"+ nick2 +"</a></font>");
+				  $("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +"</font></a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick2 +"</font>");
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando2 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora2 +"</font>");
@@ -4087,7 +4087,7 @@ function richiesta3() {
 	$("#blob2").show();
 	
 
-				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'>"+ nick3 +"</a></font>");
+				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +"</font></a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick3 +"</font>");
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando3 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora3 +"</font>");
