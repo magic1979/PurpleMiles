@@ -32,7 +32,7 @@ receivedEvent: function(id) {
 	
 	//ANDROID -------------------------------------------------------
 	
-	/*document.addEventListener('backbutton', function(e) {
+	document.addEventListener('backbutton', function(e) {
 							  navigator.notification.confirm(
 															 'Confermi di voler chiudere',  // message
 															 onConfirm2,              // callback to invoke with index of button pressed
@@ -42,23 +42,6 @@ receivedEvent: function(id) {
 							  }, false);
 	
 	
-	function onConfirm2(button) {
-		if(button==1){    //If User selected No, then we just do nothing
-			localStorage.setItem("email", "");
-			localStorage.setItem("emailpass", "");
-			
-			navigator.app.exitApp();
-			
-			e.stopImmediatePropagation();
-	 
-			e.preventDefault();
-	 
-			return false;
-		}
-	}
-	
-	
-	*/
 	
 	//----------------------------------------------------------------
 	
@@ -79,6 +62,7 @@ receivedEvent: function(id) {
 	if(connectionStatus=='online'){
 		$('#noconn').hide();
 		
+		localStorage.setItem("chatpass", "")
 		
 		startgps();
 		
@@ -149,8 +133,16 @@ receivedEvent: function(id) {
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
 	
-	$("#tblhome").fadeIn("slow")
 	
+	setTimeout(function() {
+	  $("#tblhome").fadeIn(1500)
+	}, 500);
+	
+	
+	//$("body").css("display", "none");
+	
+	//$("body").fadeIn(1500);
+
 	
 	//STELLE
 	
@@ -252,6 +244,44 @@ receivedEvent: function(id) {
 	var watchID2 = null;
 	var watchID5 = null;
 	
+	$(document).on("tap", "#exitapp", function(e){
+				   
+				   navigator.notification.confirm(
+							'Confermi di voler chiudere',  // message
+							onConfirm2,              // callback to invoke with index of button pressed
+							'Exit',            // title
+							'Si,No'      // buttonLabels
+					);
+				   
+		e.stopImmediatePropagation();
+				   
+		e.preventDefault();
+		
+	});
+	
+	function onConfirm2(button) {
+		if(button==1){    //If User selected No, then we just do nothing
+			localStorage.setItem("email", "");
+			localStorage.setItem("emailpass", "");
+			
+			for(i=0; i<10000; i++)
+			{
+				window.clearInterval(i);
+		    }
+			
+			navigator.app.exitApp();
+			
+			//navigator.device.exitApp();
+			
+			e.stopImmediatePropagation();
+			
+			e.preventDefault();
+			
+			return false;
+		}
+		
+	}
+	
 	$(document).on("tap", "#profiloperc", function(e){
 				   
 		  var ref = window.open('http://www.purplemiles.com/www/profile.php?id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
@@ -265,27 +295,6 @@ receivedEvent: function(id) {
 		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
-	
-	
-	$(document).on("tap", "#esciapp", function(e){
-				   
-		  var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
-			telephoneNumber.get(function(result) {
-			alert("result = " + result);
-			}, function(error) {
-			alert("error = " + error.code);
-			});
-				   
-	   	  e.stopImmediatePropagation();
-				   
-		  e.preventDefault();
-				   
-		  return false;
-				   
-		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				   
-	});
-	
 	
 	$(document).on("tap", "#profiloperc2", function(e){
 				   
@@ -463,6 +472,27 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
+	
+	$(document).on("touchstart", "#indietro6", function(e){
+				   $("#tblchat").hide()
+				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+				   
+				   for(i=0; i<10000; i++)
+				   {
+				   window.clearInterval(i);
+				   }
+				   
+				   resetta1(1);
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
     
 	$(document).on("touchstart", "#resetta", function(e){
 		window.location.href = "index.html";
@@ -480,13 +510,14 @@ receivedEvent: function(id) {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("touchstart", "#mappa6", function(e){
+	$(document).on("tap", "#mappa6", function(e){
 				   
 	  var connectionStatus = false;
 	  connectionStatus = navigator.onLine ? 'online' : 'offline';
 				   
 	  if(connectionStatus=='online'){
-				   
+		//$.mobile.changePage ($("#win2"));
+		
 		resetta1();
 	  }
 	  else
@@ -505,13 +536,64 @@ receivedEvent: function(id) {
 				   
 	});
 	
+	$(document).on("tap", "#tornareset", function(e){
+				   
+				   var connectionStatus = false;
+				   connectionStatus = navigator.onLine ? 'online' : 'offline';
+				   
+				   if(connectionStatus=='online'){
+				   
+				   $("#magia").hide();
+				   
+				   resetta1(1);
+				   }
+				   else
+				   {
+				   window.location.href = "index.html";
+				   }
+				   
+	    e.stopImmediatePropagation();
+				   
+	    e.preventDefault();
+				   
+		return false;
+				   
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   
+	});
+	
+	$(document).on("tap", "#ChiudiXX2", function(e){
+				   
+				   $("#blobstart").hide();
+				   
+				   /*navigator.notification.confirm(
+					'Vuoi disconnetterti come utente '+ localStorage.getItem("nick") +'',  // message
+					onConfirm,              // callback to invoke with index of button pressed
+					'Logout',            // title
+					'Conferma,Annulla'      // buttonLabels
+					);*/
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   });
+	
 	$(document).on("tap", "#ChiudiXX", function(e){
-				   navigator.notification.confirm(
+				   
+				   $("#blobstart").show();
+				   
+				   /*navigator.notification.confirm(
 								'Vuoi disconnetterti come utente '+ localStorage.getItem("nick") +'',  // message
 								onConfirm,              // callback to invoke with index of button pressed
 								'Logout',            // title
 								'Conferma,Annulla'      // buttonLabels
-								);
+								);*/
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -522,6 +604,24 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
+	
+	$(document).on("tap", "#logout", function(e){
+				   navigator.notification.confirm(
+												  'Vuoi disconnetterti come utente '+ localStorage.getItem("nick") +'',  // message
+												  onConfirm,              // callback to invoke with index of button pressed
+												  'Logout',            // title
+												  'Conferma,Annulla'      // buttonLabels
+												  );
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   });
 	
 	function onConfirm(button) {
 		if(button==1){    //If User selected No, then we just do nothing
@@ -605,6 +705,8 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
+
+	
 	$(document).on("tap", "#back4", function(e){
 		inviopasseggero(3);
 				   e.stopImmediatePropagation();
@@ -614,6 +716,21 @@ receivedEvent: function(id) {
 				   return false;
 				   
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
+	
+	$(document).on("tap", "#back6", function(e){
+				   $("#spinner6").show();
+				   
+				   inviachat()
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
 	});
 	
 	$(document).on("tap", "#xchiudi", function(e){
@@ -1435,7 +1552,7 @@ function resetta1(focus) {
 	  setTimeout(function() {
 		 google.maps.event.trigger(map, "resize");
 		 map.setCenter(latlng);
-	  }, 600);
+	  }, 1000);
 
 	
 	var contentString1 =
@@ -1608,6 +1725,8 @@ function resetta1(focus) {
 		$("#btninizia").hide();
 		$("#setGPS").hide();
 		$("#Modifica").hide();
+		$("#lista").hide();
+		
 		
 		var centerControlDiv2 = document.createElement('div');
 		centerControlDiv2.setAttribute('id', 'sopra');
@@ -1623,7 +1742,7 @@ function resetta1(focus) {
 		$("#esci").hide();
 		$("#blob2").hide();
 		
-		//$("#loading").show();
+		$("#loading").show();
 	
 	$.ajax({
 		   type:"GET",
@@ -1692,6 +1811,9 @@ function resetta1(focus) {
 				  
 				  //$("#pass1").show();
 				  //$("#esci").show();
+				  if(item.posticipata==1){
+					$("#lista").show();
+				  }
 				  
 				  if(item.stato==3){
 				  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
@@ -1760,6 +1882,10 @@ function resetta1(focus) {
 				  
 				  //$("#pass2").show();
 				  
+				  if(item.posticipata==1){
+				    $("#lista").show();
+				  }
+				  
 				  if(item.stato==3){
 				  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
 				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
@@ -1827,6 +1953,10 @@ function resetta1(focus) {
 				  lat3 = item.lat
 				  
 				  //$("#pass3").show();
+				  
+				  if(item.posticipata==1){
+				    $("#lista").show();
+				  }
 				  
 				  if(item.stato==3){
 				  $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
@@ -2269,6 +2399,10 @@ function timer(){
 												  
 												  }
 												  
+												  if(item.Token==11){
+													 $("#lista").show();
+												  }
+												  
 												  
 												  if(item.Token==1){
 												  
@@ -2315,8 +2449,26 @@ function timer(){
 																 
 																 });*/
 												  
+												  if(item.posticipata==1){
+												    $("#lista").show();
+												  }
 												  
+												  
+												 
 												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+												  if(item.stato==3){
+
+												  }
+												  
+												  if(item.stato==1){
+													 var icon3 = new google.maps.MarkerImage("img/1_giallo.png", null, null, null, new google.maps.Size(30,30));
+												  }
+												  if(item.stato==0){
+													var icon3 = new google.maps.MarkerImage("img/1_viola.png", null, null, null, new google.maps.Size(30,30));
+												  }
+												  if(item.stato==2){
+													 var icon3 = new google.maps.MarkerImage("img/1_verde.png", null, null, null, new google.maps.Size(30,30));
+												  }
 												  
 												  marker1.setMap(null);
 
@@ -2382,6 +2534,7 @@ function timer(){
 												    }
 												  
 												    $("#viaaccetta3").html(item.partenza);
+												    $("#adaccetta3").html(item.arrivo);
 												  
 												  function countdown1(minutes) {
 												  var seconds = 30;
@@ -2454,7 +2607,25 @@ function timer(){
 																 
 																 });*/
 												  
+												  if(item.posticipata==1){
+												    $("#lista").show();
+												  }
+												  
 												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+												  if(item.stato==3){
+												  
+												  }
+												  
+												  if(item.stato==1){
+													 var icon3 = new google.maps.MarkerImage("img/2_giallo.png", null, null, null, new google.maps.Size(30,30));
+												  }
+												  if(item.stato==0){
+												  var icon3 = new google.maps.MarkerImage("img/2_viola.png", null, null, null, new google.maps.Size(30,30));
+												  }
+												  if(item.stato==2){
+													 var icon3 = new google.maps.MarkerImage("img/2_verde.png", null, null, null, new google.maps.Size(30,30));
+												  }
+
 												  
 												  marker3.setMap(null);
 												  
@@ -2516,6 +2687,7 @@ function timer(){
 												   }
 												  
 												  $("#viaaccetta2").html(item.partenza);
+												   $("#adaccetta2").html(item.arrivo);
 												  
 												  function countdown2(minutes) {
 												  var seconds = 30;
@@ -2570,6 +2742,20 @@ function timer(){
 												  item3 = item.id_richiesta;
 												  
 												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+												  if(item.stato==3){
+												  
+												  }
+												  
+												  if(item.stato==1){
+													 var icon3 = new google.maps.MarkerImage("img/3_giallo.png", null, null, null, new google.maps.Size(30,30));
+												  }
+												  if(item.stato==0){
+												  var icon3 = new google.maps.MarkerImage("img/3_viola.png", null, null, null, new google.maps.Size(30,30));
+												  }
+												  if(item.stato==2){
+													 var icon3 = new google.maps.MarkerImage("img/3_verde.png", null, null, null, new google.maps.Size(30,30));
+												  }
+
 												  
 												  
 												  var isVisible4 = marker4.getVisible();
@@ -2595,6 +2781,11 @@ function timer(){
 																				infowindow.open(map, this);
 																				
 																				});
+												  
+												  if(item.posticipata==1){
+												    $("#lista").show();
+												  }
+												  
 												  
 												  $("#pass3").show();
 												  
@@ -2635,6 +2826,7 @@ function timer(){
 												  }
 												  
 												  $("#viaaccetta5").html(item.partenza);
+												   $("#adaccetta5").html(item.arrivo);
 												  
 												  function countdown3(minutes) {
 												  var seconds = 30;
@@ -2747,12 +2939,18 @@ function scadutaofferta(id,id_richiesta,id_autista){
 }
 
 
+
 function magia2C(utente,pass) {
 	
 	for(i=0; i<10000; i++)
 	{
 		window.clearInterval(i);
 	}
+	
+	$("#magia").show();
+	$("#btninizia").hide();
+	$("#btnpass").hide();
+	
 	
 	//posizionegps2();
 	
@@ -2763,7 +2961,6 @@ function magia2C(utente,pass) {
 	
 	var posizione = 1;
 	var distanza = "";
-	
 	
 	var centromap = new google.maps.LatLng(lat, lng, posizione);
 	
@@ -2937,11 +3134,8 @@ function magia2C(utente,pass) {
 	localStorage.setItem("fatto","1")
 	
 	
-	refreshIntervalId33 = setInterval(function() {
+	/*refreshIntervalId33 = setInterval(function() {
 									  
-									  //var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
-									  
-									  //onSuccess22();
 									  
 									  var lat = localStorage.getItem("lat");
 									  var lng = localStorage.getItem("lng");
@@ -2955,9 +3149,7 @@ function magia2C(utente,pass) {
 									  $.ajax({
 											 type:"GET",
 											 url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"",
-											 //url:"http://purplemiles.com/www2/check_richiesta_autista.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
 											 contentType: "application/json",
-											 //data: {ID: "Lazio"}, LIMIT 10
 											 timeout: 7000,
 											 jsonp: 'callback',
 											 crossDomain: true,
@@ -3062,7 +3254,7 @@ function magia2C(utente,pass) {
 													
 													}
 													else{
-													//marker1.setMap(null);
+
 													}
 													
 													});
@@ -3071,31 +3263,18 @@ function magia2C(utente,pass) {
 											 },
 											 error: function(){
 											 
-											 /*navigator.notification.alert(
-											  'Possibile errore di rete, riprova tra qualche minuto.',  // message
-											  alertDismissed,         // callback
-											  'Attenzione',           // title
-											  'Done'                  // buttonName
-											  );*/
+
 											 
 											 },
 											 dataType:"jsonp"});
 									  
 									  
-									  //var lat = localStorage.getItem("lat");
-									  //var lng = localStorage.getItem("lng");
-									  
-									  //var lat = parseFloat("41.8337871");
-									  //var lng = parseFloat("12.4757278" );
-									  
-									  //map.setCenter(centromap);
 									  
 									  localStorage.setItem("fatto","1")
 									  
 									  
 									  
-									  }, 10000);
-	
+								}, 10000);*/
 	
 	
 	//---------------------------
@@ -3374,7 +3553,7 @@ function cancella(id){
 			
 			//window.location.href = "#win2";
 			//onDeviceReady();
-			$("#loading").show();
+			
 			resetta1(1);
 			//window.location.href = "map2.html?id=1";
 			
@@ -3480,6 +3659,10 @@ function richiesta1() {
 	$("#close2").hide();
 	$("#close1").show();
 	
+	$("#xchiudi2").hide();
+	$("#xchiudi3").hide();
+	$("#xchiudi1").show();
+	
 	$("#code1").hide();
 	$("#code1").html("");
 	$("#code2").hide();
@@ -3496,7 +3679,8 @@ function richiesta1() {
 	$("#blob2").show();
 	
 				  
-				  $("#nickhome4").html("<font color='#fff'>"+ nick1 +"</font>");
+				  $("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +"</font></a>");
+	
 				  localStorage.setItem("id_nick", nick1)
 				  $("#nickhome3").html("<font color='#fff'>"+ nick1 +"</font>");
 				  
@@ -3553,6 +3737,21 @@ function richiesta1() {
 						return false;
 								 
 				   });
+					  
+					  $(document).on("tap", "#chat1", function(e){
+									 
+							chatting(1,id)
+									 
+							$("#blob2").hide();
+									 
+							e.stopImmediatePropagation();
+									 
+							e.preventDefault();
+									 
+							return false;
+									 
+						});
+					  
 				  
 				  }
 				  else{
@@ -3577,13 +3776,14 @@ function richiesta1() {
 	$("#xchiudi22").hide();
 	$("#xchiudi33").hide();
 	
+
+	
 	
 	$(document).on("touchstart", "#xchiudi1", function(e){
+				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+		           $("#blob2").hide();
+				   magia2C(1,id)
 		
-		$("#blob2").hide();
-		magia2C(1,id)
-		
-				   
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -3658,12 +3858,16 @@ function richiesta2() {
 	$("#chat2").hide();
 	$("#chat3").hide();
 	
+	$("#xchiudi1").hide();
+	$("#xchiudi3").hide();
+	$("#xchiudi2").show();
+	
 	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
 				  
-				  $("#nickhome4").html("<font color='#fff'>"+ nick2 +"</font>");
+				  $("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#'>"+ nick2 +"</a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick2 +"</font>");
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando2 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora2 +"</font>");
@@ -3718,6 +3922,20 @@ function richiesta2() {
 								 return false;
 								 
 						});
+					  
+					  $(document).on("tap", "#chat2", function(e){
+									 
+									 chatting(2,id)
+									 
+									 $("#blob2").hide();
+									 
+									 e.stopImmediatePropagation();
+									 
+									 e.preventDefault();
+									 
+									 return false;
+									 
+									 });
 				  
 				  }
 				  else{
@@ -3739,10 +3957,32 @@ function richiesta2() {
 	$("#xchiudi11").hide();
 	$("#xchiudi33").hide();
 	
-	$(document).on("touchstart", "#xchiudi2", function(e){
+	$(document).on("tap", "#linknick2", function(e){
+				   
+				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
+				   
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida='+localStorage.getItem("id_autista")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   });
 
+	
+	$(document).on("touchstart", "#xchiudi2", function(e){
+				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
 				   $("#blob2").hide();
 				   magia2C(2,id)
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
 				   
 				   });
 	
@@ -3800,13 +4040,17 @@ function richiesta3() {
 	$("#chat2").hide();
 	$("#chat3").hide();
 	
+	$("#xchiudi2").hide();
+	$("#xchiudi1").hide();
+	$("#xchiudi3").show();
+	
 	//alert(2)
 	localStorage.setItem("id_richiesta", id)
 	
 	$("#blob2").show();
 	
 
-				  $("#nickhome4").html("<font color='#fff'>"+ nick3 +"</font>");
+				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#'>"+ nick3 +"</a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick3 +"</font>");
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando3 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora3 +"</font>");
@@ -3860,6 +4104,20 @@ function richiesta3() {
 								 return false;
 								 
 						 });
+					  
+					  $(document).on("tap", "#chat3", function(e){
+									 
+									 chatting(3,id)
+									 
+									 $("#blob2").hide();
+									 
+									 e.stopImmediatePropagation();
+									 
+									 e.preventDefault();
+									 
+									 return false;
+									 
+									 });
 				  
 				  }
 				  else{
@@ -3879,11 +4137,35 @@ function richiesta3() {
 	$("#xchiudi11").hide();
 	
 	
-	$(document).on("tap", "#xchiudi3", function(e){
-		$("#blob2").hide();
-		magia2C(3,id)
+	$(document).on("tap", "#linknick3", function(e){
+				   
+				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
+				   
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida='+localStorage.getItem("id_autista")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   });
 
-	});
+	
+	
+	$(document).on("touchstart", "#xchiudi3", function(e){
+				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+				   $("#blob2").hide();
+				   magia2C(3,id)
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   });
 	
 	$(document).on("tap", "#xchiudi33", function(e){
 			$("#blob2").hide();
@@ -3917,6 +4199,8 @@ function lista5() {
 	$.mobile.changePage( "#home5", { transition: "slide", changeHash: false });
 
 	$("#nickhome5").html(localStorage.getItem("nick"));
+	
+	//alert("http://purplemiles.com/www2/check_stato2.php?id_autista="+ localStorage.getItem("id_autista") +"")
 	
 	$.ajax({
 		   type:"GET",
@@ -3960,6 +4244,136 @@ function lista5() {
 	
 
 }
+
+function chatting(pass,id) {
+	$("#nickhome6").html(localStorage.getItem("nick"));
+	$("#spinner6").show();
+	
+	
+	for(i=0; i<10000; i++)
+	{
+		window.clearInterval(i);
+	}
+	
+	
+	$.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
+	
+	setTimeout(function() {
+		$("#tblchat").fadeIn(1500)
+	}, 500);
+	
+	
+	//alert("http://purplemiles.com/www2/check_stato2.php?id_autista="+ localStorage.getItem("id_autista") +"")
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   if(localStorage.getItem("chatpass")==JSON.stringify(result)){
+		   //alert("Uguali")
+		   $("#spinner6").hide();
+		   }
+		   else{
+		   $("#offerta6").html("");
+		   $("#spinner6").hide();
+		   
+		   $.each(result, function(i,item){
+				  
+			   localStorage.setItem("chatpass", JSON.stringify(result))
+				  
+			   if(item.Token==1){
+				  
+				  if(item.nick==localStorage.getItem("nick")){
+				    //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='left' class='tabella'><tr><td align='center'><div class='custom-pass33'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
+				       $("#offerta6").append("<div class='bubbledLeft'>"+ item.messaggio +"</div>")
+				    }
+				  else{
+					   //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='right' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
+				        $("#offerta6").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
+				    }
+				  
+				}
+				  
+			});
+		   
+		   }
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   onResume();
+		   
+		   },
+		   dataType:"jsonp"});
+	
+	
+	refreshPos = setInterval(function() {
+		chatting(pass,id)
+	}, 5000);
+	
+	
+	
+}
+
+
+function inviachat() {
+	var indirizzo = document.getElementById("chattext").value.replace("'", "")
+	
+	//alert(localStorage.getItem("id_richiesta"))
+	
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/pubblica_chat.php?id_messaggio="+ localStorage.getItem("id_richiesta") +"&nick="+ localStorage.getItem("nick") +"&messaggio="+ indirizzo +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   
+		   $.each(result, function(i,item){
+				  
+				  if(item.Token==1){
+				    document.getElementById("chattext").value="";
+					
+				  }
+				  
+				  });
+		   
+		   
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   onResume();
+		   
+		   },
+		   dataType:"jsonp"});
+
+}
+
 
 // ACCETTA - RIFIUTA
 

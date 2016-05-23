@@ -56,16 +56,57 @@ function onDeviceReady() {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
+	$(document).on("tap", "#back6", function(e){
+				   $("#spinner6").show();
+				   
+				   inviachat()
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   });
+	
+	$(document).on("touchstart", "#indietro6", function(e){
+				   $("#tblchat").hide()
+				   $.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
+				   
+				   for(i=0; i<10000; i++)
+				   {
+				   window.clearInterval(i);
+				   }
+				   
+				   vediofferte()
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   });
+	
 	$(document).on("touchstart", "#da", function(e){
 		localStorage.setItem("destination", "0")
 				   
 		$("#viale").show();
 		$("#destinazione").hide();
 				   
-		$("#da").removeClass("bottoni").addClass("bottoni1");
-		$("#a").removeClass("bottoni1").addClass("bottoni");
+		$("#da1").html("<img src='img/ico_start1.png' width='35px'>");
+		$("#a1").html("<img src='img/ico_finish2.png' width='35px'>");
+		
+		//$("#da").html("bottoni");
+		//$("#da").removeClass("bottoni").addClass("bottoni1");
+		//$("#a").removeClass("bottoni1").addClass("bottoni");
 				   
 		onResume();
+				   
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
@@ -75,10 +116,15 @@ function onDeviceReady() {
 				   $("#viale").show();
 				   $("#destinazione").hide();
 				   
-				   $("#da1").removeClass("bottoni").addClass("bottoni1");
-				   $("#a1").removeClass("bottoni1").addClass("bottoni");
+				   $("#da1").html("<img src='img/ico_start2.png' width='35px'>");
+				   $("#a1").html("<img src='img/ico_finish1.png' width='35px'>");
 				   
-				   resetta(1);
+				   //$("#da1").removeClass("bottoni").addClass("bottoni1");
+				   //$("#a1").removeClass("bottoni1").addClass("bottoni");
+				   setTimeout(function() {
+				     $("#ricarica").tap();
+				   },2000);
+				   //resetta1(1);
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   });
 	
@@ -88,8 +134,8 @@ function onDeviceReady() {
 				   $("#viale").show();
 				   $("#destinazione").hide();
 				   
-				   $("#da").removeClass("bottoni").addClass("bottoni1");
-				   $("#a").removeClass("bottoni1").addClass("bottoni");
+				   //$("#da").removeClass("bottoni").addClass("bottoni1");
+				   //$("#a").removeClass("bottoni1").addClass("bottoni");
 				   
 	               onResume();
 				   
@@ -109,6 +155,9 @@ function onDeviceReady() {
 			window.clearInterval(i);
 		}
 				   
+		$("#piu").html("<img src='img/ico_plus1.png' width='35px'>");
+		$("#anteprima").html("<img src='img/ico_anteprima1.png' width='35px'>");
+				   
 		localStorage.setItem("viale", document.getElementById("viale").value);
 		localStorage.setItem("destinazione", document.getElementById("destinazione").value);
 				   
@@ -122,7 +171,12 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("touchstart", "#indietro4", function(e){
+				   
+		$("#piu").html("<img src='img/ico_plus1.png' width='35px'>");
+	    $("#anteprima").html("<img src='img/ico_anteprima1.png' width='35px'>");
+				   
 		$.mobile.changePage ($("#home"));
+				   
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -134,9 +188,7 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart", "#offerte", function(e){
 	    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
-		
-		//$("#offerte4").html("");
-		
+		//$.mobile.changePage ($("#home4"));
 		vediofferte()
 		//alert("in costruzione")
 				   e.stopImmediatePropagation();
@@ -149,7 +201,14 @@ function onDeviceReady() {
 	});
 	
 	
-	$(document).on("tap", "#piu", function(e){
+	
+	$(document).on("touchstart", "#piu", function(e){
+				   $("#piu").html("<img src='img/ico_plus2.png' width='35px'>");
+				   $("#anteprima").html("<img src='img/ico_anteprima1.png' width='35px'>");
+				   
+				   $("#back3").hide();
+				   
+				   
 				   localStorage.setItem("viale", document.getElementById("viale").value);
 				   localStorage.setItem("destinazione", document.getElementById("destinazione").value);
 				   
@@ -236,11 +295,13 @@ function onDeviceReady() {
 				   $("#viale").hide();
 				   $("#destinazione").show();
 				   
-				   $("#da1").removeClass("bottoni1").addClass("bottoni");
-				   $("#a1").removeClass("bottoni").addClass("bottoni1");
+				   $("#da1").html("<img src='img/ico_start1.png' width='35px'>");
+				   $("#a1").html("<img src='img/ico_finish2.png' width='35px'>");
 				   
-				   
-				   resetta(1);
+				   setTimeout(function() {
+				     $("#ricarica").tap();
+					},2000);
+				   //resetta1(1);
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -258,9 +319,7 @@ function onDeviceReady() {
 				   $("#viale").hide();
 				   $("#destinazione").show();
 				   
-				   $("#da").removeClass("custom-pass11").addClass("custom-pass1");
-				   $("#a1").removeClass("custom-pass1").addClass("custom-pass11");
-				   
+
 				   
 				   resetta(1);
 				   e.stopImmediatePropagation();
@@ -286,8 +345,12 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart", "#back3", function(e){
 		
-		var indirizzo = document.getElementById("viale3").value.replace("'", "")
-		var destinazione = document.getElementById("destinazione3").value.replace("'", "")
+		if(document.getElementById("datacal7").value == "ORA"){
+				   
+		//alert(document.getElementById("viale3").value.replace("'", ""))
+				   
+		var indirizzo = document.getElementById("viale7").value.replace("'", "")
+		var destinazione = document.getElementById("destinazione7").value.replace("'", "")
 		var passeggeri = document.getElementById("passeggeri").value.replace("'", "")
 		var animali = document.getElementById("animali").value.replace("'", "")
 		var fumatori = document.getElementById("fumatori").value.replace("'", "")
@@ -296,13 +359,15 @@ function onDeviceReady() {
 		var bambini = document.getElementById("bambini").value.replace("'", "")
 		var wifi = document.getElementById("wifi").value.replace("'", "")
 		var portapacchi = document.getElementById("portapacchi").value.replace("'", "")
-		
-		
-		if(document.getElementById("datacal3").value == "ORA"){
+		var rimorchio = document.getElementById("rimorchio").value.replace("'", "")
+		var bluetooth = document.getElementById("bluetooth").value.replace("'", "")
 				   
+		//alert(bluetooth)
+		
+
 		$.ajax({
 			   type:"GET",
-			   url:"http://purplemiles.com/www2/check_richiesta3.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ indirizzo +"&indirizzo2="+ destinazione +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"",
+			   url:"http://purplemiles.com/www2/check_richiesta3.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ indirizzo +"&indirizzo2="+ destinazione +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"&rimorchio="+ rimorchio +"&bluetooth="+ bluetooth +"",
 			   contentType: "application/json",
 			   timeout: 7000,
 			   jsonp: 'callback',
@@ -358,7 +423,7 @@ function onDeviceReady() {
 				   
 				   $.ajax({
 						  type:"GET",
-						  url:"http://purplemiles.com/www2/check_richiesta_pos.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"&data="+ document.getElementById("datacal3").value +"&ora="+ document.getElementById("orario3").value +"&minuti="+ document.getElementById("minuti3").value +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"",
+						  url:"http://purplemiles.com/www2/check_richiesta_pos.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale7").value +"&indirizzo2="+ document.getElementById("destinazione7").value +"&data="+ document.getElementById("datacal7").value +"&ora="+ document.getElementById("Orario").value +"&minuti="+ document.getElementById("Minuti").value +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"&rimorchio="+ rimorchio +"&bluetooth="+ bluetooth +"",
 						  contentType: "application/json",
 						  timeout: 7000,
 						  jsonp: 'callback',
@@ -449,8 +514,7 @@ function onDeviceReady() {
 				   $("#viale").show();
 				   $("#destinazione").hide();
 				   
-				   $("#da").removeClass("bottoni").addClass("bottoni1");
-				   $("#a").removeClass("bottoni1").addClass("bottoni");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='35px'>");
 				   
 				   onResume();
 				   
@@ -465,7 +529,12 @@ function onDeviceReady() {
 
 
 	
-	$(document).on("tap", "#anteprima", function(e){
+	$(document).on("touchstart", "#anteprima", function(e){
+				   
+		$("#piu").html("<img src='img/ico_plus1.png' width='35px'>");
+		$("#anteprima").html("<img src='img/ico_anteprima2.png' width='35px'>");
+		
+		$("#back3").show();
 				   
 		localStorage.setItem("viale", document.getElementById("viale").value);
 		localStorage.setItem("destinazione", document.getElementById("destinazione").value);
@@ -477,19 +546,19 @@ function onDeviceReady() {
 				  
 				   
 				   if(document.getElementById("datacal").value==""){
-				     document.getElementById("datacal3").value = "ORA";
+				     document.getElementById("datacal7").value = "ORA";
 				   }
 				   else{
-				     document.getElementById("datacal3").value = document.getElementById("datacal").value;
-				     document.getElementById("orario3").value = document.getElementById("Orario").value;
-				     document.getElementById("minuti3").value = document.getElementById("Minuti").value;
+				     document.getElementById("datacal7").value = document.getElementById("datacal").value;
+				     document.getElementById("orario7").value = document.getElementById("Orario").value;
+				     document.getElementById("minuti7").value = document.getElementById("Minuti").value;
 				   }
 				   
 				   
-		document.getElementById("viale3").value = document.getElementById("viale").value;
-		document.getElementById("destinazione3").value = document.getElementById("destinazione").value;
+		document.getElementById("viale7").value = document.getElementById("viale").value;
+		document.getElementById("destinazione7").value = document.getElementById("destinazione").value;
 				   
-				if (document.getElementById("viale").value == "") {
+				if (document.getElementById("viale7").value == "") {
 				   navigator.notification.alert(
 					'inserire un Indirizzo di partenza',  // message
 					alertDismissed,         // callback
@@ -500,7 +569,7 @@ function onDeviceReady() {
 				   return;
 				}
 				   
-		if (document.getElementById("destinazione3").value == "") {
+		if (document.getElementById("destinazione7").value == "") {
 			navigator.notification.alert(
 			  'inserire un Indirizzo di destinazione',  // message
 				alertDismissed,         // callback
@@ -511,11 +580,24 @@ function onDeviceReady() {
 				   return;
 		}
 				   
-	    
-		$("#posticipata").html(" <b>Quando: </b> " + document.getElementById("datacal3").value + "<br> <b>Ora: </b>" + document.getElementById("orario3").value + " " + document.getElementById("minuti3").value);
+		
+				   $("#passeggeri7").html("passeggeri: " + document.getElementById("passeggeri").value);
+				   $("#animali7").html("animali: " + document.getElementById("animali").value);
+				   $("#fumatori7").html("fumatori: " + document.getElementById("fumatori").value);
+				   $("#meno187").html("meno 18 anni: " + document.getElementById("meno18").value);
+				   $("#disabili7").html("disabili: " + document.getElementById("disabili").value);
+				   $("#bambini7").html("bambini: " + document.getElementById("bambini").value);
+				   $("#wifi7").html("wifi: " + document.getElementById("wifi").value);
+				   $("#portapacchi7").html("portapacchi: " + document.getElementById("portapacchi").value);
+				   $("#rimorchio7").html("rimorchio: " + document.getElementById("rimorchio").value);
+				   $("#bluetooth7").html("bluetooth: " + document.getElementById("bluetooth").value);
+		
 				   
+		$("#posticipata7").html(" <b>Quando:</b> " + document.getElementById("datacal7").value + "<br> <b>Ora:</b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value);
 				   
-		$.mobile.changePage ($("#home3"));
+		//window.location.href = "#home3";
+				   
+		$.mobile.changePage ($("#home7"));
 		
 				   e.stopImmediatePropagation();
 				   
@@ -524,6 +606,7 @@ function onDeviceReady() {
 				   return false;
 				   
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
 	});
 
 	
@@ -574,7 +657,8 @@ function onDeviceReady() {
     
     if(connectionStatus=='online'){
         $('#noconn').hide();
-		
+		   localStorage.setItem("risppass", "")
+		   localStorage.setItem("mirino","0")
 
 			var lat = localStorage.getItem("lat");
 			var lng = localStorage.getItem("lng");
@@ -642,7 +726,11 @@ function CenterControl(controlDiv, map) {
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
 	//controlText.innerHTML = '<br><table width="100%"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="25px"></a></td></tr></table><table width="100%" align="center"><tr><td align="center" width="50%">DA</td><td align="center" width="50%">A</td></tr><tr><td align="center" width="50%"><input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'"></td></tr><tr><td align="center" width="50%"><input id="citta" name="citta" type="text" value="Roma"></td></tr></table>';
-	controlText.innerHTML = '<table width="100%" class="xalto"><tr><td align="right">&nbsp;</td></tr><tr><td align="right"><a id="XX3" href="index.html" rel="external"><img src="img/xx.png" width="35px"></a><br></td></tr></table><br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass"><font color="#fff">Quando</font></a></td><td align="center" ><a data-role="button" id="da1" href="#" data-theme="b" class="bottoni1"><font color="#fff">&nbsp;Da&nbsp;</font></a></td><td align="center" ><a data-role="button" id="a1" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a></td><td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a></td><td align="center" ><a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass"><font color="#fff">Anteprima</font></a></td></tr></table>';
+	//controlText.innerHTML = '<table width="100%" class="xalto"><tr><td align="right">&nbsp;</td></tr><tr><td align="right"><a id="XX3" href="index.html" rel="external"><img src="img/xx.png" width="35px"></a><br></td></tr></table><br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a data-role="button" id="quando" href="#" data-theme="b" class="custom-pass"><font color="#fff">Quando</font></a></td><td align="center" ><a data-role="button" id="da1" href="#" data-theme="b" class="bottoni1"><font color="#fff">&nbsp;Da&nbsp;</font></a></td><td align="center" ><a data-role="button" id="a1" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;A&nbsp;</font></a></td><td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a></td><td align="center" ><a data-role="button" id="anteprima" href="#" data-theme="b" class="custom-pass"><font color="#fff">Anteprima</font></a></td></tr></table>';
+	
+	controlText.innerHTML = '<table width="100%" class="xalto"><tr><td align="right">&nbsp;</td></tr><tr><td align="right"><a id="XX3" href="#" rel="external"><img src="img/xx.png" width="35px"></a><br></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="35px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start2.png" width="35px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="35px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="35px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_anteprima1.png" width="35px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="35px"></a></td></tr></table>';
+	
+	
 	controlUI.appendChild(controlText);
 	
 	//<td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a></td>
@@ -920,9 +1008,9 @@ function onResume() {
 			   
 		$("#viale").show();
 		$("#destinazione").hide();
-			   
-		$("#da").removeClass("custom-pass1").addClass("custom-pass11");
-		$("#a1").removeClass("custom-pass11").addClass("custom-pass1");
+			
+		
+	  //$.mobile.changePage( "#win2", { transition: "slide", changeHash: false });
 			   
 	   resetta1(1);
 	}, 200);
@@ -978,7 +1066,8 @@ function resetta1(focus) {
 	
 	if(connectionStatus=='online'){
 		
-	$("#da").removeClass("bottoni").addClass("bottoni1");
+
+	//$("#da").removeClass("bottoni").addClass("bottoni1");
 
 	var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
@@ -995,7 +1084,6 @@ function resetta1(focus) {
 		
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
-
 	
 	var latlng = new google.maps.LatLng(lat, lng, 1);
 	
@@ -1017,7 +1105,7 @@ function resetta1(focus) {
 	  setTimeout(function() {
 		 google.maps.event.trigger(map, "resize");
 		 map.setCenter(latlng);
-	  }, 600);
+	  }, 1000);
 
 	
 	var contentString1 =
@@ -1085,6 +1173,84 @@ function resetta1(focus) {
 		}
 	}
 		
+		
+		
+		
+		
+		$(document).on("tap", "#ricarica", function(e){
+					   
+					   if(localStorage.getItem("destination")==0){
+					   
+					   var geocoder = new google.maps.Geocoder();
+					   geocoder.geocode({
+										"address": document.getElementById("viale").value
+										}, function(results) {
+										//alert(results[0].geometry.location.lat()); //LatLng
+										//alert(results[0].geometry.location.lng());
+										
+										localStorage.setItem("lat", results[0].geometry.location.lat())
+										localStorage.setItem("lng", results[0].geometry.location.lng())
+										
+										var latlng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng(), 1);
+										
+										setTimeout(function() {
+												   map.setCenter(latlng);
+												   marker2.setPosition(latlng);
+												   }, 700);
+										
+										
+										});
+	
+					   
+					   }
+					   
+					   else{
+					   
+					   
+					   var geocoder = new google.maps.Geocoder();
+					   geocoder.geocode({
+										"address": document.getElementById("destinazione").value
+										}, function(results) {
+										//alert(results[0].geometry.location.lat()); //LatLng
+										//alert(results[0].geometry.location.lng());
+										
+										localStorage.setItem("lat", results[0].geometry.location.lat())
+										localStorage.setItem("lng", results[0].geometry.location.lng())
+										
+										 var latlng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng(), 1);
+										
+										setTimeout(function() {
+												   map.setCenter(latlng);
+												   marker2.setPosition(latlng);
+												   }, 700);
+										
+										
+										});
+					   
+					   
+					   }
+					   
+
+					   
+					   e.stopImmediatePropagation();
+					   
+					   e.preventDefault();
+					   
+					   return false;
+					   
+					   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+					   });
+
+		
+		
+		
+	   setTimeout(function() {
+			$("#ricarica").tap();
+			$("#quando").tap();
+		},2000);
+		
+		//$("#quando").tap();
+		//$("#anteprima").html("<img src='img/ico_anteprima1.png' width='35px'>");
 		
 		
 	   var centerControlDiv = document.createElement('div');
@@ -1207,7 +1373,6 @@ function start() {
 }
 
 
-
 function inviopasseggero(come){
 	
 	if(come==1){
@@ -1298,7 +1463,9 @@ function inviopasseggero(come){
 	
 }
 
+
 function vediofferte(){
+
 	$("#timer2").show();
 	//alert("Vedo");
 	
@@ -1318,21 +1485,30 @@ function vediofferte(){
 		   crossDomain: true,
 		   success:function(result){
 		   
+		   if(localStorage.getItem("risppass")==JSON.stringify(result)){
+		     //alert("Uguali")
+		   }
+		   else{
+		   $("#offerte4").html("");
+		   
 		   $.each(result, function(i,item){
 				  
+
+				localStorage.setItem("risppass", JSON.stringify(result))
+				  
+				  
 				  if(item.Token==1){
-					  
-				   $("#offerte4").html("");
+				  
 				  
 				  if(item.stato==2){
 				  
 				  
 				  if(item.accettata==1){
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'>"+ item.nick +"</div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>Chat</font></a></td></tr><tr><td align='center'><br><b>CODICE: "+ item.cod_passeggero +"</b></td></tr><tr><td align='center'><br></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass2'><a id='linkpass' href='' class='linkchat'><font color='#fff'>"+ item.nick +"</font></a></div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>Chat</font></a></td></tr><tr><td align='center'><br><b>CODICE: "+ item.cod_passeggero +"</b></td></tr><tr><td align='center'><br></td></tr></table>");
 				  //<tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr>
 				  }
 				  else{
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'><a id='linkpass' href=''class='linkchat'><font color='#fff'>"+ item.nick +"</font></a></div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
 				  
 				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
@@ -1344,6 +1520,11 @@ function vediofferte(){
 						accettaofferta(3,item.id_richiesta,item.id_autista)
 						if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				    });
+				  
+				  $(document).on("touchstart", "#chat"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
+					chatting(item.id_richiesta)
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				  });
 				  
 				  if(item.stato==2){
 				  
@@ -1407,7 +1588,7 @@ function vediofferte(){
 				  
 				  }
 				   if(item.stato==1){
-					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'>"+ item.nick +"</div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'><a id='linkpass' href='' class='linkchat'><font color='#fff'>"+ item.nick +"</font></a></div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
 				  
 				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
 						accettaofferta(2,item.id_richiesta,item.id_autista)
@@ -1422,14 +1603,33 @@ function vediofferte(){
 				  }
 				  
 				  if(item.stato==0){
-					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass'>"+ item.nick +"</div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass'><a id='linkpass' href='' class='linkchat'><font color='#fff'>"+ item.nick +"</font></a></div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr></table>");
 				  }
+				  
+				  
+				  
+				  
+				  $(document).on("tap", "#linkpass", function(e){
+								 
+								 //http://www.purplemiles.com/www/profilo_autista.php?ida=19&idp=31&pm=96e79218965eb72c92a549dd5a330112
+								 
+								 var ref = window.open('http://www.purplemiles.com/www/profilo_autista.php?idp='+localStorage.getItem("id_pass")+'&ida=19&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+								 
+								 e.stopImmediatePropagation();
+								 
+								 e.preventDefault();
+								 
+								 return false;
+								 
+				  });
 
 				  
 
 				  }
 				  
 			});
+		   
+		   }
 		   
 		   
 		   },
@@ -1458,6 +1658,136 @@ function vediofferte(){
 
 	
 }
+
+function chatting(id) {
+	$("#nickhome6").html(localStorage.getItem("nick"));
+	$("#spinner6").show();
+	
+	localStorage.setItem("id_richiesta",id)
+	
+	
+	for(i=0; i<10000; i++)
+	{
+		window.clearInterval(i);
+	}
+	
+	
+	$.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
+	
+	setTimeout(function() {
+			   $("#tblchat").fadeIn(1500)
+			   }, 500);
+	
+	
+	//alert("http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ id +"&last_id=0")
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ id +"&last_id=0",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   if(localStorage.getItem("chatpass")==JSON.stringify(result)){
+		   //alert("Uguali")
+		   $("#spinner6").hide();
+		   }
+		   else{
+		   $("#offerta6").html("");
+		   $("#spinner6").hide();
+		   
+		   $.each(result, function(i,item){
+				  
+			   localStorage.setItem("chatpass", JSON.stringify(result))
+				  
+			   if(item.Token==1){
+				  
+				  if(item.nick==localStorage.getItem("nick")){
+				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='left' class='tabella'><tr><td align='center'><div class='custom-pass33'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
+				  $("#offerta6").append("<div class='bubbledLeft'>"+ item.messaggio +"</div>")
+				  }
+				  else{
+				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='right' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
+				  $("#offerta6").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
+				  }
+				  
+				  }
+				  
+				  });
+		   
+		   }
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   onResume();
+		   
+		   },
+		   dataType:"jsonp"});
+	
+	
+	refreshPos = setInterval(function() {
+		chatting(id)
+	}, 5000);
+	
+	
+}
+
+function inviachat() {
+	var indirizzo = document.getElementById("chattext").value.replace("'", "")
+	
+	//alert(localStorage.getItem("id_richiesta"))
+	
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/pubblica_chat.php?id_messaggio="+ localStorage.getItem("id_richiesta") +"&nick="+ localStorage.getItem("nick") +"&messaggio="+ indirizzo +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   
+		   $.each(result, function(i,item){
+				  
+				  if(item.Token==1){
+				  document.getElementById("chattext").value="";
+				  
+				  }
+				  
+				  });
+		   
+		   
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   vediofferte();
+		   
+		   },
+		   dataType:"jsonp"});
+	
+}
+
 
 function controllaseautistaaccetta(id_richiesta,id_autista){
 	

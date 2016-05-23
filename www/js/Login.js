@@ -141,6 +141,28 @@ function onDeviceReady() {
 			
 			//prendifuso()
 			
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1;//January is 0, so always add + 1
+			
+			var ora = today.getHours()
+			if(ora<10){ora="0"+ora}
+			
+			var minuti = today.getMinutes();
+			if(minuti<10){minuti="0"+minuti}
+			
+			var secondi = today.getSeconds();
+			if(secondi<10){secondi="0"+secondi}
+			
+			
+			var yyyy = today.getFullYear();
+			if(dd<10){dd="0"+dd}
+			if(mm<10){mm="0"+mm}
+			today = dd+'/'+mm+'/'+yyyy;
+			
+			$("#stamp").html(yyyy+"-"+mm+"-"+dd+" "+ora+":"+minuti+":00");
+			
+			
 			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 			
 			document.getElementById("email").value = localStorage.getItem("email2")
