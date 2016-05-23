@@ -245,6 +245,11 @@ receivedEvent: function(id) {
 	var watchID5 = null;
 	
 	$(document).on("tap", "#exitapp", function(e){
+		
+		for(i=0; i<10000; i++)
+		{
+			window.clearInterval(i);
+		}
 				   
 				   navigator.notification.confirm(
 							'Confermi di voler chiudere',  // message
@@ -522,7 +527,7 @@ receivedEvent: function(id) {
 	  }
 	  else
 	  {
-		window.location.href = "index.html";
+		//window.location.href = "index.html";
 	  }
 				   
 	  e.stopImmediatePropagation();
@@ -2305,7 +2310,7 @@ function resetta1(focus) {
         function onError3(error) {
             localStorage.setItem("geostory", "NO")
             
-			window.location.href = "index.html";
+			//window.location.href = "index.html";
         }
 		
 		
@@ -2455,19 +2460,19 @@ function timer(){
 												  
 												  
 												 
-												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
+												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,40));
 												  if(item.stato==3){
 
 												  }
 												  
 												  if(item.stato==1){
-													 var icon3 = new google.maps.MarkerImage("img/1_giallo.png", null, null, null, new google.maps.Size(30,30));
+													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_1.png", null, null, null, new google.maps.Size(30,40));
 												  }
 												  if(item.stato==0){
-													var icon3 = new google.maps.MarkerImage("img/1_viola.png", null, null, null, new google.maps.Size(30,30));
+													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_1.png", null, null, null, new google.maps.Size(30,40));
 												  }
 												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/1_verde.png", null, null, null, new google.maps.Size(30,30));
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_1.png", null, null, null, new google.maps.Size(30,40));
 												  }
 												  
 												  marker1.setMap(null);
@@ -2617,13 +2622,13 @@ function timer(){
 												  }
 												  
 												  if(item.stato==1){
-													 var icon3 = new google.maps.MarkerImage("img/2_giallo.png", null, null, null, new google.maps.Size(30,30));
+													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_2.png", null, null, null, new google.maps.Size(30,40));
 												  }
 												  if(item.stato==0){
-												  var icon3 = new google.maps.MarkerImage("img/2_viola.png", null, null, null, new google.maps.Size(30,30));
+													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_2.png", null, null, null, new google.maps.Size(30,40));
 												  }
 												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/2_verde.png", null, null, null, new google.maps.Size(30,30));
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_2.png", null, null, null, new google.maps.Size(30,40));
 												  }
 
 												  
@@ -2747,13 +2752,13 @@ function timer(){
 												  }
 												  
 												  if(item.stato==1){
-													 var icon3 = new google.maps.MarkerImage("img/3_giallo.png", null, null, null, new google.maps.Size(30,30));
+													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_3.png", null, null, null, new google.maps.Size(30,40));
 												  }
 												  if(item.stato==0){
-												  var icon3 = new google.maps.MarkerImage("img/3_viola.png", null, null, null, new google.maps.Size(30,30));
+													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_3.png", null, null, null, new google.maps.Size(30,40));
 												  }
 												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/3_verde.png", null, null, null, new google.maps.Size(30,30));
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_3.png", null, null, null, new google.maps.Size(30,40));
 												  }
 
 												  
@@ -2978,9 +2983,10 @@ function magia2C(utente,pass) {
 				  if(item.Token==1){
 				  
 				  //cambiare icona
-				  var icon2 = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(30,40));
+				  //var icon2 = new google.maps.MarkerImage("img/pin.png", null, null, null, new google.maps.Size(30,40));
 				  
 				  if(utente==1){
+				   var icon2 = new google.maps.MarkerImage("img/marker_rosso_1.png", null, null, null, new google.maps.Size(30,40));
 				  stato1 = item.stato
 				  localStorage.setItem("id_richietaP1",item.id_richiesta)
 				  
@@ -3029,6 +3035,7 @@ function magia2C(utente,pass) {
 				  }
 				  
 				  if(utente==2){
+				  var icon2 = new google.maps.MarkerImage("img/marker_rosso_2.png", null, null, null, new google.maps.Size(30,40));
 				  stato2 = item.stato
 				  localStorage.setItem("id_richietaP2",item.id_richiesta)
 				  $("#pass1").hide();
@@ -3070,6 +3077,7 @@ function magia2C(utente,pass) {
 				  }
 				  
 				  if(utente==3){
+				  var icon2 = new google.maps.MarkerImage("img/marker_rosso_3.png", null, null, null, new google.maps.Size(30,40));
 				  stato3 = item.stato
 				  localStorage.setItem("id_richietaP3",item.id_richiesta)
 				  $("#pass1").hide();
@@ -3776,7 +3784,20 @@ function richiesta1() {
 	$("#xchiudi22").hide();
 	$("#xchiudi33").hide();
 	
-
+	$(document).on("tap", "#linknick1", function(e){
+				   
+				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
+				   
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida='+localStorage.getItem("id_autista")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   });
 	
 	
 	$(document).on("touchstart", "#xchiudi1", function(e){
@@ -3821,6 +3842,10 @@ function richiesta1() {
 	$(document).on("tap", "#risp1", function(e){
 				   
 				   $.mobile.changePage ($("#home3"));
+				   
+				   	setTimeout(function() {
+						$("#tblrispondi").fadeIn(1500)
+					}, 500);
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -4008,6 +4033,10 @@ function richiesta2() {
 	$(document).on("touchstart", "#risp2", function(e){
 				   $("#blob2").hide();
 				    $.mobile.changePage ($("#home3"));
+					
+					setTimeout(function() {
+						$("#tblrispondi").fadeIn(1500)
+					}, 500);
 				   
 				   });
 	
@@ -4189,6 +4218,10 @@ function richiesta3() {
 	$(document).on("tap", "#risp3", function(e){
 				   $("#blob2").hide();
 				   $.mobile.changePage ($("#home3"));
+				   
+				     setTimeout(function() {
+						$("#tblrispondi").fadeIn(1500)
+					}, 500);
 
 				   });
 	
@@ -4247,7 +4280,7 @@ function lista5() {
 
 function chatting(pass,id) {
 	$("#nickhome6").html(localStorage.getItem("nick"));
-	$("#spinner6").show();
+	//$("#spinner6").show();
 	
 	
 	for(i=0; i<10000; i++)
@@ -4331,7 +4364,7 @@ function chatting(pass,id) {
 
 function inviachat() {
 	var indirizzo = document.getElementById("chattext").value.replace("'", "")
-	
+	$("#spinner6").show();
 	//alert(localStorage.getItem("id_richiesta"))
 	
 	

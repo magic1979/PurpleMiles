@@ -1661,7 +1661,7 @@ function vediofferte(){
 
 function chatting(id) {
 	$("#nickhome6").html(localStorage.getItem("nick"));
-	$("#spinner6").show();
+	//$("#spinner6").show();
 	
 	localStorage.setItem("id_richiesta",id)
 	
@@ -1745,7 +1745,7 @@ function chatting(id) {
 
 function inviachat() {
 	var indirizzo = document.getElementById("chattext").value.replace("'", "")
-	
+	$("#spinner6").show();
 	//alert(localStorage.getItem("id_richiesta"))
 	
 	
