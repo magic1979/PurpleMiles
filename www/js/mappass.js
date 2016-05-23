@@ -344,6 +344,7 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchstart", "#back3", function(e){
+		$("#spinner6").show();
 		
 		if(document.getElementById("datacal7").value == "ORA"){
 				   
@@ -377,6 +378,7 @@ function onDeviceReady() {
 			   $.each(result, function(i,item){
 					  
 				  if(item.Token==1){
+					  $("#spinner6").hide();
 					  
 					  navigator.notification.alert(
 					   'Richiesta Inviata',
@@ -433,7 +435,8 @@ function onDeviceReady() {
 						  $.each(result, function(i,item){
 								 
 								 if(item.Token==1){
-								 
+								 $("#spinner6").hide();
+									 
 								 navigator.notification.alert(
 															  'Richiesta Inviata',
 															  alertDismissed,
@@ -1508,7 +1511,9 @@ function vediofferte(){
 				  //<tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr>
 				  }
 				  else{
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'><a id='linkpass' href=''class='linkchat'><font color='#fff'>"+ item.nick +"</font></a></div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass11'><a id='linkpass' href=''class='linkchat'><font color='#fff'>"+ item.nick +"</font></a></div><img src='img/stelle.png' width='80'></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center'><br></td></tr></table>");
+					
+					//<a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;
 				  }
 				  
 				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
@@ -1642,7 +1647,7 @@ function vediofferte(){
 										'Done'                  // buttonName
 										);
 		   
-		   onResume();
+		   vediofferte();
 		   
 		   },
 		   dataType:"jsonp"});
@@ -1730,7 +1735,7 @@ function chatting(id) {
 										'Done'                  // buttonName
 										);
 		   
-		   onResume();
+		   chatting(id);
 		   
 		   },
 		   dataType:"jsonp"});
@@ -1819,14 +1824,14 @@ function controllaseautistaaccetta(id_richiesta,id_autista){
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Done'                  // buttonName
-										);
+										);*/
 		   
-		   onResume();
+		  controllaseautistaaccetta(id_richiesta,id_autista);
 		   
 		   },
 		   dataType:"jsonp"});
@@ -1866,8 +1871,9 @@ function accettaofferta(id,id_richiesta,id_autista){
 										'Attenzione',           // title
 										'Done'                  // buttonName
 										);
+									
 		   
-		   onResume();
+		   vediofferte()
 		   
 		   },
 		   dataType:"jsonp"});
@@ -1907,7 +1913,7 @@ function scadutaofferta(id,id_richiesta,id_autista){
 										'Done'                  // buttonName
 										);
 		   
-		   onResume();
+		   vediofferte()
 		   
 		   },
 		   dataType:"jsonp"});
