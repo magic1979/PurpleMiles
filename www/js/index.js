@@ -528,7 +528,9 @@ receivedEvent: function(id) {
 				   window.clearInterval(i);
 				   }
 				   
-				   resetta1(1);
+				   setTimeout(function() {
+						resetta1(1);
+				   }, 500);
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -734,7 +736,7 @@ receivedEvent: function(id) {
 				   
 				   setTimeout(function() {
 						start();
-				   }, 2500);
+				   }, 1500);
 				   
 				   
 				   e.stopImmediatePropagation();
