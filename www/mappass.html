@@ -47,7 +47,7 @@
 
 
 						.div2 {
-							background-image: url("img/sfondo.jpg");
+							background-image: url("img/sfondo.png");
 							background-color: #fff;
 							
 						}
@@ -433,6 +433,25 @@
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
 					  
+						.custom-btn33 {
+							background-color: #cc33cc;
+							width: 95%;
+							font-size: 18px;
+							
+							color:#FFF;
+							
+							text-decoration: none;
+							text-shadow:0 0 0;
+							
+							font-family: ubuntu, helvetica, arial;
+							
+							padding: 5 5 5 5;
+							
+							border-radius: 5px;
+							-moz-border-radius: 5px; /* firefox */
+							-webkit-border-radius: 5px; /* safari, chrome */
+						}
+					  
 					  .bottoni {
 						  background-color: #cc33cc;
 						  width: 25px;
@@ -618,11 +637,14 @@
 					  }
 						
 						.tabella {
-							top:100px;
-							background-color: #FFF;
+							background-color: #eceae4;
 							border: 1px solid #000;
 							border-color: #cc33cc;
-									
+							
+							border-radius: 10px;
+							-moz-border-radius: 10px; /* firefox */
+							-webkit-border-radius: 10px; /* safari, chrome */
+							
 						}
 						.tabella1 {
 							background-color:#cc33cc;
@@ -701,23 +723,25 @@
 	<table id="spazioipad" height="40px"><tr><td></td></tr></table>
 	<table id="tblhome" width="90%" height="" border="0" valign="center" align="center" class="tabella" style="display:none">
 		<tr>
-			<td width="100%" align="right" colspan="4">
-				<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="35px"></a>
+			<td width="25%" align="center">
+				<a href="#"><img src="img/ico_quando1.png" width="40px"></a>
 			</td>
-		</tr>
-		<tr>
-			<td width="100%" align="center" colspan="4">
+			<td width="50%" align="center" valign="center" colspan="2">
 				<font size="5"><b>QUANDO</b></font><br>
 			</td>
+			<td width="25%" align="center" valign="center">
+				<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="35px"></a>
+			</td>
+			
 		</tr>
-		
+
 		<tr>
 			<td width="100%" align="center" colspan="4">
-				<a data-role="button" id="adesso" href="#" data-theme="b" class="custom-pass">Adesso</a>
+				<a data-role="button" id="adesso" href="#" data-theme="b" class="custom-btn33">Adesso</a>
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" align="center" colspan="4"> o
+			<td width="100%" align="center" colspan="4"> oppure
 				<!--<a data-role="button" id="oggi" href="#" data-theme="b" class="custom-pass">Oggi</a><br>-->
 				<!--<a data-role="button" id="domani" href="#" data-theme="b" class="custom-pass">Domani</a>-->
 			</td>
@@ -739,10 +763,13 @@
 		</tr>
 
 		<tr>
-			<td width="75%" align="center" colspan="3">
+		    <td width="25%" align="center" >
+				<font size="4">Del giorno</font>
+			</td>
+			<td width="50%" align="center" colspan="2">
 				<input id="datacal" name="datacal" type="text" value="" placeholder="data" readonly>
 			</td>
-			<td width="25%" align="center" colspan="1">
+			<td width="25%" align="center">
 				<img id="imgcalendario" src="img/calendar.png" width="30">
 			</td>
 			
@@ -925,6 +952,11 @@
 					</td>
 				</tr>
 				<tr>
+					<td width="100%" align="center" colspan="2">
+						<br><!--<b>ANTEPRIMA</b>-->
+					</td>
+				</tr>
+				<tr>
 					<td width="100%" align="left" colspan="2">
 						<b>Partenza</b><br><input id="viale3" name="viale3" type="text" value="" readonly>
 					</td>
@@ -996,7 +1028,7 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						Animali
+						Piccolo animale a seguito
 					</td>
 					<td width="50%" align="center" >
 						<select id="animali" name="animali" data-role="flipswitch" data-theme="b">
@@ -1007,7 +1039,7 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						Meno 18 anni
+						Servizio minorenni non accompagnati
 					</td>
 					<td width="50%" align="center" >
 						<select id="meno18" name="meno18" data-role="flipswitch" data-theme="b">
@@ -1018,7 +1050,7 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						Disabili
+						Diversamente abili
 					</td>
 					<td width="50%" align="center" >
 						<select id="disabili" name="disabili" data-role="flipswitch" data-theme="b">
@@ -1029,7 +1061,7 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						Bambini
+						Seggiolino bambini
 					</td>
 					<td width="50%" align="center" >
 						<select id="bambini" name="bambini" data-role="flipswitch" data-theme="b">
@@ -1040,7 +1072,7 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						WiFi
+						Wifi
 					</td>
 					<td width="50%" align="center" >
 						<select id="wifi" name="wifi" data-role="flipswitch" data-theme="b">
@@ -1062,7 +1094,7 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						Rimorchio
+						Gancio rimorchio
 					</td>
 					<td width="50%" align="center" >
 						<select id="rimorchio" name="rimorchio" data-role="flipswitch" data-theme="b">
@@ -1073,13 +1105,21 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						bluetooth
+						Bluetooth
 					</td>
 					<td width="50%" align="center" >
 						<select id="bluetooth" name="bluetooth" data-role="flipswitch" data-theme="b">
 							<option>No</option>
 							<option>Si</option>
 						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="center" >
+						Note
+					</td>
+					<td width="50%" align="center" >
+						<textarea id="notepass" name="notepass" cols="30" rows="10" class="scrivo" placeholder="Note"></textarea>
 					</td>
 				</tr>
 				
@@ -1214,6 +1254,11 @@
 								<tr>
 									<td width="250px" align="left" valign="center">
 										<p id="rimorchio7">Rimorchi:  --</p>
+									</td>
+								</tr>
+								<tr>
+									<td width="250px" align="left" valign="center">
+										<p id="bluetooth7">bluetooth7:  --</p>
 									</td>
 								</tr>
 								<tr>

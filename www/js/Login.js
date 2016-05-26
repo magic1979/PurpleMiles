@@ -27,8 +27,11 @@ function onDeviceReady() {
 	$(document).on("tap", "#conferma", function(e){
 		//window.location.href = "#page6";
 		localStorage.setItem("lingua", document.getElementById("lingua").value);
-		localStorage.setItem("fuso", document.getElementById("fuso").value);
+		localStorage.setItem("fuso", document.getElementById("citta").value);
 		
+		localStorage.setItem("veicolo", document.getElementById("veicolo").value);
+				   
+				   window.location.href = "#page";
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -42,6 +45,21 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#impostazioni", function(e){
 				   window.location.href = "#page6";
+				   
+				   var myScroll2;
+
+				   myScroll2 = new IScroll('#wrapper2', { click: true });
+				   setTimeout (function(){
+					  myScroll2.refresh();
+				   }, 1000);
+				   
+				   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+				   
+				   document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+				   
+				   
+				   
+				   prendimezzi()
 
 				   e.stopImmediatePropagation();
 				   
@@ -55,6 +73,10 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#home", function(e){
 			window.location.href = "#page";
+				   
+				setTimeout (function(){
+					myScroll.refresh();
+				}, 1000);
 
 				   e.stopImmediatePropagation();
 				   
@@ -161,6 +183,9 @@ function onDeviceReady() {
 			today = dd+'/'+mm+'/'+yyyy;
 			
 			$("#stamp").html(yyyy+"-"+mm+"-"+dd+" "+ora+":"+minuti+":00");
+			var ora_cell = yyyy+"-"+mm+"-"+dd+" "+ora+":"+minuti+":00";
+			
+			localStorage.setItem("ora_cell", ora_cell);
 			
 			
 			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
@@ -180,6 +205,120 @@ function onDeviceReady() {
                  );
 		}
     }
+
+
+
+function prendimezzi(){
+	var mezzi = ""
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_prendimezzo.php",
+		   contentType: "application/json",
+		   //data: {email:email,pin:pin},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  //alert(item.Token);
+				  
+				  if (item.Token == 1){
+				     if(localStorage.getItem("veicolo")==item.id_veicolo){
+				       mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
+					 }
+				     else{
+				         if(item.id_veicolo==6){
+				            mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
+				          }
+				          else{
+				            mezzi = mezzi + "<option value='"+item.id_veicolo+"'>"+ item.veicolo +"</option>"
+				          }
+				  
+				     }
+				  
+				  }
+				  else{
+				  navigator.notification.alert(
+											   'Errore di rete',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Done'                  // buttonName@
+											   );
+				  }
+			});
+		   
+		   $("#veicolo").html(mezzi);
+		   
+		   $("#veicolo").selectmenu("refresh");
+		   
+		   $(".spinner").hide();
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto',  // message
+										alertDismissed,         // callback
+										'Attenzione',            // title
+										'Done'                  // buttonName
+										);
+		   
+		   },
+		   dataType:"jsonp"});
+	
+}
+
+function prendinazione(){
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/prendifuso.php",
+		   contentType: "application/json",
+		   //data: {email:email,pin:pin},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  //alert(item.Token);
+				  
+				  if (item.Token == 1){
+				  
+				  
+				  }
+				  else{
+				  navigator.notification.alert(
+											   'Errore di rete',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Done'                  // buttonName@
+											   );
+				  }
+				  });
+		   
+		   $(".spinner").hide();
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto',  // message
+										alertDismissed,         // callback
+										'Attenzione',            // title
+										'Done'                  // buttonName
+										);
+		   
+		   },
+		   dataType:"jsonp"});
+	
+}
 
 
 function prendifuso(nazione){
@@ -342,6 +481,7 @@ function LoginVera(email,pin){
 				  localStorage.setItem("md5", item.md5);
 				  localStorage.setItem("perc_autista", item.perc_aut);
 				  localStorage.setItem("perc_pass", item.perc_pass);
+				   localStorage.setItem("id_utente", item.id_utente);
 				  
 
 				  window.location.href = "index.html";
@@ -349,7 +489,7 @@ function LoginVera(email,pin){
 				}
 				else{
 				navigator.notification.alert(
-											   'Credenziali non corrette',  // message
+											   'Email e/o password non corretti',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',            // title
 											   'Done'                  // buttonName@

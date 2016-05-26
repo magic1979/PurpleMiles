@@ -32,14 +32,14 @@ receivedEvent: function(id) {
 	
 	//ANDROID -------------------------------------------------------
 	
-	document.addEventListener('backbutton', function(e) {
+	/*document.addEventListener('backbutton', function(e) {
 							  navigator.notification.confirm(
 															 'Confermi di voler chiudere',  // message
 															 onConfirm2,              // callback to invoke with index of button pressed
 															 'Logout',            // title
 															 'Si,No'      // buttonLabels
 															 );
-							  }, false);
+							  }, false);*/
 	
 	
 	
@@ -102,8 +102,8 @@ receivedEvent: function(id) {
 	//localStorage.setItem("lng", "12.492475")
 	
 	
-	var altezzatbl = getRealContentHeight()-60;
-	var height = getRealContentHeight()-60;
+	var altezzatbl = getRealContentHeight()-80;
+	var height = getRealContentHeight()-80;
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
 	
@@ -117,6 +117,13 @@ receivedEvent: function(id) {
 		
 	}
 	
+	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
+		
+		localStorage.setItem("veicolo", "6");
+		
+	}
+	
+	
 	IDPage = getParameterByName('id');
 	ODPage = getParameterByName('od');
 	
@@ -128,7 +135,7 @@ receivedEvent: function(id) {
 	  localStorage.setItem("exit", "0")
 	}
 	
-	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br><b>Voglio essere autista</b><br><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="100%" align="center"> </td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><br><b>Voglio essere passeggero</b><br><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere Autista</p><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><hr></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere Passeggero</p><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
@@ -212,6 +219,18 @@ receivedEvent: function(id) {
 	var lat1;
 	var lng1;
 	var cod1;
+	var passeggeri1;
+	var animali1;
+	var fumatori1;
+	var meno181;
+	var disabili1;
+	var bambini1;
+	var wifi1;
+	var portapacchi1;
+	var rimorchio1;
+	var bluetooth1;
+	var id_utente_pass1;
+	
 	
 	var nick2;
 	var quando2;
@@ -223,6 +242,17 @@ receivedEvent: function(id) {
 	var lat2;
 	var lng2;
 	var cod2;
+	var passeggeri2;
+	var animali2;
+	var fumatori2;
+	var meno182;
+	var disabili2;
+	var bambini2;
+	var wifi2;
+	var portapacchi2;
+	var rimorchio2;
+	var bluetooth2;
+	var id_utente_pass2;
 	
 	var nick3;
 	var quando3;
@@ -234,6 +264,17 @@ receivedEvent: function(id) {
 	var lat3;
 	var lng3;
 	var cod3;
+	var passeggeri3;
+	var animali3;
+	var fumatori3;
+	var meno183;
+	var disabili3;
+	var bambini3;
+	var wifi3;
+	var portapacchi3;
+	var rimorchio3;
+	var bluetooth3;
+	var id_utente_pass3;
 	
 	var muoviti;
 	var setGPS;
@@ -679,7 +720,7 @@ receivedEvent: function(id) {
 				   
 				     if (document.getElementById("modificastart").value == "") {
 				         navigator.notification.alert(
-												'inserire Indirizzo Valido o usare il GPS',  // message
+												'inserire Indirizzo Valido o utilizzare la posizione GPS',  // message
 												alertDismissed,         // callback
 												'Indirizzo',            // title
 												'OK'                  // buttonName
@@ -1670,6 +1711,17 @@ function resetta1(focus) {
 										  zIndex: -12
 										  });
 		
+		marker5 = new google.maps.Marker ({
+										  map : map,
+										  icon: iconnn,
+										  optimized: false,
+										  position : myLatLng,
+										  //content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
+										  title: '',
+										  //label: ''+ beach[1] +','+ beach[2] +'',
+										  zIndex: -12
+										  });
+		
 		
 		
 			
@@ -1751,7 +1803,7 @@ function resetta1(focus) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autistaV2.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_autistaV3.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"},
 		   timeout: 7000,
@@ -2357,7 +2409,7 @@ function timer(){
 									
 									$.ajax({
 										   type:"GET",
-										   url:"http://purplemiles.com/www2/check_richiesta_autistaV2.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
+										   url:"http://purplemiles.com/www2/check_richiesta_autistaV3.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
 										   contentType: "application/json",
 										   //data: {ID: "Lazio"}, LIMIT 10
 										   timeout: 7000,
@@ -2432,6 +2484,18 @@ function timer(){
 												  lng1 = item.lng
 												  lat1 = item.lat
 												  cod1 = item.cod_autista
+												  
+												  passeggeri1 = item.passeggeri;
+												  animali1 = item.animali;
+												  fumatori1 = item.fumatori;
+												  meno181 = item.meno;
+												  disabili1 = item.disabili;
+												  bambini1 = item.bambini;
+												  wifi1 = item.wifi;
+												  portapacchi1 = item.portapacchi;
+												  rimorchio1 = item.rimorchio;
+												  bluetooth1 = item.bluetooth;
+												  id_utente_pass1 = item.id_utente_pass;
 												  
 												  if(localStorage.getItem("palla1")!=1){
 											   
@@ -2597,6 +2661,18 @@ function timer(){
 												  lat2 = item.lat
 												  cod2 = item.cod_autista
 												  
+												  passeggeri2 = item.passeggeri;
+												  animali2 = item.animali;
+												  fumatori2 = item.fumatori;
+												  meno182 = item.meno;
+												  disabili2 = item.disabili;
+												  bambini2 = item.bambini;
+												  wifi2 = item.wifi;
+												  portapacchi2 = item.portapacchi;
+												  rimorchio2 = item.rimorchio;
+												  bluetooth2 = item.bluetooth;
+												  id_utente_pass2 = item.id_utente_pass;
+												  
 												  /*$(document).on("tap", "#pass2", function(e){
 																 //window.location.href = "#index3";
 																 
@@ -2743,6 +2819,18 @@ function timer(){
 												  lng3 = item.lng
 												  lat3 = item.lat
 												  cod3 = item.cod_autista
+												  
+												  passeggeri3 = item.passeggeri;
+												  animali3 = item.animali;
+												  fumatori3 = item.fumatori;
+												  meno183 = item.meno;
+												  disabili3 = item.disabili;
+												  bambini3 = item.bambini;
+												  wifi3 = item.wifi;
+												  portapacchi3 = item.portapacchi;
+												  rimorchio3 = item.rimorchio;
+												  bluetooth3 = item.bluetooth;
+												  id_utente_pass3 = item.id_utente_pass;
 												  
 												  item3 = item.id_richiesta;
 												  
@@ -2960,6 +3048,7 @@ function magia2C(utente,pass) {
 		window.clearInterval(i);
 	}
 	
+	
 	$("#magia").show();
 	$("#btninizia").hide();
 	$("#btnpass").hide();
@@ -3022,8 +3111,58 @@ function magia2C(utente,pass) {
 				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
 				  }
 				  
+				  if(item.stato==1){
+				  var icon11 = new google.maps.MarkerImage("img/marker_arancione_1.png", null, null, null, new google.maps.Size(40,40));
+				  }
+				  if(item.stato==0){
+				  var icon11 = new google.maps.MarkerImage("img/marker_fucsia_1.png", null, null, null, new google.maps.Size(40,40));
+				  }
+				  if(item.stato==2){
+				  var icon11 = new google.maps.MarkerImage("img/marker_verde_1.png", null, null, null, new google.maps.Size(40,40));
+				  }
+
+				  
+				  
+				  //ZOOM JAVASCRIPT
+				  var dist1 = Math.round(item.distanza1)
+				  var dist2 = Math.round(14-Math.log(dist1)/Math.LN2)
+				  dist2 = dist2 +1;
+				  //alert(dist2);
+				  
+				  //dist2 = item.zoom;
+				  
+				  map.setZoom(dist2)
+				  
 				  marker1.setVisible(true);
-				  marker1.setIcon(icon2a);
+				  marker1.setIcon(icon11);
+				  
+				  //alert(dist2);
+
+				  //marker rosso
+				  var latlng5 = new google.maps.LatLng(item.lat1, item.lng1);
+				  marker5.setVisible(true);
+				  //marker5.setIcon(icon2a);
+				  //marker5.setPosition(latlng5);
+				  
+				  marker5 = new google.maps.Marker ({
+													map : map,
+													icon: icon2a,
+													optimized: false,
+													position : latlng5,
+													content:'<div class="popup">Arrivo<br>Km'+ item.distanza1 +'</div>',
+													title: item.nick,
+													zIndex: -19
+													});
+				  
+				  google.maps.event.addListener(marker5, 'click', function() {
+												
+												infowindow.setContent(this.content);
+												infowindow.open(map, this);
+												
+												});
+				  
+				  
+				  
 				  
 				  var isVisible3 = marker3.getVisible();
 				  if(isVisible3){
@@ -3071,10 +3210,57 @@ function magia2C(utente,pass) {
 				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
 				  }
 				  
-				  marker1.setVisible(false);
+				  if(item.stato==1){
+				  var icon22 = new google.maps.MarkerImage("img/marker_arancione_2.png", null, null, null, new google.maps.Size(40,40));
+				  }
+				  if(item.stato==0){
+				  var icon22 = new google.maps.MarkerImage("img/marker_fucsia_2.png", null, null, null, new google.maps.Size(40,40));
+				  }
+				  if(item.stato==2){
+				  var icon22 = new google.maps.MarkerImage("img/marker_verde_2.png", null, null, null, new google.maps.Size(40,40));
+				  }
 				  
+				  
+				  
+				  //ZOOM JAVASCRIPT
+				  var dist1 = Math.round(item.distanza1)
+				  var dist2 = Math.round(14-Math.log(dist1)/Math.LN2)
+				  dist2 = dist2 +1;
+				  //alert(dist2);
+				  
+				  //dist2 = item.zoom;
+				  
+				  map.setZoom(dist2)
+				  
+				  marker1.setVisible(false);
 				  marker3.setVisible(true);
-				  marker3.setIcon(icon3a);
+				  marker3.setIcon(icon22);
+				  
+				  //alert(dist2);
+				  
+				  //marker rosso
+				  var latlng5 = new google.maps.LatLng(item.lat1, item.lng1);
+				  marker5.setVisible(true);
+				  //marker5.setIcon(icon2a);
+				  //marker5.setPosition(latlng5);
+				  
+				  marker5 = new google.maps.Marker ({
+													map : map,
+													icon: icon3a,
+													optimized: false,
+													position : latlng5,
+													content:'<div class="popup">Arrivo<br>Km'+ item.distanza1 +'</div>',
+													title: item.nick,
+													zIndex: -19
+													});
+				  
+				  google.maps.event.addListener(marker5, 'click', function() {
+												
+												infowindow.setContent(this.content);
+												infowindow.open(map, this);
+												
+												});
+				  
 				  
 				  var isVisible4 = marker4.getVisible();
 				  if(isVisible4){
@@ -3113,11 +3299,62 @@ function magia2C(utente,pass) {
 				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
 				  }
 				  
+				  if(item.stato==1){
+				  var icon44 = new google.maps.MarkerImage("img/marker_arancione_3.png", null, null, null, new google.maps.Size(40,40));
+				  }
+				  if(item.stato==0){
+				  var icon44 = new google.maps.MarkerImage("img/marker_fucsia_3.png", null, null, null, new google.maps.Size(40,40));
+				  }
+				  if(item.stato==2){
+				  var icon44 = new google.maps.MarkerImage("img/marker_verde_3.png", null, null, null, new google.maps.Size(40,40));
+				  }
+				  
+				  
+				  
+				  //ZOOM JAVASCRIPT
+				  var dist1 = Math.round(item.distanza1)
+				  var dist2 = Math.round(14-Math.log(dist1)/Math.LN2)
+				  dist2 = dist2 +1;
+				  //alert(dist2);
+				  
+				  //dist2 = item.zoom;
+				  
+				  map.setZoom(dist2)
+				  
 				  marker1.setVisible(false);
 				  marker3.setVisible(false);
 				  
 				  marker4.setVisible(true);
-				  marker4.setIcon(icon4a);
+				  marker4.setIcon(icon44);
+				  
+				  //alert(dist2);
+				  
+				  //marker rosso
+				  var latlng5 = new google.maps.LatLng(item.lat1, item.lng1);
+				  marker5.setVisible(true);
+				  //marker5.setIcon(icon2a);
+				  //marker5.setPosition(latlng5);
+				  
+				  marker5 = new google.maps.Marker ({
+													map : map,
+													icon: icon4a,
+													optimized: false,
+													position : latlng5,
+													content:'<div class="popup">Arrivo<br>Km'+ item.distanza1 +'</div>',
+													title: item.nick,
+													zIndex: -19
+													});
+				  
+				  google.maps.event.addListener(marker5, 'click', function() {
+												
+												infowindow.setContent(this.content);
+												infowindow.open(map, this);
+												
+												});
+				  
+				  
+				  
+
 				  
 				  }
 				  
@@ -3694,19 +3931,46 @@ function richiesta1() {
 	
 	$("#blob2").show();
 	
-				  
-				  $("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +"</font></a>");
+
+
+	$("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +"</font></a>");
 	
-				  localStorage.setItem("id_nick", nick1)
-				  $("#nickhome3").html("<font color='#fff'>"+ nick1 +"</font>");
+	localStorage.setItem("id_nick", nick1)
+	localStorage.setItem("id_utente_pass1", id_utente_pass1)
+	
+	$("#nickhome3").html("<font color='#fff'>"+ nick1 +"</font>");
 				  
-				  $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando1 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora1 +"</font>");
+	$("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando1 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora1 +"</font>");
 				  
-				  $("#Da").html("<b>Da: </b><font color='#cc33cc'>"+ partenza1 +"</font>");
+	$("#Da").html("<b>Da: </b><font color='#cc33cc'>"+ partenza1 +"</font>");
 				  
-				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo1 +"</font>");
+	$("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo1 +"</font>");
 				  
-				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza1 +"</font>");
+	$("#distanza").html("<b>distanza: </b><font color='#cc33cc'>"+ distanza1 +"</font>");
+	
+	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri1 +"</font>");
+	
+	$("#animali").html("<b>animali: </b><font color='#cc33cc'>"+ animali1 +"</font>");
+	
+	$("#fumatori").html("<b>fumatori: </b><font color='#cc33cc'>"+ fumatori1 +"</font>");
+	
+	$("#meno18").html("<b>meno18: </b><font color='#cc33cc'>"+ meno181 +"</font>");
+	
+	$("#disabili").html("<b>disabili: </b><font color='#cc33cc'>"+ disabili1 +"</font>");
+	
+	$("#bambini").html("<b>bambini: </b><font color='#cc33cc'>"+ bambini1 +"</font>");
+	
+	$("#wifi").html("<b>wifi: </b><font color='#cc33cc'>"+ wifi1 +"</font>");
+	
+	$("#portapacchi").html("<b>portapacchi: </b><font color='#cc33cc'>"+ portapacchi1 +"</font>");
+	
+	$("#rimorchio").html("<b>rimorchio: </b><font color='#cc33cc'>"+ rimorchio1 +"</font>");
+	
+	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth1 +"</font>");
+	
+			       
+	
+	
 	
 	
 	              if(stato1==0){
@@ -3734,7 +3998,7 @@ function richiesta1() {
 					  
 					  $("#close3").hide();
 					  $("#close2").hide();
-					  $("#close1").hide();
+					  $("#close1").show();
 					  
 				   $("#4img").html("<img src='img/1_verde.png' width='30'>");
 				  
@@ -3796,7 +4060,7 @@ function richiesta1() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida='+localStorage.getItem("id_autista")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -3902,6 +4166,8 @@ function richiesta2() {
 				  
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +"</font></a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick2 +"</font>");
+	
+	              localStorage.setItem("id_utente_pass2", id_utente_pass2)
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando2 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora2 +"</font>");
 				  
@@ -3910,6 +4176,28 @@ function richiesta2() {
 				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo2 +"</font>");
 				  
 				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza2 +"</font>");
+	
+	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri2 +"</font>");
+	
+	$("#animali").html("<b>animali: </b><font color='#cc33cc'>"+ animali2 +"</font>");
+	
+	$("#fumatori").html("<b>fumatori: </b><font color='#cc33cc'>"+ fumatori2 +"</font>");
+	
+	$("#meno18").html("<b>meno18: </b><font color='#cc33cc'>"+ meno182 +"</font>");
+	
+	$("#disabili").html("<b>disabili: </b><font color='#cc33cc'>"+ disabili2 +"</font>");
+	
+	$("#bambini").html("<b>bambini: </b><font color='#cc33cc'>"+ bambini2 +"</font>");
+	
+	$("#wifi").html("<b>wifi: </b><font color='#cc33cc'>"+ wifi2 +"</font>");
+	
+	$("#portapacchi").html("<b>portapacchi: </b><font color='#cc33cc'>"+ portapacchi2 +"</font>");
+	
+	$("#rimorchio").html("<b>rimorchio: </b><font color='#cc33cc'>"+ rimorchio2 +"</font>");
+	
+	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth2 +"</font>");
+	
+	
 	
 	
 				  if(stato2==0){
@@ -3937,7 +4225,7 @@ function richiesta2() {
 				   $("#chat2").show();
 					  
 					  $("#close3").hide();
-					  $("#close2").hide();
+					  $("#close2").show();
 					  $("#close1").hide();
 				  
 					  $(document).on("tap", "#gps22", function(e){
@@ -3994,7 +4282,7 @@ function richiesta2() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida='+localStorage.getItem("id_autista")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4089,6 +4377,8 @@ function richiesta3() {
 
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +"</font></a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick3 +"</font>");
+	
+	              localStorage.setItem("id_utente_pass3", id_utente_pass3)
 				  
 				   $("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando3 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora3 +"</font>");
 				  
@@ -4097,6 +4387,27 @@ function richiesta3() {
 				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo3 +"</font>");
 				  
 				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza3 +"</font>");
+	
+	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri3 +"</font>");
+	
+	$("#animali").html("<b>animali: </b><font color='#cc33cc'>"+ animali3 +"</font>");
+	
+	$("#fumatori").html("<b>fumatori: </b><font color='#cc33cc'>"+ fumatori3 +"</font>");
+	
+	$("#meno18").html("<b>meno18: </b><font color='#cc33cc'>"+ meno183 +"</font>");
+	
+	$("#disabili").html("<b>disabili: </b><font color='#cc33cc'>"+ disabili3 +"</font>");
+	
+	$("#bambini").html("<b>bambini: </b><font color='#cc33cc'>"+ bambini3 +"</font>");
+	
+	$("#wifi").html("<b>wifi: </b><font color='#cc33cc'>"+ wifi3 +"</font>");
+	
+	$("#portapacchi").html("<b>portapacchi: </b><font color='#cc33cc'>"+ portapacchi3 +"</font>");
+	
+	$("#rimorchio").html("<b>rimorchio: </b><font color='#cc33cc'>"+ rimorchio3 +"</font>");
+	
+	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth3 +"</font>");
+	
 	
 	if(stato3==0){
 		$("#4img").html("<img src='img/3_viola.png' width='30'>");
@@ -4121,7 +4432,7 @@ function richiesta3() {
 					  
 				  $("#4img").html("<img src='img/3_verde.png' width='30'>");
 				  
-				  $("#close3").hide();
+				  $("#close3").show();
 				  $("#close2").hide();
 				  $("#close1").hide();
 				  
@@ -4178,7 +4489,7 @@ function richiesta3() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida='+localStorage.getItem("id_autista")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4612,7 +4923,7 @@ function rifiuta3() {
 function inviopasseggero(come){
 	
 	if(come==1){
-	  var coming = "gratis"
+	  var coming = "GRATIS"
 	}
 	
 	if(come==3){
@@ -4631,7 +4942,7 @@ function inviopasseggero(come){
 	}
 	
 	if(come==2){
-		var coming = "offerta";
+		var coming = "OFFERTA LIBERA";
 	}
 	
 	

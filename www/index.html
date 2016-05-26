@@ -33,15 +33,20 @@
 
 
 						.div2 {
-							background-image: url("img/sfondo.jpg");
+							background-image: url("img/sfondo.png");
 							background-color: #fff;
-							
-
 						}
 					  
 					  .divchat {
                           background: transparent !important;
+						  
+						  background-repeat: no-repeat;
+						  background-attachment: fixed;
 					  }
+					  
+					  .timerviola {
+							background-color: #cc33cc;
+						}
 
                       .div3 {
                           background: rgb(125,126,125); /* Old browsers */
@@ -64,9 +69,6 @@
                           background:#222 url(images/vY6Tl.png);
                           border-radius:150px;
                           overflow:hidden;
-						  
-						  	background-repeat: no-repeat;
-							background-attachment: fixed;
                       }
                       #rad{
                           position:absolute;
@@ -171,7 +173,7 @@
 					  }
 					  
 					  .transbox {
-						  
+						  background: transparent !important;
 						  position: absolute;
 						  z-index: 2;
 						  top:5px;
@@ -626,6 +628,25 @@
 							-moz-border-radius: 5px; /* firefox */
 							-webkit-border-radius: 5px; /* safari, chrome */
 						}
+						
+						.custom-btn33 {
+							background-color: #cc33cc;
+							width: 95%;
+							font-size: 18px;
+							
+							color:#FFF;
+							
+							text-decoration: none;
+							text-shadow:0 0 0;
+							
+							font-family: ubuntu, helvetica, arial;
+							
+							padding: 5 5 5 5;
+							
+							border-radius: 5px;
+							-moz-border-radius: 5px; /* firefox */
+							-webkit-border-radius: 5px; /* safari, chrome */
+						}
 					  
 					  .custom-btn4 {
 						  background-color: #cc33cc;
@@ -660,12 +681,31 @@
 						  -moz-border-radius: 5px; /* firefox */
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
+					  
+					  .testo_bianco {
+						  font-family: 'Open Sans', sans-serif;
+						  font-size: 16px;
+						  color: #FFFFFF;
+						  text-shadow: 1px 1px 2px #555555;
+					  }
+					  
+					  .testo_sottotitolo {
+						  font-size: 16px;
+						  font-family: 'Open Sans', sans-serif;
+						  font-weight: bold;
+						  color: #873117;
+						  text-shadow: 2px 2px 4px #b1b1b1;
+					  }
 						
 						.tabella {
-							background-color: #FFF;
+							background-color: #eceae4;
 							border: 1px solid #000;
 							border-color: #cc33cc;
-									
+							
+							border-radius: 10px;
+							-moz-border-radius: 10px; /* firefox */
+							-webkit-border-radius: 10px; /* safari, chrome */
+							
 						}
 						.tabella1 {
 							background-color:#cc33cc;
@@ -723,33 +763,30 @@
         <div id="geolocation"></div>
         
         <div data-role=page id=home class="div2">
-            <!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3">
-				
-                <span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
-            </div>-->
+
             <div id="noconn" align="center" style="display:none"></div>
             <a data-role=button id=verifica data-theme="b" style="display:none">Verifica Connessione</a>
+			
 			<table border="0" valign="center" align="center" class="transbox">
 				<tr>
-                	<td align="center" width="30%">
-                    	<img id="esciapp" src="img/Logo.png" width="60">
+                	<td align="center" width="35%">
+                    	<img id="esciapp" src="img/Logo.png" width="80" valign="center">
                     </td>
-					<td align="center" width="50%">
+					<td align="center" width="45%" valign="center">
                     	<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome">NickName</div></font></td></tr></table>
                     </td>
-					<td align="right" width="20%">
+					<td align="right" width="20%" valign="center">
                     	<a id="ChiudiXX" href="#" rel="external"><img src="img/xx.png" width="35px"></a>
                     </td>
                 </tr>
 
 			</table>
             <br>
-            <div data-role=content class="div2">
-                <a data-role=button id=btn data-theme="b" style="display:none">Display map</a><br>
-                <a data-role=button id=gps2 data-theme="b" style="display:none">Gps E Dintorni</a><br>
+            <div data-role=content>
+				
             </div>
 			
-            <!--<div class="spinner" id="spinner"></div>-->
+			<table id="spazioipad" height="48px" class="divchat"><tr><td></td></tr></table>
 			
 			 <div id="tblhome" style="display:none"></div>
 			 
@@ -777,56 +814,15 @@
 					 </td>
 				 </tr>
 				 
+				 <a data-role=button id=btn data-theme="b" style="display:none">Display map</a><br>
+				 <a data-role=button id=gps2 data-theme="b" style="display:none">Gps E Dintorni</a><br>
 			 </table>
 
-			<!--<table id="tblhome" width="90%" height="100%" border="0" valign="center" align="center" class="tabella">
-				<tr height="48%">
-					<td width="100%" align="center">
-						<a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><br>
-						<b>Voglio essere autista</b><br>
-						<table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table>  
-					</td>
-				</tr>			
-				<tr height="2%">
-					<td width="100%" align="center">
-						
-					</td>
-				</tr>
-				<tr height="48%">
-					<td width="100%" align="center">
-						<a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><br>
-						<b>Voglio essere passeggero</b><br>
-						<table><tr><td><table class="tabella1"><tr><td><font color="#FFF">Profilo</font></td></tr></table></td><td> <img src="img/stelle.png" width="80"></td></tr></table>
-					</td>
-				</tr>
-				<tr height="10%">
-					<td width="100%" align="center">
-						
-					</td>
-				</tr>
-			</table>-->
-			
-            <!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
-                <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
-            </div>-->
-            
+           
         </div>
         
         <div data-role=page id="win2" data-add-back-btn=true class="div2">
             
-			<!--<table width="100%" border="0" valign="center" align="center" class="transbox">
-				<tr>
-					<td width="100%" align="left">
-						<a href="javascript:sidiv();" data-theme="b" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
-					</td>
-				</tr>
-				
-			</table>
-			
-			<div data-role="header" rel="external" align="center" data-theme="b" data-position="fixed" class="div3">
-                <a href="javascript:sidiv();" data-transition="none" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
-                <span class="ui-title"> <img src="barra.png" width="120px" height="26px"></span>
-            </div>-->
 			
 			<div data-role="content"></div>
 			
@@ -849,9 +845,9 @@
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px" height="100%">
-							<tr>
+							<tr class="timerviola">
 								<td width="100px" align="center" valign="center">
-									<font color="#cc33cc" size="5"><b><div id="timer3"></div></b></font>
+									<font color="#fff" size="5"><b><div id="timer3"></div></b></font>
 								</td>
 							</tr>
 							<tr>
@@ -890,9 +886,9 @@
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px" height="100%">
-							<tr>
+							<tr class="timerviola">
 								<td width="100px" align="center" valign="center">
-									<font color="#cc33cc" size="5"><b><div id="timer2"></div></b></font>
+									<font color="#fff" size="5"><b><div id="timer2"></div></b></font>
 								</td>
 							</tr>
 							<tr>
@@ -931,9 +927,9 @@
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px" height="100%">
-							<tr>
+							<tr class="timerviola">
 								<td width="100px" align="center" valign="center">
-									<font color="#cc33cc" size="5"><b><div id="timer1"></div></b></font>
+									<font color="#fff" size="5"><b><div id="timer1"></div></b></font>
 								</td>
 							</tr>
 							<tr>
@@ -966,58 +962,6 @@
 				</tr>
 			</table>
 			
-			<!--<table id="blob2" width="100%" border="0" align="center" valign="center" class="div57" style="display:none">
-				<tr><td align="left" width="50%"><a id="xchiudi1" href="#" style="display:none"><img src="img/pin.png" width="30"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/pin.png" width="30"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/pin.png" width="30"></a></td><td align="right" width="50%"><a id="xchiudi11" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi22" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi33" href="#" style="display:none"><img src="img/xx.png" width="30"></a></td></tr>
-				<tr><td align="center" colspan="2"><b><div id="nickblob"></div></b></td></tr>
-				<tr>
-					<td width="100%" align="left" colspan="2">
-						<table align="center" width="100px" height="100%">
-							<tr>
-								<td width="100px" align="left" valign="center">
-									<p id="quando"></p>
-								</td>
-							</tr>
-							<tr>
-								<td width="100px" align="left" valign="center">
-									<p id="Da"></p>
-								</td>
-							</tr>
-							<tr>
-								<td width="100px" align="left" valign="center">
-									<p id="Ad"></p>
-								</td>
-							</tr>
-							<tr>
-								<td width="100px" align="left" valign="center">
-									<p id="Note"></p>
-								</td>
-							</tr>
-							<tr>
-								<td width="100px" align="center" valign="center">
-									<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
-									<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
-								</td>
-							</tr>
-
-							<tr>
-								<td width="100px" align="center" valign="center">
-									<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
-									<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
-								</td>
-							</tr>
-							
-							<tr>
-								<td width="100px" align="center" valign="center">
-									<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif1">Rifiuta</div></font></a>
-									<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif2">Rifiuta</div></font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff"><div id="rif3">Rifiuta</div></font></a>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				
-			</table>-->
-
 			<table id="btninizia" width="100%" border="0" align="center" valign="center" class="div55" >
 				<tr id="modificastart2" style="display:none">
 					<td width="100%" align="center">
@@ -1081,14 +1025,11 @@
 				
 			</table>
 			
-			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
-				<a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
-			</div> /footer -->
 
         </div>
 		
 		<div data-role=page id=home3 class="div2">
-			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
+
 			<table border="0" hight="30px"><tr><td></td></tr></table>
 			
 			<table border="0" valign="center" align="center" class="transbox">
@@ -1114,7 +1055,7 @@
 			
 			<form name="formia" action="entra.asp" method="post">
 			
-			<table id="tblrispondi" width="90%" align="center" class="div57" style="display:none">
+			<table width="90%" align="center" class="div57">
 				<tr>
 					<td width="100%" align="center" colspan="2">
 						<br><b>RISPONDI</b><br>
@@ -1123,12 +1064,12 @@
 				
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a data-role="button" id="gratis" href="#" data-theme="b" class="custom-btn3">Gratis</a>
+						<a data-role="button" id="gratis" href="#" data-theme="b" class="custom-btn33">Gratis</a>
 					</td>
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a data-role="button" id="offerta" href="#" data-theme="b" class="custom-btn3">Offerta Libera</a>
+						<a data-role="button" id="offerta" href="#" data-theme="b" class="custom-btn33">Offerta libera</a>
 					</td>
 				</tr>
 				<tr>
@@ -1147,7 +1088,7 @@
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<textarea cols="30" rows="4" class="scrivo" placeholder="Note"></textarea>
+						<textarea cols="30" rows="10" class="scrivo" placeholder="Note"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -1158,9 +1099,6 @@
 			</table>
 			</form>
 		
-			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
-				 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
-				 </div>-->
 				
 		</div>
 		
@@ -1249,13 +1187,13 @@
 							</tr>
 							<tr>
 								<td width="250px" align="left" valign="center">
-									<p id="note">Note:  --</p>
+									<p id="bluetooth">Note:  --</p>
 								</td>
 							</tr>
 							
 							<tr>
 								<td width="250px" align="right" valign="center">
-									<a id="xchiudi1" href="#" style="display:none"><img src="img/pin.png" width="30"></p><a id="xchiudi2" href="#" style="display:none"><img src="img/pin.png" width="30"></p><a id="xchiudi3" href="#" style="display:none"><img src="img/pin.png" width="30"></p>
+									<a id="xchiudi1" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a>&nbsp;&nbsp;
 								</td>
 							</tr>
 							
@@ -1290,8 +1228,8 @@
 			</tr>
 			<tr>
 				<td align="center" width="100%">
-					<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rifiuta</font></a>
-					<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rifiuta</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rifiuta</font></a>
+					<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
+					<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
 				</td>
 			</tr>
 			<tr>
@@ -1333,7 +1271,6 @@
 		</div>
 		
 		<div data-role=page id=home6 class="divchat">
-			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			
 			<table border="0" width="100%" align="center" class="transbox4">
 				<tr>
@@ -1377,13 +1314,8 @@
 
 			</form>
 			
-			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
-			 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
-			 </div>-->
 			
 		</div>
-
-
 
 
 		<script type="text/javascript" src="phonegap.js"></script>
