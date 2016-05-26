@@ -45,7 +45,8 @@
 					  }
 					  
 					  .timerviola {
-							background-color: #cc33cc;
+							background-color: #FF0000;
+							height:30px;
 						}
 
                       .div3 {
@@ -223,6 +224,22 @@
 						  position: absolute;
 						  z-index: 20;
 						  bottom: 30px;
+						  left: 0;
+						  width: 100%;
+						  height: 5%;
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  border: 0px solid #000;
+					  }
+					  
+					  .divmagia {
+						  position: absolute;
+						  z-index: 20;
+						  bottom: 85px;
 						  left: 0;
 						  width: 100%;
 						  height: 5%;
@@ -991,7 +1008,7 @@
 				
 			</table>
 			
-			<table id="magia" width="100%" border="0" align="center" valign="center" class="div55" style="display:none">
+			<table id="magia" width="100%" border="0" align="center" valign="center" class="divmagia" style="display:none">
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px"><tr><td width="100px" align="center">
@@ -1048,7 +1065,7 @@
 			
 			<div data-role=content class="div2"></div>
 			
-			<div class="spinner" id="spinner"></div>
+			<div class="spinner" id="spinner3"></div>
 			
 			<table border="0" hight="30px"><tr><td></td></tr></table>
 			<br><br>
@@ -1074,7 +1091,7 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center">
-						<font size="4">Importo</fint>
+						<font size="4">Importo</font>
 					</td>
 					<td width="50%" align="center">
 						<input type="text" data-role="none" name="soldini" id="soldini" value="" placeholder="Importo" class="scrivo">

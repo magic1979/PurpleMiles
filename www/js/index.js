@@ -715,6 +715,7 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart", "#inizia", function(e){
+					$('#modificastart').blur()
 				   
 				   if(localStorage.getItem("setGPS") == 1){
 				   
@@ -730,7 +731,12 @@ receivedEvent: function(id) {
 				       }
 				   }
 				   
-				   start();
+				   
+				   setTimeout(function() {
+						start();
+				   }, 2500);
+				   
+				   
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -3054,6 +3060,7 @@ function magia2C(utente,pass) {
 	$("#btnpass").hide();
 	
 	
+	
 	//posizionegps2();
 	
 	//var watchID = navigator.geolocation.getCurrentPosition(onSuccess2, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
@@ -4945,7 +4952,7 @@ function inviopasseggero(come){
 		var coming = "OFFERTA LIBERA";
 	}
 	
-	
+	$("#spinner3").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://purplemiles.com/www2/check_inviopasseggero.php?id="+ localStorage.getItem("id_richiesta") +"&note=note&importo="+ coming +"&id_autista="+ localStorage.getItem("id_autista") +"",
@@ -4959,6 +4966,8 @@ function inviopasseggero(come){
 		   $.each(result, function(i,item){
 				  
 				  if(item.Token==1){
+				  $("#spinner3").hide();
+				  
 
 				  //for(i=0; i<10000; i++)
 				  //{
@@ -4980,9 +4989,6 @@ function inviopasseggero(come){
 				  e.stopImmediatePropagation();
 				  
 				  e.preventDefault();
-				  
-				  alert("ok");
-				  
 				  
 				  
 				  //window.location.href = "map2.html?id=1";
