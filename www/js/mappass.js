@@ -256,10 +256,10 @@ function onDeviceReady() {
 				   
 				   
 				   if(document.getElementById("datacal").value==""){
-				      $("#posticipata").html(" <b><font color='#cc33cc'>Quando: </font></b> Adesso <br>" );
+				     // $("#posticipata").html(" <b><font color='#cc33cc'>Quando: </font></b> Adesso <br>" );
 				   }
 				   else{
-					  $("#posticipata").html(" <b><font color='#cc33cc'>Quando:</font></b> " + document.getElementById("datacal3").value + "<br> <b><font color='#cc33cc'>Ora:</font></b>" + document.getElementById("orario3").value + " " + document.getElementById("minuti3").value + "<br>");
+					 // $("#posticipata").html(" <b><font color='#cc33cc'>Quando:</font></b> " + document.getElementById("datacal3").value + "<br> <b><font color='#cc33cc'>Ora:</font></b>" + document.getElementById("orario3").value + " " + document.getElementById("minuti3").value + "<br>");
 				   }
 				   
 				   
@@ -636,7 +636,10 @@ function onDeviceReady() {
 				   else{
 					  $("#posticipata7").html(" <b><font color='#cc33cc'>Quando:</font></b> " + document.getElementById("datacal7").value + "<br> <b><font color='#cc33cc'>Ora:</font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value);
 				   }
-		
+				   
+				   
+				   $("#viale77").html(" <b><font color='#cc33cc'>Partenza: </font></b> "+ document.getElementById("viale").value +" <br>" );
+				   $("#destinazione77").html(" <b><font color='#cc33cc'>Arrivo: </font></b> "+ document.getElementById("destinazione").value +" <br>" );
 				   
 		
 				   

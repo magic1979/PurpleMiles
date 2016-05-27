@@ -63,6 +63,8 @@ receivedEvent: function(id) {
 		$('#noconn').hide();
 		
 		localStorage.setItem("chatpass", "")
+			
+		playAudio('successSound');
 		
 		startgps();
 		
@@ -93,10 +95,20 @@ receivedEvent: function(id) {
 		
 		//window.location.href = "index.html";
 		
-		
 	}
 
-	
+	function playAudio(id) {
+		var audioElement = document.getElementById(id);
+		var url = audioElement.getAttribute('src');
+		var my_media = new Media(url,
+				// success callback
+				 function () { console.log("playAudio():Audio Success"); },
+				// error callback
+				 function (err) { console.log("playAudio():Audio Error: " + err); }
+		);
+			   // Play audio
+		my_media.play();
+	}
 	
 	//localStorage.setItem("lat", "41.889191")
 	//localStorage.setItem("lng", "12.492475")
@@ -135,7 +147,7 @@ receivedEvent: function(id) {
 	  localStorage.setItem("exit", "0")
 	}
 	
-	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere Autista</p><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><hr></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere Passeggero</p><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere Autista</p><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere Passeggero</p><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
@@ -736,7 +748,7 @@ receivedEvent: function(id) {
 				   
 				   setTimeout(function() {
 						start();
-				   }, 1500);
+				   }, 500);
 				   
 				   
 				   e.stopImmediatePropagation();
