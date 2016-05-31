@@ -68,6 +68,8 @@ receivedEvent: function(id) {
 		
 		startgps();
 		
+		controllachat(1)
+		
 		//var lat = localStorage.getItem("lat");
 		//var lng = localStorage.getItem("lng");
 		
@@ -96,6 +98,20 @@ receivedEvent: function(id) {
 		//window.location.href = "index.html";
 		
 	}
+	
+		$(document).on("tap", "#esciapp", function(e){
+				   
+		  playAudio('successSound');
+				   
+	   	  e.stopImmediatePropagation();
+				   
+		  e.preventDefault();
+				   
+		  return false;
+				   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
 
 	function playAudio(id) {
 		var audioElement = document.getElementById(id);
@@ -242,6 +258,7 @@ receivedEvent: function(id) {
 	var rimorchio1;
 	var bluetooth1;
 	var id_utente_pass1;
+	var note1;
 	
 	
 	var nick2;
@@ -265,6 +282,7 @@ receivedEvent: function(id) {
 	var rimorchio2;
 	var bluetooth2;
 	var id_utente_pass2;
+	var note2;
 	
 	var nick3;
 	var quando3;
@@ -287,6 +305,7 @@ receivedEvent: function(id) {
 	var rimorchio3;
 	var bluetooth3;
 	var id_utente_pass3;
+	var note3;
 	
 	var muoviti;
 	var setGPS;
@@ -685,8 +704,21 @@ receivedEvent: function(id) {
 	
 	function onConfirm(button) {
 		if(button==1){    //If User selected No, then we just do nothing
-			localStorage.setItem("email", "");
-			localStorage.setItem("emailpass", "");
+            localStorage.setItem("email", "");
+            localStorage.setItem("email2", "");
+            localStorage.setItem("emailpass", "");
+            localStorage.setItem("id_autista", "");
+            localStorage.setItem("nick", "");
+            localStorage.setItem("id_pass", "");
+            localStorage.setItem("nickpass", "");
+            
+            localStorage.setItem("stelleautista", "");
+            localStorage.setItem("stellepass", "");
+            localStorage.setItem("md5", "");
+            localStorage.setItem("perc_autista", "");
+            localStorage.setItem("perc_pass", "");
+            localStorage.setItem("id_utente", "");
+            
 			window.location.href = "Login.html";
 			
 			return;
@@ -1803,6 +1835,30 @@ function resetta1(focus) {
 		$("#setGPS").hide();
 		$("#Modifica").hide();
 		$("#lista").hide();
+        
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;//January is 0, so always add + 1
+        
+        var ora = today.getHours()
+        if(ora<10){ora="0"+ora}
+        
+        var minuti = today.getMinutes();
+        if(minuti<10){minuti="0"+minuti}
+        
+        var secondi = today.getSeconds();
+        if(secondi<10){secondi="0"+secondi}
+        
+        
+        var yyyy = today.getFullYear();
+        if(dd<10){dd="0"+dd}
+        if(mm<10){mm="0"+mm}
+        today = dd+'/'+mm+'/'+yyyy;
+        
+        $("#stamp").html(yyyy+"-"+mm+"-"+dd+" "+ora+":"+minuti+":00");
+        var ora_cell = yyyy+"-"+mm+"-"+dd+" "+ora+":"+minuti+":00";
+        
+        localStorage.setItem("ora_cell", ora_cell);
 		
 		
 		var centerControlDiv2 = document.createElement('div');
@@ -1823,7 +1879,7 @@ function resetta1(focus) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_autistaV3.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_autistaV4.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"},
 		   timeout: 7000,
@@ -2399,6 +2455,8 @@ function posizionegps(){
 function timer(){
 	
 	refreshIntervalId = setInterval(function() {
+                                    
+    
 
 									
 		//var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
@@ -2407,6 +2465,7 @@ function timer(){
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 									
 	if(connectionStatus=='online'){
+									controllachat(2);
 									var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
 									var lat = localStorage.getItem("lat");
 									var lng = localStorage.getItem("lng");
@@ -2429,7 +2488,7 @@ function timer(){
 									
 									$.ajax({
 										   type:"GET",
-										   url:"http://purplemiles.com/www2/check_richiesta_autistaV3.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"",
+										   url:"http://purplemiles.com/www2/check_richiesta_autistaV4.php?email="+ localStorage.getItem("email") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&id_autista="+ localStorage.getItem("id_autista") +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"",
 										   contentType: "application/json",
 										   //data: {ID: "Lazio"}, LIMIT 10
 										   timeout: 7000,
@@ -2508,7 +2567,7 @@ function timer(){
 												  passeggeri1 = item.passeggeri;
 												  animali1 = item.animali;
 												  fumatori1 = item.fumatori;
-												  meno181 = item.meno;
+												  meno181 = item.meno18;
 												  disabili1 = item.disabili;
 												  bambini1 = item.bambini;
 												  wifi1 = item.wifi;
@@ -2516,10 +2575,13 @@ function timer(){
 												  rimorchio1 = item.rimorchio;
 												  bluetooth1 = item.bluetooth;
 												  id_utente_pass1 = item.id_utente_pass;
+												  note1 = item.note;
 												  
 												  if(localStorage.getItem("palla1")!=1){
 											   
 												     palla1()
+												     playAudio('successArrivo');
+												     //SUONO RICEZIONE
 												  
 											       }
 												  
@@ -2617,6 +2679,7 @@ function timer(){
 												  
 												   if(item.accettata==0){
 												    $("#blob3").show();
+												  
 												    for(i=0; i<10000; i++)
 												    {
 												     window.clearInterval(i);
@@ -2656,6 +2719,7 @@ function timer(){
 												  }
 												  
 												  countdown1(0);
+												  playAudio('successArrivo');
 
 												  }
 												   else{
@@ -2684,7 +2748,7 @@ function timer(){
 												  passeggeri2 = item.passeggeri;
 												  animali2 = item.animali;
 												  fumatori2 = item.fumatori;
-												  meno182 = item.meno;
+												  meno182 = item.meno18;
 												  disabili2 = item.disabili;
 												  bambini2 = item.bambini;
 												  wifi2 = item.wifi;
@@ -2692,6 +2756,7 @@ function timer(){
 												  rimorchio2 = item.rimorchio;
 												  bluetooth2 = item.bluetooth;
 												  id_utente_pass2 = item.id_utente_pass;
+												  note2 = item.note;
 												  
 												  /*$(document).on("tap", "#pass2", function(e){
 																 //window.location.href = "#index3";
@@ -2782,6 +2847,7 @@ function timer(){
 												  
 												  if(item.accettata==0){
 												   $("#blob4").show();
+												  
 												   for(i=0; i<10000; i++)
 												   {
 												    window.clearInterval(i);
@@ -2818,6 +2884,7 @@ function timer(){
 												  }
 												  
 												  countdown2(0);
+												  playAudio('successArrivo');
 												  }
 												  else{
 												    $("#blob4").hide();
@@ -2843,7 +2910,7 @@ function timer(){
 												  passeggeri3 = item.passeggeri;
 												  animali3 = item.animali;
 												  fumatori3 = item.fumatori;
-												  meno183 = item.meno;
+												  meno183 = item.meno18;
 												  disabili3 = item.disabili;
 												  bambini3 = item.bambini;
 												  wifi3 = item.wifi;
@@ -2851,6 +2918,7 @@ function timer(){
 												  rimorchio3 = item.rimorchio;
 												  bluetooth3 = item.bluetooth;
 												  id_utente_pass3 = item.id_utente_pass;
+												  note3 = item.note;
 												  
 												  item3 = item.id_richiesta;
 												  
@@ -2933,6 +3001,7 @@ function timer(){
 												  
 												  if(item.accettata==0){
 												  $("#blob5").show();
+												  
 												  for(i=0; i<10000; i++)
 												  {
 												  window.clearInterval(i);
@@ -2969,6 +3038,8 @@ function timer(){
 												  }
 												  
 												  countdown3(0);
+												  playAudio('successArrivo');
+												  
 												  }
 												  else{
 												    $("#blob5").hide();
@@ -2993,6 +3064,25 @@ function timer(){
 										   
 										   },
 										   dataType:"jsonp"});
+									
+									
+									
+									
+									function playAudio(id) {
+									var audioElement = document.getElementById(id);
+									var url = audioElement.getAttribute('src');
+									var my_media = new Media(url,
+															 // success callback
+															 function () { console.log("playAudio():Audio Success"); },
+															 // error callback
+															 function (err) { console.log("playAudio():Audio Error: " + err); }
+															 );
+									// Play audio
+									my_media.play();
+									}
+									
+									
+									
 									
 									//setTimeout(function() {
 
@@ -3967,7 +4057,7 @@ function richiesta1() {
 				  
 	$("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo1 +"</font>");
 				  
-	$("#distanza").html("<b>distanza: </b><font color='#cc33cc'>"+ distanza1 +"</font>");
+	$("#distanza").html("<b>distanza: </b><font color='#cc33cc'>"+ distanza1 +" Km</font>");
 	
 	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri1 +"</font>");
 	
@@ -3989,7 +4079,7 @@ function richiesta1() {
 	
 	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth1 +"</font>");
 	
-			       
+	$("#note").html("<b>Note: </b><font color='#cc33cc'>"+ note1 +"</font>");
 	
 	
 	
@@ -4196,7 +4286,7 @@ function richiesta2() {
 				  
 				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo2 +"</font>");
 				  
-				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza2 +"</font>");
+				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza2 +" Km</font>");
 	
 	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri2 +"</font>");
 	
@@ -4217,6 +4307,8 @@ function richiesta2() {
 	$("#rimorchio").html("<b>rimorchio: </b><font color='#cc33cc'>"+ rimorchio2 +"</font>");
 	
 	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth2 +"</font>");
+	
+	$("#note").html("<b>Note: </b><font color='#cc33cc'>"+ note2 +"</font>");
 	
 	
 	
@@ -4407,7 +4499,7 @@ function richiesta3() {
 				  
 				  $("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo3 +"</font>");
 				  
-				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza3 +"</font>");
+				  $("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza3 +" Km</font>");
 	
 	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri3 +"</font>");
 	
@@ -4428,6 +4520,8 @@ function richiesta3() {
 	$("#rimorchio").html("<b>rimorchio: </b><font color='#cc33cc'>"+ rimorchio3 +"</font>");
 	
 	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth3 +"</font>");
+	
+	$("#note").html("<b>Note: </b><font color='#cc33cc'>"+ note3 +"</font>");
 	
 	
 	if(stato3==0){
@@ -4710,7 +4804,7 @@ function inviachat() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/pubblica_chat.php?id_messaggio="+ localStorage.getItem("id_richiesta") +"&nick="+ localStorage.getItem("nick") +"&messaggio="+ indirizzo +"",
+		   url:"http://purplemiles.com/www2/pubblica_chat_autista.php?id_messaggio="+ localStorage.getItem("id_richiesta") +"&nick="+ localStorage.getItem("nick") +"&messaggio="+ indirizzo +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -4969,7 +5063,7 @@ function inviopasseggero(come){
 	$("#spinner3").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_inviopasseggero.php?id="+ localStorage.getItem("id_richiesta") +"&note=note&importo="+ coming +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_inviopasseggero.php?id="+ localStorage.getItem("id_richiesta") +"&note="+ document.getElementById("noteautista").value +"&importo="+ coming +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -5029,6 +5123,56 @@ function inviopasseggero(come){
 										'Attenzione',           // title
 										'Done'                  // buttonName
 										);
+		   
+		   },
+		   dataType:"jsonp"});
+	
+}
+
+function controllachat(uman) {
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   if(localStorage.getItem("chatcontroll")==JSON.stringify(result)){
+		   
+		   }
+		   else{
+		   
+		   localStorage.setItem("chatcontroll", JSON.stringify(result))
+		   
+		   if(uman==2){
+		   
+		   $.each(result, function(i,item){
+				  
+				if(item.Token==1){
+				  localStorage.setItem("id_richiesta",item.canale)
+				  
+				  chatting(0,item.canale);
+				}
+				  
+		    });
+		   }
+		   
+		   }
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
 		   
 		   },
 		   dataType:"jsonp"});

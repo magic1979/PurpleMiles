@@ -10,16 +10,70 @@ function onDeviceReady() {
 	else if(localStorage.getItem("lingua")=="en"){
 		document.getElementById("lingua").value = "en"
 	}
+    
+    
 	
-	/*if(localStorage.getItem("fuso")=="it"){
-		document.getElementById("fuso").value = "it"
-	}
-	else if(localStorage.getItem("fuso")=="en"){
-		document.getElementById("fuso").value = "en"
-	}*/
+    $('#fuso').on('change', function(){
+        var $this = $(this),
+        $value = $this.val();
+                   
+        document.getElementById("fuso").value = $value;
+                  
+        //$("#stamp2").html($value)
+                  
+                  var citta = "";
+                  
+                  $(".spinner").show();
+                  $.ajax({
+                         type:"GET",
+                         url:"http://purplemiles.com/www2/check_prendicitta.php?nazione="+$value+"",
+                         contentType: "application/json",
+                         timeout: 7000,
+                         jsonp: 'callback',
+                         crossDomain: true,
+                         success:function(result){
+                         
+                         $.each(result, function(i,item){
+                                
+                                
+                                if (item.Token == 1){
+
+                                  citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
+
+                                }
+                                else{
+                                navigator.notification.alert(
+                                                             'Errore di rete',  // message
+                                                             alertDismissed,         // callback
+                                                             'Attenzione',            // title
+                                                             'Done'                  // buttonName@
+                                                             );
+                                }
+                        });
+                         
+                         $(".spinner").hide();
+                         
+                         $("#citta").html(citta);
+                         
+                         $("#citta").selectmenu("refresh");
+                         
+                         },
+                         error: function(){
+                         $(".spinner").hide();
+                         
+                         navigator.notification.alert(
+                                                      'Possibile errore di rete, riprova tra qualche minuto',  // message
+                                                      alertDismissed,         // callback
+                                                      'Attenzione',            // title
+                                                      'Done'                  // buttonName
+                                                      );
+                         
+                         },
+                         dataType:"jsonp"});
+                  
+    });
 	
 
-	
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
 	}, false);
@@ -27,7 +81,8 @@ function onDeviceReady() {
 	$(document).on("tap", "#conferma", function(e){
 		//window.location.href = "#page6";
 		localStorage.setItem("lingua", document.getElementById("lingua").value);
-		localStorage.setItem("fuso", document.getElementById("citta").value);
+		localStorage.setItem("fuso", document.getElementById("fuso").value);
+        localStorage.setItem("citta", document.getElementById("citta").value);
 		
 		localStorage.setItem("veicolo", document.getElementById("veicolo").value);
 				   
@@ -60,6 +115,8 @@ function onDeviceReady() {
 				   
 				   
 				   prendimezzi()
+                   prendinazione()
+                   
 
 				   e.stopImmediatePropagation();
 				   
@@ -115,6 +172,12 @@ function onDeviceReady() {
 				   
 		  if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 		
+	});
+	
+	$(document).on("tap", "#legenda", function(e){
+				   
+		var ref = window.open('http://www.purplemiles.com/www/legenda.php?lang=en', '_system', 'location=no');
+				   
 	});
 	
 	$(document).on("tap", "#regsito", function(e){
@@ -230,14 +293,24 @@ function prendimezzi(){
 				       mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
 					 }
 				     else{
-				         if(item.id_veicolo==6){
+                        if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
+                           if(item.id_veicolo==6){
+                               mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
+                           }
+                           else{
+                              mezzi = mezzi + "<option value='"+item.id_veicolo+"'>"+ item.veicolo +"</option>"
+                           }
+                        }
+                        else{
+                            mezzi = mezzi + "<option value='"+item.id_veicolo+"'>"+ item.veicolo +"</option>"
+                        }
+                     }
+				         /*if(item.id_veicolo==6){
 				            mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
 				          }
 				          else{
 				            mezzi = mezzi + "<option value='"+item.id_veicolo+"'>"+ item.veicolo +"</option>"
-				          }
-				  
-				     }
+				          }*/
 				  
 				  }
 				  else{
@@ -273,101 +346,132 @@ function prendimezzi(){
 }
 
 function prendinazione(){
-	
-	$(".spinner").show();
-	$.ajax({
+    
+	var nazione = "";
+    
+    $(".spinner").show();
+     $.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/prendifuso.php",
+		   url:"http://purplemiles.com/www2/check_prendinazione.php",
 		   contentType: "application/json",
-		   //data: {email:email,pin:pin},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
 		   success:function(result){
 		   
 		   $.each(result, function(i,item){
-				  //alert(item.Token);
-				  
-				  if (item.Token == 1){
-				  
-				  
-				  }
-				  else{
-				  navigator.notification.alert(
-											   'Errore di rete',  // message
-											   alertDismissed,         // callback
-											   'Attenzione',            // title
-											   'Done'                  // buttonName@
-											   );
-				  }
-				  });
+				 
+     
+     if (item.Token == 1){
+       if(localStorage.getItem("fuso")==item.country){
+         nazione = nazione + "<option value='"+item.country+"' selected>"+ item.country +"</option>"
+       }
+       else{
+          if (localStorage.getItem("fuso") === null || localStorage.getItem("fuso")=="null" || typeof(localStorage.getItem("fuso")) == 'undefined' || localStorage.getItem("fuso")==0 || localStorage.getItem("fuso")=="") {
+                  if(item.country=="Italy"){
+                    nazione = nazione + "<option value='"+item.country+"' selected>"+ item.country +"</option>"
+                  }
+                  else{
+                    nazione = nazione + "<option value='"+item.country+"'>"+ item.country +"</option>"
+                  }
+
+           }
+           else{
+               nazione = nazione + "<option value='"+item.country+"'>"+ item.country +"</option>"
+            }
+       }
+     }
+     else{
+     navigator.notification.alert(
+     'Errore di rete',  // message
+     alertDismissed,         // callback
+     'Attenzione',            // title
+     'Done'                  // buttonName@
+     );
+     }
+     });
 		   
-		   $(".spinner").hide();
+     $(".spinner").hide();
+     
+     $("#fuso").html(nazione);
+     
+     $("#fuso").selectmenu("refresh");
+            
+    prendicitta(localStorage.getItem("citta"))
+            
+    //document.getElementById("citta").value = localStorage.getItem("citta");
 		   
-		   },
-		   error: function(){
-		   $(".spinner").hide();
+    },
+    error: function(){
+    $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto',  // message
-										alertDismissed,         // callback
-										'Attenzione',            // title
-										'Done'                  // buttonName
-										);
+     'Possibile errore di rete, riprova tra qualche minuto',  // message
+     alertDismissed,         // callback
+     'Attenzione',            // title
+     'Done'                  // buttonName
+     );
 		   
 		   },
 		   dataType:"jsonp"});
-	
 }
 
 
-function prendifuso(nazione){
-	
-	$(".spinner").show();
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/prendifuso.php",
-		   contentType: "application/json",
-		   //data: {email:email,pin:pin},
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  //alert(item.Token);
-				  
-				  if (item.Token == 1){
-					
-				  
-				  }
-				  else{
-				   navigator.notification.alert(
-											   'Errore di rete',  // message
-											   alertDismissed,         // callback
-											   'Attenzione',            // title
-											   'Done'                  // buttonName@
-											   );
-				  }
-				  });
-		   
-		   $(".spinner").hide();
-		   
-		   },
-		   error: function(){
-		   $(".spinner").hide();
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto',  // message
-										alertDismissed,         // callback
-										'Attenzione',            // title
-										'Done'                  // buttonName
-										);
-		   
-		   },
-		   dataType:"jsonp"});
-	
+function prendicitta(id){
+    
+    var citta = "";
+    
+    
+    $(".spinner").show();
+    $.ajax({
+           type:"GET",
+           url:"http://purplemiles.com/www2/check_prendicitta.php?nazione=Italy",
+           contentType: "application/json",
+           timeout: 7000,
+           jsonp: 'callback',
+           crossDomain: true,
+           success:function(result){
+           
+           $.each(result, function(i,item){
+                  
+                  
+                  if (item.Token == 1){
+                  
+                  citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
+                  
+                  }
+                  else{
+                  navigator.notification.alert(
+                                               'Errore di rete',  // message
+                                               alertDismissed,         // callback
+                                               'Attenzione',            // title
+                                               'Done'                  // buttonName@
+                                               );
+                  }
+                  });
+           
+           $(".spinner").hide();
+           
+           $("#citta").html(citta);
+           
+           $("#citta").selectmenu("refresh");
+           
+           },
+           error: function(){
+           $(".spinner").hide();
+           
+           navigator.notification.alert(
+                                        'Possibile errore di rete, riprova tra qualche minuto',  // message
+                                        alertDismissed,         // callback
+                                        'Attenzione',            // title
+                                        'Done'                  // buttonName
+                                        );
+           
+           },
+           dataType:"jsonp"});
+    
 }
+
 
 
 function getKey(key){

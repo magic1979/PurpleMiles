@@ -280,6 +280,10 @@
 						  
 						  z-index: 100;
 					  }
+							
+							
+							
+							
 					  
 					  .div562 {
 						  background-color: #fff;
@@ -341,7 +345,11 @@
 					  }
 					  
 					  .div5622 {
+						  
 						  background-color: #fff;
+						  border: 1px solid #000;
+						  border-color: #cc33cc;
+
 						  position: absolute;
 						  z-index: 30;
 						  bottom: 60px;
@@ -667,8 +675,8 @@
 					  
 					  .custom-btn4 {
 						  background-color: #cc33cc;
-						  width: 120px;
-						  font-size: 18px;
+						  width: 100px;
+						  font-size: 14px;
 						  
 						  text-decoration: none;
 						  text-shadow:0 0 0;
@@ -681,6 +689,29 @@
 						  -moz-border-radius: 5px; /* firefox */
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
+					  
+					  .custom-btn4blob {
+						  background-color: #cc33cc;
+						  border: 0px solid #000;
+						  border-color: #cc33cc;
+						  
+						  width: 120px;
+						  font-size: 28px;
+						  
+						  padding: 50 5 50 5;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  color:#FFF;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
 					  
 					  .custom-btn5 {
 						  background-color: #ffffff;
@@ -768,6 +799,39 @@
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
 					  
+					  .div59 {
+						  background-color: #fff;
+						  position: fixed;
+						  z-index: 19;
+						  bottom: 0;
+						  left: 0;
+						  width: 100%;
+						  height: 50px;
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  opacity: 0.2;
+						  filter: alpha(opacity=20);
+						  
+					  }
+					  
+					  .div599 {
+						  position: fixed;
+						  z-index: 20;
+						  bottom: 0;
+						  left: 0;
+						  width: 100%;
+						  height: 50px;
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+					  }
+					  
 					  .ui-page { -webkit-backface-visibility: hidden; }
 
 
@@ -779,6 +843,7 @@
 
         <div id="geolocation"></div>
 		<audio id="successSound" src="/android_asset/www/sound/open.mp3" type="audio/mpeg" ></audio>
+		<!--<audio id="successArrivo" src="/sound/bell.mp3" type="audio/mpeg" ></audio>-->
         
         <div data-role=page id=home class="div2">
 
@@ -819,7 +884,7 @@
 						 <table align="center" width="100px" height="100%">
 							 <tr>
 								 <td width="100px" align="center" valign="center">
-									 <a id="logout" href="#" data-role="button" data-theme="b" class="custom-btn4"><font size="3" color="#fff"><b>Log out</b></font></a>
+									 <a id="logout" href="#" data-role="button" data-theme="b" class="custom-btn4blob"><font size="5" color="#fff"><b>Log out</b></font></a>
 								 </td>
 							 </tr>
 							 
@@ -841,7 +906,7 @@
         
         <div data-role=page id="win2" data-add-back-btn=true class="div2">
             
-			
+			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
 			<div data-role="content"></div>
 			
 			<table id="blob" width="100%" border="0" align="center" valign="center" class="div56" style="display:none">
@@ -850,7 +915,7 @@
 						<table align="center" width="100px" height="100%">
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<a id="ric1" href="#" data-role="button" data-theme="b" class="custom-btn4"><font size="3" color="#fff"><b>Richiesta</b></font></a>
+									<a id="ric1" href="#" data-role="button" data-theme="b" class="custom-btn4blob"><font size="5" color="#fff"><b>Richiesta</b></font></a>
 								</td>
 							</tr>
 						</table>
@@ -859,7 +924,7 @@
 				
 			</table>
 			
-			<table id="blob5" width="100%" border="0" align="center" valign="center" class="div5621" style="display:none">
+			<table id="blob5" width="100%" border="0" align="center" valign="center" class="div5622" style="display:none">
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px" height="100%">
@@ -876,12 +941,12 @@
 
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<font color="#000" size="3"><b><div id="viaaccetta5"></div></b></font>
+									<font color="#cc33cc" size="3"><b>Da: </b></font><div id="viaaccetta5"></div>
 								</td>
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<font color="#000" size="3"><b>A: <div id="adaccetta5"></div></b></font>
+									<font color="#cc33cc" size="3"><b>A: </b></font><div id="adaccetta5"></div>
 								</td>
 							</tr>
 							<tr>
@@ -917,12 +982,12 @@
 
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<font color="#000" size="3"><b>Da: <div id="viaaccetta2"></div></b></font>
+									<font color="#cc33cc" size="3"><b>Da: </b></font><div id="viaaccetta2"></div>
 								</td>
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<font color="#000" size="3"><b>A: <div id="adaccetta2"></div></b></font>
+									<font color="#cc33cc" size="3"><b>A: </b></font><div id="adaccetta2"></div>
 								</td>
 							</tr>
 							<tr>
@@ -941,7 +1006,7 @@
 			</table>
 
 			
-			<table id="blob3" width="100%" border="0" align="center" valign="center" class="div562" style="display:none">
+			<table id="blob3" width="100%" border="0" align="center" valign="center" class="div5622" style="display:none">
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px" height="100%">
@@ -957,12 +1022,12 @@
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<font color="#000" size="3"><b>Da: <div id="viaaccetta3"></div></b></font>
+									<font color="#cc33cc" size="3"><b>Da: </b></font><div id="viaaccetta3"></div>
 								</td>
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<font color="#000" size="3"><b>A: <div id="adaccetta3"></div></b></font>
+									<font color="#cc33cc" size="3"><b>A: </b></font><div id="adaccetta3"></div>
 								</td>
 							</tr>
 							<tr>
@@ -1068,12 +1133,12 @@
 			
 			<div class="spinner" id="spinner3"></div>
 			
-			<table border="0" hight="30px"><tr><td></td></tr></table>
+			<table border="0" hight="40px"><tr><td></td></tr></table>
 			<br><br>
 			
 			<form name="formia" action="entra.asp" method="post">
 			
-			<table width="90%" align="center" class="div57">
+			<table width="90%" align="center" class="tabella">
 				<tr>
 					<td width="100%" align="center" colspan="2">
 						<br><b>RISPONDI</b><br>
@@ -1106,12 +1171,12 @@
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<textarea cols="30" rows="10" class="scrivo" placeholder="Note"></textarea>
+						<textarea id="noteautista" name="noteautista" cols="30" rows="10" class="scrivo" placeholder="Note"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn3">Invia</a>
+						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn33">Invia</a>
 					</td>
 				</tr>
 			</table>
@@ -1142,7 +1207,7 @@
 			<table width="100%" align="center">
 				<tr>
 					<td width="100%" align="left" colspan="3">
-						<table width="90%" align="center" class="div57">
+						<table width="90%" align="center" class="tabella">
 							<tr>
 								<td width="250px" align="left" valign="center">
 									<table border="0" hight="20px"><tr><td></td></tr></table>
@@ -1208,10 +1273,15 @@
 									<p id="bluetooth">Note:  --</p>
 								</td>
 							</tr>
+							<tr>
+								<td width="250px" align="left" valign="center">
+									<p id="note">Note:  --</p>
+								</td>
+							</tr>
 							
 							<tr>
 								<td width="250px" align="right" valign="center">
-									<a id="xchiudi1" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a>&nbsp;&nbsp;
+									<a id="xchiudi1" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/ico_to_map.png" width="50"></a>&nbsp;&nbsp;&nbsp;&nbsp;  <a id="chat1" style="display:none"><font color="#fff"><img src="img/chat.png" width="40"></font></a><a id="chat2" style="display:none"><font color="#fff"><img src="img/chat.png" width="40"></font></a><a id="chat3" style="display:none"><font color="#fff"><img src="img/chat.png" width="40"></font></a>
 								</td>
 							</tr>
 							
@@ -1220,42 +1290,71 @@
 									<div id="code1" style="display:none"></div><div id="code2" style="display:none"></div><div id="code3" style="display:none"></div>
 								</td>
 							</tr>
+							
+							<tr>
+								<td width="250px" align="left" valign="center">
+									<table border="0" hight="60px"><tr><td></td></tr></table>
+								    <br><br><br><br><br><br><br>
+								</td>
+							</tr>
 
 						</table>
 					</td>
 				</tr>
 
-				
 			</table>
 			
-			<table border="0" hight="30px"><tr><td></td></tr></table>
 			
-			<table border="0" width="100%" align="center">
+			<table id="zoccolo" width="100%" border="0" align="center" valign="center" class="div59" >
+				<tr>
+					<td algn="center" width="100%" align="center" valign="center">
+						
+					</td>
+				</tr>
+			</table>
+			
+			<table width="100%" border="0" align="center" valign="center" class="div599" >
+				<tr>
+					<td width="50%" align="center" valign="center">
+						<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
+						<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
+						
+						<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
+						<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
+					</td>
+
+					<td width="50%" align="center" valign="center">
+						<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
+						<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
+					</td>
+				</tr>
+			</table>
+			
+
+			
+			<!--<table border="0" width="100%" align="center">
 			<tr>
 				<td align="center" width="100%">
-					<a id="risp1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
-					<a id="risp2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a><a id="risp3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Rispondi</font></a>
+					
 				</td>
 			</tr>
 
 			<tr>
 				<td align="center" width="100%">
-					<a id="gps1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
-					<a id="gps22" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a><a id="gps3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Percorso</font></a>
+					
 				</td>
 			</tr>
 			<tr>
 				<td align="center" width="100%">
-					<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
-					<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
+					
 				</td>
 			</tr>
 			<tr>
 				<td align="center" width="100%">
-					<a id="chat1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Chat</font></a><a id="chat2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Chat</font></a><a id="chat3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Chat</font></a>
+					
 				</td>
 			</tr>
-			</table>
+			</table>-->
 			
 		</div>
 		

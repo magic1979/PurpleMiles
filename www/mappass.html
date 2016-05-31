@@ -373,6 +373,22 @@
 							
 							
 						}
+					  
+					  .custom-btnric {
+						  width: 220px;
+						  font-size: 18px;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  padding: 15 45 15 45;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  
+					  }
 						
 						.custom-btn2 {
 							width: 280px;
@@ -742,6 +758,7 @@
 		<script type='application/javascript' src='js/fastclick.js'></script>
 		
         <div id="geolocation"></div>
+		<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
         
 <div data-role=page id=home class="div2">
 
@@ -821,16 +838,17 @@
 		
 		<tr>
 			<td width="100%" align="center" colspan="4">
-				<select id="fuso1" name="fuso" data-theme="c" >
-					<option value="Italy">Italy</option>
+				<select id="fuso1" name="fuso1" data-theme="c" >
+					<!--<option value="Italy">Italy</option>
+                    <option value="Germany">Germania</option>-->
 				</select>
 				
 			</td>
 		</tr>
 		<tr>
 			<td width="100%" align="center" colspan="4">
-				<select id="citta1" name="citta" data-theme="c" >
-					<option value="154">Rome</option>
+				<select id="citta1" name="citta1" data-theme="c" >
+					<!--<option value="154">Rome</option>-->
 				</select>
 			</td>
 		</tr>
@@ -1338,7 +1356,8 @@
 									</td>
 								</tr>
 								<tr>
-									<td width="250px" align="center" valign="center">
+									<td width="250px" align="left" valign="center">
+										<p id="note7">note7:  --</p>
 										<!--<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn4" >Invia</a>--><br><br>
 									</td>
 								</tr>
@@ -1375,7 +1394,7 @@
 			<table width="100%" border="0" align="center" valign="center" class="div599" >
 				<tr>
 					<td width="100%" align="center" valign="center">
-						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn" > Invia </a>
+						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btnric" > Invia Richiesta </a>
 					</td>
 				</tr>
 			</table>
@@ -1395,6 +1414,8 @@
 
 		
 		<div data-role=page id=home4 class="div2">
+			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
+			
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			<table border="0" valign="center" align="center" class="transbox">
 				<tr>

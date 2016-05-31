@@ -24,7 +24,7 @@ button,
 .ui-btn {
 	font-size: 1em;
 	line-height: 1.3;
-	  font-family: sans-serif /*{global-font-family}*/;
+	 font-family: sans-serif /*{global-font-family}*/;
 }
 legend,
 .ui-input-text input,
@@ -789,7 +789,7 @@ html body .ui-group-theme-d .ui-btn:visited,
 html head + body .ui-btn.ui-btn-d:visited {
 	background-color: #f0e1ff /*{d-bup-background-color}*/;
 	border-color: #dddddd /*{d-bup-border}*/;
-	color: #ffffff /*{d-bup-color}*/;
+	color: #cc33cc /*{d-bup-color}*/;
 	text-shadow: 0 /*{d-bup-shadow-x}*/ 0px /*{d-bup-shadow-y}*/ 0 /*{d-bup-shadow-radius}*/ #f0e1ff /*{d-bup-shadow-color}*/;
 }
 /* Button hover */
@@ -798,9 +798,9 @@ html .ui-bar-d .ui-btn:hover,
 html .ui-body-d .ui-btn:hover,
 html body .ui-group-theme-d .ui-btn:hover,
 html head + body .ui-btn.ui-btn-d:hover {
-	background-color: #f0e1ff /*{d-bhover-background-color}*/;
+	background-color: #cc33cc /*{d-bhover-background-color}*/;
 	border-color: #dddddd /*{d-bhover-border}*/;
-	color: #f0e1ff /*{d-bhover-color}*/;
+	color: #fff /*{d-bhover-color}*/;
 	text-shadow: 0 /*{d-bhover-shadow-x}*/ 0px /*{d-bhover-shadow-y}*/ 0 /*{d-bhover-shadow-radius}*/ #f3f3f3 /*{d-bhover-shadow-color}*/;
 }
 /* Button down */
@@ -809,7 +809,7 @@ html .ui-bar-d .ui-btn:active,
 html .ui-body-d .ui-btn:active,
 html body .ui-group-theme-d .ui-btn:active,
 html head + body .ui-btn.ui-btn-d:active {
-	background-color: #f0e1ff /*{d-bdown-background-color}*/;
+	background-color: #cc33cc /*{d-bdown-background-color}*/;
 	border-color: #dddddd /*{d-bdown-border}*/;
 	color: #f0e1ff /*{d-bdown-color}*/;
 	text-shadow: 0 /*{d-bdown-shadow-x}*/ 0px /*{d-bdown-shadow-y}*/ 0 /*{d-bdown-shadow-radius}*/ #f3f3f3 /*{d-bdown-shadow-color}*/;
@@ -1116,7 +1116,7 @@ html .ui-body-f .ui-btn:visited,
 html body .ui-group-theme-f .ui-btn:visited,
 html head + body .ui-btn.ui-btn-f:visited {
 	background-color: #cc33cc /*{f-bup-background-color}*/;
-	border-color: #cc33cc /*{f-bup-border}*/;
+	border-color: #701c70 /*{f-bup-border}*/;
 	color: #ffffff /*{f-bup-color}*/;
 	text-shadow: 0 /*{f-bup-shadow-x}*/ 0px /*{f-bup-shadow-y}*/ 0 /*{f-bup-shadow-radius}*/ #cc33cc /*{f-bup-shadow-color}*/;
 }
@@ -1196,8 +1196,6 @@ html head + body .ui-body-f.ui-focus {
 	-moz-box-shadow: 0 0 12px #f0e1ff /*{f-active-background-color}*/;
 	box-shadow: 0 0 12px #f0e1ff /*{f-active-background-color}*/;
 }
-
-
 
 
 /* Structure */
