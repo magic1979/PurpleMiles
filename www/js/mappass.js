@@ -1956,6 +1956,11 @@ function inviachat() {
 
 
 function controllachat(uman) {
+	
+	var connectionStatus = false;
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+				   
+	if(connectionStatus=='online'){
 
 	$.ajax({
 		   type:"GET",
@@ -2000,6 +2005,8 @@ function controllachat(uman) {
 		   
 		   },
 		   dataType:"jsonp"});
+	   
+	}
 	
 }
 

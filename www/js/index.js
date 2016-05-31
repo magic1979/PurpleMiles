@@ -5131,6 +5131,11 @@ function inviopasseggero(come){
 
 function controllachat(uman) {
 	
+	var connectionStatus = false;
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+				   
+	if(connectionStatus=='online'){
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
@@ -5166,16 +5171,18 @@ function controllachat(uman) {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Done'                  // buttonName
-										);
+										);*/
 		   
 		   
 		   },
 		   dataType:"jsonp"});
+	   
+	}
 	
 }
 
