@@ -347,9 +347,9 @@ function onDeviceReady() {
 				   }
 				   
 				   
-				   //$.mobile.changePage ($("#home3"));
+				   $.mobile.changePage ($("#home3"));
 				   
-				    $("#offerte").tap();
+				    //$("#offerte").tap();
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -570,8 +570,11 @@ function onDeviceReady() {
 															  'Done'
 															  );
 								 
-								 $("#btnofferte").show();
-								 $.mobile.changePage( "#home", { transition: "slide", changeHash: false });
+								 //$("#btnofferte").show();
+								 
+								 $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+								 $("#spinner4").show();
+								 vediofferte()
 								 
 								 e.stopImmediatePropagation();
 								 
