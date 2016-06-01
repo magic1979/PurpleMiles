@@ -546,6 +546,47 @@ function login() {
 	}
 	
 	//var newpin = sha1(pin2);
+	
+	
+	
+	if (localStorage.getItem("fuso") === null || localStorage.getItem("fuso")=="null" || typeof(localStorage.getItem("fuso")) == 'undefined' || localStorage.getItem("fuso")==0 || localStorage.getItem("fuso")=="") {
+		
+		navigator.notification.alert(
+				'Inserire nelle impostazioni un fuso orario',  // message
+				alertDismissed,         // callback
+				'Email',            // title
+				'OK'                  // buttonName
+		);
+
+		return;
+		
+	}
+	
+	if (localStorage.getItem("citta") === null || localStorage.getItem("citta")=="null" || typeof(localStorage.getItem("citta")) == 'undefined' || localStorage.getItem("citta")==0 || localStorage.getItem("citta")=="") {
+		
+		navigator.notification.alert(
+									 'Inserire nelle impostazioni un fuso orario',  // message
+									 alertDismissed,         // callback
+									 'Email',            // title
+									 'OK'                  // buttonName
+									 );
+		
+		return;
+		
+	}
+	
+	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
+		
+		navigator.notification.alert(
+			'Seleziona un veicolo di preferenza',  // message
+			alertDismissed,         // callback
+			'Email',            // title
+			'OK'                  // buttonName
+		);
+		
+		return;
+		
+	}
 
 
 	LoginVera(email2,pin2);
