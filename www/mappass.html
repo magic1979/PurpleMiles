@@ -776,7 +776,7 @@
 		<script type='application/javascript' src='js/fastclick.js'></script>
 		
         <div id="geolocation"></div>
-		<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
+		<audio id="successArrivo" src="/sound/bell.mp3" type="audio/mpeg" ></audio>
         
 <div data-role=page id=home class="div2">
 
@@ -844,10 +844,10 @@
 				<font size="4">Alle</font>
 			</td>
 			<td width="25%" align="center" >
-				<select id="Orario" data-theme="c"><option selected>--</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option></select>
+				<select id="Orario" data-theme="c"><option selected>--</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option></select>
 			</td>
 			<td width="25%" align="center" >
-				<select id="Minuti" data-theme="c"><option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>
+				<select id="Minuti" data-theme="c"><option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option></select>
 			</td>
 			<td width="25%" align="center" >
 				<img src="img/clock.png" width="30">
@@ -1334,6 +1334,12 @@
 										<div id="destinazione77"></div>
 									</td>
 								</tr>
+
+								<tr>
+									<td width="250px" align="left" valign="center" colspan="2">
+										<p id="veicolo7"></p>
+									</td>
+								</tr>
 								
 								<tr>
 									<td width="100%" align="left" colspan="2">
@@ -1449,7 +1455,7 @@
 
 		
 		<div data-role=page id=home4 class="div2">
-			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
+			<audio id="successArrivo" src="/sound/bell.mp3" type="audio/mpeg" ></audio>
 			
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			<table border="0" valign="center" align="center" class="transbox">
@@ -1483,8 +1489,8 @@
 		
 		<div data-role=page id=home6 class="divchat">
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
-			<audio id="successChat1" src="/android_asset/www/sound/send_chat.mp3" type="audio/mpeg" ></audio>
-			<audio id="successChat2" src="/android_asset/www/sound/new_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successChat1" src="/sound/send_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successChat2" src="/sound/new_chat.mp3" type="audio/mpeg" ></audio>
 			
 			<table border="0" width="100%" align="center" class="transbox4">
 				<tr>

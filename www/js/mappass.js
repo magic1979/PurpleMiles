@@ -196,6 +196,16 @@ function onDeviceReady() {
 				   });
 	
 	$(document).on("tap", "#adesso", function(e){
+				   
+				   document.getElementById("datacal").value = "";
+				   
+				   $("#Orario").html("<option selected>--</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option>");
+				    $("#Minuti").html("<option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>");
+				   
+				    $("#Orario").selectmenu("refresh");
+				    $("#Minuti").selectmenu("refresh");
+				   
+				   
 				   localStorage.setItem("destination", "0")
 				   
 				   $("#viale").show();
@@ -680,6 +690,8 @@ function onDeviceReady() {
 		localStorage.setItem("orario", document.getElementById("Orario").value);
 		localStorage.setItem("minuti", document.getElementById("Minuti").value);
 				   
+		
+				   
 				  
 				   if(document.getElementById("datacal").value==""){
 				     document.getElementById("datacal7").value = "ORA";
@@ -734,12 +746,14 @@ function onDeviceReady() {
 				     $("#posticipata7").html(" <b><font color='#cc33cc'>Quando: </font></b> Adesso <br>" );
 				   }
 				   else{
-					  $("#posticipata7").html(" <b><font color='#cc33cc'>Quando:</font></b> " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora:</font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value);
+					  $("#posticipata7").html(" <b><font color='#cc33cc'>Quando: </font></b> " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value);
 				   }
 				   
 				   
 				   $("#viale77").html(" <b><font color='#cc33cc'>Partenza: </font></b> "+ document.getElementById("viale").value +" <br>" );
 				   $("#destinazione77").html(" <b><font color='#cc33cc'>Arrivo: </font></b> "+ document.getElementById("destinazione").value +" <br>" );
+				   
+				   $("#veicolo7").html("<br><b><font color='#cc33cc'>Veicolo: </font></b>: "+ localStorage.getItem("veicolo") +"");
 				   
 		
 				   
@@ -1893,6 +1907,20 @@ function vediofferte(){
 
 				  
 				  
+				  $(document).on("tap", "#stelleautista"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
+								 
+							//http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
+								 
+						var ref = window.open('http://www.purplemiles.com/www/feedback_autista.php?idp='+localStorage.getItem("id_utente")+'&ida='+item.id_utente_autista+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+								 
+								 
+						e.stopImmediatePropagation();
+								 
+						e.preventDefault();
+								 
+						return false;
+								 
+					});
 				  
 				  
 				     }
@@ -2006,9 +2034,12 @@ function chatting(id) {
 				  else{
 				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='right' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
 				  $("#offerta6").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
-				  }
 				  
 				  playChat2('successChat2');
+				  
+				  }
+				  
+				  
 				  
 				  }
 				  
@@ -2082,13 +2113,13 @@ function inviachat() {
 		   
 		   $.each(result, function(i,item){
 				  
-				  if(item.Token==1){
-				  playChat1('successChat1');
-				  document.getElementById("chattext").value="";
+			if(item.Token==1){
+			  playChat1('successChat1');
+			  document.getElementById("chattext").value="";
 				  
-				  }
+			}
 				  
-				  });
+			});
 		   
 		   
 		   

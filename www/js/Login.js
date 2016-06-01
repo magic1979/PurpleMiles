@@ -11,17 +11,16 @@ function onDeviceReady() {
 		document.getElementById("lingua").value = "en"
 	}
     
-    
 	
     $('#fuso').on('change', function(){
         var $this = $(this),
         $value = $this.val();
                    
         document.getElementById("fuso").value = $value;
-                  
-        //$("#stamp2").html($value)
-                  
-                  var citta = "";
+				  
+		//alert($value)
+
+                  var citta = "<option value=''>Scegli la Citta</option>";
                   
                   $(".spinner").show();
                   $.ajax({
@@ -39,6 +38,7 @@ function onDeviceReady() {
                                 if (item.Token == 1){
 
                                   citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
+								  //alert(item.city)
 
                                 }
                                 else{
@@ -52,11 +52,15 @@ function onDeviceReady() {
                         });
                          
                          $(".spinner").hide();
-                         
-                         $("#citta").html(citta);
-                         
-                         $("#citta").selectmenu("refresh");
-                         
+						 
+
+						 //window.location.href = "#page8";
+						 
+						 $("#citta").html(citta);
+						 
+						 $("#citta").selectmenu("refresh");
+						 
+						 
                          },
                          error: function(){
                          $(".spinner").hide();
@@ -69,14 +73,115 @@ function onDeviceReady() {
                                                       );
                          
                          },
-                         dataType:"jsonp"});
+					dataType:"jsonp"});
                   
     });
 	
+	
+	$('#citta').on('change', function(){
+				  var $this = $(this),
+				  $value = $this.val();
+				  
+				  document.getElementById("citta").value = $value;
+				   
+				  $("#precitta").html("<font color='#cc33cc'>" + $value+"</font>");
+				   
+			      prendicittaid($value)
+				  
+				  
+		});
+	
+	function prendicittaid(id){
+		
+		var citta = "";
+		
 
+		$.ajax({
+			   type:"GET",
+			   url:"http://purplemiles.com/www2/check_prendicittaid.php?id="+ id +"",
+			   contentType: "application/json",
+			   timeout: 7000,
+			   jsonp: 'callback',
+			   crossDomain: true,
+			   success:function(result){
+			   
+			   $.each(result, function(i,item){
+					  
+					  if (item.Token == 1){
+
+					    $("#precitta").html("<font color='#cc33cc'>" +item.city+"</font>");
+					    localStorage.setItem("city", item.city);
+					  
+					  }
+					  else{
+					  
+					  
+					  }
+				});
+			   
+			   $(".spinner").hide();
+			   
+			   
+			   },
+			   error: function(){
+			   $(".spinner").hide();
+			   
+			   
+			     navigator.notification.alert(
+											'Possibile errore di rete, riprova tra qualche minuto',  // message
+											alertDismissed,         // callback
+											'Attenzione',            // title
+											'Done'                  // buttonName
+											);
+
+			   
+			   
+			   },
+			   dataType:"jsonp"});
+		
+	}
+	
+	
+	$(document).on("tap", "#indietro8", function(e){
+				   window.location.href = "#page6";
+				   
+				   var myScroll2;
+				   
+				   myScroll2 = new IScroll('#wrapper2', { click: true });
+				   setTimeout (function(){
+							   myScroll2.refresh();
+							   }, 1000);
+				   
+				   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+				   
+				   document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+				   
+				   
+				   
+				   prendimezzi()
+				   
+				   prendinazione()
+				   
+				   //$("#fuso").html(nazione);
+				   
+				   //$("#fuso").selectmenu("refresh");
+				   
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   });
+	
+	
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
 	}, false);
+	
 	
 	$(document).on("tap", "#conferma", function(e){
 		//window.location.href = "#page6";
@@ -86,15 +191,15 @@ function onDeviceReady() {
 		
 		localStorage.setItem("veicolo", document.getElementById("veicolo").value);
 				   
-				   window.location.href = "#page";
 				   
-				   e.stopImmediatePropagation();
+		window.location.href = "#page";
 				   
-				   e.preventDefault();
+		e.stopImmediatePropagation();
 				   
-				   return false;
+		e.preventDefault();
 				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
 	
@@ -113,11 +218,17 @@ function onDeviceReady() {
 				   document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 				   
 				   
-				   
 				   prendimezzi()
+				   
                    prendinazione()
-                   
-
+				   
+				   //prendicittaid(localStorage.getItem("citta"))
+				   
+				   //$("#fuso").html(nazione);
+				   
+				   //$("#fuso").selectmenu("refresh");
+				   
+				   
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -226,25 +337,41 @@ function onDeviceReady() {
 			
 			//prendifuso()
 			
+			//localStorage.setItem("fuso", "Italy");
+			//localStorage.setItem("citta", "154");
+			prendicittaid(localStorage.getItem("citta"))
+			
+			if (localStorage.getItem("city") === null || localStorage.getItem("city")=="null" || typeof(localStorage.getItem("city")) == 'undefined' || localStorage.getItem("city")==0 || localStorage.getItem("city")=="") {
+
+              $("#citta").html("<option value=''>scegli la nazione</option><option value='154'>Rome</option>");
+			}
+			else{
+			  $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
+			}
+
+            $("#citta").selectmenu("refresh");
+
+
+
 			var today = new Date();
 			var dd = today.getDate();
 			var mm = today.getMonth()+1;//January is 0, so always add + 1
-			
+
 			var ora = today.getHours()
 			if(ora<10){ora="0"+ora}
-			
+
 			var minuti = today.getMinutes();
 			if(minuti<10){minuti="0"+minuti}
-			
+
 			var secondi = today.getSeconds();
 			if(secondi<10){secondi="0"+secondi}
-			
-			
+
+
 			var yyyy = today.getFullYear();
 			if(dd<10){dd="0"+dd}
 			if(mm<10){mm="0"+mm}
 			today = dd+'/'+mm+'/'+yyyy;
-			
+
 			$("#stamp").html(yyyy+"-"+mm+"-"+dd+" "+ora+":"+minuti+":00");
 			var ora_cell = yyyy+"-"+mm+"-"+dd+" "+ora+":"+minuti+":00";
 			
@@ -272,7 +399,7 @@ function onDeviceReady() {
 
 
 function prendimezzi(){
-	var mezzi = ""
+	var mezzi = "<option value='Car' selected>Car</option>"
 	
 	$(".spinner").show();
 	$.ajax({
@@ -289,20 +416,21 @@ function prendimezzi(){
 				  //alert(item.Token);
 				  
 				  if (item.Token == 1){
-				     if(localStorage.getItem("veicolo")==item.id_veicolo){
-				       mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
+				     if(localStorage.getItem("veicolo")==item.veicolo){
+				       mezzi = "";
+				       mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
 					 }
 				     else{
                         if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
-                           if(item.id_veicolo==6){
-                               mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
+                           if(item.veicolo=="Car"){
+                               mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
                            }
                            else{
-                              mezzi = mezzi + "<option value='"+item.id_veicolo+"'>"+ item.veicolo +"</option>"
+                              mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
                            }
                         }
                         else{
-                            mezzi = mezzi + "<option value='"+item.id_veicolo+"'>"+ item.veicolo +"</option>"
+                            mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
                         }
                      }
 				         /*if(item.id_veicolo==6){
@@ -364,7 +492,14 @@ function prendinazione(){
      
      if (item.Token == 1){
        if(localStorage.getItem("fuso")==item.country){
-         nazione = nazione + "<option value='"+item.country+"' selected>"+ item.country +"</option>"
+			nazione = nazione + "<option value='"+item.country+"' selected>"+ item.country +"</option>"
+				  
+				  /*if(localStorage.getItem("citta")==item.id){
+				    $("#citta").html("<option value="+ localStorage.getItem("citta") +">"+ localStorage.getItem("citta") +"</option>");
+				  
+				    $("#citta").selectmenu("refresh");
+				  }*/
+				  
        }
        else{
           if (localStorage.getItem("fuso") === null || localStorage.getItem("fuso")=="null" || typeof(localStorage.getItem("fuso")) == 'undefined' || localStorage.getItem("fuso")==0 || localStorage.getItem("fuso")=="") {
@@ -378,6 +513,7 @@ function prendinazione(){
            }
            else{
                nazione = nazione + "<option value='"+item.country+"'>"+ item.country +"</option>"
+
             }
        }
      }
@@ -396,9 +532,8 @@ function prendinazione(){
      $("#fuso").html(nazione);
      
      $("#fuso").selectmenu("refresh");
-            
-    prendicitta(localStorage.getItem("citta"))
-            
+			
+	 
     //document.getElementById("citta").value = localStorage.getItem("citta");
 		   
     },
@@ -416,61 +551,6 @@ function prendinazione(){
 		   dataType:"jsonp"});
 }
 
-
-function prendicitta(id){
-    
-    var citta = "";
-    
-    
-    $(".spinner").show();
-    $.ajax({
-           type:"GET",
-           url:"http://purplemiles.com/www2/check_prendicitta.php?nazione=Italy",
-           contentType: "application/json",
-           timeout: 7000,
-           jsonp: 'callback',
-           crossDomain: true,
-           success:function(result){
-           
-           $.each(result, function(i,item){
-                  
-                  
-                  if (item.Token == 1){
-                  
-                  citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
-                  
-                  }
-                  else{
-                  navigator.notification.alert(
-                                               'Errore di rete',  // message
-                                               alertDismissed,         // callback
-                                               'Attenzione',            // title
-                                               'Done'                  // buttonName@
-                                               );
-                  }
-                  });
-           
-           $(".spinner").hide();
-           
-           $("#citta").html(citta);
-           
-           $("#citta").selectmenu("refresh");
-           
-           },
-           error: function(){
-           $(".spinner").hide();
-           
-           navigator.notification.alert(
-                                        'Possibile errore di rete, riprova tra qualche minuto',  // message
-                                        alertDismissed,         // callback
-                                        'Attenzione',            // title
-                                        'Done'                  // buttonName
-                                        );
-           
-           },
-           dataType:"jsonp"});
-    
-}
 
 
 
