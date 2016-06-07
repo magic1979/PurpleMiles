@@ -4,13 +4,28 @@ function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	//$("body").bind('touchmove', function(e){e.preventDefault()})
 	
+	var IDPage;
+	
+	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
+		localStorage.setItem("veicolo", "Car")
+	}
+
+	
+	if (localStorage.getItem("lingua") === null || localStorage.getItem("lingua")=="null" || typeof(localStorage.getItem("lingua")) == 'undefined' || localStorage.getItem("lingua")==0 || localStorage.getItem("lingua")=="") {
+		localStorage.setItem("lingua", "en")
+	}
+
+	
+	
 	if(localStorage.getItem("lingua")=="it"){
 	  document.getElementById("lingua").value = "it"
 	}
 	else if(localStorage.getItem("lingua")=="en"){
 		document.getElementById("lingua").value = "en"
 	}
-    
+	
+    IDPage = getParameterByName('id');
+
 	
     $('#fuso').on('change', function(){
         var $this = $(this),
@@ -84,7 +99,7 @@ function onDeviceReady() {
 				  
 				  document.getElementById("citta").value = $value;
 				   
-				  $("#precitta").html("<font color='#cc33cc'>" + $value+"</font>");
+				  $("#precitta").html("Fuso Orario: <b><font color='#cc33cc'>" + $value+"</font></b>");
 				   
 			      prendicittaid($value)
 				  
@@ -109,7 +124,7 @@ function onDeviceReady() {
 					  
 					  if (item.Token == 1){
 
-					    $("#precitta").html("<font color='#cc33cc'>" +item.city+"</font>");
+					    $("#precitta").html("Fuso Orario: <b><font color='#cc33cc'>" +item.city+"</font></b>");
 					    localStorage.setItem("city", item.city);
 					  
 					  }
@@ -191,8 +206,15 @@ function onDeviceReady() {
 		
 		localStorage.setItem("veicolo", document.getElementById("veicolo").value);
 				   
+		
+		if(IDPage==2){
+		  window.location.href = "mappass.html";
+		}
+		else{
 				   
-		window.location.href = "#page";
+		  window.location.href = "#page";
+				   
+		}
 				   
 		e.stopImmediatePropagation();
 				   
@@ -240,22 +262,29 @@ function onDeviceReady() {
     });
 	
 	$(document).on("tap", "#home", function(e){
-			window.location.href = "#page";
 				   
-				setTimeout (function(){
-					myScroll.refresh();
-				}, 1000);
+			if(IDPage==2){
+			  window.location.href = "mappass.html";
+			}
+			else{
+			  window.location.href = "#page";
+				   
+			  setTimeout (function(){
+				myScroll.refresh();
+			  }, 1000);
+				   
+			}
 
-				   e.stopImmediatePropagation();
+			e.stopImmediatePropagation();
 				   
-				   e.preventDefault();
+			e.preventDefault();
 				   
-				   return false;
+			return false;
 				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+			if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
-	
+
 	
 	$(document).on("touchend", "#accedi", function(e){
 		//window.location.href = "index.html";
@@ -272,8 +301,9 @@ function onDeviceReady() {
 				   });
 	
 	$(document).on("tap", "#recuperopsw", function(e){
+   
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/rec_pw.php?lang=it', '_system', 'location=no');
+		  var ref = window.open('http://www.purplemiles.com/www/rec_pw.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
 
 	   	  e.stopImmediatePropagation();
 				   
@@ -287,13 +317,13 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#legenda", function(e){
 				   
-		var ref = window.open('http://www.purplemiles.com/www/legenda.php?lang=en', '_system', 'location=no');
+		var ref = window.open('http://www.purplemiles.com/www/legenda.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
 				   
 	});
 	
 	$(document).on("tap", "#regsito", function(e){
 				   
-		var ref = window.open('http://www.purplemiles.com/www/enter.php?lang=it', '_system', 'location=no');
+		var ref = window.open('http://www.purplemiles.com/www/enter.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
 
 		e.stopImmediatePropagation();
 				   
@@ -309,6 +339,13 @@ function onDeviceReady() {
 		getKey(eventObj);
 	});
 	
+	
+	if(IDPage==2){
+
+		
+		$("#impostazioni").tap();
+		
+	}
 	
 
 		document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
@@ -383,6 +420,7 @@ function onDeviceReady() {
 			document.getElementById("email").value = localStorage.getItem("email2")
 			
 			$(".spinner").hide();
+
 			
 		}
 		else{
@@ -394,6 +432,9 @@ function onDeviceReady() {
 					'OK'                  // buttonName
                  );
 		}
+	
+
+	
     }
 
 
@@ -714,7 +755,7 @@ function LoginVera(email,pin){
 				}
 				else{
 				navigator.notification.alert(
-											   'Email e/o password non corretti',  // message
+											   'Credenziali non corretti',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',            // title
 											   'Done'                  // buttonName@
@@ -1156,3 +1197,11 @@ function sha1(str) {
 	temp = cvt_hex(H0) + cvt_hex(H1) + cvt_hex(H2) + cvt_hex(H3) + cvt_hex(H4);
 	return temp.toLowerCase();
 }
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+						  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+						  results = regex.exec(location.search);
+						  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+						  }
+

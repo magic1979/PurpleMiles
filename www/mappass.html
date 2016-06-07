@@ -53,6 +53,8 @@
 
 					  .divchat {
 						  background: transparent !important;
+
+						  
 					  }
 					  
 					  .div1 {
@@ -81,8 +83,7 @@
                       }
 					  
 					  .div59 {
-						  background-color: #fff;
-						  position: fixed;
+
 						  z-index: 19;
 						  bottom: 0;
 						  left: 0;
@@ -94,12 +95,15 @@
 						  text-align: center;
 						  font-weight: bold;
 						  
-						  opacity: 0.2;
+						  opacity: 0.6;
 						  filter: alpha(opacity=20);
 						  
 					  }
 					  
 					  .div599 {
+						  background-image: url("img/sfondo.png");
+						  background-color: #fff;
+						  
 						  position: fixed;
 						  z-index: 20;
 						  bottom: 0;
@@ -632,6 +636,23 @@
 						  font-weight: bold;
 						  
 					  }
+					  
+					  .transbox4A {
+						  background-image: url("img/sfondo.png");
+						  background-color: #fff;
+						  
+						  position: absolute;
+						  z-index: 2;
+						  top:0px;
+						  width:100%;
+						  
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+					  }
 						
 						.custom-btn3 {
 							background-color: #cc33cc;
@@ -737,6 +758,19 @@
 							-webkit-border-radius: 10px; /* safari, chrome */
 							
 						}
+					  
+					  .tabellaA {
+						  background: transparent !important;
+						  
+						  border: 1px solid #000;
+						  border-color: #cc33cc;
+						  
+						  border-radius: 10px;
+						  -moz-border-radius: 10px; /* firefox */
+						  -webkit-border-radius: 10px; /* safari, chrome */
+						  
+					  }
+					  
 						.tabella1 {
 							background-color:#cc33cc;
 							border: 1px solid #000;
@@ -819,7 +853,7 @@
 				<a href="#"><img src="img/ico_quando1.png" width="40px"></a>
 			</td>
 			<td width="50%" align="center" valign="center" colspan="2">
-				<font size="3" color="#cc33cc"><b>Quando vuoi partire?</b></font><br>
+				<font size="4" color="#cc33cc"><b>Quando vuoi partire?</b></font><br>
 			</td>
 			<td width="25%" align="center" valign="center">
 				<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="35px"></a>
@@ -856,7 +890,7 @@
 		
 		<tr>
 			<td width="100%" align="center" colspan="4">
-				<div id="fuso2"></div>
+				<div id="fuso3"></div>
 				
 				<!--<select id="fuso1" name="fuso1" data-theme="c" >
 				</select>-->
@@ -865,10 +899,11 @@
 		</tr>
 		<tr>
 			<td width="100%" align="center" colspan="4">
-				<div id="citta2"></div>
+				<!--<div id="citta2"></div>
 				
-				<!--<select id="citta1" name="citta1" data-theme="c" >
+				<select id="citta1" name="citta1" data-theme="c" >
 				</select>-->
+				<a id="cambiafuso" href="#"><font color="#cc33cc">Cambia Fuso</font></a>
 			</td>
 		</tr>
 
@@ -877,7 +912,7 @@
 				<font size="4">Del giorno</font>
 			</td>
 			<td width="50%" align="center" colspan="2">
-				<input id="datacal" name="datacal" type="text" value="" placeholder="data" readonly>
+				<input id="datacal" name="datacal" type="text" value="" placeholder="Data" readonly>
 			</td>
 			<td width="25%" align="center">
 				<img id="imgcalendario" src="img/calendar.png" width="30">
@@ -1065,14 +1100,25 @@
 				<tr>
 					<td width="30%" align="left" valign="center" colspan="2">
 						<!--<table border="0" hight="10px"><tr><td></td></tr></table>-->
-						<img src="img/ico_plus1.png" width="40px">
+
+							<table border="0" width="100%">
+								<tr>
+									<td width="25%" align="left">
+										<img src="img/ico_plus1.png" width="40px">
+											</td>
+									<td width="75%" align="left" valign="center">
+										<font size="4" color="#cc33cc"><b>Richieste opzionali</b></font>
+									</td>
+								</tr>
+							</table>
+	
 					</td>
 				</tr>
 				
 				<tr>
 					<td width="100%" align="center" valign="center" colspan="2">
 						<!--<table border="0" hight="10px"><tr><td></td></tr></table>-->
-						<font size="3" color="#cc33cc"><b>Opzioni</b></font><br><br>
+						
 					</td>
 				</tr>
 				
@@ -1144,7 +1190,7 @@
 				</tr>
 				<tr>
 					<td width="50%" align="center" >
-						Piccolo animale a seguito
+						Piccolo animale al seguito
 					</td>
 					<td width="50%" align="center" >
 						<select id="animali" name="animali" data-role="flipswitch" data-theme="f">
@@ -1304,15 +1350,22 @@
 							<table width="95%" align="center" class="tabella" border="0">
 								<tr>
 									<td width="50px" align="left" valign="center" colspan="2">
-										<!--<table border="0" hight="10px"><tr><td></td></tr></table>-->
-										<img src="img/ico_anteprima1.png" width="40px">
+									      <table border="0" width="100%">
+											  <tr>
+												  <td width="25%" align="left">
+													  <img src="img/ico_anteprima1.png" width="40px">
+												  </td>
+												  <td width="75%" align="left" valign="center">
+													  <font size="4" color="#cc33cc"><b>Anteprima</b></font>
+												 </td>
+											  </tr>
+										  </table>
 									</td>
 								</tr>
 								
 								<tr>
 									<td width="100%" align="center" valign="center" colspan="2">
 										<!--<table border="0" hight="10px"><tr><td></td></tr></table>-->
-										<font size="3" color="#cc33cc"><b>Anteprima</b></font><br><br>
 									</td>
 								</tr>
 
@@ -1460,8 +1513,11 @@
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			<table border="0" valign="center" align="center" class="transbox">
 				<tr>
-					<td align="center">
-						<a data-role="button" id="indietro4" href="#" data-theme="b" class="custom-pass11">Indietro</a>
+					<td align="center" width="75%" align="center">
+						<font size="4" color="#cc33cc"><b>Offerte ricevute</b></font>
+					</td>
+					<td align="center" width="25%" align="center">
+						<a id="indietro4" href="#" ><img src="img/xx.png" width="30"></a>
 					</td>
 				</tr>
 			</table>
@@ -1492,7 +1548,12 @@
 			<audio id="successChat1" src="/sound/send_chat.mp3" type="audio/mpeg" ></audio>
 			<audio id="successChat2" src="/sound/new_chat.mp3" type="audio/mpeg" ></audio>
 			
-			<table border="0" width="100%" align="center" class="transbox4">
+			<table border="0" width="100%" align="center" class="transbox4A">
+				<tr>
+				<td colspan="3">
+					<table id="spazioipad" height="15px"><tr><td></td></tr></table>
+				</td>
+				</tr>
 				<tr>
 					<td align="center" width="25%">
 						<div id="4img"><img src="img/chat.png" width="40"></div>
@@ -1509,19 +1570,19 @@
 			<div class="spinner" id="spinner6"></div>
 			
 			<form name="formia6" action="entra.asp" method="post">
-				<table id="spazioipad" height="30px" class="divchat"><tr><td></td></tr></table>
+				<table id="spazioipad" height="60px" class="divchat"><tr><td></td></tr></table>
 				<br><br>
-				<table id="tblchat" width="90%" align="center">
+				<table id="tblchat" width="90%" align="center" class="tabellaA">
 					<tr>
 						<td width="100%" align="center" >
 							<textarea id="chattext" cols="30" rows="4" class="scrivo" placeholder="Chat"></textarea>
 						</td>
 					</tr>
-					<tr>
+					<!--<tr>
 						<td width="100%" align="center" >
-							<a id="back6" href="#" data-role="button" data-theme="b" class="custom-btn3">Invia</a>
+							
 						</td>
-					</tr>
+					</tr>-->
 					
 					
 					<tr>
@@ -1533,6 +1594,22 @@
 				</table>
 				
 			</form>
+			
+			<table id="zoccolo" width="100%" border="0" align="center" valign="center" class="div59" >
+				<tr>
+					<td algn="center" width="100%" align="center" valign="center">
+						
+					</td>
+				</tr>
+			</table>
+			
+			<table width="100%" border="0" align="center" valign="center" class="div599" >
+				<tr>
+					<td width="100%" align="center" valign="center">
+						<a id="back6" href="#" data-role="button" data-theme="b" class="custom-btn3">Invia chat</a>
+					</td>
+				</tr>
+			</table>
 			
 			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
 			 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>

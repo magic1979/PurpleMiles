@@ -158,12 +158,13 @@ receivedEvent: function(id) {
 	
 	localStorage.setItem("palla1", "0")
 	localStorage.setItem("palla2", "0")
+	localStorage.setItem("palla3", "0")
 	
 	if(IDPage!=1){
 	  localStorage.setItem("exit", "0")
 	}
 	
-	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere Autista</p><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere Passeggero</p><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere AUTISTA</p><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere PASSEGGERO</p><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
@@ -202,6 +203,18 @@ receivedEvent: function(id) {
 	}
 	
 	
+	$(document).on("tap", "#stelleautista", function(e){
+				   
+		var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   
+		e.stopImmediatePropagation();
+				   
+		e.preventDefault();
+				   
+		return false;
+				   
+	});
+	
 	
 	if(parseInt(localStorage.getItem("stellepass"))==0){
 		$("#stellepass").html("<img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
@@ -222,6 +235,18 @@ receivedEvent: function(id) {
 		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'>")
 	}
 	
+	
+	$(document).on("tap", "#stellepass", function(e){
+				   
+		var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   
+		e.stopImmediatePropagation();
+				   
+		e.preventDefault();
+				   
+		return false;
+				   
+	});
 	
 	
 	isTabHolded=false;
@@ -367,7 +392,9 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#profiloperc", function(e){
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/profile.php?id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
+		  //alert(localStorage.getItem("lingua"))
+				   
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -381,7 +408,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#profiloperc2", function(e){
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/profile.php?id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -417,6 +444,7 @@ receivedEvent: function(id) {
 				   
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
+	
 	$(document).on("touchstart", "#pass2", function(e){
 				   richiesta2()
 				   
@@ -668,6 +696,22 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 				   });
+	
+	
+	$(document).on("tap", "#ChiudiXXblob", function(e){
+				   
+				   $("#blob").hide();
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
 	
 	$(document).on("tap", "#ChiudiXX", function(e){
 				   
@@ -979,7 +1023,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><table width="100%" border="0"><tr><td align="right" colspan="2"><a id="XXX" href="#" rel="external"><img src="img/xx.png" width="35px"></a></td></tr><tr><td align="center" width="25%"><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a></td><td align="left" width="75%"><a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table>';
+	controlText.innerHTML = '<table width="100%" border="0"><td align="right" valign="top"><br><a id="XXX" href="#" rel="external"><img src="img/xx.png" width="35px"></a>&nbsp;&nbsp;&nbsp;</td></tr><tr><td align="center" width="100%"><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -1345,6 +1389,7 @@ function centragps(){
 //--------------------------------------------
 
 function getKey(key){
+ if(localStorage.getItem("tastiera")=="1"){
 	if ( key == null ) {
 		keycode = event.keyCode;
 		
@@ -1354,12 +1399,13 @@ function getKey(key){
 	
 	if (keycode ==13){
  
-     setTimeout(function() {
-		inviopasseggero(3);
-	 }, 200);
-	
+		if(localStorage.getItem("tastiera")=="1"){
+          setTimeout(function() {
+		    inviopasseggero(3);
+	      }, 200);
+		}
 	}
-	
+ }
 }
 
 function cambiap() {
@@ -1471,7 +1517,7 @@ function prendivia() {
 	
 	if (document.getElementById("modificastart").value == "") {
 		navigator.notification.alert(
-			'inserire Indirizzo Valido o usare il GPS',  // message
+			'inserire un indirizzo valido o utilizzare la posizione GPS',  // message
 			 alertDismissed,         // callback
 			 'Indirizzo',            // title
 			 'OK'                  // buttonName
@@ -1727,7 +1773,7 @@ function resetta1(focus) {
 										  icon: icon,
 										  optimized: false,
 										  position : myLatLng,
-										  content:'<div class="popup">Tua Posizione</div>',
+										  content:'<div class="popup">'+document.getElementById("modificastart").value+'</div>',
 										  title: '1',
 										  //label: ''+ beach[1] +','+ beach[2] +'',
 										  zIndex: 100
@@ -2471,17 +2517,18 @@ function posizionegps(){
 function timer(){
 	
 	refreshIntervalId = setInterval(function() {
-                                    
-    
-
 									
-		//var watchID = navigator.geolocation.getCurrentPosition(onSuccess22, onError3, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 									
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 									
 	if(connectionStatus=='online'){
-									controllachat(2);
+									
+									setTimeout(function() {
+										controllachat(2);
+									}, 3000);
+									
+									
 									var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
 									var lat = localStorage.getItem("lat");
 									var lng = localStorage.getItem("lng");
@@ -2498,7 +2545,7 @@ function timer(){
 
 									$("#esci").hide();
 									
-									beaches1.push(['Tua Posizione',lat,lng,1,0,0,0])
+									beaches1.push([document.getElementById("modificastart").value,lat,lng,1,0,0,0])
 									
 									var centromap = new google.maps.LatLng(lat, lng, posizione);
 									
@@ -2600,7 +2647,6 @@ function timer(){
 												     palla1()
 												     playAudio('successArrivo');
 												     //SUONO RICEZIONE
-												  
 											       }
 												  
 												  
@@ -2646,7 +2692,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">GPS</a></div>',
+																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -2658,6 +2704,19 @@ function timer(){
 																				infowindow.open(map, this);
 																				
 																				});
+												  
+												  
+												  $(document).on("tap", "#rispmarker1", function(e){
+														richiesta1()
+																 
+													    e.stopImmediatePropagation();
+																 
+														e.preventDefault();
+																 
+														return false;
+																 
+														if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+												 });
 	
 												  
 												  
@@ -2778,6 +2837,12 @@ function timer(){
 												  percentuale2 = item.percentuale;
 												  rating2 = item.rating;
 												  
+												  if(localStorage.getItem("palla2")!=1){
+												  
+												    playAudio2('successArrivo');
+												  
+												  }
+												  
 												  /*$(document).on("tap", "#pass2", function(e){
 																 //window.location.href = "#index3";
 																 
@@ -2820,7 +2885,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">GPS</a></div>',
+																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a id="rispmarker2" href="#home3">GPS</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -2828,10 +2893,22 @@ function timer(){
 												  
 												  google.maps.event.addListener(marker3, 'click', function() {
 																				
-																				infowindow.setContent(this.content);
-																				infowindow.open(map, this);
+														infowindow.setContent(this.content);
+														infowindow.open(map, this);
 																				
-																				});
+													});
+												  
+												  $(document).on("tap", "#rispmarker2", function(e){
+													   richiesta2()
+																 
+													    e.stopImmediatePropagation();
+																 
+														e.preventDefault();
+																 
+														return false;
+																 
+														if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+													});
 												  
 												  $("#pass2").show();
 												  $("#pass3").hide();
@@ -2942,6 +3019,12 @@ function timer(){
 												  percentuale3 = item.percentuale;
 												  rating3 = item.rating;
 												  
+												  if(localStorage.getItem("palla3")!=1){
+												  
+												     playAudio3('successArrivo');
+												  
+												  }
+												  
 												  item3 = item.id_richiesta;
 												  
 												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,40));
@@ -2972,7 +3055,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a href="#home3">GPS</a></div>',
+																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a id="rispmarker3" href="#home3">GPS</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -2984,6 +3067,19 @@ function timer(){
 																				infowindow.open(map, this);
 																				
 																				});
+												  
+												  $(document).on("tap", "#rispmarker3", function(e){
+																 richiesta3()
+																 
+													    e.stopImmediatePropagation();
+																 
+														e.preventDefault();
+																 
+														return false;
+																 
+														if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+												});
+												  
 												  
 												  if(item.posticipata==1){
 												    $("#lista").show();
@@ -3104,6 +3200,36 @@ function timer(){
 									}
 									
 									
+									function playAudio2(id) {
+									var audioElement = document.getElementById(id);
+									var url = audioElement.getAttribute('src');
+									var my_media = new Media(url,
+															 // success callback
+															 function () { console.log("playAudio():Audio Success"); },
+															 // error callback
+															 function (err) { console.log("playAudio():Audio Error: " + err); }
+															 );
+									// Play audio
+									my_media.play();
+									localStorage.setItem("palla2", "1")
+									}
+									
+									
+									function playAudio3(id) {
+									var audioElement = document.getElementById(id);
+									var url = audioElement.getAttribute('src');
+									var my_media = new Media(url,
+															 // success callback
+															 function () { console.log("playAudio():Audio Success"); },
+															 // error callback
+															 function (err) { console.log("playAudio():Audio Error: " + err); }
+															 );
+									// Play audio
+									my_media.play();
+									localStorage.setItem("palla3", "1")
+									}
+									
+									
 									
 									
 									//setTimeout(function() {
@@ -3117,11 +3243,14 @@ function timer(){
 		{
 		 window.clearInterval(i);
 		}
-													
-		timer();									
+									
+		setTimeout(function() {
+		  timer();
+		}, 5000);
+									
 	}
 																		
-			}, 8000);
+	}, 8000);
 	
 	}
 		
@@ -4064,6 +4193,7 @@ function richiesta1() {
 	
 	$("#blob2").show();
 	
+	localStorage.setItem("tastiera","1")
 
 
 	$("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
@@ -4101,27 +4231,27 @@ function richiesta1() {
 				  
 	$("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo1 +"</font>");
 				  
-	$("#distanza").html("<b>distanza: </b><font color='#cc33cc'>"+ distanza1 +" Km</font>");
+	$("#distanza").html("<b>Distanza (linea d'aria): </b><font color='#cc33cc'>"+ distanza1 +" Km</font>");
 	
-	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri1 +"</font>");
+	$("#passeggeri").html("<b>N. passeggeri: </b><font color='#cc33cc'>"+ passeggeri1 +"</font>");
 	
-	$("#animali").html("<b>animali: </b><font color='#cc33cc'>"+ animali1 +"</font>");
+	$("#animali").html("<b>Animali a seguito: </b><font color='#cc33cc'>"+ animali1 +"</font>");
 	
-	$("#fumatori").html("<b>fumatori: </b><font color='#cc33cc'>"+ fumatori1 +"</font>");
+	$("#fumatori").html("<b>Fumatori: </b><font color='#cc33cc'>"+ fumatori1 +"</font>");
 	
-	$("#meno18").html("<b>meno18: </b><font color='#cc33cc'>"+ meno181 +"</font>");
+	$("#meno18").html("<b>Minori non accompagnati: </b><font color='#cc33cc'>"+ meno181 +"</font>");
 	
-	$("#disabili").html("<b>disabili: </b><font color='#cc33cc'>"+ disabili1 +"</font>");
+	$("#disabili").html("<b>Diversamenti abili: </b><font color='#cc33cc'>"+ disabili1 +"</font>");
 	
-	$("#bambini").html("<b>bambini: </b><font color='#cc33cc'>"+ bambini1 +"</font>");
+	$("#bambini").html("<b>Seggiolino per bambini: </b><font color='#cc33cc'>"+ bambini1 +"</font>");
 	
-	$("#wifi").html("<b>wifi: </b><font color='#cc33cc'>"+ wifi1 +"</font>");
+	$("#wifi").html("<b>WiFi: </b><font color='#cc33cc'>"+ wifi1 +"</font>");
 	
-	$("#portapacchi").html("<b>portapacchi: </b><font color='#cc33cc'>"+ portapacchi1 +"</font>");
+	$("#portapacchi").html("<b>Portapacchi: </b><font color='#cc33cc'>"+ portapacchi1 +"</font>");
 	
-	$("#rimorchio").html("<b>rimorchio: </b><font color='#cc33cc'>"+ rimorchio1 +"</font>");
+	$("#rimorchio").html("<b>Gancio rimorchio: </b><font color='#cc33cc'>"+ rimorchio1 +"</font>");
 	
-	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth1 +"</font>");
+	$("#bluetooth").html("<b>Bluetooth: </b><font color='#cc33cc'>"+ bluetooth1 +"</font>");
 	
 	$("#note").html("<b>Note: </b><font color='#cc33cc'>"+ note1 +"</font>");
 	
@@ -4335,6 +4465,7 @@ function richiesta2() {
 	
 	$("#blob2").show();
 	
+	localStorage.setItem("tastiera","1")
 				  
 	$("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a></font>");
 	$("#nickhome3").html("<font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font>");
@@ -4369,27 +4500,27 @@ function richiesta2() {
 				  
 	$("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo2 +"</font>");
 				  
-	$("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza2 +" Km</font>");
+	$("#distanza").html("<b>Distanza (linea d'aria) :</b><font color='#cc33cc'>"+ distanza2 +" Km</font>");
 	
-	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri2 +"</font>");
+	$("#passeggeri").html("<b>N. passeggeri: </b><font color='#cc33cc'>"+ passeggeri2 +"</font>");
 	
-	$("#animali").html("<b>animali: </b><font color='#cc33cc'>"+ animali2 +"</font>");
+	$("#animali").html("<b>Animali a seguito: </b><font color='#cc33cc'>"+ animali2 +"</font>");
 	
-	$("#fumatori").html("<b>fumatori: </b><font color='#cc33cc'>"+ fumatori2 +"</font>");
+	$("#fumatori").html("<b>Fumatori: </b><font color='#cc33cc'>"+ fumatori2 +"</font>");
 	
-	$("#meno18").html("<b>meno18: </b><font color='#cc33cc'>"+ meno182 +"</font>");
+	$("#meno18").html("<b>Minori non accompagnati: </b><font color='#cc33cc'>"+ meno182 +"</font>");
 	
-	$("#disabili").html("<b>disabili: </b><font color='#cc33cc'>"+ disabili2 +"</font>");
+	$("#disabili").html("<b>Diversamenti abili: </b><font color='#cc33cc'>"+ disabili2 +"</font>");
 	
-	$("#bambini").html("<b>bambini: </b><font color='#cc33cc'>"+ bambini2 +"</font>");
+	$("#bambini").html("<b>Seggiolino per bambini: </b><font color='#cc33cc'>"+ bambini2 +"</font>");
 	
-	$("#wifi").html("<b>wifi: </b><font color='#cc33cc'>"+ wifi2 +"</font>");
+	$("#wifi").html("<b>WiFi: </b><font color='#cc33cc'>"+ wifi2 +"</font>");
 	
-	$("#portapacchi").html("<b>portapacchi: </b><font color='#cc33cc'>"+ portapacchi2 +"</font>");
+	$("#portapacchi").html("<b>Portapacchi: </b><font color='#cc33cc'>"+ portapacchi2 +"</font>");
 	
-	$("#rimorchio").html("<b>rimorchio: </b><font color='#cc33cc'>"+ rimorchio2 +"</font>");
+	$("#rimorchio").html("<b>Gancio rimorchio: </b><font color='#cc33cc'>"+ rimorchio2 +"</font>");
 	
-	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth2 +"</font>");
+	$("#bluetooth").html("<b>Bluetooth: </b><font color='#cc33cc'>"+ bluetooth2 +"</font>");
 	
 	$("#note").html("<b>Note: </b><font color='#cc33cc'>"+ note2 +"</font>");
 	
@@ -4587,6 +4718,8 @@ function richiesta3() {
 	
 	$("#blob2").show();
 	
+	localStorage.setItem("tastiera","1")
+	
 
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a></font>");
 				  $("#nickhome3").html("<font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font>");
@@ -4624,27 +4757,27 @@ function richiesta3() {
 	$("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo3 +"</font>");
 				  
 	
-	$("#distanza").html("<b>Distanza: </b><font color='#cc33cc'>"+ distanza3 +" Km</font>");
+	$("#distanza").html("<b>Distanza (linea d'aria): </b><font color='#cc33cc'>"+ distanza3 +" Km</font>");
 	
-	$("#passeggeri").html("<b>passeggeri: </b><font color='#cc33cc'>"+ passeggeri3 +"</font>");
+	$("#passeggeri").html("<b>N. passeggeri: </b><font color='#cc33cc'>"+ passeggeri3 +"</font>");
 	
-	$("#animali").html("<b>animali: </b><font color='#cc33cc'>"+ animali3 +"</font>");
+	$("#animali").html("<b>Animali a seguito: </b><font color='#cc33cc'>"+ animali3 +"</font>");
 	
-	$("#fumatori").html("<b>fumatori: </b><font color='#cc33cc'>"+ fumatori3 +"</font>");
+	$("#fumatori").html("<b>Fumatori: </b><font color='#cc33cc'>"+ fumatori3 +"</font>");
 	
-	$("#meno18").html("<b>meno18: </b><font color='#cc33cc'>"+ meno183 +"</font>");
+	$("#meno18").html("<b>Minori non accompagnati: </b><font color='#cc33cc'>"+ meno183 +"</font>");
 	
-	$("#disabili").html("<b>disabili: </b><font color='#cc33cc'>"+ disabili3 +"</font>");
+	$("#disabili").html("<b>Diversamenti abili: </b><font color='#cc33cc'>"+ disabili3 +"</font>");
 	
-	$("#bambini").html("<b>bambini: </b><font color='#cc33cc'>"+ bambini3 +"</font>");
+	$("#bambini").html("<b>Seggiolino per bambini: </b><font color='#cc33cc'>"+ bambini3 +"</font>");
 	
-	$("#wifi").html("<b>wifi: </b><font color='#cc33cc'>"+ wifi3 +"</font>");
+	$("#wifi").html("<b>WiFi: </b><font color='#cc33cc'>"+ wifi3 +"</font>");
 	
-	$("#portapacchi").html("<b>portapacchi: </b><font color='#cc33cc'>"+ portapacchi3 +"</font>");
+	$("#portapacchi").html("<b>Portapacchi: </b><font color='#cc33cc'>"+ portapacchi3 +"</font>");
 	
-	$("#rimorchio").html("<b>rimorchio: </b><font color='#cc33cc'>"+ rimorchio3 +"</font>");
+	$("#rimorchio").html("<b>Gancio rimorchio: </b><font color='#cc33cc'>"+ rimorchio3 +"</font>");
 	
-	$("#bluetooth").html("<b>bluetooth: </b><font color='#cc33cc'>"+ bluetooth3 +"</font>");
+	$("#bluetooth").html("<b>Bluetooth: </b><font color='#cc33cc'>"+ bluetooth3 +"</font>");
 	
 	$("#note").html("<b>Note: </b><font color='#cc33cc'>"+ note3 +"</font>");
 	
@@ -4855,7 +4988,7 @@ function lista5() {
 function chatting(pass,id) {
 	
 	//$("#spinner6").show();
-	
+	localStorage.setItem("tastiera","0")
 	
 	for(i=0; i<10000; i++)
 	{
@@ -4906,7 +5039,7 @@ function chatting(pass,id) {
 				        $("#offerta6").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
 				    }
 				  
-				   playChat2('successChat2');
+				   //playChat2('successChat2');
 				  
 				}
 				  
@@ -5256,6 +5389,7 @@ function inviopasseggero(come){
 				  
 				  if(item.Token==1){
 				  $("#spinner3").hide();
+				  localStorage.setItem("tastiera","0")
 				  
 
 				  //for(i=0; i<10000; i++)

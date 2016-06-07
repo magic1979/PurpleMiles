@@ -46,7 +46,7 @@
 					  
 					  .timerviola {
 							background-color: #FF0000;
-							height:30px;
+							height:60px;
 						}
 
                       .div3 {
@@ -195,6 +195,23 @@
 						  top:20px;
 						  width:95%;
 
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+					  }
+					  
+					  .transbox4A {
+						  background-image: url("img/sfondo.png");
+						  background-color: #fff;
+						  
+						  position: absolute;
+						  z-index: 2;
+						  top:0px;
+						  width:100%;
+						  
 						  padding: 0;
 						  color: #000;
 						  
@@ -575,6 +592,28 @@
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
 					  
+					  .custom-pass2A {
+						  background-color: #00A86B;
+						  width: 50px;
+						  height: 30px;
+						  font-size: 18px;
+						  
+						  color: #000;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 5 5 5;
+						  
+						  border: 2px solid #fff;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+					  
 					  .custom-pass3 {
 						  background-color: #DC143C;
 						  width: 50px;
@@ -755,6 +794,19 @@
 							-webkit-border-radius: 10px; /* safari, chrome */
 							
 						}
+					  
+					  .tabellaA {
+						  background: transparent !important;
+						  
+						  border: 1px solid #000;
+						  border-color: #cc33cc;
+						  
+						  border-radius: 10px;
+						  -moz-border-radius: 10px; /* firefox */
+						  -webkit-border-radius: 10px; /* safari, chrome */
+						  
+					  }
+					  
 						.tabella1 {
 							background-color:#cc33cc;
 							border: 1px solid #000;
@@ -819,6 +871,9 @@
 					  }
 					  
 					  .div599 {
+						  background-image: url("img/sfondo.png");
+						  background-color: #fff;
+						  
 						  position: fixed;
 						  z-index: 20;
 						  bottom: 0;
@@ -842,7 +897,7 @@
     <body>
 
         <div id="geolocation"></div>
-		<audio id="successSound" src="/android_asset/www/sound/horn.mp3" type="audio/mpeg" ></audio>
+		<audio id="successSound" src="/sound/horn.mp3" type="audio/mpeg" ></audio>
 		<!--<audio id="successArrivo" src="/sound/bell.mp3" type="audio/mpeg" ></audio>-->
         
         <div data-role=page id=home class="div2">
@@ -876,7 +931,7 @@
 			 <table id="blobstart" width="100%" border="0" align="center" valign="center" class="div56" style="display:none">
 				 <tr>
 					 <td width="100%" align="right">
-						 <a id="ChiudiXX2" href="#" rel="external"><img src="img/ico_close2.png" width="35px"></a>
+						 <a id="ChiudiXX2" href="#" rel="external"><img src="img/ico_close_white.png" width="35px"></a>
 					</td>
 				 </tr>
 				 <tr>
@@ -905,11 +960,16 @@
         </div>
         
         <div data-role=page id="win2" data-add-back-btn=true class="div2">
-            <audio id="successChat" src="/android_asset/www/sound/new_chat.mp3" type="audio/mpeg" ></audio>
-			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
+            <audio id="successChat" src="/sound/new_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successArrivo" src="/sound/bell.mp3" type="audio/mpeg" ></audio>
 			<div data-role="content"></div>
 			
 			<table id="blob" width="100%" border="0" align="center" valign="center" class="div56" style="display:none">
+				<tr>
+					<td width="100%" align="right">
+						<a id="ChiudiXXblob" href="#" rel="external"><img src="img/ico_close_white.png" width="35px"></a>
+					</td>
+				</tr>
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px" height="100%">
@@ -930,12 +990,12 @@
 						<table align="center" width="100px" height="100%">
 							<tr class="timerviola">
 								<td width="100px" align="center" valign="center">
-									<font color="#fff" size="5"><b><div id="timer3"></div></b></font>
+									<font color="#fff" size="7"><b><div id="timer3"></div></b></font>
 								</td>
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<div class="custom-pass2"><font color="#fff">&nbsp;3&nbsp;</font></div>
+									<div class="custom-pass2A"><font color="#fff">&nbsp;3&nbsp;</font></div>
 								</td>
 							</tr>
 
@@ -971,12 +1031,12 @@
 						<table align="center" width="100px" height="100%">
 							<tr class="timerviola">
 								<td width="100px" align="center" valign="center">
-									<font color="#fff" size="5"><b><div id="timer2"></div></b></font>
+									<font color="#fff" size="7"><b><div id="timer2"></div></b></font>
 								</td>
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<div class="custom-pass2"><font color="#fff">&nbsp;2&nbsp;</font></div>
+									<div class="custom-pass2A"><font color="#fff">&nbsp;2&nbsp;</font></div>
 								</td>
 							</tr>
 
@@ -1012,12 +1072,12 @@
 						<table align="center" width="100px" height="100%">
 							<tr class="timerviola">
 								<td width="100px" align="center" valign="center">
-									<font color="#fff" size="5"><b><div id="timer1"></div></b></font>
+									<font color="#fff" size="7"><b><div id="timer1"></div></b></font>
 								</td>
 							</tr>
 							<tr>
 								<td width="100px" align="center" valign="center">
-									<div class="custom-pass2"><font color="#fff">&nbsp;1&nbsp;</font></div>
+									<div class="custom-pass2A"><font color="#fff">&nbsp;1&nbsp;</font></div>
 								</td>
 							</tr>
 							<tr>
@@ -1049,7 +1109,7 @@
 				<tr id="modificastart2" style="display:none">
 					<td width="100%" align="center">
 						<table align="center" width="220px" ><tr><td width="100px" align="center">
-							<input id="modificastart" name="modificastart" type="text" value="" class="scrivo" placeholder="scrivi posizione" style="display:none">
+							<input id="modificastart" name="modificastart" type="text" value="" class="scrivo" placeholder="indirizzo dell'Autista" style="display:none">
 						</td></tr></table>
 					</td>
 				</tr>
@@ -1141,7 +1201,7 @@
 			<table width="90%" align="center" class="tabella">
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<br><b>RISPONDI</b><br>
+						<br><b>Rispondi</b><br>
 					</td>
 				</tr>
 				
@@ -1176,7 +1236,7 @@
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn33">Invia</a>
+						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn33">Invia offerta</a>
 					</td>
 				</tr>
 			</table>
@@ -1330,8 +1390,8 @@
 					</td>
 
 					<td width="50%" align="center" valign="center">
-						<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
-						<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Cancella</font></a>
+						<a id="close1" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Elimina</font></a>
+						<a id="close2" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Elimina</font></a><a id="close3" data-role="button" data-theme="b" class="custom-btn4" style="display:none"><font color="#fff">Elimina</font></a>
 					</td>
 				</tr>
 			</table>
@@ -1394,10 +1454,10 @@
 		</div>
 		
 		<div data-role=page id=home6 class="divchat">
-			<audio id="successChat1" src="/android_asset/www/sound/send_chat.mp3" type="audio/mpeg" ></audio>
-			<audio id="successChat2" src="/android_asset/www/sound/new_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successChat1" src="/sound/send_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successChat2" src="/sound/new_chat.mp3" type="audio/mpeg" ></audio>
 			
-			<table border="0" width="100%" align="center" class="transbox4">
+			<table border="0" width="100%" align="center" class="transbox4A">
 				<tr>
 					<td align="center" width="25%">
 						<div id="4img"><img src="img/chat.png" width="40"></div>
@@ -1416,17 +1476,17 @@
 			<form name="formia6" action="entra.asp" method="post">
 				<table id="spazioipad" height="30px" class="divchat"><tr><td></td></tr></table>
 				<br><br>
-				<table id="tblchat" width="90%" align="center" style="display:none">
+				<table id="tblchat" width="90%" align="center" style="display:none" class="tabellaA">
 				<tr>
 					<td width="100%" align="center" >
 						<textarea id="chattext" cols="30" rows="4" class="scrivo" placeholder="Chat"></textarea>
 					</td>
 				</tr>
-				<tr>
+				<!--<tr>
 					<td width="100%" align="center" >
-						<a id="back6" href="#" data-role="button" data-theme="b" class="custom-btn3">Invia</a>
+						
 					</td>
-				</tr>
+				</tr>-->
 				
 				
 				<tr>
@@ -1435,6 +1495,22 @@
 					</td>
 				</tr>
 				
+				</table>
+				
+				<table id="zoccolo" width="100%" border="0" align="center" valign="center" class="div59" >
+					<tr>
+						<td algn="center" width="100%" align="center" valign="center">
+							
+						</td>
+					</tr>
+				</table>
+				
+				<table width="100%" border="0" align="center" valign="center" class="div599" >
+					<tr>
+						<td width="100%" align="center" valign="center">
+							<a id="back6" href="#" data-role="button" data-theme="b" class="custom-btn3">Invia</a>
+						</td>
+					</tr>
 				</table>
 
 			</form>
