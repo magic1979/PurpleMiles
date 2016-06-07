@@ -12,7 +12,7 @@ function onDeviceReady() {
 
 	
 	if (localStorage.getItem("lingua") === null || localStorage.getItem("lingua")=="null" || typeof(localStorage.getItem("lingua")) == 'undefined' || localStorage.getItem("lingua")==0 || localStorage.getItem("lingua")=="") {
-		localStorage.setItem("lingua", "en")
+		localStorage.setItem("lingua", "it")
 	}
 
 	
