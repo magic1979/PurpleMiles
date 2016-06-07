@@ -440,7 +440,7 @@ function onDeviceReady() {
 
 
 function prendimezzi(){
-	var mezzi = "<option value='Car' selected>Car</option>"
+	var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
 	
 	$(".spinner").show();
 	$.ajax({
