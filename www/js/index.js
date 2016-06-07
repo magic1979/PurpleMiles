@@ -611,7 +611,7 @@ receivedEvent: function(id) {
 		window.location.href = "index.html";
 	});
 	
-	$(document).on("touchstart", "#mappa7", function(e){
+	$(document).on("tap", "#mappa7", function(e){
 		window.location.href = "mappass.html";
 		
 		e.stopImmediatePropagation();
