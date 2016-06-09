@@ -363,6 +363,10 @@ function onDeviceReady() {
 			//window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
 			//		   }, 20 );
 			});
+    
+         setTimeout(function() {
+           $(".spinner").hide();
+         }, 5000);
 	
 	
 		var connectionStatus = false;
