@@ -538,6 +538,8 @@ receivedEvent: function(id) {
 				   //localStorage.setItem("btnGPS", "1")
 				   setGPS = 1;
 				   localStorage.setItem("setGPS","1")
+                   localStorage.setItem("tastiera","0")
+				   localStorage.setItem("pagemodifica","1")
 				   
 				   
 				   document.getElementById("modificastart").value = "";
@@ -624,6 +626,7 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("tap", "#mappa6", function(e){
+      localStorage.setItem("tastiera","0")
 				   
 	  var connectionStatus = false;
 	  connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -786,6 +789,9 @@ receivedEvent: function(id) {
 	}
 	
 	$(document).on("tap", "#XXX", function(e){
+				   
+		localStorage.setItem("dovesono", "0")
+				   
 		window.location.href = "index.html";
 				   
 				   e.stopImmediatePropagation();
@@ -810,14 +816,14 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("touchstart", "#inizia", function(e){
+	$(document).on("tap", "#inizia", function(e){
 					$('#modificastart').blur()
 				   
 				   if(localStorage.getItem("setGPS") == 1){
 				   
 				     if (document.getElementById("modificastart").value == "") {
 				         navigator.notification.alert(
-												'inserire Indirizzo Valido o utilizzare la posizione GPS',  // message
+												'inserire un indirizzo valido o utilizzare la posizione GPS',  // message
 												alertDismissed,         // callback
 												'Indirizzo',            // title
 												'OK'                  // buttonName
@@ -1389,6 +1395,27 @@ function centragps(){
 //--------------------------------------------
 
 function getKey(key){
+	
+ if(localStorage.getItem("pagemodifica")=="1"){
+	 if ( key == null ) {
+		 keycode = event.keyCode;
+		 
+	 } else {
+		 keycode = key.keyCode;
+	 }
+	 
+	 if (keycode ==13){
+		 
+		 
+		setTimeout(function() {
+		   $("#inizia").tap();
+		}, 200);
+
+	 }
+
+ }
+	
+	
  if(localStorage.getItem("tastiera")=="1"){
 	if ( key == null ) {
 		keycode = event.keyCode;
@@ -1602,17 +1629,23 @@ function verificawifi(){
 
 function onResume() {
 	//app.initialize();
+	$("#blob5").hide();
+	$("#blob4").hide();
+	$("#blob3").hide();
 	
-	setTimeout(function() {
-			   
 	for(i=0; i<10000; i++)
 	{
 		window.clearInterval(i);
 	}
-			   
-	resetta1(1);
-	}, 200);
 	
+	if(localStorage.getItem("dovesono")=="1"){
+	
+	  setTimeout(function() {
+	   resetta1(1);
+	  }, 700);
+	
+    }
+
 	/*var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
@@ -1655,8 +1688,10 @@ function deg2rad(deg) {
 
 function resetta1(focus) {
 	muoviti = 1;
+	localStorage.setItem("pagemodifica","0")
 	
 	localStorage.setItem("fatto","0")
+	localStorage.setItem("dovesono", "1")
 	
 	//PRESS TO MARKER
 	$(function(){
@@ -2558,10 +2593,19 @@ function timer(){
 										   jsonp: 'callback',
 										   crossDomain: true,
 										   success:function(result){
+                                           
+                                           if(localStorage.getItem("tutteleofferte")==JSON.stringify(result)){
+                                           
+                                           }
+                                           else{
+                                             playAudio('successArrivo');
+                                           }
 											   
 											marker1.setIcon(iconn);
 											marker3.setIcon(iconn);
 											marker4.setIcon(iconn);
+                                           
+                                            localStorage.setItem("tutteleofferte", JSON.stringify(result))
 										   
 										   $.each(result, function(i,item){
 												  
@@ -2645,7 +2689,7 @@ function timer(){
 												  if(localStorage.getItem("palla1")!=1){
 											   
 												     palla1()
-												     playAudio('successArrivo');
+												     //playAudio('successArrivo');
 												     //SUONO RICEZIONE
 											       }
 												  
@@ -2839,7 +2883,7 @@ function timer(){
 												  
 												  if(localStorage.getItem("palla2")!=1){
 												  
-												    playAudio2('successArrivo');
+												    //playAudio2('successArrivo');
 												  
 												  }
 												  
@@ -3021,7 +3065,7 @@ function timer(){
 												  
 												  if(localStorage.getItem("palla3")!=1){
 												  
-												     playAudio3('successArrivo');
+												     //playAudio3('successArrivo');
 												  
 												  }
 												  
@@ -3411,7 +3455,7 @@ function magia2C(utente,pass) {
 													icon: icon2a,
 													optimized: false,
 													position : latlng5,
-													content:'<div class="popup">Arrivo<br>Km'+ item.distanza1 +'</div>',
+													content:'<div class="popup">Arrivo<br>Km</div>',
 													title: item.nick,
 													zIndex: -19
 													});
@@ -3511,7 +3555,7 @@ function magia2C(utente,pass) {
 													icon: icon3a,
 													optimized: false,
 													position : latlng5,
-													content:'<div class="popup">Arrivo<br>Km'+ item.distanza1 +'</div>',
+													content:'<div class="popup">Arrivo<br>Km</div>',
 													title: item.nick,
 													zIndex: -19
 													});
@@ -3602,7 +3646,7 @@ function magia2C(utente,pass) {
 													icon: icon4a,
 													optimized: false,
 													position : latlng5,
-													content:'<div class="popup">Arrivo<br>Km'+ item.distanza1 +'</div>',
+													content:'<div class="popup">Arrivo<br>Km</div>',
 													title: item.nick,
 													zIndex: -19
 													});

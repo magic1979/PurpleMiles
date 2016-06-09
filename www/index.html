@@ -898,7 +898,7 @@
     <body>
 
         <div id="geolocation"></div>
-		<audio id="successSound" src="/android_asset/www/sound/horn.mp3" type="audio/mpeg" ></audio>
+		<audio id="successSound" src="/android_asset/www/android_asset/www/sound/horn.mp3" type="audio/mpeg" ></audio>
 		<!--<audio id="successArrivo" src="/sound/bell.mp3" type="audio/mpeg" ></audio>-->
         
         <div data-role=page id=home class="div2">
@@ -1110,7 +1110,7 @@
 				<tr id="modificastart2" style="display:none">
 					<td width="100%" align="center">
 						<table align="center" width="220px" ><tr><td width="100px" align="center">
-							<input id="modificastart" name="modificastart" type="text" value="" class="scrivo" placeholder="indirizzo dell'Autista" style="display:none">
+							<input id="modificastart" name="modificastart" type="text" value="" class="scrivo" placeholder="Indirizzo dell'autista" style="display:none">
 						</td></tr></table>
 					</td>
 				</tr>
@@ -1139,7 +1139,7 @@
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px"><tr><td width="100px" align="center">
-							<a id="tornareset" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Torna</b></font></a>
+							<a id="tornareset" href="#" ><img src="img/ico_back_to_text.png" width="45px"></a>
 						</td></tr></table>
 					</td>
 				</tr>
@@ -1217,13 +1217,14 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center">
-						<font size="4">Importo</font>
-					</td>
-					<td width="50%" align="center">
-						<input type="text" data-role="none" name="soldini" id="soldini" value="" placeholder="Importo" class="scrivo">
+					<td width="100%" align="left" colspan="2">
+						<table ><tr><td><font color="#000">Importo</font></td></tr></table>
 					</td>
 				</tr>
+				<td width="100%" align="center" colspan="2">
+					<textarea id="soldini" name="soldini" cols="30" rows="10" class="scrivo" placeholder="Importo"></textarea>
+				</td>
+				
 
 				<tr>
 					<td width="100%" align="left" colspan="2">

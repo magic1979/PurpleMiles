@@ -7,7 +7,7 @@ function onDeviceReady() {
 	var IDPage;
 	
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
-		localStorage.setItem("veicolo", "Car")
+		localStorage.setItem("veicolo", "Automobile")
 	}
 
 	
@@ -233,7 +233,7 @@ function onDeviceReady() {
 				   myScroll2 = new IScroll('#wrapper2', { click: true });
 				   setTimeout (function(){
 					  myScroll2.refresh();
-				   }, 1000);
+				   }, 1700);
 				   
 				   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
 				   
