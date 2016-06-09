@@ -414,13 +414,11 @@ function onDeviceReady() {
 			
 			localStorage.setItem("ora_cell", ora_cell);
 			
-			
-			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+			$(".spinner").hide();
 			
 			document.getElementById("email").value = localStorage.getItem("email2")
 			
-			$(".spinner").hide();
-
+			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 			
 		}
 		else{
