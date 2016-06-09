@@ -149,25 +149,27 @@ function onDeviceReady() {
 	
 	
 	$(document).on("tap", "#indietro6", function(e){
-				   $("#tblchat").hide()
-				   $.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
 				   
-				   for(i=0; i<10000; i++)
-				   {
-				   window.clearInterval(i);
-				   }
+			for(i=0; i<10000; i++)
+			{
+			   window.clearInterval(i);
+			}
 				   
-				   vediofferte()
+			$("#tblchat").hide()
 				   
-				   e.stopImmediatePropagation();
+			$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
 				   
-				   e.preventDefault();
+			vediofferte()
 				   
-				   return false;
+			e.stopImmediatePropagation();
 				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+			e.preventDefault();
 				   
-				   });
+			return false;
+				   
+			if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
 	
 	$(document).on("touchstart", "#da", function(e){
 		localStorage.setItem("destination", "0")
