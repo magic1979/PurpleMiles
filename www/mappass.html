@@ -626,7 +626,7 @@
 					  .transbox4 {
 						  position: absolute;
 						  z-index: 2;
-						  top:15px;
+						  top:10px;
 						  width:100%;
 						  
 						  padding: 0;
@@ -838,17 +838,45 @@
 					  
 					  .bannertbl {
 						  background-color: #cc33cc;
+						  position: fixed;
 
-						  bottom: 10;
-						  left: 0;
-						  width: 100%;
-						  height: 20px;
+						  top: 110;
+						  left: 15;
+						  width: 95%;
+						  height: 40px;
 						  
 						  text-align: center;
 						  font-weight: bold;
 						  
 						  opacity: 0.5;
 						  filter: alpha(opacity=50);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						   z-index: 99;
+					  }
+					  
+					  .bannertbl2 {
+						  position: fixed;
+						  
+						  top: 100;
+						  left: 15;
+						  width: 100%;
+						  height: 16px;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  z-index: 100;
+					  }
+					  
+					  .cambiafuso {
+
+						text-decoration: none;
+						text-shadow:0 0 0;
+
 					  }
 
                      </style>
@@ -869,23 +897,23 @@
 
 	<tr>
 		<td align="center" >
-			<a id="quando" href="#"><img src="img/ico_quando2.png" width="35px"></a>
+			<a id="quando" href="#"><img src="img/ico_quando2.png" width="40px"></a>
 		</td>
 		<td align="center" >
-			<a id="da" href="#"><img src="img/ico_start1.png" width="35px"></a>
+			<a id="da" href="#"><img src="img/ico_start1.png" width="40px"></a>
 		</td>
 		<td align="center" >
-			<a id="#" href="#"><img src="img/ico_finish2.png" width="35px"></a>
+			<a id="#" href="#"><img src="img/ico_finish2.png" width="40px"></a>
 		</td>
 		<td align="center" >
-			<a id="piu" href="#"><img src="img/ico_plus1.png" width="35px"></a>
+			<a id="piu" href="#"><img src="img/ico_plus1.png" width="40px"></a>
 			
 		</td>
 		<td align="center" valign="center">
-			<a id="anteprima" href="#"><img src="img/ico_anteprima1.png" width="35px"></a>
+			<a id="anteprima" href="#"><img src="img/ico_anteprima1.png" width="40px"></a>
 		</td>
 		<td align="center" valign="center">
-			<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="35px"></a>
+			<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="40px"></a>
 		</td>
 	</tr>
 </table>
@@ -897,7 +925,7 @@
  <div class="spinner" id="spinner"></div>
 
   <form name="formia" action="entra.asp" method="post">
-	<table id="spazioipad" height="40px"><tr><td></td></tr></table>
+	<table id="spazioipad" height="45px"><tr><td></td></tr></table>
 	<table id="tblhome" width="90%" height="" border="0" valign="center" align="center" class="tabella" style="display:none">
 		<tr>
 			<td width="25%" align="center">
@@ -907,7 +935,7 @@
 				<font size="4" color="#cc33cc"><b>Quando vuoi partire?</b></font><br>
 			</td>
 			<td width="25%" align="center" valign="center">
-				<a id="XX3" href="#" rel="external"><img src="img/xx.png" width="35px"></a>
+				<a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="40px"></a>
 			</td>
 			
 		</tr>
@@ -935,7 +963,7 @@
 				<select id="Minuti" data-theme="c"><option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option></select>
 			</td>
 			<td width="25%" align="center" >
-				<img src="img/clock.png" width="30">
+				<img src="img/clock.png" width="40">
 			</td>
 		</tr>
 		
@@ -954,7 +982,7 @@
 				
 				<select id="citta1" name="citta1" data-theme="c" >
 				</select>-->
-				<a id="cambiafuso" href="#"><font color="#cc33cc">Cambia Fuso</font></a>
+				<a id="cambiafuso" href="#" class="cambiafuso"><font color="#cc33cc">Cambia Fuso</font></a>
 			</td>
 		</tr>
 
@@ -974,7 +1002,7 @@
 
 		<tr>
 			<td width="100%" align="center" colspan="4">
-				<a id="inviarichiesta" href="#" data-role="button" data-theme="b" class="custom-btn">Invia</a>
+				<a id="inviarichiesta" href="#" data-role="button" data-theme="b" class="custom-btn">Piu tardi</a>
 			</td>
 		</tr>
 	 </table>
@@ -1003,9 +1031,9 @@
 			</table>
 			
 			<table id="blob2" width="100%" border="0" align="center" valign="center" class="div57" style="display:none">
-				<tr><td align="right"><a id="xchiudi1" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/xx.png" width="30"></a></td></tr>
+				<tr><td align="right"><a id="xchiudi1" href="#" style="display:none"><img src="img/ico_close1.png" width="30"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/ico_close1.png" width="30"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/ico_close1.png" width="30"></a></td></tr>
 				<tr><td align="center"><b><div id="nickblob"></div></b></td></tr>
-				<tr><td align="right"><a id="xchiudi1" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/xx.png" width="30"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/xx.png" width="30"></a></td></tr>
+				<tr><td align="right"><a id="xchiudi1" href="#" style="display:none"><img src="img/ico_close1.png" width="30"></a><a id="xchiudi2" href="#" style="display:none"><img src="img/ico_close1.png" width="30"></a><a id="xchiudi3" href="#" style="display:none"><img src="img/ico_close1.png" width="30"></a></td></tr>
 				<tr>
 					<td width="100%" align="left">
 						<table align="center" width="100px" height="100%">
@@ -1056,14 +1084,20 @@
 
 			<table id="btninizia" width="100%" border="0" align="center" valign="center" class="div55" >
 				<tr>
-					<td width="70px" align="right" valign="center">
-						<a id="ricarica" href="#" rel="external"><img src="img/ico_mirino.png" width="45px"></a>
+					<td width="55px" align="center" valign="top">
+						<table align="center" width="55px" valign="top">
+							<tr>
+								<td width="55px" align="center" valign="top">
+									<a id="ricarica" href="#" rel="external"><img src="img/ico_mirino.png" width="55px"></a>
+								</td>
+							</tr>
+						</table>
 					</td>
 					
-					<td width="200%" align="left" valign="center">
-						<table align="left" width="200px" valign="center">
+					<td width="190px" align="left" valign="top">
+						<table align="left" width="190px" valign="top">
 							<tr>
-								<td width="200px" align="center" valign="center">
+								<td width="190px" align="left" valign="top">
 									<input id="viale" name="viale" type="text" value="" class="scrivo" placeholder="partenza">
 									<input id="destinazione" name="destinazione" type="text" class="scrivo" value="" placeholder="destinazione" style="display:none">
 						         </td>
@@ -1094,23 +1128,23 @@
 				
 				<tr>
 					<td align="center" >
-						<a id="quando" href="#"><img src="img/ico_quando1.png" width="35px"></a>
+						<a id="quando" href="#"><img src="img/ico_quando1.png" width="40px"></a>
 					</td>
 					<td align="center" >
-						<a id="da" href="#"><img src="img/ico_start1.png" width="35px"></a>
+						<a id="da" href="#"><img src="img/ico_start1.png" width="40px"></a>
 					</td>
 					<td align="center" >
-						<a id="#" href="#"><img src="img/ico_finish2.png" width="35px"></a>
+						<a id="#" href="#"><img src="img/ico_finish2.png" width="40px"></a>
 					</td>
 					<td align="center" >
-						<a id="piu" href="#"><img src="img/ico_plus2.png" width="35px"></a>
+						<a id="piu" href="#"><img src="img/ico_plus2.png" width="40px"></a>
 						
 					</td>
 					<td align="center" valign="center">
-						<a id="anteprima" href="#"><img src="img/ico_anteprima1.png" width="35px"></a>
+						<a id="anteprima" href="#"><img src="img/ico_anteprima1.png" width="40px"></a>
 					</td>
 					<td align="center" valign="center">
-						<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="35px"></a>
+						<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="40px"></a>
 					</td>
 				</tr>
 			</table>
@@ -1158,7 +1192,7 @@
 										<img src="img/ico_plus1.png" width="40px">
 									</td>
 									<td width="85%" align="left" valign="center">
-										&nbsp;&nbsp;<font size="5" color="#cc33cc"><b>Richieste opzionali</b></font>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="#cc33cc"><b>Richieste opzionali</b></font>
 									</td>
 								</tr>
 							</table>
@@ -1180,10 +1214,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						N. Passeggeri
 					</td>
 					<td width="50%" align="center" >
+						<table width="80%"><tr><td>
 						<select id="passeggeri" name="passeggeri" data-theme="f">
 							<option selected>01</option>
 							<option>02</option>
@@ -1225,66 +1260,66 @@
 							<option>38</option>
 							<option>39</option>
 							<option>40</option>
-						</select>
+						</select></td></tr></table>&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Fumatori
 					</td>
 					<td width="50%" align="center" >
 						<select id="fumatori" name="fumatori" data-role="flipswitch" data-theme="f">
 							<option>No</option>
 							<option>Si</option>
-						</select>
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Piccolo animale al seguito
 					</td>
 					<td width="50%" align="center" >
 						<select id="animali" name="animali" data-role="flipswitch" data-theme="f">
 							<option>No</option>
 							<option>Si</option>
-						</select>
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Servizio minorenni non accompagnati
 					</td>
 					<td width="50%" align="center" >
 						<select id="meno18" name="meno18" data-role="flipswitch" data-theme="f">
 							<option>No</option>
 							<option>Si</option>
-						</select>
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Diversamente abili
 					</td>
 					<td width="50%" align="center" >
 						<select id="disabili" name="disabili" data-role="flipswitch" data-theme="f">
 							<option>No</option>
 							<option>Si</option>
-						</select>
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Seggiolino bambini
 					</td>
 					<td width="50%" align="center" >
 						<select id="bambini" name="bambini" data-role="flipswitch" data-theme="f">
 							<option>No</option>
 							<option>Si</option>
-						</select>
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Wifi
 					</td>
 					<td width="50%" align="center" >
@@ -1295,36 +1330,36 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Portapacchi
 					</td>
 					<td width="50%" align="center" >
 						<select id="portapacchi" name="portapacchi" data-role="flipswitch" data-theme="f">
 							<option>No</option>
 							<option>Si</option>
-						</select>
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Gancio rimorchio
 					</td>
 					<td width="50%" align="center" >
 						<select id="rimorchio" name="rimorchio" data-role="flipswitch" data-theme="f">
 							<option>No</option>
 							<option>Si</option>
-						</select>
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
-					<td width="50%" align="center" >
+					<td width="50%" align="right" >
 						Bluetooth
 					</td>
 					<td width="50%" align="center" >
 						<select id="bluetooth" name="bluetooth" data-role="flipswitch" data-theme="f">
 							<option>No</option>
 							<option>Si</option>
-						</select>
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
@@ -1354,23 +1389,23 @@
 				
 				<tr>
 					<td align="center" >
-						<a id="quando" href="#"><img src="img/ico_quando1.png" width="35px"></a>
+						<a id="quando" href="#"><img src="img/ico_quando1.png" width="40px"></a>
 					</td>
 					<td align="center" >
-						<a id="da" href="#"><img src="img/ico_start1.png" width="35px"></a>
+						<a id="da" href="#"><img src="img/ico_start1.png" width="40px"></a>
 					</td>
 					<td align="center" >
-						<a id="#" href="#"><img src="img/ico_finish2.png" width="35px"></a>
+						<a id="#" href="#"><img src="img/ico_finish2.png" width="40px"></a>
 					</td>
 					<td align="center" >
-						<a id="piu" href="#"><img src="img/ico_plus1.png" width="35px"></a>
+						<a id="piu" href="#"><img src="img/ico_plus1.png" width="40px"></a>
 						
 					</td>
 					<td align="center" valign="center">
-						<a id="anteprima" href="#"><img src="img/ico_anteprima2.png" width="35px"></a>
+						<a id="anteprima" href="#"><img src="img/ico_anteprima2.png" width="40px"></a>
 					</td>
 					<td align="center" valign="center">
-						<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="35px"></a>
+						<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="40px"></a>
 					</td>
 				</tr>
 			</table>
@@ -1407,10 +1442,10 @@
 													  <img src="img/ico_anteprima1.png" width="40px">
 												  </td>
 												  <td width="60%" align="center" valign="center">
-													  <font size="5" color="#cc33cc"><b>Anteprima</b></font>
+													  <font size="4" color="#cc33cc"><b>Riepilogo</b></font>
 												 </td>
                                                   <td width="20%" align="right">
-                                                     <a id="XX3" href="#" rel="external"><img src="img/xx.png" width="35px"></a>
+                                                     <a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="40px"></a>
                                                 </td>
 											  </tr>
 										  </table>
@@ -1456,57 +1491,57 @@
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="passeggeri7">Passeggeri: No</p>
+										<p id="passeggeri7">Passeggeri No</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="fumatori7">Fumatori:  No</p>
+										<p id="fumatori7">Fumatori  No</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="animali7">Animali:  No</p>
+										<p id="animali7">Animali  No</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="meno187">Meno 18 anni:  No</p>
+										<p id="meno187">Meno 18 anni  No</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="disabili7">Disabili:  No</p>
+										<p id="disabili7">Disabili  No</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="bambini7">Bambini:  No</p>
+										<p id="bambini7">Bambini  No</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="wifi7">WiFi:  No</p>
+										<p id="wifi7">WiFi  No</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="portapacchi7">Portapacchi:  --</p>
+										<p id="portapacchi7">Portapacchi  --</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="rimorchio7">Rimorchi:  --</p>
+										<p id="rimorchio7">Rimorchi  --</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="bluetooth7">bluetooth7:  --</p>
+										<p id="bluetooth7">bluetooth7  --</p>
 									</td>
 								</tr>
 								<tr>
 									<td width="250px" align="left" valign="center" colspan="2">
-										<p id="note7">note7:  --</p>
+										<p id="note7">note7  --</p>
 										<!--<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn4" >Invia</a>--><br><br>
 									</td>
 								</tr>
@@ -1569,15 +1604,15 @@
 			<table border="0" valign="center" align="center" class="transbox">
 				<tr>
 					<td colspan="2">
-						<table id="spazioipad" height="15px"><tr><td></td></tr></table>
+						<table id="spazioipad" height="3px"><tr><td></td></tr></table>
 					</td>
 				</tr>
 				<tr>
 					<td align="center" width="80%" align="center">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5" color="#cc33cc"><b>Offerte ricevute</b></font>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="#cc33cc"><b>Autisti in zona</b></font>
 					</td>
 					<td align="center" width="20%" align="center" valign="center">
-						<a id="indietro4" href="#" ><img src="img/xx.png" width="30"></a>
+						<a id="indietro4" href="#" ><img src="img/ico_close1.png" width="40"></a>
 					</td>
 				</tr>
 			</table>
@@ -1622,7 +1657,7 @@
 						<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome6">NickName</div></font></td></tr></table>
 					</td>
 					<td align="center" width="25%">
-						<a id="indietro6" href="#"><img src="img/xx.png" width="30"></a>
+						<a id="indietro6" href="#"><img src="img/ico_close1.png" width="40"></a>
 					</td>
 				</tr>
 			</table>

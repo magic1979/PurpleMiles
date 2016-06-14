@@ -4,6 +4,31 @@ function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	//$("body").bind('touchmove', function(e){e.preventDefault()})
 	
+	localStorage.setItem("pagina","log")
+	
+     document.addEventListener('backbutton', function(e) {
+							   
+		if(localStorage.getItem("pagina")=="log"){
+							   
+	        navigator.notification.confirm(
+	       'Vuoi chiudere purple miles?',  // message
+	        onConfirm2,              // callback to invoke with index of button pressed
+	       'Spegni',            // title
+	       'Spegni,Annulla'      // buttonLabels
+	        );
+							   
+		}
+							   
+		if(localStorage.getItem("pagina")=="imp"){
+							   
+		  $("#conferma").tap();
+							   
+		}
+							   
+	 }, false);
+	
+	
+	
 	var IDPage;
 	
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
@@ -197,9 +222,40 @@ function onDeviceReady() {
 		FastClick.attach(document.body);
 	}, false);
 	
+	$(document).on("tap", "#prova", function(e){
+				   if(localStorage.getItem("pagina")=="log"){
+				   
+				   navigator.notification.confirm(
+												  'Vuoi chiudere purple miles?',  // message
+												  onConfirm2,              // callback to invoke with index of button pressed
+												  'Spegni',            // title
+												  'Spegni,Annulla'      // buttonLabels
+												  );
+				   
+				   }
+				   
+				   if(localStorage.getItem("pagina")=="imp"){
+				   
+				   $("#conferma").tap();
+				   
+				   }
+
+				   
+		e.stopImmediatePropagation();
+				   
+		e.preventDefault();
+				   
+		return false;
+				   
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
 	
 	$(document).on("tap", "#conferma", function(e){
 		//window.location.href = "#page6";
+		localStorage.setItem("pagina","log")
+				   
 		localStorage.setItem("lingua", document.getElementById("lingua").value);
 		localStorage.setItem("fuso", document.getElementById("fuso").value);
         localStorage.setItem("citta", document.getElementById("citta").value);
@@ -227,6 +283,7 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#impostazioni", function(e){
 				   window.location.href = "#page6";
+				   localStorage.setItem("pagina","imp")
 				   
 				   var myScroll2;
 
@@ -384,14 +441,13 @@ function onDeviceReady() {
 			
 			if (localStorage.getItem("city") === null || localStorage.getItem("city")=="null" || typeof(localStorage.getItem("city")) == 'undefined' || localStorage.getItem("city")==0 || localStorage.getItem("city")=="") {
 
-              $("#citta").html("<option value=''>scegli la nazione</option><option value='154'>Rome</option>");
+              $("#citta").html("<option value=''>Selezionare la città</option><option value='154'>Rome</option>");
 			}
 			else{
 			  $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
 			}
 
             $("#citta").selectmenu("refresh");
-
 
 
 			var today = new Date();
@@ -677,7 +733,7 @@ function login() {
 		navigator.notification.alert(
 				'Inserire nelle impostazioni un fuso orario',  // message
 				alertDismissed,         // callback
-				'Email',            // title
+				'Attenzione',            // title
 				'OK'                  // buttonName
 		);
 
@@ -757,7 +813,7 @@ function LoginVera(email,pin){
 				}
 				else{
 				navigator.notification.alert(
-											   'Credenziali non corretti',  // message
+											   'Email e/o password non corretti',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',            // title
 											   'Done'                  // buttonName@
@@ -828,7 +884,7 @@ function iscriviti(){
 	}
 	else {
 		navigator.notification.alert(
-									 'Caratteri email non consentiti',  // message
+									 'Verificare la email',  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
@@ -1052,6 +1108,35 @@ function gomappa(){
 	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
 	
 }
+
+function onConfirm2(button) {
+	if(button==1){    //If User selected No, then we just do nothing
+
+		
+		for(i=0; i<10000; i++)
+		{
+			window.clearInterval(i);
+		}
+		
+		for(i=0; i<3; i++)
+		{
+			navigator.app.exitApp();
+		}
+		
+		//navigator.app.exitApp();
+		
+		navigator.device.exitApp();
+		
+		
+		e.stopImmediatePropagation();
+		
+		e.preventDefault();
+		
+		return;
+	}
+	
+}
+
 
 function sha1(str) {
 	//  discuss at: http://phpjs.org/functions/sha1/

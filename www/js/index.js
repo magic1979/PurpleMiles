@@ -32,18 +32,77 @@ receivedEvent: function(id) {
 	
 	//ANDROID -------------------------------------------------------
 	
-	/*document.addEventListener('backbutton', function(e) {
-							  navigator.notification.confirm(
-															 'Confermi di voler chiudere',  // message
-															 onConfirm2,              // callback to invoke with index of button pressed
-															 'Logout',            // title
-															 'Si,No'      // buttonLabels
-															 );
-							  }, false);*/
+	document.addEventListener('backbutton', function(e) {
+	 if(localStorage.getItem("pagina")=="mappa"){
+		
+	 
+	
+		localStorage.setItem("dovesono", "0")
+							  
+		window.location.href = "index.html";
+	  
+	  }
+							  
+	  if(localStorage.getItem("pagina")=="inizia"){
+	
+			navigator.notification.confirm(
+			'Vuoi chiudere purple miles?',  // message
+			 onConfirm2,              // callback to invoke with index of button pressed
+			'Spegni',            // title
+			'Spegni,Annulla'      // buttonLabels
+		    );
+							  
+	   }
+							  
+	   if(localStorage.getItem("pagina")=="magia"){
+			var connectionStatus = false;
+			connectionStatus = navigator.onLine ? 'online' : 'offline';
+							  
+			if(connectionStatus=='online'){
+							  
+				$("#magia").hide();
+							  
+				resetta1(1);
+			}
+			else
+			{
+				window.location.href = "index.html";
+			}
+							  
+		}
+							  
+		if(localStorage.getItem("pagina")=="chat"){
+			$("#tblchat").hide()
+			$.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+							  
+			for(i=0; i<10000; i++)
+			{
+				window.clearInterval(i);
+			}
+							  
+			setTimeout(function() {
+				resetta1(1);
+			}, 500);
+
+		}
+							  
+							  
+		e.stopImmediatePropagation();
+							  
+		e.preventDefault();
+							  
+		return false;
+							  
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+	}, false);
 	
 	
 	
 	//----------------------------------------------------------------
+	
+	localStorage.setItem("pagina","1");
 	
 	//var lat = "41.889191";
 	//var lng = "12.492475";
@@ -181,24 +240,40 @@ receivedEvent: function(id) {
 
 	
 	//STELLE
-	
-
-	if(parseInt(localStorage.getItem("stelleautista"))==0){
+	if(parseFloat(localStorage.getItem("stelleautista"))==0){
 		$("#stelleautista").html("<img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if(parseInt(localStorage.getItem("stelleautista"))==1){
+	
+	else if(parseFloat(localStorage.getItem("stelleautista"))>0 && parseFloat(localStorage.getItem("stelleautista"))<=0.9){
+		$("#stelleautista").html("<img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+
+	else if(parseFloat(localStorage.getItem("stelleautista"))>=1 && parseFloat(localStorage.getItem("stelleautista"))<=1.4){
 		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if (parseInt(localStorage.getItem("stelleautista"))==2) {
+	else if(parseFloat(localStorage.getItem("stelleautista"))>1.4 && parseFloat(localStorage.getItem("stelleautista"))<=1.9){
+		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	
+	else if (parseFloat(localStorage.getItem("stelleautista"))>=2 && parseFloat(localStorage.getItem("stelleautista"))<=2.4) {
 		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if (parseInt(localStorage.getItem("stelleautista"))==3) {
+	else if (parseFloat(localStorage.getItem("stelleautista"))>2.4 && parseFloat(localStorage.getItem("stelleautista"))<=2.9) {
+		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseFloat(localStorage.getItem("stelleautista"))>=3 && parseFloat(localStorage.getItem("stelleautista"))<=3.4) {
 		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if (parseInt(localStorage.getItem("stelleautista"))==4) {
+	else if (parseFloat(localStorage.getItem("stelleautista"))>3.4 && parseFloat(localStorage.getItem("stelleautista"))<=3.9) {
+		$("#stelleautista").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseFloat(localStorage.getItem("stelleautista"))>=4 && parseFloat(localStorage.getItem("stelleautista"))<=4.4) {
 		$("#stelleautista").html(ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if (parseInt(localStorage.getItem("stelleautista"))==5) {
+	else if (parseFloat(localStorage.getItem("stelleautista"))>4.4 && parseFloat(localStorage.getItem("stelleautista"))<=4.9) {
+		$("#stelleautista").html(ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'>")
+	}
+	else if (parseFloat(localStorage.getItem("stelleautista"))>=5) {
 		$("#stelleautista").html(ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'>")
 	}
 	
@@ -215,24 +290,41 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	
-	if(parseInt(localStorage.getItem("stellepass"))==0){
+	if(parseFloat(localStorage.getItem("stellepass"))==0){
 		$("#stellepass").html("<img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if(parseInt(localStorage.getItem("stellepass"))==1){
+	
+	else if(parseFloat(localStorage.getItem("stellepass"))>0 && parseFloat(localStorage.getItem("stellepass"))<=0.9){
+		$("#stellepass").html("<img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	
+	else if(parseFloat(localStorage.getItem("stellepass"))>=1 && parseFloat(localStorage.getItem("stellepass"))<=1.4){
 		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if (parseInt(localStorage.getItem("stellepass"))==2) {
+	else if(parseFloat(localStorage.getItem("stellepass"))>1.4 && parseFloat(localStorage.getItem("stellepass"))<=1.9){
+		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	
+	else if (parseFloat(localStorage.getItem("stellepass"))>=2 && parseFloat(localStorage.getItem("stellepass"))<=2.4) {
 		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if (parseInt(localStorage.getItem("stellepass"))==3) {
+	else if (parseFloat(localStorage.getItem("stellepass"))>2.4 && parseFloat(localStorage.getItem("stellepass"))<=2.9) {
+		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseFloat(localStorage.getItem("stellepass"))>=3 && parseFloat(localStorage.getItem("stellepass"))<=3.4) {
 		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if (parseInt(localStorage.getItem("stellepass"))==4) {
-		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	else if (parseFloat(localStorage.getItem("stellepass"))>3.4 && parseFloat(localStorage.getItem("stellepass"))<=3.9) {
+		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'>")
 	}
-	else if (parseInt(localStorage.getItem("stellepass"))==5) {
-		$("#stellepass").html("<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'>")
+	else if (parseFloat(localStorage.getItem("stellepass"))>=4 && parseFloat(localStorage.getItem("stellepass"))<=4.4) {
+		$("#stellepass").html(ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'>")
+	}
+	else if (parseFloat(localStorage.getItem("stellepass"))>4.4 && parseFloat(localStorage.getItem("stellepass"))<=4.9) {
+		$("#stellepass").html(ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'>")
+	}
+	else if (parseFloat(localStorage.getItem("stellepass"))>=5) {
+		$("#stellepass").html(ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'>")
 	}
 	
 	
@@ -369,13 +461,12 @@ receivedEvent: function(id) {
 	
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
-			localStorage.setItem("email", "");
-			localStorage.setItem("emailpass", "");
 			
 			for(i=0; i<10000; i++)
 			{
 				window.clearInterval(i);
 		    }
+			
 			
 			navigator.app.exitApp();
 			
@@ -385,10 +476,34 @@ receivedEvent: function(id) {
 			
 			e.preventDefault();
 			
-			return false;
+			return;
 		}
 		
 	}
+	
+	$(document).on("tap", "#prova", function(e){
+				   if(localStorage.getItem("pagina")=="1"){
+				   
+				   navigator.notification.confirm(
+												  'Vuoi chiudere purple miles?',  // message
+												  onConfirm2,              // callback to invoke with index of button pressed
+												  'Spegni',            // title
+												  'Spegni,Annulla'      // buttonLabels
+												  );
+				   
+				   }
+				   
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   });
+	
 	
 	$(document).on("tap", "#profiloperc", function(e){
 				   
@@ -628,6 +743,8 @@ receivedEvent: function(id) {
 	$(document).on("tap", "#mappa6", function(e){
       localStorage.setItem("tastiera","0")
 				   
+	  localStorage.setItem("pagina","mappa")
+				   
 	  var connectionStatus = false;
 	  connectionStatus = navigator.onLine ? 'online' : 'offline';
 				   
@@ -833,6 +950,7 @@ receivedEvent: function(id) {
 				       }
 				   }
 				   
+				   localStorage.setItem("pagina","inizia")
 				   
 				   setTimeout(function() {
 						start();
@@ -1029,7 +1147,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<table width="100%" border="0"><td align="right" valign="top"><br><a id="XXX" href="#" rel="external"><img src="img/xx.png" width="35px"></a>&nbsp;&nbsp;&nbsp;</td></tr><tr><td align="center" width="100%"><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table>';
+	controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6"><td align="right" valign="top"><a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="40px"></a>&nbsp;&nbsp;</td></tr><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -1069,7 +1187,7 @@ function CenterControl2(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<br><table width="100%" border="0"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/xx.png" width="35px"></a></td></tr></table>';
+	controlText.innerHTML = '<table width="100%" border="0" class="xalto"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/ico_close1.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -1464,6 +1582,65 @@ function alertDismissed() {
 }
 
 
+function codeLatLng2(lati,lngi) {
+	var geocoder;
+	geocoder = new google.maps.Geocoder();
+
+	var lat = parseFloat(lati);
+	var lng = parseFloat(lngi);
+	
+	
+	var latlng = new google.maps.LatLng(lat, lng);
+	var indirizzo;
+	var Citta;
+	
+	geocoder.geocode({'latLng': latlng}, function(results, status) {
+					 if (status == google.maps.GeocoderStatus.OK) {
+					 
+					 if (results[0]) {
+					 
+					 var viadotto = results[0].formatted_address;
+					 
+					 var mySplitResult = viadotto.split(",");
+					 
+					 localStorage.setItem("Via", mySplitResult[0].replace(/[0-9]/g, '').replace('-', ''))
+					 
+					 indirizzo = results[0].formatted_address
+					 
+					 localStorage.setItem("tuaposizione", indirizzo)
+					 
+					 //alert(indirizzo)
+					 
+					 
+					 }
+					 
+					 } else {
+						
+					 
+					 
+					 }
+					 
+					 if(results[1]){
+					 
+						var cittaa = results[1].formatted_address;
+						var mySplitResult1 = cittaa.split(",");
+					 
+						localStorage.setItem("Citta", mySplitResult1[1].replace(/[0-9]/g, ''))
+
+						
+						citta = mySplitResult1[1].replace(/[0-9]/g, '')
+
+						
+					 }
+					 
+
+				   //localStorage.setItem("tuaposizione", indirizzo)
+
+		 });
+	
+}
+
+
 function codeLatLng(lati,lngi) {
 	var geocoder;
 	geocoder = new google.maps.Geocoder();
@@ -1539,6 +1716,7 @@ function codeLatLng(lati,lngi) {
 					 });
 	
 }
+
 
 function prendivia() {
 	
@@ -1788,6 +1966,46 @@ function resetta1(focus) {
 	var posizione = 1;
 	var distanza = "";
 	var numero = "";
+		
+    //codeLatLng2(lat,lng)
+		
+		var geocoder;
+		geocoder = new google.maps.Geocoder();
+		
+		var lat = parseFloat(lat);
+		var lng = parseFloat(lng);
+		
+		var latlng = new google.maps.LatLng(lat, lng);
+		var indirizzo;
+		var Citta;
+		
+		geocoder.geocode({'latLng': latlng}, function(results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+						 
+						 if (results[0]) {
+						 
+						 var viadotto = results[0].formatted_address;
+						 
+						 var mySplitResult = viadotto.split(",");
+						 
+						 localStorage.setItem("Via", mySplitResult[0].replace(/[0-9]/g, '').replace('-', ''))
+						 
+						 indirizzo = results[0].formatted_address
+						 
+						 localStorage.setItem("tuaposizione", indirizzo)
+						 
+						 //alert(indirizzo)
+						 
+						 
+						 }
+						 
+				}
+						 
+						 
+	  });
+		
+		
+	
 	
 	beaches.push(['Tua Posizione',lat,lng,1,0,0])
 	
@@ -1797,10 +2015,9 @@ function resetta1(focus) {
 		
 		var gradi = localStorage.getItem("gradi");
 		
-		//alert(gradi);
-		
 		var icon = new google.maps.MarkerImage("img/autista.png", null, null, new google.maps.Point(25, 25), new google.maps.Size(50,50));
-		//alert(myLatLng + beach[0])
+		
+		//alert(localStorage.getItem("tuaposizione"))
 		
 		
 		marker2 = new google.maps.Marker ({
@@ -1808,7 +2025,7 @@ function resetta1(focus) {
 										  icon: icon,
 										  optimized: false,
 										  position : myLatLng,
-										  content:'<div class="popup">'+document.getElementById("modificastart").value+'</div>',
+										  content:'<div class="popup">'+ localStorage.getItem("tuaposizione") +'</div>',
 										  title: '1',
 										  //label: ''+ beach[1] +','+ beach[2] +'',
 										  zIndex: 100
@@ -1816,10 +2033,10 @@ function resetta1(focus) {
 		
 		google.maps.event.addListener(marker2, 'click', function() {
 									  
-									  infowindow.setContent(this.content);
-									  infowindow.open(map, this);
+			infowindow.setContent(this.content);
+			infowindow.open(map, this);
 									  
-									  });
+		});
 		
 		var iconn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
 		var iconnn = new google.maps.MarkerImage("img/1p.png", null, null, null, new google.maps.Size(1,1));
@@ -1865,15 +2082,22 @@ function resetta1(focus) {
 										  icon: iconnn,
 										  optimized: false,
 										  position : myLatLng,
-										  //content:'<div class="popup">'+ beach[0] +'<br>Km'+ beach[5] +'<br><a href="#home3">Cliccami</a></div>',
+										  content:'<div class="popup">Posizione di arrivo</div>',
 										  title: '',
 										  //label: ''+ beach[1] +','+ beach[2] +'',
 										  zIndex: -12
 										  });
 		
+		google.maps.event.addListener(marker5, 'click', function() {
+									  
+									  infowindow.setContent(this.content);
+									  infowindow.open(map, this);
+									  
+									  });
 		
 		
-			
+		
+		
 			/*INSERT TAP PROLUNGATO*/
 			
 			google.maps.event.addListener(map, 'click', function(e) {
@@ -2039,6 +2263,7 @@ function resetta1(focus) {
 				  lat1 = item.lat
 				  
 				  
+				  $("#pass0").show();
 				  //$("#pass1").show();
 				  //$("#esci").show();
 				  if(item.posticipata==1){
@@ -2613,6 +2838,7 @@ function timer(){
 												  $("#pass1").hide();
 												  $("#pass2").hide();
 												  $("#pass3").hide();
+												  $("#pass0").show();
 												  }
 												  
 												  
@@ -2621,6 +2847,7 @@ function timer(){
 												  $("#pass2").hide();
 												  $("#pass3").hide();
 												  $("#esci").hide();
+												  $("#pass0").show();
 												  
 												  //resetta1(1);
 												  
@@ -2712,7 +2939,7 @@ function timer(){
 												    $("#lista").show();
 												  }
 												  
-												  
+												  marker1.setMap(null);
 												 
 												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,40));
 												  if(item.stato==3){
@@ -2721,26 +2948,50 @@ function timer(){
 												  
 												  if(item.stato==1){
 													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_1.png", null, null, null, new google.maps.Size(40,40));
+													 marker1 = new google.maps.Marker ({
+																					   map : map,
+																					   icon: icon3,
+																					   optimized: false,
+																					   position : myLatLng,
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'</a></div>',
+																					   title: item.nick,
+																					   //label: ''+ beach[1] +','+ beach[2] +'',
+																					   zIndex: posizione
+																					   });
+
 												  }
 												  if(item.stato==0){
 													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_1.png", null, null, null, new google.maps.Size(40,40));
-												  }
-												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/marker_verde_1.png", null, null, null, new google.maps.Size(40,40));
-												  }
-												  
-												  marker1.setMap(null);
-
-												  marker1 = new google.maps.Marker ({
+													
+												     marker1 = new google.maps.Marker ({
 																					map : map,
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
 																					});
+												  }
+												  if(item.stato==2){
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_1.png", null, null, null, new google.maps.Size(40,40));
+												     marker1 = new google.maps.Marker ({
+																					map : map,
+																					icon: icon3,
+																					optimized: false,
+																					position : myLatLng,
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'</a></div>',
+																					title: item.nick,
+																					//label: ''+ beach[1] +','+ beach[2] +'',
+																					zIndex: posizione
+																					});
+												  
+												  }
+												  
+												  
+
+												  
 												  
 												  google.maps.event.addListener(marker1, 'click', function() {
 																				
@@ -2763,7 +3014,7 @@ function timer(){
 												 });
 	
 												  
-												  
+												  $("#pass0").hide();
 												  $("#pass1").show();
 												  $("#pass2").hide();
 												  $("#pass3").hide();
@@ -2906,6 +3157,8 @@ function timer(){
 												    $("#lista").show();
 												  }
 												  
+												  marker3.setMap(null);
+												  
 												  var icon3 = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,40));
 												  if(item.stato==3){
 												  
@@ -2913,27 +3166,45 @@ function timer(){
 												  
 												  if(item.stato==1){
 													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_2.png", null, null, null, new google.maps.Size(40,40));
-												  }
-												  if(item.stato==0){
-													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_2.png", null, null, null, new google.maps.Size(40,40));
-												  }
-												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/marker_verde_2.png", null, null, null, new google.maps.Size(40,40));
-												  }
-
-												  
-												  marker3.setMap(null);
-												  
-												  marker3 = new google.maps.Marker ({
+												     marker3 = new google.maps.Marker ({
 																					map : map,
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a id="rispmarker2" href="#home3">GPS</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
 																					});
+												  }
+												  if(item.stato==0){
+													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_2.png", null, null, null, new google.maps.Size(40,40));
+													 marker3 = new google.maps.Marker ({
+																					   map : map,
+																					   icon: icon3,
+																					   optimized: false,
+																					   position : myLatLng,
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					   title: item.nick,
+																					   //label: ''+ beach[1] +','+ beach[2] +'',
+																					   zIndex: posizione
+																					   });
+												  }
+												  if(item.stato==2){
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_2.png", null, null, null, new google.maps.Size(40,40));
+													 marker3 = new google.maps.Marker ({
+																					   map : map,
+																					   icon: icon3,
+																					   optimized: false,
+																					   position : myLatLng,
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'</a></div>',
+																					   title: item.nick,
+																					   //label: ''+ beach[1] +','+ beach[2] +'',
+																					   zIndex: posizione
+																					   });
+
+												  }
+												 
 												  
 												  google.maps.event.addListener(marker3, 'click', function() {
 																				
@@ -3025,7 +3296,7 @@ function timer(){
 												  }
 												  
 												  countdown2(0);
-												  playAudio('successArrivo');
+												  playAudio2('successArrivo');
 												  }
 												  else{
 												    $("#blob4").hide();
@@ -3076,34 +3347,52 @@ function timer(){
 												  
 												  }
 												  
-												  if(item.stato==1){
-													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_3.png", null, null, null, new google.maps.Size(40,40));
-												  }
-												  if(item.stato==0){
-													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_3.png", null, null, null, new google.maps.Size(40,40));
-												  }
-												  if(item.stato==2){
-													 var icon3 = new google.maps.MarkerImage("img/marker_verde_3.png", null, null, null, new google.maps.Size(40,40));
-												  }
-
-												  
-												  
 												  var isVisible4 = marker4.getVisible();
 												  if(isVisible4){
 												  marker4.setMap(null);
 												  }
 												  
-												  
-												  marker4 = new google.maps.Marker ({
+												  if(item.stato==1){
+													 var icon3 = new google.maps.MarkerImage("img/marker_arancione_3.png", null, null, null, new google.maps.Size(40,40));
+													 marker4 = new google.maps.Marker ({
+																					   map : map,
+																					   icon: icon3,
+																					   optimized: false,
+																					   position : myLatLng,
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'</a></div>',
+																					   title: item.nick,
+																					   //label: ''+ beach[1] +','+ beach[2] +'',
+																					   zIndex: posizione
+																					   });
+												  }
+												  if(item.stato==0){
+													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_3.png", null, null, null, new google.maps.Size(40,40));
+												    marker4 = new google.maps.Marker ({
 																					map : map,
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup">'+ item.nick +'<br>Km'+ item.distanza +'<br><a id="rispmarker3" href="#home3">GPS</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
 																					});
+												  }
+												  if(item.stato==2){
+													 var icon3 = new google.maps.MarkerImage("img/marker_verde_3.png", null, null, null, new google.maps.Size(40,40));
+													 marker4 = new google.maps.Marker ({
+																					   map : map,
+																					   icon: icon3,
+																					   optimized: false,
+																					   position : myLatLng,
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero: '+ item.distanza +'</a></div>',
+																					   title: item.nick,
+																					   //label: ''+ beach[1] +','+ beach[2] +'',
+																					   zIndex: posizione
+																					   });
+												  }
+												  
+												  
 												  
 												  google.maps.event.addListener(marker4, 'click', function() {
 																				
@@ -3200,7 +3489,7 @@ function timer(){
 												  }
 												  
 												  countdown3(0);
-												  playAudio('successArrivo');
+												  playAudio3('successArrivo');
 												  
 												  }
 												  else{
@@ -3357,7 +3646,7 @@ function magia2C(utente,pass) {
 	$("#magia").show();
 	$("#btninizia").hide();
 	$("#btnpass").hide();
-	
+	localStorage.setItem("pagina","magia")
 	
 	
 	//posizionegps2();
@@ -3455,9 +3744,9 @@ function magia2C(utente,pass) {
 													icon: icon2a,
 													optimized: false,
 													position : latlng5,
-													content:'<div class="popup">Arrivo<br>Km</div>',
-													title: item.nick,
-													zIndex: -19
+													content:'<div class="popup">Arrivo</div>',
+													//title: item.nick,
+													zIndex: -12
 													});
 				  
 				  google.maps.event.addListener(marker5, 'click', function() {
@@ -3468,7 +3757,7 @@ function magia2C(utente,pass) {
 												});
 				  
 				  
-				  
+				  $("#bannermagia").html("<font size='3' color='#fff'>Arrivo: "+ item.arrivo +"<br>Distanza: "+ item.distanza1 +"</font>");
 				  
 				  var isVisible3 = marker3.getVisible();
 				  if(isVisible3){
@@ -4183,6 +4472,10 @@ function palla1() {
 	localStorage.setItem("palla1", "1")
 	localStorage.setItem("exit", "1")
 	
+	setTimeout(function() {
+		$("#blob").hide();
+	}, 10000);
+	
 }
 
 function palla2() {
@@ -4269,41 +4562,58 @@ function richiesta1() {
 	$("#nickhome3").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
 	$("#nickhome6").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
 				  
-	$("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando1 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora1 +"</font>");
+	$("#quando").html("&nbsp;&nbsp;<b>Data: </b><font color='#cc33cc'>"+ quando1 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora1 +"</font>");
 				  
-	$("#Da").html("<b>Da: </b><font color='#cc33cc'>"+ partenza1 +"</font>");
+	$("#Da").html("&nbsp;&nbsp;<b>Da: </b><font color='#cc33cc'>"+ partenza1 +"</font>");
 				  
-	$("#Ad").html("<b>A: </b><font color='#cc33cc'>"+ arrivo1 +"</font>");
+	$("#Ad").html("&nbsp;&nbsp;<b>A: </b><font color='#cc33cc'>"+ arrivo1 +"</font>");
 				  
-	$("#distanza").html("<b>Distanza (linea d'aria): </b><font color='#cc33cc'>"+ distanza1 +" Km</font>");
+	$("#distanza").html("&nbsp;&nbsp;<b>Distanza (linea d'aria): </b><font color='#cc33cc'>"+ distanza1 +" Km</font>");
 	
-	$("#passeggeri").html("<b>N. passeggeri: </b><font color='#cc33cc'>"+ passeggeri1 +"</font>");
+	$("#passeggeri").html("&nbsp;&nbsp;<b>N. passeggeri: </b><font color='#cc33cc'>"+ passeggeri1 +"</font>");
 	
-	$("#animali").html("<b>Animali a seguito: </b><font color='#cc33cc'>"+ animali1 +"</font>");
+	$("#animali").html("&nbsp;&nbsp;<b>Animali a seguito: </b><font color='#cc33cc'>"+ animali1 +"</font>");
 	
-	$("#fumatori").html("<b>Fumatori: </b><font color='#cc33cc'>"+ fumatori1 +"</font>");
+	$("#fumatori").html("&nbsp;&nbsp;<b>Fumatori: </b><font color='#cc33cc'>"+ fumatori1 +"</font>");
 	
-	$("#meno18").html("<b>Minori non accompagnati: </b><font color='#cc33cc'>"+ meno181 +"</font>");
+	$("#meno18").html("&nbsp;&nbsp;<b>Minori non accompagnati: </b><font color='#cc33cc'>"+ meno181 +"</font>");
 	
-	$("#disabili").html("<b>Diversamenti abili: </b><font color='#cc33cc'>"+ disabili1 +"</font>");
+	$("#disabili").html("&nbsp;&nbsp;<b>Diversamenti abili: </b><font color='#cc33cc'>"+ disabili1 +"</font>");
 	
-	$("#bambini").html("<b>Seggiolino per bambini: </b><font color='#cc33cc'>"+ bambini1 +"</font>");
+	$("#bambini").html("&nbsp;&nbsp;<b>Seggiolino per bambini: </b><font color='#cc33cc'>"+ bambini1 +"</font>");
 	
-	$("#wifi").html("<b>WiFi: </b><font color='#cc33cc'>"+ wifi1 +"</font>");
+	$("#wifi").html("&nbsp;&nbsp;<b>WiFi: </b><font color='#cc33cc'>"+ wifi1 +"</font>");
 	
-	$("#portapacchi").html("<b>Portapacchi: </b><font color='#cc33cc'>"+ portapacchi1 +"</font>");
+	$("#portapacchi").html("&nbsp;&nbsp;<b>Portapacchi: </b><font color='#cc33cc'>"+ portapacchi1 +"</font>");
 	
-	$("#rimorchio").html("<b>Gancio rimorchio: </b><font color='#cc33cc'>"+ rimorchio1 +"</font>");
+	$("#rimorchio").html("&nbsp;&nbsp;<b>Gancio rimorchio: </b><font color='#cc33cc'>"+ rimorchio1 +"</font>");
 	
-	$("#bluetooth").html("<b>Bluetooth: </b><font color='#cc33cc'>"+ bluetooth1 +"</font>");
+	$("#bluetooth").html("&nbsp;&nbsp;<b>Bluetooth: </b><font color='#cc33cc'>"+ bluetooth1 +"</font>");
 	
-	$("#note").html("<b>Note: </b><font color='#cc33cc'>"+ note1 +"</font>");
-	
+	$("#note").html("&nbsp;&nbsp;<b>Note: </b><font color='#cc33cc'>"+ note1 +"</font>");
 	
 	
 	
 	              if(stato1==0){
 		            $("#4img").html("<img src='img/1_viola.png' width='30'>");
+					  
+					  $("#close1").html("<img src='img/ico_trash.png' width='45'>");
+					  
+					  
+					  $(document).on("touchstart", "#close1", function(e){
+									 $("#pass1").hide();
+									 
+									 $("#blob2").hide();
+									 cancella(id)
+									 
+									 e.stopImmediatePropagation();
+									 
+									 e.preventDefault();
+									 
+									 return false;
+									 
+									 });
+					  
 	              }
 	
 				  if(stato1!=0){
@@ -4312,11 +4622,46 @@ function richiesta1() {
 	
 				  if(stato1==1){
 					  $("#4img").html("<img src='img/1_giallo.png' width='30'>");
+					  
+					  $("#close1").html("<img src='img/ico_trash.png' width='45'>");
+					  
+					  $(document).on("touchstart", "#close1", function(e){
+									 $("#pass1").hide();
+									 
+									 $("#blob2").hide();
+									 cancella(id)
+									 
+									 e.stopImmediatePropagation();
+									 
+									 e.preventDefault();
+									 
+									 return false;
+									 
+									 });
+					  
 				  }
 
 				  if(stato1==2){
 					  
 				   $("#gps1").show();
+				   $("#close1").html("<img src='img/ico_feedback.png' width='45'>");
+					  
+				   $(document).on("touchstart", "#close1", function(e){
+						$("#pass1").hide();
+									 
+						$("#blob2").hide();
+						cancella(id)
+								  
+						var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+									 
+						e.stopImmediatePropagation();
+									 
+						e.preventDefault();
+									 
+						return false;
+									 
+					});
+					  
 					  
 				   $("#code1").show();
 				   $("#code1").html("<b>Codice Commento : " + cod1 + "</b>");
@@ -4373,6 +4718,11 @@ function richiesta1() {
 					$("#close1").show();
 					$("#close2").hide();
 					$("#close3").hide();
+					  
+					  
+					$("#close1").html("<img src='img/ico_trash.png' width='45'>");
+					  
+					
 					
 				  }
 	
@@ -4389,7 +4739,7 @@ function richiesta1() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4406,7 +4756,7 @@ function richiesta1() {
 				   
 				   //alert('http://www.purplemiles.com/www/feedback_passeggero.php?idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'')
 				   
-				  var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				  var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4443,19 +4793,7 @@ function richiesta1() {
 				   
 	});
 
-	$(document).on("touchstart", "#close1", function(e){
-		$("#pass1").hide();
-				   
-		$("#blob2").hide();
-		cancella(id)
-				   
-				   e.stopImmediatePropagation();
-				   
-				   e.preventDefault();
-				   
-				   return false;
-
-	});
+	
 	
 	$(document).on("tap", "#risp1", function(e){
 				   
@@ -4573,6 +4911,21 @@ function richiesta2() {
 	
 				  if(stato2==0){
 					 $("#4img").html("<img src='img/2_viola.png' width='30'>");
+					  
+					  $("#close2").html("<img src='img/ico_trash.png' width='45'>");
+					  
+					  $(document).on("touchstart", "#close2", function(e){
+									 $("#pass2").hide();
+									 $("#blob2").hide();
+									 cancella(id)
+									 
+									 
+									 e.stopImmediatePropagation();
+									 
+									 e.preventDefault();
+									 
+									 return false;
+					  });
 				  }
 	
 				  if(stato2!=0){
@@ -4581,12 +4934,44 @@ function richiesta2() {
 	
 				  if(stato2==1){
 					 $("#4img").html("<img src='img/2_giallo.png' width='30'>");
+					  
+					  $("#close2").html("<img src='img/ico_trash.png' width='45'>");
+					  
+					  $(document).on("touchstart", "#close2", function(e){
+									 $("#pass2").hide();
+									 $("#blob2").hide();
+									 cancella(id)
+									 
+									 
+									 e.stopImmediatePropagation();
+									 
+									 e.preventDefault();
+									 
+									 return false;
+					  });
 				  }
 	
 				  if(stato2==2){
 					  
 				   $("#gps22").show();
 				   $("#risp2").hide();
+					  
+					  $("#close2").html("<img src='img/ico_feedback.png' width='45'>");
+					  $(document).on("touchstart", "#close2", function(e){
+							$("#pass2").hide();
+							$("#blob2").hide();
+							cancella(id)
+									 
+							var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+									 
+							e.stopImmediatePropagation();
+									 
+							e.preventDefault();
+									 
+							return false;
+					});
+
+
 					  
 				   $("#code2").show();
 				   $("#code2").html("<b>Codice Commento : " + cod2 + "</b>");
@@ -4636,6 +5021,9 @@ function richiesta2() {
 					  $("#close2").show();
 					  $("#close1").hide();
 					  $("#close3").hide();
+					  
+					  $("#close2").html("<img src='img/ico_trash.png' width='45'>");
+					  
 				  }
 
 
@@ -4654,7 +5042,7 @@ function richiesta2() {
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4669,7 +5057,7 @@ function richiesta2() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4701,18 +5089,7 @@ function richiesta2() {
 				   
 	});
 
-	$(document).on("touchstart", "#close2", function(e){
-	$("#pass2").hide();
-	$("#blob2").hide();
-	cancella(id)
 	
-		
-	e.stopImmediatePropagation();
-		
-	e.preventDefault();
-		
-	return false;
-	});
 	
 	$(document).on("touchstart", "#risp2", function(e){
 				   $("#blob2").hide();
@@ -4828,6 +5205,22 @@ function richiesta3() {
 	
 	if(stato3==0){
 		$("#4img").html("<img src='img/3_viola.png' width='30'>");
+		
+		 $("#close3").html("<img src='img/ico_trash.png' width='45'>");
+		
+		$(document).on("tap", "#close3", function(e){
+					   $("#pass3").hide();
+					   $("#blob2").hide();
+					   
+					   cancella(id)
+					   
+					   e.stopImmediatePropagation();
+					   
+					   e.preventDefault();
+					   
+					   return false;
+					   
+		});
 	}
 	
 				  if(stato3!=0){
@@ -4836,6 +5229,22 @@ function richiesta3() {
 	
 	if(stato3==1){
 		$("#4img").html("<img src='img/3_giallo.png' width='30'>");
+		
+		 $("#close3").html("<img src='img/ico_trash.png' width='45'>");
+		
+		$(document).on("tap", "#close3", function(e){
+					   $("#pass3").hide();
+					   $("#blob2").hide();
+					   
+					   cancella(id)
+					   
+					   e.stopImmediatePropagation();
+					   
+					   e.preventDefault();
+					   
+					   return false;
+					   
+		});
 	}
 	
 	
@@ -4844,6 +5253,25 @@ function richiesta3() {
 				  $("#risp3").hide();
 				  $("#code3").show();
 					  
+				   $("#close3").html("<img src='img/ico_feedback.png' width='45'>");
+					  
+					  $(document).on("tap", "#close3", function(e){
+						  $("#pass3").hide();
+						  $("#blob2").hide();
+									 
+						  cancella(id)
+									 
+						  var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+									 
+						  e.stopImmediatePropagation();
+									 
+						  e.preventDefault();
+									 
+						  return false;
+									 
+					});
+
+				  
 				  $("#code3").html("<b>Codice Commento : " + cod3 + "</b>");
 				  $("#chat3").show();
 					  
@@ -4856,7 +5284,6 @@ function richiesta3() {
 				  $(document).on("tap", "#gps3", function(e){
 
 						var addressLongLat = lat3+","+lng3;
-	
 	
 	                             window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
@@ -4890,8 +5317,6 @@ function richiesta3() {
 					  
 				  }
 				  
-				 
-	
 	
 	$("#xchiudi3").show();
 	$("#xchiudi2").hide();
@@ -4906,7 +5331,7 @@ function richiesta3() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4921,7 +5346,7 @@ function richiesta3() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4952,19 +5377,7 @@ function richiesta3() {
 				   
 		});
 	
-	$(document).on("tap", "#close3", function(e){
-				   $("#pass3").hide();
-				   $("#blob2").hide();
-				   
-				   cancella(id)
 
-				   e.stopImmediatePropagation();
-				   
-				   e.preventDefault();
-				   
-				   return false;
-
-				   });
 	
 	$(document).on("tap", "#risp3", function(e){
 				   $("#blob2").hide();
@@ -5041,6 +5454,8 @@ function chatting(pass,id) {
 	
 	
 	$.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
+	
+	localStorage.setItem("pagina","chat")
 	
 	setTimeout(function() {
 		$("#tblchat").fadeIn(1500)
@@ -5134,7 +5549,7 @@ function inviachat() {
 	
 	if (indirizzo == "") {
 		navigator.notification.alert(
-									 'inserire un messaggio',  // message
+									 'Devi inserire un messaggio',  // message
 									 alertDismissed,         // callback
 									 'Chat',            // title
 									 'OK'                  // buttonName
