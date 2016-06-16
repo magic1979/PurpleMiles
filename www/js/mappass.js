@@ -150,17 +150,20 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#indietro6", function(e){
 				   
+			$("#tblchat").hide()
+				   
+			$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
+				   
+				   
 			for(i=0; i<10000; i++)
 			{
 			   window.clearInterval(i);
 			}
 				   
-			$("#tblchat").hide()
-				   
-			$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
-				   
-			vediofferte()
-				   
+			setTimeout(function() {
+			  vediofferte()
+			}, 500);
+			
 			e.stopImmediatePropagation();
 				   
 			e.preventDefault();
@@ -175,6 +178,14 @@ function onDeviceReady() {
 		localStorage.setItem("dovesono", "1");
 		localStorage.setItem("destination", "0")
 		localStorage.setItem("pagebtn", "da")
+				   
+		document.getElementById("datacal").value = "";
+				   
+		$("#Orario").html("<option selected>--</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option>");
+		$("#Minuti").html("<option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>");
+				   
+		$("#Orario").selectmenu("refresh");
+		$("#Minuti").selectmenu("refresh");
 				   
 		$("#viale").show();
 		$("#destinazione").hide();
@@ -196,6 +207,14 @@ function onDeviceReady() {
 				   localStorage.setItem("destination", "0")
 				   localStorage.setItem("pagebtn", "da")
 				   
+				   document.getElementById("datacal").value = "";
+				   
+				   $("#Orario").html("<option selected>--</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option>");
+				   $("#Minuti").html("<option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>");
+				   
+				   $("#Orario").selectmenu("refresh");
+				   $("#Minuti").selectmenu("refresh");
+				   
 				   $("#viale").show();
 				   $("#destinazione").hide();
 				   
@@ -216,7 +235,7 @@ function onDeviceReady() {
 				   });
 	
 	$(document).on("tap", "#adesso", function(e){
-				   
+				   localStorage.setItem("dovesono", "1");
                    localStorage.setItem("pagebtn", "da")
 				   document.getElementById("datacal").value = "";
 				   
@@ -681,6 +700,7 @@ function onDeviceReady() {
 				   }
 				   
 				   localStorage.setItem("destination", "0")
+				   localStorage.setItem("dovesono", "1");
 				   
 				   $("#viale").show();
 				   $("#destinazione").hide();
@@ -1303,20 +1323,16 @@ function onResume() {
 	
 	setTimeout(function() {
 			   
-			   for(i=0; i<10000; i++)
-			   {
-			   window.clearInterval(i);
-			   }
-			   
-			   window.location.href = "mappass.html";
-			   
 
 	  //$.mobile.changePage( "#win2", { transition: "slide", changeHash: false });
-		/*if (localStorage.getItem("dovesono")=="3"){
+		if (localStorage.getItem("dovesono")=="3"){
 			   for(i=0; i<10000; i++)
 			   {
 			     window.clearInterval(i);
 			   }
+			   
+			   window.location.href = "mappass.html";
+			   
 			   
 			   $("#viale").show();
 			   $("#destinazione").hide();
@@ -1324,9 +1340,9 @@ function onResume() {
 			   $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 			   $("#spinner4").show();
 			   
-			   alert(localStorage.getItem("tempor"))
+			   //vediofferte()
+			  
 			   
-			   vediofferte()
 		}
 		
 		else{
@@ -1339,7 +1355,7 @@ function onResume() {
 			   $("#destinazione").hide();
 			   
 		      resetta1(1);
-		}*/
+		}
 			   
 			   
 	}, 200);
@@ -2367,6 +2383,8 @@ function inviachat() {
 			  playChat1('successChat1');
 			  document.getElementById("chattext").value="";
 				  
+			  controllachat2();
+				  
 			}
 				  
 			});
@@ -2448,6 +2466,45 @@ function controllachat(uman) {
 										'Attenzione',           // title
 										'Done'                  // buttonName
 										);*/
+		   
+		   
+		   },
+		   dataType:"jsonp"});
+	
+}
+
+
+function controllachat2() {
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   if(localStorage.getItem("chatcontroll")==JSON.stringify(result)){
+		   
+		   }
+		   else{
+		   
+		   localStorage.setItem("chatcontroll", JSON.stringify(result))
+		   
+		   
+		   }
+		   
+		   },
+		   error: function(){
+		   
+		   /*navigator.notification.alert(
+			'Possibile errore di rete, riprova tra qualche minuto.',  // message
+			alertDismissed,         // callback
+			'Attenzione',           // title
+			'Done'                  // buttonName
+			);*/
 		   
 		   
 		   },

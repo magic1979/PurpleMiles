@@ -136,7 +136,7 @@ receivedEvent: function(id) {
 	
 	if(connectionStatus=='online'){
 		$('#noconn').hide();
-		controllachat(1)
+		//controllachat(1)
 		
 		
 		localStorage.setItem("chatpass", "")
@@ -5684,6 +5684,8 @@ function inviachat() {
 				  if(item.Token==1){
 				    playChat1('successChat1');
 				    document.getElementById("chattext").value="";
+				  
+				     controllachat2()
 					
 				  }
 				  
@@ -6062,6 +6064,47 @@ function controllachat(uman) {
 	
 	
 }
+
+function controllachat2() {
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   if(localStorage.getItem("chatcontroll")==JSON.stringify(result)){
+		   
+		   }
+		   else{
+		   
+		   localStorage.setItem("chatcontroll", JSON.stringify(result))
+		   
+		   
+		   
+		   }
+		   
+		   },
+		   error: function(){
+		   
+		   /* navigator.notification.alert(
+			'Possibile errore di rete, riprova tra qualche minuto.',  // message
+			alertDismissed,         // callback
+			'Attenzione',           // title
+			'Done'                  // buttonName
+			);*/
+		   
+		   
+		   },
+		   dataType:"jsonp"});
+	
+	
+}
+
 
 function playChat(id) {
 	var audioElement = document.getElementById(id);
