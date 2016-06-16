@@ -423,7 +423,7 @@ function onDeviceReady() {
     
          setTimeout(function() {
            $(".spinner").hide();
-         }, 5000);
+         }, 3000);
 	
 	
 		var connectionStatus = false;
@@ -437,17 +437,22 @@ function onDeviceReady() {
 			
 			//localStorage.setItem("fuso", "Italy");
 			//localStorage.setItem("citta", "154");
+			
+			
 			prendicittaid(localStorage.getItem("citta"))
+			
 			
 			if (localStorage.getItem("city") === null || localStorage.getItem("city")=="null" || typeof(localStorage.getItem("city")) == 'undefined' || localStorage.getItem("city")==0 || localStorage.getItem("city")=="") {
 
-              $("#citta").html("<option value=''>Selezionare la città</option><option value='154'>Rome</option>");
+              $("#citta").html("<option value=''>Selezionare la citta</option><option value='154'>Rome</option>");
 			}
 			else{
 			  $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
 			}
+			
 
-            $("#citta").selectmenu("refresh");
+            //$("#citta").selectmenu("refresh");
+			
 
 
 			var today = new Date();
@@ -477,6 +482,7 @@ function onDeviceReady() {
 			$(".spinner").hide();
 			
 			document.getElementById("email").value = localStorage.getItem("email2")
+		
 			
 			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 			
@@ -689,7 +695,7 @@ function login() {
 	
 	if (email2 == "") {
 		navigator.notification.alert(
-									 'inserire Username',  // message
+									 'inserire la email',  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
@@ -700,7 +706,7 @@ function login() {
 	
 	if (pin2 == "") {
 		navigator.notification.alert(
-									 'inserire una Password',  // message
+									 'inserire la Password',  // message
 									 alertDismissed,         // callback
 									 'Password',            // title
 									 'OK'                  // buttonName
@@ -716,7 +722,7 @@ function login() {
 	}
 	else {
 		navigator.notification.alert(
-									 'Caratteri email non consentiti',  // message
+									 'Verificare la email',  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
