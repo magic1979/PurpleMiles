@@ -81,7 +81,7 @@ receivedEvent: function(id) {
 			setTimeout(function() {
 				resetta1(1);
 					   
-				setTimeout(function() {
+				/*setTimeout(function() {
 					   
 				if(localStorage.getItem("pagechat")=="1"){
 				   $("#pass1").tap();
@@ -95,7 +95,7 @@ receivedEvent: function(id) {
 					$("#pass3").tap();
 				}
 						   
-				}, 1500);
+				}, 1500);*/
 			}, 500);
 							  
 			
@@ -737,7 +737,7 @@ receivedEvent: function(id) {
 				   setTimeout(function() {
 						resetta1(1);
 							  
-						setTimeout(function() {
+						/*setTimeout(function() {
 						if(localStorage.getItem("pagechat")=="1"){
 				         $("#pass1").tap();
 						}
@@ -749,7 +749,7 @@ receivedEvent: function(id) {
 						if(localStorage.getItem("pagechat")=="3"){
 						  $("#pass3").tap();
 						}
-						}, 1500);
+						}, 1500);*/
 							  
 				   }, 500);
 				   
@@ -5516,7 +5516,7 @@ function lista5() {
 				  
 				  if(item.Token==1){
 				  
-				  $("#offerte5").html("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"<br><b>Ora: </b>"+ item.ora +"<br><br><b>Partenza: </b>"+ item.partenza +"<br><b>Arrivo: </b>"+ item.arrivo +"</td></tr></table>");
+				  $("#offerte5").html("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"&nbsp;<b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo: </b>"+ item.arrivo +"</td></tr></table>");
 				  }
 				  else{
 					 $("#offerte5").html("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><img src='img/Logo.png' width='160px'><br></td></tr><tr><td align='center'>Nessuna Richiesta Posticipata<br></td></tr></table>")

@@ -150,9 +150,9 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#indietro6", function(e){
 				   
-			$("#tblchat").hide()
+			//$("#tblchat").hide()
 				   
-			$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
+			//$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
 				   
 				   
 			for(i=0; i<10000; i++)
@@ -160,9 +160,11 @@ function onDeviceReady() {
 			   window.clearInterval(i);
 			}
 				   
-			setTimeout(function() {
+			window.location.href = "mappass.html";
+				   
+			/*setTimeout(function() {
 			  vediofferte()
-			}, 500);
+			}, 500);*/
 			
 			e.stopImmediatePropagation();
 				   
