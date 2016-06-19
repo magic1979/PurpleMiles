@@ -1206,7 +1206,7 @@ function CenterControl2(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<table width="100%" border="0" class="xalto"><tr><td align="right"><a id="XXX" href="index.html" rel="external"><img src="img/ico_close1.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>';
+	controlText.innerHTML = '<table width="100%" border="0" class="xalto"><tr><td align="right">&nbsp;<br><br></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -3704,7 +3704,11 @@ function magia2C(utente,pass) {
 	
 	$("#magia").show();
 	$("#btninizia").hide();
-	$("#btnpass").hide();
+	//$("#btnpass").hide();
+	$("#pass1").hide();
+	$("#pass2").hide();
+	$("#pass3").hide();
+	
 	localStorage.setItem("pagina","magia")
 	
 	
