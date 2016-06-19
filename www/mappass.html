@@ -840,7 +840,7 @@
 						  background-color: #cc33cc;
 						  position: fixed;
 
-						  top: 110;
+						  top: 120;
 						  left: 15;
 						  width: 95%;
 						  height: 40px;
@@ -861,7 +861,7 @@
 					  .bannertbl2 {
 						  position: fixed;
 						  
-						  top: 100;
+						  top: 105;
 						  left: 15;
 						  width: 100%;
 						  height: 16px;
@@ -871,6 +871,21 @@
 						  
 						  z-index: 100;
 					  }
+					  
+					  .bannertbl3 {
+						  position: fixed;
+						  
+						  top: 3;
+						  right: 10;
+						  width: 200px;
+						  height: 42px;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  z-index: 100;
+					  }
+
 					  
 					  .cambiafuso {
 
@@ -889,7 +904,7 @@
 		<script type='application/javascript' src='js/fastclick.js'></script>
 		
         <div id="geolocation"></div>
-		<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
+		<audio id="successArrivo" src="sound/bell.mp3" type="audio/mpeg" ></audio>
         
 <div data-role=page id=home class="div2">
 
@@ -963,7 +978,7 @@
 				<select id="Minuti" data-theme="c"><option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option></select>
 			</td>
 			<td width="25%" align="center" >
-				<img src="img/clock.png" width="45">
+				<img src="img/clock.png" width="30">
 			</td>
 		</tr>
 		
@@ -1597,7 +1612,7 @@
 		</div>
 		
 		<div data-role=page id=home4 class="div2">
-			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
+			<audio id="successArrivo" src="sound/bell.mp3" type="audio/mpeg" ></audio>
 			
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			<table border="0" valign="center" align="center" class="transbox">
@@ -1639,8 +1654,8 @@
 		
 		<div data-role=page id=home6 class="divchat">
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
-			<audio id="successChat1" src="/android_asset/www/sound/send_chat.mp3" type="audio/mpeg" ></audio>
-			<audio id="successChat2" src="/android_asset/www/sound/new_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successChat1" src="sound/send_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successChat2" src="sound/new_chat.mp3" type="audio/mpeg" ></audio>
 			
 			<table border="0" width="100%" align="center" class="transbox4A">
 				<tr>
@@ -1672,20 +1687,14 @@
 							<textarea id="chattext" cols="30" rows="4" class="scrivo" placeholder="Chat"></textarea>
 						</td>
 					</tr>
-					<!--<tr>
-						<td width="100%" align="center" >
-							
-						</td>
-					</tr>-->
-					
 					
 					<tr>
-						<td width="100%" align="center" >
-							<div id="offerta6" ></div>
-						</td>
+						<td width="100%" align="center" ><br></td>
 					</tr>
 					
 				</table>
+				<br>
+				&nbsp;<div id="offerta6" ></div>
 				
 			</form>
 			

@@ -79,23 +79,10 @@ receivedEvent: function(id) {
 			}
 							  
 			setTimeout(function() {
-				resetta1(1);
-					   
-				/*setTimeout(function() {
-					   
-				if(localStorage.getItem("pagechat")=="1"){
-				   $("#pass1").tap();
-				}
-					   
-				if(localStorage.getItem("pagechat")=="2"){
-					$("#pass2").tap();
-				}
-					   
-				if(localStorage.getItem("pagechat")=="3"){
-					$("#pass3").tap();
-				}
-						   
-				}, 1500);*/
+				//resetta1(1);
+				 
+				window.location.href = "index.html?id=2";
+				
 			}, 500);
 							  
 			
@@ -238,10 +225,11 @@ receivedEvent: function(id) {
 	localStorage.setItem("palla1", "0")
 	localStorage.setItem("palla2", "0")
 	localStorage.setItem("palla3", "0")
+
 	
-	if(IDPage!=1){
+	/*if(IDPage!=1){
 	  localStorage.setItem("exit", "0")
-	}
+	}*/
 	
 	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere AUTISTA</p><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere PASSEGGERO</p><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
 	
@@ -724,46 +712,19 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("touchstart", "#indietro6", function(e){
-				   $("#tblchat").hide()
-				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+	$(document).on("tap", "#indietro6", function(e){
+		$("#tblchat").hide()
 				   
+		for(i=0; i<10000; i++)
+		{
+			window.clearInterval(i);
+		}
 				   
-				   for(i=0; i<10000; i++)
-				   {
-				   window.clearInterval(i);
-				   }
-				   
-				   setTimeout(function() {
-						resetta1(1);
-							  
-						/*setTimeout(function() {
-						if(localStorage.getItem("pagechat")=="1"){
-				         $("#pass1").tap();
-						}
-							  
-						if(localStorage.getItem("pagechat")=="2"){
-				          $("#pass2").tap();
-						}
-							  
-						if(localStorage.getItem("pagechat")=="3"){
-						  $("#pass3").tap();
-						}
-						}, 1500);*/
-							  
-				   }, 500);
-				   
-				   
-				   
-				   e.stopImmediatePropagation();
-				   
-				   e.preventDefault();
-				   
-				   return false;
-				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		window.location.href = "index.html?id=2";
+
 				   
 	});
+	
     
 	$(document).on("touchstart", "#resetta", function(e){
 		window.location.href = "index.html";
@@ -1111,16 +1072,20 @@ receivedEvent: function(id) {
 		resetta1(1);
 	}
 	
+	if(IDPage==2){
+		$("#mappa6").tap();
+	}
+	
 	$(document).keydown(function (eventObj){
 		getKey(eventObj);
     });
 	
 
 	
-	if(IDPage==2){
+	/*if(IDPage==2){
 		window.location.href = "#win2";
 		resetta2();
-	}
+	}*/
 }
 	
 }
@@ -1201,7 +1166,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6"><td align="right" valign="center"><a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="40px"></a>&nbsp;</td></tr><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table>';
+	controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6"><td align="right" valign="center">&nbsp;<br><br></td></tr><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl4"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl5"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="#" valign="center"><b>Posizione dell\'autista</b><br></div></font><br></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -2877,12 +2842,15 @@ function timer(){
 										   crossDomain: true,
 										   success:function(result){
                                            
-                                           if(localStorage.getItem("tutteleofferte")==JSON.stringify(result)){
+                                           if(localStorage.getItem("tutteleofferte")===JSON.stringify(result)){
                                            
                                            }
                                            else{
-
-                                              playAudio('successArrivo');
+											  if (localStorage.getItem("tutteleofferte")!="null" || typeof(localStorage.getItem("tutteleofferte")) != 'undefined' || localStorage.getItem("tutteleofferte")!=0 || localStorage.getItem("tutteleofferte")!="") {
+										   
+                                                   playAudio('successArrivo');
+										   
+										      }
 
                                            }
 											   
@@ -3015,7 +2983,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -3030,7 +2998,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -3043,7 +3011,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -3233,7 +3201,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -3246,7 +3214,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -3259,7 +3227,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -3421,7 +3389,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -3434,7 +3402,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -3447,7 +3415,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero(l.a.): '+ item.distanza +'</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -4008,7 +3976,7 @@ function magia2C(utente,pass) {
 				  
 				  map.setZoom(dist2)
 				  
-				  $("#bannermagia").html("<font size='3' color='#fff'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza(l.a.): "+ item.distanza1 +"</font>");
+				  $("#bannermagia").html("<font size='3' color='#fff'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza (l.a.): "+ item.distanza1 +" km</font>");
 				  
 				  marker1.setVisible(false);
 				  marker3.setVisible(false);
@@ -5556,7 +5524,6 @@ function chatting(pass,id) {
 	}
 	
 	
-	$.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
 	
 	localStorage.setItem("pagina","chat")
 	
@@ -5602,6 +5569,7 @@ function chatting(pass,id) {
 				    }
 				  
 				   //playChat2('successChat2');
+				  $.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
 				  
 				}
 				  
@@ -5664,6 +5632,7 @@ function inviachat() {
 		return;
 	}
 	
+	indirizzo = indirizzo.replace(/[0-9]/g, '').replace('€', 'Euro');
 	
 	$("#spinner6").show();
 	
@@ -5941,6 +5910,10 @@ function inviopasseggero(come){
 	if(come==2){
 		var coming = "OFFERTA LIBERA";
 	}
+	
+	coming = coming.replace(/[0-9]/g, '').replace('€', 'Euro');
+	coming = coming.replace("'", "");
+	
 	
 	$("#spinner3").show();
 	$.ajax({
