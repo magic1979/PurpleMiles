@@ -387,6 +387,7 @@ receivedEvent: function(id) {
 	var note1;
 	var percentuale1;
 	var rating1;
+	var cell1;
 	
 	
 	var nick2;
@@ -413,6 +414,7 @@ receivedEvent: function(id) {
 	var note2;
 	var percentuale2;
 	var rating2;
+	var cell2;
 	
 	var nick3;
 	var quando3;
@@ -438,6 +440,7 @@ receivedEvent: function(id) {
 	var note3;
 	var percentuale3;
 	var rating3;
+	var cell3;
 	
 	var muoviti;
 	var setGPS;
@@ -939,12 +942,13 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#inizia", function(e){
 					$('#modificastart').blur()
+				    $('#inizia').blur()
 				   
 				   if(localStorage.getItem("setGPS") == 1){
 				   
 				     if (document.getElementById("modificastart").value == "") {
 				         navigator.notification.alert(
-												'inserire un indirizzo valido o utilizzare la posizione GPS',  // message
+												'Inserire un indirizzo valido o utilizzare la posizione GPS',  // message
 												alertDismissed,         // callback
 												'Indirizzo',            // title
 												'OK'                  // buttonName
@@ -954,6 +958,7 @@ receivedEvent: function(id) {
 				       }
 				   }
 				   
+
 				   localStorage.setItem("pagina","inizia")
 				   
 				   setTimeout(function() {
@@ -1071,6 +1076,8 @@ receivedEvent: function(id) {
 	if(IDPage==1){
 		resetta1(1);
 	}
+	
+	//alert(IDPage)
 	
 	if(IDPage==2){
 		$("#mappa6").tap();
@@ -1741,7 +1748,7 @@ function prendivia() {
 	
 	if (document.getElementById("modificastart").value == "") {
 		navigator.notification.alert(
-			'inserire un indirizzo valido o utilizzare la posizione GPS',  // message
+			'Inserire un indirizzo valido o utilizzare la posizione GPS',  // message
 			 alertDismissed,         // callback
 			 'Indirizzo',            // title
 			 'OK'                  // buttonName
@@ -2942,6 +2949,7 @@ function timer(){
 												  note1 = item.note;
 												  percentuale1 = item.percentuale;
 												  rating1 = item.rating;
+												  cell1 = item.cell;
 												  
 												  if(localStorage.getItem("palla1")!=1){
 											   
@@ -3161,6 +3169,7 @@ function timer(){
 												  note2 = item.note;
 												  percentuale2 = item.percentuale;
 												  rating2 = item.rating;
+												  cell2 = item.cell;
 												  
 												  if(localStorage.getItem("palla2")!=1){
 												  
@@ -3363,6 +3372,7 @@ function timer(){
 												  note3 = item.note;
 												  percentuale3 = item.percentuale;
 												  rating3 = item.rating;
+												  cell3 = item.cell;
 												  
 												  if(localStorage.getItem("palla3")!=1){
 												  
@@ -4603,24 +4613,43 @@ function richiesta1() {
 	$("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	
 	
-	if(parseInt(rating1)==0){
+	if(parseFloat(rating1)==0){
 		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
 	}
-	else if(parseInt(rating1)==1){
+	
+	else if(parseFloat(rating1)>0 && parseFloat(rating1)<=0.9){
+		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if(parseFloat(rating1)>=1 && parseFloat(rating1)<=1.4){
 		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
 	}
-	else if (parseInt(rating1)==2) {
+	else if(parseFloat(rating1)>1.4 && parseFloat(rating1)<=1.9){
+		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if (parseFloat(rating1)>=2 && parseFloat(rating1)<=2.4) {
 		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
 	}
-	else if (parseInt(rating1)==3) {
+	else if (parseFloat(rating1)>2.4 && parseFloat(rating1)<=2.9) {
+		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating1)>=3 && parseFloat(rating1)<=3.4) {
 		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
 	}
-	else if (parseInt(rating1)==4) {
-		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	else if (parseFloat(rating1)>3.4 && parseFloat(rating1)<=3.9) {
+		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'></a>")
 	}
-	else if (parseInt(rating1)==5) {
-		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
+	else if (parseFloat(rating1)>=4 && parseFloat(rating1)<=4.4) {
+		$("#stelle4").html(ratio = "<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
 	}
+	else if (parseFloat(rating1)>4.4 && parseFloat(rating1)<=4.9) {
+		$("#stelle4").html(ratio = "<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'></a>")
+	}
+	else if (parseFloat(rating1)>=5) {
+		$("#stelle4").html(ratio = "<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
+	}
+
 
 
 	localStorage.setItem("id_nick", nick1)
@@ -4711,7 +4740,28 @@ function richiesta1() {
 				  if(stato1==2){
 					  
 				   $("#gps1").show();
-				   $("#close1").html("<img src='img/ico_feedback.png' width='50'>");
+				   $("#close1").html("<img src='img/ico_feedback.png' width='45'>");
+					  
+				   
+					//alert("tel:+39" + cell1 + "")
+					  
+				   if(cell1!=""){
+				   $("#cell1").show();
+				   
+					  
+					$(document).on("touchstart", "#cell1", function(e){
+								  
+						window.location.href = "tel:+39" + cell1 + "";
+									 
+						e.stopImmediatePropagation();
+									 
+						e.preventDefault();
+									 
+						return false;
+									 
+					});
+				   }
+				   
 					  
 				   $(document).on("touchstart", "#close1", function(e){
 						$("#pass1").hide();
@@ -4759,7 +4809,7 @@ function richiesta1() {
 								 
 				   });
 					  
-					  $(document).on("tap", "#chat1", function(e){
+					  $(document).on("touchstart", "#chat1", function(e){
 							
 							localStorage.setItem("pagechat", "1")
 									 
@@ -4926,24 +4976,43 @@ function richiesta2() {
 	localStorage.setItem("id_utente_pass2", id_utente_pass2)
 	
 	
-	if(parseInt(rating2)==0){
-		$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if(parseInt(rating2)==1){
-		$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if (parseInt(rating2)==2) {
-		$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if (parseInt(rating2)==3) {
-		$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if (parseInt(rating2)==4) {
-		$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if (parseInt(rating2)==5) {
-		$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
-	}
+			if(parseFloat(rating2)==0){
+			$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+			}
+			
+			else if(parseFloat(rating2)>0 && parseFloat(rating2)<=0.9){
+					$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+					}
+					
+					else if(parseFloat(rating2)>=1 && parseFloat(rating2)<=1.4){
+							$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+							}
+							else if(parseFloat(rating2)>1.4 && parseFloat(rating2)<=1.9){
+							$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+							}
+							
+							else if (parseFloat(rating2)>=2 && parseFloat(rating2)<=2.4) {
+							$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+							}
+							else if (parseFloat(rating2)>2.4 && parseFloat(rating2)<=2.9) {
+							$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+							}
+							else if (parseFloat(rating2)>=3 && parseFloat(rating2)<=3.4) {
+							$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+							}
+							else if (parseFloat(rating2)>3.4 && parseFloat(rating2)<=3.9) {
+							$("#stelle4").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+							}
+							else if (parseFloat(rating2)>=4 && parseFloat(rating2)<=4.4) {
+							$("#stelle4").html(ratio = "<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+							}
+							else if (parseFloat(rating2)>4.4 && parseFloat(rating2)<=4.9) {
+							$("#stelle4").html(ratio = "<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'></a>")
+							}
+							else if (parseFloat(rating2)>=5) {
+							$("#stelle4").html(ratio = "<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
+		   }
+
 	
 				  
 	$("#quando").html("<b>Data: </b><font color='#cc33cc'>"+ quando2 +"</font>, <b>Ora: </b><font color='#cc33cc'>"+ ora2 +"</font>");
@@ -5007,6 +5076,8 @@ function richiesta2() {
 					  
 					  $("#close2").html("<img src='img/ico_trash.png' width='45'>");
 					  
+					  
+					  
 					  $(document).on("touchstart", "#close2", function(e){
 									 $("#pass2").hide();
 									 $("#blob2").hide();
@@ -5026,7 +5097,25 @@ function richiesta2() {
 				   $("#gps22").show();
 				   $("#risp2").hide();
 					  
-					  $("#close2").html("<img src='img/ico_feedback.png' width='50'>");
+					  if(cell2!=""){
+						  $("#cell2").show();
+						  
+						  
+						  $(document).on("touchstart", "#cell2", function(e){
+										 
+										 window.location.href = "tel:+39"+cell2+"";
+										 
+										 e.stopImmediatePropagation();
+										 
+										 e.preventDefault();
+										 
+										 return false;
+										 
+										 });
+				   }
+
+					  
+					  $("#close2").html("<img src='img/ico_feedback.png' width='45'>");
 					  $(document).on("touchstart", "#close2", function(e){
 							$("#pass2").hide();
 							$("#blob2").hide();
@@ -5221,24 +5310,42 @@ function richiesta3() {
 	
 	              localStorage.setItem("id_utente_pass3", id_utente_pass3)
 	
-	if(parseInt(rating3)==0){
-		$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if(parseInt(rating3)==1){
-		$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if (parseInt(rating3)==2) {
-		$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if (parseInt(rating3)==3) {
-		$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if (parseInt(rating3)==4) {
-		$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
-	}
-	else if (parseInt(rating3)==5) {
-		$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
-	}
+							if(parseFloat(rating3)==0){
+							$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+							}
+							
+							else if(parseFloat(rating3)>0 && parseFloat(rating3)<=0.9){
+									$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+									}
+									
+									else if(parseFloat(rating3)>=1 && parseFloat(rating3)<=1.4){
+											$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+											}
+											else if(parseFloat(rating3)>1.4 && parseFloat(rating3)<=1.9){
+											$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+											}
+											
+											else if (parseFloat(rating3)>=2 && parseFloat(rating3)<=2.4) {
+											$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+											}
+											else if (parseFloat(rating3)>2.4 && parseFloat(rating3)<=2.9) {
+											$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+											}
+											else if (parseFloat(rating3)>=3 && parseFloat(rating3)<=3.4) {
+											$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+											}
+											else if (parseFloat(rating3)>3.4 && parseFloat(rating3)<=3.9) {
+											$("#stelle4").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+											}
+											else if (parseFloat(rating3)>=4 && parseFloat(rating3)<=4.4) {
+											$("#stelle4").html(ratio = "<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+											}
+											else if (parseFloat(rating3)>4.4 && parseFloat(rating3)<=4.9) {
+											$("#stelle4").html(ratio = "<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'></a>")
+											}
+											else if (parseFloat(rating3)>=5) {
+											$("#stelle4").html(ratio = "<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
+											}
 	
 				  
 	
@@ -5326,7 +5433,26 @@ function richiesta3() {
 				  $("#risp3").hide();
 				  $("#code3").show();
 					  
-				   $("#close3").html("<img src='img/ico_feedback.png' width='50'>");
+				   $("#close3").html("<img src='img/ico_feedback.png' width='45'>");
+					  
+					  if(cell3!=""){
+						  $("#cell3").show();
+						  
+						  
+						  $(document).on("touchstart", "#cell3", function(e){
+										 
+										 window.location.href = "tel:+39"+cell3+"";
+										 
+										 e.stopImmediatePropagation();
+										 
+										 e.preventDefault();
+										 
+										 return false;
+										 
+										 });
+				   }
+					  
+					  
 					  
 					  $(document).on("tap", "#close3", function(e){
 						  $("#pass3").hide();
@@ -5519,6 +5645,7 @@ function lista5() {
 
 function chatting(pass,id) {
 	
+	
 	//$("#spinner6").show();
 	localStorage.setItem("tastiera","0")
 	
@@ -5559,10 +5686,10 @@ function chatting(pass,id) {
 		   $.each(result, function(i,item){
 				  
 			   localStorage.setItem("chatpass", JSON.stringify(result))
+			   $.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
 				  
 			   if(item.Token==1){
-				 
-				  
+				
 				  if(item.nick==localStorage.getItem("nick")){
 				    //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='left' class='tabella'><tr><td align='center'><div class='custom-pass33'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
 				       $("#offerta6").append("<div class='bubbledLeft'>"+ item.messaggio +"</div>")
@@ -5573,7 +5700,6 @@ function chatting(pass,id) {
 				    }
 				  
 				   //playChat2('successChat2');
-				  $.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
 				  
 				}
 				  
@@ -5899,7 +6025,7 @@ function inviopasseggero(come){
 	if(come==3){
 		if (self.document.formia.soldini.value == "") {
 			navigator.notification.alert(
-										 'inserire un importo',  // message
+										 'Inserire un importo',  // message
 										 alertDismissed,         // callback
 										 'Pin',            // title
 										 'OK'                  // buttonName
@@ -5915,14 +6041,14 @@ function inviopasseggero(come){
 		var coming = "OFFERTA LIBERA";
 	}
 	
-	coming = coming.replace(/[0-9]/g, '').replace('€', 'Euro');
-	coming = coming.replace("'", "");
+	coming = coming.replace('€', 'Euro');
+	coming = coming.replace("'", " ");
 	
 	
 	$("#spinner3").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_inviopasseggero.php?id="+ localStorage.getItem("id_richiesta") +"&note="+ document.getElementById("noteautista").value +"&importo="+ coming +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_inviopasseggero.php?id="+ localStorage.getItem("id_richiesta") +"&note="+ document.getElementById("noteautista").value.replace("'", " ") +"&importo="+ coming +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
