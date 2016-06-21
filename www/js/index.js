@@ -26,6 +26,12 @@ receivedEvent: function(id) {
 	}, false);
 	
 	
+	$(document).bind("mobileinit", function(){
+		$.mobile.defaultDialogTransition = "none";
+		$.mobile.defaultPageTransition = "none";
+	});
+	
+	
 	window.plugins.insomnia.keepAwake();
 	
 	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
@@ -80,7 +86,7 @@ receivedEvent: function(id) {
 							  
 			setTimeout(function() {
 				//resetta1(1);
-				 
+					   
 				window.location.href = "index.html?id=2";
 				
 			}, 500);
@@ -517,7 +523,7 @@ receivedEvent: function(id) {
 				   });
 	
 	
-	$(document).on("tap", "#profiloperc", function(e){
+	$(document).on("touchstart tap", "#profiloperc", function(e){
 				   
 		  //alert(localStorage.getItem("lingua"))
 				   
@@ -533,7 +539,7 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("tap", "#profiloperc2", function(e){
+	$(document).on("touchstart tap", "#profiloperc2", function(e){
 				   
 		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
 				   
@@ -560,7 +566,7 @@ receivedEvent: function(id) {
 	});
 	
 	
-	$(document).on("tap", "#pass1", function(e){
+	$(document).on("touchstart tap", "#pass1", function(e){
 				   richiesta1()
 				   
 				   e.stopImmediatePropagation();
@@ -572,7 +578,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#pass2", function(e){
+	$(document).on("touchstart tap", "#pass2", function(e){
 				   richiesta2()
 				   
 				   e.stopImmediatePropagation();
@@ -584,7 +590,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
-	$(document).on("tap", "#pass3", function(e){
+	$(document).on("touchstart tap", "#pass3", function(e){
 				   richiesta3()
 				   
 				   e.stopImmediatePropagation();
@@ -715,7 +721,7 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("tap", "#indietro6", function(e){
+	$(document).on("touchstart tap", "#indietro6", function(e){
 		$("#tblchat").hide()
 				   
 		for(i=0; i<10000; i++)
@@ -733,7 +739,7 @@ receivedEvent: function(id) {
 		window.location.href = "index.html";
 	});
 	
-	$(document).on("tap", "#mappa7", function(e){
+	$(document).on("touchstart tap", "#mappa7", function(e){
 		localStorage.setItem("dovesono", "3");
 		window.location.href = "mappass.html";
 		
@@ -746,23 +752,24 @@ receivedEvent: function(id) {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#mappa6", function(e){
+	$(document).on("touchstart tap", "#mappa6", function(e){
       localStorage.setItem("tastiera","0")
 				   
 	  localStorage.setItem("pagina","mappa")
+		
+	  resetta1();
 				   
-	  var connectionStatus = false;
+	  /*var connectionStatus = false;
 	  connectionStatus = navigator.onLine ? 'online' : 'offline';
 				   
 	  if(connectionStatus=='online'){
-		//$.mobile.changePage ($("#win2"));
 		
-		resetta1();
+		
 	  }
 	  else
 	  {
-		//window.location.href = "index.html";
-	  }
+
+	  }*/
 				   
 	  e.stopImmediatePropagation();
 				   
@@ -775,7 +782,7 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("tap", "#tornareset", function(e){
+	$(document).on("touchstart tap", "#tornareset", function(e){
 				   
 				   var connectionStatus = false;
 				   connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -802,7 +809,7 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("tap", "#ChiudiXX2", function(e){
+	$(document).on("touchstart tap", "#ChiudiXX2", function(e){
 				   
 				   $("#blobstart").hide();
 				   
@@ -824,7 +831,7 @@ receivedEvent: function(id) {
 				   });
 	
 	
-	$(document).on("tap", "#ChiudiXXblob", function(e){
+	$(document).on("touchstart tap", "#ChiudiXXblob", function(e){
 				   
 				   $("#blob").hide();
 				   
@@ -839,7 +846,7 @@ receivedEvent: function(id) {
 	});
 	
 	
-	$(document).on("tap", "#ChiudiXX", function(e){
+	$(document).on("touchstart tap", "#ChiudiXX", function(e){
 				   
 				   $("#blobstart").show();
 				   
@@ -860,7 +867,7 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("tap", "#logout", function(e){
+	$(document).on("touchstart tap", "#logout", function(e){
 				   navigator.notification.confirm(
 												  'Vuoi disconnetterti come utente '+ localStorage.getItem("nick") +'',  // message
 												  onConfirm,              // callback to invoke with index of button pressed
@@ -912,7 +919,7 @@ receivedEvent: function(id) {
 		}*/
 	}
 	
-	$(document).on("tap", "#XXX", function(e){
+	$(document).on("touchstart tap", "#XXX", function(e){
 				   
 		localStorage.setItem("dovesono", "0")
 				   
@@ -927,7 +934,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#XX3", function(e){
+	$(document).on("touchstart tap", "#XX3", function(e){
 		$.mobile.changePage ($("#win2"));
 	    resetta1(1);
 				   
@@ -940,7 +947,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#inizia", function(e){
+	$(document).on("touchstart tap", "#inizia", function(e){
 					$('#modificastart').blur()
 				    $('#inizia').blur()
 				   
@@ -975,7 +982,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#back3", function(e){
+	$(document).on("touchstart tap", "#back3", function(e){
 		inviopasseggero(3);
 				   e.stopImmediatePropagation();
 				   
@@ -988,7 +995,7 @@ receivedEvent: function(id) {
 	
 
 	
-	$(document).on("tap", "#back4", function(e){
+	$(document).on("touchstart tap", "#back4", function(e){
 		inviopasseggero(3);
 				   e.stopImmediatePropagation();
 				   
@@ -999,7 +1006,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#back6", function(e){
+	$(document).on("touchstart tap", "#back6", function(e){
 				   $("#spinner6").show();
 				   
 				   inviachat()
@@ -1014,7 +1021,7 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("tap", "#xchiudi", function(e){
+	$(document).on("touchstart tap", "#xchiudi", function(e){
 		chiudix();
 				   e.stopImmediatePropagation();
 				   
@@ -1026,7 +1033,7 @@ receivedEvent: function(id) {
 	});
 	
 	
-	$(document).on("tap", "#gratis", function(e){
+	$(document).on("touchstart tap", "#gratis", function(e){
 		          inviopasseggero(1);
 				   
 				   e.stopImmediatePropagation();
@@ -1038,7 +1045,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#offerta", function(e){
+	$(document).on("touchstart tap", "#offerta", function(e){
 		           inviopasseggero(2);
 				   
 				   e.stopImmediatePropagation();
@@ -2139,9 +2146,9 @@ function resetta1(focus) {
 			
 			function placeMarker(position, map) {
 				
-				if(localStorage.getItem("tappato")=="0"){
+				//if(localStorage.getItem("tappato")=="0"){
 				  if(localStorage.getItem("setGPS") == 1){
-					if (isTabHolded){
+					//if (isTabHolded){
 						var icon = new google.maps.MarkerImage("img/autista.png", null, null, new google.maps.Point(30, 30), new google.maps.Size(60,60));
 						
 						marker2.setMap(null);
@@ -2163,9 +2170,9 @@ function resetta1(focus) {
 						
 						isTabHolded=false
 						localStorage.setItem("tappato", "1")
-					}
+					//}
 				 }
-			   }
+			   //}
 			}
 			
 			//---------------------------

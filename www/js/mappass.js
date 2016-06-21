@@ -94,7 +94,7 @@ function onDeviceReady() {
 	IDPage = getParameterByName('id');
 	ODPage = getParameterByName('od');
 	
-	$(document).on("tap", "#imgcalendario", function(e){
+	$(document).on("touchstart tap", "#imgcalendario", function(e){
 		mostracal();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
@@ -109,17 +109,17 @@ function onDeviceReady() {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#XX3", function(e){
+	$(document).on("touchstart tap", "#XX3", function(e){
 		window.location.href = "index.html";
 	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#inizia", function(e){
+	$(document).on("touchstart tap", "#inizia", function(e){
 		start();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#back6", function(e){
+	$(document).on("touchstart tap", "#back6", function(e){
 				   $("#spinner6").show();
 				   
 				   inviachat()
@@ -134,7 +134,7 @@ function onDeviceReady() {
 				   
 				   });
 	
-	$(document).on("tap", "#cambiafuso", function(e){
+	$(document).on("touchstart tap", "#cambiafuso", function(e){
 		window.location.href = "Login.html?id=2";
 				   
 		e.stopImmediatePropagation();
@@ -148,7 +148,7 @@ function onDeviceReady() {
 	});
 	
 	
-	$(document).on("tap", "#indietro6", function(e){
+	$(document).on("touchstart tap", "#indietro6", function(e){
 				   
 			//$("#tblchat").hide()
 				   
@@ -236,7 +236,7 @@ function onDeviceReady() {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   });
 	
-	$(document).on("tap", "#adesso", function(e){
+	$(document).on("touchstart tap", "#adesso", function(e){
 				   localStorage.setItem("dovesono", "1");
                    localStorage.setItem("pagebtn", "da")
 				   document.getElementById("datacal").value = "";
@@ -1396,16 +1396,14 @@ function resetta1(focus) {
 	//PRESS TO MARKER
 	$(function(){
    $(document).bind( "taphold", tapholdHandler );
-	  //$( "div.box" ).bind( "taphold", tapholdHandler );
 	  localStorage.setItem("tappato", "0")
-	  
 	  
 	  function tapholdHandler( event ){
 	    $( event.target ).addClass( "taphold" );
 	    isTabHolded=true;
 	    localStorage.setItem("tappato", "0")
 	  }
-	  });	//----------------
+	});	//----------------
 	
 	
 	var connectionStatus = false;
@@ -1617,16 +1615,13 @@ function resetta1(focus) {
 	google.maps.event.addListener(map, 'click', function(e) {
 		placeMarker(e.latLng, map);
 								  
-								  
-		//codeLatLng2(e.latLng)
-								  
 	});
 
 	
 	function placeMarker(position, map) {
 		
-		if(localStorage.getItem("tappato")=="0"){
-		if (isTabHolded){
+		//if(localStorage.getItem("tappato")=="0"){
+		//if (isTabHolded){
 			var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
 			
 			marker2.setMap(null);
@@ -1645,27 +1640,10 @@ function resetta1(focus) {
 			
 		   codeLatLng(lat,lng);
 			
-			
-			/*setTimeout(function() {
-
-					   google.maps.event.addListener(marker4, "tap", function (event) {
-										  var latitude2 = this.position.lat();
-										  var longitude2 = this.position.lng();
-													 
-										  infowindow.setContent(this.position);
-										  infowindow.open(map, this);
-										  //alert(this.position);
-										  }); //end addListener
-			
-					   map.panTo(position);
-					   isTabHolded=false;
-
-			}, 300);*/
-			
 			isTabHolded=false
 			localStorage.setItem("tappato", "1")
-		}
-	 }
+		//}
+	 //}
    }
 		
 	
@@ -1674,28 +1652,23 @@ function resetta1(focus) {
 		
 		function onSuccess2(position) {
 			
-			//alert("timer")
 			
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
 			
 			localStorage.setItem("lat", lat)
 			localStorage.setItem("lng", lng)
-			
-			//var lat = localStorage.getItem("lat");
-			//var lng = localStorage.getItem("lng");
+
 			var latlng = new google.maps.LatLng(lat, lng);
 			
 			marker2.setPosition(latlng);
 			map.setCenter(latlng);
 			
-			//localStorage.setItem("lat", ciao)
-            //localStorage.setItem("lng", ciao1)
+
         }
         
 
         function onError2(error) {
-            //var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
 			navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
         }
 	
