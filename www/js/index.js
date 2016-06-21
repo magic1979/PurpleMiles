@@ -752,24 +752,23 @@ receivedEvent: function(id) {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("touchstart tap", "#mappa6", function(e){
+	$(document).on("tap", "#mappa6", function(e){
       localStorage.setItem("tastiera","0")
 				   
 	  localStorage.setItem("pagina","mappa")
 		
-	  resetta1();
-				   
-	  /*var connectionStatus = false;
+	  var connectionStatus = false;
 	  connectionStatus = navigator.onLine ? 'online' : 'offline';
 				   
 	  if(connectionStatus=='online'){
-		
-		
+		setTimeout(function() {
+			resetta1();
+		}, 500);
 	  }
 	  else
 	  {
 
-	  }*/
+	  }
 				   
 	  e.stopImmediatePropagation();
 				   
