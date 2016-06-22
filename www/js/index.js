@@ -223,6 +223,9 @@ receivedEvent: function(id) {
 		
 	}
 	
+	var IDPage;
+	var ODPage;
+	
 	
 	IDPage = getParameterByName('id');
 	ODPage = getParameterByName('od');
@@ -232,6 +235,7 @@ receivedEvent: function(id) {
 	localStorage.setItem("palla2", "0")
 	localStorage.setItem("palla3", "0")
 
+	//alert(localStorage.getItem("palla1"))
 	
 	/*if(IDPage!=1){
 	  localStorage.setItem("exit", "0")
@@ -711,27 +715,29 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart", "#ritorna5", function(e){
-				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+		$.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
 				   
-				   e.stopImmediatePropagation();
+		e.stopImmediatePropagation();
 				   
-				   e.preventDefault();
+	    e.preventDefault();
 				   
-				   return false;
+		return false;
 				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
 	
 	$(document).on("touchstart tap", "#indietro6", function(e){
 		$("#tblchat").hide()
+		$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
 				   
-		for(i=0; i<10000; i++)
+				   
+		/*for(i=0; i<10000; i++)
 		{
 			window.clearInterval(i);
 		}
 				   
-		window.location.href = "index.html?id=2";
+		window.location.href = "index.html?id=2";*/
 
 				   
 	});
@@ -2959,7 +2965,8 @@ function timer(){
 												  rating1 = item.rating;
 												  cell1 = item.cell;
 												  
-												  if(localStorage.getItem("palla1")!=1){
+												  if(localStorage.getItem("palla1")!="1"){
+												  
 											   
 												     palla1()
 												     //playAudio('successArrivo');
@@ -4545,11 +4552,10 @@ function start() {
 
 function palla1() {
 	//chiamo e leggo=1
-	if(localStorage.getItem("exit")=="0"){
-	  $("#blob").show();
-    }
+
+	$("#blob").show();
+
 	$("#btninizia").hide();
-	
 	
 	$("#btnpass").show();
 	
@@ -5699,6 +5705,9 @@ function chatting(pass,id) {
 		   $.each(result, function(i,item){
 				  
 			   localStorage.setItem("chatpass", JSON.stringify(result))
+				  
+			   //var ref = window.open('mappass.html', '_blank', 'location=no');
+				  
 			   $.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
 				  
 			   if(item.Token==1){
