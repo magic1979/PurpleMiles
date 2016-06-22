@@ -527,7 +527,7 @@ receivedEvent: function(id) {
 				   
 		  //alert(localStorage.getItem("lingua"))
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -541,7 +541,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#profiloperc2", function(e){
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id=19&pm=96e79218965eb72c92a549dd5a330112', '_system', 'location=no');
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -763,7 +763,7 @@ receivedEvent: function(id) {
 	  if(connectionStatus=='online'){
 		setTimeout(function() {
 			resetta1();
-		}, 500);
+		}, 300);
 	  }
 	  else
 	  {
