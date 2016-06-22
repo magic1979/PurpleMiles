@@ -294,7 +294,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#stelleautista", function(e){
 				   
-		var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+		var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 		e.stopImmediatePropagation();
 				   
@@ -344,7 +344,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#stellepass", function(e){
 				   
-		var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+		var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 		e.stopImmediatePropagation();
 				   
@@ -353,6 +353,8 @@ receivedEvent: function(id) {
 		return false;
 				   
 	});
+	
+	//_system
 	
 	
 	isTabHolded=false;
@@ -527,7 +529,7 @@ receivedEvent: function(id) {
 				   
 		  //alert(localStorage.getItem("lingua"))
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -541,7 +543,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#profiloperc2", function(e){
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -4703,18 +4705,21 @@ function richiesta1() {
 					  
 					  
 					  $(document).on("touchstart", "#close1", function(e){
-									 $("#pass1").hide();
+							$("#pass1").hide();
 									 
-									 $("#blob2").hide();
-									 cancella(id)
+							$("#blob2").hide();
 									 
-									 e.stopImmediatePropagation();
 									 
-									 e.preventDefault();
 									 
-									 return false;
+							cancella(id)
 									 
-									 });
+							e.stopImmediatePropagation();
+									 
+							e.preventDefault();
+									 
+							return false;
+									 
+						});
 					  
 	              }
 	
@@ -4771,12 +4776,12 @@ function richiesta1() {
 					  
 				   $(document).on("touchstart", "#close1", function(e){
 						$("#pass1").hide();
-									 
 						$("#blob2").hide();
+								  
+						var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
+								  
 						cancella(id)
 								  
-						var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
-									 
 						e.stopImmediatePropagation();
 									 
 						e.preventDefault();
@@ -4864,7 +4869,7 @@ function richiesta1() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -4881,7 +4886,7 @@ function richiesta1() {
 				   
 				   //alert('http://www.purplemiles.com/www/feedback_passeggero.php?idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'')
 				   
-				  var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				  var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass1")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -5122,13 +5127,15 @@ function richiesta2() {
 
 					  
 					  $("#close2").html("<img src='img/ico_feedback.png' width='45'>");
+					  
 					  $(document).on("touchstart", "#close2", function(e){
 							$("#pass2").hide();
 							$("#blob2").hide();
+									 
+							var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
+									 
 							cancella(id)
-									 
-							var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
-									 
+		 
 							e.stopImmediatePropagation();
 									 
 							e.preventDefault();
@@ -5209,7 +5216,7 @@ function richiesta2() {
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -5224,7 +5231,7 @@ function richiesta2() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass2")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -5441,6 +5448,24 @@ function richiesta3() {
 					  
 				   $("#close3").html("<img src='img/ico_feedback.png' width='45'>");
 					  
+					$(document).on("tap", "#close3", function(e){
+						$("#pass3").hide();
+						$("#blob2").hide();
+									 
+						var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
+									 
+						cancella(id)
+									 
+						e.stopImmediatePropagation();
+									 
+						e.preventDefault();
+									 
+						return false;
+									 
+					});
+					  
+					  
+					  
 					  if(cell3!=""){
 						  $("#cell3").show();
 						  
@@ -5457,24 +5482,6 @@ function richiesta3() {
 										 
 										 });
 				   }
-					  
-					  
-					  
-					  $(document).on("tap", "#close3", function(e){
-						  $("#pass3").hide();
-						  $("#blob2").hide();
-									 
-						  cancella(id)
-									 
-						  var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
-									 
-						  e.stopImmediatePropagation();
-									 
-						  e.preventDefault();
-									 
-						  return false;
-									 
-					});
 
 				  
 				  $("#code3").html("<b>Codice Commento : " + cod3 + "</b>");
@@ -5538,7 +5545,7 @@ function richiesta3() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/profilo_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -5553,7 +5560,7 @@ function richiesta3() {
 				   
 				   //http://www.purplemiles.com/www/profilo_passeggero.php?idp=19&ida="+localStorage.getItem("id_autista")+"&pm="+localStorage.getItem("md5")+"
 				   
-				   var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+				   var ref = window.open('http://www.purplemiles.com/www/feedback_passeggero.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente_pass3")+'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 				   
 				   e.stopImmediatePropagation();
@@ -6064,7 +6071,7 @@ function inviopasseggero(come){
 		   
 		   $.each(result, function(i,item){
 				  
-				  if(item.Token==1){
+			  if(item.Token==1){
 				  $("#spinner3").hide();
 				  localStorage.setItem("tastiera","0")
 				  
@@ -6096,14 +6103,16 @@ function inviopasseggero(come){
 				  }
 				  else{
 				  navigator.notification.alert(
-											   'Impossibile elaborare la richiesta.',  // message
-											   alertDismissed,         // callback
-											   'Attenzione',           // title
-											   'Done'                  // buttonName
-											   );
+						'Impossibile elaborare la richiesta.',  // message
+						alertDismissed,         // callback
+						'Attenzione',           // title
+						'Done'                  // buttonName
+						);
 				  
 				  }
-				  });
+				  
+				  $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+			});
 		   
 		   
 		   },

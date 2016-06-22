@@ -30,6 +30,9 @@ function onDeviceReady() {
 	
 	
 	var IDPage;
+	var db;
+	var dbCreated = false;
+
 	
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
 		localStorage.setItem("veicolo", "Automobile")
@@ -438,6 +441,12 @@ function onDeviceReady() {
 			//localStorage.setItem("fuso", "Italy");
 			//localStorage.setItem("citta", "154");
 			
+			if(localStorage.getItem("sett_lingua")!="OK"){
+			
+			   agg();
+				
+			}
+			
 			
 			prendicittaid(localStorage.getItem("citta"))
 			
@@ -500,6 +509,122 @@ function onDeviceReady() {
 
 	
     }
+
+function agg(){
+	var db;
+	
+	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+	
+	
+	db.transaction(function (tx) {
+       tx.executeSql('CREATE TABLE IF NOT EXISTS Testi (id unique, id_traduzione, italiano, inglese)');
+				   
+		tx.executeSql('DELETE FROM Testi', [], function (tx, results) {
+		}, null);
+	
+	});
+	
+	agg2()
+
+}
+
+
+function agg2(){
+	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_testi.php",
+		   contentType: "application/json",
+		   //data: {email:email,pin:pin},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				if (item.Token == 1){
+				  
+				  db.transaction(function (tx) {
+					//alert(item.id)
+								 
+					//tx.executeSql('CREATE TABLE IF NOT EXISTS Testi (id unique, id_traduzione, italiano, inglese)');
+					tx.executeSql('INSERT INTO Testi (id, id_traduzione, italiano, inglese) VALUES ('+ item.id +', "'+ item.id_traduzione +'", "'+ item.italiano +'", "'+ item.inglese +'")');
+								 
+					//alert("ok")
+				  });
+				  
+				  //tx.executeSql('INSERT INTO Testi (id unique, id_traduzione, italiano, inglese, francese) VALUES ('+ item.id +', "'+ item.id_traduzione +'", "'+ item.italiano +'", "'+ item.inglese +'", "")');
+				  
+				}
+				else{
+				  navigator.notification.alert(
+											   'Errore',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Ok'                  // buttonName@
+											   );
+				}
+		  });
+		   
+		   setTimeout(function() {
+					  
+		   
+		     $(".spinner").hide();
+		     seleziona();
+					  
+		   }, 1000);
+		   
+		   
+		   },
+		   error: function(jqxhr,textStatus,errorThrown){
+		   $(".spinner").hide();
+		   
+		   //alert(jqxhr);
+		   //alert(textStatus);
+		   //alert(errorThrown);
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto',  // message
+										alertDismissed,         // callback
+										'Attenzione',            // title
+										'Done'                  // buttonName
+										);
+		   
+		   },
+		   dataType:"jsonp"});
+
+
+}
+
+
+function seleziona() {
+	var db;
+	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+	
+	localStorage.setItem("sett_lingua", "OK");
+			
+	//alert("6")
+	
+	db.transaction(function (tx) {
+       tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+			var len = results.rows.length, i;
+					 
+			//alert(len);
+					 
+			for (i = 0; i < len; i++){
+					 
+			 //alert(results.rows.item(i).italiano);
+					 
+			}
+					 
+					 
+		}, null);
+	});
+	
+}
 
 
 
@@ -738,7 +863,7 @@ function login() {
 		
 		navigator.notification.alert(
 				'Inserire nelle impostazioni un fuso orario',  // message
-				alertDismissed,         // callback
+				 alertDismissed,         // callback
 				'Attenzione',            // title
 				'OK'                  // buttonName
 		);
@@ -752,7 +877,7 @@ function login() {
 		navigator.notification.alert(
 									 'Inserire nelle impostazioni un fuso orario',  // message
 									 alertDismissed,         // callback
-									 'Email',            // title
+									 'Attenzione',            // title
 									 'OK'                  // buttonName
 									 );
 		
@@ -822,7 +947,7 @@ function LoginVera(email,pin){
 											   'Email e/o password non corretti',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',            // title
-											   'Done'                  // buttonName@
+											   'Ok'                  // buttonName@
 											   );
 				}
 			});
