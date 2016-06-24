@@ -2855,7 +2855,7 @@ function posizionegps(){
 	
 function timer(){
 	
-	var dindon;
+	var dindon=0;
 	if(localStorage.getItem("primavolta")=="0"){
 	  var primavolta=3000;
 	}
@@ -2907,7 +2907,7 @@ function timer(){
 										   success:function(result){
                                            
                                            if(localStorage.getItem("tutteleofferte")===JSON.stringify(result)){
-										           dindon=0;
+												dindon=0;
                                            }
                                            else{
 											  if (localStorage.getItem("tutteleofferte")!="null" || typeof(localStorage.getItem("tutteleofferte")) != 'undefined' || localStorage.getItem("tutteleofferte")!=0 || localStorage.getItem("tutteleofferte")!="") {
@@ -3018,9 +3018,9 @@ function timer(){
 												  
 												  if(localStorage.getItem("palla1")!="1"){
 												  
-											   
 												     palla1()
-												     //playAudio('successArrivo');
+													 dindon=1;
+												     playAudio('successArrivo');
 												     //SUONO RICEZIONE
 											       }
 												  
@@ -3634,8 +3634,10 @@ function timer(){
 															 // error callback
 															 function (err) { console.log("playAudio():Audio Error: " + err); }
 															 );
-									// Play audio
-									my_media.play();
+									if(dindon==1){
+									  // Play audio
+									  my_media.play();
+									}
 									
 									setTimeout(function() {
 										my_media.stop();
@@ -4777,6 +4779,9 @@ function richiesta1() {
 	$("#chat2").hide();
 	$("#chat3").hide();
 	
+	$("#cell2").hide();
+	$("#cell3").hide();
+	
 	localStorage.setItem("id_richiesta", id)
 	localStorage.setItem("stomessa", "0")
 	
@@ -5051,6 +5056,8 @@ function richiesta1() {
 							
 							localStorage.setItem("pagechat", "1")
 							localStorage.setItem("stomessa", "1")
+									 
+							localStorage.setItem("chatpass66", "")
 	 
 							$("#btnpanel").click();
 									 
@@ -5202,6 +5209,9 @@ function richiesta2() {
 	$("#xchiudi1").hide();
 	$("#xchiudi3").hide();
 	$("#xchiudi2").show();
+	
+	$("#cell1").hide();
+	$("#cell3").hide();
 	
 	localStorage.setItem("id_richiesta", id)
 	
@@ -5468,6 +5478,8 @@ function richiesta2() {
 							localStorage.setItem("pagechat", "2")
 							localStorage.setItem("stomessa", "1")
 									 
+							localStorage.setItem("chatpass66", "")
+									 
 							$("#btnpanel").click();
 									 
 							chatting66(2,id)
@@ -5601,6 +5613,9 @@ function richiesta3() {
 	$("#xchiudi2").hide();
 	$("#xchiudi1").hide();
 	$("#xchiudi3").show();
+	
+	$("#cell1").hide();
+	$("#cell2").hide();
 	
 	//alert(2)
 	localStorage.setItem("id_richiesta", id)
@@ -5865,6 +5880,8 @@ function richiesta3() {
 									 
 									 localStorage.setItem("pagechat", "1")
 									 localStorage.setItem("stomessa", "1")
+									 
+									 localStorage.setItem("chatpass66", "")
 									 
 									 $("#btnpanel").click();
 									 
