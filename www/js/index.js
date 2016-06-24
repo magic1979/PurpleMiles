@@ -705,20 +705,8 @@ receivedEvent: function(id) {
 	
 	
 	
-	$(document).on("touchstart", "#ritorna", function(e){
-		localStorage.setItem("ritornaweb","0")
-				   
-		$.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
-		
-		e.stopImmediatePropagation();
-				   
-		e.preventDefault();
-				   
-		return false;
-				   
-		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				   
-	});
+	// era qui
+	
 	
 	$(document).on("touchstart", "#ritorna5", function(e){
 		$.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
@@ -803,14 +791,16 @@ receivedEvent: function(id) {
 				   
 				setTimeout(function() {
 					$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
-				}, 7000);
+				}, 5000);
 			
 				resetta1(1);
 				   
 			}
 			else
 			{
-				window.location.href = "index.html";
+				setTimeout(function() {
+					$("#tornareset").tap();
+				}, 5000);
 			}
 				   
 	    e.stopImmediatePropagation();
@@ -1024,7 +1014,7 @@ receivedEvent: function(id) {
 	$(document).on("touchstart tap", "#back6", function(e){
 				   $("#spinner6").show();
 				   
-				   inviachat()
+				   inviachat(6)
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -1039,7 +1029,7 @@ receivedEvent: function(id) {
 	$(document).on("touchstart tap", "#back66", function(e){
 		$("#spinner6").show();
 				   
-		inviachat()
+		inviachat(66)
 				   
 		e.stopImmediatePropagation();
 				   
@@ -2618,6 +2608,7 @@ function resetta1(focus) {
 	  }
 		
 		localStorage.setItem("solouno", "0");
+		localStorage.setItem("primavolta","0")
 		tempo = 0;
 		timer()
 
@@ -2865,6 +2856,12 @@ function posizionegps(){
 function timer(){
 	
 	var dindon;
+	if(localStorage.getItem("primavolta")=="0"){
+	  var primavolta=3000;
+	}
+	else{
+	  var primavolta=8000;
+	}
 	
 	refreshIntervalId = setInterval(function() {
 									
@@ -3701,7 +3698,27 @@ function timer(){
 									}
 									
 									
+									if(localStorage.getItem("primavolta")=="0"){
+									  primavolta = 3000;
+									  localStorage.setItem("primavolta","1")
 									
+									  setTimeout(function() {
+										for(i=0; i<10000; i++)
+										{
+									      window.clearInterval(i);
+										}
+												 
+										timer();
+												 
+									  }, 2000);
+									
+									}
+									
+									if(localStorage.getItem("primavolta")=="1"){
+									   primavolta = 8000;
+									}
+									
+
 									
 									//setTimeout(function() {
 
@@ -3720,15 +3737,48 @@ function timer(){
 		}, 5000);
 									
 	}
-																		
-	}, 8000);
+						
+	
+									
+	}, primavolta);
+	
 	
 	}
 		
-
  }
 	
 }
+
+
+$(document).on("touchstart", "#ritorna", function(e){
+			   localStorage.setItem("ritornaweb","0")
+
+			   
+			   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+			   
+			   
+			   if(localStorage.getItem("stomessa")=="1"){
+			   
+				  localStorage.setItem("primavolta","0");
+
+				  for(i=0; i<10000; i++)
+			      {
+			       window.clearInterval(i);
+			      }
+			   
+			       resetta1(1)
+			   }
+			   
+			   e.stopImmediatePropagation();
+			   
+			   e.preventDefault();
+			   
+			   return false;
+			   
+			   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+			   
+});
+
 
 
 function scadutaofferta(id,id_richiesta,id_autista){
@@ -4728,6 +4778,7 @@ function richiesta1() {
 	$("#chat3").hide();
 	
 	localStorage.setItem("id_richiesta", id)
+	localStorage.setItem("stomessa", "0")
 	
 	$("#blob2").show();
 	
@@ -4999,6 +5050,7 @@ function richiesta1() {
 					  $(document).on("touchstart tap", "#chat1", function(e){
 							
 							localStorage.setItem("pagechat", "1")
+							localStorage.setItem("stomessa", "1")
 	 
 							$("#btnpanel").click();
 									 
@@ -5157,6 +5209,7 @@ function richiesta2() {
 	
 	localStorage.setItem("ritornaweb","1")
 	localStorage.setItem("tastiera","1")
+	localStorage.setItem("stomessa", "0")
 				  
 	$("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a></font>");
 	$("#nickhome3").html("<font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font>");
@@ -5413,6 +5466,7 @@ function richiesta2() {
 					  $(document).on("touchstart tap", "#chat2", function(e){
 									 
 							localStorage.setItem("pagechat", "2")
+							localStorage.setItem("stomessa", "1")
 									 
 							$("#btnpanel").click();
 									 
@@ -5550,6 +5604,7 @@ function richiesta3() {
 	
 	//alert(2)
 	localStorage.setItem("id_richiesta", id)
+	localStorage.setItem("stomessa", "0")
 	
 	$("#blob2").show();
 	
@@ -5809,6 +5864,7 @@ function richiesta3() {
 					  $(document).on("touchstart tap", "#chat3", function(e){
 									 
 									 localStorage.setItem("pagechat", "1")
+									 localStorage.setItem("stomessa", "1")
 									 
 									 $("#btnpanel").click();
 									 
@@ -6047,7 +6103,7 @@ function chatting66(pass,id) {
 		   crossDomain: true,
 		   success:function(result){
 		   
-		   if(localStorage.getItem("chatpass")==JSON.stringify(result)){
+		   if(localStorage.getItem("chatpass66")==JSON.stringify(result)){
 		   
 		   $("#spinner66").hide();
 		   }
@@ -6057,18 +6113,18 @@ function chatting66(pass,id) {
 		   
 		   $.each(result, function(i,item){
 				  
-			   localStorage.setItem("chatpass", JSON.stringify(result))
+			   localStorage.setItem("chatpass66", JSON.stringify(result))
 				  
 			   
 				  if(item.Token==1){
 				  
 				  if(item.nick==localStorage.getItem("nick")){
 				  
-				  $("#offerta66").append("<div class='bubbledLeft'>"+ item.messaggio +"</div>")
+				    $("#offerta66").append("<div class='bubbledLeft'>"+ item.messaggio +"</div>")
 				  }
 				  else{
 				  
-				  $("#offerta66").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
+				    $("#offerta66").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
 				  }
 				  
 				  
@@ -6118,9 +6174,19 @@ function playChat2(id) {
 }
 
 
-function inviachat() {
-	var indirizzo = document.getElementById("chattext").value.replace("'", "")
+function inviachat(id) {
 	
+	if(id==6){
+	  var indirizzo = document.getElementById("chattext").value.replace("'", "")
+	  $("#spinner6").show();
+	}
+	
+	if(id==66){
+	  var indirizzo = document.getElementById("chattext66").value.replace("'", "")
+	  $("#spinner4").show();
+	}
+		
+		
 	if (indirizzo == "") {
 		navigator.notification.alert(
 									 'Devi inserire un messaggio',  // message
@@ -6131,10 +6197,7 @@ function inviachat() {
 		return;
 	}
 	
-	indirizzo = indirizzo.replace(/[0-9]/g, '').replace('€', 'Euro');
-	
-	$("#spinner6").show();
-	
+	setTimeout(function() {
 	
 	$.ajax({
 		   type:"GET",
@@ -6151,7 +6214,15 @@ function inviachat() {
 				  
 				  if(item.Token==1){
 				    playChat1('successChat1');
-				    document.getElementById("chattext").value="";
+				  
+				    if(id==6){
+				      document.getElementById("chattext").value="";
+				      $("#spinner6").hide();
+				    }
+				    if(id==66){
+				     document.getElementById("chattext66").value="";
+				     $("#spinner4").hide();
+					}
 				  
 				    //$("#btnpanel").click();
 					//controllachat2()
@@ -6160,11 +6231,10 @@ function inviachat() {
 				  
 			});
 		   
-		   
-		   
 		   },
 		   error: function(){
-		   
+		   $("#spinner6").hide();
+		   $("#spinner4").hide();
 		   navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
@@ -6176,6 +6246,8 @@ function inviachat() {
 		   
 		   },
 		   dataType:"jsonp"});
+			   
+	}, 500);
 	
 	function playChat1(id) {
 		var audioElement = document.getElementById(id);
