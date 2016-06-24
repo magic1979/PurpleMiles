@@ -868,10 +868,19 @@ function onDeviceReady() {
 				   }
 				   
 				   
+				   
 				   $("#viale77").html(" <b><font color='#cc33cc'>Partenza </font></b><br> "+ document.getElementById("viale").value +" <br><br>" );
 				   $("#destinazione77").html(" <b><font color='#cc33cc'>Arrivo </font></b><br> "+ document.getElementById("destinazione").value +" <br><br>" );
 				   
+				   
 				   $("#veicolo77").html("<b><font color='#cc33cc'>Veicolo </font></b>: "+ localStorage.getItem("veicolo") +"");
+				   
+				   /*if(document.getElementById("veicolo").value!="Automobile"){
+				      $("#veicolo77").html("<font color='#000000'><b>Veicolo " + localStorage.getItem("veicolo") + "</b></font>");
+				   }
+				   else{
+				      $("#veicolo77").html("Veicolo :" + document.getElementById("veicolo").value);
+				   }*/
 				   
 		
 				   
@@ -879,13 +888,13 @@ function onDeviceReady() {
 				   
 		$.mobile.changePage ($("#home7"));
 		
-				   e.stopImmediatePropagation();
+		e.stopImmediatePropagation();
 				   
-				   e.preventDefault();
+	    e.preventDefault();
 				   
-				   return false;
+		return false;
 				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
 
@@ -1855,15 +1864,14 @@ function vediofferte(){
 		   success:function(result){
 		   
 		   if(localStorage.getItem("risppass")===JSON.stringify(result)){
-		     //alert("Uguali")
 			   $("#spinner4").hide();
 		   }
 		   else{
-		   $("#offerte4").html("");
-		   $("#spinner4").hide();
-		   localStorage.setItem("risppass", JSON.stringify(result))
+		    $("#offerte4").html("");
+		    $("#spinner4").hide();
+		    localStorage.setItem("risppass", JSON.stringify(result))
 		   
-		   $.each(result, function(i,item){
+		    $.each(result, function(i,item){
 
 				  
 				  if(item.Token==1){
@@ -1926,7 +1934,10 @@ function vediofferte(){
 				  
 				  $(document).on("touchstart", "#chat"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
 				    localStorage.setItem("chatpass", "")
+					$("#btnpanel").click();
+					
 					chatting(item.id_richiesta)
+								 
 					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				  });
 				  
@@ -2078,7 +2089,7 @@ function vediofferte(){
 					 });
 				  
 				    $(document).on("touchstart", "#rifiuta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
-						accettaofferta(3,item.id_richiesta,item.id_autista)
+						elimina2(item.id_richiesta,item.id_autista)
 						if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 					});
 				  
@@ -2252,7 +2263,7 @@ function vediofferte(){
 				  }
 				  else{
 				  
-				  $("#offerte4").html("<br><br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr> <td align='center'><img src='img/Logo1.png' width='160px'><br></td></tr><tr><td align='center'>Al momento nessun offerta<br></td></tr></table>");
+				  $("#offerte4").html("<br><br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr> <td align='center'><br></td></tr><tr><td align='center'>Nessuna offerta in arrivo<br><br></td></tr></table>");
 				}
 				  
 			});
@@ -2309,21 +2320,11 @@ function chatting(id) {
 	
 	localStorage.setItem("id_richiesta",id)
 	
-	
-	for(i=0; i<10000; i++)
-	{
-		window.clearInterval(i);
-	}
-	
 	localStorage.setItem("pagebtn", "chat")
-	$.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
-	
-	setTimeout(function() {
-	 $("#tblchat").fadeIn(1000)
-    }, 500);
 	
 	
-	//alert("http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ id +"&last_id=0")
+	//$.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
+	
 	
 	$.ajax({
 		   type:"GET",
@@ -2335,8 +2336,7 @@ function chatting(id) {
 		   crossDomain: true,
 		   success:function(result){
 		   
-		   if(localStorage.getItem("chatpass")==JSON.stringify(result)){
-
+		   if(localStorage.getItem("chatpass")===JSON.stringify(result)){
 
 		     ("#spinner6").hide();
 		   }
@@ -2363,9 +2363,7 @@ function chatting(id) {
 				  
 				  }
 				  
-				  
-				  
-				  }
+				}
 				  
 				  if(item.Token==2){
 					$("#nickhome6").html(item.nick);
@@ -2392,7 +2390,8 @@ function chatting(id) {
 		   dataType:"jsonp"});
 	
 	
-	refreshPos = setInterval(function() {
+	
+	setTimeout(function() {
 		localStorage.setItem("chatpass", "")
 		chatting(id)
 	}, 5000);
@@ -2440,6 +2439,7 @@ function inviachat() {
 		   crossDomain: true,
 		   success:function(result){
 		   
+		   $("#spinner6").hide();
 		   
 		   $.each(result, function(i,item){
 				  
@@ -2447,7 +2447,9 @@ function inviachat() {
 			  playChat1('successChat1');
 			  document.getElementById("chattext").value="";
 				  
-			  controllachat2();
+			  chatting(localStorage.getItem("id_richiesta"))
+				  
+			  //controllachat2();
 				  
 			}
 				  
@@ -2457,7 +2459,7 @@ function inviachat() {
 		   
 		   },
 		   error: function(){
-		   
+		   $("#spinner6").hide();
 		   navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
@@ -2488,7 +2490,6 @@ function inviachat() {
 
 
 
-
 function controllachat(uman) {
 
 	$.ajax({
@@ -2514,6 +2515,9 @@ function controllachat(uman) {
 				  
 			  if(item.Token==1){
 				 localStorage.setItem("chatpass", "")
+				   
+				 $("#btnpanel").click();
+				   
 			     chatting(item.canale);
 			  }
 				  
