@@ -2853,6 +2853,7 @@ function posizionegps(){
 }
 	
 	
+		
 function timer(){
 	
 	var dindon=0;
@@ -2906,7 +2907,7 @@ function timer(){
 										   crossDomain: true,
 										   success:function(result){
                                            
-                                           if(localStorage.getItem("tutteleofferte")===JSON.stringify(result)){
+                                           /*if(localStorage.getItem("tutteleofferte")===JSON.stringify(result)){
 												dindon=0;
                                            }
                                            else{
@@ -2920,13 +2921,13 @@ function timer(){
 										          }
 										      }
 
-                                           }
+                                           }*/
 											   
 											marker1.setIcon(iconn);
 											marker3.setIcon(iconn);
 											marker4.setIcon(iconn);
                                             localStorage.setItem("solouno", "1")
-                                            localStorage.setItem("tutteleofferte", JSON.stringify(result))
+                                            //localStorage.setItem("tutteleofferte", JSON.stringify(result))
 
 										   
 										   $.each(result, function(i,item){
@@ -2964,7 +2965,6 @@ function timer(){
 												  }
 												  
 												  
-												  
 												  }
 												  
 												  if(item.Token==11){
@@ -2983,9 +2983,9 @@ function timer(){
 												  
 												  
 												  if(posizione==1){
-												  if(dindon==1){
+												  /*if(dindon==1){
 												     playAudio('successArrivo');
-												  }
+												  }*/
 												  
 												  item1 = item.id_richiesta;
 												  
@@ -3015,14 +3015,43 @@ function timer(){
 												  percentuale1 = item.percentuale;
 												  rating1 = item.rating;
 												  cell1 = item.cell;
+
 												  
 												  if(localStorage.getItem("palla1")!="1"){
 												  
 												     palla1()
-													 dindon=1;
-												     playAudio('successArrivo');
-												     //SUONO RICEZIONE
+													 
+												     //playAudio('successArrivo');
+												     //SUONO RICEZIONE  if (localStorage.getItem("quando1")==quando1 && localStorage.getItem("ora1") == ora1 && localStorage.getItem("partenza1")==partenza1 && localStorage.getItem("arrivo1")==arrivo1 && localStorage.getItem("stato1")==stato1 && localStorage.getItem("passeggeri1")==passeggeri1 && localStorage.getItem("animali1")==animali1 && localStorage.getItem("fumatori1")==fumatori1 && localStorage.getItem("meno181")==meno181 && localStorage.getItem("disabili1")==disabili1 && localStorage.getItem("bambini1")==bambini1 && localStorage.getItem("wifi1")==wifi1 && localStorage.getItem("portapacchi1")==portapacchi1 && localStorage.getItem("rimorchio1")==rimorchio1 && localStorage.getItem("bluetooth1")==bluetooth1 && localStorage.getItem("note1")==note1 ) {
 											       }
+												
+												  
+												  
+												  if (localStorage.getItem("quando1")==quando1 && localStorage.getItem("ora1") == ora1 && localStorage.getItem("partenza1")==partenza1 && localStorage.getItem("arrivo1")==arrivo1 && localStorage.getItem("stato1")==stato1 && localStorage.getItem("passeggeri1")==passeggeri1 && localStorage.getItem("animali1")==animali1 && localStorage.getItem("fumatori1")==fumatori1 && localStorage.getItem("meno181")==meno181 && localStorage.getItem("disabili1")==disabili1 && localStorage.getItem("bambini1")==bambini1 && localStorage.getItem("wifi1")==wifi1 && localStorage.getItem("portapacchi1")==portapacchi1 && localStorage.getItem("rimorchio1")==rimorchio1 && localStorage.getItem("bluetooth1")==bluetooth1 && localStorage.getItem("note1")==note1 ) {
+
+												  }
+												  else{
+												    playAudio('successArrivo');
+												  }
+
+												  
+												  
+												  localStorage.setItem("quando1", quando1)
+												  localStorage.setItem("ora1", ora1)
+												  localStorage.setItem("partenza1", partenza1)
+												  localStorage.setItem("arrivo1", arrivo1)
+												  localStorage.setItem("stato1", stato1)
+												  localStorage.setItem("passeggeri1", passeggeri1)
+												  localStorage.setItem("animali1", animali1)
+												  localStorage.setItem("fumatori1", fumatori1)
+												  localStorage.setItem("meno181", meno181)
+												  localStorage.setItem("disabili1", disabili1)
+												  localStorage.setItem("bambini1", bambini1)
+												  localStorage.setItem("wifi1", wifi1)
+												  localStorage.setItem("portapacchi1", portapacchi1)
+												  localStorage.setItem("rimorchio1", rimorchio1)
+												  localStorage.setItem("bluetooth1", bluetooth1)
+												  localStorage.setItem("note1", note1)
 												  
 												  
 												  /*$(document).on("tap", "#pass1", function(e){
@@ -3237,6 +3266,32 @@ function timer(){
 												  rating2 = item.rating;
 												  cell2 = item.cell;
 												  
+												  if (localStorage.getItem("quando2")!=quando2 || localStorage.getItem("ora2") != ora2 || localStorage.getItem("partenza2")!=partenza2 || localStorage.getItem("arrivo2")!=arrivo2 || localStorage.getItem("stato2")!=stato2 || localStorage.getItem("passeggeri2")!=passeggeri2 || localStorage.getItem("animali2")!=animali2 || localStorage.getItem("fumatori2")!=fumatori2 || localStorage.getItem("meno182")!=meno182 || localStorage.getItem("disabili2")!=disabili2 || localStorage.getItem("bambini2")!=bambini2 || localStorage.getItem("wifi2")!=wifi2 || localStorage.getItem("portapacchi2")!=portapacchi2 || localStorage.getItem("rimorchio2")!=rimorchio2 || localStorage.getItem("bluetooth2")!=bluetooth2 || localStorage.getItem("note2")!=note2 ) {
+												  
+													 playAudio('successArrivo');
+												  
+												  
+												  }
+												  
+												  
+												  
+												  localStorage.setItem("quando2", quando2)
+												  localStorage.setItem("ora2", ora2)
+												  localStorage.setItem("partenza2", partenza2)
+												  localStorage.setItem("arrivo2", arrivo1)
+												  localStorage.setItem("stato2", stato2)
+												  localStorage.setItem("passeggeri2", passeggeri2)
+												  localStorage.setItem("animali2", animali2)
+												  localStorage.setItem("fumatori2", fumatori2)
+												  localStorage.setItem("meno182", meno182)
+												  localStorage.setItem("disabili2", disabili2)
+												  localStorage.setItem("bambini2", bambini2)
+												  localStorage.setItem("wifi2", wifi2)
+												  localStorage.setItem("portapacchi2", portapacchi2)
+												  localStorage.setItem("rimorchio2", rimorchio2)
+												  localStorage.setItem("bluetooth2", bluetooth2)
+												  localStorage.setItem("note2", note2)
+												  
 												  if(localStorage.getItem("palla2")!=1){
 												  
 												    //playAudio2('successArrivo');
@@ -3440,6 +3495,34 @@ function timer(){
 												  rating3 = item.rating;
 												  cell3 = item.cell;
 												  
+												  
+												  if (localStorage.getItem("quando3")!=quando3 || localStorage.getItem("ora3") != ora3 || localStorage.getItem("partenza3")!=partenza3 || localStorage.getItem("arrivo3")!=arrivo3 || localStorage.getItem("stato3")!=stato3 || localStorage.getItem("passeggeri3")!=passeggeri3 || localStorage.getItem("animali3")!=animali3 || localStorage.getItem("fumatori3")!=fumatori3 || localStorage.getItem("meno183")!=meno183 || localStorage.getItem("disabili3")!=disabili3 || localStorage.getItem("bambini3")!=bambini3 || localStorage.getItem("wifi3")!=wifi3 || localStorage.getItem("portapacchi3")!=portapacchi3 || localStorage.getItem("rimorchio3")!=rimorchio3 || localStorage.getItem("bluetooth3")!=bluetooth3 || localStorage.getItem("note3")!=note3 ) {
+												  
+													 playAudio('successArrivo');
+												  
+												  
+												  }
+												  
+												  
+												  
+												  localStorage.setItem("quando3", quando3)
+												  localStorage.setItem("ora3", ora3)
+												  localStorage.setItem("partenza3", partenza3)
+												  localStorage.setItem("arrivo3", arrivo3)
+												  localStorage.setItem("stato3", stato3)
+												  localStorage.setItem("passeggeri3", passeggeri3)
+												  localStorage.setItem("animali3", animali3)
+												  localStorage.setItem("fumatori3", fumatori3)
+												  localStorage.setItem("meno183", meno183)
+												  localStorage.setItem("disabili3", disabili3)
+												  localStorage.setItem("bambini3", bambini3)
+												  localStorage.setItem("wifi3", wifi3)
+												  localStorage.setItem("portapacchi3", portapacchi3)
+												  localStorage.setItem("rimorchio3", rimorchio3)
+												  localStorage.setItem("bluetooth3", bluetooth3)
+												  localStorage.setItem("note3", note3)
+
+												  
 												  if(localStorage.getItem("palla3")!=1){
 												  
 												     //playAudio3('successArrivo');
@@ -3634,10 +3717,10 @@ function timer(){
 															 // error callback
 															 function (err) { console.log("playAudio():Audio Error: " + err); }
 															 );
-									if(dindon==1){
+									
 									  // Play audio
 									  my_media.play();
-									}
+									
 									
 									setTimeout(function() {
 										my_media.stop();
@@ -3657,7 +3740,7 @@ function timer(){
 									my_media.play();
 									
 									setTimeout(function() {
-											   my_media.stop();
+										my_media.stop();
 									}, 3000);
 									}
 									
