@@ -2856,7 +2856,7 @@ function posizionegps(){
 		
 function timer(){
 	
-	var dindon=0;
+	var dindon;
 	if(localStorage.getItem("primavolta")=="0"){
 	  var primavolta=3000;
 	}
@@ -2922,6 +2922,8 @@ function timer(){
 										      }
 
                                            }*/
+										   
+										    dindon=0;
 											   
 											marker1.setIcon(iconn);
 											marker3.setIcon(iconn);
@@ -3032,6 +3034,7 @@ function timer(){
 												  }
 												  else{
 												    playAudio('successArrivo');
+												    dindon=1;
 												  }
 
 												  
@@ -3269,7 +3272,7 @@ function timer(){
 												  if (localStorage.getItem("quando2")!=quando2 || localStorage.getItem("ora2") != ora2 || localStorage.getItem("partenza2")!=partenza2 || localStorage.getItem("arrivo2")!=arrivo2 || localStorage.getItem("stato2")!=stato2 || localStorage.getItem("passeggeri2")!=passeggeri2 || localStorage.getItem("animali2")!=animali2 || localStorage.getItem("fumatori2")!=fumatori2 || localStorage.getItem("meno182")!=meno182 || localStorage.getItem("disabili2")!=disabili2 || localStorage.getItem("bambini2")!=bambini2 || localStorage.getItem("wifi2")!=wifi2 || localStorage.getItem("portapacchi2")!=portapacchi2 || localStorage.getItem("rimorchio2")!=rimorchio2 || localStorage.getItem("bluetooth2")!=bluetooth2 || localStorage.getItem("note2")!=note2 ) {
 												  
 													 playAudio('successArrivo');
-												  
+													 dindon=1;
 												  
 												  }
 												  
@@ -3718,9 +3721,10 @@ function timer(){
 															 function (err) { console.log("playAudio():Audio Error: " + err); }
 															 );
 									
+									if(dindon==0){
 									  // Play audio
 									  my_media.play();
-									
+									}
 									
 									setTimeout(function() {
 										my_media.stop();
