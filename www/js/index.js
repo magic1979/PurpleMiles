@@ -3224,7 +3224,7 @@ function timer(){
 												  }
 												  
 												  countdown1(0);
-												  playAudio1('successArrivo');
+												  //playAudio1('successArrivo');
 
 												  }
 												   else{
@@ -3456,7 +3456,7 @@ function timer(){
 												  }
 												  
 												  countdown2(0);
-												  playAudio2('successArrivo');
+												  //playAudio2('successArrivo');
 												  }
 												  else{
 												    $("#blob4").hide();
@@ -3678,7 +3678,7 @@ function timer(){
 												  }
 												  
 												  countdown3(0);
-												  playAudio3('successArrivo');
+												  //playAudio3('successArrivo');
 												  
 												  }
 												  else{
@@ -4931,7 +4931,7 @@ function richiesta1() {
 	$("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Distanza (linea d'aria): </font></b>"+ distanza1 +" Km<br><br>");
 	
 	
-	if(passeggeri1!="01"){
+	if(passeggeri1!="1"){
 	  $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri " + passeggeri1 + "</b></font>");
 	}
 	else{
@@ -5359,7 +5359,7 @@ function richiesta2() {
 	$("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Distanza (linea d'aria): </font></b>"+ distanza2 +" Km<br><br>");
 	
 	
-	if(passeggeri2!="01"){
+	if(passeggeri2!="1"){
 		$("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri " + passeggeri2 + "</b></font>");
 	}
 	else{
@@ -5764,7 +5764,7 @@ function richiesta3() {
 	$("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Distanza (linea d'aria): </font></b>"+ distanza3 +" Km<br><br>");
 	
 	
-	if(passeggeri3!="01"){
+	if(passeggeri3!="1"){
 		$("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri " + passeggeri3 + "</b></font>");
 	}
 	else{
