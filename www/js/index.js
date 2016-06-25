@@ -4696,6 +4696,47 @@ function elimina2(id_richiesta){
 }
 
 
+function elimina3(id_richiesta){
+	
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_elimina2.php?id_richiesta="+ id_richiesta +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				  if(item.Token==1){
+				  
+				  localStorage.setItem("ritornaweb","0")
+				  
+				  resetta1(1);
+				  
+		   }
+				  
+		   });
+		   
+		   },
+		   error: function(){
+		   
+		   navigator.notification.alert(
+										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alertDismissed,         // callback
+										'Attenzione',           // title
+										'Done'                  // buttonName
+										);
+		   
+		   
+		   },
+		   dataType:"jsonp"});
+	
+}
+
+
 
 function cancella(id){
 	
@@ -6424,7 +6465,7 @@ function rifiuta1() {
 	
 	
 	$("#blob3").hide();
-	cancella(id)
+	elimina3(id)
 	
 }
 
@@ -6541,7 +6582,7 @@ function rifiuta2() {
 	
 	
 	$("#blob4").hide();
-	cancella(id)
+	elimina3(id)
 	
 }
 
@@ -6550,7 +6591,7 @@ function rifiuta3() {
 	
 	
 	$("#blob5").hide();
-	cancella(id)
+	elimina3(id)
 	
 }
 
