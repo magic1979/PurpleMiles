@@ -165,7 +165,7 @@ receivedEvent: function(id) {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		
 		
@@ -1161,7 +1161,7 @@ function gpsonError(){
 								 'Possibile errore GPS, assicurati di avere il gps del telefono attivato.',  // message
 								 alertDismissed,         // callback
 								 'Attenzione',           // title
-								 'Done'                  // buttonName
+								 'Ok'                  // buttonName
 								 );
 	
 	var lat = "41.889191";
@@ -2553,7 +2553,7 @@ function resetta1(focus) {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);*/
 		   
 		   },
@@ -3901,7 +3901,7 @@ function scadutaofferta(id,id_richiesta,id_autista){
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   onResume();
@@ -4044,7 +4044,7 @@ function magia2C(utente,pass) {
 				  });
 				  
 				  
-				  $("#bannermagia").html("<font size='3' color='#fff'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza(l.a.): "+ item.distanza1 +"</font>");
+				  $("#bannermagia").html("<font size='3' color='#fff'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza (l.a.): "+ item.distanza1 +" Km</font>");
 				  
 				  var isVisible3 = marker3.getVisible();
 				  if(isVisible3){
@@ -4272,7 +4272,7 @@ function magia2C(utente,pass) {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   },
@@ -4690,7 +4690,7 @@ function elimina2(id_richiesta){
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   
@@ -4705,6 +4705,7 @@ function elimina3(id_richiesta){
 	$.ajax({
 		   type:"GET",
 		   url:"http://purplemiles.com/www2/check_elimina2.php?id_richiesta="+ id_richiesta +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   //url:"http://purplemiles.com/www2/check_confermapasseggeroS1.php?conferma=1&id_richiesta="+ id_richiesta +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -4731,7 +4732,7 @@ function elimina3(id_richiesta){
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   
@@ -4757,17 +4758,10 @@ function cancella(id){
 	 $.each(result, function(i,item){
 		
 		if(item.Token==1){
-			   // window.location.href = "index.html?id=1";
+			// window.location.href = "index.html?id=1";
 			
-			   /*$("#pass1").hide();
-			   $("#pass2").hide();
-			   $("#pass3").hide();
-			   $("#esci").hide();
-
 			
-			$("#btninizia").show();*/
-			
-			//localStorage.setItem("exitto", "1")
+			var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 			
 			//setTimeout(function() {
 			//localStorage.setItem("geostory", "NO")
@@ -4777,11 +4771,7 @@ function cancella(id){
 			//}, 200);
 
 			if(item.feed==2){
-			  /*for(i=0; i<10000; i++)
-			  {
-			    window.clearInterval(i);
-			  }*/
-			
+
 			  localStorage.setItem("ritornaweb","0")
 			
 			   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
@@ -4793,7 +4783,7 @@ function cancella(id){
 										 'Impossibile cancellare la richiesta.',  // message
 										  alertDismissed,         // callback
 										 'Attenzione',           // title
-										 'Done'                  // buttonName
+										 'Ok'                  // buttonName
 										 );
 
 			}
@@ -4807,7 +4797,7 @@ function cancella(id){
 	 'Possibile errore di rete, riprova tra qualche minuto.',  // message
 	 alertDismissed,         // callback
 	 'Attenzione',           // title
-	 'Done'                  // buttonName
+	 'Ok'                  // buttonName
 	 );
 	 
 	 },
@@ -5136,11 +5126,11 @@ function richiesta1() {
 								  
 						var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 								  
+								  
 						setTimeout(function() {
 						   cancella(id);
-						}, 1000);
+						}, 1500);
 								  
-						//cancella(id)
 								  
 						e.stopImmediatePropagation();
 									 
@@ -6142,7 +6132,7 @@ function lista5() {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   onResume();
@@ -6214,7 +6204,7 @@ function chatting(pass,id) {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   
@@ -6286,7 +6276,7 @@ function chatting66(pass,id) {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   
@@ -6322,12 +6312,16 @@ function playChat2(id) {
 function inviachat(id) {
 	
 	if(id==6){
-	  var indirizzo = document.getElementById("chattext").value.replace("'", "")
+	  var indirizzo = document.getElementById("chattext").value;
+		
+	  indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+		
 	  $("#spinner6").show();
 	}
 	
 	if(id==66){
-	  var indirizzo = document.getElementById("chattext66").value.replace("'", "")
+	  var indirizzo = document.getElementById("chattext66").value;
+	  indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
 	  $("#spinner4").show();
 	}
 		
@@ -6384,7 +6378,7 @@ function inviachat(id) {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   onResume();
@@ -6442,7 +6436,7 @@ function accetta11() {
 											   'Richiesta elaborata da altro utente.',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',           // title
-											   'Done'                  // buttonName
+											   'Ok'                  // buttonName
 											   );
 				  
 				  }
@@ -6456,7 +6450,7 @@ function accetta11() {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   },
@@ -6503,7 +6497,7 @@ function accetta22() {
 											   'Richiesta elaborata da altro utente.',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',           // title
-											   'Done'                  // buttonName
+											   'Ok'                  // buttonName
 											   );
 				  
 				  }
@@ -6517,7 +6511,7 @@ function accetta22() {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   },
@@ -6556,7 +6550,7 @@ function accetta33() {
 											   'Richiesta elaborata da altro utente.',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',           // title
-											   'Done'                  // buttonName
+											   'Ok'                  // buttonName
 											   );
 				  
 				  }
@@ -6570,7 +6564,7 @@ function accetta33() {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   },
@@ -6628,14 +6622,19 @@ function inviopasseggero(come){
 		var coming = "OFFERTA LIBERA";
 	}
 	
-	coming = coming.replace('€', 'Euro');
-	coming = coming.replace("'", " ");
+	
+	//coming = coming.replace('€', 'Euro');
+	//coming = coming.replace("'", " ");
+	
+	coming = coming.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+	
+	//coming = encodeURIComponent(coming);
 	
 	
 	$("#spinner3").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_inviopasseggero.php?id="+ localStorage.getItem("id_richiesta") +"&note="+ document.getElementById("noteautista").value.replace("'", " ") +"&importo="+ coming +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_inviopasseggero.php?id="+ localStorage.getItem("id_richiesta") +"&note="+ document.getElementById("noteautista").value.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'') +"&importo="+ coming +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -6677,7 +6676,7 @@ function inviopasseggero(come){
 				  }
 				  else{
 				  navigator.notification.alert(
-						'Impossibile elaborare la richiesta.',  // message
+						'Il passeggero ha annullato la richiesta.',  // message
 						alertDismissed,         // callback
 						'Attenzione',           // title
 						'OK'                  // buttonName
@@ -6696,7 +6695,7 @@ function inviopasseggero(come){
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);
 		   
 		   },
@@ -6752,7 +6751,7 @@ function controllachat(uman) {
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
-										'Done'                  // buttonName
+										'Ok'                  // buttonName
 										);*/
 		   
 		   
@@ -6792,7 +6791,7 @@ function controllachat2() {
 			'Possibile errore di rete, riprova tra qualche minuto.',  // message
 			alertDismissed,         // callback
 			'Attenzione',           // title
-			'Done'                  // buttonName
+			'Ok'                  // buttonName
 			);*/
 		   
 		   
