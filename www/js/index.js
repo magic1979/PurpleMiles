@@ -2886,6 +2886,7 @@ function timer(){
 									var beaches1 = [];
 									var posizione = 1;
 									var distanza = "";
+									dindon=0;
 									
 									$("#loading").hide();
 									$("#btnpass").show();
@@ -2923,7 +2924,6 @@ function timer(){
 
                                            }*/
 										   
-										    dindon=0;
 											   
 											marker1.setIcon(iconn);
 											marker3.setIcon(iconn);
@@ -3028,13 +3028,15 @@ function timer(){
 											       }
 												
 												  
-												  
 												  if (localStorage.getItem("quando1")==quando1 && localStorage.getItem("ora1") == ora1 && localStorage.getItem("partenza1")==partenza1 && localStorage.getItem("arrivo1")==arrivo1 && localStorage.getItem("stato1")==stato1 && localStorage.getItem("passeggeri1")==passeggeri1 && localStorage.getItem("animali1")==animali1 && localStorage.getItem("fumatori1")==fumatori1 && localStorage.getItem("meno181")==meno181 && localStorage.getItem("disabili1")==disabili1 && localStorage.getItem("bambini1")==bambini1 && localStorage.getItem("wifi1")==wifi1 && localStorage.getItem("portapacchi1")==portapacchi1 && localStorage.getItem("rimorchio1")==rimorchio1 && localStorage.getItem("bluetooth1")==bluetooth1 && localStorage.getItem("note1")==note1 ) {
+												  
 
 												  }
 												  else{
-												    playAudio('successArrivo');
-												    dindon=1;
+												  
+												      playAudio('successArrivo');
+													  dindon=1;
+
 												  }
 
 												  
@@ -3269,19 +3271,38 @@ function timer(){
 												  rating2 = item.rating;
 												  cell2 = item.cell;
 												  
-												  if (localStorage.getItem("quando2")!=quando2 || localStorage.getItem("ora2") != ora2 || localStorage.getItem("partenza2")!=partenza2 || localStorage.getItem("arrivo2")!=arrivo2 || localStorage.getItem("stato2")!=stato2 || localStorage.getItem("passeggeri2")!=passeggeri2 || localStorage.getItem("animali2")!=animali2 || localStorage.getItem("fumatori2")!=fumatori2 || localStorage.getItem("meno182")!=meno182 || localStorage.getItem("disabili2")!=disabili2 || localStorage.getItem("bambini2")!=bambini2 || localStorage.getItem("wifi2")!=wifi2 || localStorage.getItem("portapacchi2")!=portapacchi2 || localStorage.getItem("rimorchio2")!=rimorchio2 || localStorage.getItem("bluetooth2")!=bluetooth2 || localStorage.getItem("note2")!=note2 ) {
-												  
-													 playAudio('successArrivo');
-													 dindon=1;
+												  if (localStorage.getItem("quando2")==quando2 &&
+													  localStorage.getItem("ora2") == ora2 &&
+													  localStorage.getItem("partenza2")==partenza2 &&
+													  localStorage.getItem("arrivo2")==arrivo2 &&
+													  localStorage.getItem("stato2")==stato2 &&
+													  localStorage.getItem("passeggeri2")==passeggeri2 &&
+													  localStorage.getItem("animali2")==animali2 &&
+													  localStorage.getItem("fumatori2")==fumatori2 &&
+													  localStorage.getItem("meno182")==meno182 &&
+													  localStorage.getItem("disabili2")==disabili2 &&
+													  localStorage.getItem("bambini2")==bambini2 &&
+													  localStorage.getItem("wifi2")==wifi2 &&
+													  localStorage.getItem("portapacchi2")==portapacchi2 &&
+													  localStorage.getItem("rimorchio2")==rimorchio2 &&
+													  localStorage.getItem("bluetooth2")==bluetooth2 &&
+													  localStorage.getItem("note2")==note2) {
+													 
 												  
 												  }
+												  else{
 												  
+													  //alert(stato2)
+
+												      playAudio('successArrivo');
+												      dindon=1;
+												  }
 												  
 												  
 												  localStorage.setItem("quando2", quando2)
 												  localStorage.setItem("ora2", ora2)
 												  localStorage.setItem("partenza2", partenza2)
-												  localStorage.setItem("arrivo2", arrivo1)
+												  localStorage.setItem("arrivo2", arrivo2)
 												  localStorage.setItem("stato2", stato2)
 												  localStorage.setItem("passeggeri2", passeggeri2)
 												  localStorage.setItem("animali2", animali2)
@@ -3295,7 +3316,7 @@ function timer(){
 												  localStorage.setItem("bluetooth2", bluetooth2)
 												  localStorage.setItem("note2", note2)
 												  
-												  if(localStorage.getItem("palla2")!=1){
+												  if(localStorage.getItem("palla2")==1){
 												  
 												    //playAudio2('successArrivo');
 												  
@@ -3499,15 +3520,18 @@ function timer(){
 												  cell3 = item.cell;
 												  
 												  
-												  if (localStorage.getItem("quando3")!=quando3 || localStorage.getItem("ora3") != ora3 || localStorage.getItem("partenza3")!=partenza3 || localStorage.getItem("arrivo3")!=arrivo3 || localStorage.getItem("stato3")!=stato3 || localStorage.getItem("passeggeri3")!=passeggeri3 || localStorage.getItem("animali3")!=animali3 || localStorage.getItem("fumatori3")!=fumatori3 || localStorage.getItem("meno183")!=meno183 || localStorage.getItem("disabili3")!=disabili3 || localStorage.getItem("bambini3")!=bambini3 || localStorage.getItem("wifi3")!=wifi3 || localStorage.getItem("portapacchi3")!=portapacchi3 || localStorage.getItem("rimorchio3")!=rimorchio3 || localStorage.getItem("bluetooth3")!=bluetooth3 || localStorage.getItem("note3")!=note3 ) {
-												  
-													 playAudio('successArrivo');
-												  
+												  if (localStorage.getItem("quando3")==quando3 && localStorage.getItem("ora3") == ora3 && localStorage.getItem("partenza3")==partenza3 && localStorage.getItem("arrivo3")==arrivo3 && localStorage.getItem("stato3")==stato3 && localStorage.getItem("passeggeri3")==passeggeri3 && localStorage.getItem("animali3")==animali3 && localStorage.getItem("fumatori3")==fumatori3 && localStorage.getItem("meno183")==meno183 && localStorage.getItem("disabili3")==disabili3 && localStorage.getItem("bambini3")==bambini3 && localStorage.getItem("wifi3")==wifi3 && localStorage.getItem("portapacchi3")==portapacchi3 && localStorage.getItem("rimorchio3")==rimorchio3 && localStorage.getItem("bluetooth3")==bluetooth3 && localStorage.getItem("note3")==note3 ) {
 												  
 												  }
+												  else{
+
+												      playAudio('successArrivo');
+												      dindon=1;
+
+												  }
+
 												  
-												  
-												  
+
 												  localStorage.setItem("quando3", quando3)
 												  localStorage.setItem("ora3", ora3)
 												  localStorage.setItem("partenza3", partenza3)
@@ -3724,11 +3748,13 @@ function timer(){
 									if(dindon==0){
 									  // Play audio
 									  my_media.play();
+									  dindon=1;
 									}
 									
 									setTimeout(function() {
 										my_media.stop();
 									}, 3000);
+									
 									}
 									
 									function playAudio1(id) {
