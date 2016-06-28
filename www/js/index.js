@@ -4787,7 +4787,7 @@ function cancella(id){
 			// window.location.href = "index.html?id=1";
 			
 			
-			var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
+			//var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&ida='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 			
 			//setTimeout(function() {
 			//localStorage.setItem("geostory", "NO")
@@ -4922,6 +4922,10 @@ function richiesta1() {
 	$("#chat1").hide();
 	$("#chat2").hide();
 	$("#chat3").hide();
+	
+	$("#feedo1").hide();
+	$("#feedo2").hide();
+	$("#feedo3").hide();
 	
 	$("#cell2").hide();
 	$("#cell3").hide();
@@ -5073,9 +5077,11 @@ function richiesta1() {
 	
 	              if(stato1==0){
 		            $("#4img").html("<img src='img/1_viola.png' width='30'>");
-					  $("#cell1").hide();
+					$("#cell1").hide();
 					  
-					  $("#close1").html("<img src='img/ico_trash.png' width='45'>");
+					$("#close1").show();
+					  
+					$("#close1").html("<img src='img/ico_trash.png' width='45'>");
 					  
 					  
 					  $(document).on("touchstart tap", "#close1", function(e){
@@ -5102,9 +5108,13 @@ function richiesta1() {
 					  $("#cell1").hide();
 					  $("#4img").html("<img src='img/1_giallo.png' width='30'>");
 					  
-					  $("#close1").html("<img src='img/ico_trash.png' width='45'>");
+					  $("#feedo1").hide();
+					  $("#feedo2").hide();
+					  $("#feedo3").hide();
 					  
-					  $(document).on("touchstart", "#close1", function(e){
+					  $("#close1").show();
+					  
+					  $(document).on("tap", "#close1", function(e){
 									 $("#pass1").hide();
 									 
 									 $("#blob2").hide();
@@ -5123,9 +5133,12 @@ function richiesta1() {
 				  if(stato1==2){
 					  
 				   $("#gps1").show();
-				   $("#close1").html("<img src='img/ico_feedback.png' width='45'>");
+				   $("#feedo1").show();
 					  
-					//alert("tel:+39" + cell1 + "")
+				   $("#close1").hide();
+				   $("#close2").hide();
+				   $("#close3").hide();
+					  
 					  
 				   if(cell1!=""){
 					 
@@ -5146,7 +5159,7 @@ function richiesta1() {
 				   }
 				   
 					  
-				   $(document).on("touchstart", "#close1", function(e){
+				   $(document).on("tap", "#feedo1", function(e){
 						$("#pass1").hide();
 						$("#blob2").hide();
 								  
@@ -5174,9 +5187,6 @@ function richiesta1() {
 					  
 				   $("#risp1").hide();
 					  
-					  $("#close3").hide();
-					  $("#close2").hide();
-					  $("#close1").show();
 					  
 				   $("#4img").html("<img src='img/1_verde.png' width='30'>");
 				  
@@ -5226,14 +5236,14 @@ function richiesta1() {
 					 
 					$("#gps1").hide();
 					  
-					$("#close1").show();
-					$("#close2").hide();
-					$("#close3").hide();
+					  
+					$("#feedo1").hide();
+					$("#feedo2").hide();
+					$("#feedo3").hide();
 					  
 					  
 					$("#close1").html("<img src='img/ico_trash.png' width='45'>");
 					  
-					
 					
 				  }
 	
@@ -5349,6 +5359,10 @@ function richiesta2() {
 	$("#chat1").hide();
 	$("#chat2").hide();
 	$("#chat3").hide();
+	
+	$("#feedo1").hide();
+	$("#feedo2").hide();
+	$("#feedo3").hide();
 	
 	$("#xchiudi1").hide();
 	$("#xchiudi3").hide();
@@ -5504,6 +5518,9 @@ function richiesta2() {
 					 $("#4img").html("<img src='img/2_viola.png' width='30'>");
 					   $("#cell2").hide();
 					  
+					  $("#feedo2").hide();
+
+					  $("#close2").show();
 					  $("#close2").html("<img src='img/ico_trash.png' width='45'>");
 					  
 					  $(document).on("touchstart", "#close2", function(e){
@@ -5528,11 +5545,14 @@ function richiesta2() {
 					 $("#4img").html("<img src='img/2_giallo.png' width='30'>");
 					  $("#cell2").hide();
 					  
+					  $("#feedo2").hide();
+					  
+					  $("#close2").show();
 					  $("#close2").html("<img src='img/ico_trash.png' width='45'>");
 					  
 					  
 					  
-					  $(document).on("touchstart", "#close2", function(e){
+					  $(document).on("tap", "#close2", function(e){
 									 $("#pass2").hide();
 									 $("#blob2").hide();
 									 elimina2(id)
@@ -5555,7 +5575,7 @@ function richiesta2() {
 						  $("#cell2").show();
 						  
 						  
-						  $(document).on("touchstart", "#cell2", function(e){
+						  $(document).on("tap", "#cell2", function(e){
 										 
 										 window.location.href = "tel:+39"+cell2+"";
 										 
@@ -5569,9 +5589,14 @@ function richiesta2() {
 				   }
 
 					  
-					  $("#close2").html("<img src='img/ico_feedback.png' width='45'>");
+					  $("#feedo2").show();
 					  
-					  $(document).on("touchstart", "#close2", function(e){
+				      $("#close1").hide();
+				      $("#close2").hide();
+				      $("#close3").hide();
+					  
+					  
+					  $(document).on("touchstart", "#feedo2", function(e){
 							$("#pass2").hide();
 							$("#blob2").hide();
 									 
@@ -5597,9 +5622,6 @@ function richiesta2() {
 					  
 				   $("#chat2").show();
 					  
-					  $("#close3").hide();
-					  $("#close2").show();
-					  $("#close1").hide();
 				  
 					  $(document).on("touchstart tap", "#gps22", function(e){
 
@@ -5642,9 +5664,9 @@ function richiesta2() {
 				  else{
 					$("#rif2").html("Rifiuta");
 					  
-					  $("#close2").show();
-					  $("#close1").hide();
-					  $("#close3").hide();
+					  $("#feedo1").hide();
+					  $("#feedo2").hide();
+					  $("#feedo3").hide();
 					  
 					  $("#close2").html("<img src='img/ico_trash.png' width='45'>");
 					  
@@ -5742,6 +5764,10 @@ function richiesta3() {
 	$("#close3").show();
 	$("#close2").hide();
 	$("#close1").hide();
+	
+	$("#feedo1").hide();
+	$("#feedo2").hide();
+	$("#feedo3").hide();
 	
 	$("#code1").hide();
 	$("#code1").html("");
@@ -5907,7 +5933,10 @@ function richiesta3() {
 		$("#4img").html("<img src='img/3_viola.png' width='30'>");
 		$("#cell3").hide();
 		
-		 $("#close3").html("<img src='img/ico_trash.png' width='45'>");
+		$("#feedo3").hide();
+		
+		$("#close3").show();
+		$("#close3").html("<img src='img/ico_trash.png' width='45'>");
 		
 		$(document).on("tap", "#close3", function(e){
 					   $("#pass3").hide();
@@ -5932,6 +5961,9 @@ function richiesta3() {
 		$("#4img").html("<img src='img/3_giallo.png' width='30'>");
 		$("#cell3").hide();
 		
+		$("#feedo3").hide();
+		
+		$("#close3").show();
 		 $("#close3").html("<img src='img/ico_trash.png' width='45'>");
 		
 		$(document).on("tap", "#close3", function(e){
@@ -5950,14 +5982,17 @@ function richiesta3() {
 	}
 	
 	
-				  if(stato3==2){
+				if(stato3==2){
 				  $("#gps3").show();
 				  $("#risp3").hide();
 				  $("#code3").show();
 					  
-				   $("#close3").html("<img src='img/ico_feedback.png' width='45'>");
+				   $("#feedo3").show();
 					  
-					$(document).on("tap", "#close3", function(e){
+				   $("#close3").hide();
+					  
+					  
+					$(document).on("tap", "#feedo3", function(e){
 						$("#pass3").hide();
 						$("#blob2").hide();
 									 
@@ -6000,9 +6035,6 @@ function richiesta3() {
 					  
 				  $("#4img").html("<img src='img/3_verde.png' width='30'>");
 				  
-				  $("#close3").show();
-				  $("#close2").hide();
-				  $("#close1").hide();
 				  
 				  $(document).on("tap", "#gps3", function(e){
 
@@ -6634,7 +6666,7 @@ function inviopasseggero(come){
 			navigator.notification.alert(
 										 'Inserire un importo',  // message
 										 alertDismissed,         // callback
-										 'Pin',            // title
+										 'Importo',            // title
 										 'OK'                  // buttonName
 										 );
 			return;
