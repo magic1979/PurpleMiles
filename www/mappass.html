@@ -33,6 +33,30 @@
 
 						  }
 					  
+					  
+					  #header {
+						  position: absolute;
+						  z-index: 2;
+						  top: 0;
+						  left: 0;
+						  width: 100%;
+						  height: 56px;
+						  line-height: 45px;
+						  padding: 0;
+						  color: #fff;
+						  font-size: 20px;
+						  text-align: center;
+						  font-weight: bold;
+					  }
+					  
+					  .div4 {
+						  background-color: #cc33cc;
+						  height: 52px;
+						  border: none;
+						  
+						  
+					  }
+					  
 					  #footer {
 						  position: absolute;
 						  z-index: 2;
@@ -624,6 +648,20 @@
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
 					  
+					  .transbox5 {
+						  position: absolute;
+						  z-index: 2;
+						  top:60px;
+						  width:100%;
+						  
+						  padding: 0;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+					  }
+					  
 					  .transbox4 {
 						  position: absolute;
 						  z-index: 2;
@@ -944,28 +982,32 @@
 		<script type='application/javascript' src='js/fastclick.js'></script>
 		
         <div id="geolocation"></div>
-		<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
+		<audio id="successArrivo" src="sound/bell.mp3" type="audio/mpeg" ></audio>
         
 <div data-role=page id=home class="div2">
+	
+	<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
+		<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Quando vuoi partire?</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+	</div>
 
-<table border="0" valign="center" align="center" class="transbox4">
+<table border="0" valign="center" align="center" class="transbox5" valign="center">
 
 	<tr>
-		<td align="center" >
-			<a id="quando" href="#"><img src="img/ico_quando2.png" width="45px"></a>
+		<td align="center" valign="center">
+			<a id="quando" href="#"><img src="img/ico_clock3.png" width="55px"></a>
 		</td>
-		<td align="center" >
+		<td align="center" valign="center">
 			<a id="da" href="#"><img src="img/ico_start1.png" width="45px"></a>
 		</td>
-		<td align="center" >
+		<td align="center" valign="center">
 			<a id="#" href="#"><img src="img/ico_finish2.png" width="45px"></a>
 		</td>
-		<td align="center" >
+		<td align="center" valign="center">
 			<a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a>
 			
 		</td>
 		<td align="center" valign="center">
-			<a id="anteprima" href="#"><img src="img/ico_anteprima1.png" width="45px"></a>
+			<a id="anteprima" href="#"><img src="img/ico_go1.png" width="45px"></a>
 		</td>
 		<td align="center" valign="center">
 			<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="45px"></a>
@@ -982,7 +1024,7 @@
   <form name="formia" action="entra.asp" method="post">
 	<table id="spazioipad" height="45px"><tr><td></td></tr></table>
 	<table id="tblhome" width="90%" height="" border="0" valign="center" align="center" class="tabella" style="display:none">
-		<tr>
+		<!--<tr>
 			<td width="25%" align="center">
 				<a href="#"><img src="img/ico_quando1.png" width="45px"></a>
 			</td>
@@ -993,11 +1035,11 @@
 				<a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a>
 			</td>
 			
-		</tr>
+		</tr>-->
 
 		<tr>
 			<td width="100%" align="center" colspan="4">
-				<a data-role="button" id="adesso" href="#" data-theme="b" class="custom-btn">Adesso, prima possibile</a>
+				<br><a data-role="button" id="adesso" href="#" data-theme="b" class="custom-btn">Adesso, prima possibile</a>
 			</td>
 		</tr>
 		<tr>
@@ -1067,6 +1109,14 @@
 </div>
 		
         <div data-role=page id="win2" data-add-back-btn=true class="div2">
+			
+			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
+				
+				<table id="s_partenza" align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Scegli l'arrivo</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+				
+				<table id="s_arrivo" style="display:none" align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Scegli la partenza</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+
+			</div>
 			
 			<div data-role="content"></div>
 			
@@ -1179,7 +1229,11 @@
 		
 		<div data-role=page id=home3 class="div2">
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
-			<table border="0" valign="center" align="center" class="transbox4">
+			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Richieste opzionali</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+			</div>
+			
+			<table border="0" valign="center" align="center" class="transbox5">
 				
 				<tr>
 					<td align="center" >
@@ -1192,11 +1246,11 @@
 						<a id="#" href="#"><img src="img/ico_finish2.png" width="45px"></a>
 					</td>
 					<td align="center" >
-						<a id="piu" href="#"><img src="img/ico_plus2.png" width="45px"></a>
+						<a id="piu" href="#"><img src="img/ico_plus3.png" width="55px"></a>
 						
 					</td>
 					<td align="center" valign="center">
-						<a id="anteprima" href="#"><img src="img/ico_anteprima1.png" width="45px"></a>
+						<a id="anteprima" href="#"><img src="img/ico_go1.png" width="45px"></a>
 					</td>
 					<td align="center" valign="center">
 						<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="45px"></a>
@@ -1215,7 +1269,7 @@
 					</td>
 				</tr>
 			</table>-->
-			<table id="spazioipad" height="40px"><tr><td></td></tr></table>
+			<table id="spazioipad" height="45px"><tr><td></td></tr></table>
 			<div data-role=content class="div2">
 
 			</div>
@@ -1241,7 +1295,7 @@
 					<td width="30%" align="left" valign="center" colspan="2">
 						<!--<table border="0" hight="10px"><tr><td></td></tr></table>-->
 
-							<table border="0" width="100%">
+							<!--<table border="0" width="100%">
 								<tr>
 									<td width="15%" align="left">
 										<img src="img/ico_plus1.png" width="45px">
@@ -1250,7 +1304,7 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="#cc33cc"><b>Richieste opzionali</b></font>
 									</td>
 								</tr>
-							</table>
+							</table>-->
 	
 					</td>
 				</tr>
@@ -1440,7 +1494,11 @@
 		
 		<div data-role=page id=home7 class="div2">
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
-			<table border="0" valign="center" align="center" class="transbox4">
+			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Riepilogo</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+			</div>
+			
+			<table border="0" valign="center" align="center" class="transbox5">
 				
 				<tr>
 					<td align="center" >
@@ -1457,7 +1515,7 @@
 						
 					</td>
 					<td align="center" valign="center">
-						<a id="anteprima" href="#"><img src="img/ico_anteprima2.png" width="45px"></a>
+						<a id="anteprima" href="#"><img src="img/ico_go3.png" width="55px"></a>
 					</td>
 					<td align="center" valign="center">
 						<a id="offerte" href="#"><img src="img/ico_offerte1.png" width="45px"></a>
@@ -1485,10 +1543,10 @@
 			
 			<form name="formia7" action="entra.asp" method="post">
 				
-				<table width="95%" align="center">
+				<table align="center" width="90%" height="" border="0" valign="center" class="tabella">
 					<tr>
-						<td width="100%" align="left">
-							<table width="95%" align="center" class="tabella" border="0">
+						<td width="100%" align="left" colspan="2">
+							<!--<table width="95%" align="center" class="tabella" border="0">
 								<tr>
 									<td width="50px" align="left" valign="center" colspan="2">
 									      <table border="0" width="100%">
@@ -1503,9 +1561,9 @@
                                                      <a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a>
                                                 </td>
 											  </tr>
-										  </table>
-									</td>
-								</tr>
+										  </table>-->
+						  </td>
+						</tr>
 								
 								<tr>
 									<td width="100%" align="center" valign="center" colspan="2">
@@ -1541,7 +1599,7 @@
 								
 								<tr>
 									<td width="100%" align="left" colspan="2">
-										<br><b><font color='#cc33cc'>Opzioni</font></b>
+										<br>&nbsp;&nbsp;<b><font color='#cc33cc'>Opzioni</font></b>
 									</td>
 								</tr>
 								<tr>
@@ -1652,23 +1710,28 @@
 		</div>
 		
 		<div data-role=page id=home4 class="div2">
-			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
+			
+			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Autisti in zona</b></font></td><td align="right" valign="center" width="20%"><a id="indietro4" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+			</div>
+			
+			<audio id="successArrivo" src="sound/bell.mp3" type="audio/mpeg" ></audio>
 			
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
-			<table border="0" valign="center" align="center" class="transbox">
+			<table border="0" valign="center" align="center" class="transbox5">
 				<tr>
 					<td colspan="2">
 						<table id="spazioipad" height="3px"><tr><td></td></tr></table>
 					</td>
 				</tr>
-				<tr>
+				<!--<tr>
 					<td align="center" width="80%" align="center">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="#cc33cc"><b>Autisti in zona</b></font>
 					</td>
 					<td align="center" width="20%" align="center" valign="center">
 						<a id="indietro4" href="#" ><img src="img/ico_close1.png" width="45"></a>
 					</td>
-				</tr>
+				</tr>-->
 			</table>
 			
 			<div data-role=content class="div2">
@@ -1678,7 +1741,6 @@
 			<div class="spinner" id="spinner4"></div>
 			
 			<form name="formia4" action="entra.asp" method="post">
-				<table id="spazioipad" height="40px"><tr><td></td></tr></table>
 				
 				<div id="offerte4" >
 					
@@ -1692,8 +1754,8 @@
 			
 			
 			<a href="#mypanelH2" data-role=button id=btnpanel data-theme="b" style="display:none"></a>
-			<audio id="successChat1" src="/android_asset/www/sound/send_chat.mp3" type="audio/mpeg" ></audio>
-			<audio id="successChat2" src="/android_asset/www/sound/new_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successChat1" src="sound/send_chat.mp3" type="audio/mpeg" ></audio>
+			<audio id="successChat2" src="sound/new_chat.mp3" type="audio/mpeg" ></audio>
 			
 			<div data-role="panel" id="mypanelH2" style="overflow-y: scroll" data-position="right" data-display="overlay" width="100%" data-theme="b">
 				<center>

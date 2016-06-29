@@ -208,8 +208,8 @@ receivedEvent: function(id) {
 	//localStorage.setItem("lng", "12.492475")
 	
 	
-	var altezzatbl = getRealContentHeight()-80;
-	var height = getRealContentHeight()-80;
+	var altezzatbl = getRealContentHeight();
+	var height = getRealContentHeight();
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
 	
@@ -1185,10 +1185,10 @@ function CenterControl(controlDiv, map) {
 	controlUI.style.borderRadius = '3px';
 	controlUI.style.boxShadow = '0 0px 0px rgba(0,0,0,.3)';
 	controlUI.style.cursor = 'pointer';
-	controlUI.style.marginBottom = '22px';
+	controlUI.style.marginBottom = '5px';
 	controlUI.style.textAlign = 'center';
 	controlUI.title = 'Click to recenter the map';
-	controlUI.style.height = '60px';
+	controlUI.style.height = '5px';
 	controlUI.style.width = '320px';
 	//controlUI.style.display = 'none';
 	controlDiv.appendChild(controlUI);
@@ -1198,21 +1198,13 @@ function CenterControl(controlDiv, map) {
 	controlText.style.color = 'rgb(25,25,25)';
 	controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
 	controlText.style.fontSize = '12px';
-	controlText.style.lineHeight = '30px';
+	controlText.style.lineHeight = '10px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6"><td align="right" valign="center">&nbsp;<br><br></td></tr><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl4"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl5"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="#" valign="center"><b>Posizione dell\'autista</b><br></div></font><br></td></tr></table>';
+	controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6" valign="top"><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><br>';
 	controlUI.appendChild(controlText);
 	
-	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
-	//var g = document.createElement('div');
-	//g.id ='sopra':
-	//controlUI.appendChild(g);
-	// Setup the click event listeners: simply set the map to Chicago.
-	//controlUI.addEventListener('click', function() {
-		//alert();
-		//map.setCenter(chicago);
-	//});
+	//controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6"><td align="right" valign="center">&nbsp;<br><br></td></tr><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl4"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl5"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="#" valign="center"><b>Posizione dell\'autista</b><br></div></font><br></td></tr></table>';
 	
 }
 
@@ -1241,7 +1233,7 @@ function CenterControl2(controlDiv, map) {
 	controlText.style.lineHeight = '30px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<table width="100%" border="0" class="xalto"><tr><td align="right">&nbsp;<br><br></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table>';
+	//controlText.innerHTML = '<table width="100%" border="0" class="xalto"><tr><td align="right">&nbsp;<br><br></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table>';
 	controlUI.appendChild(controlText);
 	
 	//<input id="viale" name="viale" type="text" value="'+ localStorage.getItem("Via") +'">
@@ -1850,6 +1842,7 @@ $(function() {
   });
 }
 
+
 function getRealContentHeight() {
 	var header = $.mobile.activePage.find("div[data-role='header']:visible");
 	var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
@@ -1984,8 +1977,15 @@ function resetta1(focus) {
 	var latlng = new google.maps.LatLng(lat, lng, 1);
 	
 	var $content = $("#win2 div:jqmData(role=content)");
-    $content.height (getRealContentHeight());
-                                                              
+		
+	if(focus==1){
+      $content.height (getRealContentHeight());
+	}
+	else{
+	   $content.height (getRealContentHeight()-56);
+	}
+		
+		
 	  var options = {
 	  zoom : 13,
 	  center : latlng,
@@ -6248,7 +6248,6 @@ function chatting(pass,id) {
 				        $("#offerta6").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
 				    }
 				  
-				  
 				}
 				  
 			 });
@@ -6323,7 +6322,7 @@ function chatting66(pass,id) {
 				  
 				  }
 				  
-				  });
+			});
 		   
 		   }
 		   
@@ -6790,7 +6789,13 @@ function controllachat(uman) {
 				  $("#nickhome6").html(item.nick);
 				  
 				  localStorage.setItem("id_richiesta",item.canale)
-				  $("#btnpanel2").click();
+				  
+				  
+				  if( $(".ui-panel").hasClass("ui-panel-open") == true ){
+				    //alert("OPENED");
+				  }else{
+				    $("#btnpanel2").click();
+				  }
 
 				  chatting(0,item.canale);
 				  //playChat('successChat');
