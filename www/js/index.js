@@ -186,6 +186,20 @@ receivedEvent: function(id) {
 		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
+	
+	
+	$(document).on("tap", "#ciccio", function(e){
+				   
+		window.location.href = "index2.html";
+				   
+		e.preventDefault();
+				   
+		return false;
+				   
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+			
+	});
+
 
 	function playAudioA(id) {
 		var audioElement = document.getElementById(id);
@@ -247,7 +261,7 @@ receivedEvent: function(id) {
 	  localStorage.setItem("exit", "0")
 	}*/
 	
-	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere AUTISTA</p><table><tr><td><table id="profiloperc" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere PASSEGGERO</p><table><tr><td><table id="profiloperc2" class="tabella1"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere AUTISTA</p><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere PASSEGGERO</p><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
@@ -663,8 +677,8 @@ receivedEvent: function(id) {
 				   $("#modificastart").hide();
 				   $("#modificastart2").hide();
 				   
-				   $("#btnGPS").removeClass("custom-btn3").addClass("custom-btnGPS");
-				   $("#Modifica").removeClass("custom-btnModifica").addClass("custom-btn3");
+				   $("#btnGPS").removeClass("button_gps").addClass("button_gps_fade");
+				   $("#Modifica").removeClass("button_gps_fade").addClass("button_gps");
 				   
 				   
 				   buttongps();
@@ -691,8 +705,8 @@ receivedEvent: function(id) {
 				   $("#modificastart").show();
 				   $("#modificastart2").show();
 				   
-				   $("#btnGPS").removeClass("custom-btnGPS").addClass("custom-btn3");
-				   $("#Modifica").removeClass("custom-btn3").addClass("custom-btnModifica");
+				   $("#btnGPS").removeClass("button_gps_fade").addClass("button_gps");
+				   $("#Modifica").removeClass("button_gps").addClass("button_gps_fade");
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -940,8 +954,23 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#XX3", function(e){
-		$.mobile.changePage ($("#win2"));
-	    resetta1(1);
+				   localStorage.setItem("ritornaweb","0")
+				   
+				   
+				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+				   
+				   
+				   if(localStorage.getItem("stomessa")=="1"){
+				   
+				   localStorage.setItem("primavolta","0");
+				   
+				   for(i=0; i<10000; i++)
+				   {
+				   window.clearInterval(i);
+				   }
+				   
+				   resetta1(1)
+				   }
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -972,6 +1001,8 @@ receivedEvent: function(id) {
 				   
 
 				   localStorage.setItem("pagina","inizia")
+				   $("#win2header").html("&nbsp;&nbsp;In attesa di richieste");
+				   
 				   
 				   setTimeout(function() {
 						start();
@@ -1201,7 +1232,7 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '10px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6" valign="top"><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><br>';
+	controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6" valign="top"><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" class="button_gps_fade"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" class="button_gps"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><br>';
 	controlUI.appendChild(controlText);
 	
 	//controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6"><td align="right" valign="center">&nbsp;<br><br></td></tr><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl4"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl5"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="#" valign="center"><b>Posizione dell\'autista</b><br></div></font><br></td></tr></table>';
@@ -2340,7 +2371,10 @@ function resetta1(focus) {
 				  lat1 = item.lat
 				  
 				  
-				  $("#pass0").show();
+				  //$("#pass0").show();
+				  $("#win2header").html("&nbsp;&nbsp;In attesa di richieste");
+				  
+				  
 				  //$("#pass1").show();
 				  //$("#esci").show();
 				  if(item.posticipata==1){
@@ -2939,7 +2973,9 @@ function timer(){
 												  $("#pass1").hide();
 												  $("#pass2").hide();
 												  $("#pass3").hide();
-												  $("#pass0").show();
+												  
+												  //$("#pass0").show();
+												  $("#win2header").html("&nbsp;&nbsp;In attesa di richieste");
 												  }
 												  
 												  
@@ -2948,7 +2984,9 @@ function timer(){
 												  $("#pass2").hide();
 												  $("#pass3").hide();
 												  $("#esci").hide();
-												  $("#pass0").show();
+												  
+												  //$("#pass0").show();
+												  $("#win2header").html("&nbsp;&nbsp;In attesa di richieste");
 												  
 												  //resetta1(1);
 												  
@@ -3152,7 +3190,9 @@ function timer(){
 												 });
 	
 												  
-												  $("#pass0").hide();
+												  //$("#pass0").hide();
+												  //$("#win2header").html("In attesa di richieste");
+												  
 												  $("#pass1").show();
 												  $("#pass2").hide();
 												  $("#pass3").hide();
@@ -4730,7 +4770,7 @@ function elimina3(id_richiesta){
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_elimina2.php?id_richiesta="+ id_richiesta +"&id_autista="+ localStorage.getItem("id_autista") +"",
+		   url:"http://purplemiles.com/www2/check_elimina2A.php?id_richiesta="+ id_richiesta +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   //url:"http://purplemiles.com/www2/check_confermapasseggeroS1.php?conferma=1&id_richiesta="+ id_richiesta +"&id_autista="+ localStorage.getItem("id_autista") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
@@ -4941,6 +4981,7 @@ function richiesta1() {
 	$("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	
 	
+	
 	if(parseFloat(rating1)==0){
 		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
 	}
@@ -4977,13 +5018,53 @@ function richiesta1() {
 	else if (parseFloat(rating1)>=5) {
 		$("#stelle4").html(ratio = "<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
 	}
+	
+	// STELLE 3
+	
+	if(parseFloat(rating1)==0){
+		$("#stelle3").html("<a id='linkstelle1' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if(parseFloat(rating1)>0 && parseFloat(rating1)<=0.9){
+		$("#stelle3").html("<a id='linkstelle1' href='#'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if(parseFloat(rating1)>=1 && parseFloat(rating1)<=1.4){
+		$("#stelle3").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if(parseFloat(rating1)>1.4 && parseFloat(rating1)<=1.9){
+		$("#stelle3").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if (parseFloat(rating1)>=2 && parseFloat(rating1)<=2.4) {
+		$("#stelle3").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating1)>2.4 && parseFloat(rating1)<=2.9) {
+		$("#stelle3").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating1)>=3 && parseFloat(rating1)<=3.4) {
+		$("#stelle3").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating1)>3.4 && parseFloat(rating1)<=3.9) {
+		$("#stelle3").html("<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating1)>=4 && parseFloat(rating1)<=4.4) {
+		$("#stelle3").html(ratio = "<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating1)>4.4 && parseFloat(rating1)<=4.9) {
+		$("#stelle3").html(ratio = "<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'></a>")
+	}
+	else if (parseFloat(rating1)>=5) {
+		$("#stelle3").html(ratio = "<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
+	}
+
 
 
 
 	localStorage.setItem("id_nick", nick1)
 	localStorage.setItem("id_utente_pass1", id_utente_pass1)
 	
-	$("#nickhome3").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
+	$("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	$("#nickhome66").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
 				  
 	$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"<br><br>");
@@ -5075,7 +5156,9 @@ function richiesta1() {
 	
 	
 	              if(stato1==0){
-		            $("#4img").html("<img src='img/1_viola.png' width='30'>");
+		            $("#4img").html("&nbsp;&nbsp;<img src='img/1_viola.png' width='35'>");
+					$("#3img").html("&nbsp;&nbsp;<img src='img/1_viola.png' width='35'>");
+					  
 					$("#cell1").hide();
 					  
 					$("#close1").show();
@@ -5105,7 +5188,8 @@ function richiesta1() {
 	
 				  if(stato1==1){
 					  $("#cell1").hide();
-					  $("#4img").html("<img src='img/1_giallo.png' width='30'>");
+					  $("#4img").html("&nbsp;&nbsp;<img src='img/1_giallo.png' width='35'>");
+					  $("#3img").html("&nbsp;&nbsp;<img src='img/1_giallo.png' width='35'>");
 					  
 					  $("#feedo1").hide();
 					  $("#feedo2").hide();
@@ -5187,7 +5271,8 @@ function richiesta1() {
 				   $("#risp1").hide();
 					  
 					  
-				   $("#4img").html("<img src='img/1_verde.png' width='30'>");
+				   $("#4img").html("&nbsp;&nbsp;<img src='img/1_verde.png' width='35'>");
+				   $("#3img").html("&nbsp;&nbsp;<img src='img/1_verde.png' width='35'>");
 				  
 				   $(document).on("touchstart tap", "#gps1", function(e){
 						
@@ -5379,7 +5464,7 @@ function richiesta2() {
 	localStorage.setItem("stomessa", "0")
 				  
 	$("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a></font>");
-	$("#nickhome3").html("<font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font>");
+	$("#nickhome3").html("<a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a>");
 	$("#nickhome66").html("<font color='#fff'>"+ nick2 +" "+ percentuale1 +"%</font>");
 	
 	localStorage.setItem("id_utente_pass2", id_utente_pass2)
@@ -5421,9 +5506,49 @@ function richiesta2() {
 							else if (parseFloat(rating2)>=5) {
 							$("#stelle4").html(ratio = "<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
 		   }
+	
+	// STELLE 3
+	
+	if(parseFloat(rating2)==0){
+		$("#stelle3").html("<a id='linkstelle2' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if(parseFloat(rating2)>0 && parseFloat(rating2)<=0.9){
+		$("#stelle3").html("<a id='linkstelle2' href='#'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if(parseFloat(rating2)>=1 && parseFloat(rating2)<=1.4){
+		$("#stelle3").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if(parseFloat(rating2)>1.4 && parseFloat(rating2)<=1.9){
+		$("#stelle3").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if (parseFloat(rating2)>=2 && parseFloat(rating2)<=2.4) {
+		$("#stelle3").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating2)>2.4 && parseFloat(rating2)<=2.9) {
+		$("#stelle3").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating2)>=3 && parseFloat(rating2)<=3.4) {
+		$("#stelle3").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating2)>3.4 && parseFloat(rating2)<=3.9) {
+		$("#stelle3").html("<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating2)>=4 && parseFloat(rating2)<=4.4) {
+		$("#stelle3").html(ratio = "<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating2)>4.4 && parseFloat(rating2)<=4.9) {
+		$("#stelle3").html(ratio = "<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'></a>")
+	}
+	else if (parseFloat(rating2)>=5) {
+		$("#stelle3").html(ratio = "<a id='linkstelle2' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
+	}
+
 
 	
-				  
+	
 	$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
 	
 	$("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Partenza: </font></b><br>&nbsp;&nbsp;"+ partenza2 +"<br><br>");
@@ -5514,7 +5639,9 @@ function richiesta2() {
 	
 	
 				  if(stato2==0){
-					 $("#4img").html("<img src='img/2_viola.png' width='30'>");
+					 $("#4img").html("&nbsp;&nbsp;<img src='img/2_viola.png' width='35'>");
+					 $("#3img").html("&nbsp;&nbsp;<img src='img/2_viola.png' width='35'>");
+					  
 					   $("#cell2").hide();
 					  
 					  $("#feedo2").hide();
@@ -5541,7 +5668,9 @@ function richiesta2() {
 				  }
 	
 				  if(stato2==1){
-					 $("#4img").html("<img src='img/2_giallo.png' width='30'>");
+					 $("#4img").html("&nbsp;&nbsp;<img src='img/2_giallo.png' width='35'>");
+					 $("#3img").html("&nbsp;&nbsp;<img src='img/2_giallo.png' width='35'>");
+					  
 					  $("#cell2").hide();
 					  
 					  $("#feedo2").hide();
@@ -5617,7 +5746,8 @@ function richiesta2() {
 				   $("#code2").show();
 				   $("#code2").html("<b>Codice Commento : " + cod2 + "</b>");
 					  
-				   $("#4img").html("<img src='img/2_verde.png' width='30'>");
+				   $("#4img").html("&nbsp;&nbsp;<img src='img/2_verde.png' width='35'>");
+				   $("#3img").html("&nbsp;&nbsp;<img src='img/2_verde.png' width='35'>");
 					  
 				   $("#chat2").show();
 					  
@@ -5797,7 +5927,7 @@ function richiesta3() {
 	
 
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a></font>");
-				  $("#nickhome3").html("<font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font>");
+				  $("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a>");
 	              $("#nickhome66").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
 	
 	              localStorage.setItem("id_utente_pass3", id_utente_pass3)
@@ -5839,7 +5969,47 @@ function richiesta3() {
 											$("#stelle4").html(ratio = "<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
 											}
 	
-				  
+	// STELLE 3
+	
+	if(parseFloat(rating3)==0){
+		$("#stelle3").html("<a id='linkstelle3' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if(parseFloat(rating3)>0 && parseFloat(rating3)<=0.9){
+		$("#stelle3").html("<a id='linkstelle3' href='#'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if(parseFloat(rating3)>=1 && parseFloat(rating3)<=1.4){
+		$("#stelle3").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if(parseFloat(rating3)>1.4 && parseFloat(rating3)<=1.9){
+		$("#stelle3").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	
+	else if (parseFloat(rating3)>=2 && parseFloat(rating3)<=2.4) {
+		$("#stelle3").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating3)>2.4 && parseFloat(rating3)<=2.9) {
+		$("#stelle3").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating3)>=3 && parseFloat(rating3)<=3.4) {
+		$("#stelle3").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating3)>3.4 && parseFloat(rating3)<=3.9) {
+		$("#stelle3").html("<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating3)>=4 && parseFloat(rating3)<=4.4) {
+		$("#stelle3").html(ratio = "<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
+	}
+	else if (parseFloat(rating3)>4.4 && parseFloat(rating3)<=4.9) {
+		$("#stelle3").html(ratio = "<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/star_middle.png' width='18'></a>")
+	}
+	else if (parseFloat(rating3)>=5) {
+		$("#stelle3").html(ratio = "<a id='linkstelle3' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
+	}
+
+	
+	
 	
 	$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
 	
@@ -5929,7 +6099,9 @@ function richiesta3() {
 	
 	
 	if(stato3==0){
-		$("#4img").html("<img src='img/3_viola.png' width='30'>");
+		$("#4img").html("&nbsp;&nbsp;<img src='img/3_viola.png' width='35'>");
+		$("#3img").html("&nbsp;&nbsp;<img src='img/3_viola.png' width='35'>");
+		
 		$("#cell3").hide();
 		
 		$("#feedo3").hide();
@@ -5957,7 +6129,9 @@ function richiesta3() {
 				  }
 	
 	if(stato3==1){
-		$("#4img").html("<img src='img/3_giallo.png' width='30'>");
+		$("#4img").html("&nbsp;&nbsp;<img src='img/3_giallo.png' width='35'>");
+		$("#3img").html("&nbsp;&nbsp;<img src='img/3_giallo.png' width='35'>");
+		
 		$("#cell3").hide();
 		
 		$("#feedo3").hide();
@@ -6032,7 +6206,8 @@ function richiesta3() {
 				  $("#code3").html("<b>Codice Commento : " + cod3 + "</b>");
 				  $("#chat3").show();
 					  
-				  $("#4img").html("<img src='img/3_verde.png' width='30'>");
+				  $("#4img").html("&nbsp;&nbsp;<img src='img/3_verde.png' width='35'>");
+				  $("#3img").html("&nbsp;&nbsp;<img src='img/3_verde.png' width='35'>");
 				  
 				  
 				  $(document).on("tap", "#gps3", function(e){

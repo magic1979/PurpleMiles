@@ -75,6 +75,7 @@ function onDeviceReady() {
 	var item;
 	var autista;
 	var richiesta;
+	var myScroll;
 	
 	var height = getRealContentHeight()-60;
 	$("#tblhome").attr("height",height);
@@ -94,7 +95,7 @@ function onDeviceReady() {
 	IDPage = getParameterByName('id');
 	ODPage = getParameterByName('od');
 	
-	$(document).on("touchstart tap", "#imgcalendario", function(e){
+	$(document).on("tap", "#imgcalendario", function(e){
 		mostracal();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
@@ -304,10 +305,13 @@ function onDeviceReady() {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
+	
 	$(document).on("tap", "#indietro4", function(e){
 				   
 		$("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
 	    $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   
+		localStorage.setItem("risppass", "")
 				   
 		$.mobile.changePage ($("#home"));
 				   
@@ -320,6 +324,7 @@ function onDeviceReady() {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
+	
 	$(document).on("touchstart", "#offerte", function(e){
 		localStorage.setItem("dovesono", "3");
 				   
@@ -327,14 +332,31 @@ function onDeviceReady() {
 		//$.mobile.changePage ($("#home4"));
 		$("#spinner4").show();
 		vediofferte()
-		//alert("in costruzione")
-				   e.stopImmediatePropagation();
+
 				   
-				   e.preventDefault();
+				  /* myScroll = new IScroll('#wrapper', { click: true });
 				   
-				   return false;
 				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   setTimeout (function(){
+							   myScroll.refresh();
+							   }, 1500);
+				   
+				   
+				   myScroll.on ('scrollStart', function () {
+						setTimeout (function(){
+							alert();
+						}, 1500);
+					});
+				   
+				   
+				   
+				   myScroll.on ('scrollEnd', function () {
+				      setTimeout (function(){
+						alert();
+					  }, 1500);
+				   });*/
+
+
 	});
 	
 	
@@ -604,9 +626,10 @@ function onDeviceReady() {
 			   dataType:"jsonp"});
 			}
 			else{
-				   //alert("http://purplemiles.com/www2/check_richiesta_pos.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale3").value +"&indirizzo2="+ document.getElementById("destinazione3").value +"&data="+ document.getElementById("datacal3").value +"&ora="+ document.getElementById("orario3").value +"&minuti="+ document.getElementById("minuti3").value +"")
+				   //alert("http://purplemiles.com/www2/check_richiesta_pos.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ document.getElementById("viale7").value +"&indirizzo2="+ document.getElementById("destinazione7").value +"&data="+ document.getElementById("datacal7").value +"&ora="+ document.getElementById("Orario").value +"&minuti="+ document.getElementById("Minuti").value +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"&rimorchio="+ rimorchio +"&bluetooth="+ bluetooth +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"&note="+ note +"&veicolo="+ veicolo +"")
 				   
-				   //alert(document.getElementById("datacal3").value)
+				   
+					//alert(document.getElementById("datacal7").value)
 				   
 				   
 				   $.ajax({
@@ -1841,6 +1864,7 @@ function controllaofferte(){
 
 
 function vediofferte(){
+
 	
 	$("#timer2").show();
 	//alert("Vedo");
@@ -1851,6 +1875,7 @@ function vediofferte(){
 	{
 		window.clearInterval(i);
 	}
+	
 	
 	
 	$.ajax({
@@ -1901,7 +1926,7 @@ function vediofferte(){
 				     playAudio('successArrivo');
 				   }
 				  
-				  //<tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr>
+				   //<tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr>
 				  }
 				  else{
 				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
@@ -1918,7 +1943,7 @@ function vediofferte(){
 						
 						var ref = window.open('http://www.purplemiles.com/www/feedback_user.php?lang='+ localStorage.getItem("lingua") +'&idp='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 								   
-						accettaofferta(3,item.id_richiesta,item.id_autista)
+						feedofferta(item.id_richiesta,item.id_autista)
 						if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				    });
 				  
@@ -2034,6 +2059,8 @@ function vediofferte(){
 					 controllaseautistaaccetta(item.id_richiesta,item.id_autista);
 										   
 				   }, 5000);
+				   
+				   
 
 				   localStorage.setItem("tempor","1")
 				   function countdown2(minutes) {
@@ -2068,6 +2095,7 @@ function vediofferte(){
 				   }
 				   tick();
 				   }
+				   
 				  
 				   countdown2(0);
 				  }
@@ -2297,6 +2325,8 @@ function vediofferte(){
 				  
 					 }
 					 else{
+				       //alert(item.nick)
+				   
 				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='50%'><font color='#000'><div id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><b>"+ item.nick +" "+ item.percentuale +"%</b></div></font></td><td align='left' width='50%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"</td></tr><tr><td align='center' colspan='2'></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  
 				  
@@ -2404,6 +2434,14 @@ function vediofferte(){
 		   
 		   },
 		   dataType:"jsonp"});
+	
+	
+	
+
+	//myScroll.refresh();
+
+	//alert("finito")
+	
 	
 	
 	function playAudio(id) {

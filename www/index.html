@@ -12,6 +12,7 @@
 						
 						<link rel="stylesheet" href="chat.css" />
 						<link href="css/hover.css" rel="stylesheet" media="all">
+						<link rel="stylesheet" href="style/stylepurples.css" />
 						
                         <meta name="apple-mobile-web-app-capable" content="yes">
                         <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -51,6 +52,14 @@
 					  .div4 {
 						  background-color: #cc33cc;
 						  height: 52px;
+						  border: none;
+						  
+						  
+					  }
+					  
+					  .div44 {
+						  background-color: #cc33cc;
+						  height: 70px;
 						  border: none;
 						  
 						  
@@ -953,8 +962,8 @@
 					  }
 					  
 					  .div599 {
-						  background-image: url("img/sfondo.png");
-						  background-color: #fff;
+						  /*background-image: url("img/sfondo.png");*/
+						  background-color: #781978;
 						  
 						  position: fixed;
 						  z-index: 20;
@@ -1140,7 +1149,7 @@
 			<table border="0" valign="center" align="center" class="transbox">
 				<tr>
                 	<td align="left" width="30%">
-                    	&nbsp;&nbsp;<img id="esciapp" src="img/Logo.png" width="65px" valign="center">
+                    	&nbsp;&nbsp;<a id="ciccio" href"index2.html" rel="external"><img id="#" src="img/Logo.png" width="65px" valign="center"></a>
                     </td>
 					<td align="center" width="40%" valign="center">
                     	<table><tr><td><font color="#cc33cc" size="4"><b><div id="nickhome"></div></b></font></td></tr></table>
@@ -1196,7 +1205,7 @@
 			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
 			
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
-				<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%"><font size="4" color="#fff">&nbsp;&nbsp;<b>Posizione dell'autista</b></font></td><td align="right" valign="center" width="20%"><a id="XXX" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%"><font size="4" color="#fff"><b><div valign="center" id="win2header">&nbsp;&nbsp;Posizione dell'autista</div></b></font></td><td align="right" valign="center" width="20%"><a id="XXX" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
 			</div>
 			
 			<div data-role="content"></div>
@@ -1359,7 +1368,7 @@
 				<tr>
 					<td width="100%" align="center" colspan="2">
 						<table align="center" width="100px"><tr><td width="100px" align="center">
-						<a id="inizia" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>&nbsp;&nbsp;Inizia&nbsp;&nbsp;</b></font></a>
+						<a id="inizia" href="#" class="button_middle"><font color="#fff"><b>&nbsp;&nbsp;Inizia&nbsp;&nbsp;</b></font></a>
 						</td></tr></table>
 					</td>
 				</tr>
@@ -1482,52 +1491,50 @@
 		</div>
 		
 		<div data-role=page id=home3 class="div2">
+			
+			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div44">
+				<table align="center" width="100%" valign="center" border="0">
+					<tr>
+						<td align="left" valign="center" width="33%"><div id="3img" valign="center"></div></td>
+						<td align="center" valign="center" width="34%">
+							<table align="center">
+								<tr><td align="center"><b><font color="#FFF"><div class="button_small" id="nickhome3"></div></font></b></td></tr>
+								<tr><td align="center"><div id="stelle3"></div></td></tr>
+							</table>
+						</td>
+						<td align="right" valign="center" width="33%"><a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="40px"></a>&nbsp;&nbsp;</td>
+					</tr>
+				</table>
+			</div>
 
-			<table border="0" hight="30px"><tr><td></td></tr></table>
-			
-			<table border="0" valign="center" align="center" class="transbox">
-				<tr>
-					<td align="center" width="30%">
-						<img src="img/Logo.png" width="60">
-							</td>
-					<td align="center" width="50%">
-						<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome3"></div></font></td></tr></table>
-					</td>
-					<td align="right" width="20%">
-						<a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="35px"></a>
-					</td>
-				</tr>
-			</table>
-			
-			<div data-role=content class="div2"></div>
+
 			
 			<div class="spinner" id="spinner3"></div>
 			
-			<table border="0" hight="40px"><tr><td></td></tr></table>
-			<br><br>
+			<table border="0" hight="30px"><tr><td></td></tr></table>
 			
 			<form name="formia" action="entra.asp" method="post">
 			
 			<table width="90%" align="center" class="tabella">
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<br><b>Rispondi</b><br>
+						<font size="4" color="#cc33cc"><b>Rispondi</b></font><br><br>
 					</td>
 				</tr>
 				
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a data-role="button" id="gratis" href="#" data-theme="b" class="custom-btn33">Gratis</a>
+						<a id="gratis" href="#" class="button_middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gratis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><br><br>
 					</td>
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a data-role="button" id="offerta" href="#" data-theme="b" class="custom-btn33">Offerta libera</a>
+						<a id="offerta" href="#"  class="button_middle">&nbsp;&nbsp;&nbsp;&nbsp;Offerta libera&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
 					</td>
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						Oppure
+						<br>Oppure
 					</td>
 				</tr>
 				<tr>
@@ -1547,12 +1554,12 @@
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<textarea id="noteautista" name="noteautista" cols="30" rows="10" class="scrivo" placeholder="Note"></textarea>
+						<textarea id="noteautista" name="noteautista" cols="30" rows="10" class="scrivo" placeholder="Note"></textarea><br><br>
 					</td>
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a id="back3" href="#" data-role="button" data-theme="b" class="custom-btn33">Invia offerta</a>
+						<a id="back3" href="#" class="button_middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Invia offerta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 					</td>
 				</tr>
 			</table>
@@ -1562,29 +1569,25 @@
 		</div>
 		
 		<div data-role=page id=home4 class="div2">
-			<table border="0" hight="30px"><tr><td></td></tr></table>
 			
-			<table border="0" width="100%" align="center">
-				<tr>
-					<td align="center" width="25%">
-						<div id="4img"><img src="img/ico_viola.png" width="30"></div>
-					</td>
-					<td align="center" width="50%">
-						<table class="tabella1"><tr><td align="center"><font color="#FFF"><div id="nickhome4"></div></font></td></tr></table>
-						
-					</td>
-					<td align="center" width="25%">
-						<a id="ritorna" href="#"><img src="img/ico_close1.png" width="40"></a>
-					</td>
-				</tr>
-				<tr>
-					<td align="center" width="100%" colspan="3">
-						<div id="stelle4"></div>
-					</td>
-				</tr>
-			</table>
+			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div44">
+				<table align="center" width="100%" valign="center" border="0">
+					<tr>
+						<td align="left" valign="center" width="33%"><div id="4img" valign="center"></div></td>
+						<td align="center" valign="center" width="34%">
+							<table align="center">
+								<tr><td align="center"><b><font color="#FFF"><div class="button_small" id="nickhome4"></div></font></b></td></tr>
+								<tr><td align="center"><div id="stelle4"></div></td></tr>
+							</table>
+						</td>
+						<td align="right" valign="center" width="33%"><a id="ritorna" href="#"><img src="img/ico_close1.png" width="40"></a>&nbsp;&nbsp;</td>
+					</tr>
+				</table>
+			</div>
 			
-			<table border="0" hight="30px"><tr><td></td></tr></table>
+			
+			<table border="0" hight="45px"><tr><td></td></tr></table>
+
 			
 			<table width="100%" align="center">
 				<tr>
@@ -1903,11 +1906,14 @@
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		
+		
+		
 		<script type='application/javascript' src='js/fastclick.js'></script>
 		
 		<script type="text/javascript">
 			app.initialize();
 		</script>
+		
 
     </body>
 </html>
