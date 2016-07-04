@@ -1018,8 +1018,11 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("touchstart tap", "#back3", function(e){
-		inviopasseggero(3);
+	$(document).on("tap", "#back3", function(e){
+		setTimeout(function() {
+		    inviopasseggero(3);
+	      }, 500);
+		  
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
@@ -1086,7 +1089,11 @@ receivedEvent: function(id) {
 	
 	
 	$(document).on("touchstart tap", "#gratis", function(e){
-		          inviopasseggero(1);
+		
+		setTimeout(function() {
+		    inviopasseggero(1);
+	      }, 200);
+		          //inviopasseggero(1);
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -1098,7 +1105,12 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#offerta", function(e){
-		           inviopasseggero(2);
+		
+		setTimeout(function() {
+		    inviopasseggero(2);
+	      }, 200);
+		  
+		          // inviopasseggero(2);
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -5867,7 +5879,7 @@ function richiesta2() {
 
 	
 	
-	$(document).on("touchstart", "#risp2", function(e){
+	$(document).on("tap", "#risp2", function(e){
 				   $("#blob2").hide();
 				    $.mobile.changePage ($("#home3"));
 					
