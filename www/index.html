@@ -91,6 +91,24 @@
 							-o-border-radius: 10px;
 					  }
 					  
+					  .timerviolaA {
+						  background-color: #FF0000;
+						  height:60px;
+						  
+						  -moz-border-radius: 10px;
+						  -webkit-border-radius: 10px;
+						  -o-border-radius: 10px;
+					  }
+					  
+					  .timerviolaB {
+						  background-color: #FF0000;
+						  height:60px;
+						  
+						  -moz-border-radius: 10px;
+						  -webkit-border-radius: 10px;
+						  -o-border-radius: 10px;
+					  }
+					  
 					  .xalto {
 						z-index: 20;
 						top:30px;
@@ -224,7 +242,7 @@
 						  background: transparent !important;
 						  position: absolute;
 						  z-index: 2;
-						  top:5px;
+						  top:3px;
 						  left:0px;
 						  width:98%;
 						  height: 8%;
@@ -439,6 +457,72 @@
 						  
 						  z-index: 120;
 					  }
+					  
+					  .div5622A {
+						  
+						  background-color: #fff;
+						  border: 1px solid #000;
+						  border-color: #cc33cc;
+						  
+						  position: absolute;
+						  bottom: 60px;
+						  
+						  width: 230px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:49%;
+						  left:51%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 110;
+					  }
+					  
+					  .div5622B {
+						  
+						  background-color: #fff;
+						  border: 1px solid #000;
+						  border-color: #cc33cc;
+						  
+						  position: absolute;
+						  bottom: 60px;
+						  
+						  width: 230px;
+						  height: 260px;
+						  color: #000;
+						  
+						  text-align: center;
+						  font-weight: bold;
+						  
+						  font-size: 22px;
+						  
+						  top:48%;
+						  left:52%;
+						  padding:15px;
+						  -ms-transform: translateX(-50%) translateY(-50%);
+						  -webkit-transform: translate(-50%,-50%);
+						  transform: translate(-50%,-50%);
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+						  
+						  z-index: 90;
+					  }
+					  
+					  
 					  
 					  .tblmappa6 {
 						  
@@ -1165,7 +1249,7 @@
 				
             </div>
 			
-			<table id="spazioipad" height="48px" class="divchat"><tr><td></td></tr></table>
+			<table id="spazioipad" height="20px" class="divchat"><tr><td></td></tr></table>
 			
 			 <div id="tblhome" style="display:none"></div>
 			 
@@ -1230,11 +1314,11 @@
 				
 			</table>
 			
-			<table id="blob5" width="100%" border="0" align="center" valign="center" class="div5622" style="display:none">
+			<table id="blob5" width="100%" border="0" align="center" valign="center" class="div5622B" style="display:none">
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="100px" height="100%">
-							<tr class="timerviola">
+							<tr class="timerviolaB">
 								<td width="100px" align="center" valign="center">
 									<font color="#fff" size="7"><b><div id="timer3"></div></b></font>
 								</td>
@@ -1271,11 +1355,11 @@
 			</table>
 
 			
-			<table id="blob4" width="100%" border="0" align="center" valign="center" class="div5622" style="display:none">
+			<table id="blob4" width="100%" border="0" align="center" valign="center" class="div5622A" style="display:none">
 				<tr>
 					<td width="100%" align="center">
 						<table align="center" width="140px" height="100%">
-							<tr class="timerviola">
+							<tr class="timerviolaA">
 								<td width="140px" align="center" valign="center">
 									<font color="#fff" size="7"><b><div id="timer2"></div></b></font>
 								</td>
@@ -1356,9 +1440,9 @@
 					<td width="50px" align="center">
 						<a id="ricarica1" href="#" rel="external"><img src="img/ico_mirino.png" width="50px"></a>
 					</td>
-					<td width="180px" align="left">
-						<table align="left" width="180px" ><tr>
-							<td width="180px" align="center">
+					<td width="95%" align="left">
+						<table align="left" width="95%" ><tr>
+							<td width="95%" align="center">
 							  <input id="modificastart" name="modificastart" type="text" value="" class="scrivo" placeholder="Indirizzo dell'autista" style="display:none">
 							</td>
 						</tr>
@@ -1413,10 +1497,13 @@
 					<td width="65px" align="right" align="right">
 						<a id="ricarica" href="#" rel="external"><img src="img/ico_mirino.png" width="55px"></a>
 					</td>
-					<td width="200px" align="left" valign="center" >
-						<table align="center"border="0" width="200px" valign="center" >
+					<td width="25px" align="right" align="right">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</td>
+					<td width="95%" align="left" valign="center" >
+						<table align="left"border="0" width="95%" valign="center" >
 							<tr>
-								<td align="center" valign="center" valign="center">
+								<td align="left" valign="center" valign="center">
 									<div id="pass0" style="display:none">
 										<table border="0" width="100%" align="center" valign="center" class="bannertbl1"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table>
 										<table border="0" width="100%" align="center" valign="center" class="bannertbl2">
@@ -1431,9 +1518,6 @@
 							</tr>
 							
 						</table>
-					</td>
-					<td width="100%" align="right">
-						
 					</td>
 				</tr>
 				
@@ -1495,14 +1579,14 @@
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div44">
 				<table align="center" width="100%" valign="center" border="0">
 					<tr>
-						<td align="left" valign="center" width="33%"><div id="3img" valign="center"></div></td>
-						<td align="center" valign="center" width="34%">
+						<td align="left" valign="center" width="25%"><div id="3img" valign="center"></div></td>
+						<td align="center" valign="center" width="50%">
 							<table align="center">
 								<tr><td align="center"><b><font color="#FFF"><div class="button_small" id="nickhome3"></div></font></b></td></tr>
 								<tr><td align="center"><div id="stelle3"></div></td></tr>
 							</table>
 						</td>
-						<td align="right" valign="center" width="33%"><a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="40px"></a>&nbsp;&nbsp;</td>
+						<td align="right" valign="center" width="25%"><a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="40px"></a>&nbsp;&nbsp;</td>
 					</tr>
 				</table>
 			</div>
@@ -1573,14 +1657,14 @@
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div44">
 				<table align="center" width="100%" valign="center" border="0">
 					<tr>
-						<td align="left" valign="center" width="33%"><div id="4img" valign="center"></div></td>
-						<td align="center" valign="center" width="34%">
+						<td align="left" valign="center" width="25%"><div id="4img" valign="center"></div></td>
+						<td align="center" valign="center" width="50%">
 							<table align="center">
 								<tr><td align="center"><b><font color="#FFF"><div class="button_small" id="nickhome4"></div></font></b></td></tr>
 								<tr><td align="center"><div id="stelle4"></div></td></tr>
 							</table>
 						</td>
-						<td align="right" valign="center" width="33%"><a id="ritorna" href="#"><img src="img/ico_close1.png" width="40"></a>&nbsp;&nbsp;</td>
+						<td align="right" valign="center" width="25%"><a id="ritorna" href="#"><img src="img/ico_close1.png" width="40"></a>&nbsp;&nbsp;</td>
 					</tr>
 				</table>
 			</div>

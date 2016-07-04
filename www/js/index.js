@@ -222,7 +222,7 @@ receivedEvent: function(id) {
 	//localStorage.setItem("lng", "12.492475")
 	
 	
-	var altezzatbl = getRealContentHeight();
+	var altezzatbl = getRealContentHeight()-40;
 	var height = getRealContentHeight();
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
@@ -261,7 +261,7 @@ receivedEvent: function(id) {
 	  localStorage.setItem("exit", "0")
 	}*/
 	
-	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="120px"></a><p class="testo_sottotitolo">voglio essere AUTISTA</p><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="120px"></a><p class="testo_sottotitolo">voglio essere PASSEGGERO</p><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"></a><p class="testo_sottotitolo">voglio essere AUTISTA</p><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"></a><p class="testo_sottotitolo">voglio essere PASSEGGERO</p><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
@@ -1019,9 +1019,18 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("tap", "#back3", function(e){
-		setTimeout(function() {
-		    inviopasseggero(3);
-	      }, 500);
+				   
+		localStorage.setItem("tastiera","1");
+				   
+		var e = jQuery.Event("keydown");
+		e.which = 13; // # Some key code value
+		e.keyCode = 13
+		$("#back3").trigger(e);
+				   
+				   
+		//setTimeout(function() {
+		    //inviopasseggero(3);
+	      //}, 500);
 		  
 				   e.stopImmediatePropagation();
 				   
@@ -1634,6 +1643,9 @@ function getKey(key){
 	if (keycode ==13){
  
 		if(localStorage.getItem("tastiera")=="1"){
+			
+		  //alert("K")
+			
           setTimeout(function() {
 		    inviopasseggero(3);
 	      }, 200);
@@ -2034,7 +2046,7 @@ function resetta1(focus) {
 	  center : latlng,
 	  mapTypeId : google.maps.MapTypeId.ROADMAP,
 	  scrollwheel	: false,
-	  zoomControl: true,
+	  //zoomControl: true,
 	  disableDefaultUI: true
   
 	  };
@@ -2276,7 +2288,7 @@ function resetta1(focus) {
 		$("#setGPS").hide();
 		$("#Modifica").hide();
 		$("#lista").hide();
-        $("#lista").hide();
+
         
         var today = new Date();
         var dd = today.getDate();
@@ -2316,6 +2328,7 @@ function resetta1(focus) {
 		$("#pass3").hide();
 		$("#esci").hide();
 		$("#blob2").hide();
+		$("#lista").hide();
 		
 		$("#loading").show();
 	
@@ -2937,6 +2950,7 @@ function timer(){
 									
 									$("#loading").hide();
 									$("#btnpass").show();
+									$("#lista").hide();
 
 									$("#esci").hide();
 									localStorage.setItem("ritornaweb","0")
@@ -3505,17 +3519,17 @@ function timer(){
 												  $("#viaaccetta2").html(item.partenza);
 												   $("#adaccetta2").html(item.arrivo);
 												  
-												  function countdown2(minutes) {
-												  var seconds = 30;
-												  var mins = minutes
-												  function tick() {
-												  var counter = document.getElementById("timer2");
-												  var current_minutes = 0;
-												  seconds--;
-												  counter.innerHTML =
-												  current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-												  if( seconds > 0 ) {
-												  setTimeout(tick, 1000);
+												  function countdown2(minutes2) {
+												  var seconds2 = 30;
+												  var mins2 = minutes2
+												  function tick2() {
+												  var counter2 = document.getElementById("timer2");
+												  var current_minutes2 = 0;
+												  seconds2--;
+												  counter2.innerHTML =
+												  current_minutes2.toString() + ":" + (seconds2 < 10 ? "0" : "") + String(seconds2);
+												  if( seconds2 > 0 ) {
+												  setTimeout(tick2, 1000);
 												  } else {
 												  scadutaofferta(0,item.id_richiesta,item.id_autista)
 												  $("#blob4").hide();
@@ -3529,7 +3543,7 @@ function timer(){
 												  //}
 												  }
 												  }
-												  tick();
+												  tick2();
 												  }
 												  
 												  countdown2(0);
@@ -3730,17 +3744,17 @@ function timer(){
 												  $("#viaaccetta5").html(item.partenza);
 												   $("#adaccetta5").html(item.arrivo);
 												  
-												  function countdown3(minutes) {
-												  var seconds = 30;
-												  var mins = minutes
-												  function tick() {
-												  var counter = document.getElementById("timer3");
-												  var current_minutes = 0;
-												  seconds--;
-												  counter.innerHTML =
-												  current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-												  if( seconds > 0 ) {
-												  setTimeout(tick, 1000);
+												  function countdown3(minutes3) {
+												  var seconds3 = 30;
+												  var mins3 = minutes3
+												  function tick3() {
+												  var counter3 = document.getElementById("timer3");
+												  var current_minutes3 = 0;
+												  seconds3--;
+												  counter3.innerHTML =
+												  current_minutes3.toString() + ":" + (seconds3 < 10 ? "0" : "") + String(seconds3);
+												  if( seconds3 > 0 ) {
+												  setTimeout(tick3, 1000);
 												  } else {
 												  scadutaofferta(0,item.id_richiesta,item.id_autista)
 												  $("#blob5").hide();
@@ -3754,7 +3768,7 @@ function timer(){
 												  //}
 												  }
 												  }
-												  tick();
+												  tick3();
 												  }
 												  
 												  countdown3(0);
@@ -4897,6 +4911,7 @@ function start() {
 	$("#esci").hide();
 	
 	$("#btninizia").hide();
+	$("#lista").hide();
 	$("#loading").show();
 	
 	if(localStorage.getItem("setGPS") == 1){
@@ -6656,6 +6671,7 @@ function accetta11() {
 	$("#blob3").hide();
 	$("#loading").show();
 	$("#esci").hide();
+	$("#lista").hide();
 	
 	$.ajax({
 		   type:"GET",
@@ -6717,6 +6733,7 @@ function accetta22() {
 	$("#blob4").hide();
 	$("#loading").show();
 	$("#esci").hide();
+	$("#lista").hide();
 	
 	$.ajax({
 		   type:"GET",
@@ -6770,6 +6787,7 @@ function accetta33() {
 	$("#blob5").hide();
 	$("#loading").show();
 	$("#esci").hide();
+	$("#lista").hide();
 	
 	$.ajax({
 		   type:"GET",
@@ -6909,6 +6927,18 @@ function inviopasseggero(come){
 				  //onDeviceReady();
 				  
 				  $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+				  
+				  google.maps.event.trigger(map, "resize");
+				  
+				  //if(google && google.maps){
+				    //alert("Google maps loaded");
+				  //}
+				  
+				  
+				  if(!google || !google.maps){
+				    resetta1(1);
+				  }
+				  
 				  
 				  e.stopImmediatePropagation();
 				  

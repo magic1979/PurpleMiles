@@ -191,7 +191,10 @@ function onDeviceReady() {
 		$("#Minuti").selectmenu("refresh");
 				   
 		$("#viale").show();
+		$("#tblviale").show();
+				   
 		$("#destinazione").hide();
+		$("#tbldestinazione").hide();
 				   
 		$("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 		$("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
@@ -219,7 +222,10 @@ function onDeviceReady() {
 				   $("#Minuti").selectmenu("refresh");
 				   
 				   $("#viale").show();
+				   $("#tblviale").show();
+				   
 				   $("#destinazione").hide();
+				   $("#tbldestinazione").hide();
 				   
 				   $("#s_arrivo").hide();
 				   $("#s_partenza").show();
@@ -252,7 +258,10 @@ function onDeviceReady() {
 				   localStorage.setItem("destination", "0")
 				   
 				   $("#viale").show();
+				   $("#tblviale").show();
+				   
 				   $("#destinazione").hide();
+				   $("#tbldestinazione").hide();
 				   
 				   //$("#da").removeClass("bottoni").addClass("bottoni1");
 				   //$("#a").removeClass("bottoni1").addClass("bottoni");
@@ -445,7 +454,10 @@ function onDeviceReady() {
     localStorage.setItem("pagebtn", "a")
 	
 	$("#viale").hide();
+	$("#tblviale").hide();
+				   
 	$("#destinazione").show();
+	$("#tbldestinazione").show();
 				   
 	//$("#da").removeClass("custom-pass11").addClass("custom-pass1");
 	//$("#a").removeClass("custom-pass1").addClass("custom-pass11");
@@ -465,7 +477,10 @@ function onDeviceReady() {
 				   localStorage.setItem("pagebtn", "a")
 				   
 				   $("#viale").hide();
+				   $("#tblviale").hide();
+				   
 				   $("#destinazione").show();
+				   $("#tbldestinazione").show();
 				   
 				   $("#s_partenza").hide();
 				   $("#s_arrivo").show();
@@ -492,8 +507,10 @@ function onDeviceReady() {
 				   localStorage.setItem("destination", "1");
 				   
 				   $("#viale").hide();
-				   $("#destinazione").show();
+				    $("#tblviale").hide();
 				   
+				   $("#destinazione").show();
+				   $("#tbldestinazione").show();
 
 				   
 				   resetta(1);
@@ -728,7 +745,9 @@ function onDeviceReady() {
 				   localStorage.setItem("dovesono", "1");
 				   
 				   $("#viale").show();
+				   $("#tblviale").show();
 				   $("#destinazione").hide();
+				   $("#tbldestinazione").hide();
 				   
 				   $("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
                    
@@ -1453,7 +1472,9 @@ function onResume() {
 			   
 			   
 			   $("#viale").show();
+			   $("#tblviale").show();
 			   $("#destinazione").hide();
+			   $("#tbldestinazione").hide();
 			   
 			   $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 			   $("#spinner4").show();
@@ -1470,7 +1491,9 @@ function onResume() {
 			   }
 			   
 			   $("#viale").show();
+			   $("#tblviale").show();
 			   $("#destinazione").hide();
+			   $("#tbldestinazione").hide();
 			   
 		      resetta1(1);
 		}
@@ -1558,7 +1581,7 @@ function resetta1(focus) {
 	  center : latlng,
 	  mapTypeId : google.maps.MapTypeId.ROADMAP,
 	  scrollwheel	: false,
-	  zoomControl: true,
+	  //zoomControl: true,
 	  disableDefaultUI: true
   
 	  };
