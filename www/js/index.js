@@ -2264,6 +2264,7 @@ function resetta1(focus) {
 		$("#setGPS").hide();
 		$("#Modifica").hide();
 		$("#lista").hide();
+        $("#lista").hide();
         
         var today = new Date();
         var dd = today.getDate();

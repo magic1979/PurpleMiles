@@ -731,6 +731,91 @@ function onDeviceReady() {
 				   $("#destinazione").hide();
 				   
 				   $("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+                   
+
+                   var today = new Date();
+                   var dd = today.getDate();
+                   var mm = today.getMonth()+1;//January is 0, so always add + 1
+                   
+                   var ora = today.getHours()
+                   if(ora<10){ora="0"+ora}
+                   
+                   var minuti = today.getMinutes();
+                   if(minuti<10){minuti="0"+minuti}
+                   
+                   var secondi = today.getSeconds();
+                   if(secondi<10){secondi="0"+secondi}
+                   
+                   
+                   var yyyy = today.getFullYear();
+                   if(dd<10){dd="0"+dd}
+                   if(mm<10){mm="0"+mm}
+                   today = dd+'/'+mm+'/'+yyyy;
+                   
+
+                   var datona = yyyy+mm+dd;
+                   var orona = ora+""+minuti;
+                   
+                   
+                   var testo = document.getElementById("datacal").value;
+                   
+                   var testo1 = testo.replace('May', '05');
+                   var testo2 = testo1.replace('Jun', '06');
+                   var testo3 = testo2.replace('Jul', '07');
+                   var testo4 = testo3.replace('Aug', '08');
+                   var testo5 = testo4.replace('Sep', '09');
+                   var testo6 = testo5.replace('Oct', '10');
+                   var testo7 = testo6.replace('Nov', '11');
+                   var testo8 = testo7.replace('Dec', '12');
+                   var testo9 = testo8.replace('Jan', '01');
+                   var testo10 = testo9.replace('Feb', '02');
+                   var testo11 = testo10.replace('Mar', '03');
+                   var testo12 = testo11.replace('Apr', '04');
+                   
+                   var testo13 = testo12;
+                   
+                   var testo14 = testo12;
+                   
+                   
+                   var mese2 = testo12.substring(0, 2);
+                   var giorno2 = testo13.substring(6, 2);
+                   var anno2 = testo14.substring(10, 6);
+                   
+                   var datona2 = anno2+mese2+giorno2
+                   var orona2 = document.getElementById("Orario").value + document.getElementById("Minuti").value;
+                   
+                   //alert(mese2)
+                   //alert(giorno2)
+                   //alert(anno2)
+                   
+                   datona2 = datona2.replace(" ","")
+                   
+                   
+                   if (datona2<datona) {
+                     navigator.notification.alert(
+                                                'inserire una data valida',  // message
+                                                alertDismissed,         // callback
+                                                'Data',            // title
+                                                'OK'                  // buttonName
+                                                );
+                   return;
+                   }
+                   
+                   
+                   if (datona2=datona) {
+                    if (orona2<orona) {
+                      navigator.notification.alert(
+                                                'inserire una orario valido',  // message
+                                                alertDismissed,         // callback
+                                                'Data',            // title
+                                                'OK'                  // buttonName
+                                                );
+                      return;
+                    }
+                   }
+                   
+                   
+                   
 				   
 				   onResume();
 				   
@@ -2109,7 +2194,7 @@ function vediofferte(){
 				   //
 				   if(item.accettata==1 && item.stato==3){
 				   
-				   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'><br>&nbsp;&nbsp;<b>RIFIUTATA</b><br><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"<br></td></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<b>Codice Commento: "+ item.cod_passeggero +"</b><br><a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>CANCELLA</font></a></td></tr></table>");
+				   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>RIFIUTATA</b></font><br><br></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"<br></td></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<b>Codice Commento: "+ item.cod_passeggero +"</b><br><a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_trash.png' width='50'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				   
 				   $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
 						accettaofferta(2,item.id_richiesta,item.id_autista)
