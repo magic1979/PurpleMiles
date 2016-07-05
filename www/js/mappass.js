@@ -803,27 +803,28 @@ function onDeviceReady() {
                    var datona2 = anno2+mese2+giorno2
                    var orona2 = document.getElementById("Orario").value + document.getElementById("Minuti").value;
                    
-                   //alert(mese2)
-                   //alert(giorno2)
                    //alert(anno2)
                    
                    datona2 = datona2.replace(" ","")
-                   
+				   
+				   var cista;
+                   cista = 0;
                    
                    if (datona2<datona) {
-                     navigator.notification.alert(
+                      navigator.notification.alert(
                                                 'inserire una data valida',  // message
                                                 alertDismissed,         // callback
                                                 'Data',            // title
                                                 'OK'                  // buttonName
                                                 );
-                   return;
+                     return;
                    }
                    
                    
-                   if (datona2=datona) {
+                   /*if (cista==1) {
+				   
                     if (orona2<orona) {
-                      navigator.notification.alert(
+                        navigator.notification.alert(
                                                 'inserire una orario valido',  // message
                                                 alertDismissed,         // callback
                                                 'Data',            // title
@@ -831,9 +832,9 @@ function onDeviceReady() {
                                                 );
                       return;
                     }
-                   }
-                   
-                   
+				   
+                   }*/
+				   
                    
 				   
 				   onResume();
