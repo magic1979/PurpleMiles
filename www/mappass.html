@@ -9,6 +9,7 @@
                         <link rel="stylesheet" href="themes/Purples.css" />
                         <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
                         <link rel="stylesheet" href="css/spinner.css" />
+						<link rel="stylesheet" href="css/font.css" />
 						
 						<link rel="stylesheet" href="chat1.css" />
 						<link rel="stylesheet" href="style/stylepurples.css" />
@@ -497,6 +498,26 @@
 						  -moz-border-radius: 5px; /* firefox */
 						  -webkit-border-radius: 5px; /* safari, chrome */
 					  }
+					  
+					  .custom-pass00 {
+						  background-color: #cc33cc;
+						  width: 140px;
+						  font-size: 18px;
+						  
+						  color:#FFF;
+						  
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  font-family: ubuntu, helvetica, arial;
+						  
+						  padding: 5 1 5 1;
+						  
+						  border-radius: 5px;
+						  -moz-border-radius: 5px; /* firefox */
+						  -webkit-border-radius: 5px; /* safari, chrome */
+					  }
+
 					  .custom-pass11 {
 						  background-color: #FFA500;
 						  width: 140px;
@@ -1082,7 +1103,33 @@
 						  from { -webkit-transform:rotate(0deg) translateZ(0); }
 						  to { -webkit-transform:rotate(360deg) translateZ(0); }
 					  }
-
+					  
+					  .nuova {
+						  font-family: Arial;
+						  font-size: 18px;
+					  }
+					  
+					  .loading:after {
+						  overflow: hidden;
+						  display: inline-block;
+						  vertical-align: bottom;
+						  -webkit-animation: ellipsis steps(5,end) 900ms infinite;
+						  animation: ellipsis steps(5,end) 900ms infinite;
+						  content: "\2026";
+						  width: 0px;
+					  }
+					  
+					  @keyframes ellipsis {
+						  to {
+							  width: 20px;
+						  }
+					  }
+					  
+					  @-webkit-keyframes ellipsis {
+						  to {
+							  width: 20px;    
+						  }
+					  }
 
 
 					</style>
@@ -1313,7 +1360,17 @@
 <div data-role=page id=home class="div2">
 	
 	<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
-		<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Quando vuoi partire?</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+		
+		<table align="center" width="100%" valign="center" border="0">
+			<tr>
+				<td align="left" valign="center" width="25%"><a id="XX3" href="#" rel="external"><img src="img/sinistra.png" width="55"></a></td>
+				<td align="right" valign="center" width="75%">
+					<table align="right">
+						<td align="right" valign="center" width="100%"><font color="#fff"><b><div valign="center" id="win22header" class="nuova">Quando vuoi partire?&nbsp;&nbsp;</div></b></font></td>
+					</table>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 <table border="0" valign="center" align="center" class="transbox5" valign="center">
@@ -1438,9 +1495,31 @@
 			
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
 				
-				<table id="s_partenza" align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Scegli la partenza</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+				<!--<table id="s_partenza" align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Scegli la partenza</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
 				
-				<table id="s_arrivo" style="display:none" align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Scegli l'arrivo</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+				<table  id="s_arrivo" style="display:none" align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Scegli l'arrivo</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>-->
+				
+				<table id="s_partenza" align="center" width="100%" valign="center" border="0">
+					<tr>
+						<td align="left" valign="center" width="25%"><a id="XX3" href="#" rel="external"><img src="img/sinistra.png" width="55"></a></td>
+						<td align="right" valign="center" width="75%">
+							<table align="right">
+								<td align="right" valign="center" width="100%"><font color="#fff"><b><div valign="center" id="win22header" class="nuova">Scegli la partenza&nbsp;&nbsp;</div></b></font></td>
+							</table>
+						</td>
+					</tr>
+				</table>
+				
+				<table id="s_arrivo" style="display:none" align="center" width="100%" valign="center" border="0">
+					<tr>
+						<td align="left" valign="center" width="25%"><a id="XX3" href="#" rel="external"><img src="img/sinistra.png" width="55"></a></td>
+						<td align="right" valign="center" width="75%">
+							<table align="right">
+								<td align="right" valign="center" width="100%"><font color="#fff"><b><div valign="center" id="win22header" class="nuova">Scegli l'arrivo&nbsp;&nbsp;</div></b></font></td>
+							</table>
+						</td>
+					</tr>
+				</table>
 
 			</div>
 			
@@ -1565,7 +1644,17 @@
 		<div data-role=page id=home3 class="div2">
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
-				<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Richieste opzionali</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+				
+				<table align="center" width="100%" valign="center" border="0">
+					<tr>
+						<td align="left" valign="center" width="25%"><a id="XX3" href="#" rel="external"><img src="img/sinistra.png" width="55"></a></td>
+						<td align="right" valign="center" width="75%">
+							<table align="right">
+								<td align="right" valign="center" width="100%"><font color="#fff"><b><div valign="center" id="win22header" class="nuova">Richieste opzionali&nbsp;&nbsp;</div></b></font></td>
+							</table>
+						</td>
+					</tr>
+				</table>
 			</div>
 			
 			<table border="0" valign="center" align="center" class="transbox5">
@@ -1655,6 +1744,16 @@
 					<td width="100%" align="left" colspan="2">
 						<input id="destinazione3" name="destinazione3" type="hidden" value="" placeholder="destinazione" readonly>
 						<input id="viale3" name="viale3" type="hidden" value="" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" align="right" >
+						Tipo Veicolo
+					</td>
+					<td width="50%" align="center" >
+						<select id="veicolo" name="veicolo" data-theme="f" >
+							
+						</select>&nbsp;
 					</td>
 				</tr>
 				<tr>
@@ -1830,7 +1929,17 @@
 		<div data-role=page id=home7 class="div2">
 			<!--<div data-role="header" rel="external" align="center" data-theme="b" data-id="head1" data-tap-toggle="false" data-position="fixed" class="div3"></div>-->
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
-				<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Riepilogo</b></font></td><td align="right" valign="center" width="20%"><a id="XX3" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+				
+				<table align="center" width="100%" valign="center" border="0">
+					<tr>
+						<td align="left" valign="center" width="25%"><a id="XX3" href="#" rel="external"><img src="img/sinistra.png" width="55"></a></td>
+						<td align="right" valign="center" width="75%">
+							<table align="right">
+								<td align="right" valign="center" width="100%"><font color="#fff"><b><div valign="center" id="win22header" class="nuova">Riepilogo&nbsp;&nbsp;</div></b></font></td>
+							</table>
+						</td>
+					</tr>
+				</table>
 			</div>
 			
 			<table border="0" valign="center" align="center" class="transbox5">
@@ -2047,7 +2156,17 @@
 		<div data-role=page id=home4 class="div2">
 			
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
-				<table align="center" width="100%" valign="center" border="0"><tr><td align="left" valign="center" width="80%">&nbsp;&nbsp;<font size="4" color="#fff"><b>Autisti in zona</b></font></td><td align="right" valign="center" width="20%"><a id="indietro4" href="#" rel="external"><img src="img/ico_close2.png" width="40px"></a>&nbsp;&nbsp;</td></tr></table>
+				
+				<table align="center" width="100%" valign="center" border="0">
+					<tr>
+						<td align="left" valign="center" width="25%"><a id="indietro4" href="#" rel="external"><img src="img/sinistra.png" width="55"></a></td>
+						<td align="right" valign="center" width="75%">
+							<table align="right">
+								<td align="right" valign="center" width="100%"><font color="#fff"><b><div valign="center" id="win22header" class="nuova">Autisti in zona&nbsp;&nbsp;</div></b></font></td>
+							</table>
+						</td>
+					</tr>
+				</table>
 			</div>
 			
 			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>

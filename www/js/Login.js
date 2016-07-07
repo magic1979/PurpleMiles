@@ -8,7 +8,7 @@ function onDeviceReady() {
 	
      document.addEventListener('backbutton', function(e) {
 							   
-		if(localStorage.getItem("pagina")=="log"){
+		//if(localStorage.getItem("pagina")=="log"){
 							   
 	        navigator.notification.confirm(
 	       'Vuoi chiudere purple miles?',  // message
@@ -17,13 +17,13 @@ function onDeviceReady() {
 	       'Spegni,Annulla'      // buttonLabels
 	        );
 							   
-		}
+		//}
 							   
-		if(localStorage.getItem("pagina")=="imp"){
+		//if(localStorage.getItem("pagina")=="imp"){
 							   
 		  $("#conferma").tap();
 							   
-		}
+		//}
 							   
 	 }, false);
 	
@@ -839,7 +839,9 @@ function login() {
 		return;
 	}
 	
-	EmailAddr = self.document.formia2.email.value;
+	email2 = email2.replace(" ","")
+	
+	EmailAddr = email2;
 	Filtro = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
 	if (Filtro.test(EmailAddr)) {
 	 
@@ -897,7 +899,7 @@ function login() {
 		return;
 		
 	}
-
+	
 
 	LoginVera(email2,pin2);
 	
@@ -1128,7 +1130,7 @@ function gpsonError(){
 								 'Possibile errore GPS, assicurati di avere il gps del telefono attivato.',  // message
 								 alertDismissed,         // callback
 								 'Attenzione',           // title
-								 'Done'                  // buttonName
+								 'Ok'                  // buttonName
 								 );
 	
 }
