@@ -945,6 +945,11 @@ receivedEvent: function(id) {
 	}
 	
 	$(document).on("touchstart tap", "#XXX", function(e){
+		
+		for(i=0; i<10000; i++)
+		{
+		   window.clearInterval(i);
+		}
 				   
 		localStorage.setItem("dovesono", "0")
 				   

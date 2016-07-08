@@ -284,8 +284,10 @@ function onDeviceReady() {
 				   
 	});
 	
-	$(document).on("tap", "#impostazioni", function(e){
-				   window.location.href = "#page6";
+	$(document).on("touchstart", "#impostazioni", function(e){
+				   $.mobile.changePage( "#page6", { transition: "slide", changeHash: false });
+				   
+				   //window.location.href = "#page6";
 				   localStorage.setItem("pagina","imp")
 				   
 				   var myScroll2;
