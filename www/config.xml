@@ -20,7 +20,7 @@
 		<preference name="detect-data-types" value="true" />
 		<preference name="exit-on-suspend" value="true" />
 		<preference name="show-splash-screen-spinner" value="true" />
-		<preference name="auto-hide-splash-screen" value="false" />
+		<preference name="auto-hide-splash-screen" value="true" />
 		<preference name="EnableViewportScale" value="true" />
 		<preference name="MediaPlaybackRequiresUserAction" value="true" />
 		<preference name="AllowInlineMediaPlayback" value="true" />
@@ -36,8 +36,7 @@
 		<preference name="ErrorUrl" value="http://www.purplemiles.com"/>
 		<preference name="BackgroundColor" value="#707070"/>
 		<preference name="KeepRunning" value="true"/>
-		<preference name="DisallowOverscroll" value="true"/>
-		<preference name="LoadingDialog" value="purpleMiles,Loading"/> 
+		<preference name="DisallowOverscroll" value="true"/> 
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="true" />
 		<gap:platform name="android" />
