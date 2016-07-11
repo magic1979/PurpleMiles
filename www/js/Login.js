@@ -648,23 +648,32 @@ function prendimezzi(){
 				  //alert(item.Token);
 				  
 				  if (item.Token == 1){
-				     if(localStorage.getItem("veicolo")==item.veicolo){
-				       mezzi = "";
-				       mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
-					 }
-				     else{
-                        if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
-                           if(item.veicolo=="Car"){
+				  
+				  if(localStorage.getItem("veicolo")==item.veicolo){
+				     mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
+				  }
+				  else{
+				     mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
+				  }
+				  
+				  
+				    // if(localStorage.getItem("veicolo")==item.veicolo){
+				       //mezzi = "";
+				      // mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
+					 //}
+				     //else{
+                        /*if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
+                           if(item.veicolo=="Autovettura"){
                                mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
                            }
                            else{
                               mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
                            }
                         }
-                        else{
-                            mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
-                        }
-                     }
+                        else{*/
+                            //mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
+                       // }
+                     //}
 				         /*if(item.id_veicolo==6){
 				            mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
 				          }
@@ -915,7 +924,7 @@ function LoginVera(email,pin){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_accesso.php?email="+ email +"&pin="+ pin +"&lat="+ lat +"&lon="+ lng +"",
+		   url:"http://purplemiles.com/www2/check_accesso.php?email="+ email +"&pin="+ pin +"&lat="+ lat +"&lon="+ lng +"&veicolo="+ localStorage.getItem("veicolo") +"",
 		   contentType: "application/json",
 		   //data: {email:email,pin:pin},
 		   timeout: 7000,
@@ -940,7 +949,8 @@ function LoginVera(email,pin){
 				  localStorage.setItem("md5", item.md5);
 				  localStorage.setItem("perc_autista", item.perc_aut);
 				  localStorage.setItem("perc_pass", item.perc_pass);
-				   localStorage.setItem("id_utente", item.id_utente);
+				  localStorage.setItem("id_utente", item.id_utente);
+				  
 				  
 
 				  window.location.href = "index.html";

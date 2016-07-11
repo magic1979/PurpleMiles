@@ -857,7 +857,19 @@ function onDeviceReady() {
 		document.getElementById("viale7").value = document.getElementById("viale").value;
 		document.getElementById("destinazione7").value = document.getElementById("destinazione").value;
 				   
-		document.getElementById("veicolo7").value = document.getElementById("veicolo").value;
+		if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
+				   
+			document.getElementById("veicolo7").value = localStorage.getItem("veicolo");
+				   
+			$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b>: "+ localStorage.getItem("veicolo") +"");
+				   
+		}
+		else{
+				   
+		   document.getElementById("veicolo7").value = document.getElementById("veicolo").value;
+				   
+		   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b>: "+ document.getElementById("veicolo").value +"");
+		}
 				   
 				   
 		if (document.getElementById("viale7").value == "") {
@@ -1004,7 +1016,7 @@ function onDeviceReady() {
 				   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>Arrivo </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
 				   
 				   
-				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b>: "+ document.getElementById("veicolo").value +"");
+				   
 				   
 				   /*if(document.getElementById("veicolo").value!="Automobile"){
 				      $("#veicolo77").html("<font color='#000000'><b>Veicolo " + localStorage.getItem("veicolo") + "</b></font>");
@@ -1948,6 +1960,28 @@ function controllaofferte(){
                   setTimeout( function() {
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
                     vediofferte()
+							 
+							 //
+							 
+							 /*var myScroll2;
+							 
+							 myScroll2 = new IScroll('#wrapper',{
+													 click: true,
+													 probeType:2,
+													 bounceTime: 250,
+													 bounceEasing: 'quadratic',
+													 mouseWheel:false,
+													 scrollbars:true,
+													 fadeScrollbars:true,
+													 interactiveScrollbars:false
+													 });
+							 
+							 setTimeout (function(){
+								myScroll2.refresh();
+							 }, 1500);*/
+							 
+							 //
+							 
                     $("#spinner").hide();
                   }, 1000 );
                   
@@ -1988,8 +2022,7 @@ function vediofferte(){
 		window.clearInterval(i);
 	}
 	
-	
-	
+
 	$.ajax({
 		   type:"GET",
 		   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"",
@@ -2007,6 +2040,27 @@ function vediofferte(){
 		    $("#offerte4").html("");
 		    $("#spinner4").hide();
 		    localStorage.setItem("risppass", JSON.stringify(result))
+		   
+		   //
+		   
+		   /*var myScroll2;
+		   
+		   myScroll2 = new IScroll('#wrapper',{
+								   click: true,
+								   probeType:2,
+								   bounceTime: 250,
+								   bounceEasing: 'quadratic',
+								   mouseWheel:false,
+								   scrollbars:true,
+								   fadeScrollbars:true,
+								   interactiveScrollbars:false
+								   });
+		   
+		   setTimeout (function(){
+					   myScroll2.refresh();
+					   }, 1500);*/
+		   
+		   //
 		   
 		    $.each(result, function(i,item){
 
@@ -2549,9 +2603,6 @@ function vediofferte(){
 	
 	
 	
-
-	//me.myScroll.refresh();
-
 	//alert("finito")
 	
 	
@@ -2574,7 +2625,7 @@ function vediofferte(){
 		vediofferte()
 							 
 	    controllachat(2)
-	}, 5000);
+	}, 6000);
 	
 	//setTimeout( function() {
 		//vediofferte()
@@ -2620,13 +2671,15 @@ function chatting(id) {
 			   if(item.Token==1){
 				  $("#nickhome6").html(item.nick_destinatario);
 				  
+				  var indirizzo2 = item.messaggio.replace("777A","'");
+				  
 				  if(item.nick==localStorage.getItem("nick")){
 				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='left' class='tabella'><tr><td align='center'><div class='custom-pass33'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
-				  $("#offerta6").append("<div class='bubbledLeft'>"+ item.messaggio +"</div>")
+				  $("#offerta6").append("<div class='bubbledLeft'>"+ indirizzo2 +"</div>")
 				  }
 				  else{
 				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='right' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
-				  $("#offerta6").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
+				  $("#offerta6").append("<div class='bubbledRight'>"+ indirizzo2 +"</div>")
 				  
 				  playChat2('successChat2');
 				  
@@ -2683,7 +2736,12 @@ function playChat2(id) {
 
 function inviachat() {
 	var indirizzo = document.getElementById("chattext").value;
-	indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+	
+	//indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+									
+	indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.:*<>{}]/g,'');
+									
+	indirizzo = indirizzo.replace(/'/g,"777A");
 	
 	if (indirizzo == "") {
 		navigator.notification.alert(
@@ -3399,16 +3457,19 @@ function prendicittaid(id){
 										   success:function(result){
 										   
 										   $.each(result, function(i,item){
-												  //alert(item.Token);
 												  
-												  if (item.Token == 1){
+
+												mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
+
+												  
+												 /* if (item.Token == 1){
 												  if(localStorage.getItem("veicolo")==item.veicolo){
 												  mezzi = "";
 												  mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
 												  }
 												  else{
 												  if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
-												  if(item.veicolo=="Car"){
+												  if(item.veicolo=="Autovettura"){
 												  mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
 												  }
 												  else{
@@ -3419,12 +3480,7 @@ function prendicittaid(id){
 												  mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
 												  }
 												  }
-												  /*if(item.id_veicolo==6){
-												   mezzi = mezzi + "<option value='"+item.id_veicolo+"' selected>"+ item.veicolo +"</option>"
-												   }
-												   else{
-												   mezzi = mezzi + "<option value='"+item.id_veicolo+"'>"+ item.veicolo +"</option>"
-												   }*/
+												  
 												  
 												  }
 												  else{
@@ -3434,8 +3490,8 @@ function prendicittaid(id){
 																			   'Attenzione',            // title
 																			   'Done'                  // buttonName@
 																			   );
-												  }
-									});
+												  }*/
+									       });
 										   
 										   $("#veicolo").html(mezzi);
 										   

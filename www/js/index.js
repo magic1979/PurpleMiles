@@ -34,6 +34,10 @@ receivedEvent: function(id) {
 	
 	window.plugins.insomnia.keepAwake();
 	
+	document.ontouchmove = function(e){
+		e.preventDefault();
+	}
+	
 	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	//ANDROID -------------------------------------------------------
@@ -744,12 +748,57 @@ receivedEvent: function(id) {
 			window.clearInterval(i);
 		}
 				   
+				   // Chiamo funzione per dire che non sei autista
+				   $.ajax({
+						  type:"GET",
+						  url:"http://purplemiles.com/www2/check_noautista.php?id_autista="+ localStorage.getItem("id_autista") +"",
+						  contentType: "application/json",
+						  //data: {ID: "Lazio"}, LIMIT 10
+						  timeout: 7000,
+						  jsonp: 'callback',
+						  crossDomain: true,
+						  success:function(result){
+						  
+						  
+						  
+						  },
+						  error: function(){
+						  
+						  
+						  
+						  },
+						  dataType:"jsonp"});
+				   
+				   
 		window.location.href = "index.html?id=2";
 
 	});
 	
     
 	$(document).on("touchstart", "#resetta", function(e){
+				   
+				   // Chiamo funzione per dire che non sei autista
+				   $.ajax({
+						  type:"GET",
+						  url:"http://purplemiles.com/www2/check_noautista.php?id_autista="+ localStorage.getItem("id_autista") +"",
+						  contentType: "application/json",
+						  //data: {ID: "Lazio"}, LIMIT 10
+						  timeout: 7000,
+						  jsonp: 'callback',
+						  crossDomain: true,
+						  success:function(result){
+						  
+						  
+						  
+						  },
+						  error: function(){
+						  
+						  
+						  
+						  },
+						  dataType:"jsonp"});
+
+				   
 		window.location.href = "index.html";
 	});
 	
@@ -767,6 +816,11 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("tap", "#mappa6", function(e){
+				   
+		document.ontouchmove = function(e){
+		  return true;
+		}
+				   
       localStorage.setItem("tastiera","0")
 				   
 	  localStorage.setItem("pagina","mappa")
@@ -775,9 +829,29 @@ receivedEvent: function(id) {
 	  connectionStatus = navigator.onLine ? 'online' : 'offline';
 				   
 	  if(connectionStatus=='online'){
-		setTimeout(function() {
-			resetta1();
-		}, 300);
+				   
+				   $.ajax({
+						  type:"GET",
+						  url:"http://purplemiles.com/www2/check_siautista.php?id_autista="+ localStorage.getItem("id_autista") +"",
+						  contentType: "application/json",
+						  //data: {ID: "Lazio"}, LIMIT 10
+						  timeout: 7000,
+						  jsonp: 'callback',
+						  crossDomain: true,
+						  success:function(result){
+						  
+						    //alert("OK")
+						  
+						     setTimeout(function() {
+							   resetta1();
+							  }, 300);
+						  
+						  },
+						  error: function(){
+
+						  },
+						  dataType:"jsonp"});
+		
 	  }
 	  else
 	  {
@@ -796,6 +870,7 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#tornareset", function(e){
+				   
 				   
 		var connectionStatus = false;
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -945,23 +1020,64 @@ receivedEvent: function(id) {
 	}
 	
 	$(document).on("touchstart tap", "#XXX", function(e){
+				   
 		
 		for(i=0; i<10000; i++)
 		{
 		   window.clearInterval(i);
 		}
 				   
-		localStorage.setItem("dovesono", "0")
+		
+		   // Chiamo funzione per dire che non sei autista
+				   $.ajax({
+						  type:"GET",
+						  url:"http://purplemiles.com/www2/check_noautista.php?id_autista="+ localStorage.getItem("id_autista") +"",
+						  contentType: "application/json",
+						  //data: {ID: "Lazio"}, LIMIT 10
+						  timeout: 7000,
+						  jsonp: 'callback',
+						  crossDomain: true,
+						  success:function(result){
+						  
+							//alert("OK1")
+						  
+						    localStorage.setItem("dovesono", "0")
+						  
+						    window.location.href = "index.html";
+						  
+						    /*$.each(result, function(i,item){
+								 
+								 if(item.Token==1){
+								 
+								   resetta1(1)
+								 }
+								 
+							});*/
+						  
+						  },
+						  error: function(){
+						  
+						  /*navigator.notification.alert(
+													   'Possibile errore di rete, riprova tra qualche minuto.',  // message
+													   alertDismissed,         // callback
+													   'Attenzione',           // title
+													   'Ok'                  // buttonName
+													   );*/
+						  
+						  
+						  
+						  },
+						  dataType:"jsonp"});
 				   
-		window.location.href = "index.html";
 				   
-				   e.stopImmediatePropagation();
 				   
-				   e.preventDefault();
+		e.stopImmediatePropagation();
 				   
-				   return false;
+		e.preventDefault();
 				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		return false;
+				   
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
 	$(document).on("touchstart tap", "#XX3", function(e){
@@ -1690,9 +1806,30 @@ function cambiap() {
 }
 
 function cambiah() {
+	
+	// Chiamo funzione per dire che non sei autista
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_noautista.php?id_autista="+ localStorage.getItem("id_autista") +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   
+		   
+		   },
+		   error: function(){
+		   
+		   
+		   
+		   },
+		   dataType:"jsonp"});
 
     window.location.href = "index.html";
-    
+	
 }
 
 function nodiv() {
@@ -2421,67 +2558,51 @@ function resetta1(focus) {
 				if(item.posticipata==1){
 					$("#lista").show();
 				  
+				  $("#pass1img").attr("src", "img/1_viola_pos.png");
+				  
 				  if(item.stato==3){
-				  $("#pass1").removeClass("custom-passP").addClass("custom-pass3P");
-				  $("#pass1").removeClass("custom-pass1P").addClass("custom-pass3P");
-				  $("#pass1").removeClass("custom-pass2P").addClass("custom-pass3P");
+				  $("#pass1img").attr("src", "img/1_giallo_pos.png");
 				  }
 				  
 				  if(item.stato==1){
-				  $("#pass1").removeClass("custom-passP").addClass("custom-pass1P");
-				  $("#pass1").removeClass("custom-pass2P").addClass("custom-pass1P");
-				  $("#pass1").removeClass("custom-pass3P").addClass("custom-pass1P");
+				  $("#pass1img").attr("src", "img/1_giallo_pos.png");
 				  }
 				  if(item.stato==0){
-				  $("#pass1").removeClass("custom-pass1P").addClass("custom-passP");
-				  $("#pass1").removeClass("custom-pass2P").addClass("custom-passP");
-				  $("#pass1").removeClass("custom-pass3P").addClass("custom-passP");
+				  $("#pass1img").attr("src", "img/1_viola_pos.png");
 				  }
 				  if(item.stato==2){
 				  
 				  if(item.accettata==1){
-				  $("#pass1").removeClass("custom-passP").addClass("custom-pass2P");
-				  $("#pass1").removeClass("custom-pass1P").addClass("custom-pass2P");
-				  $("#pass1").removeClass("custom-pass3P").addClass("custom-pass2P");
+				  $("#pass1img").attr("src", "img/1_verde_pos.png");
 				  }
 				  else{
-				  $("#pass1").removeClass("custom-passP").addClass("custom-pass1P");
-				  $("#pass1").removeClass("custom-pass2P").addClass("custom-pass1P");
-				  $("#pass1").removeClass("custom-pass3P").addClass("custom-pass1P");
+				  $("#pass1img").attr("src", "img/1_giallo_pos.png");
 				  }
 				  
 				  }
-
 				  
 				}
 				else{
+				  
+				  $("#pass1img").attr("src", "img/1_viola.png");
+				  
 				  if(item.stato==3){
-				  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
-				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
-				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
+				  $("#pass1img").attr("src", "img/1_giallo.png");
 				  }
 				  
 				  if(item.stato==1){
-				  $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass1img").attr("src", "img/1_giallo.png");
 				  }
 				  if(item.stato==0){
-				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass");
-				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass");
-				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
+				  $("#pass1img").attr("src", "img/1_viola.png");
 				  }
 				  if(item.stato==2){
 				  
 				  if(item.accettata==1){
-				   $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-				   $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-				   $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
+				  $("#pass1img").attr("src", "img/1_verde.png");
 				  }
 				  else{
-				   $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-				   $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-				   $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass1img").attr("src", "img/1_giallo.png");
 				  }
 				  
 				  }
@@ -2525,38 +2646,57 @@ function resetta1(focus) {
 				  
 				  if(item.posticipata==1){
 				    $("#lista").show();
-				  }
+				  
+				  $("#pass2img").attr("src", "img/2_viola_pos.png");
 				  
 				  if(item.stato==3){
-				  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
-				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
-				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
+				  $("#pass2img").attr("src", "img/2_giallo_pos.png");
 				  }
 				  
 				  if(item.stato==1){
-				  $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass2img").attr("src", "img/2_giallo_pos.png");
 				  }
 				  if(item.stato==0){
-				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass");
-				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass");
-				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
+				  $("#pass2img").attr("src", "img/2_viola_pos.png");
 				  }
 				  if(item.stato==2){
 				  
 				  if(item.accettata==1){
-				   $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-				   $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-				   $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
+				  $("#pass2img").attr("src", "img/2_verde_pos.png");
 				  }
 				  else{
-				   $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-				   $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-				   $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass2img").attr("src", "img/2_giallo_pos.png");
 				  }
 				  
 				  }
+
+				}
+				else
+				{
+				  
+				  $("#pass2img").attr("src", "img/2_viola.png");
+				  
+				  if(item.stato==3){
+				  $("#pass2img").attr("src", "img/2_giallo.png");
+				  }
+				  
+				  if(item.stato==1){
+				  $("#pass2img").attr("src", "img/2_giallo.png");
+				  }
+				  if(item.stato==0){
+				  $("#pass2img").attr("src", "img/2_viola.png");
+				  }
+				  if(item.stato==2){
+				  
+				  if(item.accettata==1){
+				  $("#pass2img").attr("src", "img/2_verde.png");
+				  }
+				  else{
+				  $("#pass2img").attr("src", "img/2_giallo.png");
+				  }
+				  
+				  }
+				}
 
 				  
 				  var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
@@ -2597,37 +2737,55 @@ function resetta1(focus) {
 				  
 				  if(item.posticipata==1){
 				    $("#lista").show();
-				  }
+				  
+				  $("#pass3img").attr("src", "img/3_viola_pos.png");
 				  
 				  if(item.stato==3){
-				  $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
-				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
-				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
+				  $("#pass3img").attr("src", "img/3_giallo_pos.png");
 				  }
 				  
 				  if(item.stato==1){
-				  $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass3img").attr("src", "img/3_giallo_pos.png");
 				  }
 				  if(item.stato==0){
-				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass");
-				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass");
-				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
+				  $("#pass3img").attr("src", "img/3_viola_pos.png");
 				  }
 				  if(item.stato==2){
 				  
 				  if(item.accettata==1){
-				   $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
-				   $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-				   $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
+				  $("#pass3img").attr("src", "img/3_verde_pos.png");
 				  }
 				  else{
-				   $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-				   $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-				   $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass3img").attr("src", "img/3_giallo_pos.png");
 				  }
 				  
+				  }
+				  
+				  }
+				  else{
+				  
+				  $("#pass3img").attr("src", "img/3_viola.png");
+				  
+				  if(item.stato==3){
+				  $("#pass3img").attr("src", "img/3_giallo.png");
+				  }
+				  
+				  if(item.stato==1){
+				  $("#pass3img").attr("src", "img/3_giallo.png");
+				  }
+				  if(item.stato==0){
+				  $("#pass3img").attr("src", "img/3_viola.png");
+				  }
+				  if(item.stato==2){
+				  
+				  if(item.accettata==1){
+				  $("#pass3img").attr("src", "img/3_verde.png");
+				  }
+				  else{
+				  $("#pass3img").attr("src", "img/3_giallo.png");
+				  }
+				  
+				  }
 				  }
 				  
 				  var icon = new google.maps.MarkerImage("img/passeggero.png", null, null, null, new google.maps.Size(30,50));
@@ -3190,67 +3348,52 @@ function timer(){
 												if(item.posticipata==1){
 												   $("#lista").show();
 												  
+												  $("#pass1img").attr("src", "img/1_viola_pos.png");
+												  
 												  if(item.stato==3){
-												  $("#pass1").removeClass("custom-passP").addClass("custom-pass3P");
-												  $("#pass1").removeClass("custom-pass1P").addClass("custom-pass3P");
-												  $("#pass1").removeClass("custom-pass2P").addClass("custom-pass3P");
+												  $("#pass1img").attr("src", "img/1_giallo_pos.png");
 												  }
 												  
 												  if(item.stato==1){
-												  $("#pass1").removeClass("custom-passP").addClass("custom-pass1P");
-												  $("#pass1").removeClass("custom-pass2P").addClass("custom-pass1P");
-												  $("#pass1").removeClass("custom-pass3P").addClass("custom-pass1P");
+												  $("#pass1img").attr("src", "img/1_giallo_pos.png");
 												  }
 												  if(item.stato==0){
-												  $("#pass1").removeClass("custom-pass1P").addClass("custom-passP");
-												  $("#pass1").removeClass("custom-pass2P").addClass("custom-passP");
-												  $("#pass1").removeClass("custom-pass3P").addClass("custom-passP");
+												  $("#pass1img").attr("src", "img/1_viola_pos.png");
 												  }
 												  if(item.stato==2){
 												  
 												  if(item.accettata==1){
-												  $("#pass1").removeClass("custom-passP").addClass("custom-pass2P");
-												  $("#pass1").removeClass("custom-pass1P").addClass("custom-pass2P");
-												  $("#pass1").removeClass("custom-pass3P").addClass("custom-pass2P");
+												  $("#pass1img").attr("src", "img/1_verde_pos.png");
 												  }
 												  else{
-												  $("#pass1").removeClass("custom-passP").addClass("custom-pass1P");
-												  $("#pass1").removeClass("custom-pass2P").addClass("custom-pass1P");
-												  $("#pass1").removeClass("custom-pass3P").addClass("custom-pass1P");
+												  $("#pass1img").attr("src", "img/1_giallo_pos.png");
 												  }
 												  
 												  }
 												}
 												else{
+												  
+												  $("#pass1img").attr("src", "img/1_viola.png");
+												  
 												  if(item.stato==3){
-												  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
-												  $("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
-												  $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
+												  $("#pass1img").attr("src", "img/1_giallo.png");
 												  }
 												  
 												  if(item.stato==1){
-												  $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-												  $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-												  $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+												  $("#pass1img").attr("src", "img/1_giallo.png");
 												  }
 												  if(item.stato==0){
-												  $("#pass1").removeClass("custom-pass1").addClass("custom-pass");
-												  $("#pass1").removeClass("custom-pass2").addClass("custom-pass");
-												  $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
+												  $("#pass1img").attr("src", "img/1_viola.png");
 												  }
-												  
 												  if(item.stato==2){
 												  
 												  if(item.accettata==1){
-												  $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-												  $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-												  $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
+												  $("#pass1img").attr("src", "img/1_verde.png");
 												  }
 												  else{
-												  $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-												  $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-												  $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+												  $("#pass1img").attr("src", "img/1_giallo.png");
 												  }
+												  
 												  }
 												  
 												}
@@ -3493,7 +3636,59 @@ function timer(){
 												  
 												  if(item.posticipata==1){
 												    $("#lista").show();
+												  
+												  $("#pass2img").attr("src", "img/2_viola_pos.png");
+												  
+												  if(item.stato==3){
+												  $("#pass2img").attr("src", "img/2_giallo_pos.png");
 												  }
+												  
+												  if(item.stato==1){
+												  $("#pass2img").attr("src", "img/2_giallo_pos.png");
+												  }
+												  if(item.stato==0){
+												  $("#pass2img").attr("src", "img/2_viola_pos.png");
+												  }
+												  if(item.stato==2){
+												  
+												  if(item.accettata==1){
+												  $("#pass2img").attr("src", "img/2_verde_pos.png");
+												  }
+												  else{
+												  $("#pass2img").attr("src", "img/2_giallo_pos.png");
+												  }
+												  
+												  }
+												  
+												  }
+												  else{
+												  
+												  $("#pass2img").attr("src", "img/2_viola.png");
+												  
+												  if(item.stato==3){
+												  $("#pass2img").attr("src", "img/2_giallo.png");
+												  }
+												  
+												  if(item.stato==1){
+												  $("#pass2img").attr("src", "img/2_giallo.png");
+												  }
+												  if(item.stato==0){
+												  $("#pass2img").attr("src", "img/2_viola.png");
+												  }
+												  if(item.stato==2){
+												  
+												  if(item.accettata==1){
+												  $("#pass2img").attr("src", "img/2_verde.png");
+												  }
+												  else{
+												  $("#pass2img").attr("src", "img/2_giallo.png");
+												  }
+												  
+												  }
+												  
+												  }
+												  
+												  
 												  
 												  marker3.setMap(null);
 												  
@@ -3566,34 +3761,9 @@ function timer(){
 												  $("#pass2").show();
 												  $("#pass3").hide();
 												  
-												  if(item.stato==3){
-												  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
-												  $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
-												  $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
-												  }
+
 												  
-												  if(item.stato==1){
-												  $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-												  $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-												  $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
-												  }
-												  if(item.stato==0){
-												  $("#pass2").removeClass("custom-pass1").addClass("custom-pass");
-												  $("#pass2").removeClass("custom-pass2").addClass("custom-pass");
-												  $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
-												  }
 												  if(item.stato==2){
-												  
-												  if(item.accettata==1){
-												   $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-												   $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-												   $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
-												  }
-												  else{
-												   $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-												   $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-												   $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
-												  }
 												  
 												  if(item.accettata==0){
 												   $("#blob4").show();
@@ -3640,7 +3810,7 @@ function timer(){
 												    $("#blob4").hide();
 												  }
 
-												     }
+												  }
 												  
 												  }
 												  
@@ -3786,39 +3956,63 @@ function timer(){
 												  
 												  if(item.posticipata==1){
 												    $("#lista").show();
+												  
+												  
+												  $("#pass3img").attr("src", "img/3_viola_pos.png");
+												  
+												  if(item.stato==3){
+												  $("#pass3img").attr("src", "img/3_giallo_pos.png");
+												  }
+												  
+												  if(item.stato==1){
+												  $("#pass3img").attr("src", "img/3_giallo_pos.png");
+												  }
+												  if(item.stato==0){
+												  $("#pass3img").attr("src", "img/3_viola_pos.png");
+												  }
+												  if(item.stato==2){
+												  
+												  if(item.accettata==1){
+												  $("#pass3img").attr("src", "img/3_verde_pos.png");
+												  }
+												  else{
+												  $("#pass3img").attr("src", "img/3_giallo_pos.png");
+												  }
+												  
+												  }
+												  
+												  }
+												  else{
+												  
+												  $("#pass3img").attr("src", "img/3_viola.png");
+												  
+												  if(item.stato==3){
+												  $("#pass3img").attr("src", "img/3_giallo.png");
+												  }
+												  
+												  if(item.stato==1){
+												  $("#pass3img").attr("src", "img/3_giallo.png");
+												  }
+												  if(item.stato==0){
+												  $("#pass3img").attr("src", "img/3_viola.png");
+												  }
+												  if(item.stato==2){
+												  
+												  if(item.accettata==1){
+												  $("#pass3img").attr("src", "img/3_verde.png");
+												  }
+												  else{
+												  $("#pass3img").attr("src", "img/3_giallo.png");
+												  }
+												  
+												  }
 												  }
 												  
 												  
 												  $("#pass3").show();
 												  
-												  if(item.stato==3){
-												  $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
-												  $("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
-												  $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
-												  }
 												  
-												  if(item.stato==1){
-												  $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-												  $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-												  $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
-												  }
-												  if(item.stato==0){
-												  $("#pass3").removeClass("custom-pass1").addClass("custom-pass");
-												  $("#pass3").removeClass("custom-pass2").addClass("custom-pass");
-												  $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
-												  }
 												  if(item.stato==2){
-												  
-												  if(item.accettata==1){
-												   $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
-												   $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-												   $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
-												  }
-												  else{
-												   $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-												   $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-												   $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
-												  }
 												  
 												  if(item.accettata==0){
 												  $("#blob5").show();
@@ -4995,6 +5189,28 @@ function cancella(id){
 }
 
 function casa(){
+	
+	// Chiamo funzione per dire che non sei autista
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_noautista.php?id_autista="+ localStorage.getItem("id_autista") +"",
+		   contentType: "application/json",
+		   //data: {ID: "Lazio"}, LIMIT 10
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   
+		   
+		   },
+		   error: function(){
+		   
+		   
+		   
+		   },
+		   dataType:"jsonp"});
+	
 	window.location.href = "index.html";
 	
 	}
@@ -6538,12 +6754,17 @@ function chatting(pass,id) {
 			  if(item.Token==1){
 				
 				  if(item.nick==localStorage.getItem("nick")){
+				   
+				       var indirizzo2 = item.messaggio.replace("777A","'");
 
-				       $("#offerta6").append("<div class='bubbledLeft'>"+ item.messaggio +"</div>")
+				       $("#offerta6").append("<div class='bubbledLeft'>"+ indirizzo2 +"</div>")
 				    }
 				  else{
+				   
+				        var indirizzo2 = item.messaggio.replace("777A","'");
 
-				        $("#offerta6").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
+				        $("#offerta6").append("<div class='bubbledRight'>"+ indirizzo2 +"</div>")
+				   
 				    }
 				  
 				}
@@ -6610,11 +6831,16 @@ function chatting66(pass,id) {
 				  
 				  if(item.nick==localStorage.getItem("nick")){
 				  
-				    $("#offerta66").append("<div class='bubbledLeft'>"+ item.messaggio +"</div>")
+				  
+				     var indirizzo2 = item.messaggio.replace("777A","'");
+				  
+				    $("#offerta66").append("<div class='bubbledLeft'>"+ indirizzo2 +"</div>")
 				  }
 				  else{
 				  
-				    $("#offerta66").append("<div class='bubbledRight'>"+ item.messaggio +"</div>")
+				    var indirizzo2 = item.messaggio.replace("777A","'");
+				  
+				    $("#offerta66").append("<div class='bubbledRight'>"+ indirizzo2 +"</div>")
 				  }
 				  
 				  
@@ -6669,15 +6895,26 @@ function inviachat(id) {
 	if(id==6){
 	  var indirizzo = document.getElementById("chattext").value;
 		
-	  indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+	  //indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.'":*<>{}]/g,'');
+									  
+	  indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.:*<>{}]/g,'');
+									  
+	  indirizzo = indirizzo.replace(/'/g,"777A");
+
 		
 	  $("#spinner6").show();
 	}
 	
 	if(id==66){
+		
 	  var indirizzo = document.getElementById("chattext66").value;
-	  indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+		
+	  indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.:*<>{}]/g,'');
+		
+	  indirizzo = indirizzo.replace(/'/g,"777A");
+		
 	  $("#spinner4").show();
+									
 	}
 		
 		
