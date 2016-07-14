@@ -4357,26 +4357,48 @@ function magia2C(utente,pass) {
 				  $("#pass2").hide();
 				  $("#pass3").hide();
 				  
+				  if(item.posticipata==1){
+				  
+				  $("#pass1img").attr("src", "img/1_viola_pos.png");
+				  
+				  if(item.stato==3){
+				  $("#pass1img").attr("src", "img/1_giallo_pos.png");
+				  }
+				  
 				  if(item.stato==1){
-				  $("#pass1").removeClass("custom-pass").addClass("custom-pass1");
-				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass1");
-				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass1img").attr("src", "img/1_giallo_pos.png");
 				  }
 				  if(item.stato==0){
-				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass");
-				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass");
-				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass");
+				  $("#pass1img").attr("src", "img/1_viola_pos.png");
 				  }
 				  if(item.stato==2){
-				  $("#pass1").removeClass("custom-pass").addClass("custom-pass2");
-				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass2");
-				  $("#pass1").removeClass("custom-pass3").addClass("custom-pass2");
+				  
+				  $("#pass1img").attr("src", "img/1_verde_pos.png");
+				  
 				  }
+				  }
+				  else{
+				  
+				  $("#pass1img").attr("src", "img/1_viola.png");
+				  
 				  if(item.stato==3){
-				  $("#pass1").removeClass("custom-pass").addClass("custom-pass3");
-				  $("#pass1").removeClass("custom-pass1").addClass("custom-pass3");
-				  $("#pass1").removeClass("custom-pass2").addClass("custom-pass3");
+				  $("#pass1img").attr("src", "img/1_giallo.png");
 				  }
+				  
+				  if(item.stato==1){
+				  $("#pass1img").attr("src", "img/1_giallo.png");
+				  }
+				  if(item.stato==0){
+				  $("#pass1img").attr("src", "img/1_viola.png");
+				  }
+				  if(item.stato==2){
+				  
+				  $("#pass1img").attr("src", "img/1_verde.png");
+				  
+				  }
+				  
+				  }
+				  
 				  
 				  if(item.stato==1){
 				  var icon11 = new google.maps.MarkerImage("img/marker_arancione_1.png", null, null, null, new google.maps.Size(40,40));
@@ -4460,25 +4482,51 @@ function magia2C(utente,pass) {
 				  $("#pass3").hide();
 				  $("#pass2").show();
 				  
+				  if(item.posticipata==1){
+				  
+				  $("#pass2img").attr("src", "img/2_viola_pos.png");
+				  
+				  if(item.stato==3){
+				  $("#pass2img").attr("src", "img/2_giallo_pos.png");
+				  }
+				  
 				  if(item.stato==1){
-				  $("#pass2").removeClass("custom-pass").addClass("custom-pass1");
-				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass1");
-				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass2img").attr("src", "img/2_giallo_pos.png");
 				  }
 				  if(item.stato==0){
-				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass");
-				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass");
-				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass");
+				  $("#pass2img").attr("src", "img/2_viola_pos.png");
 				  }
 				  if(item.stato==2){
-				  $("#pass2").removeClass("custom-pass").addClass("custom-pass2");
-				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass2");
-				  $("#pass2").removeClass("custom-pass3").addClass("custom-pass2");
+				  
+				  
+				  $("#pass2img").attr("src", "img/2_verde_pos.png");
+				  
+				  
 				  }
+				  
+				  }
+				  else{
+				  
+				  $("#pass2img").attr("src", "img/2_viola.png");
+				  
 				  if(item.stato==3){
-				  $("#pass2").removeClass("custom-pass").addClass("custom-pass3");
-				  $("#pass2").removeClass("custom-pass1").addClass("custom-pass3");
-				  $("#pass2").removeClass("custom-pass2").addClass("custom-pass3");
+				  $("#pass2img").attr("src", "img/2_giallo.png");
+				  }
+				  
+				  if(item.stato==1){
+				  $("#pass2img").attr("src", "img/2_giallo.png");
+				  }
+				  if(item.stato==0){
+				  $("#pass2img").attr("src", "img/2_viola.png");
+				  }
+				  if(item.stato==2){
+				  
+				  
+				  $("#pass2img").attr("src", "img/2_verde.png");
+				  
+				  
+				  }
+				  
 				  }
 				  
 				  if(item.stato==1){
@@ -4557,25 +4605,46 @@ function magia2C(utente,pass) {
 				  $("#pass2").hide();
 				  $("#pass3").show();
 				  
+				  if(item.posticipata==1){
+				  
+				  $("#pass3img").attr("src", "img/3_viola_pos.png");
+				  
+				  if(item.stato==3){
+				  $("#pass3img").attr("src", "img/3_giallo_pos.png");
+				  }
+				  
 				  if(item.stato==1){
-				  $("#pass3").removeClass("custom-pass").addClass("custom-pass1");
-				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass1");
-				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass1");
+				  $("#pass3img").attr("src", "img/3_giallo_pos.png");
 				  }
 				  if(item.stato==0){
-				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass");
-				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass");
-				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass");
+				  $("#pass3img").attr("src", "img/3_viola_pos.png");
 				  }
 				  if(item.stato==2){
-				  $("#pass3").removeClass("custom-pass").addClass("custom-pass2");
-				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass2");
-				  $("#pass3").removeClass("custom-pass3").addClass("custom-pass2");
+				  
+				  $("#pass3img").attr("src", "img/3_verde_pos.png");
+				  
 				  }
+				  
+				  }
+				  else{
+				  
+				  $("#pass3img").attr("src", "img/3_viola.png");
+				  
 				  if(item.stato==3){
-				  $("#pass3").removeClass("custom-pass").addClass("custom-pass3");
-				  $("#pass3").removeClass("custom-pass1").addClass("custom-pass3");
-				  $("#pass3").removeClass("custom-pass2").addClass("custom-pass3");
+				  $("#pass3img").attr("src", "img/3_giallo.png");
+				  }
+				  
+				  if(item.stato==1){
+				  $("#pass3img").attr("src", "img/3_giallo.png");
+				  }
+				  if(item.stato==0){
+				  $("#pass3img").attr("src", "img/3_viola.png");
+				  }
+				  if(item.stato==2){
+				  
+				  $("#pass3img").attr("src", "img/3_verde.png");
+				  
+				  }
 				  }
 				  
 				  if(item.stato==1){
