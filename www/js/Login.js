@@ -58,17 +58,15 @@ function onDeviceReady() {
     $('#fuso').on('change', function(){
         var $this = $(this),
         $value = $this.val();
+		var conteggio = 0;
                    
         document.getElementById("fuso").value = $value;
+				  var citta = "<option value=''>Scegli la Citta</option>";
 				  
-		//alert($value)
-
-                  var citta = "<option value=''>Scegli la Citta</option>";
-                  
                   $(".spinner").show();
                   $.ajax({
                          type:"GET",
-                         url:"http://purplemiles.com/www2/check_prendicitta.php?nazione="+$value+"",
+                         url:"http://purplemiles.com/www2/check_prendicittaV2.php?nazione="+$value+"",
                          contentType: "application/json",
                          timeout: 7000,
                          jsonp: 'callback',
@@ -76,24 +74,28 @@ function onDeviceReady() {
                          success:function(result){
                          
                          $.each(result, function(i,item){
-                                
-                                
-                                if (item.Token == 1){
+								
+							if (item.Token == 1){
 
-                                  citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
-								  //alert(item.city)
+                                  citta = "<option value='"+item.id+"'>"+ item.city +"</option>"
+								
+								  document.getElementById("citta").value = item.city;
+								
+								  $("#precitta").html("Fuso Orario: <b><font color='#cc33cc'>" + item.city +"</font></b>");
+								
+								  prendicittaid(item.city)
+								
+							}
+							if (item.Token == 2){
+								document.getElementById("citta").value = "";
+								
+								$("#precitta").html("Fuso Orario: <b><font color='#cc33cc'></font></b>");
+								
+								 citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
 
-                                }
-                                else{
-                                navigator.notification.alert(
-                                                             'Errore di rete',  // message
-                                                             alertDismissed,         // callback
-                                                             'Attenzione',            // title
-                                                             'Done'                  // buttonName@
-                                                             );
-                                }
+							}
                         });
-                         
+						 
                          $(".spinner").hide();
 						 
 
@@ -284,7 +286,7 @@ function onDeviceReady() {
 				   
 	});
 	
-	$(document).on("touchstart", "#impostazioni", function(e){
+	$(document).on("tap", "#impostazioni", function(e){
 				   $.mobile.changePage( "#page6", { transition: "slide", changeHash: false });
 				   
 				   //window.location.href = "#page6";
@@ -850,7 +852,8 @@ function login() {
 		return;
 	}
 	
-	email2 = email2.replace(" ","")
+	email2 = email2.replace(/\s/g, '')
+	//email2 = email2.replace(" ","")
 	
 	EmailAddr = email2;
 	Filtro = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;

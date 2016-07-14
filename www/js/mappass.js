@@ -2010,6 +2010,9 @@ function controllaofferte(){
 
 
 function vediofferte(){
+	
+	// prendi gps
+	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 
 	
 	$("#timer2").show();

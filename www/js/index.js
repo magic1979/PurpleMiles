@@ -728,6 +728,8 @@ receivedEvent: function(id) {
 	
 	
 	$(document).on("touchstart", "#ritorna5", function(e){
+		
+				   
 		$.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
 				   
 		e.stopImmediatePropagation();
@@ -4216,7 +4218,7 @@ function timer(){
 $(document).on("touchstart", "#ritorna", function(e){
 			   localStorage.setItem("ritornaweb","0")
 
-			   
+			   //localStorage.setItem("pagina","inizia")
 			   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
 			   
 			   
@@ -5755,6 +5757,9 @@ function richiesta1() {
 				   return false;
 				   
 	});
+	
+	
+	controllachat2(1,id)
 	
 }
 
@@ -7354,7 +7359,7 @@ function controllachat(uman) {
 		   
 		   if(uman==2){
 		   
-		   $.each(result, function(i,item){
+		    $.each(result, function(i,item){
 				  
 				if(item.Token==1){
 				  
@@ -7396,42 +7401,59 @@ function controllachat(uman) {
 	
 }
 
-function controllachat2() {
+function controllachat2(ric,id) {
+							  
+							  setTimeout(function() {
+								  controllachat2(ric,id);
+							   }, 6000);
+							  
 	
-	$.ajax({
-		   type:"GET",
-		   url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
-		   contentType: "application/json",
-		   //data: {ID: "Lazio"}, LIMIT 10
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   if(localStorage.getItem("chatcontroll")==JSON.stringify(result)){
-		   
-		   }
-		   else{
-		   
-		   localStorage.setItem("chatcontroll", JSON.stringify(result))
-		   
-		   
-		   
-		   }
-		   
-		   },
-		   error: function(){
-		   
-		   /* navigator.notification.alert(
-			'Possibile errore di rete, riprova tra qualche minuto.',  // message
-			alertDismissed,         // callback
-			'Attenzione',           // title
-			'Ok'                  // buttonName
-			);*/
-		   
-		   
-		   },
-		   dataType:"jsonp"});
+							  $.ajax({
+									 type:"GET",
+									 url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
+									 contentType: "application/json",
+									 //data: {ID: "Lazio"}, LIMIT 10
+									 timeout: 7000,
+									 jsonp: 'callback',
+									 crossDomain: true,
+									 success:function(result){
+									 
+									 if(localStorage.getItem("chatcontroll")==JSON.stringify(result)){
+									 
+									 }
+									 else{
+									 
+									 localStorage.setItem("chatcontroll", JSON.stringify(result))
+									 
+									 
+									 $.each(result, function(i,item){
+											
+											if(item.Token==1){
+											
+											$("#nickhome6").html(item.nick);
+											
+											localStorage.setItem("id_richiesta",id)
+											
+											if( $(".ui-panel").hasClass("ui-panel-open") == true ){
+												//alert("OPENED");
+											}else{
+												$("#btnpanel").click();
+											}
+											
+											chatting66(ric,id);
+											
+											}
+											
+											});
+
+									 }
+									 
+									 },
+									 error: function(){
+									 
+									 
+									 },
+									 dataType:"jsonp"});
 	
 	
 }
