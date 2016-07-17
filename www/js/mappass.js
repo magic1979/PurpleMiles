@@ -185,7 +185,7 @@ function onDeviceReady() {
 				   });
 	
 	$(document).on("touchstart tap", "#cambiafuso", function(e){
-		window.location.href = "Login.html?id=2";
+		//window.location.href = "Login.html?id=2";
 				   
 		e.stopImmediatePropagation();
 				   

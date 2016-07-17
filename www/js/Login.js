@@ -83,7 +83,7 @@ function onDeviceReady() {
 								
 								  document.getElementById("citta").value = item.city;
 								
-								  $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>" + item.city +"</font></b></font>");
+								  $("#precitta").html("<b><font size='4'>Fuso Orario: <font color='#cc33cc'>" + item.city +"</font></b></font>");
 								
 								  prendicittaid(item.city)
 								
@@ -91,7 +91,7 @@ function onDeviceReady() {
 							if (item.Token == 2){
 								document.getElementById("citta").value = "";
 								
-								$("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'></font></b></font>");
+								$("#precitta").html("<b><font size='4'>Fuso Orario: <font color='#cc33cc'></font></b></font>");
 								
 								 citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
 
@@ -131,7 +131,7 @@ function onDeviceReady() {
 				  
 				  document.getElementById("citta").value = $value;
 				   
-				  $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>" + $value+"</font></b></font>");
+				  $("#precitta").html("<b><font size='4'>Fuso Orario: <font color='#cc33cc'>" + $value+"</font></b></font>");
 				   
 			      prendicittaid($value)
 				  
@@ -156,7 +156,7 @@ function onDeviceReady() {
 					  
 					  if (item.Token == 1){
 
-					    $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>" +item.city+"</font></b></font>");
+					    $("#precitta").html("<b><font size='4'>Fuso Orario: <font color='#cc33cc'>" +item.city+"</font></b></font>");
 					    localStorage.setItem("city", item.city);
 					  
 					  }
@@ -260,7 +260,18 @@ function onDeviceReady() {
 	
 	
 	$(document).on("tap", "#conferma", function(e){
-		//window.location.href = "#page6";
+				   
+		/*if (document.getElementById("citta").value === null || document.getElementById("citta").value=="null" || typeof(document.getElementById("citta").value) == 'undefined' || document.getElementById("citta").value==0 || document.getElementById("citta").value=="") {
+			navigator.notification.alert(
+												'inserire una citta per il fuso orario',  // message
+												alertDismissed,         // callback
+												'Citta',            // title
+												'OK'                  // buttonName
+												);
+			return;
+		}*/
+				   
+		localStorage.setItem("start","1")
 		localStorage.setItem("pagina","log")
 				   
 		localStorage.setItem("lingua", document.getElementById("lingua").value);
@@ -293,20 +304,13 @@ function onDeviceReady() {
 				   if(localStorage.getItem("start")!=1){
 				    localStorage.setItem("fuso", "Italy");
 				    localStorage.setItem("citta", "154");
-				    $("#fuso").html("<option value='Italy' selected>Italy</option>");
-				   
-				    var citta = "<option value='154'>Rome</option>"
-				    $("#citta").html(citta);
-				   
-				    document.getElementById("citta").value = "Rome";
-				   
-				    $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>Rome</font></b></font>");
-				   
-				    prendicittaid("Rome")
 				   }
-				   else{
-				     prendinazione()
-				   }
+
+				   prendinazione()
+				   
+				   //else{
+				    //prendinazione()
+				   //}
 				   
 				   $.mobile.changePage( "#page6", { transition: "slide", changeHash: false });
 				   
@@ -327,8 +331,9 @@ function onDeviceReady() {
 				   
 				   prendimezzi()
 				   
+				   prendicittaid(localStorage.getItem("citta"))
 				   
-				   //prendicittaid(localStorage.getItem("citta"))
+				   //alert(localStorage.getItem("citta"))
 				   
 				   //$("#fuso").html(nazione);
 				   
@@ -426,8 +431,6 @@ function onDeviceReady() {
 	
 	if(IDPage==2){
 		
-		prendinazione()
-		
 		$("#impostazioni").tap();
 		
 	}
@@ -478,7 +481,17 @@ function onDeviceReady() {
 			
 			if (localStorage.getItem("city") === null || localStorage.getItem("city")=="null" || typeof(localStorage.getItem("city")) == 'undefined' || localStorage.getItem("city")==0 || localStorage.getItem("city")=="") {
 
-              $("#citta").html("<option value=''>Selezionare la citta</option><option value='154'>Rome</option>");
+				//nazione = nazione + "<option value='Italy' selected>Italy</option>"
+				$("#fuso").html("<option value='Italy' selected>Italy</option>");
+				
+				var citta = "<option value='154'>Rome</option>"
+				$("#citta").html(citta);
+				
+				document.getElementById("citta").value = "Rome";
+				
+				$("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>Rome</font></b></font>");
+				
+				prendicittaid("Rome")
 			}
 			else{
 			  $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
@@ -738,9 +751,8 @@ function prendimezzi(){
 }
 
 function prendinazione(){
-    
-	var nazione = "";
-	localStorage.setItem("start","1")
+	
+	var nazione = "<option value='Italy' selected>Italy</option>";
     
     $(".spinner").show();
      $.ajax({
@@ -756,23 +768,30 @@ function prendinazione(){
 				 
      
      if (item.Token == 1){
-       if(localStorage.getItem("fuso")==item.country){
+				  if(localStorage.getItem("fuso")==item.country){
+					  nazione = nazione + "<option value='"+item.country+"' selected>"+ item.country +"</option>"
+				  
+				       //prendicittaid(localStorage.getItem("citta"))
+				  
+				       //var citta = "<option value='"+localStorage.getItem("citta")+"'>"+localStorage.getItem("city")+"</option>"
+				       //$("#citta").html(citta);
+				  
+				  }
+				  else{
+				     nazione = nazione + "<option value='"+item.country+"'>"+ item.country +"</option>"
+				  }
+				  
+		
+       /*if(localStorage.getItem("fuso")==item.country){
 			nazione = nazione + "<option value='"+item.country+"' selected>"+ item.country +"</option>"
-			$("#citta").html("<option value="+ localStorage.getItem("citta") +">"+ localStorage.getItem("city") +"</option>");
-			$("#citta").selectmenu("refresh");
-				  
-				  /*if(localStorage.getItem("citta")==item.id){
-				    $("#citta").html("<option value="+ localStorage.getItem("citta") +">"+ localStorage.getItem("citta") +"</option>");
-				  
-				    $("#citta").selectmenu("refresh");
-				  }*/
-				  
+
 				  
        }
        else{
           if (localStorage.getItem("fuso") === null || localStorage.getItem("fuso")=="null" || typeof(localStorage.getItem("fuso")) == 'undefined' || localStorage.getItem("fuso")==0 || localStorage.getItem("fuso")=="") {
                   if(item.country=="Italy"){
                     nazione = nazione + "<option value='Italy' selected>Italy</option>"
+		            $("#fuso").html(nazione);
 				  
 				    var citta = "<option value='154'>Rome</option>"
 				    $("#citta").html(citta);
@@ -792,11 +811,9 @@ function prendinazione(){
            }
            else{
                nazione = nazione + "<option value='"+item.country+"'>"+ item.country +"</option>"
-				  
-			   //alert("4")
 
             }
-       }
+       }*/
      }
      else{
      navigator.notification.alert(
@@ -821,7 +838,7 @@ function prendinazione(){
     error: function(){
     $(".spinner").hide();
 		   
-		   navigator.notification.alert(
+	  navigator.notification.alert(
      'Possibile errore di rete, riprova tra qualche minuto',  // message
      alertDismissed,         // callback
      'Attenzione',            // title
