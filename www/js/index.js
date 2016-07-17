@@ -38,20 +38,25 @@ receivedEvent: function(id) {
 		e.preventDefault();
 	}
 	
+	
+	StatusBar.hide();
+	
+	
 	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	//ANDROID -------------------------------------------------------
 	
 	document.addEventListener('backbutton', function(e) {
-	 if(localStorage.getItem("pagina")=="mappa"){
+							  
+	 /*if(localStorage.getItem("pagina")=="mappa"){
 		
 		localStorage.setItem("dovesono", "0")
 							  
 		window.location.href = "index.html";
 	  
-	  }
+	  }*/
 							  
-	  if(localStorage.getItem("pagina")=="1"){
+	  //if(localStorage.getItem("pagina")=="1"){
 	
 			navigator.notification.confirm(
 			'Vuoi chiudere purple miles?',  // message
@@ -60,9 +65,9 @@ receivedEvent: function(id) {
 			'Spegni,Annulla'      // buttonLabels
 		    );
 							  
-	   }
+	   //}
 							  
-	   if(localStorage.getItem("pagina")=="magia"){
+	   /*if(localStorage.getItem("pagina")=="magia"){
 			var connectionStatus = false;
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
 							  
@@ -78,33 +83,15 @@ receivedEvent: function(id) {
 				window.location.href = "index.html";
 			}
 							  
-		}
+		}*/
 							  
-		if(localStorage.getItem("pagina")=="chat"){
+		/*if(localStorage.getItem("pagina")=="chat"){
 			$("#tblchat").hide()
 							  
 			$("#chiudichat").click();
 							  
-			//setTimeout(function() {
-				//$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
-			//}, 7000);
-							  
-			//resetta1(1);
-							  
-			/*for(i=0; i<10000; i++)
-			{
-				window.clearInterval(i);
-			}
-							  
-			setTimeout(function() {
-				//resetta1(1);
-					   
-				window.location.href = "index.html?id=2";
-				
-			}, 500);*/
-							  
 
-		}
+		}*/
 							  
 							  
 		e.stopImmediatePropagation();
@@ -129,6 +116,8 @@ receivedEvent: function(id) {
 	
 	//localStorage.setItem("lat", lat)
 	//localStorage.setItem("lng", lng)
+	
+	LoginVera()
 	
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -227,7 +216,8 @@ receivedEvent: function(id) {
 	//localStorage.setItem("lng", "12.492475")
 	
 	
-	var altezzatbl = getRealContentHeight()-40;
+	var altezzatbl = getRealContentHeight()+40;
+	var altezzatbl2 = getRealContentHeight()-80;
 	var height = getRealContentHeight();
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
@@ -266,7 +256,7 @@ receivedEvent: function(id) {
 	  localStorage.setItem("exit", "0")
 	}*/
 	
-	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table>')
+	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
@@ -425,7 +415,7 @@ receivedEvent: function(id) {
 	var percentuale1;
 	var rating1;
 	var cell1;
-	
+	var posticipata1;
 	
 	var nick2;
 	var quando2;
@@ -452,6 +442,7 @@ receivedEvent: function(id) {
 	var percentuale2;
 	var rating2;
 	var cell2;
+	var posticipata2;
 	
 	var nick3;
 	var quando3;
@@ -478,6 +469,7 @@ receivedEvent: function(id) {
 	var percentuale3;
 	var rating3;
 	var cell3;
+	var posticipata3;
 	
 	var muoviti;
 	var setGPS;
@@ -569,6 +561,14 @@ receivedEvent: function(id) {
 		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
+	
+	
+	$(document).on("tap", "#legenda1", function(e){
+				   
+		var ref = window.open('http://www.purplemiles.com/www/legenda.php?lang='+ localStorage.getItem("lingua") +'', '_blank', 'location=no');
+				   
+	});
+	
 	
 	$(document).on("touchstart tap", "#profiloperc2", function(e){
 				   
@@ -761,7 +761,7 @@ receivedEvent: function(id) {
 						  crossDomain: true,
 						  success:function(result){
 						  
-						  
+						   // LoginVera()
 						  
 						  },
 						  error: function(){
@@ -790,7 +790,7 @@ receivedEvent: function(id) {
 						  crossDomain: true,
 						  success:function(result){
 						  
-						  
+						    //LoginVera()
 						  
 						  },
 						  error: function(){
@@ -845,6 +845,7 @@ receivedEvent: function(id) {
 						    //alert("OK")
 						  
 						     setTimeout(function() {
+										
 							   resetta1();
 							  }, 300);
 						  
@@ -884,7 +885,7 @@ receivedEvent: function(id) {
 				$("#tornareset").hide();
 				   
 				$("#magia").hide();
-				$("#puntina").hide();
+				//$("#puntina").hide();
 				   
 				setTimeout(function() {
 					$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
@@ -1045,8 +1046,6 @@ receivedEvent: function(id) {
 						  
 						    localStorage.setItem("dovesono", "0")
 						  
-						    window.location.href = "index.html";
-						  
 						    /*$.each(result, function(i,item){
 								 
 								 if(item.Token==1){
@@ -1072,6 +1071,7 @@ receivedEvent: function(id) {
 						  dataType:"jsonp"});
 				   
 				   
+		window.location.href = "index.html";
 				   
 		e.stopImmediatePropagation();
 				   
@@ -1820,7 +1820,7 @@ function cambiah() {
 		   crossDomain: true,
 		   success:function(result){
 		   
-		   
+		     //LoginVera()
 		   
 		   },
 		   error: function(){
@@ -2191,7 +2191,7 @@ function resetta1(focus) {
       $content.height (getRealContentHeight());
 	}
 	else{
-	   $content.height (getRealContentHeight()-56);
+	   $content.height (getRealContentHeight()-20);
 	}
 		
 		
@@ -2558,7 +2558,10 @@ function resetta1(focus) {
 				  //$("#pass1").show();
 				  //$("#esci").show();
 				if(item.posticipata==1){
-					$("#lista").show();
+				  
+				  if(item.accettata==1){
+				   $("#lista").show();
+				  }
 				  
 				  $("#pass1img").attr("src", "img/1_viola_pos.png");
 				  
@@ -2647,7 +2650,9 @@ function resetta1(focus) {
 				  //$("#pass2").show();
 				  
 				  if(item.posticipata==1){
+				   if(item.accettata==1){
 				    $("#lista").show();
+				   }
 				  
 				  $("#pass2img").attr("src", "img/2_viola_pos.png");
 				  
@@ -2738,7 +2743,9 @@ function resetta1(focus) {
 				  //$("#pass3").show();
 				  
 				  if(item.posticipata==1){
+				   if(item.accettata==1){
 				    $("#lista").show();
+				   }
 				  
 				  $("#pass3img").attr("src", "img/3_viola_pos.png");
 				  
@@ -3243,9 +3250,6 @@ function timer(){
 												  
 												  }
 												  
-												  if(item.Token==11){
-													 $("#lista").show();
-												  }
 												  
 												  
 												  if(item.Token==1){
@@ -3291,6 +3295,7 @@ function timer(){
 												  percentuale1 = item.percentuale;
 												  rating1 = item.rating;
 												  cell1 = item.cell;
+												  posticipata1 = item.posticipata;
 
 												  
 												  if(localStorage.getItem("palla1")!="1"){
@@ -3348,7 +3353,9 @@ function timer(){
 																 });*/
 												  
 												if(item.posticipata==1){
+												   if(item.accettata==1){
 												   $("#lista").show();
+												   }
 												  
 												  $("#pass1img").attr("src", "img/1_viola_pos.png");
 												  
@@ -3569,6 +3576,7 @@ function timer(){
 												  percentuale2 = item.percentuale;
 												  rating2 = item.rating;
 												  cell2 = item.cell;
+												  posticipata2 = item.posticipata;
 												  
 												  if (localStorage.getItem("quando2")==quando2 &&
 													  localStorage.getItem("ora2") == ora2 &&
@@ -3637,7 +3645,9 @@ function timer(){
 																 });*/
 												  
 												  if(item.posticipata==1){
+												   if(item.accettata==1){
 												    $("#lista").show();
+												   }
 												  
 												  $("#pass2img").attr("src", "img/2_viola_pos.png");
 												  
@@ -3844,6 +3854,7 @@ function timer(){
 												  percentuale3 = item.percentuale;
 												  rating3 = item.rating;
 												  cell3 = item.cell;
+												  posticipata3 = item.posticipata;
 												  
 												  
 												  if (localStorage.getItem("quando3")==quando3 && localStorage.getItem("ora3") == ora3 && localStorage.getItem("partenza3")==partenza3 && localStorage.getItem("arrivo3")==arrivo3 && localStorage.getItem("stato3")==stato3 && localStorage.getItem("passeggeri3")==passeggeri3 && localStorage.getItem("animali3")==animali3 && localStorage.getItem("fumatori3")==fumatori3 && localStorage.getItem("meno183")==meno183 && localStorage.getItem("disabili3")==disabili3 && localStorage.getItem("bambini3")==bambini3 && localStorage.getItem("wifi3")==wifi3 && localStorage.getItem("portapacchi3")==portapacchi3 && localStorage.getItem("rimorchio3")==rimorchio3 && localStorage.getItem("bluetooth3")==bluetooth3 && localStorage.getItem("note3")==note3 ) {
@@ -3957,7 +3968,9 @@ function timer(){
 												  
 												  
 												  if(item.posticipata==1){
+												   if(item.accettata==1){
 												    $("#lista").show();
+												   }
 												  
 												  
 												  $("#pass3img").attr("src", "img/3_viola_pos.png");
@@ -4337,7 +4350,7 @@ function magia2C(utente,pass) {
 				  if(item.Token==1){
 				  
 				  if(item.posticipata==1){
-				   $("#puntina").show();
+				   $("#lista").show();
 				  }
 				  
 				  //cambiare icona
@@ -4451,7 +4464,7 @@ function magia2C(utente,pass) {
 				  });
 				  
 				  
-				  $("#bannermagia").html("<b>"+item.nick+"</b><br><b>Partenza: </b>"+item.partenza+"<br><b>Arrivo: </b>"+ item.arrivo +"<br><b>Distanza dalla partenza (l.a.): </b>"+ item.distanza1 +" Km</font>");
+				  $("#bannermagia").html("<font size='3' color='#000'><b>"+item.nick+"</b><br><b>Partenza: </b>"+item.partenza+"<br><b>Arrivo: </b>"+ item.arrivo +"<br><b>Distanza dalla partenza (l.a.): </b>"+ item.distanza1 +" Km</font>");
 				  
 				  var isVisible3 = marker3.getVisible();
 				  if(isVisible3){
@@ -4551,7 +4564,7 @@ function magia2C(utente,pass) {
 				  
 				  map.setZoom(dist2)
 				  
-				  $("#bannermagia").html("<font size='3' color='#fff'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza(l.a.): "+ item.distanza1 +"</font>");
+				  $("#bannermagia").html("<font size='3' color='#000'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza(l.a.): "+ item.distanza1 +"</font>");
 				  
 				  marker1.setVisible(false);
 				  
@@ -4669,7 +4682,7 @@ function magia2C(utente,pass) {
 				  
 				  map.setZoom(dist2)
 				  
-				  $("#bannermagia").html("<font size='3' color='#fff'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza (l.a.): "+ item.distanza1 +" km</font>");
+				  $("#bannermagia").html("<font size='3' color='#000'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza (l.a.): "+ item.distanza1 +" km</font>");
 				  
 				  marker1.setVisible(false);
 				  marker3.setVisible(false);
@@ -5272,7 +5285,7 @@ function casa(){
 		   crossDomain: true,
 		   success:function(result){
 		   
-		   
+		     //LoginVera()
 		   
 		   },
 		   error: function(){
@@ -5477,8 +5490,14 @@ function richiesta1() {
 	
 	$("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	$("#nickhome66").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
+	$("#nickblob3").html("<font color='#cc33cc' size='4'><b>"+ nick1 +" "+ percentuale1 +"%</b></font>");
 				  
-	$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"<br><br>");
+	if(posticipata1==0){
+	 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"<br><br>");
+	}
+	else{
+		$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br><b>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"</b><br><br>");
+	}
 				  
 	$("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Partenza: </font></b><br>&nbsp;&nbsp;"+ partenza1 +"<br><br>");
 				  
@@ -5880,6 +5899,7 @@ function richiesta2() {
 	$("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a></font>");
 	$("#nickhome3").html("<a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a>");
 	$("#nickhome66").html("<font color='#fff'>"+ nick2 +" "+ percentuale1 +"%</font>");
+	$("#nickblob4").html("<font color='#cc33cc' size='4'><b>"+ nick2 +" "+ percentuale2 +"%</b></font>");
 	
 	localStorage.setItem("id_utente_pass2", id_utente_pass2)
 	
@@ -5962,8 +5982,12 @@ function richiesta2() {
 
 
 	
-	
-	$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
+	if(posticipata2==0){
+	 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
+	}
+	else{
+		$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;<b>"+ quando2 +", Ora: "+ ora2 +"</b><br><br>");
+	}
 	
 	$("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Partenza: </font></b><br>&nbsp;&nbsp;"+ partenza2 +"<br><br>");
 	
@@ -6343,6 +6367,7 @@ function richiesta3() {
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a></font>");
 				  $("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a>");
 	              $("#nickhome66").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
+				  $("#nickblob5").html("<font color='#cc33cc' size='4'><b>"+ nick3 +" "+ percentuale3 +"%</b></font>");
 	
 	              localStorage.setItem("id_utente_pass3", id_utente_pass3)
 	
@@ -6424,8 +6449,12 @@ function richiesta3() {
 
 	
 	
-	
-	$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
+	if(posticipata3==0){
+	 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
+	}
+	else{
+	 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br><b>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"</b><br><br>");
+	}
 	
 	$("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Partenza: </font></b><br>&nbsp;&nbsp;"+ partenza3 +"<br><br>");
 	
@@ -7469,6 +7498,57 @@ function controllachat(uman) {
 	
 	
 }
+							  
+					function LoginVera(){
+							  
+
+							  var lat = localStorage.getItem("lat");
+							  var lng = localStorage.getItem("lng");
+							  
+							  $(".spinner").show();
+							  $.ajax({
+									 type:"GET",
+									 url:"http://purplemiles.com/www2/check_accesso.php?email="+ localStorage.getItem("email") +"&pin="+ localStorage.getItem("pin") +"&lat="+ lat +"&lon="+ lng +"&veicolo="+ localStorage.getItem("veicolo") +"",
+									 contentType: "application/json",
+									 //data: {email:email,pin:pin},
+									 timeout: 7000,
+									 jsonp: 'callback',
+									 crossDomain: true,
+									 success:function(result){
+									 
+									 $.each(result, function(i,item){
+											
+										if (item.Token == 1){
+											
+											localStorage.setItem("stelleautista", item.voto_autista);
+											localStorage.setItem("stellepass", item.voto_passeggero);
+											localStorage.setItem("md5", item.md5);
+											localStorage.setItem("perc_autista", item.perc_aut);
+											localStorage.setItem("perc_pass", item.perc_pass);
+											
+											//alert(localStorage.getItem("pin"))
+											
+										}
+											
+									});
+									 
+									 $(".spinner").hide();
+									 
+									 },
+									 error: function(){
+									 $(".spinner").hide();
+									 
+									 /*navigator.notification.alert(
+																  'Possibile errore di rete, riprova tra qualche minuto',  // message
+																  alertDismissed,         // callback
+																  'Attenzione',            // title
+																  'Done'                  // buttonName
+																  );*/
+									 
+									 },
+									 dataType:"jsonp"});
+							  }
+							  
 
 function controllachat2(ric,id) {
 							  

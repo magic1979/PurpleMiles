@@ -21,12 +21,14 @@ function onDeviceReady() {
 							   
 		//if(localStorage.getItem("pagina")=="imp"){
 							   
-		  $("#conferma").tap();
+		  //$("#conferma").tap();
 							   
 		//}
 							   
 	 }, false);
 	
+	
+	StatusBar.hide();
 	
 	
 	var IDPage;
@@ -81,7 +83,7 @@ function onDeviceReady() {
 								
 								  document.getElementById("citta").value = item.city;
 								
-								  $("#precitta").html("Fuso Orario: <b><font color='#cc33cc'>" + item.city +"</font></b>");
+								  $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>" + item.city +"</font></b></font>");
 								
 								  prendicittaid(item.city)
 								
@@ -89,7 +91,7 @@ function onDeviceReady() {
 							if (item.Token == 2){
 								document.getElementById("citta").value = "";
 								
-								$("#precitta").html("Fuso Orario: <b><font color='#cc33cc'></font></b>");
+								$("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'></font></b></font>");
 								
 								 citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
 
@@ -129,7 +131,7 @@ function onDeviceReady() {
 				  
 				  document.getElementById("citta").value = $value;
 				   
-				  $("#precitta").html("Fuso Orario: <b><font color='#cc33cc'>" + $value+"</font></b>");
+				  $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>" + $value+"</font></b></font>");
 				   
 			      prendicittaid($value)
 				  
@@ -154,7 +156,7 @@ function onDeviceReady() {
 					  
 					  if (item.Token == 1){
 
-					    $("#precitta").html("Fuso Orario: <b><font color='#cc33cc'>" +item.city+"</font></b>");
+					    $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>" +item.city+"</font></b></font>");
 					    localStorage.setItem("city", item.city);
 					  
 					  }
@@ -747,7 +749,16 @@ function prendinazione(){
        else{
           if (localStorage.getItem("fuso") === null || localStorage.getItem("fuso")=="null" || typeof(localStorage.getItem("fuso")) == 'undefined' || localStorage.getItem("fuso")==0 || localStorage.getItem("fuso")=="") {
                   if(item.country=="Italy"){
-                    nazione = nazione + "<option value='"+item.country+"' selected>"+ item.country +"</option>"
+                    nazione = nazione + "<option value='Italy' selected>Italy</option>"
+				  
+				    var citta = "<option value='154'>Rome</option>"
+				    $("#citta").html(citta);
+				  
+				    document.getElementById("citta").value = "Rome";
+				  
+				    $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>Rome</font></b></font>");
+				  
+					prendicittaid("Rome")
                   }
                   else{
                     nazione = nazione + "<option value='"+item.country+"'>"+ item.country +"</option>"
@@ -953,9 +964,8 @@ function LoginVera(email,pin){
 				  localStorage.setItem("perc_autista", item.perc_aut);
 				  localStorage.setItem("perc_pass", item.perc_pass);
 				  localStorage.setItem("id_utente", item.id_utente);
+				  localStorage.setItem("pin", pin);
 				  
-				  
-
 				  window.location.href = "index.html";
 				  
 				}

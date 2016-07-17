@@ -32,13 +32,14 @@
 		<preference name="android-minSdkVersion" value="11" />
 		<preference name="android-targetSdkVersion" value="11" />
 		<preference name="android-installLocation" value="auto" />
-		<preference name="SplashScreenDelay" value="10000" />
+		<preference name="SplashScreenDelay" value="0" />
 		<preference name="ErrorUrl" value="http://www.purplemiles.com"/>
 		<preference name="BackgroundColor" value="#707070"/>
 		<preference name="KeepRunning" value="true"/>
 		<preference name="DisallowOverscroll" value="true"/> 
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="true" />
+		<preference name="StatusBarOverlaysWebView" value="true" />
 		<gap:platform name="android" />
 		<feature name="http://api.phonegap.com/1.0/battery"/>
 		<feature name="http://api.phonegap.com/1.0/geolocation"/>
@@ -64,6 +65,7 @@
 		<gap:plugin name="org.apache.cordova.network-information" source="npm" />
 		<gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
 		<gap:plugin name="org.apache.cordova.vibration" source="npm" />
+		
 		<icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57" />
 		<icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
 		<icon src="res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114" />
@@ -115,6 +117,7 @@
 		<plugin name="com.sharinglabs.cordova.plugin.cache" spec="1.0.0" source="pgb" />
 		<plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
 		<gap:plugin name="cordova-plugin-datepicker" source="npm" />
+		<plugin name="cordova-plugin-statusbar" source="npm" spec="1.0.0" />
 		
 		
 		<gap:config-file platform="android" parent="/manifest" mode="add" xmlns:android="http://schemas.android.com/apk/res/android">
