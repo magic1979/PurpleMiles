@@ -218,10 +218,6 @@ receivedEvent: function(id) {
 	
 	var altezzatbl = getRealContentHeight()+40;
 	var altezzatbl2 = getRealContentHeight()-80;
-	var height = getRealContentHeight();
-	$("#tblhome").attr("height",height);
-	$("#tblhome3").attr("height",height);
-	
 	
 	var email = localStorage.getItem("email");
 	
@@ -261,6 +257,9 @@ receivedEvent: function(id) {
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
 	
+	var height = getRealContentHeight();
+	$("#tblhome").attr("height",height);
+	$("#tblhome3").attr("height",height);
 	
 	setTimeout(function() {
 	  $("#tblhome").fadeIn(1500)
