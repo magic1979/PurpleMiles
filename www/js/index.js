@@ -217,7 +217,12 @@ receivedEvent: function(id) {
 	
 	
 	var altezzatbl = getRealContentHeight()+40;
-	var altezzatbl2 = getRealContentHeight()-80;
+	if(localStorage.getItem("okprima")!="1"){
+	  var altezzatbl2 = getRealContentHeight()-10;
+	}
+	else{
+	   var altezzatbl2 = getRealContentHeight()-30;
+	}
 	
 	var email = localStorage.getItem("email");
 	
@@ -252,6 +257,8 @@ receivedEvent: function(id) {
 	  localStorage.setItem("exit", "0")
 	}*/
 	
+	//alert(altezzatbl2)
+	
 	$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 	
 	$("#nickhome").html(localStorage.getItem("nick"));
@@ -264,6 +271,8 @@ receivedEvent: function(id) {
 	setTimeout(function() {
 	  $("#tblhome").fadeIn(1500)
 	}, 500);
+	
+	localStorage.setItem("okprima", "1")
 	
 	
 	//$("body").css("display", "none");
@@ -1069,8 +1078,9 @@ receivedEvent: function(id) {
 						  },
 						  dataType:"jsonp"});
 				   
-				   
+		
 		window.location.href = "index.html";
+		var altezzatbl2 = getRealContentHeight()-10;
 				   
 		e.stopImmediatePropagation();
 				   
