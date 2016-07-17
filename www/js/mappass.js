@@ -3574,14 +3574,13 @@ function prendicittaid(id){
 								
 							function gpsonSuccess(position){
 									
-									
 								var ciao = position.coords.latitude;
 								var ciao1 = position.coords.longitude;
 									
 								localStorage.setItem("lat", ciao)
 								localStorage.setItem("lng", ciao1)
 								  
-								alert(ciao)
+								//alert(ciao)
 									
 									
 							}

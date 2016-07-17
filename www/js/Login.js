@@ -289,6 +289,25 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("tap", "#impostazioni", function(e){
+				   
+				   if(localStorage.getItem("start")!=1){
+				    localStorage.setItem("fuso", "Italy");
+				    localStorage.setItem("citta", "154");
+				    $("#fuso").html("<option value='Italy' selected>Italy</option>");
+				   
+				    var citta = "<option value='154'>Rome</option>"
+				    $("#citta").html(citta);
+				   
+				    document.getElementById("citta").value = "Rome";
+				   
+				    $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>Rome</font></b></font>");
+				   
+				    prendicittaid("Rome")
+				   }
+				   else{
+				     prendinazione()
+				   }
+				   
 				   $.mobile.changePage( "#page6", { transition: "slide", changeHash: false });
 				   
 				   //window.location.href = "#page6";
@@ -308,7 +327,6 @@ function onDeviceReady() {
 				   
 				   prendimezzi()
 				   
-                   prendinazione()
 				   
 				   //prendicittaid(localStorage.getItem("citta"))
 				   
@@ -407,7 +425,8 @@ function onDeviceReady() {
 	
 	
 	if(IDPage==2){
-
+		
+		prendinazione()
 		
 		$("#impostazioni").tap();
 		
@@ -721,6 +740,7 @@ function prendimezzi(){
 function prendinazione(){
     
 	var nazione = "";
+	localStorage.setItem("start","1")
     
     $(".spinner").show();
      $.ajax({
@@ -738,12 +758,15 @@ function prendinazione(){
      if (item.Token == 1){
        if(localStorage.getItem("fuso")==item.country){
 			nazione = nazione + "<option value='"+item.country+"' selected>"+ item.country +"</option>"
+			$("#citta").html("<option value="+ localStorage.getItem("citta") +">"+ localStorage.getItem("city") +"</option>");
+			$("#citta").selectmenu("refresh");
 				  
 				  /*if(localStorage.getItem("citta")==item.id){
 				    $("#citta").html("<option value="+ localStorage.getItem("citta") +">"+ localStorage.getItem("citta") +"</option>");
 				  
 				    $("#citta").selectmenu("refresh");
 				  }*/
+				  
 				  
        }
        else{
@@ -759,14 +782,18 @@ function prendinazione(){
 				    $("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>Rome</font></b></font>");
 				  
 					prendicittaid("Rome")
+				  
                   }
                   else{
                     nazione = nazione + "<option value='"+item.country+"'>"+ item.country +"</option>"
+				  
                   }
 
            }
            else{
                nazione = nazione + "<option value='"+item.country+"'>"+ item.country +"</option>"
+				  
+			   //alert("4")
 
             }
        }
