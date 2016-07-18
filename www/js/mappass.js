@@ -1158,7 +1158,7 @@ function onDeviceReady() {
 			 //localStorage.setItem("lat", lat)
 			 //localStorage.setItem("lng", lng)
 		
-		
+			  var watchID = navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 		
 
@@ -2059,9 +2059,6 @@ function controllaofferte(){
 
 function vediofferte(){
 	
-	// prendi gps
-	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
-
 	
 	$("#timer2").show();
 	//alert("Vedo");
@@ -2675,14 +2672,14 @@ function vediofferte(){
 
 	
 	refreshPos = setInterval(function() {
+							// prendi gps
+							//var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+							 
 		vediofferte()
 							 
 	    controllachat(2)
 	}, 6000);
 	
-	//setTimeout( function() {
-		//vediofferte()
-	//}, 5000 );
 	
 }
 
