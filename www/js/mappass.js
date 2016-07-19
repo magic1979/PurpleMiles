@@ -1158,7 +1158,7 @@ function onDeviceReady() {
 			 //localStorage.setItem("lat", lat)
 			 //localStorage.setItem("lng", lng)
 		
-			  var watchID = navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+			  var watchID = navigator.geolocation.watchPosition(gpsonSuccess, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 		
 
@@ -1853,35 +1853,6 @@ function resetta1(focus) {
 		
 	
 	//---------------------------
-
-		
-		function onSuccess2(position) {
-			
-			
-            var lat = position.coords.latitude;
-            var lng = position.coords.longitude;
-			
-			localStorage.setItem("lat", lat)
-			localStorage.setItem("lng", lng)
-
-			var latlng = new google.maps.LatLng(lat, lng);
-			
-			marker2.setPosition(latlng);
-			map.setCenter(latlng);
-			
-
-        }
-        
-
-        function onError2(error) {
-			navigator.geolocation.watchPosition(onSuccess2, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
-        }
-	
-        function onError3(error) {
-            localStorage.setItem("geostory", "NO")
-            
-			window.location.href = "index.html";
-        }
 	
 
  }
@@ -2665,11 +2636,34 @@ function vediofferte(){
 		// Play audio
 		my_media.play();
 	}
-
 	
+	
+	function gpsonSuccess2(position){
+									
+		var ciao = position.coords.latitude;
+		var ciao1 = position.coords.longitude;
+			
+		localStorage.setItem("lat3", ciao)
+		localStorage.setItem("lng3", ciao1)	
+			
+	}
+									
+	function onError22(error) {
+		navigator.geolocation.watchPosition(gpsonSuccess2, onError33, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+	}
+							
+	
+	function onError33(error) {
+	 localStorage.setItem("geostory", "NO")
+	
+	}
+	
+	
+
 	refreshPos = setInterval(function() {
-							// prendi gps
-							//var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+		
+		// prendi gps
+		var watchID = navigator.geolocation.watchPosition(gpsonSuccess2, onError22, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 							 
 		vediofferte()
 							 
@@ -3578,22 +3572,17 @@ function prendicittaid(id){
 									
 							}
 									
-							function gpsonError(){
-									
-								//var lat = "41.889191";
-								//var lng = "12.492475";
-									
-								var lat = localStorage.getItem("lat")
-								var lng = localStorage.getItem("lng")
-									
-								navigator.notification.alert(
-								'Possibile errore GPS, assicurati di avere il gps del telefono attivato.',  // message
-								alertDismissed,         // callback
-								'Attenzione',           // title
-								'Ok'                  // buttonName
-							   );
-									
+							function onError2(error) {
+								//var watchID = navigator.geolocation.watchPosition(onSuccess2, onError3, { timeout: 80000 });
+								navigator.geolocation.watchPosition(gpsonSuccess, onError3, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
 							}
+							
+	
+						    function onError3(error) {
+							 localStorage.setItem("geostory", "NO")
+							
+							 //window.location.href = "index.html";
+						    }
 									
 									
 
