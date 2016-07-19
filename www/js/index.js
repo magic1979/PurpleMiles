@@ -131,7 +131,7 @@ receivedEvent: function(id) {
 		$('#noconn').hide();
 		//controllachat(1)
 		
-		
+		localStorage.setItem("aspetta","0")
 		localStorage.setItem("chatpass", "")
 			
 		playAudioA('successSound');
@@ -1195,7 +1195,9 @@ receivedEvent: function(id) {
 	$(document).on("touchstart tap", "#back6", function(e){
 				   $("#spinner6").show();
 				   
-				   inviachat(6)
+				   if(localStorage.getItem("aspetta")==0){
+				     inviachat(6)
+				   }
 				   
 				   e.stopImmediatePropagation();
 				   
@@ -1210,7 +1212,9 @@ receivedEvent: function(id) {
 	$(document).on("touchstart tap", "#back66", function(e){
 		$("#spinner6").show();
 				   
-		inviachat(66)
+		if(localStorage.getItem("aspetta")==0){
+			inviachat(66)
+		}
 				   
 		e.stopImmediatePropagation();
 				   
@@ -5498,7 +5502,7 @@ function richiesta1() {
 	localStorage.setItem("id_utente_pass1", id_utente_pass1)
 	
 	$("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
-	$("#nickhome66").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
+	$("#nickhome66").html("<font color='#fff'>"+ nick1 +"</font>");
 	$("#nickblob3").html("<font color='#cc33cc' size='4'><b>"+ nick1 +" "+ percentuale1 +"%</b></font>");
 				  
 	if(posticipata1==0){
@@ -5907,7 +5911,7 @@ function richiesta2() {
 				  
 	$("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a></font>");
 	$("#nickhome3").html("<a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a>");
-	$("#nickhome66").html("<font color='#fff'>"+ nick2 +" "+ percentuale1 +"%</font>");
+	$("#nickhome66").html("<font color='#fff'>"+ nick2 +"</font>");
 	$("#nickblob4").html("<font color='#cc33cc' size='4'><b>"+ nick2 +" "+ percentuale2 +"%</b></font>");
 	
 	localStorage.setItem("id_utente_pass2", id_utente_pass2)
@@ -6375,7 +6379,7 @@ function richiesta3() {
 
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a></font>");
 				  $("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a>");
-	              $("#nickhome66").html("<font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font>");
+	              $("#nickhome66").html("<font color='#fff'>"+ nick1 +" </font>");
 				  $("#nickblob5").html("<font color='#cc33cc' size='4'><b>"+ nick3 +" "+ percentuale3 +"%</b></font>");
 	
 	              localStorage.setItem("id_utente_pass3", id_utente_pass3)
@@ -7015,6 +7019,8 @@ function inviachat(id) {
 
 		
 	  $("#spinner6").show();
+									
+	  localStorage.setItem("aspetta","1")
 	}
 	
 	if(id==66){
@@ -7026,6 +7032,8 @@ function inviachat(id) {
 	  indirizzo = indirizzo.replace(/'/g,"777A");
 		
 	  $("#spinner4").show();
+									
+	  localStorage.setItem("aspetta","1")
 									
 	}
 		
@@ -7057,6 +7065,7 @@ function inviachat(id) {
 				  
 				  if(item.Token==1){
 				    playChat1('successChat1');
+				    localStorage.setItem("aspetta","0")
 				  
 				    if(id==6){
 				      document.getElementById("chattext").value="";
