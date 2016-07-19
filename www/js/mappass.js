@@ -387,7 +387,9 @@ function onDeviceReady() {
 		localStorage.setItem("dovesono", "3");
 				   
 	    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
-		//$.mobile.changePage ($("#home4"));
+		
+		var watchID3 = navigator.geolocation.watchPosition(gpsonSuccess3, gpsonError3, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+		
 		$("#spinner4").show();
 		vediofferte()
 
@@ -628,7 +630,9 @@ function onDeviceReady() {
 				   var note = document.getElementById("notepass").value.replace("'", "")
 				   var veicolo = document.getElementById("veicolo7").value.replace("'", "")
 				   
-		
+	var watchID3 = navigator.geolocation.watchPosition(gpsonSuccess3, gpsonError3, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+
+				   
 		if(document.getElementById("datacal7").value == "ORA"){
 				   
 		//alert(document.getElementById("viale3").value.replace("'", ""))
@@ -1158,7 +1162,7 @@ function onDeviceReady() {
 			 //localStorage.setItem("lat", lat)
 			 //localStorage.setItem("lng", lng)
 		
-			  var watchID = navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+			  //var watchID = navigator.geolocation.watchPosition(gpsonSuccess, gpsonError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 		
 
@@ -2009,6 +2013,8 @@ function controllaofferte(){
                   setTimeout( function() {
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
                     vediofferte()
+					
+					var watchID3 = navigator.geolocation.watchPosition(gpsonSuccess3, gpsonError3, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 							 
 							 //
 							 
@@ -2073,7 +2079,7 @@ function vediofferte(){
 
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat3") +"&longitudine="+ localStorage.getItem("lng3") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -3581,16 +3587,32 @@ function prendicittaid(id){
 									
 									
 							}
+							
+							function gpsonSuccess3(position){
 									
+								var ciao = position.coords.latitude;
+								var ciao1 = position.coords.longitude;
+									
+								localStorage.setItem("lat3", ciao)
+								localStorage.setItem("lng3", ciao1)
+								  		
+									
+							}
+									
+							function gpsonError3(){
+									
+							navigator.notification.alert(
+								'Possibile errore GPS, assicurati di avere il gps del telefono attivato.',  // message
+								alertDismissed,         // callback
+								'Attenzione',           // title
+								'Ok'                  // buttonName
+							   );
+									
+							}
+							
 							function gpsonError(){
 									
-								//var lat = "41.889191";
-								//var lng = "12.492475";
-									
-								var lat = localStorage.getItem("lat")
-								var lng = localStorage.getItem("lng")
-									
-								navigator.notification.alert(
+							navigator.notification.alert(
 								'Possibile errore GPS, assicurati di avere il gps del telefono attivato.',  // message
 								alertDismissed,         // callback
 								'Attenzione',           // title
