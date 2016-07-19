@@ -2079,7 +2079,7 @@ function vediofferte(){
 
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat3") +"&longitudine="+ localStorage.getItem("lng3") +"",
+		   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat3") +"&longitudine="+ localStorage.getItem("lng3") +"&trakka=1",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
