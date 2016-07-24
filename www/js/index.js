@@ -259,20 +259,20 @@ receivedEvent: function(id) {
 	
 	//alert(altezzatbl2)
 	
+	var isMobileScreenWidth = (screen.width / window.devicePixelRatio)
 	
-	alert(screen.width)
-	
-	alert(screen.height)
-	
+	var isMobileScreenHeight = (screen.height / window.devicePixelRatio)
 	
 	
-	if(screen.width < 768){
+	alert(isMobileScreenWidth)
+	
+	alert(isMobileScreenHeight)
+	
+	
+	
+	if(isMobileScreenWidth < 768){
 
-		if(screen.height < 530){
-			
-			//alert(altezzatbl2)
-			
-			//alert(screen.height)
+		if(isMobileScreenHeight < 530){
 			
 			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="80px"><p class="testo_sottotitoloIP4">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="80px"><p class="testo_sottotitoloIP4">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		}
@@ -284,13 +284,8 @@ receivedEvent: function(id) {
 	else
 	{
 		
-		if(screen.width > 719){
+		  $("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		
-		   $("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
-		}
-		else{
-			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
-		}
 	}
 	
 	
