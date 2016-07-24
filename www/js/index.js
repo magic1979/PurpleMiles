@@ -264,9 +264,9 @@ receivedEvent: function(id) {
 	var isMobileScreenHeight = (screen.height / window.devicePixelRatio)
 	
 	
-	alert(isMobileScreenWidth)
+	//alert(isMobileScreenWidth)
 	
-	alert(isMobileScreenHeight)
+	//alert(isMobileScreenHeight)
 	
 	
 	
