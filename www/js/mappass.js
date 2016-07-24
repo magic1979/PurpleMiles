@@ -135,6 +135,18 @@ function onDeviceReady() {
 		
 	}
 	
+	
+	/*if(screen.width < 768){
+		
+	}
+	else
+	{
+		
+		$("#da").html("<img src='img/ico_start3.png' width='85px'>");
+		
+	}*/
+	
+	
 	$("#tblhome").fadeIn("slow")
 	localStorage.setItem("aspetta","0")
 	
@@ -1223,9 +1235,17 @@ function CenterControl(controlDiv, map) {
 	controlText.style.paddingRight = '5px';
 	//controlText.innerHTML = '<table width="100%" class="xalto" border="0"><tr><td align="right">&nbsp;<br><br><br></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_anteprima1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6"><table border="0" width="100%" align="center" valign="center" class="bannertbl"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl2"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="s_partenza" valign="center"><b>Scegli la partenza</b><br></div><div id="s_arrivo" style="display:none" valign="center"><b>Scegli l\'arrivo</b></div></font><br></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table>';
 	
-	controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
 	
+	//if(screen.width < 768){
+		controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
+	/*}
+	else
+	{
+		controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="85px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="105px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="85px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="85px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="85px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="85px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
+		
+	}*/
 	
+
 	controlUI.appendChild(controlText);
 	
 	//<td align="center" ><a data-role="button" id="piu" href="#" data-theme="b" class="bottoni"><font color="#fff">&nbsp;+&nbsp;</font></a></td>
@@ -2725,6 +2745,18 @@ function chatting(id) {
 				  
 				  var indirizzo2 = item.messaggio.replace("777A","'");
 				  
+				  indirizzo = indirizzo.replace("777B", "+");
+				  
+				  indirizzo = indirizzo.replace("777C", "$");
+				  
+				  indirizzo = indirizzo.replace("777D", "!");
+				  
+				  indirizzo = indirizzo.replace("777E", "(");
+				  
+				  indirizzo = indirizzo.replace("777F", ")");
+				  
+				  indirizzo = indirizzo.replace("777F", ":");
+				  
 				  if(item.nick==localStorage.getItem("nick")){
 				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='left' class='tabella'><tr><td align='center'><div class='custom-pass33'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
 				  $("#offerta6").append("<div class='bubbledLeft'>"+ indirizzo2 +"</div>")
@@ -2791,9 +2823,23 @@ function inviachat() {
 	
 	//indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
 									
-	indirizzo = indirizzo.replace(/[&\/\\#,+()$~%.:*<>{}]/g,'');
-									
+	indirizzo = indirizzo.replace(/[&\/\\#,~%.*<>{}]/g,'');
+	
 	indirizzo = indirizzo.replace(/'/g,"777A");
+								  
+	indirizzo = indirizzo.replace("+","777B");
+								  
+	indirizzo = indirizzo.replace("$","777C");
+								  
+	indirizzo = indirizzo.replace("!","777D");
+								  
+	indirizzo = indirizzo.replace("(","777E");
+								  
+	indirizzo = indirizzo.replace(")","777F");
+								  
+	indirizzo = indirizzo.replace(":","777F");
+								  
+								  
 	
 	if (indirizzo == "") {
 		navigator.notification.alert(

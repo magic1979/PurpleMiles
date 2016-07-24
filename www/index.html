@@ -1024,8 +1024,38 @@
 						  text-shadow: 1px 1px 2px #555555;
 					  }
 					  
+					  .testo_biancoIP4 {
+						  font-family: 'Open Sans', sans-serif;
+						  font-size: 13px;
+						  color: #FFFFFF;
+						  text-shadow: 1px 1px 2px #555555;
+					  }
+					  
+					  .testo_biancoIPAD {
+						  font-family: 'Open Sans', sans-serif;
+						  font-size: 26px;
+						  color: #FFFFFF;
+						  text-shadow: 1px 1px 2px #555555;
+					  }
+					  
 					  .testo_sottotitolo {
 						  font-size: 16px;
+						  font-family: 'Open Sans', sans-serif;
+						  font-weight: bold;
+						  color: #873117;
+						  text-shadow: 2px 2px 4px #b1b1b1;
+					  }
+					  
+					  .testo_sottotitoloIP4 {
+						  font-size: 13px;
+						  font-family: 'Open Sans', sans-serif;
+						  font-weight: bold;
+						  color: #873117;
+						  text-shadow: 2px 2px 4px #b1b1b1;
+					  }
+					  
+					  .testo_sottotitoloIPAD {
+						  font-size: 26px;
 						  font-family: 'Open Sans', sans-serif;
 						  font-weight: bold;
 						  color: #873117;
@@ -1306,7 +1336,14 @@
 						   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);*/
 						  -webkit-box-shadow: 0 4px 6px -2px rgba(0,0,0,0.6);
 						  -moz-box-shadow: 0 4px 6px -2px rgba(0,0,0,0.6);
-        box-shadow: 0 4px 6px -2px rgba(0,0,0,0.6);
+                          box-shadow: 0 4px 6px -2px rgba(0,0,0,0.6);
+					  }
+					  
+					  .linkchat {
+						  text-decoration: none;
+						  text-shadow:0 0 0;
+						  
+						  color:#FFF;
 					  }
 
 
@@ -2013,6 +2050,10 @@
 						<a id="close2" style="display:none"><img src="img/ico_trash.png" width="45"></a>
 						<a id="close3" style="display:none"><img src="img/ico_trash.png" width="45"></a>
 						
+						<a id="nascondi1" style="display:none"><img src="img/ico_trash.png" width="45"></a>
+						<a id="nascondi2" style="display:none"><img src="img/ico_trash.png" width="45"></a>
+						<a id="nascondi3" style="display:none"><img src="img/ico_trash.png" width="45"></a>
+						
 						<a id="feedo1" style="display:none"><img src="img/ico_feedback.png" width="45"></a>
 						<a id="feedo2" style="display:none"><img src="img/ico_feedback.png" width="45"></a>
 						<a id="feedo3" style="display:none"><img src="img/ico_feedback.png" width="45"></a>
@@ -2091,8 +2132,57 @@
 			
 				
 			<div id="offerte5" ></div>
+			
+			<a href="#mypanelH5" data-role=button id=btnpanel3 data-theme="b" style="display:none"></a>
+			
+			<div data-role="panel" id="mypanelH5" style="overflow-y: scroll" data-position="right" data-display="overlay" width="100%" data-theme="b">
+				<center>
+					
+					<table border="0" width="100%" align="center">
+						<tr>
+							<td align="center" width="25%">
+								<img src="img/ico_chat2.png" width="40">
+									</td>
+							<td align="center" width="50%">
+								<table class="tabella1"><tr><td><font color="#FFF"><div id="nickhome5"></div></font></td></tr></table>
+							</td>
+							<td align="center" width="25%">
+								<a id="chiudichat5" href="#" data-rel="close"><img src="img/ico_close1.png" width="40"></a>
+							</td>
+							
+						</tr>
+					</table>
+					
+					<div class="spinner" id="spinner5"></div>
+					
+					<form name="formia7" action="entra.asp" method="post">
+						<table id="spazioipad" height="30px" class="divchat"><tr><td></td></tr></table>
+						
+						<table id="tblchat" width="90%" align="center" class="tabellaA">
+							<tr>
+								<td width="100%" align="center" >
+									<textarea id="chattext5" cols="30" rows="2" class="scrivo" placeholder="Scrivi messaggio"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td width="100%" align="center">
+									<a id="back65" href="#" data-role="button" data-theme="b" class="custom-btn33">Invia messaggio</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="100%" align="center" >
+									<div id="offerta65" ></div>
+								</td>
+							</tr>
+							
+						</table>
+						
+					</form>
+					</div>
 
 		</div>
+		
 		
 		<div data-role=page id=home6 class="divchat">
 			<!--<audio id="successChat1" src="sound/send_chat.mp3" type="audio/mpeg" ></audio>
@@ -2152,6 +2242,7 @@
 
 			</form>-->
 		</div>
+		
 
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>

@@ -183,8 +183,17 @@
 			-moz-border-radius: 8px; /* firefox */
 			-webkit-border-radius: 8px; /* safari, chrome */
 		}
+		
 		.custom-btn {
 			width: 280px;
+		}
+		
+		.custom-btnIPAD {
+			width: 90%;
+		}
+		
+		.custom-btnIPAD2 {
+			width: 95%;
 		}
 		
 		.custom-btn2 {
@@ -358,11 +367,16 @@ a {text-decoration:none;}
 			<img src="img/Logo.png" width="160px"><br>
 
 
-			<table id="formreg" align="center" width="90%">
+			<table id="formreg" align="center" width="90%" border="0">
+				<tr>
+					<td colspan="2" align="left">
+						<font size="4">Email</font>
+					</td>
+				</tr>
 				<tr id="campireg">
-					<td colspan="2" width="320px" align="left">
+					<td colspan="2" width="320px" align="center">
 						 <form name="formia2" action="entra2.asp" method="post">
-						 <font size="4">Email</font><br><input type="text" data-role="none" name="email" id="email" value="" placeholder="Inserire la email" class="scrivo">
+						 <input type="text" data-role="none" name="email" id="email" value="" placeholder="Inserire la email" class="scrivo">
 						
 					</td>
 				</tr>
@@ -373,7 +387,12 @@ a {text-decoration:none;}
 				</tr>
 				<tr>
 					<td colspan="2" align="left">
-						<font size="4">Password</font><br><input type="password" data-role="none" name="password" id="password" value="" placeholder="Inserire la password" class="scrivo">
+						<font size="4">Password</font>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="password" data-role="none" name="password" id="password" value="" placeholder="Inserire la password" class="scrivo">
 					</td>
 				</tr>
 				<tr>

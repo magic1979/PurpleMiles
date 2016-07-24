@@ -34,6 +34,30 @@ function onDeviceReady() {
 	var IDPage;
 	var db;
 	var dbCreated = false;
+	
+	if(screen.width < 768){
+		
+		if(screen.height < 500){
+			
+			
+		}
+		else{
+			
+			
+		}
+		
+	}
+	else
+	{
+		$("#accedi").removeClass("custom-btn").addClass("custom-btnIPAD");
+		$("#impostazioni").removeClass("custom-btn").addClass("custom-btnIPAD");
+		$("#recuperopsw").removeClass("custom-btn").addClass("custom-btnIPAD");
+		$("#regsito").removeClass("custom-btn").addClass("custom-btnIPAD");
+		
+		$("#legenda").removeClass("custom-btn").addClass("custom-btnIPAD2");
+		$("#conferma").removeClass("custom-btn").addClass("custom-btnIPAD2");
+
+	}
 
 	
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
