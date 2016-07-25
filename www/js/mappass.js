@@ -2700,7 +2700,7 @@ function vediofferte(){
 		vediofferte()
 							 
 	    controllachat(2)
-	}, 6000);
+	}, 10000);
 	
 	
 }
@@ -2727,6 +2727,7 @@ function chatting(id) {
 		   jsonp: 'callback',
 		   crossDomain: true,
 		   success:function(result){
+			   $("#nickhome6").html(item.nick_destinatario);
 		   
 		   if(localStorage.getItem("chatpass")===JSON.stringify(result)){
 
@@ -2743,7 +2744,7 @@ function chatting(id) {
 			   if(item.Token==1){
 				  $("#nickhome6").html(item.nick_destinatario);
 				  
-				  var indirizzo2 = item.messaggio.replace("777A","'");
+				  var indirizzo = item.messaggio.replace("777A","'");
 				  
 				  indirizzo = indirizzo.replace("777B", "+");
 				  
@@ -2759,11 +2760,11 @@ function chatting(id) {
 				  
 				  if(item.nick==localStorage.getItem("nick")){
 				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='left' class='tabella'><tr><td align='center'><div class='custom-pass33'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
-				  $("#offerta6").append("<div class='bubbledLeft'>"+ indirizzo2 +"</div>")
+				  $("#offerta6").append("<div class='bubbledLeft'>"+ indirizzo +"</div>")
 				  }
 				  else{
 				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='right' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
-				  $("#offerta6").append("<div class='bubbledRight'>"+ indirizzo2 +"</div>")
+				  $("#offerta6").append("<div class='bubbledRight'>"+ indirizzo +"</div>")
 				  
 				  playChat2('successChat2');
 				  

@@ -4319,7 +4319,7 @@ function timer(){
 									
 		setTimeout(function() {
 		  timer();
-		}, 5000);
+		}, 10000);
 									
 	}
 						
@@ -7083,7 +7083,7 @@ function lista5() {
 								localStorage.setItem("chatpass5", "")
 								$("#btnpanel3").click();
 								 
-								chatting5(item.id_richiesta)
+								chatting5(0,item.id_richiesta)
 										
 								e.stopImmediatePropagation();
 										
@@ -7419,7 +7419,7 @@ function chatting5(pass,id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
+		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ id +"&last_id=0",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
