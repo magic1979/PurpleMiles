@@ -259,20 +259,21 @@ receivedEvent: function(id) {
 	
 	//alert(altezzatbl2)
 	
+	
+	//alert(screen.width)
+	
+	//alert(screen.height)
+	
+	
 	var isMobileScreenWidth = (screen.width / window.devicePixelRatio)
 	
 	var isMobileScreenHeight = (screen.height / window.devicePixelRatio)
 	
 	
-	//alert(isMobileScreenWidth)
 	
-	//alert(isMobileScreenHeight)
-	
-	
-	
-	if(isMobileScreenWidth < 768){
+	if(isMobileScreenWidth< 768){
 
-		if(isMobileScreenHeight < 530){
+		if(isMobileScreenHeight < 540){
 			
 			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="80px"><p class="testo_sottotitoloIP4">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="80px"><p class="testo_sottotitoloIP4">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		}
@@ -284,8 +285,13 @@ receivedEvent: function(id) {
 	else
 	{
 		
-		  $("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
+		if(screen.width > 719){
 		
+		   $("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
+		}
+		else{
+			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
+		}
 	}
 	
 	
@@ -7236,7 +7242,7 @@ function chatting(pass,id) {
 				
 				  if(item.nick==localStorage.getItem("nick")){
 				   
-				       var indirizzo2 = item.messaggio.replace("777A","'");
+				       var indirizzo = item.messaggio.replace("777A","'");
 				   
 												 
 												 indirizzo = indirizzo.replace("777B", "+");
@@ -7251,11 +7257,11 @@ function chatting(pass,id) {
 												 
 												 indirizzo = indirizzo.replace("777F", ":");
 
-				       $("#offerta6").append("<div class='bubbledLeft'>"+ indirizzo2 +"</div>")
+				       $("#offerta6").append("<div class='bubbledLeft'>"+ indirizzo +"</div>")
 				    }
 				  else{
 				   
-				        var indirizzo2 = item.messaggio.replace("777A","'");
+				        var indirizzo = item.messaggio.replace("777A","'");
 				   
 					indirizzo = indirizzo.replace("777B", "+");
 				   
@@ -7269,7 +7275,7 @@ function chatting(pass,id) {
 				   
 					indirizzo = indirizzo.replace("777F", ":");
 
-				        $("#offerta6").append("<div class='bubbledRight'>"+ indirizzo2 +"</div>")
+				        $("#offerta6").append("<div class='bubbledRight'>"+ indirizzo +"</div>")
 				   
 				    }
 				  
@@ -7340,17 +7346,17 @@ function chatting66(pass,id) {
 				  
 				     var indirizzo2 = item.messaggio.replace("777A","'");
 				  
-				  indirizzo = indirizzo.replace("777B", "+");
+				  indirizzo2 = indirizzo2.replace("777B", "+");
 				  
-				  indirizzo = indirizzo.replace("777C", "$");
+				  indirizzo2 = indirizzo2.replace("777C", "$");
 				  
-				  indirizzo = indirizzo.replace("777D", "!");
+				  indirizzo2 = indirizzo2.replace("777D", "!");
 				  
-				  indirizzo = indirizzo.replace("777E", "(");
+				  indirizzo2 = indirizzo2.replace("777E", "(");
 				  
-				  indirizzo = indirizzo.replace("777F", ")");
+				  indirizzo2 = indirizzo2.replace("777F", ")");
 				  
-				  indirizzo = indirizzo.replace("777F", ":");
+				  indirizzo2 = indirizzo2.replace("777F", ":");
 				  
 				    $("#offerta66").append("<div class='bubbledLeft'>"+ indirizzo2 +"</div>")
 				  }
@@ -7358,17 +7364,17 @@ function chatting66(pass,id) {
 				  
 				    var indirizzo2 = item.messaggio.replace("777A","'");
 				  
-				  indirizzo = indirizzo.replace("777B", "+");
+				  indirizzo2 = indirizzo2.replace("777B", "+");
 				  
-				  indirizzo = indirizzo.replace("777C", "$");
+				  indirizzo2 = indirizzo2.replace("777C", "$");
 				  
-				  indirizzo = indirizzo.replace("777D", "!");
+				  indirizzo2 = indirizzo2.replace("777D", "!");
 				  
-				  indirizzo = indirizzo.replace("777E", "(");
+				  indirizzo2 = indirizzo2.replace("777E", "(");
 				  
-				  indirizzo = indirizzo.replace("777F", ")");
+				  indirizzo2 = indirizzo2.replace("777F", ")");
 				  
-				  indirizzo = indirizzo.replace("777F", ":");
+				  indirizzo2 = indirizzo2.replace("777F", ":");
 				  
 				    $("#offerta66").append("<div class='bubbledRight'>"+ indirizzo2 +"</div>")
 				  }
@@ -7438,7 +7444,7 @@ function chatting5(pass,id) {
 				  
 				  if(item.nick==localStorage.getItem("nick")){
 				  
-				  var indirizzo2 = item.messaggio.replace("777A","'");
+				  var indirizzo = item.messaggio.replace("777A","'");
 				   
 				   indirizzo = indirizzo.replace("777B", "+");
 				   
@@ -7452,11 +7458,11 @@ function chatting5(pass,id) {
 				   
 				   indirizzo = indirizzo.replace("777F", ":");
 				  
-				  $("#offerta65").append("<div class='bubbledLeft'>"+ indirizzo2 +"</div>")
+				  $("#offerta65").append("<div class='bubbledLeft'>"+ indirizzo +"</div>")
 				  }
 				  else{
 				  
-				  var indirizzo2 = item.messaggio.replace("777A","'");
+				  var indirizzo = item.messaggio.replace("777A","'");
 				   
 				   indirizzo = indirizzo.replace("777B", "+");
 				   
@@ -7471,7 +7477,7 @@ function chatting5(pass,id) {
 				   indirizzo = indirizzo.replace("777F", ":");
 				   
 				  
-				  $("#offerta65").append("<div class='bubbledRight'>"+ indirizzo2 +"</div>")
+				  $("#offerta65").append("<div class='bubbledRight'>"+ indirizzo +"</div>")
 				  
 				  }
 				  

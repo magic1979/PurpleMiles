@@ -9,7 +9,7 @@
 		<author href="http://purplemiles.com" email="demo@purplemiles.com">
 			MondoWeb srl
 		</author>
-		<preference name="phonegap-version" value="cli-6.1.0" />
+		<preference name="phonegap-version" value="cli-5.2.0" />
 		<preference name="orientation" value="portrait" />
 		<preference name="fullscreen" value="false" />
 		<preference name="target-device" value="universal" />
