@@ -10,6 +10,26 @@ function onDeviceReady() {
 	
 	StatusBar.hide();
 	
+	
+	$("#viale").blur(function() {
+		$("#btninizia").removeClass("divAA").addClass("div55");
+	});
+	
+	
+	$("#viale").focus(function() {
+		$("#btninizia").removeClass("div55").addClass("divAA");
+	});
+	
+	$("#destinazione").blur(function() {
+		$("#btninizia").removeClass("divAA").addClass("div55");
+	});
+	
+	
+	$("#destinazione").focus(function() {
+		$("#btninizia").removeClass("div55").addClass("divAA");
+	});
+	
+	
 	document.addEventListener('backbutton', function(e) {
 							  
 	        navigator.notification.confirm(

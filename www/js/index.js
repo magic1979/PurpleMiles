@@ -42,6 +42,16 @@ receivedEvent: function(id) {
 	StatusBar.hide();
 	
 	
+	$("#modificastart").blur(function() {
+		$("#btninizia").removeClass("divAA").addClass("div55");
+	});
+	
+	
+	$("#modificastart").focus(function() {
+		$("#btninizia").removeClass("div55").addClass("divAA");
+	});
+	
+	
 	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	//ANDROID -------------------------------------------------------
@@ -269,6 +279,7 @@ receivedEvent: function(id) {
 	var isMobileScreenWidth = (screen.width / window.devicePixelRatio)
 	
 	var isMobileScreenHeight = (screen.height / window.devicePixelRatio)
+	
 	
 	
 	if(isMobileScreenWidth < 768){
@@ -731,6 +742,8 @@ receivedEvent: function(id) {
 				   
 				   $("#btnGPS").removeClass("button_gps").addClass("button_gps_fade");
 				   $("#Modifica").removeClass("button_gps_fade").addClass("button_gps");
+				   
+				   $("#btninizia").removeClass("divAA").addClass("div55");
 				   
 				   
 				   buttongps();
