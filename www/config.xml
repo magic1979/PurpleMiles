@@ -11,7 +11,8 @@
 		</author>
 		<preference name="phonegap-version" value="cli-6.1.0" />
 		<preference name="orientation" value="portrait" />
-		<preference name="fullscreen" value="true" />
+		<preference name="android-windowSoftInputMode" value="adjustResize" />
+		<preference name="fullscreen" value="false" />
 		<preference name="target-device" value="universal" />
 		<preference name="webviewbounce" value="true" />
 		<preference name="prerendered-icon" value="true" />
@@ -43,7 +44,6 @@
 		<preference name="disable-cursor" value="true" />
 		<preference name="StatusBarOverlaysWebView" value="true" />
 		<preference name="GapBetweenPages" value="0" />
-		<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
 		<gap:platform name="android" />
 		<feature name="http://api.phonegap.com/1.0/battery"/>
 		<feature name="http://api.phonegap.com/1.0/geolocation"/>
