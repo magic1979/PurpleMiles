@@ -1142,17 +1142,18 @@
 					  
 					  <script type="text/javascript">
 						  
-						  
 						  // Functions to simulate "refresh" and "load" on pull-down/pull-up
 						  var generatedCount=0;
 						  function pullDownAction(theScroller) {
 							  //setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
-										 
+							  
 									$("#spinner4").show();
 									localStorage.setItem("risppass", "")
 									vediofferte()
 									
-									myScroll.refresh();
+									setTimeout(function () {
+									  myScroll.refresh();
+									}, 1000);
 									
 									theScroller.refresh();		// Remember to refresh when contents are loaded (ie: on ajax completion)
 										 
@@ -1330,7 +1331,10 @@
 																						  
 						  }
 						  
-						 window.addEventListener('load', function() {init()}, false);
+						  
+						 
+						  window.addEventListener('load', function() {init()}, false);
+						 
 					  };
 					  
 					  

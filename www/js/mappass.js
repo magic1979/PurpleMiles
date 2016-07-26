@@ -1137,6 +1137,7 @@ function onDeviceReady() {
 	var item2;
 	var item3;
 	var myScroll;
+	var myScroll2;
 	
 
 	
@@ -2062,6 +2063,7 @@ function vediofferte(){
 	//alert("Vedo");
 	var somma;
 	var tempistica;
+	var conta = 0;
 	
 	localStorage.setItem("tempor","0")
 	
@@ -2152,7 +2154,7 @@ function vediofferte(){
 				   //<tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr>
 				  }
 				  else{
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><div id='puntini' >&nbsp;ATTENDERE<br>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><div id='puntini'  >&nbsp;ATTENDERE<br>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 					
 					//<a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;    class='loading'
 				  }
@@ -2637,8 +2639,52 @@ function vediofferte(){
 				  
 				  $("#offerte4").html("<br><br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr> <td align='center'><br></td></tr><tr><td align='center'>Nessuna offerta in arrivo<br><br></td></tr></table>");
 				}
+				   
+				   
+			  conta = conta + 1;
+				   
 				  
 			});
+		   
+		   
+		   if(conta>1){
+
+		   if(localStorage.getItem("scroller")=="0"){
+		   /////////SCROLLER///////////////
+		   
+		   setTimeout(function() {
+					  
+					  myScroll = new IScroll('#wrapper', { click: true });
+					  
+					  
+					  setTimeout (function(){
+						 myScroll.refresh();
+								  
+					   }, 500);
+					  
+					  
+					  localStorage.setItem("scroller","1")
+					  //document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+					  
+					  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+			}, 500);
+		   
+		   ////////////////////////////////
+		   }
+		   else{
+		       setTimeout (function(){
+					   myScroll.refresh();
+					   
+			   }, 1000);
+		   }
+		   
+		   }
+		   else{
+		       myScroll = "";
+		       localStorage.setItem("scroller","0")
+		   }
+		   //fine conta
+		   
 		   
 		   }
 		   
@@ -2659,32 +2705,6 @@ function vediofferte(){
 		   dataType:"jsonp"});
 	
 
-	
-	if(localStorage.getItem("scroller")=="0"){
-	/////////SCROLLER///////////////
-	
-	setTimeout(function() {
-
-		myScroll = new IScroll('#wrapper', { click: true });
-			   
-		setTimeout (function(){
-			myScroll.refresh();
-		}, 1000);
-			   
-		
-		localStorage.setItem("scroller","1")
-		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
-			   
-		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-	}, 1000);
-
-	////////////////////////////////
-	}
-	else{
-		setTimeout (function(){
-		   myScroll.refresh();
-		}, 1000);
-	}
 	
 	
 	
