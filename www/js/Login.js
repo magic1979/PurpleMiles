@@ -35,6 +35,7 @@ function onDeviceReady() {
 	var db;
 	var dbCreated = false;
 	
+	
 	if(screen.width < 768){
 		
 		if(screen.height < 500){

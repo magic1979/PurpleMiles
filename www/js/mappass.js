@@ -120,7 +120,6 @@ function onDeviceReady() {
 	var item;
 	var autista;
 	var richiesta;
-	var myScroll;
 	
 	var height = getRealContentHeight()-60;
 	$("#tblhome").attr("height",height);
@@ -404,6 +403,9 @@ function onDeviceReady() {
 	    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 		//$.mobile.changePage ($("#home4"));
 		$("#spinner4").show();
+				   
+		localStorage.setItem("scroller","0")
+				   
 		vediofferte()
 
 				   
@@ -1134,6 +1136,7 @@ function onDeviceReady() {
 	var item1;
 	var item2;
 	var item3;
+	var myScroll;
 	
 
 	
@@ -1175,9 +1178,10 @@ function onDeviceReady() {
 		
 			  var watchID = navigator.geolocation.watchPosition(gpsonSuccess, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
-		
 
-            controllaofferte()
+		    localStorage.setItem("scroller","0")
+		
+			controllaofferte()
 		
 			controllachat(1)
     
@@ -2148,9 +2152,9 @@ function vediofferte(){
 				   //<tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr>
 				  }
 				  else{
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><div id='puntini' class='loading'>&nbsp;ATTENDERE<br>L'autista sta valutando la richiesta</div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><div id='puntini' >&nbsp;ATTENDERE<br>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 					
-					//<a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;
+					//<a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;    class='loading'
 				  }
 				  
 				    $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
@@ -2654,6 +2658,34 @@ function vediofferte(){
 		   },
 		   dataType:"jsonp"});
 	
+
+	
+	if(localStorage.getItem("scroller")=="0"){
+	/////////SCROLLER///////////////
+	
+	setTimeout(function() {
+
+		myScroll = new IScroll('#wrapper', { click: true });
+			   
+		setTimeout (function(){
+			myScroll.refresh();
+		}, 1000);
+			   
+		
+		localStorage.setItem("scroller","1")
+		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+			   
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	}, 1000);
+
+	////////////////////////////////
+	}
+	else{
+		setTimeout (function(){
+		   myScroll.refresh();
+		}, 1000);
+	}
+	
 	
 	
 	function playAudio(id) {
@@ -2671,19 +2703,19 @@ function vediofferte(){
 	
 	
 	function gpsonSuccess2(position){
-									
+		
 		var ciao = position.coords.latitude;
 		var ciao1 = position.coords.longitude;
-			
+		
 		localStorage.setItem("lat3", ciao)
-		localStorage.setItem("lng3", ciao1)	
-			
+		localStorage.setItem("lng3", ciao1)
+		
 	}
-									
+	
 	function onError22(error) {
 		navigator.geolocation.watchPosition(gpsonSuccess2, onError33, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
 	}
-							
+	
 	
 	function onError33(error) {
 	 localStorage.setItem("geostory", "NO")
@@ -2727,7 +2759,6 @@ function chatting(id) {
 		   jsonp: 'callback',
 		   crossDomain: true,
 		   success:function(result){
-			   $("#nickhome6").html(item.nick_destinatario);
 		   
 		   if(localStorage.getItem("chatpass")===JSON.stringify(result)){
 
@@ -2742,7 +2773,7 @@ function chatting(id) {
 				  
 				  
 			   if(item.Token==1){
-				  $("#nickhome6").html(item.nick_destinatario);
+				  $("#nickhome6").html(item.nick);
 				  
 				  var indirizzo = item.messaggio.replace("777A","'");
 				  
@@ -2766,8 +2797,6 @@ function chatting(id) {
 				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='right' class='tabella'><tr><td align='center'><div class='custom-pass22'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
 				  $("#offerta6").append("<div class='bubbledRight'>"+ indirizzo +"</div>")
 				  
-				  playChat2('successChat2');
-				  
 				  }
 				  
 				}
@@ -2777,6 +2806,8 @@ function chatting(id) {
 				  }
 				  
 				});
+		   
+		   playChat2('successChat2');
 		   
 		   }
 		   

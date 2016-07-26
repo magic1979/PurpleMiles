@@ -205,6 +205,7 @@ receivedEvent: function(id) {
 				 function (err) { console.log("playAudio():Audio Error: " + err); }
 		);
 			   // Play audio
+		my_media.setVolume('7.0');
 		my_media.play();
 		
 		setTimeout(function() {
@@ -270,8 +271,7 @@ receivedEvent: function(id) {
 	var isMobileScreenHeight = (screen.height / window.devicePixelRatio)
 	
 	
-	
-	if(isMobileScreenWidth< 768){
+	if(isMobileScreenWidth < 768){
 
 		if(isMobileScreenHeight < 540){
 			
@@ -7083,7 +7083,7 @@ function lista5() {
 								localStorage.setItem("chatpass5", "")
 								$("#btnpanel3").click();
 								 
-								chatting5(0,item.id_richiesta)
+								chatting5(item.id_richiesta)
 										
 								e.stopImmediatePropagation();
 										
@@ -7419,7 +7419,7 @@ function chatting5(pass,id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ id +"&last_id=0",
+		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -7429,7 +7429,7 @@ function chatting5(pass,id) {
 		   
 		   if(localStorage.getItem("chatpass5")==JSON.stringify(result)){
 		   
-		   $("#spinner5").hide();
+		     $("#spinner5").hide();
 		   }
 		   else{
 		   $("#offerta65").html("");
@@ -7458,7 +7458,7 @@ function chatting5(pass,id) {
 				   
 				   indirizzo = indirizzo.replace("777F", ":");
 				  
-				  $("#offerta65").append("<div class='bubbledLeft'>"+ indirizzo +"</div>")
+				   $("#offerta65").append("<div class='bubbledLeft'>"+ indirizzo +"</div>")
 				  }
 				  else{
 				  
@@ -7477,8 +7477,8 @@ function chatting5(pass,id) {
 				   indirizzo = indirizzo.replace("777F", ":");
 				   
 				  
-				  $("#offerta65").append("<div class='bubbledRight'>"+ indirizzo +"</div>")
-				  
+				   $("#offerta65").append("<div class='bubbledRight'>"+ indirizzo +"</div>")
+				   
 				  }
 				  
 				  }

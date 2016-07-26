@@ -1111,7 +1111,7 @@
 					  
 					  .loading:after {
 						  overflow: hidden;
-						  display: inline-block;
+						  /*display: inline-block;*/
 						  vertical-align: bottom;
 						  -webkit-animation: ellipsis steps(5,end) 900ms infinite;
 						  animation: ellipsis steps(5,end) 900ms infinite;
@@ -1137,10 +1137,11 @@
 					  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJOv5sDH5zm_JjcuHEfkhk1DtF6XJVXdE&callback=initMap"
 						  type="text/javascript"></script>
 					  
-					  <!--<script type="text/javascript" src="js/iscroll.js"></script>-->
+					  <script type="text/javascript" src="js/iscroll.js"></script>
 					  
 					  
 					  <script type="text/javascript">
+						  
 						  
 						  // Functions to simulate "refresh" and "load" on pull-down/pull-up
 						  var generatedCount=0;
@@ -1150,7 +1151,9 @@
 									$("#spinner4").show();
 									localStorage.setItem("risppass", "")
 									vediofferte()
-										 
+									
+									myScroll.refresh();
+									
 									theScroller.refresh();		// Remember to refresh when contents are loaded (ie: on ajax completion)
 										 
 								//}, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
@@ -1160,7 +1163,7 @@
 						  setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
 							theScroller.refresh();		// Remember to refresh when contents are loaded (ie: on ajax completion)
 									 
-							}, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
+						  }, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
 					  }
 					  
 					  
@@ -1326,7 +1329,8 @@
 																						  });
 																						  
 						  }
-						  window.addEventListener('load', function() {init()}, false);
+						  
+						 window.addEventListener('load', function() {init()}, false);
 					  };
 					  
 					  
