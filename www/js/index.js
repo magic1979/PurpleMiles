@@ -42,14 +42,28 @@ receivedEvent: function(id) {
 	StatusBar.hide();
 	
 	
-	$("#modificastart").blur(function() {
+	/*$("#modificastart").blur(function() {
 		$("#btninizia").removeClass("divAA").addClass("div55");
 	});
 	
 	
 	$("#modificastart").focus(function() {
 		$("#btninizia").removeClass("div55").addClass("divAA");
-	});
+	});*/
+	
+	
+		window.addEventListener('native.keyboardhide', keyboardHideHandler);
+  
+		function keyboardHideHandler(e){
+		  $("#btninizia").removeClass("divAA").addClass("div55");
+		}
+	  
+	  window.addEventListener('native.keyboardshow', keyboardShowHandler);
+  
+		function keyboardShowHandler(e){
+			$("#btninizia").removeClass("div55").addClass("divAA");
+		}
+		
 	
 	
 	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });

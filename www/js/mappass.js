@@ -11,8 +11,7 @@ function onDeviceReady() {
 	StatusBar.hide();
 	
 
-	
-	$("#viale").blur(function() {
+	/*$("#viale").blur(function() {
 		$("#btninizia").removeClass("divAA").addClass("div55");
 	});
 	
@@ -28,8 +27,21 @@ function onDeviceReady() {
 	
 	$("#destinazione").focus(function() {
 		$("#btninizia").removeClass("div55").addClass("divAA");
-	});
+	});*/
 	
+	
+	window.addEventListener('native.keyboardhide', keyboardHideHandler);
+  
+	  function keyboardHideHandler(e){
+		  $("#btninizia").removeClass("divAA").addClass("div55");
+	  }
+	  
+	  window.addEventListener('native.keyboardshow', keyboardShowHandler);
+  
+	 function keyboardShowHandler(e){
+		 $("#btninizia").removeClass("div55").addClass("divAA");
+	 }
+		
 	
 	
 	document.addEventListener('backbutton', function(e) {
