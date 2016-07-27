@@ -538,27 +538,45 @@ function onDeviceReady() {
 	});
 	
 	
-	$(document).on("touchstart", "#a", function(e){
+	$(document).on("touchstart", "#a2", function(e){
 	localStorage.setItem("dovesono", "1");
 	localStorage.setItem("destination", "1")
     localStorage.setItem("pagebtn", "a")
 	
-	$("#viale").hide();
-	$("#tblviale").hide();
+	document.getElementById("datacal").value = "";
 				   
-	$("#destinazione").show();
-	$("#tbldestinazione").show();
+		$("#Orario").html("<option selected>--</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option>");
+		$("#Minuti").html("<option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>");
 				   
-	//$("#da").removeClass("custom-pass11").addClass("custom-pass1");
-	//$("#a").removeClass("custom-pass1").addClass("custom-pass11");
+		$("#Orario").selectmenu("refresh");
+		$("#Minuti").selectmenu("refresh");
+	
+		$("#viale").hide();
+		$("#tblviale").hide();
 				   
-				   e.stopImmediatePropagation();
+		$("#destinazione").show();
+		$("#tbldestinazione").show();
+	
+		$("#s_partenza").hide();
+		$("#s_arrivo").show();
+		
+	     onResume();
+		 
+		 $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
+		 $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
 				   
-				   e.preventDefault();
+		setTimeout(function() {
+			  $("#ricarica").tap();
+	    },2000);
+
 				   
-				   return false;
+	  e.stopImmediatePropagation();
 				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	  e.preventDefault();
+				   
+	  return false;
+				   
+	  if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
 	$(document).on("touchstart", "#a1", function(e){
