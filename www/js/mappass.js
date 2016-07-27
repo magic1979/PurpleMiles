@@ -10,6 +10,7 @@ function onDeviceReady() {
 	
 	StatusBar.hide();
 	
+
 	
 	$("#viale").blur(function() {
 		$("#btninizia").removeClass("divAA").addClass("div55");
@@ -28,6 +29,7 @@ function onDeviceReady() {
 	$("#destinazione").focus(function() {
 		$("#btninizia").removeClass("div55").addClass("divAA");
 	});
+	
 	
 	
 	document.addEventListener('backbutton', function(e) {
