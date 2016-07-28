@@ -54,6 +54,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc33cc', end
   text-shadow:0 0 0;
 }
 
+.button_small_green {
+	font-family: 'Open Sans', sans-serif;
+	color: #FFFFFF !important;
+	font-size: 13px;
+	text-shadow: 1px 1px 2px #474747;
+	box-shadow: 0px 1px 3px #616161;
+	padding: 5px 15px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #FFFFFF;
+	background: #CC33CC;
+	background: linear-gradient(top,  #00aa08,  #005705);
+	background: -ms-linear-gradient(top,  #00aa08,  #005705);
+	background: -webkit-gradient(linear, left top, left bottom, from(#00aa08), to(#005705));
+	background: -moz-linear-gradient(top,  #00aa08,  #005705);
+	cursor:pointer;
+}
+.button_small_green:hover {
+	color: #FFFFFF !important;
+	background: #008b07;
+	background: linear-gradient(top,  #005705,  #00aa08);
+	background: -ms-linear-gradient(top,  #005705,  #00aa08);
+	background: -webkit-gradient(linear, left top, left bottom, from(#005705), to(#00aa08));
+	background: -moz-linear-gradient(top,  #005705,  #00aa08);
+}
+
 .button_middle {
   font-family: 'Droid Sans', sans-serif;
   color: #FFFFFF !important;

@@ -1128,23 +1128,25 @@
 					  
 					  .loading:after {
 						  overflow: hidden;
-						  /*display: inline-block;*/
+						  display: inline-block;
 						  vertical-align: bottom;
+						  position:absolute;
 						  -webkit-animation: ellipsis steps(5,end) 900ms infinite;
 						  animation: ellipsis steps(5,end) 900ms infinite;
 						  content: "\2026";
 						  width: 0px;
+						  margin-left:3px;
 					  }
 					  
 					  @keyframes ellipsis {
 						  to {
-							  width: 20px;
+							  width: 18px;
 						  }
 					  }
 					  
 					  @-webkit-keyframes ellipsis {
 						  to {
-							  width: 20px;    
+							  width: 18px;    
 						  }
 					  }
 
