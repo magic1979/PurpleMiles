@@ -443,6 +443,8 @@ function onDeviceReady() {
 				   
 		localStorage.setItem("scroller","0")
 				   
+		prendibanner()
+				   
 		vediofferte()
 
 				   
@@ -2061,6 +2063,8 @@ function controllaofferte(){
                 if(item.Token==1){
                   
                   setTimeout( function() {
+					prendibanner()
+							 
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
                     vediofferte()
 							 
@@ -3552,6 +3556,8 @@ function prendinazione(){
            },
            dataType:"jsonp"});
 }
+								  
+								  
 
 
 function prendicitta(id){
@@ -3652,6 +3658,52 @@ function prendicittaid(id){
 		   dataType:"jsonp"});
 	
 }
+						function prendibanner() {
+								  
+								  var lat = localStorage.getItem("lat");
+								  var lng = localStorage.getItem("lng");
+								  
+								  $.ajax({
+										 type:"GET",
+										 url:"http://adv.purplemiles.com/adv.php?lat="+ lat +"&lon="+ lng +"&id="+ localStorage.getItem("id_utente") +"&dev=1",
+										 contentType: "application/json",
+										 //data: {ID: "Lazio"}, LIMIT 10
+										 timeout: 7000,
+										 jsonp: 'callback',
+										 crossDomain: true,
+										 success:function(result){
+										 
+										 
+									  $.each(result, function(i,item){
+											 $("#bannerp").show();
+											 
+											 $("#bannerpubblicita").html("<table id='linkpubblicita' border=0 width='100%' height='100%' style='background-color:#"+item.colore_sfondo+";'><tr><td align='center'><img src='"+item.nome_img+"' width='300px'></td></tr></table>");
+											 
+											    $(document).on("tap", "#linkpubblicita", function(e){
+															
+															var ref = window.open(''+item.link+'', '_system', 'location=no');
+															
+															
+															e.stopImmediatePropagation();
+															
+															e.preventDefault();
+															
+															return false;
+															
+												});
+											 
+											 });
+										 
+										 
+										 },
+										 error: function(){
+										 
+										 
+										 },
+										 dataType:"jsonp"});
+								  
+							}
+								  
 									
 							function prendimezzi(){
 									var mezzi = "<option value='Autovettura' selected>Auto/Taxi/NCC</option>"
