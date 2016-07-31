@@ -61,7 +61,7 @@ receivedEvent: function(id) {
 		  $("#btninizia").removeClass("divAA").addClass("div55");
 		}
 	  
-	   window.addEventListener('native.keyboardshow', keyboardShowHandler);
+	  window.addEventListener('native.keyboardshow', keyboardShowHandler);
   
 		function keyboardShowHandler(e){
 			$("#btninizia").removeClass("div55").addClass("divAA");
@@ -2993,6 +2993,9 @@ function resetta1(focus) {
 		localStorage.setItem("solouno", "0");
 		localStorage.setItem("primavolta","0")
 		tempo = 0;
+		
+		prendibanner();
+		
 		timer()
 
 	}
@@ -8407,6 +8410,52 @@ function chiudi22(id) {
 		$("#blob").hide();
 }
 
+							  
+function prendibanner() {
+							  
+							  var lat = localStorage.getItem("lat");
+							  var lng = localStorage.getItem("lng");
+							  
+							  $.ajax({
+									 type:"GET",
+									 url:"http://adv.purplemiles.com/adv.php?lat="+ lat +"&lon="+ lng +"&id="+ localStorage.getItem("id_utente") +"&dev=1",
+									 contentType: "application/json",
+									 //data: {ID: "Lazio"}, LIMIT 10
+									 timeout: 7000,
+									 jsonp: 'callback',
+									 crossDomain: true,
+									 success:function(result){
+
+									 
+									  $.each(result, function(i,item){
+										$("#bannerp").show();
+											 
+										$("#bannerpubblicita").html("<table id='linkpubblicita' border=0 width='100%' height='100%' style='background-color:#"+item.colore_sfondo+";'><tr><td align='center'><img src='"+item.nome_img+"' width='300px'></td></tr></table>");
+											 
+											 $(document).on("tap", "#linkpubblicita", function(e){
+															
+												var ref = window.open(''+item.link+'', '_system', 'location=no');
+															
+															
+												e.stopImmediatePropagation();
+															
+												e.preventDefault();
+															
+												return false;
+															
+											});
+											
+									    });
+
+									 
+									 },
+									 error: function(){
+									 
+									 
+									 },
+									 dataType:"jsonp"});
+	 
+}
 
 
 function getParameterByName(name) {

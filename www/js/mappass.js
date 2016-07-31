@@ -32,7 +32,7 @@ function onDeviceReady() {
 	//////////// TASTIERA ////////////////
 	
 	
-	  window.addEventListener('native.keyboardhide', keyboardHideHandler);
+	window.addEventListener('native.keyboardhide', keyboardHideHandler);
   
 	  function keyboardHideHandler(e){
 		  $("#btninizia").removeClass("divAA").addClass("div55");
@@ -40,9 +40,9 @@ function onDeviceReady() {
 	  
 	  window.addEventListener('native.keyboardshow', keyboardShowHandler);
   
-	  function keyboardShowHandler(e){
+	 function keyboardShowHandler(e){
 		 $("#btninizia").removeClass("div55").addClass("divAA");
-	  }
+	 }
 		
 	////////// FINE TASTIERA ////////////////
 	
@@ -2693,7 +2693,8 @@ function vediofferte(){
 				  else{
 				  
 				  $("#offerte4").html("<br><br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr> <td align='center'><br></td></tr><tr><td align='center'>Nessuna offerta in arrivo<br><br></td></tr></table>");
-				}
+				
+				   }
 				   
 				   
 			  conta = conta + 1;
@@ -3653,7 +3654,7 @@ function prendicittaid(id){
 }
 									
 							function prendimezzi(){
-									var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
+									var mezzi = "<option value='Autovettura' selected>Auto/Taxi/NCC</option>"
 									
 									$(".spinner").show();
 									$.ajax({

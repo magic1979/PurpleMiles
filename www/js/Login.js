@@ -35,7 +35,6 @@ function onDeviceReady() {
 	var db;
 	var dbCreated = false;
 	
-	
 	if(screen.width < 768){
 		
 		if(screen.height < 500){
@@ -692,7 +691,7 @@ function seleziona() {
 
 
 function prendimezzi(){
-	var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
+	var mezzi = "<option value='Autovettura' selected>Auto/Taxi/NCC</option>"
 	
 	$(".spinner").show();
 	$.ajax({
@@ -711,7 +710,14 @@ function prendimezzi(){
 				  if (item.Token == 1){
 				  
 				  if(localStorage.getItem("veicolo")==item.veicolo){
-				     mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
+				  
+				    if(localStorage.getItem("veicolo")=="Autovettura"){
+				       mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Auto/Taxi/NCC</option>"
+				    }
+					else{
+				      mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
+					}
+				  
 				  }
 				  else{
 				     mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
