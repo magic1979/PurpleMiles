@@ -2280,6 +2280,8 @@ function resetta1(focus) {
 		 
 		//localStorage.setItem("lat", lat)
 		//localStorage.setItem("lng", lng)
+		 
+		 $("#led").html("<img src='img/ledverde.png' widht='25px'>");
 	 }
 	
 	var lat = localStorage.getItem("lat");
@@ -2967,6 +2969,26 @@ function resetta1(focus) {
 		  
 		//test5()
 		  
+		//alert("gps")
+		  
+		  
+		cordova.plugins.backgroundMode.enable();
+		  
+		cordova.plugins.backgroundMode.onactivate = function () {
+			  
+		    //var myTimer = setInterval(onPause3, 3000);
+			
+			var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+			
+			timer()
+			  
+			// Modify the currently displayed notification
+			cordova.plugins.backgroundMode.configure({
+				text:'PurpleMilse'
+													   
+			});
+		 }
+		  
 	  }
 	  else{
 		  
@@ -3256,6 +3278,11 @@ function timer(){
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 									
 	if(connectionStatus=='online'){
+									
+									//alert("prova")
+									//playAudio('successArrivo');
+									
+									$("#led").html("<img src='img/ledverde.png' widht='25px'>");
 									
 									setTimeout(function() {
 										controllachat(2);
@@ -4231,14 +4258,9 @@ function timer(){
 										   },
 										   error: function(){
 										   
-										   navigator.notification.alert(
-																		'Possibile errore di rete, riprova tra qualche minuto.',  // message
-																		alertDismissed,         // callback
-																		'Attenzione',           // title
-																		'Ok'                  // buttonName
-																		);
+										    $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
 										   
-										   onResume();
+										    onResume();
 										   
 										   },
 										   dataType:"jsonp"});
@@ -4434,12 +4456,7 @@ function scadutaofferta(id,id_richiesta,id_autista){
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
 		   
 		   onResume();
 		   
@@ -4883,12 +4900,7 @@ function magia2C(utente,pass) {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);
+		     $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
 		   
 		   },
 		   dataType:"jsonp"});
@@ -5301,12 +5313,13 @@ function elimina2(id_richiesta){
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		     /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
 		   
 		   
 		   },
@@ -5343,12 +5356,7 @@ function elimina3(id_richiesta){
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);
+		     $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
 		   
 		   
 		   },
@@ -5401,12 +5409,7 @@ function cancellapos(id){
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);
+		    $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
 		   
 		   },
 		   dataType:"jsonp"});
@@ -5452,12 +5455,7 @@ function cancella(id){
 			
 		}
 			else{
-			 navigator.notification.alert(
-										 'Impossibile cancellare la richiesta.',  // message
-										  alertDismissed,         // callback
-										 'Attenzione',           // title
-										 'Ok'                  // buttonName
-										 );
+			 $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
 
 			}
 	 });

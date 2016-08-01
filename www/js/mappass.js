@@ -434,6 +434,7 @@ function onDeviceReady() {
 	});
 	
 	
+	
 	$(document).on("touchstart", "#offerte", function(e){
 		localStorage.setItem("dovesono", "3");
 				   
@@ -443,12 +444,29 @@ function onDeviceReady() {
 				   
 		localStorage.setItem("scroller","0")
 				   
+				   
+		cordova.plugins.backgroundMode.enable();
+				   
+		cordova.plugins.backgroundMode.onactivate = function () {
+				   
+		 var watchID = navigator.geolocation.watchPosition(gpsonSuccess24, onError24, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+				   
+		 vediofferte()
+				   
+		 // Modify the currently displayed notification
+			cordova.plugins.backgroundMode.configure({
+				text:'PurpleMilse'
+															
+			 });
+		}
+				   
+				   
 		prendibanner()
 				   
 		vediofferte()
 
-				   
-				  /* myScroll = new IScroll('#wrapper', { click: true });
+
+		/* myScroll = new IScroll('#wrapper', { click: true });
 				   
 				   
 				   setTimeout (function(){
@@ -2066,7 +2084,25 @@ function controllaofferte(){
 					prendibanner()
 							 
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
-                    vediofferte()
+							 
+							 
+							 cordova.plugins.backgroundMode.enable();
+							 
+							 cordova.plugins.backgroundMode.onactivate = function () {
+							 
+							 
+							 var watchID = navigator.geolocation.watchPosition(gpsonSuccess24, onError24, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+							 
+							 vediofferte()
+							 
+							 // Modify the currently displayed notification
+							 cordova.plugins.backgroundMode.configure({
+																	  text:'PurpleMilse'
+																	  
+																	  });
+							 }
+							 
+							  vediofferte()
 							 
 							 //
 							 
@@ -2130,6 +2166,7 @@ function vediofferte(){
 	{
 		window.clearInterval(i);
 	}
+	
 	
 
 	$.ajax({
@@ -2805,6 +2842,8 @@ function vediofferte(){
 	
 
 	refreshPos = setInterval(function() {
+							 
+		//playAudio('successArrivo');
 		
 		// prendi gps
 		var watchID = navigator.geolocation.watchPosition(gpsonSuccess2, onError22, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
@@ -2817,6 +2856,27 @@ function vediofferte(){
 	
 }
 
+
+
+function gpsonSuccess24(position){
+	
+	var ciao = position.coords.latitude;
+	var ciao1 = position.coords.longitude;
+	
+	localStorage.setItem("lat3", ciao)
+	localStorage.setItem("lng3", ciao1)
+	
+}
+
+function onError24(error) {
+	navigator.geolocation.watchPosition(gpsonSuccess24, onError34, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+}
+
+
+function onError34(error) {
+	
+	
+}
 
 
 function chatting(id) {

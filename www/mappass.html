@@ -1168,7 +1168,27 @@
 							  
 									$("#spinner4").show();
 									localStorage.setItem("risppass", "")
+									
+									
+									cordova.plugins.backgroundMode.enable();
+									
+									cordova.plugins.backgroundMode.onactivate = function () {
+										
+										
+									var watchID = navigator.geolocation.watchPosition(gpsonSuccess25, onError25, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+										
 									vediofferte()
+										
+										// Modify the currently displayed notification
+										cordova.plugins.backgroundMode.configure({
+											text:'PurpleMilse'
+																				 
+										});
+									}
+									
+									
+									vediofferte()
+									
 									
 									setTimeout(function () {
 									  myScroll.refresh();
@@ -1368,6 +1388,28 @@
 															fadeScrollbars:true,
 															interactiveScrollbars:false
 															},pullDownAction,pullUpAction);
+															
+															
+															
+					   function gpsonSuccess25(position){
+																
+							var ciao = position.coords.latitude;
+							var ciao1 = position.coords.longitude;
+																
+							localStorage.setItem("lat3", ciao)
+							localStorage.setItem("lng3", ciao1)
+																
+					   }
+					  
+					  function onError25(error) {
+						  navigator.geolocation.watchPosition(gpsonSuccess25, onError35, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
+					  }
+					  
+					  
+					  function onError35(error) {
+						  
+						  
+					  }
 															
 															
 
