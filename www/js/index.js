@@ -165,7 +165,68 @@ receivedEvent: function(id) {
 			
 		playAudioA('successSound');
 		
+		
 		startgps();
+		
+		
+		/////// GEO TRAKER //////
+			
+		
+		var callbackFn = function(location) {
+			
+			
+		  $.ajax({
+				   type:"GET",
+				   url:"http://purplemiles.com/www2/check_richiesta_autistaV4.php?email="+ localStorage.getItem("email") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&id_autista="+ localStorage.getItem("id_autista") +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"",
+				   contentType: "application/json",
+				   contentType: "application/json",
+				   //data: {ID: "Lazio"}, LIMIT 10
+				   timeout: 7000,
+				   jsonp: 'callback',
+				   crossDomain: true,
+				   success:function(result){
+				   
+				   },
+				   error: function(){
+	
+				   },
+				   dataType:"jsonp"});
+			
+			
+			  // Do your HTTP request here to POST location to your server.
+			
+			  backgroundGeolocation.finish();
+			
+		  };
+		
+		
+		var failureFn = function(error) {
+			console.log('BackgroundGeoLocation error');
+		}
+		
+		
+		backgroundGeolocation.configure(callbackFn, failureFn, {
+			desiredAccuracy: 10,
+			stationaryRadius: 20,
+			distanceFilter: 30,
+			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+			interval: 40000,
+			fastestInterval: 5000,
+			activitiesInterval: 10000,
+			notificationTitle: 'Background tracking',
+			notificationText: 'enabled',
+			notificationIconColor: '#FEDD1E',
+			notificationIconLarge: 'mappointer_large',
+			notificationIconSmall: 'mappointer_small'
+        });
+		
+		
+		backgroundGeolocation.start();
+		
+		
+		/////// FINE GEO TRAKER //////////
+		
+		
 		
 		//var lat = localStorage.getItem("lat");
 		//var lng = localStorage.getItem("lng");
@@ -184,12 +245,16 @@ receivedEvent: function(id) {
 	}
 	
 	else{
-		navigator.notification.alert(
+		
+		$("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		$("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		
+		/*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		
 		
 		//window.location.href = "index.html";
@@ -885,6 +950,10 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#mappa7", function(e){
 		localStorage.setItem("dovesono", "3");
+				   
+		// finish GEO TRAKER
+		bgGeo.finish();
+				   
 		window.location.href = "mappass.html";
 		
 		e.stopImmediatePropagation();
@@ -2970,25 +3039,7 @@ function resetta1(focus) {
 		//test5()
 		  
 		//alert("gps")
-		  
-		  
-		cordova.plugins.backgroundMode.enable();
-		  
-		cordova.plugins.backgroundMode.onactivate = function () {
-			  
-		    //var myTimer = setInterval(onPause3, 3000);
-			
-			var watchID = navigator.geolocation.watchPosition(onSuccess2, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
-			
-			timer()
-			  
-			// Modify the currently displayed notification
-			cordova.plugins.backgroundMode.configure({
-				text:'PurpleMilse'
-													   
-			});
-		 }
-		  
+
 	  }
 	  else{
 		  
@@ -3264,6 +3315,7 @@ function posizionegps(){
 		
 function timer(){
 	
+	
 	var dindon;
 	if(localStorage.getItem("primavolta")=="0"){
 	  var primavolta=3000;
@@ -3281,6 +3333,7 @@ function timer(){
 									
 									//alert("prova")
 									//playAudio('successArrivo');
+									prendibanner()
 									
 									$("#led").html("<img src='img/ledverde.png' widht='25px'>");
 									
@@ -4259,6 +4312,7 @@ function timer(){
 										   error: function(){
 										   
 										    $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+										    $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
 										   
 										    onResume();
 										   
@@ -5463,13 +5517,16 @@ function cancella(id){
 	 
 	 },
 	 error: function(){
+			
+	 $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+	 $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
 	 
-	 navigator.notification.alert(
+	 /*navigator.notification.alert(
 	 'Possibile errore di rete, riprova tra qualche minuto.',  // message
 	 alertDismissed,         // callback
 	 'Attenzione',           // title
 	 'Ok'                  // buttonName
-	 );
+	 );*/
 	 
 	 },
 	 dataType:"jsonp"});
@@ -7225,12 +7282,15 @@ function lista5() {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   onResume();
 		   
@@ -7334,12 +7394,15 @@ function chatting(pass,id) {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   
 		   },
@@ -7435,12 +7498,15 @@ function chatting66(pass,id) {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   
 		   },
@@ -7536,12 +7602,15 @@ function chatting5(pass,id) {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   
 		   },
@@ -7711,12 +7780,16 @@ function inviachat(id) {
 		   error: function(){
 		   $("#spinner6").hide();
 		   $("#spinner4").hide();
-		   navigator.notification.alert(
+		   
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   onResume();
 		   
@@ -7791,12 +7864,15 @@ function accetta11() {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   },
 		   dataType:"jsonp"});
@@ -7860,12 +7936,15 @@ function accetta22() {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   },
 		   dataType:"jsonp"});
@@ -7922,12 +8001,15 @@ function accetta33() {
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   },
 		   dataType:"jsonp"});
@@ -8065,12 +8147,15 @@ function inviopasseggero(come){
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
+		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   
+		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
 										alertDismissed,         // callback
 										'Attenzione',           // title
 										'Ok'                  // buttonName
-										);
+										);*/
 		   
 		   },
 		   dataType:"jsonp"});
@@ -8426,6 +8511,8 @@ function prendibanner() {
 
 									 
 									  $.each(result, function(i,item){
+											 
+									  if(item.nome_img!=""){
 										$("#bannerp").show();
 											 
 										$("#bannerpubblicita").html("<table id='linkpubblicita' border=0 width='100%' height='100%' style='background-color:#"+item.colore_sfondo+";'><tr><td align='center'><img src='"+item.nome_img+"' width='300px'></td></tr></table>");
@@ -8442,6 +8529,10 @@ function prendibanner() {
 												return false;
 															
 											});
+										}
+										else{
+											$("#bannerp").hide();
+										}
 											
 									    });
 

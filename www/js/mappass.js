@@ -209,6 +209,9 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("touchstart tap", "#XX3", function(e){
+				   
+		bgGeo.finish();
+				   
 		window.location.href = "index.html";
 	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
@@ -443,22 +446,6 @@ function onDeviceReady() {
 		$("#spinner4").show();
 				   
 		localStorage.setItem("scroller","0")
-				   
-				   
-		cordova.plugins.backgroundMode.enable();
-				   
-		cordova.plugins.backgroundMode.onactivate = function () {
-				   
-		 var watchID = navigator.geolocation.watchPosition(gpsonSuccess24, onError24, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
-				   
-		 vediofferte()
-				   
-		 // Modify the currently displayed notification
-			cordova.plugins.backgroundMode.configure({
-				text:'PurpleMilse'
-															
-			 });
-		}
 				   
 				   
 		prendibanner()
@@ -1254,6 +1241,50 @@ function onDeviceReady() {
 		
 			  var watchID = navigator.geolocation.watchPosition(gpsonSuccess, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+		
+		
+		/////// GEO TRAKER //////
+
+
+		var callbackFn = function(location) {
+			console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
+			
+			localStorage.setItem("lat3", location.latitude)
+			localStorage.setItem("lng3", location.longitude)
+			
+			vediofferte()
+			
+			// Do your HTTP request here to POST location to your server.
+			
+			backgroundGeolocation.finish();
+		};
+		
+		
+		var failureFn = function(error) {
+			console.log('BackgroundGeoLocation error');
+		}
+		
+		
+		backgroundGeolocation.configure(callbackFn, failureFn, {
+			desiredAccuracy: 10,
+			stationaryRadius: 20,
+			distanceFilter: 30,
+			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+			interval: 40000,
+			fastestInterval: 5000,
+			activitiesInterval: 10000,
+			notificationTitle: 'Background tracking',
+			notificationText: 'enabled',
+			notificationIconColor: '#FEDD1E',
+			notificationIconLarge: 'mappointer_large',
+			notificationIconSmall: 'mappointer_small'
+        });
+		
+		
+		backgroundGeolocation.start();
+		
+		/////// FINE GEO TRAKER //////////
+		
 
 		    localStorage.setItem("scroller","0")
 		
@@ -2085,24 +2116,7 @@ function controllaofferte(){
 							 
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 							 
-							 
-							 cordova.plugins.backgroundMode.enable();
-							 
-							 cordova.plugins.backgroundMode.onactivate = function () {
-							 
-							 
-							 var watchID = navigator.geolocation.watchPosition(gpsonSuccess24, onError24, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
-							 
-							 vediofferte()
-							 
-							 // Modify the currently displayed notification
-							 cordova.plugins.backgroundMode.configure({
-																	  text:'PurpleMilse'
-																	  
-																	  });
-							 }
-							 
-							  vediofferte()
+					vediofferte()
 							 
 							 //
 							 
@@ -2159,6 +2173,7 @@ function vediofferte(){
 	var somma;
 	var tempistica;
 	var conta = 0;
+	prendibanner()
 	
 	localStorage.setItem("tempor","0")
 	
@@ -3735,6 +3750,8 @@ function prendicittaid(id){
 										 
 										 
 									  $.each(result, function(i,item){
+											 
+											 if(item.nome_img!=""){
 											 $("#bannerp").show();
 											 
 											 $("#bannerpubblicita").html("<table id='linkpubblicita' border=0 width='100%' height='100%' style='background-color:#"+item.colore_sfondo+";'><tr><td align='center'><img src='"+item.nome_img+"' width='300px'></td></tr></table>");
@@ -3751,8 +3768,13 @@ function prendicittaid(id){
 															return false;
 															
 												});
+											 }
+											 else{
+											   $("#bannerp").hide();
+											 }
 											 
-											 });
+											 
+										});
 										 
 										 
 										 },

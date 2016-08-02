@@ -691,7 +691,7 @@ function seleziona() {
 
 
 function prendimezzi(){
-	var mezzi = "<option value='Autovettura' selected>Auto/Taxi/NCC</option>"
+	var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
 	
 	$(".spinner").show();
 	$.ajax({
@@ -712,7 +712,7 @@ function prendimezzi(){
 				  if(localStorage.getItem("veicolo")==item.veicolo){
 				  
 				    if(localStorage.getItem("veicolo")=="Autovettura"){
-				       mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Auto/Taxi/NCC</option>"
+				       mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Autovettura</option>"
 				    }
 					else{
 				      mezzi = mezzi + "<option value='"+item.veicolo+"' selected>"+ item.veicolo +"</option>"
