@@ -210,7 +210,7 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart tap", "#XX3", function(e){
 				   
-		bgGeo.finish();
+		backgroundGeolocation.finish();
 				   
 		window.location.href = "index.html";
 	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
@@ -1243,7 +1243,7 @@ function onDeviceReady() {
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 		
 		
-		/////// GEO TRAKER //////
+		/////// GEO TRAKER ANDROID//////
 
 
 		var callbackFn = function(location) {
@@ -1253,8 +1253,6 @@ function onDeviceReady() {
 			localStorage.setItem("lng3", location.longitude)
 			
 			vediofferte()
-			
-			// Do your HTTP request here to POST location to your server.
 			
 			backgroundGeolocation.finish();
 		};
@@ -1651,6 +1649,7 @@ function verificawifi(){
 
 function onResume() {
 	
+	backgroundGeolocation.finish();
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';

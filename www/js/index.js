@@ -169,7 +169,7 @@ receivedEvent: function(id) {
 		startgps();
 		
 		
-		/////// GEO TRAKER //////
+		/////// GEO TRAKER ANDROID //////
 			
 		
 		var callbackFn = function(location) {
@@ -191,9 +191,6 @@ receivedEvent: function(id) {
 	
 				   },
 				   dataType:"jsonp"});
-			
-			
-			  // Do your HTTP request here to POST location to your server.
 			
 			  backgroundGeolocation.finish();
 			
@@ -952,7 +949,7 @@ receivedEvent: function(id) {
 		localStorage.setItem("dovesono", "3");
 				   
 		// finish GEO TRAKER
-		bgGeo.finish();
+		backgroundGeolocation.finish();
 				   
 		window.location.href = "mappass.html";
 		
@@ -1022,6 +1019,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#tornareset", function(e){
 				   
+		backgroundGeolocation.finish();
 				   
 		var connectionStatus = false;
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -2249,6 +2247,9 @@ function verificawifi(){
 }
 
 function onResume() {
+	
+	backgroundGeolocation.finish();
+	
 	//app.initialize();
 	$("#blob5").hide();
 	$("#blob4").hide();
