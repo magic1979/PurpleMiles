@@ -63,6 +63,7 @@ function onDeviceReady() {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
+			backgroundGeolocation.finish();
 			
 			for(i=0; i<10000; i++)
 			{
@@ -1267,10 +1268,10 @@ function onDeviceReady() {
 			desiredAccuracy: 10,
 			stationaryRadius: 20,
 			distanceFilter: 30,
-			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-			interval: 40000,
-			fastestInterval: 5000,
-			activitiesInterval: 10000,
+			locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
+			interval: 30000,
+			//fastestInterval: 5000,
+			activitiesInterval: 5000,
 			notificationTitle: 'Background tracking',
 			notificationText: 'enabled',
 			notificationIconColor: '#FEDD1E',

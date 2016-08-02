@@ -206,9 +206,9 @@ receivedEvent: function(id) {
 			desiredAccuracy: 10,
 			stationaryRadius: 20,
 			distanceFilter: 30,
-			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-			interval: 40000,
-			fastestInterval: 5000,
+			locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
+			interval: 30000,
+			//fastestInterval: 5000,
 			activitiesInterval: 10000,
 			notificationTitle: 'Background tracking',
 			notificationText: 'enabled',
@@ -243,8 +243,8 @@ receivedEvent: function(id) {
 	
 	else{
 		
-		$("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		$("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		$("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		$("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		
 		/*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -638,6 +638,8 @@ receivedEvent: function(id) {
 	
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
+		
+			backgroundGeolocation.finish();
 			
 			for(i=0; i<10000; i++)
 			{
@@ -2351,7 +2353,7 @@ function resetta1(focus) {
 		//localStorage.setItem("lat", lat)
 		//localStorage.setItem("lng", lng)
 		 
-		 $("#led").html("<img src='img/ledverde.png' widht='25px'>");
+		 $("#led").html("<img src='img/ledverde.png' width='25px'>");
 	 }
 	
 	var lat = localStorage.getItem("lat");
@@ -3336,7 +3338,7 @@ function timer(){
 									//playAudio('successArrivo');
 									prendibanner()
 									
-									$("#led").html("<img src='img/ledverde.png' widht='25px'>");
+									$("#led").html("<img src='img/ledverde.png' width='25px'>");
 									
 									setTimeout(function() {
 										controllachat(2);
@@ -4312,8 +4314,8 @@ function timer(){
 										   },
 										   error: function(){
 										   
-										    $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-										    $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+										    $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+										    $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 										   
 										    onResume();
 										   
@@ -4511,7 +4513,7 @@ function scadutaofferta(id,id_richiesta,id_autista){
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   onResume();
 		   
@@ -4955,7 +4957,7 @@ function magia2C(utente,pass) {
 		   },
 		   error: function(){
 		   
-		     $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		     $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   },
 		   dataType:"jsonp"});
@@ -5374,7 +5376,7 @@ function elimina2(id_richiesta){
 										'Attenzione',           // title
 										'Ok'                  // buttonName
 										);*/
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   
 		   },
@@ -5411,7 +5413,7 @@ function elimina3(id_richiesta){
 		   },
 		   error: function(){
 		   
-		     $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		     $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   
 		   },
@@ -5464,7 +5466,7 @@ function cancellapos(id){
 		   },
 		   error: function(){
 		   
-		    $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+		    $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   },
 		   dataType:"jsonp"});
@@ -5510,7 +5512,7 @@ function cancella(id){
 			
 		}
 			else{
-			 $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
+			 $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 
 			}
 	 });
@@ -5519,8 +5521,8 @@ function cancella(id){
 	 },
 	 error: function(){
 			
-	 $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-	 $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+	 $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+	 $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 	 
 	 /*navigator.notification.alert(
 	 'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -7283,8 +7285,8 @@ function lista5() {
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -7395,8 +7397,8 @@ function chatting(pass,id) {
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -7499,8 +7501,8 @@ function chatting66(pass,id) {
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -7603,8 +7605,8 @@ function chatting5(pass,id) {
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -7782,8 +7784,8 @@ function inviachat(id) {
 		   $("#spinner6").hide();
 		   $("#spinner4").hide();
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -7865,8 +7867,8 @@ function accetta11() {
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -7937,8 +7939,8 @@ function accetta22() {
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -8002,8 +8004,8 @@ function accetta33() {
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -8148,8 +8150,8 @@ function inviopasseggero(come){
 		   },
 		   error: function(){
 		   
-		   $("#led").html("<img src='img/ledrosso.png' widht='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' widht='25px'>");
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
