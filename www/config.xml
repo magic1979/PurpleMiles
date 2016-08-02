@@ -122,7 +122,7 @@
 		<plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
 		<gap:plugin name="cordova-plugin-datepicker" source="npm" />
 		<plugin name="cordova-plugin-statusbar" source="npm" spec="1.0.0" />
-		<plugin name="org.transistorsoft.cordova.background-geolocation" spec="0.1.0" source="pgb" />
+		<plugin name="org.transistorsoft.cordova.background-geolocation" spec="0.3.5" source="pgb" />
 		<!--<plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.2.0" source="npm"/>-->
 		
 		
