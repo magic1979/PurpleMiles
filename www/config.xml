@@ -122,7 +122,7 @@
 		<plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
 		<gap:plugin name="cordova-plugin-datepicker" source="npm" />
 		<plugin name="cordova-plugin-statusbar" source="npm" spec="1.0.0" />
-		<plugin name="org.transistorsoft.cordova.background-geolocation" spec="0.3.5" source="pgb" />
+		<plugin name="cordova-background-geolocation-lt" source="npm" />
 		
 		
 		<gap:config-file platform="android" parent="/manifest" mode="add" xmlns:android="http://schemas.android.com/apk/res/android">
