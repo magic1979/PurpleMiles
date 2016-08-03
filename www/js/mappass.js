@@ -456,9 +456,13 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchstart", "#offerte", function(e){
-				   
-		//bgGeo.start();
-		backgroundGeolocation.start();
+		
+		backgroundGeolocation.finish();
+		
+		setTimeout(function() {
+		   //bgGeo.start();
+		   backgroundGeolocation.start();
+	    }, 1000);
 				   
 				   
 		localStorage.setItem("dovesono", "3");
@@ -1704,7 +1708,7 @@ function verificawifi(){
 }
 
 function onResume() {
-	
+	backgroundGeolocation.finish();
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -2173,8 +2177,12 @@ function controllaofferte(){
 							 
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 							 
-					//bgGeo.start();
-					backgroundGeolocation.start();
+					backgroundGeolocation.finish();
+					
+					setTimeout(function() {
+					   //bgGeo.start();
+					   backgroundGeolocation.start();
+					}, 1000);
 							 
 							 
 					vediofferte()

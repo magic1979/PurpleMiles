@@ -1320,8 +1320,12 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
 				   
-				   //bgGeo.start();
-				   backgroundGeolocation.start();
+					backgroundGeolocation.finish();
+					
+					setTimeout(function() {
+					   //bgGeo.start();
+					   backgroundGeolocation.start();
+					}, 1000);
 				   
 				   
 					$('#modificastart').blur()
@@ -2313,6 +2317,8 @@ function verificawifi(){
 }
 
 function onResume() {
+	backgroundGeolocation.finish();
+	
 	//app.initialize();
 	$("#blob5").hide();
 	$("#blob4").hide();
