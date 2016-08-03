@@ -169,13 +169,23 @@ receivedEvent: function(id) {
 		startgps();
 		
 		
-		/////// GEO TRAKER ANDROID //////
-			
+		/////// GEO TRAKER IOS//////
 		
+		/*window.navigator.geolocation.getCurrentPosition(function(location) {
+			console.log('Location from Phonegap');
+		});
+		
+		var bgGeo = window.plugins.backgroundGeoLocation;
+		
+		var yourAjaxCallback = function(response) {
+
+			bgGeo.finish();
+		};
+		
+
 		var callbackFn = function(location) {
 			
-			
-		  $.ajax({
+			$.ajax({
 				   type:"GET",
 				   url:"http://purplemiles.com/www2/check_richiesta_autistaV4.php?email="+ localStorage.getItem("email") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&id_autista="+ localStorage.getItem("id_autista") +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"",
 				   contentType: "application/json",
@@ -186,15 +196,63 @@ receivedEvent: function(id) {
 				   crossDomain: true,
 				   success:function(result){
 				   
+				   
 				   },
 				   error: function(){
-	
+				   
+				   
 				   },
 				   dataType:"jsonp"});
 			
-			  backgroundGeolocation.finish();
 			
-		  };
+			yourAjaxCallback.call(this);
+			
+		};
+		
+		
+		var failureFn = function(error) {
+			console.log('BackgroundGeoLocation error');
+		}
+		
+		
+		bgGeo.configure(callbackFn, failureFn, {
+						desiredAccuracy: 10,
+						stationaryRadius: 20,
+						distanceFilter: 30,
+						activityType: 'AutomotiveNavigation',
+						debug: true,
+						stopOnTerminate: false
+		});*/
+		
+
+		/////// FINE GEO TRAKER IOS//////
+		
+		
+		/////// GEO TRAKER ANDROID //////
+		
+		
+		var callbackFn = function(location) {
+			
+			$.ajax({
+				   type:"GET",
+				   url:"http://purplemiles.com/www2/check_richiesta_autistaV4.php?email="+ localStorage.getItem("email") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&id_autista="+ localStorage.getItem("id_autista") +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"",
+				   contentType: "application/json",
+				   contentType: "application/json",
+				   timeout: 7000,
+				   jsonp: 'callback',
+				   crossDomain: true,
+				   success:function(result){
+				   
+				   },
+				   error: function(){
+				   
+				   },
+				   dataType:"jsonp"});
+				   
+			
+			backgroundGeolocation.finish();
+			
+		};
 		
 		
 		var failureFn = function(error) {
@@ -203,39 +261,24 @@ receivedEvent: function(id) {
 		
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
-			desiredAccuracy: 10,
-			stationaryRadius: 20,
-			distanceFilter: 30,
-			locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
-			interval: 30000,
-			//fastestInterval: 5000,
-			activitiesInterval: 10000,
-			notificationTitle: 'Background tracking',
-			notificationText: 'enabled',
-			notificationIconColor: '#FEDD1E',
-			notificationIconLarge: 'mappointer_large',
-			notificationIconSmall: 'mappointer_small'
-        });
+										desiredAccuracy: 10,
+										stationaryRadius: 20,
+										distanceFilter: 30,
+										locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+										interval: 60000,
+										activitiesInterval: 10000,
+										debug: true,
+										notificationTitle: 'Background tracking',
+										notificationText: 'enabled',
+										notificationIconColor: '#FEDD1E',
+										notificationIconLarge: 'mappointer_large',
+										notificationIconSmall: 'mappointer_small'
+										});
+		
+
+		/////// FINE GEO TRAKER /////////
 		
 		
-		backgroundGeolocation.start();
-		
-		
-		/////// FINE GEO TRAKER //////////
-		
-		
-		
-		//var lat = localStorage.getItem("lat");
-		//var lng = localStorage.getItem("lng");
-		
-		//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
-		//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
-		
-		//localStorage.setItem("lat", lat)
-		//localStorage.setItem("lng", lng)
-		
-		
-		//codeLatLng(lat,lng);
 		
 		$(".spinner").hide();
 		
@@ -284,6 +327,20 @@ receivedEvent: function(id) {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 			
 	});
+	
+	$(document).on("touchstart", "#chiudibanner", function(e){
+				   localStorage.setItem("nobanner","1")
+				   $("#bannerp").hide()
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+				   });
 
 
 	function playAudioA(id) {
@@ -638,8 +695,8 @@ receivedEvent: function(id) {
 	
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
-		
-			backgroundGeolocation.finish();
+			
+			//backgroundGeolocation.finish();
 			
 			for(i=0; i<10000; i++)
 			{
@@ -951,6 +1008,7 @@ receivedEvent: function(id) {
 		localStorage.setItem("dovesono", "3");
 				   
 		// finish GEO TRAKER
+		//bgGeo.finish();
 		backgroundGeolocation.finish();
 				   
 		window.location.href = "mappass.html";
@@ -1021,6 +1079,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#tornareset", function(e){
 				   
+		//bgGeo.finish();
 		backgroundGeolocation.finish();
 				   
 		var connectionStatus = false;
@@ -1260,6 +1319,11 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
+				   
+				   //bgGeo.start();
+				   backgroundGeolocation.start();
+				   
+				   
 					$('#modificastart').blur()
 				    $('#inizia').blur()
 				   
@@ -2249,9 +2313,6 @@ function verificawifi(){
 }
 
 function onResume() {
-	
-	backgroundGeolocation.finish();
-	
 	//app.initialize();
 	$("#blob5").hide();
 	$("#blob4").hide();
@@ -3070,6 +3131,7 @@ function resetta1(focus) {
 		localStorage.setItem("primavolta","0")
 		tempo = 0;
 		
+		localStorage.setItem("nobanner","0")
 		prendibanner();
 		
 		timer()
@@ -3336,7 +3398,12 @@ function timer(){
 									
 									//alert("prova")
 									//playAudio('successArrivo');
-									prendibanner()
+									
+									
+									if(localStorage.getItem("nobanner")=="0"){
+									  prendibanner()
+									}
+									
 									
 									$("#led").html("<img src='img/ledverde.png' width='25px'>");
 									

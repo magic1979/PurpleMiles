@@ -63,7 +63,8 @@ function onDeviceReady() {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
-			backgroundGeolocation.finish();
+			//backgroundGeolocation.finish();
+			
 			
 			for(i=0; i<10000; i++)
 			{
@@ -211,6 +212,7 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart tap", "#XX3", function(e){
 				   
+		//bgGeo.finish();
 		backgroundGeolocation.finish();
 				   
 		window.location.href = "index.html";
@@ -249,6 +251,20 @@ function onDeviceReady() {
 		return false;
 				   
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	$(document).on("touchstart", "#chiudibanner", function(e){
+				   localStorage.setItem("nobanner","1")
+				   $("#bannerp").hide()
+				   
+				   e.stopImmediatePropagation();
+				   
+				   e.preventDefault();
+				   
+				   return false;
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
 	
@@ -440,6 +456,11 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchstart", "#offerte", function(e){
+				   
+		//bgGeo.start();
+		backgroundGeolocation.start();
+				   
+				   
 		localStorage.setItem("dovesono", "3");
 				   
 	    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
@@ -447,7 +468,7 @@ function onDeviceReady() {
 		$("#spinner4").show();
 				   
 		localStorage.setItem("scroller","0")
-				   
+		localStorage.setItem("nobanner","0")
 				   
 		prendibanner()
 				   
@@ -761,14 +782,11 @@ function onDeviceReady() {
 			   },
 			   error: function(){
 			   
-			   navigator.notification.alert(
-				'Possibile errore di rete, riprova tra qualche minuto.',
-				alertDismissed,
-				'Attenzione',
-				'Done'
-				);
+			     $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+			     $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+			     $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 				
-				onResume();
+				 onResume();
 			   
 			   },
 			   dataType:"jsonp"});
@@ -822,13 +840,9 @@ function onDeviceReady() {
 						  },
 						  error: function(){
 						  
-						  navigator.notification.alert(
-													   'Possibile errore di rete, riprova tra qualche minuto.',
-													   alertDismissed,
-													   'Attenzione',
-													   'Done'
-													   );
-						  
+						  $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+						  $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+						  $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 						  onResume();
 						  
 						  },
@@ -1228,6 +1242,10 @@ function onDeviceReady() {
 		
 			$("#fuso3").html(localStorage.getItem("fuso") + "," + localStorage.getItem("citta"));
 		
+		   $("#led").html("<img src='img/ledverde.png' width='25px'>");
+		   $("#led2").html("<img src='img/ledverde.png' width='25px'>");
+		   $("#led4").html("<img src='img/ledverde.png' width='25px'>");
+		
 		    //$("#fuso2").html(localStorage.getItem("fuso"));
 		    //$("#citta2").html(localStorage.getItem("citta"));
 		
@@ -1244,9 +1262,50 @@ function onDeviceReady() {
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 		
 		
+		/////// GEO TRAKER IOS//////
+		
+		/*var bgGeo = window.plugins.backgroundGeoLocation;
+		
+		var yourAjaxCallback = function(response) {
+			
+			bgGeo.finish();
+		};
+		
+		
+		var callbackFn = function(location) {
+			console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
+			
+			localStorage.setItem("lat3", location.latitude)
+			localStorage.setItem("lng3", location.longitude)
+			
+			vediofferte()
+			
+			yourAjaxCallback.call(this);
+
+		};
+		
+		
+		var failureFn = function(error) {
+			console.log('BackgroundGeoLocation error');
+		}
+		
+		
+		bgGeo.configure(callbackFn, failureFn, {
+						desiredAccuracy: 10,
+						stationaryRadius: 20,
+						distanceFilter: 30,
+						activityType: 'AutomotiveNavigation',
+						debug: false,
+						stopOnTerminate: false
+		});*/
+		
+		
+		/////// FINE GEO TRAKER IOS//////////
+		
+		
+		
 		/////// GEO TRAKER ANDROID//////
-
-
+		
 		var callbackFn = function(location) {
 			console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
 			
@@ -1265,25 +1324,25 @@ function onDeviceReady() {
 		
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
-			desiredAccuracy: 10,
-			stationaryRadius: 20,
-			distanceFilter: 30,
-			locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
-			interval: 30000,
-			//fastestInterval: 5000,
-			activitiesInterval: 5000,
-			notificationTitle: 'Background tracking',
-			notificationText: 'enabled',
-			notificationIconColor: '#FEDD1E',
-			notificationIconLarge: 'mappointer_large',
-			notificationIconSmall: 'mappointer_small'
-        });
+										desiredAccuracy: 10,
+										stationaryRadius: 20,
+										distanceFilter: 30,
+										locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+										interval: 60000,
+										//fastestInterval: 5000,
+										debug: true,
+										activitiesInterval: 10000,
+										notificationTitle: 'Background tracking',
+										notificationText: 'enabled',
+										notificationIconColor: '#FEDD1E',
+										notificationIconLarge: 'mappointer_large',
+										notificationIconSmall: 'mappointer_small'
+										});
 		
 		
-		backgroundGeolocation.start();
+		/////// FINE GEO TRAKER ANDROID//////////
 		
-		/////// FINE GEO TRAKER //////////
-		
+	
 
 		    localStorage.setItem("scroller","0")
 		
@@ -1294,16 +1353,12 @@ function onDeviceReady() {
 }
     
     else{
-		navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
+		$("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		$("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+		$("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 		
 		
 		window.location.href = "index.html";
-		
 		
     }
 	
@@ -1650,7 +1705,6 @@ function verificawifi(){
 
 function onResume() {
 	
-	backgroundGeolocation.finish();
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -1658,6 +1712,10 @@ function onResume() {
 	if(connectionStatus=='online'){
 	
 	setTimeout(function() {
+			   
+		$("#led").html("<img src='img/ledverde.png' width='25px'>");
+		$("#led2").html("<img src='img/ledverde.png' width='25px'>");
+		$("#led4").html("<img src='img/ledverde.png' width='25px'>");
 			   
 
 	  //$.mobile.changePage( "#win2", { transition: "slide", changeHash: false });
@@ -1748,6 +1806,10 @@ function resetta1(focus) {
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
 	if(connectionStatus=='online'){
+		
+	$("#led").html("<img src='img/ledverde.png' width='25px'>");
+	$("#led2").html("<img src='img/ledverde.png' width='25px'>");
+	$("#led4").html("<img src='img/ledverde.png' width='25px'>");
 		
 
 	//$("#da").removeClass("bottoni").addClass("bottoni1");
@@ -2069,12 +2131,9 @@ function inviopasseggero(come){
 				  
 				  }
 				  else{
-				  navigator.notification.alert(
-											   'Impossibile elaborare la richiesta.',  // message
-											   alertDismissed,         // callback
-											   'Attenzione',           // title
-											   'Done'                  // buttonName
-											   );
+				  $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+				  $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+				  $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 				  
 				  }
 				  });
@@ -2083,12 +2142,9 @@ function inviopasseggero(come){
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   },
 		   dataType:"jsonp"});
@@ -2112,9 +2168,14 @@ function controllaofferte(){
                 if(item.Token==1){
                   
                   setTimeout( function() {
+					localStorage.setItem("nobanner","0")
 					prendibanner()
 							 
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+							 
+					//bgGeo.start();
+					backgroundGeolocation.start();
+							 
 							 
 					vediofferte()
 							 
@@ -2149,13 +2210,10 @@ function controllaofferte(){
            },
            error: function(){
            
-           navigator.notification.alert(
-                                        'Possibile errore di rete, riprova tra qualche minuto.',  // message
-                                        alertDismissed,         // callback
-                                        'Attenzione',           // title
-                                        'Done'                  // buttonName
-                                        );
-           
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
+		   
            vediofferte();
            
            },
@@ -2173,7 +2231,13 @@ function vediofferte(){
 	var somma;
 	var tempistica;
 	var conta = 0;
-	prendibanner()
+	
+	if(localStorage.getItem("nobanner")=="0"){
+	
+	   prendibanner()
+	}
+	
+	
 	
 	localStorage.setItem("tempor","0")
 	
@@ -2804,12 +2868,9 @@ function vediofferte(){
 		   },
 		   error: function(){
 		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Done'                  // buttonName
-										);
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   vediofferte();
 		   
@@ -3621,13 +3682,10 @@ function prendinazione(){
            error: function(){
            $(".spinner").hide();
            
-           navigator.notification.alert(
-                                        'Possibile errore di rete, riprova tra qualche minuto',  // message
-                                        alertDismissed,         // callback
-                                        'Attenzione',            // title
-                                        'Done'                  // buttonName
-                                        );
-           
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
+		   
            },
            dataType:"jsonp"});
 }
@@ -3678,13 +3736,10 @@ function prendicitta(id){
            error: function(){
            $(".spinner").hide();
            
-           navigator.notification.alert(
-                                        'Possibile errore di rete, riprova tra qualche minuto',  // message
-                                        alertDismissed,         // callback
-                                        'Attenzione',            // title
-                                        'Done'                  // buttonName
-                                        );
-           
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
+		   
            },
            dataType:"jsonp"});
 
@@ -3848,12 +3903,9 @@ function prendicittaid(id){
 										   error: function(){
 										   $(".spinner").hide();
 										   
-										   navigator.notification.alert(
-																		'Possibile errore di rete, riprova tra qualche minuto',  // message
-																		alertDismissed,         // callback
-																		'Attenzione',            // title
-																		'Done'                  // buttonName
-																		);
+										   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+										   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+										   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 										   
 										   },
 										   dataType:"jsonp"});
