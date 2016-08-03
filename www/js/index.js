@@ -277,7 +277,7 @@ receivedEvent: function(id) {
 		
 
 		/////// FINE GEO TRAKER /////////
-		
+		//backgroundGeolocation.stop();
 		
 		
 		$(".spinner").hide();
@@ -696,7 +696,7 @@ receivedEvent: function(id) {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
-			//backgroundGeolocation.finish();
+			backgroundGeolocation.stop();
 			
 			for(i=0; i<10000; i++)
 			{
@@ -1008,8 +1008,8 @@ receivedEvent: function(id) {
 		localStorage.setItem("dovesono", "3");
 				   
 		// finish GEO TRAKER
-		//bgGeo.finish();
-		backgroundGeolocation.finish();
+		//bgGeo.stop();
+		backgroundGeolocation.stop();
 				   
 		window.location.href = "mappass.html";
 		
@@ -1079,8 +1079,8 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#tornareset", function(e){
 				   
-		//bgGeo.finish();
-		backgroundGeolocation.finish();
+		//bgGeo.stop();
+		backgroundGeolocation.stop();
 				   
 		var connectionStatus = false;
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -1320,7 +1320,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
 				   
-					backgroundGeolocation.finish();
+					//backgroundGeolocation.stop();
 					
 					setTimeout(function() {
 					   //bgGeo.start();
@@ -2317,7 +2317,7 @@ function verificawifi(){
 }
 
 function onResume() {
-	backgroundGeolocation.finish();
+	backgroundGeolocation.stop();
 	
 	//app.initialize();
 	$("#blob5").hide();

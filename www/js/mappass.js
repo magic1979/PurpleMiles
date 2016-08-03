@@ -63,7 +63,7 @@ function onDeviceReady() {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
-			//backgroundGeolocation.finish();
+			backgroundGeolocation.stop();
 			
 			
 			for(i=0; i<10000; i++)
@@ -213,7 +213,7 @@ function onDeviceReady() {
 	$(document).on("touchstart tap", "#XX3", function(e){
 				   
 		//bgGeo.finish();
-		backgroundGeolocation.finish();
+		backgroundGeolocation.stop();
 				   
 		window.location.href = "index.html";
 	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
@@ -457,7 +457,7 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart", "#offerte", function(e){
 		
-		backgroundGeolocation.finish();
+		//backgroundGeolocation.stop();
 		
 		setTimeout(function() {
 		   //bgGeo.start();
@@ -1345,8 +1345,9 @@ function onDeviceReady() {
 		
 		
 		/////// FINE GEO TRAKER ANDROID//////////
-		
-	
+	        //backgroundGeolocation.finish();
+			
+			
 
 		    localStorage.setItem("scroller","0")
 		
@@ -1708,7 +1709,7 @@ function verificawifi(){
 }
 
 function onResume() {
-	backgroundGeolocation.finish();
+	backgroundGeolocation.stop();
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -2177,12 +2178,12 @@ function controllaofferte(){
 							 
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 							 
-					backgroundGeolocation.finish();
+					//backgroundGeolocation.stop();
 					
-					setTimeout(function() {
+					//setTimeout(function() {
 					   //bgGeo.start();
 					   backgroundGeolocation.start();
-					}, 1000);
+					//}, 1000);
 							 
 							 
 					vediofferte()
@@ -2265,6 +2266,10 @@ function vediofferte(){
 		   jsonp: 'callback',
 		   crossDomain: true,
 		   success:function(result){
+			   
+		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   if(localStorage.getItem("risppass")===JSON.stringify(result)){
 			   $("#spinner4").hide();
