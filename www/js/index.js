@@ -169,7 +169,7 @@ receivedEvent: function(id) {
 		startgps();
 		
 		
-		/////// GEO TRAKER IOS//////
+		/////// GEO TRAKER IOS //////
 		
 		/*window.navigator.geolocation.getCurrentPosition(function(location) {
 			console.log('Location from Phonegap');
@@ -231,6 +231,11 @@ receivedEvent: function(id) {
 		/////// GEO TRAKER ANDROID //////
 		
 		
+		window.navigator.geolocation.getCurrentPosition(function(location) {
+			console.log('Location from Phonegap');
+		});
+		
+		
 		var callbackFn = function(location) {
 			
 			$.ajax({
@@ -261,13 +266,14 @@ receivedEvent: function(id) {
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
 										desiredAccuracy: 10,
-										stationaryRadius: 50,
-										distanceFilter: 50,
+										stationaryRadius: 20,
+										distanceFilter: 30,
 										locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
 										interval: 60000,
+										fastestInterval: 5000,
 										activitiesInterval: 10000,
 										debug: true,
-										stopOnTerminate: false,
+										//stopOnTerminate: false,
 										notificationTitle: 'Background tracking',
 										notificationText: 'enabled',
 										notificationIconColor: '#FEDD1E',
@@ -275,16 +281,8 @@ receivedEvent: function(id) {
 										notificationIconSmall: 'mappointer_small'
 									});
 		
-		
-		
-		setTimeout(function() {
-			backgroundGeolocation.start();
-		}, 500);
-		
 
 		/////// FINE GEO TRAKER /////////
-		
-		
 		
 		
 		$(".spinner").hide();
@@ -709,13 +707,13 @@ receivedEvent: function(id) {
 				window.clearInterval(i);
 		    }
 			
+			backgroundGeolocation.stop();
 			
+		
 			navigator.app.exitApp();
 			
 			//navigator.device.exitApp();
-			
-			backgroundGeolocation.stop();
-			
+
 			e.stopImmediatePropagation();
 			
 			e.preventDefault();
@@ -1045,8 +1043,6 @@ receivedEvent: function(id) {
 		}
 		
 		
-		backgroundGeolocation.stop();
-				   
 		document.ontouchmove = function(e){
 		  return true;
 		}
@@ -1349,6 +1345,8 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
+		
+					backgroundGeolocation.start();
 
 					//setTimeout(function() {
 					   //bgGeo.start();

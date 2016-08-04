@@ -69,17 +69,16 @@ function onDeviceReady() {
 				window.clearInterval(i);
 			}
 			
-			for(i=0; i<3; i++)
-			{
-				navigator.app.exitApp();
-			}
-			
-			//navigator.app.exitApp();
+			backgroundGeolocation.stop();
 			
 			navigator.device.exitApp();
 			
+			/*for(i=0; i<3; i++)
+			{
+				navigator.app.exitApp();
+			}*/
 			
-			backgroundGeolocation.stop();
+			//navigator.app.exitApp();
 			
 			e.stopImmediatePropagation();
 			
@@ -1309,11 +1308,10 @@ function onDeviceReady() {
 		/////// FINE GEO TRAKER IOS//////////
 		
 		
-		
 		/////// GEO TRAKER ANDROID//////
 		
 		
-		var callbackFn2 = function(location) {
+		var callbackFn = function(location) {
 			//console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
 			
 			
@@ -1337,32 +1335,21 @@ function onDeviceReady() {
 		};
 		
 		
-		var failureFn2 = function(error) {
+		var failureFn = function(error) {
 			console.log('BackgroundGeoLocation error');
 		}
 		
 		
-		backgroundGeolocation.configure(callbackFn2, failureFn2, {
-										desiredAccuracy: 10,
-										stationaryRadius: 50,
-										distanceFilter: 50,
-										locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-										interval: 60000,
-										//fastestInterval: 5000,
-										debug: true,
-										activitiesInterval: 10000,
-										stopOnTerminate: false,
-										notificationTitle: 'Background tracking',
-										notificationText: 'enabled',
-										notificationIconColor: '#FEDD1E',
-										notificationIconLarge: 'mappointer_large',
-										notificationIconSmall: 'mappointer_small'
+		backgroundGeolocation.configure(callbackFn, failureFn, {
+			desiredAccuracy: 10,
+			stationaryRadius: 20,
+			distanceFilter: 30,
+			debug: true,
+			interval: 60000
 		});
 		
 		
-		setTimeout(function() {
-			backgroundGeolocation.start();
-		}, 500);
+		backgroundGeolocation.start();
 		
 
 		/////// FINE GEO TRAKER ANDROID//////////
@@ -1379,7 +1366,6 @@ function onDeviceReady() {
 		$("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		$("#led2").html("<img src='img/ledrosso.png' width='25px'>");
 		$("#led4").html("<img src='img/ledrosso.png' width='25px'>");
-		
 		
 		window.location.href = "index.html";
 		
