@@ -20,6 +20,7 @@ onDeviceReady: function() {
 	// Update DOM on a Received Event
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
+	document.addEventListener("pause", onPause, false);
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
@@ -271,7 +272,6 @@ receivedEvent: function(id) {
 			interval: 30000,
 			fastestInterval: 5000,
 			activitiesInterval: 10000,
-			startForeground: false,
 			//debug: true,
 			notificationTitle: 'Background tracking',
 			notificationText: 'enabled',
@@ -281,7 +281,7 @@ receivedEvent: function(id) {
 		});
 		
 		
-		backgroundGeolocation.stop();
+		//backgroundGeolocation.stop();
 
 		/////// FINE GEO TRAKER /////////
 		
@@ -1016,7 +1016,7 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#mappa7", function(e){
-		backgroundGeolocation.stop();
+		//backgroundGeolocation.stop();
 		
 		localStorage.setItem("dovesono", "3");
 				   
@@ -1111,7 +1111,7 @@ receivedEvent: function(id) {
 				   
 		//bgGeo.stop();
 
-		backgroundGeolocation.stop();
+		//backgroundGeolocation.stop();
 		
 				   
 		var connectionStatus = false;
@@ -1352,7 +1352,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
 		
-					backgroundGeolocation.start();
+					//backgroundGeolocation.start();
 
 					//setTimeout(function() {
 					   //bgGeo.start();
@@ -2346,6 +2346,20 @@ function gps() {
 function verificawifi(){
     $("#verifica").click();
 }
+
+
+function onPause() {
+
+  for(i=0; i<10000; i++)
+   {
+	  window.clearInterval(i);
+   }
+   
+   
+   backgroundGeolocation.start();
+}
+
+
 
 function onResume() {
 	

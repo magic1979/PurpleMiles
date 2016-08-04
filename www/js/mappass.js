@@ -2,6 +2,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
+	document.addEventListener("pause", onPause, false);
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
@@ -212,7 +213,7 @@ function onDeviceReady() {
 				   
 		//bgGeo.finish();
 
-		backgroundGeolocation.stop();
+		//backgroundGeolocation.stop();
 
 		window.location.href = "index.html";
 		
@@ -457,7 +458,7 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#offerte", function(e){
 		 
-		backgroundGeolocation.start();
+		//backgroundGeolocation.start();
 
 		//setTimeout(function() {
 		   //bgGeo.start();
@@ -1349,7 +1350,6 @@ function onDeviceReady() {
 			interval: 30000,
 			fastestInterval: 5000,
 			activitiesInterval: 10000,
-			startForeground: false,
 			//debug: true,
 			notificationTitle: 'Background tracking',
 			notificationText: 'enabled',
@@ -1360,7 +1360,7 @@ function onDeviceReady() {
 		});
 		
 		
-		backgroundGeolocation.stop();
+		//backgroundGeolocation.stop();
 		
 		
 		/////// FINE GEO TRAKER ANDROID//////////
@@ -1722,6 +1722,18 @@ function mappatura() {
 function verificawifi(){
     $("#verifica").click();
 }
+
+function onPause() {
+
+  for(i=0; i<10000; i++)
+   {
+	  window.clearInterval(i);
+   }
+   
+   
+   backgroundGeolocation.start();
+}
+
 
 function onResume() {
 	
