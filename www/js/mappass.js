@@ -62,21 +62,20 @@ function onDeviceReady() {
 	
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
-			
 		
 			for(i=0; i<10000; i++)
 			{
 				window.clearInterval(i);
 			}
 			
-			backgroundGeolocation.stop();
-			
-			navigator.device.exitApp();
-			
-			/*for(i=0; i<3; i++)
+
+			for(i=0; i<10; i++)
 			{
 				navigator.app.exitApp();
-			}*/
+			}
+			
+			
+			navigator.device.exitApp();
 			
 			//navigator.app.exitApp();
 			
@@ -1309,6 +1308,10 @@ function onDeviceReady() {
 		
 		/////// GEO TRAKER ANDROID//////
 		
+		window.navigator.geolocation.getCurrentPosition(function(location) {
+			console.log('Location from Phonegap');
+		});
+		
 		
 		var callbackFn = function(location) {
 			//console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
@@ -1322,15 +1325,14 @@ function onDeviceReady() {
 				   jsonp: 'callback',
 				   crossDomain: true,
 				   success:function(result){
-				   
+				     backgroundGeolocation.finish();
 				   },
 				   error: function(){
-				   
+				     backgroundGeolocation.finish();
 				   },
 				   dataType:"jsonp"});
 
-			
-				backgroundGeolocation.finish();
+				//backgroundGeolocation.finish();
 		};
 		
 		
@@ -1340,13 +1342,14 @@ function onDeviceReady() {
 		
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
-			desiredAccuracy: 10,
-			stationaryRadius: 20,
-			distanceFilter: 30,
-			locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
-			interval: 60000,
+			desiredAccuracy: 3,
+			stationaryRadius: 10,
+			distanceFilter: 20,
+			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+			interval: 30000,
 			fastestInterval: 5000,
 			activitiesInterval: 10000,
+			startForeground: false,
 			//debug: true,
 			notificationTitle: 'Background tracking',
 			notificationText: 'enabled',
@@ -1723,7 +1726,7 @@ function verificawifi(){
 function onResume() {
 	
 
-	//backgroundGeolocation.stop();
+	backgroundGeolocation.stop();
 
 	
 	var connectionStatus = false;

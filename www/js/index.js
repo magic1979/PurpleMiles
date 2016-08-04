@@ -246,15 +246,14 @@ receivedEvent: function(id) {
 				   jsonp: 'callback',
 				   crossDomain: true,
 				   success:function(result){
-				   
+				     backgroundGeolocation.finish();
 				   },
 				   error: function(){
-				   
+				     backgroundGeolocation.finish();
 				   },
 				   dataType:"jsonp"});
 				   
-			
-			backgroundGeolocation.finish();
+			//backgroundGeolocation.finish();
 			
 		};
 		
@@ -265,13 +264,14 @@ receivedEvent: function(id) {
 		
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
-			desiredAccuracy: 10,
-			stationaryRadius: 20,
-			distanceFilter: 30,
-			locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
-			interval: 60000,
+			desiredAccuracy: 3,
+			stationaryRadius: 10,
+			distanceFilter: 20,
+			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+			interval: 30000,
 			fastestInterval: 5000,
 			activitiesInterval: 10000,
+			startForeground: false,
 			//debug: true,
 			notificationTitle: 'Background tracking',
 			notificationText: 'enabled',
@@ -701,17 +701,21 @@ receivedEvent: function(id) {
 	
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
-			
 
 			for(i=0; i<10000; i++)
 			{
 				window.clearInterval(i);
 		    }
 			
-			backgroundGeolocation.stop();
+
+			for(i=0; i<10; i++)
+			{
+				navigator.app.exitApp();
+			}
 			
-		
-			navigator.app.exitApp();
+			//navigator.app.exitApp();
+			
+			navigator.device.exitApp();
 			
 			//navigator.device.exitApp();
 
@@ -1012,6 +1016,8 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#mappa7", function(e){
+		backgroundGeolocation.stop();
+		
 		localStorage.setItem("dovesono", "3");
 				   
 		// finish GEO TRAKER
@@ -1021,7 +1027,6 @@ receivedEvent: function(id) {
 			window.clearInterval(i);
 		}
 
-		backgroundGeolocation.stop();
 				   
 		setTimeout(function() {
 			window.location.href = "mappass.html";
@@ -2344,7 +2349,7 @@ function verificawifi(){
 
 function onResume() {
 	
-	//backgroundGeolocation.stop();
+	backgroundGeolocation.stop();
 	
 	//app.initialize();
 	$("#blob5").hide();
