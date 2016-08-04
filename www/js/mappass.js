@@ -63,10 +63,7 @@ function onDeviceReady() {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
-
-		   backgroundGeolocation.stop();
-
-			
+		
 			for(i=0; i<10000; i++)
 			{
 				window.clearInterval(i);
@@ -81,6 +78,8 @@ function onDeviceReady() {
 			
 			navigator.device.exitApp();
 			
+			
+			backgroundGeolocation.stop();
 			
 			e.stopImmediatePropagation();
 			
@@ -1313,37 +1312,51 @@ function onDeviceReady() {
 		
 		/////// GEO TRAKER ANDROID//////
 		
-		var callbackFn = function(location) {
+		
+		var callbackFn2 = function(location) {
 			//console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
 			
-			localStorage.setItem("lat3", location.latitude)
-			localStorage.setItem("lng3", location.longitude)
 			
-			vediofferte()
+			$.ajax({
+				   type:"GET",
+				   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&trakka=1",
+				   contentType: "application/json",
+				   timeout: 7000,
+				   jsonp: 'callback',
+				   crossDomain: true,
+				   success:function(result){
+				   
+				   },
+				   error: function(){
+				   
+				   },
+				   dataType:"jsonp"});
+
 			
 			backgroundGeolocation.finish();
 		};
 		
 		
-		var failureFn = function(error) {
+		var failureFn2 = function(error) {
 			console.log('BackgroundGeoLocation error');
 		}
 		
 		
-		backgroundGeolocation.configure(callbackFn, failureFn, {
+		backgroundGeolocation.configure(callbackFn2, failureFn2, {
 										desiredAccuracy: 10,
-										stationaryRadius: 20,
-										distanceFilter: 30,
+										stationaryRadius: 50,
+										distanceFilter: 50,
 										locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-										interval: 60000
+										interval: 60000,
 										//fastestInterval: 5000,
-										//debug: true,
-										//activitiesInterval: 10000,
-										//notificationTitle: 'Background tracking',
-										//notificationText: 'enabled',
-										//notificationIconColor: '#FEDD1E',
-										//notificationIconLarge: 'mappointer_large',
-										//notificationIconSmall: 'mappointer_small'
+										debug: true,
+										activitiesInterval: 10000,
+										stopOnTerminate: false,
+										notificationTitle: 'Background tracking',
+										notificationText: 'enabled',
+										notificationIconColor: '#FEDD1E',
+										notificationIconLarge: 'mappointer_large',
+										notificationIconSmall: 'mappointer_small'
 		});
 		
 		
@@ -1353,7 +1366,6 @@ function onDeviceReady() {
 		
 
 		/////// FINE GEO TRAKER ANDROID//////////
-
 
 		    localStorage.setItem("scroller","0")
 		
@@ -1717,7 +1729,7 @@ function verificawifi(){
 function onResume() {
 	
 
-	backgroundGeolocation.stop();
+	//backgroundGeolocation.stop();
 
 	
 	var connectionStatus = false;

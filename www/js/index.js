@@ -237,7 +237,6 @@ receivedEvent: function(id) {
 				   type:"GET",
 				   url:"http://purplemiles.com/www2/check_richiesta_autistaV4.php?email="+ localStorage.getItem("email") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&id_autista="+ localStorage.getItem("id_autista") +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"",
 				   contentType: "application/json",
-				   contentType: "application/json",
 				   timeout: 7000,
 				   jsonp: 'callback',
 				   crossDomain: true,
@@ -262,21 +261,25 @@ receivedEvent: function(id) {
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
 										desiredAccuracy: 10,
-										stationaryRadius: 20,
-										distanceFilter: 30,
+										stationaryRadius: 50,
+										distanceFilter: 50,
 										locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-										interval: 60000
-										//activitiesInterval: 10000,
-										//debug: true,
-										//notificationTitle: 'Background tracking',
-										//notificationText: 'enabled',
-										//notificationIconColor: '#FEDD1E',
-										//notificationIconLarge: 'mappointer_large',
-										//notificationIconSmall: 'mappointer_small'
+										interval: 60000,
+										activitiesInterval: 10000,
+										debug: true,
+										stopOnTerminate: false,
+										notificationTitle: 'Background tracking',
+										notificationText: 'enabled',
+										notificationIconColor: '#FEDD1E',
+										notificationIconLarge: 'mappointer_large',
+										notificationIconSmall: 'mappointer_small'
 									});
 		
 		
-		backgroundGeolocation.start();
+		
+		setTimeout(function() {
+			backgroundGeolocation.start();
+		}, 500);
 		
 
 		/////// FINE GEO TRAKER /////////
@@ -701,9 +704,6 @@ receivedEvent: function(id) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
 
-			backgroundGeolocation.stop();
-
-			
 			for(i=0; i<10000; i++)
 			{
 				window.clearInterval(i);
@@ -713,6 +713,8 @@ receivedEvent: function(id) {
 			navigator.app.exitApp();
 			
 			//navigator.device.exitApp();
+			
+			backgroundGeolocation.stop();
 			
 			e.stopImmediatePropagation();
 			
@@ -1015,6 +1017,10 @@ receivedEvent: function(id) {
 				   
 		// finish GEO TRAKER
 		//bgGeo.stop();
+		for(i=0; i<10000; i++)
+		{
+			window.clearInterval(i);
+		}
 
 		backgroundGeolocation.stop();
 				   
@@ -1032,6 +1038,14 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("tap", "#mappa6", function(e){
+		
+		for(i=0; i<10000; i++)
+		{
+			window.clearInterval(i);
+		}
+		
+		
+		backgroundGeolocation.stop();
 				   
 		document.ontouchmove = function(e){
 		  return true;
@@ -1072,7 +1086,12 @@ receivedEvent: function(id) {
 	  }
 	  else
 	  {
-
+		  navigator.notification.alert(
+			   'Possibile errore di rete, riprova tra qualche minuto.',  // message
+			   alertDismissed,         // callback
+			   'Attenzione',           // title
+			   'Ok'                  // buttonName
+		   );
 	  }
 				   
 	  e.stopImmediatePropagation();
@@ -1330,17 +1349,11 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
-					//backgroundGeolocation.stop();
 
-					
 					//setTimeout(function() {
 					   //bgGeo.start();
 					   //backgroundGeolocation.start();
-					   
-					   setTimeout(function() {
-							start();
-					   }, 200);
-					   
+					   			   
 					//}, 500);
 					
 						
@@ -1365,6 +1378,10 @@ receivedEvent: function(id) {
 				   
 				   localStorage.setItem("pagina","inizia")
 				   $("#win2header").html("In attesa di richieste&nbsp;&nbsp;");
+				   
+				   	setTimeout(function() {
+						start();
+					}, 200);
 				   
 
 				   e.stopImmediatePropagation();
@@ -2328,7 +2345,7 @@ function verificawifi(){
 
 function onResume() {
 	
-	backgroundGeolocation.stop();
+	//backgroundGeolocation.stop();
 	
 	//app.initialize();
 	$("#blob5").hide();
