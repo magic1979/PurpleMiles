@@ -1351,6 +1351,7 @@ function onDeviceReady() {
 		
 		backgroundGeolocation.start();
 		
+		
 
 		/////// FINE GEO TRAKER ANDROID//////////
 
