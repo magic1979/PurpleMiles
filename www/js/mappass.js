@@ -458,26 +458,25 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart", "#offerte", function(e){
 		 
-		//backgroundGeolocation.stop();
+		//backgroundGeolocation.start();
 
-		setTimeout(function() {
+		//setTimeout(function() {
 		   //bgGeo.start();
 		   //backgroundGeolocation.start();
 		   
 		   	localStorage.setItem("dovesono", "3");
+			localStorage.setItem("scroller","0")
+			localStorage.setItem("nobanner","0")
+					   
+			prendibanner()
 				   
 			$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 			//$.mobile.changePage ($("#home4"));
 			$("#spinner4").show();
 					   
-			localStorage.setItem("scroller","0")
-			localStorage.setItem("nobanner","0")
-					   
-			prendibanner()
-					   
 			vediofferte()
 			
-	    }, 500);
+	   // }, 500);
 				   
 
 		/* myScroll = new IScroll('#wrapper', { click: true });
@@ -1342,10 +1341,19 @@ function onDeviceReady() {
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
 			desiredAccuracy: 10,
-			stationaryRadius: 20,
-			distanceFilter: 30,
+			stationaryRadius: 50,
+			distanceFilter: 50,
+			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+			interval: 60000,
+			fastestInterval: 10000,
+			activitiesInterval: 20000,
 			debug: true,
-			interval: 60000
+			notificationTitle: 'Background tracking',
+			notificationText: 'enabled',
+			notificationIconColor: '#FEDD1E',
+			notificationIconLarge: 'mappointer_large',
+			notificationIconSmall: 'mappointer_small'
+			
 		});
 		
 		
