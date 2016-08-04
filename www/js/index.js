@@ -1347,14 +1347,13 @@ receivedEvent: function(id) {
 				       }
 				   }
 				   
-
 				   localStorage.setItem("pagina","inizia")
 				   $("#win2header").html("In attesa di richieste&nbsp;&nbsp;");
 				   
 				   
 				   setTimeout(function() {
 						start();
-				   }, 500);
+				   }, 200);
 				   
 				   
 				   e.stopImmediatePropagation();
