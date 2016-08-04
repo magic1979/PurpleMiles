@@ -272,7 +272,7 @@ receivedEvent: function(id) {
 										interval: 60000,
 										fastestInterval: 10000,
 										activitiesInterval: 20000,
-										debug: true,
+										//debug: true,
 										notificationTitle: 'Background tracking',
 										notificationText: 'enabled',
 										notificationIconColor: '#FEDD1E',
@@ -280,6 +280,8 @@ receivedEvent: function(id) {
 										notificationIconSmall: 'mappointer_small'
 									});
 		
+		
+		backgroundGeolocation.stop();
 
 		/////// FINE GEO TRAKER /////////
 		

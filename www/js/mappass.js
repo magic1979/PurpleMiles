@@ -456,9 +456,9 @@ function onDeviceReady() {
 	
 	
 	
-	$(document).on("touchstart", "#offerte", function(e){
+	$(document).on("tap", "#offerte", function(e){
 		 
-		//backgroundGeolocation.start();
+		backgroundGeolocation.start();
 
 		//setTimeout(function() {
 		   //bgGeo.start();
@@ -1330,7 +1330,7 @@ function onDeviceReady() {
 				   dataType:"jsonp"});
 
 			
-			backgroundGeolocation.finish();
+				backgroundGeolocation.finish();
 		};
 		
 		
@@ -1341,13 +1341,13 @@ function onDeviceReady() {
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
 			desiredAccuracy: 10,
-			stationaryRadius: 50,
-			distanceFilter: 50,
-			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+			stationaryRadius: 20,
+			distanceFilter: 30,
+			locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
 			interval: 60000,
 			fastestInterval: 10000,
 			activitiesInterval: 20000,
-			debug: true,
+			//debug: true,
 			notificationTitle: 'Background tracking',
 			notificationText: 'enabled',
 			notificationIconColor: '#FEDD1E',
@@ -1357,10 +1357,9 @@ function onDeviceReady() {
 		});
 		
 		
-		backgroundGeolocation.start();
+		backgroundGeolocation.stop();
 		
 		
-
 		/////// FINE GEO TRAKER ANDROID//////////
 
 		    localStorage.setItem("scroller","0")
@@ -2189,15 +2188,18 @@ function controllaofferte(){
                 if(item.Token==1){
                   
                   setTimeout( function() {
-					localStorage.setItem("nobanner","0")
-					prendibanner()
+					  
+					 $("#offerte").tap();
+					 
+					//localStorage.setItem("nobanner","0")
+					//prendibanner()
 							 
-                    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+                    //$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 							 
 
 					//setTimeout(function() {
 					   //bgGeo.start();
-					   vediofferte()
+					   //vediofferte()
 					//}, 500);
 							 
 
@@ -2893,12 +2895,18 @@ function vediofferte(){
 		   
 		   },
 		   error: function(){
+			   
+		    $("#spinner4").hide();
 		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
 		   
-		   vediofferte();
+		   setTimeout (function(){
+			vediofferte();
+					   
+		    }, 2000);
+	
 		   
 		   },
 		   dataType:"jsonp"});
