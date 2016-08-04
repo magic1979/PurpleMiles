@@ -265,15 +265,15 @@ receivedEvent: function(id) {
 										stationaryRadius: 20,
 										distanceFilter: 30,
 										locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-										interval: 60000,
-										activitiesInterval: 10000,
-										debug: true,
-										notificationTitle: 'Background tracking',
-										notificationText: 'enabled',
-										notificationIconColor: '#FEDD1E',
-										notificationIconLarge: 'mappointer_large',
-										notificationIconSmall: 'mappointer_small'
-										});
+										interval: 60000
+										//activitiesInterval: 10000,
+										//debug: true,
+										//notificationTitle: 'Background tracking',
+										//notificationText: 'enabled',
+										//notificationIconColor: '#FEDD1E',
+										//notificationIconLarge: 'mappointer_large',
+										//notificationIconSmall: 'mappointer_small'
+									});
 		
 
 		/////// FINE GEO TRAKER /////////
@@ -1319,14 +1319,14 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
+		
+					 backgroundGeolocation.start();
 				   
 					//backgroundGeolocation.stop();
 					
-					setTimeout(function() {
+					//setTimeout(function() {
 					   //bgGeo.start();
-					   backgroundGeolocation.start();
-					}, 1000);
-				   
+					//}, 1000);
 				   
 					$('#modificastart').blur()
 				    $('#inizia').blur()
@@ -2317,7 +2317,6 @@ function verificawifi(){
 }
 
 function onResume() {
-	backgroundGeolocation.stop();
 	
 	//app.initialize();
 	$("#blob5").hide();

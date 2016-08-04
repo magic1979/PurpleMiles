@@ -456,13 +456,13 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchstart", "#offerte", function(e){
+		 backgroundGeolocation.start();
 		
 		//backgroundGeolocation.stop();
 		
-		setTimeout(function() {
+		//setTimeout(function() {
 		   //bgGeo.start();
-		   backgroundGeolocation.start();
-	    }, 1000);
+	    //}, 1000);
 				   
 				   
 		localStorage.setItem("dovesono", "3");
@@ -1311,7 +1311,7 @@ function onDeviceReady() {
 		/////// GEO TRAKER ANDROID//////
 		
 		var callbackFn = function(location) {
-			console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
+			//console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
 			
 			localStorage.setItem("lat3", location.latitude)
 			localStorage.setItem("lng3", location.longitude)
@@ -1332,16 +1332,16 @@ function onDeviceReady() {
 										stationaryRadius: 20,
 										distanceFilter: 30,
 										locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-										interval: 60000,
+										interval: 60000
 										//fastestInterval: 5000,
-										debug: true,
-										activitiesInterval: 10000,
-										notificationTitle: 'Background tracking',
-										notificationText: 'enabled',
-										notificationIconColor: '#FEDD1E',
-										notificationIconLarge: 'mappointer_large',
-										notificationIconSmall: 'mappointer_small'
-										});
+										//debug: true,
+										//activitiesInterval: 10000,
+										//notificationTitle: 'Background tracking',
+										//notificationText: 'enabled',
+										//notificationIconColor: '#FEDD1E',
+										//notificationIconLarge: 'mappointer_large',
+										//notificationIconSmall: 'mappointer_small'
+		});
 		
 		
 		/////// FINE GEO TRAKER ANDROID//////////
@@ -1709,7 +1709,6 @@ function verificawifi(){
 }
 
 function onResume() {
-	backgroundGeolocation.stop();
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -2185,7 +2184,6 @@ function controllaofferte(){
 					   backgroundGeolocation.start();
 					//}, 1000);
 							 
-							 
 					vediofferte()
 							 
 							 //
@@ -2267,9 +2265,9 @@ function vediofferte(){
 		   crossDomain: true,
 		   success:function(result){
 			   
-		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
-		   $("#led2").html("<img src='img/ledrosso.png' width='25px'>");
-		   $("#led4").html("<img src='img/ledrosso.png' width='25px'>");
+		   $("#led").html("<img src='img/ledverde.png' width='25px'>");
+		   $("#led2").html("<img src='img/ledverde.png' width='25px'>");
+		   $("#led4").html("<img src='img/ledverde.png' width='25px'>");
 		   
 		   if(localStorage.getItem("risppass")===JSON.stringify(result)){
 			   $("#spinner4").hide();
