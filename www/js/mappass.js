@@ -63,11 +63,9 @@ function onDeviceReady() {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
-			for(i=0; i<10000; i++)
-			{
-				backgroundGeolocation.stop();
-			}
-			
+
+		   backgroundGeolocation.stop();
+
 			
 			for(i=0; i<10000; i++)
 			{
@@ -216,12 +214,11 @@ function onDeviceReady() {
 	$(document).on("touchstart tap", "#XX3", function(e){
 				   
 		//bgGeo.finish();
-		for(i=0; i<10000; i++)
-		{
-		   backgroundGeolocation.stop();
-		}
-				   
+
+		backgroundGeolocation.stop();
+
 		window.location.href = "index.html";
+		
 	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
@@ -463,15 +460,11 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart", "#offerte", function(e){
 		 
-		for(i=0; i<1000; i++)
-		{
-		   backgroundGeolocation.stop();
-		}
-		
-		
+		//backgroundGeolocation.stop();
+
 		setTimeout(function() {
 		   //bgGeo.start();
-		   backgroundGeolocation.start();
+		   //backgroundGeolocation.start();
 		   
 		   	localStorage.setItem("dovesono", "3");
 				   
@@ -1354,10 +1347,13 @@ function onDeviceReady() {
 		});
 		
 		
+		setTimeout(function() {
+			backgroundGeolocation.start();
+		}, 500);
+		
+
 		/////// FINE GEO TRAKER ANDROID//////////
-	        //backgroundGeolocation.finish();
-			
-			
+
 
 		    localStorage.setItem("scroller","0")
 		
@@ -1720,10 +1716,9 @@ function verificawifi(){
 
 function onResume() {
 	
-	for(i=0; i<10000; i++)
-	{
-		backgroundGeolocation.stop();
-	}
+
+	backgroundGeolocation.stop();
+
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -2192,16 +2187,11 @@ function controllaofferte(){
 							 
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 							 
-					for(i=0; i<10000; i++)
-					{
-						backgroundGeolocation.stop();
-					}
-					
-					setTimeout(function() {
+
+					//setTimeout(function() {
 					   //bgGeo.start();
-					   backgroundGeolocation.start();
 					   vediofferte()
-					}, 500);
+					//}, 500);
 							 
 
 							 //

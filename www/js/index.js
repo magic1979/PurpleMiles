@@ -275,9 +275,13 @@ receivedEvent: function(id) {
 										//notificationIconSmall: 'mappointer_small'
 									});
 		
+		
+		backgroundGeolocation.start();
+		
 
 		/////// FINE GEO TRAKER /////////
-		//backgroundGeolocation.stop();
+		
+		
 		
 		
 		$(".spinner").hide();
@@ -696,11 +700,9 @@ receivedEvent: function(id) {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
-			for(i=0; i<10000; i++)
-			{
-				backgroundGeolocation.stop();
-			}
-			
+
+			backgroundGeolocation.stop();
+
 			
 			for(i=0; i<10000; i++)
 			{
@@ -1013,13 +1015,13 @@ receivedEvent: function(id) {
 				   
 		// finish GEO TRAKER
 		//bgGeo.stop();
-		for(i=0; i<10000; i++)
-		{
-			backgroundGeolocation.stop();
-		}
+
+		backgroundGeolocation.stop();
 				   
-		window.location.href = "mappass.html";
-		
+		setTimeout(function() {
+			window.location.href = "mappass.html";
+		}, 500);
+
 		e.stopImmediatePropagation();
 				   
 		e.preventDefault();
@@ -1087,10 +1089,9 @@ receivedEvent: function(id) {
 	$(document).on("touchstart tap", "#tornareset", function(e){
 				   
 		//bgGeo.stop();
-		for(i=0; i<10000; i++)
-		{
-			backgroundGeolocation.stop();
-		}
+
+		backgroundGeolocation.stop();
+		
 				   
 		var connectionStatus = false;
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -1329,22 +1330,18 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
-		
-				   
-					for(i=0; i<10000; i++)
-					{
-						backgroundGeolocation.stop();
-					}
+					//backgroundGeolocation.stop();
+
 					
-					setTimeout(function() {
+					//setTimeout(function() {
 					   //bgGeo.start();
-					   backgroundGeolocation.start();
+					   //backgroundGeolocation.start();
 					   
 					   setTimeout(function() {
 							start();
 					   }, 200);
 					   
-					}, 500);
+					//}, 500);
 					
 						
 					$('#modificastart').blur()
@@ -2330,6 +2327,8 @@ function verificawifi(){
 }
 
 function onResume() {
+	
+	backgroundGeolocation.stop();
 	
 	//app.initialize();
 	$("#blob5").hide();
