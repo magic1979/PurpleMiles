@@ -265,20 +265,20 @@ receivedEvent: function(id) {
 		
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
-										desiredAccuracy: 10,
-										stationaryRadius: 20,
-										distanceFilter: 30,
-										locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
-										interval: 60000,
-										fastestInterval: 10000,
-										activitiesInterval: 20000,
-										//debug: true,
-										notificationTitle: 'Background tracking',
-										notificationText: 'enabled',
-										notificationIconColor: '#FEDD1E',
-										notificationIconLarge: 'mappointer_large',
-										notificationIconSmall: 'mappointer_small'
-									});
+			desiredAccuracy: 10,
+			stationaryRadius: 20,
+			distanceFilter: 30,
+			locationProvider: backgroundGeolocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
+			interval: 60000,
+			fastestInterval: 5000,
+			activitiesInterval: 10000,
+			//debug: true,
+			notificationTitle: 'Background tracking',
+			notificationText: 'enabled',
+			notificationIconColor: '#FEDD1E',
+			notificationIconLarge: 'mappointer_large',
+			notificationIconSmall: 'mappointer_small'
+		});
 		
 		
 		backgroundGeolocation.stop();
