@@ -63,7 +63,10 @@ function onDeviceReady() {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
-			backgroundGeolocation.stop();
+			for(i=0; i<10000; i++)
+			{
+				backgroundGeolocation.stop();
+			}
 			
 			
 			for(i=0; i<10000; i++)
@@ -213,7 +216,10 @@ function onDeviceReady() {
 	$(document).on("touchstart tap", "#XX3", function(e){
 				   
 		//bgGeo.finish();
-		backgroundGeolocation.stop();
+		for(i=0; i<10000; i++)
+		{
+		   backgroundGeolocation.stop();
+		}
 				   
 		window.location.href = "index.html";
 	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
@@ -456,28 +462,32 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchstart", "#offerte", function(e){
-		 backgroundGeolocation.start();
+		 
+		for(i=0; i<1000; i++)
+		{
+		   backgroundGeolocation.stop();
+		}
 		
-		//backgroundGeolocation.stop();
 		
-		//setTimeout(function() {
+		setTimeout(function() {
 		   //bgGeo.start();
-	    //}, 1000);
+		   backgroundGeolocation.start();
+		   
+		   	localStorage.setItem("dovesono", "3");
 				   
+			$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+			//$.mobile.changePage ($("#home4"));
+			$("#spinner4").show();
+					   
+			localStorage.setItem("scroller","0")
+			localStorage.setItem("nobanner","0")
+					   
+			prendibanner()
+					   
+			vediofferte()
+			
+	    }, 500);
 				   
-		localStorage.setItem("dovesono", "3");
-				   
-	    $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
-		//$.mobile.changePage ($("#home4"));
-		$("#spinner4").show();
-				   
-		localStorage.setItem("scroller","0")
-		localStorage.setItem("nobanner","0")
-				   
-		prendibanner()
-				   
-		vediofferte()
-
 
 		/* myScroll = new IScroll('#wrapper', { click: true });
 				   
@@ -1710,6 +1720,11 @@ function verificawifi(){
 
 function onResume() {
 	
+	for(i=0; i<10000; i++)
+	{
+		backgroundGeolocation.stop();
+	}
+	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
@@ -2177,15 +2192,18 @@ function controllaofferte(){
 							 
                     $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 							 
-					//backgroundGeolocation.stop();
+					for(i=0; i<10000; i++)
+					{
+						backgroundGeolocation.stop();
+					}
 					
-					//setTimeout(function() {
+					setTimeout(function() {
 					   //bgGeo.start();
 					   backgroundGeolocation.start();
-					//}, 1000);
+					   vediofferte()
+					}, 500);
 							 
-					vediofferte()
-							 
+
 							 //
 							 
 							 /*var myScroll2;

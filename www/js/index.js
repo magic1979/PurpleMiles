@@ -696,7 +696,11 @@ receivedEvent: function(id) {
 	function onConfirm2(button) {
 		if(button==1){    //If User selected No, then we just do nothing
 			
-			backgroundGeolocation.stop();
+			for(i=0; i<10000; i++)
+			{
+				backgroundGeolocation.stop();
+			}
+			
 			
 			for(i=0; i<10000; i++)
 			{
@@ -1009,7 +1013,10 @@ receivedEvent: function(id) {
 				   
 		// finish GEO TRAKER
 		//bgGeo.stop();
-		backgroundGeolocation.stop();
+		for(i=0; i<10000; i++)
+		{
+			backgroundGeolocation.stop();
+		}
 				   
 		window.location.href = "mappass.html";
 		
@@ -1080,7 +1087,10 @@ receivedEvent: function(id) {
 	$(document).on("touchstart tap", "#tornareset", function(e){
 				   
 		//bgGeo.stop();
-		backgroundGeolocation.stop();
+		for(i=0; i<10000; i++)
+		{
+			backgroundGeolocation.stop();
+		}
 				   
 		var connectionStatus = false;
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -1320,42 +1330,46 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
 		
-					 backgroundGeolocation.start();
 				   
-					//backgroundGeolocation.stop();
+					for(i=0; i<10000; i++)
+					{
+						backgroundGeolocation.stop();
+					}
 					
-					//setTimeout(function() {
+					setTimeout(function() {
 					   //bgGeo.start();
-					//}, 1000);
-				   
+					   backgroundGeolocation.start();
+					   
+					   setTimeout(function() {
+							start();
+					   }, 200);
+					   
+					}, 500);
+					
+						
 					$('#modificastart').blur()
-				    $('#inizia').blur()
+					$('#inizia').blur()
 				   
 				   localStorage.setItem("notap","1")
 				   
 				   if(localStorage.getItem("setGPS") == 1){
 				   
-				     if (document.getElementById("modificastart").value == "") {
-				         navigator.notification.alert(
+					 if (document.getElementById("modificastart").value == "") {
+						 navigator.notification.alert(
 												'Inserire un indirizzo valido o utilizzare la posizione GPS',  // message
 												alertDismissed,         // callback
 												'Indirizzo',            // title
 												'OK'                  // buttonName
 												);
 				   
-				         return;
-				       }
+						 return;
+					   }
 				   }
 				   
 				   localStorage.setItem("pagina","inizia")
 				   $("#win2header").html("In attesa di richieste&nbsp;&nbsp;");
 				   
-				   
-				   setTimeout(function() {
-						start();
-				   }, 200);
-				   
-				   
+
 				   e.stopImmediatePropagation();
 				   
 				   e.preventDefault();
