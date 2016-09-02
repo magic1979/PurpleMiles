@@ -354,7 +354,7 @@ function onDeviceReady() {
 		
 	}*/
 	
-	if(screen.width < 768){
+	/*if(screen.width < 768){
 		$("#quando").html("<img src='img/ico_clock3.png' width='55px'>");
 		$("#da").html("<img src='img/ico_start1.png' width='45px'>");
 		$("#a3").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -384,7 +384,7 @@ function onDeviceReady() {
 			$("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
 			$("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
 		}
-	}
+	}*/
 
 	
 	$("#tblhome").fadeIn("slow")
@@ -521,7 +521,7 @@ function onDeviceReady() {
 		$("#destinazione").hide();
 		$("#tbldestinazione").hide();
 				   
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
 				   }
@@ -535,7 +535,7 @@ function onDeviceReady() {
 				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
 				   }
-				   }
+				   }*/
 				   
 		
 		
@@ -570,7 +570,7 @@ function onDeviceReady() {
 				   $("#s_arrivo").hide();
 				   $("#s_partenza").show();
 				  
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				     $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				     $("#a1").html("<img src='img/ico_finish1.png' width='45px'>");
 				   }
@@ -584,7 +584,7 @@ function onDeviceReady() {
 				     $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				     $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
 				   }
-				   }
+				   }*/
 				   
 				   
 				   
@@ -659,7 +659,7 @@ function onDeviceReady() {
 		prendicittaid(localStorage.getItem("citta"))
 				   
 		
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_clock3.png' width='55px'>");
 				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a3").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -719,7 +719,7 @@ function onDeviceReady() {
 				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
 				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
 				   }
-				   }
+				   }*/
 				   
 		window.location.href = "#home";
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
@@ -767,7 +767,7 @@ function onDeviceReady() {
 					   
 			prendibanner()
 				   
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
 				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -799,13 +799,13 @@ function onDeviceReady() {
 				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
 				   
 				   }
-				   }
+				   }*/
 				   
 			$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 			//$.mobile.changePage ($("#home4"));
 			$("#spinner4").show();
 				   
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
 				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -831,7 +831,7 @@ function onDeviceReady() {
 				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
 				   $("#offerte").html("<img src='img/ico_offers3.png' width='55px'>");
 				   }
-				   }
+				   }*/
 					   
 			vediofferte()
 			
@@ -894,7 +894,7 @@ function onDeviceReady() {
 				   }
 				   
 
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
 				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -930,7 +930,7 @@ function onDeviceReady() {
 				   //$("#piu").html("<img src='img/ico_plus2.png' width='45px'>");
 				   //$("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
 				   }
-				   }
+				   }*/
 
 
 				   $("#back3").hide();
@@ -1005,7 +1005,7 @@ function onDeviceReady() {
 		
 	     onResume();
 				   
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
 				   }
@@ -1019,7 +1019,7 @@ function onDeviceReady() {
 				   $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
 				   }
-				   }
+				   }*/
 		 
 		 
 				   
@@ -1052,7 +1052,7 @@ function onDeviceReady() {
 				   $("#s_arrivo").show();
 				   
 				   
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				     $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
 				     $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
 				   }
@@ -1066,7 +1066,7 @@ function onDeviceReady() {
 				     $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
 				     $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
 				    }
-				   }
+				   }*/
 
 				   
 				   setTimeout(function() {
@@ -1195,7 +1195,7 @@ function onDeviceReady() {
 					   localStorage.setItem("dovesono", "3");
 					   $("#spinner4").show();
 					  
-					  if(screen.width < 768){
+					/*  if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
 				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -1227,7 +1227,7 @@ function onDeviceReady() {
 				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
 				   
 				   }
-				   }
+				   }*/
 					  
 					  
 					   vediofferte()
@@ -1289,7 +1289,7 @@ function onDeviceReady() {
 								 $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 								 $("#spinner4").show();
 								 
-								 if(screen.width < 768){
+								 /*if(screen.width < 768){
 								 $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
 								 $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 								 $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -1322,7 +1322,7 @@ function onDeviceReady() {
 								 $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
 								 
 								 }
-								 }
+								 }*/
 								 
 								 
 								 vediofferte()
@@ -1525,7 +1525,7 @@ function onDeviceReady() {
 	    }
 				   
 				   
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
 				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -1558,7 +1558,7 @@ function onDeviceReady() {
 				   
 
 				   }
-				   }
+				   }*/
 
 				   
 		
@@ -2061,9 +2061,9 @@ function CenterControl(controlDiv, map) {
 	//controlText.innerHTML = '<table width="100%" class="xalto" border="0"><tr><td align="right">&nbsp;<br><br><br></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_anteprima1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6"><table border="0" width="100%" align="center" valign="center" class="bannertbl"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl2"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="s_partenza" valign="center"><b>Scegli la partenza</b><br></div><div id="s_arrivo" style="display:none" valign="center"><b>Scegli l\'arrivo</b></div></font><br></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table>';
 	
 	
-	if(screen.width < 768){
+	//if(screen.width < 768){
 		controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
-	}
+	/*}
 	else
 	{
 		if(screen.width > 719){
@@ -2072,7 +2072,7 @@ function CenterControl(controlDiv, map) {
 		else{
 			controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
 		}
-	}
+	}*/
 	
 
 	controlUI.appendChild(controlText);
