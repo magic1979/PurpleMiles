@@ -5,11 +5,7 @@
 		<meta property="og:locale" content="en_US" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			
-		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">-->
-        
-        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-        
-         
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 
         <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -74,6 +70,17 @@
 		}
 		
 		#wrapper2 {
+			position: absolute;
+			z-index: 1;
+			top: 5px;
+			bottom: 0px;
+			left: 0;
+			width: 100%;
+			background: #fff;
+			overflow: hidden;
+		}
+		
+		#wrapper3 {
 			position: absolute;
 			z-index: 1;
 			top: 5px;
@@ -368,7 +375,7 @@ a {text-decoration:none;}
 				<div id="scroller">
 
 			<center>
-			<img src="img/Logo.png" width="160px"><br>
+			<img src="img/Logo.jpg" width="140px"><br>
 
 
 			<table id="formreg" align="center" width="90%" border="0">
@@ -380,13 +387,13 @@ a {text-decoration:none;}
 				<tr id="campireg">
 					<td colspan="2" width="320px" align="center">
 						 <form name="formia2" action="entra2.asp" method="post">
-						 <input type="text" data-role="none" name="email" id="email" value="" placeholder="Inserire la email" class="scrivo">
+						 <input type="text" data-role="none" name="email" id="email" value="" placeholder="email" class="scrivo">
 						
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center">&nbsp;
-						
+					<td colspan="2" align="center">
+						&nbsp;
 					</td>
 				</tr>
 				<tr>
@@ -396,38 +403,38 @@ a {text-decoration:none;}
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="password" data-role="none" name="password" id="password" value="" placeholder="Inserire la password" class="scrivo">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">&nbsp;
-						
+						<input type="password" data-role="none" name="password" id="password" value="" placeholder="password" class="scrivo">
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<a href="#" id="accedi" data-role="button" class="custom-btn" data-theme="b"><font color="#FFF" size="4">Accedi</font></a>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">&nbsp;
-						
+						&nbsp;
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<a id="impostazioni" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3">Impostazioni</font></a>
+						<a href="#" id="accedi" data-role="button" class="custom-btn" data-theme="b"><font color="#FFF" size="4"><div id="btnaccedi">Accedi</div></font></a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<a id="impostazioni" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3"><div id="btnimp">Impostazioni</div></font></a>
 					</td>
 				</tr>
 				
 				<tr>
 					<td colspan="2" align="center">
-						<a id="recuperopsw" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3">Password dimenticata?</font></a>
+						<a id="recuperopsw" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3"><div id="btnpsw">Password dimenticata?</div></font></a>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<a id="regsito" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3">Registrati ora</font></a>
+						<a id="regsito" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3"><div id="btnreg">Registrati ora</div></font></a>
 					</td>
 				</tr>
 				
@@ -482,8 +489,8 @@ a {text-decoration:none;}
 				<div id="wrapper2">
 					<div id="scroller">
 				     <form name="formia6" action="entra2.asp" method="post">
-				     <!--<img src="img/Logo.png" width="160px">--><br>
-					 <font color="#cc33cc" size="5"><b>Impostazioni</b></font>
+				     <img src="img/Logo.jpg" width="140px"><br>
+					 <!--<font color="#cc33cc" size="5"><b><div id="himpostazioni">Impostazioni</div></b></font>-->
 					 <br><br>
 			   
 			   <table align="center" width="80%">
@@ -495,14 +502,14 @@ a {text-decoration:none;}
 					</td>
 				</tr>
 				<tr>
-					<td  align="center">&nbsp;
-						
+					<td  align="center">
+						&nbsp;
 					</td>
 				</tr>
 				
 			<tr>
 				<td  align="left">
-					<font size="4"><b>Lingua</b></font>
+					<font size="4"><b><div id="hlingua">Lingua</div></b></font>
 				</td>
 			</tr>
 			
@@ -516,14 +523,14 @@ a {text-decoration:none;}
 				</td>
 			</tr>
 			<tr>
-				<td  align="center">&nbsp;
-					
+				<td  align="center">
+					&nbsp;
 				</td>
 			</tr>
 			
 			<tr>
 				<td  align="left">
-					<div id="precitta"></div>
+                    <table width="100%" align="center"><tr><td align="left" width="40%"><font size='4'><b><p id="hfuso">Fuso Orario</p></b></font></td><td align="left" width="60%"><font size='4'><p id="precitta"></p></font></font></td><tr></tr></table>
 				</td>
 			</tr>
 			<tr>
@@ -549,7 +556,7 @@ a {text-decoration:none;}
 			</tr>
 			<tr>
 				<td  align="left">
-					<font size="4"><b>Tipo veicolo</b></font>
+					<font size="4"><b><div id="hveicolo">Tipo veicolo</div></b></font>
 				</td>
 			</tr>
 			<tr>
@@ -561,14 +568,14 @@ a {text-decoration:none;}
 				</td>
 			</tr>
 			<tr>
-				<td  align="center">&nbsp;
-					
+				<td  align="center">
+					&nbsp;
 				</td>
 			</tr>
 
 			<tr>
 				<td  align="center">
-					<a href="#" id="legenda" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="4">Aiuto</font></a>
+					<a href="#" id="legenda" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="4"><div id="haiuto">Aiuto</div></font></a>
 				</td>
 			</tr>
 			<tr>
@@ -579,58 +586,619 @@ a {text-decoration:none;}
 			</tr>
 			<tr>
 				<td align="center">
-					<a href="#" id="conferma" data-role="button" class="custom-btn" data-theme="b"><font color="#FFF" size="4">Salva</font></a>
+					<a href="#" id="conferma" data-role="button" class="custom-btn" data-theme="b"><font color="#FFF" size="4"><div id="hsalva">Salva</div></font></a>
 				</td>
 			</tr>
 			
 			</table>
 			</form>
 			<br><br><br>
-            
 					</div>
 				</div>
 		</div><!-- /page6 -->
 		
+		
 		<div id="page7" data-role="page" class="div2" >
-			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1">
+			<!--<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1">
 				<table align="center" width="100%" valign="center" border="0"><tr><td></td></tr><tr><td align="center" valign="center"><img src="img/Logo.png" height="36px"></td></tr></table>
 			</div>
-			<br><br>
+			<br>-->
+			<br><center>
 			<div class="spinner" id="spinner"></div>
-			<center>
-				
-				<table id="formreg" align="center" width="320px">
+			
+			<div id="wrapper3">
+				<div id="scroller">
 					
-					<tr>
-						<td width="320px" align="center">
-							<form name="formia" action="entra.asp" method="post">
-								<input type="text" data-role="none" name="emailreg" id="emailreg" value="" placeholder="Email" class="scrivo">
-									<input type="text" data-role="none" name="pinreg" id="pinreg" value="" placeholder="Password" class="scrivo">
-										<input type="text" data-role="none" name="nome" id="nome" value="" placeholder="Nome" class="scrivo">
-											
-											<a href="#" id="iscriviti" data-role="button" data-theme="c" class="custom-btn"><font color="e260fe" size="4">Iscriviti</font></a>
-											</form>
-						</td>
-					</tr>
-				</table>
-				<br>
-				<table align="center" width="320px">
-					<tr>
-						<td width="220px" align="left">
-							&nbsp;&nbsp;Hai un account?
-						</td>
-						<td width="100px" align="right">
-							<a href="#page" id="#" ><font color="#000">Accedi</a>&nbsp;&nbsp;
-						</td>
-					</tr>
+				<font color="#cc33cc" size="5"><b><div id="rreg">Registrazione gratuita</div></b></font>
+				<br><br><br>
+                
+				<form name="formia" action="entra.asp" method="post">
+					
+				<table id="formreg" align="center" width="80%">
+				<tr>
+					<td  align="left">
+						<font size="4"><b><div id="rpaese">Selezione il tuo paese</div></b></font>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="center">
+						<select id="nazione7" name="nazione7" data-theme="c" >
+							
+							<option value="112" selected>Italia</option>
+							
+							<option value="1">Afghanistan</option>
+							
+							<option value="2">Albania</option>
+							
+							<option value="3">Algeria</option>
+							
+							<option value="4">Andorra</option>
+							
+							<option value="5">Angola</option>
+							
+							<option value="6">Anguilla</option>
+							
+							<option value="7">Antigua e Barbuda</option>
+							
+							<option value="8">Arabia Saudita</option>
+							
+							<option value="9">Argentina</option>
+							
+							<option value="10">Armenia</option>
+							
+							<option value="11">Aruba</option>
+							
+							<option value="12">Australia</option>
+							
+							<option value="13">Austria</option>
+							
+							<option value="14">Azerbaigian</option>
+							
+							<option value="15">Bahamas</option>
+							
+							<option value="16">Bahrein</option>
+							
+							<option value="17">Bangladesh</option>
+							
+							<option value="18">Barbados</option>
+							
+							<option value="19">Belgio</option>
+							
+							<option value="20">Belize</option>
+							
+							<option value="21">Benin</option>
+							
+							<option value="22">Bermuda</option>
+							
+							<option value="23">Bhutan</option>
+							
+							<option value="24">Bielorussia</option>
+							
+							<option value="25">Birmania</option>
+							
+							<option value="26">Bolivia</option>
+							
+							<option value="27">Bosnia e Erzegovina</option>
+							
+							<option value="28">Botswana</option>
+							
+							<option value="29">Brasile</option>
+							
+							<option value="30">Brunei</option>
+							
+							<option value="31">Bulgaria</option>
+							
+							<option value="32">Burkina Faso</option>
+							
+							<option value="33">Burundi</option>
+							
+							<option value="34">Cambogia</option>
+							
+							<option value="35">Camerun</option>
+							
+							<option value="36">Canada</option>
+							
+							<option value="37">Capo Verde</option>
+							
+							<option value="38">Ciad</option>
+							
+							<option value="39">Cile</option>
+							
+							<option value="40">Cina</option>
+							
+							<option value="41">Cipro</option>
+							
+							<option value="42">Cisgiordania</option>
+							
+							<option value="43">Città del Vaticano</option>
+							
+							<option value="44">Colombia</option>
+							
+							<option value="45">Comore</option>
+							
+							<option value="46">Corea del Nord</option>
+							
+							<option value="47">Corea del Sud</option>
+							
+							<option value="48">Costa d'Avorio</option>
+							
+							<option value="49">Costa Rica</option>
+							
+							<option value="50">Croazia</option>
+							
+							<option value="51">Cuba</option>
+							
+							<option value="52">Curaçao</option>
+							
+							<option value="53">Danimarca</option>
+							
+							<option value="54">Dominica</option>
+							
+							<option value="55">Ecuador</option>
+							
+							<option value="56">Egitto</option>
+							
+							<option value="57">El Salvador</option>
+							
+							<option value="58">Emirati Arabi Uniti</option>
+							
+							<option value="59">Eritrea</option>
+							
+							<option value="60">Estonia</option>
+							
+							<option value="61">Etiopia</option>
+							
+							<option value="62">Figi</option>
+							
+							<option value="63">Filippine</option>
+							
+							<option value="64">Finlandia</option>
+							
+							<option value="65">Francia</option>
+							
+							<option value="66">Gabon</option>
+							
+							<option value="67">Gambia</option>
+							
+							<option value="68">Georgia</option>
+							
+							<option value="69">Germania</option>
+							
+							<option value="70">Ghana</option>
+							
+							<option value="71">Giamaica</option>
+							
+							<option value="72">Giappone</option>
+							
+							<option value="73">Gibilterra</option>
+							
+							<option value="74">Gibuti</option>
+							
+							<option value="75">Giordania</option>
+							
+							<option value="76">Grecia</option>
+							
+							<option value="77">Grenada</option>
+							
+							<option value="78">Groenlandia</option>
+							
+							<option value="79">Guadalupa</option>
+							
+							<option value="80">Guam</option>
+							
+							<option value="81">Guatemala</option>
+							
+							<option value="82">Guernsey</option>
+							
+							<option value="83">Guinea</option>
+							
+							<option value="84">Guinea Equatoriale</option>
+							
+							<option value="85">Guinea-Bissau</option>
+							
+							<option value="86">Guyana</option>
+							
+							<option value="87">Guyana francese</option>
+							
+							<option value="88">Haiti</option>
+							
+							<option value="89">Honduras</option>
+							
+							<option value="90">Hong Kong</option>
+							
+							<option value="91">India</option>
+							
+							<option value="92">Indonesia</option>
+							
+							<option value="93">Iran</option>
+							
+							<option value="94">Iraq</option>
+							
+							<option value="95">Irlanda</option>
+							
+							<option value="96">Islanda</option>
+							
+							<option value="97">Isola di Man</option>
+							
+							<option value="98">Isola di Natale</option>
+							
+							<option value="99">Isola Norfolk</option>
+							
+							<option value="100">Isole BES</option>
+							
+							<option value="101">Isole Cayman</option>
+							
+							<option value="102">Isole Cocos e Keeling</option>
+							
+							<option value="103">Isole Cook</option>
+							
+							<option value="105">Isole Falkland</option>
+							
+							<option value="104">Isole Fær Øer</option>
+							
+							<option value="106">Isole Marianne Settentrionali</option>
+							
+							<option value="107">Isole Marshall</option>
+							
+							<option value="108">Isole Salomone</option>
+							
+							<option value="109">Isole Vergini americane</option>
+							
+							<option value="110">Isole Vergini britanniche</option>
+							
+							<option value="111">Israele</option>
+							
+							<option value="112">Italia</option>
+							
+							<option value="113">Jersey</option>
+							
+							<option value="114">Kazakistan</option>
+							
+							<option value="115">Kenya</option>
+							
+							<option value="116">Kirghizistan</option>
+							
+							<option value="117">Kiribati</option>
+							
+							<option value="118">Kosovo</option>
+							
+							<option value="119">Kuwait</option>
+							
+							<option value="120">Laos</option>
+							
+							<option value="121">Lesotho</option>
+							
+							<option value="122">Lettonia</option>
+							
+							<option value="123">Libano</option>
+							
+							<option value="124">Liberia</option>
+							
+							<option value="125">Libia</option>
+							
+							<option value="126">Liechtenstein</option>
+							
+							<option value="127">Lituania</option>
+							
+							<option value="128">Lussemburgo</option>
+							
+							<option value="129">Macao</option>
+							
+							<option value="130">Macedonia</option>
+							
+							<option value="131">Madagascar</option>
+							
+							<option value="132">Malawi</option>
+							
+							<option value="133">Maldive</option>
+							
+							<option value="134">Malesia</option>
+							
+							<option value="135">Mali</option>
+							
+							<option value="136">Malta</option>
+							
+							<option value="137">Marocco</option>
+							
+							<option value="138">Martinica</option>
+							
+							<option value="139">Mauritania</option>
+							
+							<option value="140">Mauritius</option>
+							
+							<option value="141">Mayotte</option>
+							
+							<option value="142">Messico</option>
+							
+							<option value="143">Micronesia</option>
+							
+							<option value="144">Moldavia</option>
+							
+							<option value="145">Monaco</option>
+							
+							<option value="146">Mongolia</option>
+							
+							<option value="147">Montenegro</option>
+							
+							<option value="148">Montserrat</option>
+							
+							<option value="149">Mozambico</option>
+							
+							<option value="150">Namibia</option>
+							
+							<option value="151">Nauru</option>
+							
+							<option value="152">Nepal</option>
+							
+							<option value="153">Nicaragua</option>
+							
+							<option value="154">Niger</option>
+							
+							<option value="155">Nigeria</option>
+							
+							<option value="156">Niue</option>
+							
+							<option value="157">Norvegia</option>
+							
+							<option value="158">Nuova Caledonia</option>
+							
+							<option value="159">Nuova Zelanda</option>
+							
+							<option value="160">Oman</option>
+							
+							<option value="161">Paesi Bassi</option>
+							
+							<option value="162">Pakistan</option>
+							
+							<option value="163">Palau</option>
+							
+							<option value="164">Palestina</option>
+							
+							<option value="165">Panamá</option>
+							
+							<option value="166">Papua Nuova Guinea</option>
+							
+							<option value="167">Paraguay</option>
+							
+							<option value="168">Perù</option>
+							
+							<option value="169">Polinesia francese</option>
+							
+							<option value="170">Polonia</option>
+							
+							<option value="171">Porto Rico</option>
+							
+							<option value="172">Portogallo</option>
+							
+							<option value="173">Qatar</option>
+							
+							<option value="174">RD del Congo</option>
+							
+							<option value="175">Regno Unito</option>
+							
+							<option value="176">Rep. Ceca</option>
+							
+							<option value="177">Rep. Centrafricana</option>
+							
+							<option value="178">Rep. del Congo</option>
+							
+							<option value="179">Rep. Dominicana</option>
+							
+							<option value="180">Riunione</option>
+							
+							<option value="181">Romania</option>
+							
+							<option value="182">Ruanda</option>
+							
+							<option value="183">Russia</option>
+							
+							<option value="184">Sahara Occidentale</option>
+							
+							<option value="185">Saint Kitts e Nevis</option>
+							
+							<option value="186">Saint Vincent e Grenadine</option>
+							
+							<option value="187">Saint-Barthélemy</option>
+							
+							<option value="188">Saint-Martin</option>
+							
+							<option value="189">Saint-Pierre e Miquelon</option>
+							
+							<option value="190">Samoa</option>
+							
+							<option value="191">Samoa Americane</option>
+							
+							<option value="192">San Marino</option>
+							
+							<option value="194">Sant'Elena</option>
+							
+							<option value="193">Santa Lucia</option>
+							
+							<option value="195">São Tomé e Príncipe</option>
+							
+							<option value="196">Senegal</option>
+							
+							<option value="197">Serbia</option>
+							
+							<option value="198">Seychelles</option>
+							
+							<option value="199">Sierra Leone</option>
+							
+							<option value="200">Singapore</option>
+							
+							<option value="201">Sint Maarten</option>
+							
+							<option value="202">Siria</option>
+							
+							<option value="203">Slovacchia</option>
+							
+							<option value="204">Slovenia</option>
+							
+							<option value="205">Somalia</option>
+							
+							<option value="206">Spagna</option>
+							
+							<option value="207">Sri Lanka</option>
+							
+							<option value="208">Stati Uniti</option>
+							
+							<option value="209">Striscia di Gaza</option>
+							
+							<option value="210">Sudafrica</option>
+							
+							<option value="211">Sudan</option>
+							
+							<option value="212">Sudan del Sud</option>
+							
+							<option value="213">Suriname</option>
+							
+							<option value="214">Svalbard e Jan Mayen</option>
+							
+							<option value="215">Svezia</option>
+							
+							<option value="216">Svizzera</option>
+							
+							<option value="217">Swaziland</option>
+							
+							<option value="218">Tagikistan</option>
+							
+							<option value="219">Taiwan</option>
+							
+							<option value="220">Tanzania</option>
+							
+							<option value="221">Thailandia</option>
+							
+							<option value="222">Timor Est</option>
+							
+							<option value="223">Togo</option>
+							
+							<option value="224">Tokelau</option>
+							
+							<option value="225">Tonga</option>
+							
+							<option value="226">Trinidad e Tobago</option>
+							
+							<option value="227">Tunisia</option>
+							
+							<option value="228">Turchia</option>
+							
+							<option value="229">Turkmenistan</option>
+							
+							<option value="230">Turks e Caicos</option>
+							
+							<option value="231">Tuvalu</option>
+							
+							<option value="232">Ucraina</option>
+							
+							<option value="233">Uganda</option>
+							
+							<option value="234">Ungheria</option>
+							
+							<option value="235">Uruguay</option>
+							
+							<option value="236">Uzbekistan</option>
+							
+							<option value="237">Vanuatu</option>
+							
+							<option value="238">Venezuela</option>
+							
+							<option value="239">Vietnam</option>
+							
+							<option value="240">Wallis e Futuna</option>
+							
+							<option value="241">Yemen</option>
+							
+							<option value="242">Zambia</option>
+							
+							<option value="243">Zimbabwe</option>
+						</select>
+						
+					</td>
+				</tr>
+				<tr>
+					<td  align="center">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td  align="left">
+						<font size="4"><b>Email</b></font>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="center">
+						<input type="text" data-role="none" name="emailreg" id="emailreg" value="" placeholder="Email" class="scrivo">
+						
+					</td>
+				</tr>
+				<tr>
+					<td  align="center">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td  align="left">
+						<font size="4"><b>Password</b></font>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="center">
+						<input type="text" data-role="none" name="pinreg" id="pinreg" value="" placeholder="Password" class="scrivo">
+					</td>
+				</tr>
+				<tr>
+					<td  align="center">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td  align="left">
+						<font size="4"><b>Nickname</b></font>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="center">
+						<input type="text" data-role="none" name="nome" id="nome" value="" placeholder="Nome" class="scrivo">
+					</td>
+				</tr>
+				<tr>
+					<td  align="center">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<a href="#" id="iscriviti" data-role="button" class="custom-btn" data-theme="b"><font color="#FFF" size="4"><div id="rreg2">Registrati</div></font></a>
+					</td>
+				</tr>
+				<tr>
+					<td  align="center">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<a href="#page" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3"><div id="raccedi">Accedi</div></font></a>
+					</td>
+				</tr>
+				
+				</form>
+
 				</table>
 				
-				
+				<br>  &nbsp;&nbsp;<br> &nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>
+				</div>
+			</div>
+			
 				<div data-role="footer" align="center" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1">
 					<table id="idfooter4" width="100%" align="center">
 						<tr>
 							<td width="220px" align="center"><font color='#FFF' size="1">Acconsento all'uso dei miei dati personali come indicato dall'informativa sulla privacy (D.Lgs 196/2003)
-								</td>
+						</td>
 						</tr></table>
 				</div><!-- /footer6 -->
 				</div><!-- /page6 -->
@@ -639,28 +1207,58 @@ a {text-decoration:none;}
 
 			<div class="spinner" id="spinner"></div>
 			<center>
-				
-				<table id="formreg" align="center" width="320px">
-					
-					<tr>
-						<td width="320px" align="center">
-							<form name="formia8" action="entra.asp" method="post">
-								
-							</form>
-						</td>
-					</tr>
-				</table>
-				
-				<div data-role="footer" align="center" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1">
-					<table id="idfooter4" width="100%" align="center">
-						<tr>
-							<td width="220px" align="center"><font color='#FFF' size="1"> <a href="#" id="indietro8" data-role="button" data-theme="c" class="custom-btn"><font color="e260fe" size="4">Conferma</font></a>
-						</td>
-						</tr>
+					<img src="img/Logo.jpg" width="140px"><br>
 						
-					</table>
-				</div><!-- /footer6 -->
-				</div><!-- /page6 -->
+						
+						<table id="formreg" align="center" width="90%" border="0">
+							<tr>
+								<td colspan="2" align="left">
+									<font size="4">Email</font>
+								</td>
+							</tr>
+							<tr id="campireg">
+								<td colspan="2" width="320px" align="center">
+									<form name="formia8" action="entra2.asp" method="post">
+										
+									<input type="text" data-role="none" name="recemail" id="recemail" value="" placeholder="Email" class="scrivo">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									&nbsp;
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<a id="recupera" href="#" data-role="button" class="custom-btn" data-theme="b"><font color="#FFF" size="4"><div id="recpsw">Recupera la password</div></font></a>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									&nbsp;
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<a id="regsito" href="#" data-role="button" class="custom-btn" data-theme="c"><font color="#e260fe" size="3"><div id="recreg">Registrati</div></font></a>
+								</td>
+							</tr>
+							
+							
+							</form>
+							<tr>
+								<td colspan="2" align="center">
+									<br>
+									<div id="stamp"></div>
+								</td>
+							</tr>
+							
+						</table>
+						
+						</center>
+				
+				
+		</div><!-- /page6 -->
 
 		
 

@@ -3,6 +3,8 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	//$("body").bind('touchmove', function(e){e.preventDefault()})
+    
+    seleziona();
 	
 	localStorage.setItem("pagina","log")
 	
@@ -34,6 +36,19 @@ function onDeviceReady() {
 	var IDPage;
 	var db;
 	var dbCreated = false;
+    
+    var alertemail = "Inserire la email";
+    var alertpsw = "Inserire la password";
+    var verificaemial;
+    var alertfuso;
+    var alertveicolo;
+    var noemailpsw;
+    var errorrete;
+    var alertnome;
+    var alertreg;
+    var errorconnection;
+    
+    
 	
 	if(screen.width < 768){
 		
@@ -107,7 +122,7 @@ function onDeviceReady() {
 								
 								  document.getElementById("citta").value = item.city;
 								
-								  $("#precitta").html("<b><font size='4'>Fuso Orario: <font color='#cc33cc'>" + item.city +"</font></b></font>");
+								  $("#precitta").html("<b><font color='#cc33cc'>" + item.city +"</font></b></font>");
 								
 								  prendicittaid(item.city)
 								
@@ -115,7 +130,7 @@ function onDeviceReady() {
 							if (item.Token == 2){
 								document.getElementById("citta").value = "";
 								
-								$("#precitta").html("<b><font size='4'>Fuso Orario: <font color='#cc33cc'></font></b></font>");
+								$("#precitta").html("<b><font color='#cc33cc'></font></b></font>");
 								
 								 citta = citta + "<option value='"+item.id+"'>"+ item.city +"</option>"
 
@@ -136,12 +151,12 @@ function onDeviceReady() {
                          error: function(){
                          $(".spinner").hide();
                          
-                         navigator.notification.alert(
+                         /*navigator.notification.alert(
                                                       'Possibile errore di rete, riprova tra qualche minuto',  // message
                                                       alertDismissed,         // callback
                                                       'Attenzione',            // title
                                                       'Done'                  // buttonName
-                                                      );
+                                                      );*/
                          
                          },
 					dataType:"jsonp"});
@@ -155,7 +170,7 @@ function onDeviceReady() {
 				  
 				  document.getElementById("citta").value = $value;
 				   
-				  $("#precitta").html("<b><font size='4'>Fuso Orario: <font color='#cc33cc'>" + $value+"</font></b></font>");
+				  $("#precitta").html("<b><font color='#cc33cc'>" + $value+"</font></b>");
 				   
 			      prendicittaid($value)
 				  
@@ -180,7 +195,7 @@ function onDeviceReady() {
 					  
 					  if (item.Token == 1){
 
-					    $("#precitta").html("<b><font size='4'>Fuso Orario: <font color='#cc33cc'>" +item.city+"</font></b></font>");
+					    $("#precitta").html("<b><font color='#cc33cc'>" +item.city+"</font></b>");
 					    localStorage.setItem("city", item.city);
 					  
 					  }
@@ -198,12 +213,12 @@ function onDeviceReady() {
 			   $(".spinner").hide();
 			   
 			   
-			     navigator.notification.alert(
+			     /*navigator.notification.alert(
 											'Possibile errore di rete, riprova tra qualche minuto',  // message
 											alertDismissed,         // callback
 											'Attenzione',            // title
 											'Done'                  // buttonName
-											);
+											);*/
 
 			   
 			   
@@ -311,7 +326,9 @@ function onDeviceReady() {
 		else{
 				   
 		  window.location.href = "#page";
-				   
+		
+		  seleziona()
+		  
 		}
 				   
 		e.stopImmediatePropagation();
@@ -413,10 +430,18 @@ function onDeviceReady() {
 				   
 				   });
 	
-	$(document).on("tap", "#recuperopsw", function(e){
-   
+	$(document).on("touchend", "#recupera", function(e){
+				   //window.location.href = "index.html";
+				   recupera();
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/rec_pw.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
+				   });
+	
+	
+	$(document).on("tap", "#recuperopsw", function(e){
+		  window.location.href = "#page8";
+				   
+		  //var ref = window.open('http://www.purplemiles.com/www/rec_pw.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
 
 	   	  e.stopImmediatePropagation();
 				   
@@ -435,8 +460,21 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("tap", "#regsito", function(e){
+		window.location.href = "#page7";
 				   
-		var ref = window.open('http://www.purplemiles.com/www/enter.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
+		var myScroll3;
+				   
+		myScroll3 = new IScroll('#wrapper3', { click: true });
+		setTimeout (function(){
+			myScroll3.refresh();
+		}, 1000);
+				   
+		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+				   
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+				   
+		//var ref = window.open('http://www.purplemiles.com/www/enter.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
 
 		e.stopImmediatePropagation();
 				   
@@ -493,11 +531,11 @@ function onDeviceReady() {
 			//localStorage.setItem("fuso", "Italy");
 			//localStorage.setItem("citta", "154");
 			
-			if(localStorage.getItem("sett_lingua")!="OK"){
+			//if(localStorage.getItem("sett_lingua")!="OK"){
 			
 			   agg();
 				
-			}
+			//}
 			
 			
 			prendicittaid(localStorage.getItem("citta"))
@@ -513,7 +551,7 @@ function onDeviceReady() {
 				
 				document.getElementById("citta").value = "Rome";
 				
-				$("#precitta").html("<font size='4'>Fuso Orario: <b><font color='#cc33cc'>Rome</font></b></font>");
+				$("#precitta").html("<b><font color='#cc33cc'>Rome</font></b>");
 				
 				prendicittaid("Rome")
 			}
@@ -555,13 +593,13 @@ function onDeviceReady() {
 			document.getElementById("email").value = localStorage.getItem("email2")
 		
 			
-			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+			//var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 			
 		}
 		else{
 			
 				navigator.notification.alert(
-					'Nessuna connessione ad internet rilevata',  // message
+					'No nternet',  // message
 					alertDismissed,         // callback
 					'Attenzione',            // title
 					'OK'                  // buttonName
@@ -571,6 +609,8 @@ function onDeviceReady() {
 
 	
     }
+
+////////// APRO DB PER PRENDERE LE TRADUZIONI /////////
 
 function agg(){
 	var db;
@@ -637,7 +677,7 @@ function agg2(){
 		     $(".spinner").hide();
 		     seleziona();
 					  
-		   }, 1000);
+		   }, 500);
 		   
 		   
 		   },
@@ -661,6 +701,8 @@ function agg2(){
 
 }
 
+//////////////// FINE ///////////////
+
 
 function seleziona() {
 	var db;
@@ -668,27 +710,136 @@ function seleziona() {
 	
 	localStorage.setItem("sett_lingua", "OK");
 			
-	//alert("6")
+	//$("#btnaccedi").html("sasa");
 	
 	db.transaction(function (tx) {
+                   
        tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
-			var len = results.rows.length, i;
+		var len = results.rows.length, i;
 					 
-			//alert(len);
+		if(localStorage.getItem("lingua")=="it"){
+					 
+		  for (i = 0; i < len; i++){
+                     
+			   $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano.replace("P0011", "'"));
+                     
+                if(results.rows.item(i).id_traduzione == "alertemail"){
+                     alertemail = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                if(results.rows.item(i).id_traduzione == "alertpsw"){
+                     alertpsw = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                if(results.rows.item(i).id_traduzione == "verificaemial"){
+                  verificaemial = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                if(results.rows.item(i).id_traduzione == "alertfuso"){
+                    alertfuso = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                if(results.rows.item(i).id_traduzione == "alertveicolo"){
+                    alertveicolo = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                if(results.rows.item(i).id_traduzione == "noemailpsw"){
+                   noemailpsw = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                if(results.rows.item(i).id_traduzione == "errorrete"){
+                    errorrete = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                if(results.rows.item(i).id_traduzione == "alertnome"){
+                    alertnome = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                if(results.rows.item(i).id_traduzione == "alertreg"){
+                  alertreg = results.rows.item(i).italiano.replace("P0011", "'");
+                }
+                     
+                /*if(results.rows.item(i).id_traduzione == "errorconnection"){
+                  errorconnection = results.rows.item(i).italiano;
+                }*/
+                     
+                // TEST //
+                /*if(results.rows.item(i).id_traduzione == "puntini"){
+                    alert(results.rows.item(i).italiano.replace("P0011", "'"));
+                }*/
+		  }
+					 
+		}
+			
+					
+		if(localStorage.getItem("lingua")=="en"){
+					 
 					 
 			for (i = 0; i < len; i++){
 					 
-			 //alert(results.rows.item(i).italiano);
+				$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
 					 
+                     if(results.rows.item(i).id_traduzione == "alertemail"){
+                       alertemail = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     if(results.rows.item(i).id_traduzione == "alertpsw"){
+                      alertpsw = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     if(results.rows.item(i).id_traduzione == "verificaemial"){
+                       verificaemial = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     if(results.rows.item(i).id_traduzione == "alertfuso"){
+                       alertfuso = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     if(results.rows.item(i).id_traduzione == "alertveicolo"){
+                       alertveicolo = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     if(results.rows.item(i).id_traduzione == "noemailpsw"){
+                       noemailpsw = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     if(results.rows.item(i).id_traduzione == "errorrete"){
+                       errorrete = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     if(results.rows.item(i).id_traduzione == "alertnome"){
+                       alertnome = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     if(results.rows.item(i).id_traduzione == "alertreg"){
+                       alertreg = results.rows.item(i).inglese.replace("P0011", "'");
+                     }
+                     
+                     
+                     // TEST //
+                     /*if(results.rows.item(i).id_traduzione == "puntini"){
+                        alert(results.rows.item(i).inglese.replace("P0011", "'"));
+                     }*/
+                     
 			}
+					
+		}
 					 
-					 
-		}, null);
+	 }, null);
 	});
 	
 }
 
 
+function traduci_en(testo){
+	alert(testo)
+	
+	var db2;
+	db2 = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+	
+	db2.transaction(function (tx) {
+       tx.executeSql('SELECT * FROM Testi where id_traduzione = '+ testo +'', [], function (tx, results) {
+		var len2 = results.rows.length, k;
+
+		alert(len2)
+					  
+					  
+			for (k = 0; k < len2; k++){
+					 
+			  alert(results2.rows.item(k).inglese)
+					 
+			  //$("#btnaccedi").html(results.rows.item(k).en);
+					 
+			}
+
+					 
+		}, null);
+	});
+}
 
 function prendimezzi(){
 	var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
@@ -913,13 +1064,14 @@ function onResume() {
 
 
 function login() {
-	
+    
 	var email2 = self.document.formia2.email.value;
 	var pin2 = self.document.formia2.password.value;
 	
 	if (email2 == "") {
+        
 		navigator.notification.alert(
-									 'inserire la email',  // message
+									 alertemail,  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
@@ -929,8 +1081,9 @@ function login() {
 	
 	
 	if (pin2 == "") {
+        
 		navigator.notification.alert(
-									 'inserire la Password',  // message
+									 alertpsw,  // message
 									 alertDismissed,         // callback
 									 'Password',            // title
 									 'OK'                  // buttonName
@@ -949,7 +1102,7 @@ function login() {
 	}
 	else {
 		navigator.notification.alert(
-									 'Verificare la email',  // message
+									 noemailpsw,  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
@@ -964,7 +1117,7 @@ function login() {
 	if (localStorage.getItem("fuso") === null || localStorage.getItem("fuso")=="null" || typeof(localStorage.getItem("fuso")) == 'undefined' || localStorage.getItem("fuso")==0 || localStorage.getItem("fuso")=="") {
 		
 		navigator.notification.alert(
-				'Inserire nelle impostazioni un fuso orario',  // message
+				alertfuso,  // message
 				 alertDismissed,         // callback
 				'Attenzione',            // title
 				'OK'                  // buttonName
@@ -977,7 +1130,7 @@ function login() {
 	if (localStorage.getItem("citta") === null || localStorage.getItem("citta")=="null" || typeof(localStorage.getItem("citta")) == 'undefined' || localStorage.getItem("citta")==0 || localStorage.getItem("citta")=="") {
 		
 		navigator.notification.alert(
-									 'Inserire nelle impostazioni un fuso orario',  // message
+									 alertfuso,  // message
 									 alertDismissed,         // callback
 									 'Attenzione',            // title
 									 'OK'                  // buttonName
@@ -990,7 +1143,7 @@ function login() {
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
 		
 		navigator.notification.alert(
-			'Seleziona un veicolo di preferenza',  // message
+			alertveicolo,  // message
 			alertDismissed,         // callback
 			'Email',            // title
 			'OK'                  // buttonName
@@ -1046,7 +1199,7 @@ function LoginVera(email,pin){
 				}
 				else{
 				navigator.notification.alert(
-											   'Email e/o password non corretti',  // message
+											   noemailpsw,  // message
 											   alertDismissed,         // callback
 											   'Attenzione',            // title
 											   'Ok'                  // buttonName@
@@ -1061,7 +1214,7 @@ function LoginVera(email,pin){
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto',  // message
+										errorrete,  // message
 										alertDismissed,         // callback
 										'Attenzione',            // title
 										'Done'                  // buttonName
@@ -1077,10 +1230,11 @@ function iscriviti(){
 	var emailreg = self.document.formia.emailreg.value;
 	var pinreg = self.document.formia.pinreg.value;
 	var nomereg = self.document.formia.nome.value;
+	var nazionereg = document.getElementById("nazione7").value;
 	
 	if (emailreg == "") {
 		navigator.notification.alert(
-									 'inserire Email',  // message
+									 alertemail,  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
@@ -1091,7 +1245,7 @@ function iscriviti(){
 	
 	if (pinreg == "") {
 		navigator.notification.alert(
-									 'inserire un Pin',  // message
+									 alertpsw,  // message
 									 alertDismissed,         // callback
 									 'Pin',            // title
 									 'OK'                  // buttonName
@@ -1101,7 +1255,7 @@ function iscriviti(){
 	
 	if (nomereg == "") {
 		navigator.notification.alert(
-									 'inserire il Nome',  // message
+									 alertnome,  // message
 									 alertDismissed,         // callback
 									 'Nome',            // title
 									 'OK'                  // buttonName
@@ -1117,7 +1271,7 @@ function iscriviti(){
 	}
 	else {
 		navigator.notification.alert(
-									 'Verificare la email',  // message
+									 verificaemial,  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
@@ -1133,7 +1287,7 @@ function iscriviti(){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_registrazione.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"",
+		   url:"http://purplemiles.com/www/include/form_cell.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"&id_nazione="+ nazionereg +"",
 		   contentType: "application/json",
 		   //data: {email:emailreg,nickname:nomereg,pin:pinreg},
 		   timeout: 7000,
@@ -1145,21 +1299,31 @@ function iscriviti(){
 				  if (item.Token == '1'){
 				  
 				  navigator.notification.alert(
-											   'Registrazione effettuata correttamente.',  // message
+											   alertreg,  // message
 											    alertDismissed,         // callback
 											   'Registrazione Eseguita',            // title
-											   'Done'                  // buttonName
+											   'Ok'                  // buttonName
 											   );
 				  
 				  
 				  }
 				  else{
-				  navigator.notification.alert(
+				   if (item.Token == '2'){
+				    navigator.notification.alert(
 											   'Cliente gia registrato',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',            // title
-											   'Done'                  // buttonName
+											   'Ok'                  // buttonName
 											   );
+				    }
+				   else{
+				     navigator.notification.alert(
+											   'Errore, riprova in seguito',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Ok'                  // buttonName
+											   );
+				   }
 				  
 				  }
 				  });
@@ -1172,7 +1336,7 @@ function iscriviti(){
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto',  // message
+										errorrete,  // message
 										alertDismissed,         // callback
 										'Attenzione',            // title
 										'Done'                  // buttonName
@@ -1182,6 +1346,100 @@ function iscriviti(){
 		   dataType:"jsonp"});
 }
 
+
+
+function recupera() {
+	
+	var recemail = document.getElementById("recemail").value;
+	 
+	 if (recemail == "") {
+    navigator.notification.alert(
+	 alertemail,  // message
+	 alertDismissed,         // callback
+	 'Email',            // title
+	 'OK'                  // buttonName
+	 );
+		return;
+	 }
+	 
+	 
+	 EmailAddr = document.getElementById("recemail").value;
+	 Filtro = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
+	 if (Filtro.test(EmailAddr)) {
+		
+	 }
+	 else {
+     navigator.notification.alert(
+	 verificaemial,  // message
+	 alertDismissed,         // callback
+	 'Email',            // title
+	 'OK'                  // buttonName
+	 );
+		return;
+	 }
+	 
+	 
+	 $(".spinner").show();
+	 $.ajax({
+	 type:"GET",
+	 url:"http://purplemiles.com/www/include/form_pwd.php?email="+ recemail +"",
+	 contentType: "application/json",
+	 //data: {email:emailreg,nickname:nomereg,pin:pinreg},
+	 timeout: 7000,
+	 jsonp: 'callback',
+	 crossDomain: true,
+	 success:function(result){
+	 
+	 $.each(result, function(i,item){
+	 if (item.Token == '1'){
+	 
+	 navigator.notification.alert(
+	 'Recupero effettuata correttamente, controlla la tua email',  // message
+	 alertDismissed,         // callback
+	 'Recupero Eseguito',            // title
+	 'Ok'                  // buttonName
+	 );
+	 
+	 
+	 }
+	 else{
+	 if (item.Token == '2'){
+	 navigator.notification.alert(
+	 'Cliente non trovato',  // message
+	 alertDismissed,         // callback
+	 'Attenzione',            // title
+	 'Ok'                  // buttonName
+	 );
+	 }
+	 else{
+	 navigator.notification.alert(
+	 'Errore, riprova in seguito',  // message
+	 alertDismissed,         // callback
+	 'Attenzione',            // title
+	 'Ok'                  // buttonName
+	 );
+	 }
+	 
+	 }
+	 });
+	 
+	 $(".spinner").hide();
+	 window.location.href = "#page";
+	 
+	 },
+	 error: function(){
+	 $(".spinner").hide();
+	 
+	 navigator.notification.alert(
+	 errorrete,  // message
+	 alertDismissed,         // callback
+	 'Attenzione',            // title
+	 'Done'                  // buttonName
+	 );
+	 
+	 },
+	 dataType:"jsonp"});
+}
 
 
 function alertDismissed() {
@@ -1318,7 +1576,7 @@ function onPrompt(results) {
 			   $(".spinner").hide();
 			   
 			   navigator.notification.alert(
-											'Possibile errore di rete, riprova tra qualche minuto',  // message
+											errorrete,  // message
 											alertDismissed,         // callback
 											'Attenzione',            // title
 											'Done'                  // buttonName@

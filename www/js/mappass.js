@@ -46,6 +46,163 @@ function onDeviceReady() {
 	 }
 		
 	////////// FINE TASTIERA ////////////////
+    var alertstart;
+    var alertend;
+    var alertinvio;
+    
+    var h7quando;
+    var h7adesso;
+    var h7partenza;
+    var h7arrivo;
+    var h7veicolo;
+    
+    var h7passeggeri;
+    var h7fumatori;
+    var h7animali;
+    var h7minori;
+    var h7disabili;
+    var h7seggiolino;
+    var h7pacchi;
+    var h7gancio;
+    
+    var h4richiesta;
+    
+    var db;
+    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+    
+    db.transaction(function (tx) {
+                   
+                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                                 var len = results.rows.length, i;
+                                 
+                                 if(localStorage.getItem("lingua")=="it"){
+                                 
+                                 for (i = 0; i < len; i++){
+                                 
+                                 //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                                 
+                                 if(results.rows.item(i).id_traduzione == "alertpartenza"){
+                                   alertstart = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                  h4richiesta = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "alertdestinazione"){
+                                   alertend = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "alertinvio"){
+                                  alertinvio = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 }
+                                 
+                                 }
+                                 
+                                 
+                                 if(localStorage.getItem("lingua")=="en"){
+                                 
+                                 
+                                 for (i = 0; i < len; i++){
+                                   $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                   h4richiesta = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h7quando"){
+                                 h7quando = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h7adesso"){
+                                 h7adesso = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h7partenza"){
+                                 h7partenza = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h7arrivo"){
+                                 h7arrivo = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7veicolo"){
+                                 h7veicolo = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7passeggeri"){
+                                 h7passeggeri = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7fumatori"){
+                                 h7fumatori = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7animali"){
+                                 h7animali = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7minori"){
+                                 h7minori = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7disabili"){
+                                 h7disabili = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7seggiolino"){
+                                 h7seggiolino = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7pacchi"){
+                                 h7pacchi = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7gancio"){
+                                 h7gancio = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "alertpartenza"){
+                                   alertstart = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "alertdestinazione"){
+                                   alertend = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "alertinvio"){
+                                   alertinvio = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "adesso1"){
+                                   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).inglese + "&nbsp;");
+                                 }
+                                 
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "tardi1"){
+                                   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).inglese + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                                 }
+                                 
+                                 }
+                                 
+                                 }
+                                 
+                                 }, null);
+                   });
 	
 	
 	document.addEventListener('backbutton', function(e) {
@@ -175,14 +332,60 @@ function onDeviceReady() {
 	
 	/*if(screen.width < 768){
 		
-	}
-	else
-	{
-		
-		$("#da").html("<img src='img/ico_start3.png' width='85px'>");
+	 <td align="center" >
+	 <a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a>
+	 </td>
+	 <td align="center" >
+	 <a id="da" href="#"><img src="img/ico_start1.png" width="45px"></a>
+	 </td>
+	 <td align="center" >
+	 <a id="a2" href="#"><img src="img/ico_finish1.png" width="45px"></a>
+	 </td>
+	 <td align="center" >
+	 <a id="piu" href="#"><img src="img/ico_plus3.png" width="55px"></a>
+	 
+	 </td>
+	 <td align="center" valign="center">
+	 <a id="anteprima" href="#"><img src="img/ico_go1.png" width="45px"></a>
+	 </td>
+	 <td align="center" valign="center">
+	 <a id="offerte" href="#"><img src="img/ico_offerte1.png" width="45px"></a>
+	 </td>
 		
 	}*/
 	
+	if(screen.width < 768){
+		$("#quando").html("<img src='img/ico_clock3.png' width='55px'>");
+		$("#da").html("<img src='img/ico_start1.png' width='45px'>");
+		$("#a3").html("<img src='img/ico_finish1.png' width='45px'>");
+		$("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+		$("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+		$("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+		
+		
+	}
+	else
+	{
+		if(screen.width > 719){
+			$("#quando").html("<img src='img/ico_clock3.png' width='110px'>");
+			$("#da").html("<img src='img/ico_start1.png' width='90px'>");
+			$("#a3").html("<img src='img/ico_finish1.png' width='90px'>");
+			$("#piu").html("<img src='img/ico_plus1.png' width='90px'>");
+			$("#anteprima").html("<img src='img/ico_go1.png' width='90px'>");
+			$("#offerte").html("<img src='img/ico_offerte1.png' width='90px'>");
+			
+			$("#spazioipad").attr("height","90");
+		}
+		else{
+			$("#quando").html("<img src='img/ico_clock3.png' width='45px'>");
+			$("#da").html("<img src='img/ico_start1.png' width='45px'>");
+			$("#a3").html("<img src='img/ico_finish1.png' width='45px'>");
+			$("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+			$("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+			$("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+		}
+	}
+
 	
 	$("#tblhome").fadeIn("slow")
 	localStorage.setItem("aspetta","0")
@@ -221,6 +424,7 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
+				   
 		start();
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
@@ -317,8 +521,23 @@ function onDeviceReady() {
 		$("#destinazione").hide();
 		$("#tbldestinazione").hide();
 				   
-		$("#da1").html("<img src='img/ico_start3.png' width='55px'>");
-		$("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
+				   if(screen.width < 768){
+				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
+				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   $("#da1").html("<img src='img/ico_start3.png' width='110px'>");
+				   $("#a1").html("<img src='img/ico_finish2.png' width='90px'>");
+				   }
+				   else{
+				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
+				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
+				   }
+				   }
+				   
+		
 		
 		//$("#da").html("bottoni");
 		//$("#da").removeClass("bottoni").addClass("bottoni1");
@@ -351,9 +570,23 @@ function onDeviceReady() {
 				   $("#s_arrivo").hide();
 				   $("#s_partenza").show();
 				  
+				   if(screen.width < 768){
+				     $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
+				     $("#a1").html("<img src='img/ico_finish1.png' width='45px'>");
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				     $("#da1").html("<img src='img/ico_start3.png' width='110px'>");
+				     $("#a1").html("<img src='img/ico_finish1.png' width='90px'>");
+				   }
+				   else{
+				     $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
+				     $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
+				   }
+				   }
 				   
-				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
-				   $("#a1").html("<img src='img/ico_finish1.png' width='45px'>");
+				   
 				   
 				   //$("#da1").removeClass("bottoni").addClass("bottoni1");
 				   //$("#a1").removeClass("bottoni1").addClass("bottoni");
@@ -424,7 +657,69 @@ function onDeviceReady() {
 		 //$("#citta2").html(localStorage.getItem("citta"));
 				   
 		prendicittaid(localStorage.getItem("citta"))
-        //prendinazione()
+				   
+		
+				   if(screen.width < 768){
+				   $("#quando").html("<img src='img/ico_clock3.png' width='55px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a3").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+				   
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   $("#quando").html("<img src='img/ico_clock3.png' width='110px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='90px'>");
+				   $("#a3").html("<img src='img/ico_finish1.png' width='90px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='90px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='90px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='90px'>");
+				   
+				   $("#spazioipad").attr("height","90");
+				   }
+				   else{
+				   $("#quando").html("<img src='img/ico_clock3.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a3").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   }
+				   }if(screen.width < 768){
+				   $("#quando").html("<img src='img/ico_clock3.png' width='55px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a3").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+				   
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   $("#quando").html("<img src='img/ico_clock3.png' width='110px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='90px'>");
+				   $("#a3").html("<img src='img/ico_finish1.png' width='90px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='90px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='90px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='90px'>");
+				   
+				   $("#spazioipad").attr("height","90");
+				   }
+				   else{
+				   $("#quando").html("<img src='img/ico_clock3.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a3").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   }
+				   }
 				   
 		window.location.href = "#home";
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
@@ -463,6 +758,8 @@ function onDeviceReady() {
 		//setTimeout(function() {
 		   //bgGeo.start();
 		   //backgroundGeolocation.start();
+				   
+			bgGeo.start();
 		   
 		   	localStorage.setItem("dovesono", "3");
 			localStorage.setItem("scroller","0")
@@ -470,9 +767,71 @@ function onDeviceReady() {
 					   
 			prendibanner()
 				   
+				   if(screen.width < 768){
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+				   
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   
+				   $("#quando4").attr("width", "90px");
+				   $("#da4").attr("width", "90px");
+				   $("#a4").attr("width", "90px");
+				   $("#piu4").attr("width", "90px");
+				   $("#anteprima4").attr("width", "90px");
+				   $("#offerte44").attr("width", "110px");
+				   $("#spazioipadofferte").show();
+				   
+				   }
+				   else{
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+				   }
+				   }
+				   
 			$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 			//$.mobile.changePage ($("#home4"));
 			$("#spinner4").show();
+				   
+				   if(screen.width < 768){
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offers3.png' width='55px'>");
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   $("#quando").html("<img src='img/ico_quando1.png' width='90px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='90px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='90px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='90px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='90px'>");
+				   $("#offerte").html("<img src='img/ico_offers3.png' width='110px'>");
+				   }
+				   else{
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offers3.png' width='55px'>");
+				   }
+				   }
 					   
 			vediofferte()
 			
@@ -490,7 +849,7 @@ function onDeviceReady() {
 				   myScroll.on ('scrollStart', function () {
 						setTimeout (function(){
 							alert();
-						}, 1500);
+		 
 					});
 				   
 				   
@@ -514,7 +873,7 @@ function onDeviceReady() {
 				   
 				   if (document.getElementById("viale").value == "") {
 				   navigator.notification.alert(
-												'inserire un Indirizzo di partenza',  // message
+												alertstart,  // message
 												alertDismissed,         // callback
 												'Attenzione',            // title
 												'OK'                  // buttonName
@@ -525,7 +884,7 @@ function onDeviceReady() {
 				   
 				   if (document.getElementById("destinazione3").value == "") {
 				   navigator.notification.alert(
-												'inserire un Indirizzo di destinazione',  // message
+												alertend,  // message
 												alertDismissed,         // callback
 												'Attenzione',            // title
 												'OK'                  // buttonName
@@ -534,11 +893,46 @@ function onDeviceReady() {
 				   return;
 				   }
 				   
-				   
-				   $("#piu").html("<img src='img/ico_plus2.png' width='45px'>");
+
+				   if(screen.width < 768){
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
 				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
 				   
+				   $("#spazioipad3").attr("height","70px");
 				   
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   
+				   $("#quando3").attr("width", "90px");
+				   $("#da3").attr("width", "90px");
+				   $("#a23").attr("width", "90px");
+				   $("#piu3").attr("width", "110px");
+				   $("#anteprima3").attr("width", "90px");
+				   $("#offerte3").attr("width", "90px");
+				   
+				   $("#spazioipad3").attr("height","130");
+				   
+				   }
+				   else{
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+				   //$("#piu").html("<img src='img/ico_plus2.png' width='45px'>");
+				   //$("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   }
+				   }
+
+
 				   $("#back3").hide();
 				   
 				   
@@ -573,6 +967,7 @@ function onDeviceReady() {
 				   
 				   
 				   $.mobile.changePage ($("#home3"));
+				   
 				   
 				    //$("#offerte").tap();
 				   
@@ -609,9 +1004,24 @@ function onDeviceReady() {
 		$("#s_arrivo").show();
 		
 	     onResume();
+				   
+				   if(screen.width < 768){
+				   $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   $("#da1").html("<img src='img/ico_start1.png' width='90px'>");
+				   $("#a1").html("<img src='img/ico_finish3.png' width='110px'>");
+				   }
+				   else{
+				   $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
+				   }
+				   }
 		 
-		 $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
-		 $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
+		 
 				   
 		setTimeout(function() {
 			  $("#ricarica").tap();
@@ -641,8 +1051,23 @@ function onDeviceReady() {
 				   $("#s_partenza").hide();
 				   $("#s_arrivo").show();
 				   
-				   $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
-				   $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
+				   
+				   if(screen.width < 768){
+				     $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
+				     $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
+				   }
+				   else
+				   {
+				    if(screen.width > 719){
+				     $("#da1").html("<img src='img/ico_start1.png' width='90px'>");
+				     $("#a1").html("<img src='img/ico_finish3.png' width='110px'>");
+				    }
+				    else{
+				     $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
+				     $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
+				    }
+				   }
+
 				   
 				   setTimeout(function() {
 				     $("#ricarica").tap();
@@ -757,7 +1182,7 @@ function onDeviceReady() {
 					  $("#spinner7").hide();
 					  
 					  navigator.notification.alert(
-					   'Richiesta Inviata',
+					   alertinvio,
 					   alertDismissed,
 					   'Richiesta',
 					   'OK'
@@ -769,6 +1194,42 @@ function onDeviceReady() {
 					   $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 					   localStorage.setItem("dovesono", "3");
 					   $("#spinner4").show();
+					  
+					  if(screen.width < 768){
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+				   
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   
+				   $("#quando4").attr("width", "90px");
+				   $("#da4").attr("width", "90px");
+				   $("#a4").attr("width", "90px");
+				   $("#piu4").attr("width", "90px");
+				   $("#anteprima4").attr("width", "90px");
+				   $("#offerte44").attr("width", "110px");
+				   $("#spazioipadofferte").show();
+				   
+				   }
+				   else{
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+				   }
+				   }
+					  
+					  
 					   vediofferte()
 					  
 					  e.stopImmediatePropagation();
@@ -817,7 +1278,7 @@ function onDeviceReady() {
 								 $("#spinner7").hide();
 									 
 								 navigator.notification.alert(
-															  'Richiesta Inviata',
+															  alertinvio,
 															  alertDismissed,
 															  'Richiesta',
 															  'Ok'
@@ -827,6 +1288,43 @@ function onDeviceReady() {
 								 
 								 $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 								 $("#spinner4").show();
+								 
+								 if(screen.width < 768){
+								 $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+								 $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+								 $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+								 $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+								 $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+								 $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+								 
+								 
+								 }
+								 else
+								 {
+								 if(screen.width > 719){
+								 
+								 $("#quando4").attr("width", "90px");
+								 $("#da4").attr("width", "90px");
+								 $("#a4").attr("width", "90px");
+								 $("#piu4").attr("width", "90px");
+								 $("#anteprima4").attr("width", "90px");
+								 $("#offerte44").attr("width", "110px");
+								 
+								 $("#spazioipadofferte").show();
+								 
+								 }
+								 else{
+								 $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+								 $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+								 $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+								 $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+								 $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+								 $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+								 
+								 }
+								 }
+								 
+								 
 								 vediofferte()
 								 
 								 e.stopImmediatePropagation();
@@ -1004,24 +1502,9 @@ function onDeviceReady() {
 		document.getElementById("viale7").value = document.getElementById("viale").value;
 		document.getElementById("destinazione7").value = document.getElementById("destinazione").value;
 				   
-		if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
-				   
-			document.getElementById("veicolo7").value = localStorage.getItem("veicolo");
-				   
-			$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b>: "+ localStorage.getItem("veicolo") +"");
-				   
-		}
-		else{
-				   
-		   document.getElementById("veicolo7").value = document.getElementById("veicolo").value;
-				   
-		   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b>: "+ document.getElementById("veicolo").value +"");
-		}
-				   
-				   
 		if (document.getElementById("viale7").value == "") {
 		 navigator.notification.alert(
-												'inserire un Indirizzo di partenza',  // message
+												alertstart,  // message
 												alertDismissed,         // callback
 												'Attenzione',            // title
 												'OK'                  // buttonName
@@ -1032,7 +1515,7 @@ function onDeviceReady() {
 				   
 		if (document.getElementById("destinazione7").value == "") {
 			navigator.notification.alert(
-				'inserire un Indirizzo di destinazione',  // message
+				alertend,  // message
 				alertDismissed,         // callback
 				'Attenzione',            // title
 				'OK'                  // buttonName
@@ -1040,15 +1523,44 @@ function onDeviceReady() {
 				   
 			return;
 	    }
+				   
+				   
+				   if(screen.width < 768){
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   
+				   $("#quando7").attr("width", "90px");
+				   $("#da7").attr("width", "90px");
+				   $("#a27").attr("width", "90px");
+				   $("#piu7").attr("width", "90px");
+				   $("#anteprima7").attr("width", "110px");
+				   $("#offerte7").attr("width", "90px");
+				   
+				   $("#spazioipad7").attr("height","130");
+				   
+				   }
+				   else{
+				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+				   
+
+				   }
+				   }
 
 				   
-		$("#piu").html("<img src='img/ico_plus1.png' width='45px'>");
-		$("#anteprima").html("<img src='img/ico_anteprima2.png' width='45px'>");
-				   
-	    //localStorage.setItem("citta", document.getElementById("citta").value);
-				   
-		//$("#fuso2").html(localStorage.getItem("fuso"));
-	    //$("#citta2").html(localStorage.getItem("citta"));
 		
 		$("#back3").show();
 				   
@@ -1071,7 +1583,22 @@ function onDeviceReady() {
 				   }
 				   
 				   
-				   
+                   if(localStorage.getItem("lingua")=="it"){
+                   
+                   if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
+                   
+                   document.getElementById("veicolo7").value = localStorage.getItem("veicolo");
+                   
+                   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b>: "+ localStorage.getItem("veicolo") +"");
+                   
+                   }
+                   else{
+                   
+                   document.getElementById("veicolo7").value = document.getElementById("veicolo").value;
+                   
+                   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b>: "+ document.getElementById("veicolo").value +"");
+                   }
+                   
                    if(document.getElementById("passeggeri").value!="01"){
 				     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri " + document.getElementById("passeggeri").value + "</b></font>");
                    }
@@ -1148,8 +1675,8 @@ function onDeviceReady() {
                    else{
                      $("#note7").html("&nbsp;&nbsp;Note :" + document.getElementById("notepass").value);
                    }
-				   
-				   
+                   
+                
 				   if(document.getElementById("datacal").value==""){
 				     $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>Quando </font></b><br>&nbsp;&nbsp; Adesso, prima possibile <br><br>" );
 				   }
@@ -1160,23 +1687,121 @@ function onDeviceReady() {
 				   
 				   
 				   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Partenza </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
+                   
 				   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>Arrivo </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
-				   
-				   
-				   
-				   
-				   /*if(document.getElementById("veicolo").value!="Automobile"){
-				      $("#veicolo77").html("<font color='#000000'><b>Veicolo " + localStorage.getItem("veicolo") + "</b></font>");
-				   }
-				   else{
-				      $("#veicolo77").html("Veicolo :" + document.getElementById("veicolo").value);
-				   }*/
-				   
-		
-				   
-		//window.location.href = "#home3";
-				   
-		$.mobile.changePage ($("#home7"));
+                   }
+                   
+                   if(localStorage.getItem("lingua")=="en"){
+                   
+                    if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
+                   
+                     document.getElementById("veicolo7").value = localStorage.getItem("veicolo");
+                   
+                     $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +" </font></b>: "+ localStorage.getItem("veicolo") +"");
+                   
+                   }
+                   else{
+                   
+                     document.getElementById("veicolo7").value = document.getElementById("veicolo").value;
+                   
+                     $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +" </font></b>: "+ document.getElementById("veicolo").value +"");
+                   }
+                   
+                   // QUI
+                   if(document.getElementById("passeggeri").value!="01"){
+                     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7passeggeri +" " + document.getElementById("passeggeri").value + "</b></font>");
+                   }
+                   else{
+                     $("#passeggeri7").html("&nbsp;&nbsp;"+ h7passeggeri +" " + document.getElementById("passeggeri").value);
+                   }
+                   
+                   if(document.getElementById("animali").value=="Si"){
+                   $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7animali +" " + document.getElementById("animali").value + "</b></font>");
+                   }
+                   else{
+                   $("#animali7").html("&nbsp;&nbsp;"+ h7animali +" " + document.getElementById("animali").value);
+                   }
+                   
+                   if(document.getElementById("fumatori").value=="Si"){
+                   $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7fumatori +" " + document.getElementById("fumatori").value + "</b></font>");
+                   }
+                   else{
+                   $("#fumatori7").html("&nbsp;&nbsp;"+ h7fumatori +" " + document.getElementById("fumatori").value);
+                   }
+                   if(document.getElementById("meno18").value=="Si"){
+                   $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7minori +" " + document.getElementById("meno18").value + "</b></font>");
+                   }
+                   else{
+                   $("#meno187").html("&nbsp;&nbsp;"+ h7minori +" " + document.getElementById("meno18").value);
+                   }
+                   
+                   if(document.getElementById("disabili").value=="Si"){
+                   $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7disabili +" " + document.getElementById("disabili").value + "</b></font>");
+                   }
+                   else{
+                   $("#disabili7").html("&nbsp;&nbsp;"+ h7disabili +" " + document.getElementById("disabili").value);
+                   }
+                   if(document.getElementById("bambini").value=="Si"){
+                   $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7seggiolino +" " + document.getElementById("bambini").value + "</b></font>");
+                   }
+                   else{
+                   $("#bambini7").html("&nbsp;&nbsp;"+ h7seggiolino +" :" + document.getElementById("bambini").value);
+                   }
+                   
+                   if(document.getElementById("wifi").value=="Si"){
+                   $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi " + document.getElementById("wifi").value + "</b></font>");
+                   }
+                   else{
+                   $("#wifi7").html("&nbsp;&nbsp;WiFi :" + document.getElementById("wifi").value);
+                   }
+                   
+                   if(document.getElementById("portapacchi").value=="Si"){
+                   $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7pacchi +" " + document.getElementById("portapacchi").value + "</b></font>");
+                   }
+                   else{
+                   $("#portapacchi7").html("&nbsp;&nbsp;"+ h7pacchi +" " + document.getElementById("portapacchi").value);
+                   }
+                   
+                   if(document.getElementById("rimorchio").value=="Si"){
+                   $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7gancio +" " + document.getElementById("rimorchio").value + "</b></font>");
+                   }
+                   else{
+                   $("#rimorchio7").html("&nbsp;&nbsp;"+ h7gancio +" " + document.getElementById("rimorchio").value);
+                   }
+                   
+                   if(document.getElementById("bluetooth").value=="Si"){
+                   $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth " + document.getElementById("bluetooth").value + "</b></font>");
+                   }
+                   else{
+                   $("#bluetooth7").html("&nbsp;&nbsp;Bluetooth :" + document.getElementById("bluetooth").value);
+                   }
+                   
+                   if(document.getElementById("notepass").value!=""){
+                   $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note " + document.getElementById("notepass").value + "</b></font>");
+                   }
+                   else{
+                   $("#note7").html("&nbsp;&nbsp;Note :" + document.getElementById("notepass").value);
+                   }
+                   
+                   
+                   if(document.getElementById("datacal").value==""){
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>"+ h7quando +" </font></b><br>&nbsp;&nbsp; "+ h7adesso +" <br><br>" );
+                   }
+                   else{
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7quando +" </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
+                   }
+                   
+                   
+                   
+                   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7partenza +" </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
+                   
+                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7arrivo +" </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
+                   
+                   
+                   }
+                   
+                   
+                   $.mobile.changePage ($("#home7"));
 		
 		e.stopImmediatePropagation();
 				   
@@ -1266,26 +1891,45 @@ function onDeviceReady() {
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 		
 		
+		
 		/////// GEO TRAKER IOS//////
 		
-		/*var bgGeo = window.plugins.backgroundGeoLocation;
+		/*	window.navigator.geolocation.getCurrentPosition(function(location) {
+			console.log('Location from Phonegap');
+		});
+		
+		var bgGeo = window.plugins.backgroundGeoLocation;
 		
 		var yourAjaxCallback = function(response) {
-			
+
 			bgGeo.finish();
 		};
 		
-		
+
 		var callbackFn = function(location) {
-			console.log('[js] BackgroundGeoLocation callback:  ' + location.latitude + ',' + location.longitude);
 			
-			localStorage.setItem("lat3", location.latitude)
-			localStorage.setItem("lng3", location.longitude)
+			$.ajax({
+				   type:"GET",
+				   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&trakka=1",
+				   contentType: "application/json",
+				   contentType: "application/json",
+				   //data: {ID: "Lazio"}, LIMIT 10
+				   timeout: 7000,
+				   jsonp: 'callback',
+				   crossDomain: true,
+				   success:function(result){
+				   
+				   
+				   },
+				   error: function(){
+				   
+				   
+				   },
+				   dataType:"jsonp"});
 			
-			vediofferte()
 			
 			yourAjaxCallback.call(this);
-
+			
 		};
 		
 		
@@ -1295,14 +1939,13 @@ function onDeviceReady() {
 		
 		
 		bgGeo.configure(callbackFn, failureFn, {
-						desiredAccuracy: 10,
-						stationaryRadius: 20,
-						distanceFilter: 30,
-						activityType: 'AutomotiveNavigation',
-						debug: false,
-						stopOnTerminate: false
+						desiredAccuracy: 3,
+						stationaryRadius: 10,
+						distanceFilter: 20,
+						activityType: 'AutomotiveNavigation'
+						//debug: true
+						//stopOnTerminate: false
 		});*/
-		
 		
 		/////// FINE GEO TRAKER IOS//////////
 		
@@ -1360,9 +2003,6 @@ function onDeviceReady() {
 		});
 		
 		
-		//backgroundGeolocation.stop();
-		
-		
 		/////// FINE GEO TRAKER ANDROID//////////
 
 		    localStorage.setItem("scroller","0")
@@ -1406,7 +2046,7 @@ function CenterControl(controlDiv, map) {
 	controlUI.style.textAlign = 'center';
 	controlUI.title = 'Click to recenter the map';
 	controlUI.style.height = '30px';
-	controlUI.style.width = '320px';
+	controlUI.style.width = '100%';
 	//controlUI.style.display = 'none';
 	controlDiv.appendChild(controlUI);
 	
@@ -1421,14 +2061,18 @@ function CenterControl(controlDiv, map) {
 	//controlText.innerHTML = '<table width="100%" class="xalto" border="0"><tr><td align="right">&nbsp;<br><br><br></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_anteprima1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6"><table border="0" width="100%" align="center" valign="center" class="bannertbl"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl2"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="s_partenza" valign="center"><b>Scegli la partenza</b><br></div><div id="s_arrivo" style="display:none" valign="center"><b>Scegli l\'arrivo</b></div></font><br></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table>';
 	
 	
-	//if(screen.width < 768){
+	if(screen.width < 768){
 		controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
-	/*}
+	}
 	else
 	{
-		controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="85px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="105px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="85px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="85px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="85px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="85px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
-		
-	}*/
+		if(screen.width > 719){
+			controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" width="16%"><a id="quando" href="#"><img src="img/ico_quando1.png" width="85px"></a></td><td align="center"  width="16%"><a id="da1" href="#"><img src="img/ico_start3.png" width="105px"></a></td><td align="center" width="16%"><a id="a1" href="#"><img src="img/ico_finish1.png" width="85px"></a></td><td align="center" width="16%"><a id="piu" href="#"><img src="img/ico_plus1.png" width="85px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="85px"></td><td align="center" width="16%"><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="85px"></a></td></tr><tr><td align="center" valign="center" colspan="6"></tr>';
+		}
+		else{
+			controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
+		}
+	}
 	
 
 	controlUI.appendChild(controlText);
@@ -1730,16 +2374,15 @@ function onPause() {
 	  window.clearInterval(i);
    }
    
-   
+   //bgGeo.start();
    backgroundGeolocation.start();
 }
 
 
 function onResume() {
 	
-
+	//bgGeo.stop();
 	backgroundGeolocation.stop();
-
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -1768,8 +2411,11 @@ function onResume() {
 			   $("#destinazione").hide();
 			   $("#tbldestinazione").hide();
 			   
+			   
 			   $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+			   
 			   $("#spinner4").show();
+			   
 			   
 			   //vediofferte()
 			  
@@ -2264,7 +2910,6 @@ function controllaofferte(){
 
 function vediofferte(){
 	
-	
 	$("#timer2").show();
 	//alert("Vedo");
 	var somma;
@@ -2285,6 +2930,8 @@ function vediofferte(){
 		window.clearInterval(i);
 	}
 	
+	
+	//alert();
 	
 
 	$.ajax({
@@ -2345,10 +2992,10 @@ function vediofferte(){
 				  }
 				   
 				   if(item.posticipata==0){
-				     tempistica = "Tempo di arrivo: " + item.tempo + " minuti";
+				     tempistica = "<table><tr><td><div id='h4tempo'><b>Tempo di arrivo </b></div></td><td><b> " + item.tempo + " </b></td><td><div id='h4minuti'>minuti</div></td></tr></table>";
 				   }
 				   else{
-				     tempistica = "Confermato l'orario";
+				     tempistica = "<div id='h4confermato'>Confermato l'orario</div>";
 				   }
 				  
 				  
@@ -2358,10 +3005,14 @@ function vediofferte(){
 				  if(item.accettata==1){
 				  
 				    if(item.cell!=""){
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>Accettazione confermata</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<b>Codice Commento: "+ item.cod_passeggero +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br><font color='#cc33cc' size='4'><b><p id='h4accettazione'>Accettazione confermata</p></b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><b>"+ tempistica +"</b><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p id='h4commento'>Codice Commento</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+                   
+                   seleziona();
 				    }
 				    else{
-				      $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>Accettazione confermata</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<b>Codice Commento: "+ item.cod_passeggero +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				      $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p id='h4accettazione'>Accettazione confermata</p></b></font></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><table><tr><td><b><p id='h4commento'>Codice Commento</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+                   
+                   seleziona();
 					}
 				  
 				  
@@ -2372,7 +3023,11 @@ function vediofferte(){
 				   //<tr><td align='center'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>RIFIUTA</font></a></td></tr>
 				  }
 				  else{
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font>&nbsp;&nbsp;<font color='#cc33cc' size='3'><br><b>&nbsp;ATTENDERE</font><font color='#cc33cc' size='2'><div id='puntini' class='loading'>L'autista sta valutando la richiesta</div></b></font><br></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+                   
+                   
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font><br>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b>&nbsp;<div id='h4attendere'>ATTENDERE</div></font><font color='#cc33cc' size='2'><div id='puntini' class='loading'>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+                   
+                   seleziona();
 					
 					//<a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;    class='loading'
 				  }
@@ -2552,7 +3207,9 @@ function vediofferte(){
 				   //
 				   if(item.accettata==1 && item.stato==3){
 				   
-				   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>RIFIUTATA</b></font><br><br></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"<br></td></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<b>Codice Commento: "+ item.cod_passeggero +"</b><br><a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_trash.png' width='50'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p id='h4rifiutata'>RIFIUTATA</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4prezzo'>Prezzo</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </b></p></td><td> "+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p id='h4commento'>Codice Commento</p> </d><td>"+ item.cod_passeggero +"</b></td></tr></table><br><a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_trash.png' width='50'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+                   
+                   seleziona();
 				   
 				   $(document).on("touchstart", "#accetta"+ item.id_richiesta +"_"+ item.id_autista + "", function(e){
 						accettaofferta(2,item.id_richiesta,item.id_autista)
@@ -2651,12 +3308,18 @@ function vediofferte(){
 				   if(item.stato==1){
 				  
 				   if(item.confermata==1){
+                   
 
-					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b>L\'Autista tarda a rispondere.<br> Vuoi reinoltrare la richiesta?</b></font><br></td></tr><tr><td align='left' colspan='2'><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"<br><br></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>CANCELLA</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><p id='h4reinoltra'>L\'Autista tarda a rispondere.<br> Vuoi reinoltrare la richiesta</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4prezzo'>Prezzo</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>CANCELLA</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+                   
+                     seleziona();
 				   }
 				   else{
+                   
 
-					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"<br><br></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>CANCELLA</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4prezzo'>Prezzo</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>CANCELLA</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+                   
+                      seleziona();
 				   
 				    }
 				   
@@ -2758,20 +3421,24 @@ function vediofferte(){
 				  }
 				  
 				  if(item.stato==0){
+                   
 					 if(item.nick==""){
-					   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><b>RICHIESTA</b><br></td></tr><tr><td align='left'><br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"</td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr><tr><td align='center'><a id='elimina"+ item.id_richiesta +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center'></td></tr></table>");
+					   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><b><p id='h4richiesta'>RICHIESTA</p></b></td></tr><tr><td align='left'><br><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr><tr><td align='center'><a id='elimina"+ item.id_richiesta +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center'></td></tr></table>");
 				  
 				           $(document).on("touchstart", "#elimina"+ item.id_richiesta +"", function(e){
 							 elimina(item.id_richiesta)
 							 if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 						   });
+                   
+                      seleziona();
 				  
 					 }
 					 else{
-				       //alert(item.nick)
 				   
-				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass00' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><font color='#fff'><b>"+ item.nick +" "+ item.percentuale +"%</b></font></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"</td></tr><tr><td align='center' colspan='2'></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass00' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><font color='#fff'><b>"+ item.nick +" "+ item.percentuale +"%</b></font></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  
+                   
+                     seleziona();
 				  
 				       $(document).on("touchstart", "#elimina"+ item.id_richiesta +"_"+ item.id_autista +"", function(e){
 						  elimina3(item.id_richiesta,item.id_autista)
@@ -2855,7 +3522,10 @@ function vediofferte(){
 				  }
 				  else{
 				  
-				  $("#offerte4").html("<br><br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr> <td align='center'><br></td></tr><tr><td align='center'>Nessuna offerta in arrivo<br><br></td></tr></table>");
+				   
+				  $("#offerte4").html("<br><br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr> <td align='center'><br></td></tr><tr><td align='center'><div id='h4nessuna'>Nessuna offerta in arrivo</div><br><br></td></tr></table>");
+                   
+                   seleziona();
 				
 				   }
 				   
@@ -3988,7 +4658,54 @@ function prendicittaid(id){
 							 //window.location.href = "index.html";
 						    }
 									
-									
+								
+                                  // LINGUE //
+                                  function seleziona() {
+                                  
+                                  var db;
+                                  db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+                                  
+                                  db.transaction(function (tx) {
+                                                 
+                                                 tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                                                               var len = results.rows.length, i;
+                                                               
+                                                               if(localStorage.getItem("lingua")=="it"){
+                                                               
+                                                               for (i = 0; i < len; i++){
+
+                                                               if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                                               h4richiesta = results.rows.item(i).italiano;
+                                                               
+                                                               }
+       
+                                                               
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               
+                                                               if(localStorage.getItem("lingua")=="en"){
+                                                               
+                                                               
+                                                               for (i = 0; i < len; i++){
+                                                                 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
+                                                               
+                                                                 if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                                                   h4richiesta = results.rows.item(i).inglese;
+                                                               
+                                                                 }
+                                                               
+                                                               
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                        }, null);
+                                                 });
+                                  
+                                  }
+                                  
 
 
 function getParameterByName(name) {

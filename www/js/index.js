@@ -217,20 +217,19 @@ receivedEvent: function(id) {
 		
 		
 		bgGeo.configure(callbackFn, failureFn, {
-						desiredAccuracy: 10,
-						stationaryRadius: 20,
-						distanceFilter: 30,
-						activityType: 'AutomotiveNavigation',
-						debug: true,
-						stopOnTerminate: false
+						desiredAccuracy: 3,
+						stationaryRadius: 10,
+						distanceFilter: 20,
+						activityType: 'AutomotiveNavigation'
+						//debug: true
+						//stopOnTerminate: false
 		});*/
-		
 
 		/////// FINE GEO TRAKER IOS//////
 		
 		
-		/////// GEO TRAKER ANDROID //////
 		
+		/////// GEO TRAKER ANDROID //////
 		
 		window.navigator.geolocation.getCurrentPosition(function(location) {
 			console.log('Location from Phonegap');
@@ -254,7 +253,6 @@ receivedEvent: function(id) {
 				   },
 				   dataType:"jsonp"});
 				   
-			//backgroundGeolocation.finish();
 			
 		};
 		
@@ -281,8 +279,6 @@ receivedEvent: function(id) {
 		});
 		
 		
-		//backgroundGeolocation.stop();
-
 		/////// FINE GEO TRAKER /////////
 		
 		
@@ -303,8 +299,7 @@ receivedEvent: function(id) {
 										);*/
 		
 		
-		//window.location.href = "index.html";
-		
+
 	}
 	
 		$(document).on("tap", "#esciapp", function(e){
@@ -430,10 +425,10 @@ receivedEvent: function(id) {
 
 		if(isMobileScreenHeight < 540){
 			
-			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="80px"><p class="testo_sottotitoloIP4">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="80px"><p class="testo_sottotitoloIP4">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
+			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="80px"><p class="testo_sottotitoloIP4" id="vea">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="80px"><p class="testo_sottotitoloIP4" id="vep">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		}
 		else{
-			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
+			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo" id="vea">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo" id="vep">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		}
 		
 	}
@@ -442,10 +437,10 @@ receivedEvent: function(id) {
 		
 		if(isMobileScreenWidth > 719){
 		
-		   $("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="210px"><p class="testo_sottotitoloIPAD">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
+		   $("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="210px"><p class="testo_sottotitoloIPAD" id="vea">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="210px"><p class="testo_sottotitoloIPAD" id="vep">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		}
 		else{
-			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
+			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="110px"><p class="testo_sottotitolo" id="vea">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="105px"><p class="testo_sottotitolo" id="vep">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_bianco">Profilo '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		}
 	}
 	
@@ -678,8 +673,134 @@ receivedEvent: function(id) {
 	var watchID = null;
 	var watchID2 = null;
 	var watchID5 = null;
-	
-	$(document).on("tap", "#exitapp", function(e){
+    
+    // DB //
+    
+    
+    var dsconn;
+    var btnModifica;
+    var pagina4quando;
+    var s_partenza;
+    var magiatitolo;
+    var partenzaM;
+    var arrivoM;
+    var distanzaM;
+    
+    var db;
+    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+    
+    db.transaction(function (tx) {
+                   
+                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                                 var len = results.rows.length, i;
+                                 
+                                 if(localStorage.getItem("lingua")=="it"){
+                                 
+                                 for (i = 0; i < len; i++){
+                                 //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                                 
+                                 if(results.rows.item(i).id_traduzione == "dsconn"){
+                                 dsconn = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "btnModifica"){
+                                 btnModifica = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "s_partenza"){
+                                  s_partenza = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "magiatitolo"){
+                                   magiatitolo = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "partenzaM"){
+                                 partenzaM = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "arrivoM"){
+                                 arrivoM = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "distanzaM"){
+                                 distanzaM = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 
+                                 }
+                                 
+                                 }
+                                 
+                                 
+                            if(localStorage.getItem("lingua")=="en"){
+                                 
+                                 for (i = 0; i < len; i++){
+                                 
+                                    $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
+                                 
+                                        if(results.rows.item(i).id_traduzione == "dsconn"){
+                                            dsconn = results.rows.item(i).inglese;
+                                 
+                                        }
+                                 
+                                 
+                                        if(results.rows.item(i).id_traduzione == "btnModifica"){
+                                            btnModifica = results.rows.item(i).inglese;
+                                 
+                                            //alert(btnModifica)
+                                 
+                                        }
+                                 
+                                        if(results.rows.item(i).id_traduzione == "inizia"){
+                                            $("#inizia").html('<font color="#fff"><b>'+ results.rows.item(i).inglese +'</b></font>')
+                                 
+                                            }
+                                 
+                                        if(results.rows.item(i).id_traduzione == "s_partenza"){
+                                            s_partenza = results.rows.item(i).inglese;
+                                 
+                                        }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "magiatitolo"){
+                                 magiatitolo = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "partenzaM"){
+                                 partenzaM = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "arrivoM"){
+                                 arrivoM = results.rows.item(i).inglese;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "distanzaM"){
+                                 distanzaM = results.rows.item(i).inglese;
+                                 
+                                 }
+
+                                    }
+                                 
+                                 }
+                                 
+                            }, null);
+                   });
+    
+    
+    
+    //////
+    
+    $(document).on("tap", "#exitapp", function(e){
 		
 		for(i=0; i<10000; i++)
 		{
@@ -756,7 +877,7 @@ receivedEvent: function(id) {
 				   
 		  //alert(localStorage.getItem("lingua"))
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -778,7 +899,7 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#profiloperc2", function(e){
 				   
-		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
+		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_blank', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
 				   
@@ -830,6 +951,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
+    
 	$(document).on("touchstart tap", "#pass3", function(e){
 				   richiesta3()
 				   
@@ -1119,7 +1241,7 @@ receivedEvent: function(id) {
 				   
 			if(connectionStatus=='online'){
 				   
-				$("#win2header").html("In attesa di richieste&nbsp;&nbsp;");
+				$("#win2header").html(s_partenza);
 				$("#XXX").show();
 				$("#tornareset").hide();
 				   
@@ -1211,10 +1333,10 @@ receivedEvent: function(id) {
 	
 	$(document).on("touchstart tap", "#logout", function(e){
 				   navigator.notification.confirm(
-												  'Vuoi disconnetterti come utente '+ localStorage.getItem("nick") +'',  // message
+												  dsconn + " " + localStorage.getItem("nick"),  // message
 												  onConfirm,              // callback to invoke with index of button pressed
 												  'Logout',            // title
-												  'Conferma,Annulla'      // buttonLabels
+												  'Ok,Annulla'      // buttonLabels
 												  );
 				   
 				   e.stopImmediatePropagation();
@@ -1245,6 +1367,7 @@ receivedEvent: function(id) {
             localStorage.setItem("id_utente", "");
             
 			window.location.href = "Login.html";
+            
 			
 			return;
 		}
@@ -1359,6 +1482,8 @@ receivedEvent: function(id) {
 					   //backgroundGeolocation.start();
 					   			   
 					//}, 500);
+				   
+				   bgGeo.start();
 					
 						
 					$('#modificastart').blur()
@@ -1381,7 +1506,7 @@ receivedEvent: function(id) {
 				   }
 				   
 				   localStorage.setItem("pagina","inizia")
-				   $("#win2header").html("In attesa di richieste&nbsp;&nbsp;");
+				   $("#win2header").html(s_partenza);
 				   
 				   	setTimeout(function() {
 						start();
@@ -1629,35 +1754,113 @@ function chiama(km) {
 }
 
 function CenterControl(controlDiv, map) {
-	
-	// Set CSS for the control border.
-	var controlUI = document.createElement('div');
-	controlUI.style.backgroundColor = 'transparent';
-	controlUI.style.border = '0px solid #fff';
-	controlUI.style.borderRadius = '3px';
-	controlUI.style.boxShadow = '0 0px 0px rgba(0,0,0,.3)';
-	controlUI.style.cursor = 'pointer';
-	controlUI.style.marginBottom = '5px';
-	controlUI.style.textAlign = 'center';
-	controlUI.title = 'Click to recenter the map';
-	controlUI.style.height = '5px';
-	controlUI.style.width = '320px';
-	//controlUI.style.display = 'none';
-	controlDiv.appendChild(controlUI);
-	
-	// Set CSS for the control interior.
-	var controlText = document.createElement('div');
-	controlText.style.color = 'rgb(25,25,25)';
-	controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-	controlText.style.fontSize = '12px';
-	controlText.style.lineHeight = '10px';
-	controlText.style.paddingLeft = '5px';
-	controlText.style.paddingRight = '5px';
-	controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6" valign="top"><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" class="button_gps_fade"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" class="button_gps"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><br>';
-	controlUI.appendChild(controlText);
+    
+    var btnModifica;
+    
+    var dsconn;
+    var btnModifica;
+    
+    var db;
+    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+    
+    db.transaction(function (tx) {
+                   
+                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                       var len = results.rows.length, i;
+                                 
+                            if(localStorage.getItem("lingua")=="it"){
+                                 
+                                 for (i = 0; i < len; i++){
+                                  //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                                 
+                                    if(results.rows.item(i).id_traduzione == "btnModifica"){
+                                     btnModifica = results.rows.item(i).italiano;
+                                 
+                                 // Set CSS for the control border.
+                                 var controlUI = document.createElement('div');
+                                 controlUI.style.backgroundColor = 'transparent';
+                                 controlUI.style.border = '0px solid #fff';
+                                 controlUI.style.borderRadius = '3px';
+                                 controlUI.style.boxShadow = '0 0px 0px rgba(0,0,0,.3)';
+                                 controlUI.style.cursor = 'pointer';
+                                 controlUI.style.marginBottom = '5px';
+                                 controlUI.style.textAlign = 'center';
+                                 controlUI.title = 'Click to recenter the map';
+                                 controlUI.style.height = '5px';
+                                 controlUI.style.width = '320px';
+                                 //controlUI.style.display = 'none';
+                                 controlDiv.appendChild(controlUI);
+                                 
+                                 // Set CSS for the control interior.
+                                 var controlText = document.createElement('div');
+                                 controlText.style.color = 'rgb(25,25,25)';
+                                 controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                                 controlText.style.fontSize = '12px';
+                                 controlText.style.lineHeight = '10px';
+                                 controlText.style.paddingLeft = '5px';
+                                 controlText.style.paddingRight = '5px';
+                                 controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6" valign="top"><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" class="button_gps_fade"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" class="button_gps"><font color="#fff"><b>'+btnModifica+'</b></font></a></td></tr></table><br>';
+                                 controlUI.appendChild(controlText);
+                                 
+                                   }
+                                 
+                                 }
+                                 
+                            }
+                                 
+                                 
+                            if(localStorage.getItem("lingua")=="en"){
+                                 
+                                for (i = 0; i < len; i++){
+                                 
+                                 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
+                                 
+                                  if(results.rows.item(i).id_traduzione == "btnModifica"){
+                                   btnModifica = results.rows.item(i).inglese;
+                                 
+                                 // Set CSS for the control border.
+                                 var controlUI = document.createElement('div');
+                                 controlUI.style.backgroundColor = 'transparent';
+                                 controlUI.style.border = '0px solid #fff';
+                                 controlUI.style.borderRadius = '3px';
+                                 controlUI.style.boxShadow = '0 0px 0px rgba(0,0,0,.3)';
+                                 controlUI.style.cursor = 'pointer';
+                                 controlUI.style.marginBottom = '5px';
+                                 controlUI.style.textAlign = 'center';
+                                 controlUI.title = 'Click to recenter the map';
+                                 controlUI.style.height = '5px';
+                                 controlUI.style.width = '320px';
+                                 //controlUI.style.display = 'none';
+                                 controlDiv.appendChild(controlUI);
+                                 
+                                 // Set CSS for the control interior.
+                                 var controlText = document.createElement('div');
+                                 controlText.style.color = 'rgb(25,25,25)';
+                                 controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                                 controlText.style.fontSize = '12px';
+                                 controlText.style.lineHeight = '10px';
+                                 controlText.style.paddingLeft = '5px';
+                                 controlText.style.paddingRight = '5px';
+                                 controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6" valign="top"><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" class="button_gps_fade"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" class="button_gps"><font color="#fff"><b>'+btnModifica+'</b></font></a></td></tr></table><br>';
+                                 controlUI.appendChild(controlText);
+                                 
+                                  }
+
+                                }
+                                 
+                            }
+                                 
+                    }, null);
+                });
+    
+    
+    
+    
 	
 	//controlText.innerHTML = '<table width="100%" border="0" class="tblmappa6"><td align="right" valign="center">&nbsp;<br><br></td></tr><tr><td align="center" width="100%"><br><a id="btnGPS" href="#" data-role="button" data-theme="b" class="custom-btnGPS"><font color="#fff"><b>GPS</b></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="Modifica" href="#" data-role="button" data-theme="b" class="custom-btn3"><font color="#fff"><b>Modifica<b></font></a></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XXX" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl4"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl5"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="#" valign="center"><b>Posizione dell\'autista</b><br></div></font><br></td></tr></table>';
-	
+    
+
+    
 }
 
 function CenterControl2(controlDiv, map) {
@@ -2355,7 +2558,7 @@ function onPause() {
 	  window.clearInterval(i);
    }
    
-   
+   //bgGeo.start();
    backgroundGeolocation.start();
 }
 
@@ -2363,6 +2566,7 @@ function onPause() {
 
 function onResume() {
 	
+	//bgGeo.stop();
 	backgroundGeolocation.stop();
 	
 	//app.initialize();
@@ -2728,6 +2932,8 @@ function resetta1(focus) {
 		
 		centerControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+        
+        seleziona();
 	}
 
 		
@@ -2737,6 +2943,7 @@ function resetta1(focus) {
 		$("#Modifica").hide();
 		$("#lista").hide();
 
+        seleziona();
         
         var today = new Date();
         var dd = today.getDate();
@@ -2846,7 +3053,7 @@ function resetta1(focus) {
 				  
 				  
 				  //$("#pass0").show();
-				  $("#win2header").html("In attesa di richieste&nbsp;&nbsp;");
+				  $("#win2header").html(s_partenza);
 				  
 				  
 				  //$("#pass1").show();
@@ -3530,7 +3737,7 @@ function timer(){
 												  $("#pass3").hide();
 												  
 												  //$("#pass0").show();
-												  $("#win2header").html("In attesa di richieste&nbsp;&nbsp;");
+												  $("#win2header").html(s_partenza);
 												  }
 												  
 												  
@@ -3541,7 +3748,7 @@ function timer(){
 												  $("#esci").hide();
 												  
 												  //$("#pass0").show();
-												  $("#win2header").html("In attesa di richieste&nbsp;&nbsp;");
+												  $("#win2header").html(s_partenza);
 												  
 												  //resetta1(1);
 												  
@@ -4643,8 +4850,90 @@ function scadutaofferta(id,id_richiesta,id_autista){
 
 
 function magia2C(utente,pass) {
-	
-	$("#win2header").html("Dettaglio richiesta&nbsp;&nbsp;");
+    
+    // DB2 //
+    
+    var db;
+    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+    
+    db.transaction(function (tx) {
+                   
+            tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+            var len = results.rows.length, i;
+                                 
+                    if(localStorage.getItem("lingua")=="it"){
+                                 
+                            for (i = 0; i < len; i++){
+                                 //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                                 
+                                 if(results.rows.item(i).id_traduzione == "magiatitolo"){
+                                  magiatitolo = results.rows.item(i).italiano;
+                          
+                                  $("#win2header").html(magiatitolo + "&nbsp;&nbsp;");
+                                 
+                                 }
+                          
+                          if(results.rows.item(i).id_traduzione == "partenzaM"){
+                          partenzaM = results.rows.item(i).italiano;
+                          
+                          }
+                          
+                          if(results.rows.item(i).id_traduzione == "arrivoM"){
+                          arrivoM = results.rows.item(i).italiano;
+                          
+                          }
+                          
+                          if(results.rows.item(i).id_traduzione == "distanzaM"){
+                          distanzaM = results.rows.item(i).italiano;
+                          
+                          }
+                          
+                            }
+                                 
+                        }
+                                 
+                                 
+                        if(localStorage.getItem("lingua")=="en"){
+                                 
+                            for (i = 0; i < len; i++){
+                                 
+                                 //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
+                                 
+                                 if(results.rows.item(i).id_traduzione == "magiatitolo"){
+                                   magiatitolo = results.rows.item(i).inglese;
+                          
+                                   $("#win2header").html(magiatitolo + "&nbsp;&nbsp;");
+                                 
+                                 }
+                          
+                          if(results.rows.item(i).id_traduzione == "partenzaM"){
+                            partenzaM = results.rows.item(i).inglese;
+                          
+                          }
+                          
+                          if(results.rows.item(i).id_traduzione == "arrivoM"){
+                          arrivoM = results.rows.item(i).inglese;
+                          
+                          }
+                          
+                          if(results.rows.item(i).id_traduzione == "distanzaM"){
+                          distanzaM = results.rows.item(i).inglese;
+                          
+                          }
+                          
+
+                             }
+                                 
+                        }
+                                 
+                    }, null);
+            });
+    
+    /////////
+    
+    
+    $("#win2header").html("Dettaglio richiesta&nbsp;&nbsp;");
+    
 	$("#XXX").hide();
 	$("#tornareset").show();
 	
@@ -4805,7 +5094,7 @@ function magia2C(utente,pass) {
 				  });
 				  
 				  
-				  $("#bannermagia").html("<font size='3' color='#000'><b>"+item.nick+"</b><br><b>Partenza: </b>"+item.partenza+"<br><b>Arrivo: </b>"+ item.arrivo +"<br><b>Distanza dalla partenza (l.a.): </b>"+ item.distanza1 +" Km</font>");
+				  $("#bannermagia").html("<font size='3' color='#000'><b>"+item.nick+"</b><br><b>"+partenzaM+": </b>"+item.partenza+"<br><b>"+arrivoM+": </b>"+ item.arrivo +"<br><b>"+distanzaM+": </b>"+ item.distanza1 +" Km</font>");
 				  
 				  var isVisible3 = marker3.getVisible();
 				  if(isVisible3){
@@ -4905,7 +5194,7 @@ function magia2C(utente,pass) {
 				  
 				  map.setZoom(dist2)
 				  
-				  $("#bannermagia").html("<font size='3' color='#000'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza(l.a.): "+ item.distanza1 +"</font>");
+				  $("#bannermagia").html("<font size='3' color='#000'><b>"+item.nick+"</b><br><b>"+partenzaM+": </b>"+item.partenza+"<br><b>"+arrivoM+": </b>"+ item.arrivo +"<br><b>"+distanzaM+": </b>"+ item.distanza1 +" Km</font>");
 				  
 				  marker1.setVisible(false);
 				  
@@ -5023,7 +5312,7 @@ function magia2C(utente,pass) {
 				  
 				  map.setZoom(dist2)
 				  
-				  $("#bannermagia").html("<font size='3' color='#000'>Arrivo: "+ item.arrivo +"<br>Distanza dalla partenza (l.a.): "+ item.distanza1 +" km</font>");
+				  $("#bannermagia").html("<font size='3' color='#000'><b>"+item.nick+"</b><br><b>"+partenzaM+": </b>"+item.partenza+"<br><b>"+arrivoM+": </b>"+ item.arrivo +"<br><b>"+distanzaM+": </b>"+ item.distanza1 +" Km</font>");
 				  
 				  marker1.setVisible(false);
 				  marker3.setVisible(false);
@@ -5743,8 +6032,266 @@ function richiesta1() {
 	$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 	
 	id = item1
-	
-	$("#risp1").show();
+    var pagina4quando;
+    var pagina4partenza
+    var pagina4arrivo
+    
+    var db;
+    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+    
+    db.transaction(function (tx) {
+                   
+        tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+            var len = results.rows.length, i;
+                                 
+                if(localStorage.getItem("lingua")=="it"){
+                                 
+                    for (i = 0; i < len; i++){
+                      if(results.rows.item(i).id_traduzione == "pagina4quando"){
+                        pagina4quando = results.rows.item(i).italiano;
+                      
+                      if(posticipata1==0){
+                        $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"<br><br>");
+                        $("#nickhome4").removeClass("button_small").addClass("button_small_green");
+                      }
+                      else{
+                        $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br><b>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"</b><br><br>");
+                        $("#nickhome4").removeClass("button_small_green").addClass("button_small");
+                      }
+                      }
+                      
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4partenza"){
+                        pagina4partenza = results.rows.item(i).italiano;
+                        $("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4partenza +": </font></b><br>&nbsp;&nbsp;"+ partenza1 +"<br><br>");
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4arrivo"){
+                        pagina4arrivo = results.rows.item(i).italiano;
+                        $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +": </font></b><br>&nbsp;&nbsp;"+ arrivo1 +"<br><br>");
+                      }
+                      
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4distanza"){
+                        pagina4distanza = results.rows.item(i).italiano;
+                        $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza1 +" Km<br><br>");
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
+                        pagina4passeggeri = results.rows.item(i).italiano;
+                        if(passeggeri1!="1"){
+                            $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri1 + "</b></font>");
+                        }
+                        else{
+                            $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri1);
+                        }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4animali"){
+                       pagina4animali = results.rows.item(i).italiano;
+                       if(animali1=="Si"){
+                        $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali1 + "</b></font>");
+                       }
+                       else{
+                         $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali1);
+                       }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
+                      pagina4fumatori = results.rows.item(i).italiano;
+                      if(fumatori1=="Si"){
+                      $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori1 + "</b></font>");
+                      }
+                      else{
+                      $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori1);
+                      }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4minori"){
+                      pagina4minori = results.rows.item(i).italiano;
+                      if(meno181=="Si"){
+                      $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno181 +"</b></font>");
+                      }
+                      else{
+                      $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno181);
+                      }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4disabili"){
+                      pagina4disabili = results.rows.item(i).italiano;
+                      if(disabili1=="Si"){
+                      $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili1 +"</b></font>");
+                      }
+                      else{
+                      $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili1);
+                      }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4bambini"){
+                      pagina4bambini = results.rows.item(i).italiano;
+                      if(bambini1=="Si"){
+                      $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini1 +"</b></font>");
+                      }
+                      else{
+                      $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini1);
+                      }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
+                      pagina4pacchi = results.rows.item(i).italiano;
+                      if(portapacchi1=="Si"){
+                      $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi1 +"</b></font>");
+                      }
+                      else{
+                      $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi1);
+                      }
+                      }
+                      
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
+                      pagina4rimorchio = results.rows.item(i).italiano;
+                      if(rimorchio1=="Si"){
+                      $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio1 +"</b></font>");
+                      }
+                      else{
+                      $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio1);
+                      }
+                      }
+                      
+                      
+                    }
+                      
+                }
+                                 
+                                 
+            if(localStorage.getItem("lingua")=="en"){
+                                 
+                for (i = 0; i < len; i++){
+                      
+                      //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
+                      
+                    if(results.rows.item(i).id_traduzione == "pagina4quando"){
+                       pagina4quando = results.rows.item(i).inglese;
+                      
+                      if(posticipata1==0){
+                        $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"<br><br>");
+                        $("#nickhome4").removeClass("button_small").addClass("button_small_green");
+                      }
+                      else{
+                        $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br><b>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"</b><br><br>");
+                        $("#nickhome4").removeClass("button_small_green").addClass("button_small");
+                      }
+                      }
+
+                      
+                    if(results.rows.item(i).id_traduzione == "pagina4partenza"){
+                       pagina4partenza = results.rows.item(i).inglese;
+                      $("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4partenza +": </font></b><br>&nbsp;&nbsp;"+ partenza1 +"<br><br>");
+                    }
+                      
+                    if(results.rows.item(i).id_traduzione == "pagina4arrivo"){
+                       pagina4arrivo = results.rows.item(i).inglese;
+                      $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +": </font></b><br>&nbsp;&nbsp;"+ arrivo1 +"<br><br>");
+                    }
+                      
+                    if(results.rows.item(i).id_traduzione == "pagina4distanza"){
+                       pagina4distanza = results.rows.item(i).inglese;
+                       $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza1 +" Km<br><br>");
+                    }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
+                       pagina4passeggeri = results.rows.item(i).inglese;
+                       if(passeggeri1!="1"){
+                       $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri1 + "</b></font>");
+                       }
+                       else{
+                       $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri1);
+                       }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4animali"){
+                       pagina4animali = results.rows.item(i).inglese;
+                       if(animali1=="Si"){
+                        $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali1 + "</b></font>");
+                       }
+                       else{
+                        $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali1);
+                       }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
+                       pagina4fumatori = results.rows.item(i).inglese;
+                       if(fumatori1=="Si"){
+                        $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori1 + "</b></font>");
+                       }
+                       else{
+                        $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori1);
+                       }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4minori"){
+                       pagina4minori = results.rows.item(i).inglese;
+                       if(meno181=="Si"){
+                        $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno181 +"</b></font>");
+                       }
+                       else{
+                        $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno181);
+                       }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4disabili"){
+                       pagina4disabili = results.rows.item(i).inglese;
+                       if(disabili1=="Si"){
+                        $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili1 +"</b></font>");
+                       }
+                       else{
+                        $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili1);
+                       }
+                      }
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4bambini"){
+                       pagina4bambini = results.rows.item(i).inglese;
+                       if(bambini1=="Si"){
+                        $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini1 +"</b></font>");
+                       }
+                       else{
+                        $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini1);
+                       }
+                      }
+                      
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
+                       pagina4pacchi = results.rows.item(i).inglese;
+                        if(portapacchi1=="Si"){
+                         $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi1 +"</b></font>");
+                        }
+                        else{
+                         $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi1);
+                        }
+                      }
+                      
+                      
+                      if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
+                       pagina4rimorchio = results.rows.item(i).inglese;
+                       if(rimorchio1=="Si"){
+                        $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio1 +"</b></font>");
+                       }
+                       else{
+                        $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio1);
+                       }
+                      }
+                      
+
+                      
+                      }
+                      
+                }
+                      
+            }, null);
+    });
+    
+    
+    $("#risp1").show();
 	$("#risp2").hide();
 	$("#gps22").hide();
 	$("#risp3").hide();
@@ -5871,7 +6418,6 @@ function richiesta1() {
 
 
 
-
 	localStorage.setItem("id_nick", nick1)
 	localStorage.setItem("id_utente_pass1", id_utente_pass1)
 	
@@ -5879,63 +6425,8 @@ function richiesta1() {
 	$("#nickhome66").html("<font color='#fff'>"+ nick1 +"</font>");
 	$("#nickblob3").html("<font color='#cc33cc' size='4'><b>"+ nick1 +" "+ percentuale1 +"%</b></font>");
 				  
-	if(posticipata1==0){
-	 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"<br><br>");
-	 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
-	}
-	else{
-		$("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br><b>&nbsp;&nbsp;"+ quando1 +", Ora: "+ ora1 +"</b><br><br>");
-		$("#nickhome4").removeClass("button_small_green").addClass("button_small");
-	}
-				  
-	$("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Partenza: </font></b><br>&nbsp;&nbsp;"+ partenza1 +"<br><br>");
-				  
-	$("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Arrivo: </font></b><br>&nbsp;&nbsp;"+ arrivo1 +"<br><br>");
-				  
-	$("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Distanza (linea d'aria): </font></b>"+ distanza1 +" Km<br><br>");
-	
-	
-	if(passeggeri1!="1"){
-	  $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri " + passeggeri1 + "</b></font>");
-	}
-	else{
-	  $("#passeggeri").html("&nbsp;&nbsp;N. Passeggeri " + passeggeri1);
-	}
-	
-	if(animali1=="Si"){
-	  $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>Animale a seguito " + animali1 + "</b></font>");
-	}
-	else{
-		$("#animali").html("&nbsp;&nbsp;Animale a seguito " + animali1);
-	}
-	
-	if(fumatori1=="Si"){
-	   $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>Fumatori " + fumatori1 + "</b></font>");
-	}
-	else{
-		$("#fumatori").html("&nbsp;&nbsp;Fumatori " + fumatori1);
-	}
-	
-	if(meno181=="Si"){
-	   $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>Minori non accompagnati "+ meno181 +"</b></font>");
-	}
-	else{
-		$("#meno18").html("&nbsp;&nbsp;Minori non accompagnati " + meno181);
-	}
-	
-	if(disabili1=="Si"){
-	   $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>Diversamenti abili "+ disabili1 +"</b></font>");
-	}
-	else{
-		$("#disabili").html("&nbsp;&nbsp;Diversamenti abili " + disabili1);
-	}
-	
-	if(bambini1=="Si"){
-	  $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>Seggiolino per bambini "+ bambini1 +"</b></font>");
-	}
-	else{
-		$("#bambini").html("&nbsp;&nbsp;Seggiolino per bambini " + bambini1);
-	}
+
+
 	
 	if(wifi1=="Si"){
 	  $("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi "+ wifi1 +"</b></font>");
@@ -5944,19 +6435,6 @@ function richiesta1() {
 		$("#wifi").html("&nbsp;&nbsp;WiFi " + wifi1);
 	}
 	
-	if(portapacchi1=="Si"){
-	  $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>Portapacchi "+ portapacchi1 +"</b></font>");
-	}
-	else{
-		$("#portapacchi").html("&nbsp;&nbsp;Portapacchi " + portapacchi1);
-	}
-	
-	if(rimorchio1=="Si"){
-		$("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>Gancio rimorchio "+ rimorchio1 +"</b></font>");
-	}
-	else{
-		$("#rimorchio").html("&nbsp;&nbsp;Gancio rimorchio " + rimorchio1);
-	}
 	
 	if(bluetooth1=="Si"){
 		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth "+ bluetooth1 +"</b></font>");
@@ -6119,7 +6597,9 @@ function richiesta1() {
 						
 						var addressLongLat = lat1+","+lng1;
 	
-						window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+						window.open("maps:daddr="+ addressLongLat +"" , '_system');
+								  
+						// ll=50.894967,4.341626
 						
 						$("#blob2").hide();
 								 
@@ -6302,6 +6782,268 @@ function richiesta2() {
 	
 	$("#cell1").hide();
 	$("#cell3").hide();
+    
+    
+    // DB //
+    
+    
+    var db;
+    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+    
+    db.transaction(function (tx) {
+                   
+                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                                 var len = results.rows.length, i;
+                                 
+                                 if(localStorage.getItem("lingua")=="it"){
+                                 
+                                 for (i = 0; i < len; i++){
+                                 if(results.rows.item(i).id_traduzione == "pagina4quando"){
+                                 pagina4quando = results.rows.item(i).italiano;
+                                 
+                                 if(posticipata1==0){
+                                 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
+                                 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
+                                 }
+                                 else{
+                                 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br><b>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"</b><br><br>");
+                                 $("#nickhome4").removeClass("button_small_green").addClass("button_small");
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4partenza"){
+                                 pagina4partenza = results.rows.item(i).italiano;
+                                 $("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4partenza +": </font></b><br>&nbsp;&nbsp;"+ partenza2 +"<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4arrivo"){
+                                 pagina4arrivo = results.rows.item(i).italiano;
+                                 $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +": </font></b><br>&nbsp;&nbsp;"+ arrivo2 +"<br><br>");
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4distanza"){
+                                 pagina4distanza = results.rows.item(i).italiano;
+                                 $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza2 +" Km<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
+                                 pagina4passeggeri = results.rows.item(i).italiano;
+                                 if(passeggeri1!="1"){
+                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri2 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4animali"){
+                                 pagina4animali = results.rows.item(i).italiano;
+                                 if(animali1=="Si"){
+                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali2 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
+                                 pagina4fumatori = results.rows.item(i).italiano;
+                                 if(fumatori1=="Si"){
+                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori2 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4minori"){
+                                 pagina4minori = results.rows.item(i).italiano;
+                                 if(meno181=="Si"){
+                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno182 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno182);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4disabili"){
+                                 pagina4disabili = results.rows.item(i).italiano;
+                                 if(disabili1=="Si"){
+                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili2 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4bambini"){
+                                 pagina4bambini = results.rows.item(i).italiano;
+                                 if(bambini1=="Si"){
+                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini2 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
+                                 pagina4pacchi = results.rows.item(i).italiano;
+                                 if(portapacchi1=="Si"){
+                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi2 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi2);
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
+                                 pagina4rimorchio = results.rows.item(i).italiano;
+                                 if(rimorchio1=="Si"){
+                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio2 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio2);
+                                 }
+                                 }
+                                 
+                                 
+                                 }
+                                 
+                                 }
+                                 
+                                 
+                                 if(localStorage.getItem("lingua")=="en"){
+                                 
+                                 for (i = 0; i < len; i++){
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4quando"){
+                                 pagina4quando = results.rows.item(i).inglese;
+                                 
+                                 if(posticipata1==0){
+                                 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
+                                 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
+                                 }
+                                 else{
+                                 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br><b>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"</b><br><br>");
+                                 $("#nickhome4").removeClass("button_small_green").addClass("button_small");
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4partenza"){
+                                 pagina4partenza = results.rows.item(i).inglese;
+                                 $("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4partenza +": </font></b><br>&nbsp;&nbsp;"+ partenza2 +"<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4arrivo"){
+                                 pagina4arrivo = results.rows.item(i).inglese;
+                                 $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +": </font></b><br>&nbsp;&nbsp;"+ arrivo2 +"<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4distanza"){
+                                 pagina4distanza = results.rows.item(i).inglese;
+                                 $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza2 +" Km<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
+                                 pagina4passeggeri = results.rows.item(i).inglese;
+                                 if(passeggeri1!="1"){
+                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri2 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4animali"){
+                                 pagina4animali = results.rows.item(i).inglese;
+                                 if(animali1=="Si"){
+                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali2 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
+                                 pagina4fumatori = results.rows.item(i).inglese;
+                                 if(fumatori1=="Si"){
+                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori2 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4minori"){
+                                 pagina4minori = results.rows.item(i).inglese;
+                                 if(meno181=="Si"){
+                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno182 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno182);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4disabili"){
+                                 pagina4disabili = results.rows.item(i).inglese;
+                                 if(disabili1=="Si"){
+                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili2 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili2);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4bambini"){
+                                 pagina4bambini = results.rows.item(i).inglese;
+                                 if(bambini1=="Si"){
+                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini2 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini2);
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
+                                 pagina4pacchi = results.rows.item(i).inglese;
+                                 if(portapacchi1=="Si"){
+                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi2 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi2);
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
+                                 pagina4rimorchio = results.rows.item(i).inglese;
+                                 if(rimorchio1=="Si"){
+                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio2 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio2);
+                                 }
+                                 }
+                                 
+                                 
+                                 
+                                 }
+                                 
+                                 }
+                                 
+                                 }, null);
+                   });
+    
+    
+    
+    ////
+    
+    
 	
 	localStorage.setItem("id_richiesta", id)
 	
@@ -6396,8 +7138,7 @@ function richiesta2() {
 	}
 
 
-	
-	if(posticipata2==0){
+	/*if(posticipata2==0){
 	 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
 		$("#nickhome4").removeClass("button_small").addClass("button_small_green");
 	}
@@ -6454,26 +7195,26 @@ function richiesta2() {
 	else{
 		$("#bambini").html("&nbsp;&nbsp;Seggiolino per bambini " + bambini2);
 	}
-	
+     if(portapacchi2=="Si"){
+     $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>Portapacchi "+ portapacchi2 +"</b></font>");
+     }
+     else{
+     $("#portapacchi").html("&nbsp;&nbsp;Portapacchi " + portapacchi2);
+     }
+     
+     if(rimorchio2=="Si"){
+     $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>Gancio rimorchio "+ rimorchio2 +"</b></font>");
+     }
+     else{
+     $("#rimorchio").html("&nbsp;&nbsp;Gancio rimorchio " + rimorchio2);
+     }
+     */
+    
 	if(wifi2=="Si"){
 		$("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi "+ wifi2 +"</b></font>");
 	}
 	else{
 		$("#wifi").html("&nbsp;&nbsp;WiFi " + wifi2);
-	}
-	
-	if(portapacchi2=="Si"){
-		$("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>Portapacchi "+ portapacchi2 +"</b></font>");
-	}
-	else{
-		$("#portapacchi").html("&nbsp;&nbsp;Portapacchi " + portapacchi2);
-	}
-	
-	if(rimorchio2=="Si"){
-		$("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>Gancio rimorchio "+ rimorchio2 +"</b></font>");
-	}
-	else{
-		$("#rimorchio").html("&nbsp;&nbsp;Gancio rimorchio " + rimorchio2);
 	}
 	
 	if(bluetooth2=="Si"){
@@ -6631,7 +7372,7 @@ function richiesta2() {
 
 								 var addressLongLat = lat2+","+lng2;
 
-	                            window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	                            window.open("maps:daddr="+ addressLongLat +"" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -6794,6 +7535,262 @@ function richiesta3() {
 	
 	$("#cell1").hide();
 	$("#cell2").hide();
+    
+    // DB //
+    
+    var db;
+    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+    
+    db.transaction(function (tx) {
+                   
+                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                                 var len = results.rows.length, i;
+                                 
+                                 if(localStorage.getItem("lingua")=="it"){
+                                 
+                                 for (i = 0; i < len; i++){
+                                 if(results.rows.item(i).id_traduzione == "pagina4quando"){
+                                 pagina4quando = results.rows.item(i).italiano;
+                                 
+                                 if(posticipata1==0){
+                                 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
+                                 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
+                                 }
+                                 else{
+                                 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br><b>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"</b><br><br>");
+                                 $("#nickhome4").removeClass("button_small_green").addClass("button_small");
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4partenza"){
+                                 pagina4partenza = results.rows.item(i).italiano;
+                                 $("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4partenza +": </font></b><br>&nbsp;&nbsp;"+ partenza3 +"<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4arrivo"){
+                                 pagina4arrivo = results.rows.item(i).italiano;
+                                 $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +": </font></b><br>&nbsp;&nbsp;"+ arrivo3 +"<br><br>");
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4distanza"){
+                                 pagina4distanza = results.rows.item(i).italiano;
+                                 $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza3 +" Km<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
+                                 pagina4passeggeri = results.rows.item(i).italiano;
+                                 if(passeggeri1!="1"){
+                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri3 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4animali"){
+                                 pagina4animali = results.rows.item(i).italiano;
+                                 if(animali1=="Si"){
+                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali3 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
+                                 pagina4fumatori = results.rows.item(i).italiano;
+                                 if(fumatori1=="Si"){
+                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori3 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4minori"){
+                                 pagina4minori = results.rows.item(i).italiano;
+                                 if(meno181=="Si"){
+                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno183 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno183);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4disabili"){
+                                 pagina4disabili = results.rows.item(i).italiano;
+                                 if(disabili1=="Si"){
+                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili3 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4bambini"){
+                                 pagina4bambini = results.rows.item(i).italiano;
+                                 if(bambini1=="Si"){
+                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini3 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
+                                 pagina4pacchi = results.rows.item(i).italiano;
+                                 if(portapacchi1=="Si"){
+                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi3 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi3);
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
+                                 pagina4rimorchio = results.rows.item(i).italiano;
+                                 if(rimorchio1=="Si"){
+                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio3 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio3);
+                                 }
+                                 }
+                                 
+                                 
+                                 }
+                                 
+                                 }
+                                 
+                                 
+                                 if(localStorage.getItem("lingua")=="en"){
+                                 
+                                 for (i = 0; i < len; i++){
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4quando"){
+                                 pagina4quando = results.rows.item(i).inglese;
+                                 
+                                 if(posticipata1==0){
+                                 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
+                                 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
+                                 }
+                                 else{
+                                 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br><b>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"</b><br><br>");
+                                 $("#nickhome4").removeClass("button_small_green").addClass("button_small");
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4partenza"){
+                                 pagina4partenza = results.rows.item(i).inglese;
+                                 $("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4partenza +": </font></b><br>&nbsp;&nbsp;"+ partenza3 +"<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4arrivo"){
+                                 pagina4arrivo = results.rows.item(i).inglese;
+                                 $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +": </font></b><br>&nbsp;&nbsp;"+ arrivo3 +"<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4distanza"){
+                                 pagina4distanza = results.rows.item(i).inglese;
+                                 $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza3 +" Km<br><br>");
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
+                                 pagina4passeggeri = results.rows.item(i).inglese;
+                                 if(passeggeri1!="1"){
+                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri3 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4animali"){
+                                 pagina4animali = results.rows.item(i).inglese;
+                                 if(animali1=="Si"){
+                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali3 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
+                                 pagina4fumatori = results.rows.item(i).inglese;
+                                 if(fumatori1=="Si"){
+                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori3 + "</b></font>");
+                                 }
+                                 else{
+                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4minori"){
+                                 pagina4minori = results.rows.item(i).inglese;
+                                 if(meno181=="Si"){
+                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno183 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno183);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4disabili"){
+                                 pagina4disabili = results.rows.item(i).inglese;
+                                 if(disabili1=="Si"){
+                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili3 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili3);
+                                 }
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4bambini"){
+                                 pagina4bambini = results.rows.item(i).inglese;
+                                 if(bambini1=="Si"){
+                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini3 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini3);
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
+                                 pagina4pacchi = results.rows.item(i).inglese;
+                                 if(portapacchi1=="Si"){
+                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi3 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi3);
+                                 }
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
+                                 pagina4rimorchio = results.rows.item(i).inglese;
+                                 if(rimorchio1=="Si"){
+                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio3 +"</b></font>");
+                                 }
+                                 else{
+                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio3);
+                                 }
+                                 }
+                                 
+                                 
+                                 
+                                 }
+                                 
+                                 }
+                                 
+                                 }, null);
+                   });
+    
+    /////
 	
 	//alert(2)
 	localStorage.setItem("id_richiesta", id)
@@ -6889,8 +7886,7 @@ function richiesta3() {
 	}
 
 	
-	
-	if(posticipata3==0){
+	/*if(posticipata3==0){
 	 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Quando: </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
 	 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
 	}
@@ -6947,7 +7943,21 @@ function richiesta3() {
 	else{
 		$("#bambini").html("&nbsp;&nbsp;Seggiolino per bambini " + bambini3);
 	}
-	
+     if(portapacchi3=="Si"){
+     $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>Portapacchi "+ portapacchi3 +"</b></font>");
+     }
+     else{
+     $("#portapacchi").html("&nbsp;&nbsp;Portapacchi " + portapacchi3);
+     }
+     
+     if(rimorchio3=="Si"){
+     $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>Gancio rimorchio "+ rimorchio3 +"</b></font>");
+     }
+     else{
+     $("#rimorchio").html("&nbsp;&nbsp;Gancio rimorchio " + rimorchio3);
+     }
+     */
+    
 	if(wifi3=="Si"){
 		$("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi "+ wifi3 +"</b></font>");
 	}
@@ -6955,19 +7965,6 @@ function richiesta3() {
 		$("#wifi").html("&nbsp;&nbsp;WiFi " + wifi3);
 	}
 	
-	if(portapacchi3=="Si"){
-		$("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>Portapacchi "+ portapacchi3 +"</b></font>");
-	}
-	else{
-		$("#portapacchi").html("&nbsp;&nbsp;Portapacchi " + portapacchi3);
-	}
-	
-	if(rimorchio3=="Si"){
-		$("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>Gancio rimorchio "+ rimorchio3 +"</b></font>");
-	}
-	else{
-		$("#rimorchio").html("&nbsp;&nbsp;Gancio rimorchio " + rimorchio3);
-	}
 	
 	if(bluetooth3=="Si"){
 		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth "+ bluetooth3 +"</b></font>");
@@ -7121,7 +8118,7 @@ function richiesta3() {
 
 						var addressLongLat = lat3+","+lng3;
 	
-	                             window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	                             window.open("maps:daddr="+ addressLongLat +"" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -8667,6 +9664,45 @@ function prendibanner() {
 									 dataType:"jsonp"});
 	 
 }
+                // LINGUE //
+                function seleziona() {
+                    var db;
+                    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+                              
+                              db.transaction(function (tx) {
+                                             
+                                             tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                                                        var len = results.rows.length, i;
+                                                           
+                                                        if(localStorage.getItem("lingua")=="it"){
+                                                           
+                                                           for (i = 0; i < len; i++){
+                                                              //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                                                           
+                                                           
+                                                           }
+                                                           
+                                                        }
+                                                           
+                                                           
+                                                        if(localStorage.getItem("lingua")=="en"){
+                                                           
+                                                           
+                                                           for (i = 0; i < len; i++){
+                                                           
+                                                             $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
+                                                           
+                                                           
+
+                                                           }
+                                                           
+                                                        }
+                                                           
+                                            }, null);
+                                });
+                              
+                    }
+
 
 
 function getParameterByName(name) {

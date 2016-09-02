@@ -1331,7 +1331,7 @@
 					  
 					  .nuova {
 						  font-family: Arial;
-						  font-size: 19px;
+						  font-size: 16px;
 					  }
 					  
 					  .pad-grey {
@@ -1446,7 +1446,7 @@
 							 
 							 <!--<tr>
 								 <td width="100px" align="center" valign="center">
-									 <a id="exitapp" href="#" data-role="button" data-theme="b" class="custom-btn4"><font size="3" color="#fff"><b>Exit App</b></font></a> 55
+									 <a id="exitapp" href="#" data-role="button" data-theme="b" class="custom-btn4"><font size="3" color="#fff"><b>Exit App</b></font></a>
 								 </td>
 							 </tr>-->
 						 </table>
@@ -1461,7 +1461,7 @@
         </div>
         
         <div data-role=page id="win2" data-add-back-btn=true class="div2">
-            <audio id="successChat" src="/android_asset/www/android_asset/www/sound/new_chat.mp3" type="audio/mpeg" ></audio>
+            <audio id="successChat" src="/android_asset/www/sound/new_chat.mp3" type="audio/mpeg" ></audio>
 			<audio id="successArrivo" src="/android_asset/www/sound/bell.mp3" type="audio/mpeg" ></audio>
 			
 			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div4">
@@ -1474,7 +1474,7 @@
 						</td>
 						<td align="right" valign="center" width="100%">
 							<table align="right">
-								<td align="right" valign="center" width="100%"><font color="#fff"><b><div valign="center" id="win2header" class="nuova">Posizione dell'autista&nbsp;&nbsp;</div></b></font></td>
+								<td align="right" valign="center" width="100%"><font color="#fff"><b><div valign="center" id="win2header" class="nuova">Posizione dell'autista</div></b></font></td>
 							</table>
 						</td>
 					</tr>
@@ -1525,12 +1525,12 @@
 
 							<tr>
 								<td width="140px" align="left" valign="center">
-									<font color="#cc33cc" size="3"><b>Da: </b></font><div id="viaaccetta5"></div>
+									<table><tr><td><font color="#cc33cc" size="3"><b><div id="blob5da">Da:</div> </b></font></td><td><div id="viaaccetta5"></div></td></tr></table>
 								</td>
 							</tr>
 							<tr>
 								<td width="140px" align="left" valign="center">
-									<font color="#cc33cc" size="3"><b>A: </b></font><div id="adaccetta5"></div>
+									<table><tr><td><font color="#cc33cc" size="3"><b><div id="blob5a">A: </div></b></font></td><td><div id="adaccetta5"></div></td></tr></table>
 								</td>
 							</tr>
 							<tr>
@@ -1571,12 +1571,12 @@
 
 							<tr>
 								<td width="140px" align="left" valign="center">
-									<font color="#cc33cc" size="3"><b>Da: </b></font><div id="viaaccetta2"></div>
+									<table><tr><td><font color="#cc33cc" size="3"><b><div id="blob4da">Da:</div> </b></font></td><td><div id="viaaccetta2"></div></td></tr></table>
 								</td>
 							</tr>
 							<tr>
 								<td width="140px" align="left" valign="center">
-									<font color="#cc33cc" size="3"><b>A: </b></font><div id="adaccetta2"></div>
+									<table><tr><td><font color="#cc33cc" size="3"><b><div id="blob4a">A:</div> </b></font></td><td><div id="adaccetta2"></div></td></tr></table>
 								</td>
 							</tr>
 							<tr>
@@ -1616,12 +1616,12 @@
 							</tr>
 							<tr>
 								<td width="140px" align="left" valign="center">
-									<font color="#cc33cc" size="3"><b>Da: </b></font><div id="viaaccetta3"></div>
+									<table><tr><td><font color="#cc33cc" size="3"><b><div id="blob3da">Da: </div></b></font></td><td><div id="viaaccetta3"></div></td></tr></table>
 								</td>
 							</tr>
 							<tr>
 								<td width="140px" align="left" valign="center">
-									<font color="#cc33cc" size="3"><b>A: </b></font><div id="adaccetta3"></div>
+									<table><tr><td><font color="#cc33cc" size="3"><b><div id="blob3a">A: </div></b></font></td><td><div id="adaccetta3"></div></td></tr></table>
 								</td>
 							</tr>
 							<tr>
@@ -1716,8 +1716,8 @@
 					<td width="65px" align="right" valign="top">
 						<a id="ricarica" href="#" rel="external"><img src="img/ico_mirino.png" width="58px"></a>
 					</td>
-					<td width="5px" align="right" valign="center">&nbsp;
-						
+					<td width="5px" align="right" valign="center">
+						&nbsp;
 					</td>
 					<td width="160px" align="left" valign="center">
 						<table align="left" border="0" width="100%" valign="center">
@@ -1741,8 +1741,8 @@
 							
 						</table>
 					</td>
-					<td width="5px" align="right">&nbsp;
-						
+					<td width="5px" align="right">
+						&nbsp;
 					</td>
 					<td width="65px" align="left" valign="center">
 						<a id="lista" href="#" style="display:none"><img id="#" src="img/ico_verde_post.png" width="50px"></a>
@@ -1833,12 +1833,12 @@
 			<table width="90%" align="center" class="tabella">
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<font size="4" color="#cc33cc"><b>Rispondi</b></font><br><br>
+						<font size="4" color="#cc33cc"><b><div id="h3rispondi">Rispondi</div></b></font><br><br>
 					</td>
 				</tr>
 				<tr>
 					<td width="50%" align="left" >
-						<table ><tr><td><font color="#000">In quanti minuti?</font></td></tr></table>
+						<table ><tr><td><font color="#000"><div id="h3minuti">In quanti minuti?</div></font></td></tr></table>
 					</td>
 
 					<td width="50%" align="center" >
@@ -1872,12 +1872,12 @@
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<br>Oppure
+						<br><div id="h3oppure">Oppure</div>
 					</td>
 				</tr>
 				<tr>
 					<td width="100%" align="left" colspan="2">
-						<table ><tr><td><font color="#000">Importo</font></td></tr></table>
+						<table ><tr><td><font color="#000"><div id="h3importo3">Importo</div></font></td></tr></table>
 					</td>
 				</tr>
 				<td width="100%" align="center" colspan="2">
@@ -1938,7 +1938,7 @@
 						<table width="90%" align="center" class="tabella">
 							<tr>
 								<td width="250px" align="center" valign="center">
-									<font size="4" color="#cc33cc"><b>Richiesta</b></font><br>
+									<font size="4" color="#cc33cc"><b><div id="pagina4richiesta">Richiesta</div></b></font><br>
 								</td>
 							</tr>
 							<tr>
@@ -1968,7 +1968,7 @@
 							</tr>
 							<tr>
 								<td width="100%" align="left" >
-									&nbsp;&nbsp;<b><font color='#cc33cc'>Opzioni</font></b>
+									&nbsp;&nbsp;<b><font color='#cc33cc'><div id="pagina4opzioni">Opzioni</div></font></b>
 								</td>
 							</tr>
 							<tr>
