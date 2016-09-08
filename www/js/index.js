@@ -20,7 +20,7 @@ onDeviceReady: function() {
 	// Update DOM on a Received Event
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
-	document.addEventListener("pause", onPause, false);
+	//document.addEventListener("pause", onPause, false);
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
@@ -62,13 +62,53 @@ receivedEvent: function(id) {
 		  $("#btninizia").removeClass("divAA").addClass("div55");
 		}
 	  
-	  window.addEventListener('native.keyboardshow', keyboardShowHandler);
+	   window.addEventListener('native.keyboardshow', keyboardShowHandler);
   
 		function keyboardShowHandler(e){
 			$("#btninizia").removeClass("div55").addClass("divAA");
 		}
 	
 	///////// FINE TASTIERA ///////////
+	
+	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		var alertattenzione = "Attenzione"
+		var chiudereA = "Vuoi chiudere purple miles?"
+		var spegniA = "Spegni"
+		var annullaA = "Spegni,Annulla"
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		var alertattenzione = "Attention"
+		var chiudereA = "do you want close purple miles?"
+		var spegniA = "Shut Down"
+		var annullaA = "Shut Down,Cancel"
+		
+	}
+	else if(localStorage.getItem("lingua")=="fr"){
+		
+		var alertattenzione = "Attention"
+		var chiudereA = "Voulez-vous fermer purple miles?"
+		var spegniA = "fermer"
+		var annullaA = "fermer,annuler"
+		
+	}
+	else if(localStorage.getItem("lingua")=="es"){
+		
+		var alertattenzione = "Attencion"
+		var chiudereA = "querer cerrar purple miles?"
+		var spegniA = "Cerca"
+		var annullaA = "Cerca,Cancela"
+		
+	}
+	else{
+		var alertattenzione = "Attention"
+		var chiudereA = "do you want close purple miles?"
+		var spegniA = "Shut Down"
+		var annullaA = "Shut Down,Cancel"
+	}
 	
 	
 	//navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
@@ -88,10 +128,10 @@ receivedEvent: function(id) {
 	  //if(localStorage.getItem("pagina")=="1"){
 	
 			navigator.notification.confirm(
-			'Vuoi chiudere purple miles?',  // message
+			 chiudereA,  // message
 			 onConfirm2,              // callback to invoke with index of button pressed
-			'Spegni',            // title
-			'Spegni,Annulla'      // buttonLabels
+			spegniA,            // title
+			annullaA      // buttonLabels
 		    );
 							  
 	   //}
@@ -220,10 +260,10 @@ receivedEvent: function(id) {
 						desiredAccuracy: 3,
 						stationaryRadius: 10,
 						distanceFilter: 20,
-						activityType: 'AutomotiveNavigation'
+						activityType: 'AutomotiveNavigation'*/
 						//debug: true
 						//stopOnTerminate: false
-		});*/
+		//});
 
 		/////// FINE GEO TRAKER IOS//////
 		
@@ -691,28 +731,34 @@ receivedEvent: function(id) {
     
     db.transaction(function (tx) {
                    
-                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
-                                 var len = results.rows.length, i;
+                   tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
+                        var len = results.rows.length, i;
                                  
-                                 if(localStorage.getItem("lingua")=="it"){
+                            if(localStorage.getItem("lingua")=="it"){
                                  
                                  for (i = 0; i < len; i++){
-                                 //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                                 
+                                    $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
                                  
                                  if(results.rows.item(i).id_traduzione == "dsconn"){
-                                 dsconn = results.rows.item(i).italiano;
+                                   dsconn = results.rows.item(i).italiano;
                                  
                                  }
                                  
+                                 
                                  if(results.rows.item(i).id_traduzione == "btnModifica"){
-                                 btnModifica = results.rows.item(i).italiano;
+                                   btnModifica = results.rows.item(i).italiano;
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "inizia"){
+                                  $("#inizia").html('<font color="#fff"><b>'+ results.rows.item(i).italiano +'</b></font>')
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "s_partenza"){
-                                  s_partenza = results.rows.item(i).italiano;
-                                 
+                                   s_partenza = results.rows.item(i).italiano;
                                  }
+                                 
                                  
                                  if(results.rows.item(i).id_traduzione == "magiatitolo"){
                                    magiatitolo = results.rows.item(i).italiano;
@@ -720,24 +766,24 @@ receivedEvent: function(id) {
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "partenzaM"){
-                                 partenzaM = results.rows.item(i).italiano;
+                                   partenzaM = results.rows.item(i).italiano;
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "arrivoM"){
-                                 arrivoM = results.rows.item(i).italiano;
+                                   arrivoM = results.rows.item(i).italiano;
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "distanzaM"){
-                                 distanzaM = results.rows.item(i).italiano;
+                                   distanzaM = results.rows.item(i).italiano;
                                  
                                  }
                                  
                                  
-                                 }
+                               }
                                  
-                                 }
+                            }
                                  
                                  
                             if(localStorage.getItem("lingua")=="en"){
@@ -753,52 +799,50 @@ receivedEvent: function(id) {
                                  
                                  
                                         if(results.rows.item(i).id_traduzione == "btnModifica"){
-                                            btnModifica = results.rows.item(i).inglese;
-                                 
-                                            //alert(btnModifica)
-                                 
+                                          btnModifica = results.rows.item(i).inglese;
                                         }
                                  
                                         if(results.rows.item(i).id_traduzione == "inizia"){
                                             $("#inizia").html('<font color="#fff"><b>'+ results.rows.item(i).inglese +'</b></font>')
                                  
-                                            }
-                                 
-                                        if(results.rows.item(i).id_traduzione == "s_partenza"){
-                                            s_partenza = results.rows.item(i).inglese;
-                                 
                                         }
                                  
+                                        if(results.rows.item(i).id_traduzione == "s_partenza"){
+                                          s_partenza = results.rows.item(i).inglese;
+                                        }
+                                 
+                                 
                                  if(results.rows.item(i).id_traduzione == "magiatitolo"){
-                                 magiatitolo = results.rows.item(i).inglese;
+                                   magiatitolo = results.rows.item(i).inglese;
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "partenzaM"){
-                                 partenzaM = results.rows.item(i).inglese;
+                                   partenzaM = results.rows.item(i).inglese;
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "arrivoM"){
-                                 arrivoM = results.rows.item(i).inglese;
+                                   arrivoM = results.rows.item(i).inglese;
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "distanzaM"){
-                                 distanzaM = results.rows.item(i).inglese;
+                                   distanzaM = results.rows.item(i).inglese;
                                  
                                  }
 
-                                    }
+                            }
                                  
-                                 }
+                        }
                                  
-                            }, null);
-                   });
+                    }, null);
+                });
     
     
     
     //////
+    
     
     $(document).on("tap", "#exitapp", function(e){
 		
@@ -1210,10 +1254,34 @@ receivedEvent: function(id) {
 	  }
 	  else
 	  {
+				   
+		
+				if(localStorage.getItem("lingua")=="it"){
+				   
+				   var alertattenzione = "Attenzione"
+				   var chiudere = "Possibile errore di rete, riprova tra qualche minuto."
+				   
+				   
+				}
+				else if(localStorage.getItem("lingua")=="en"){
+				   
+				   var alertattenzione = "Attention"
+				   var chiudere = "Possible network error"
+
+				   
+				}
+				else{
+				   
+				   var alertattenzione = "Attention"
+				   var chiudere = "Possible network error"
+
+				}
+				   
+				   
 		  navigator.notification.alert(
-			   'Possibile errore di rete, riprova tra qualche minuto.',  // message
+			   chiudere,  // message
 			   alertDismissed,         // callback
-			   'Attenzione',           // title
+			   alertattenzione,           // title
 			   'Ok'                  // buttonName
 		   );
 	  }
@@ -1331,12 +1399,35 @@ receivedEvent: function(id) {
 				   
 	});
 	
+	
 	$(document).on("touchstart tap", "#logout", function(e){
+				   
+				   if(localStorage.getItem("lingua")=="it"){
+				   
+				   var alertattenzione = "Attenzione"
+				   var annallab = "Ok,Annulla"
+				   
+				   
+				   }
+				   else if(localStorage.getItem("lingua")=="en"){
+				   
+				   var alertattenzione = "Attention"
+				   var annallab = "Ok,Cancel"
+				   
+				   
+				   }
+				   else{
+				   
+				   var alertattenzione = "Attention"
+				   var annallab = "Ok,Cancel"
+				   
+				   }
+				   
 				   navigator.notification.confirm(
 												  dsconn + " " + localStorage.getItem("nick"),  // message
 												  onConfirm,              // callback to invoke with index of button pressed
 												  'Logout',            // title
-												  'Ok,Annulla'      // buttonLabels
+												  annallab      // buttonLabels
 												  );
 				   
 				   e.stopImmediatePropagation();
@@ -1474,14 +1565,28 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
+				   
+				   if(localStorage.getItem("lingua")=="it"){
+				   
+				   var alertgps = "Inserire un indirizzo valido o utilizzare la posizione GPS"
+				   var indirizzob = "Indirizzo"
+				   
+				   
+				   }
+				   else if(localStorage.getItem("lingua")=="en"){
+				   
+				   var alertgps = "Enter a valid address or use your GPS position"
+				   var indirizzob = "Address"
+				   
+				   
+				   }
+				   else{
+				   
+				   var alertgps = "Enter a valid address or use your GPS position"
+				   var indirizzob = "Address"
+				   
+				   }
 		
-					//backgroundGeolocation.start();
-
-					//setTimeout(function() {
-					   //bgGeo.start();
-					   //backgroundGeolocation.start();
-					   			   
-					//}, 500);
 				   
 				   bgGeo.start();
 					
@@ -1495,9 +1600,9 @@ receivedEvent: function(id) {
 				   
 					 if (document.getElementById("modificastart").value == "") {
 						 navigator.notification.alert(
-												'Inserire un indirizzo valido o utilizzare la posizione GPS',  // message
+												alertgps,  // message
 												alertDismissed,         // callback
-												'Indirizzo',            // title
+												indirizzob,            // title
 												'OK'                  // buttonName
 												);
 				   
@@ -1734,10 +1839,35 @@ function gpsonSuccess(position){
 
 function gpsonError(){
 	
+	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		var alertattenzione = "Attenzione"
+		var alertgps = "Possibile errore GPS, assicurati di avere il gps del telefono attivato."
+		var indirizzob = "Indirizzo"
+		
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Possible GPS error, make sure you have your GPS enabled phone."
+		var indirizzob = "Address"
+		
+		
+	}
+	else{
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Possible GPS error, make sure you have your GPS enabled phone."
+		var indirizzob = "Address"
+		
+	}
+	
 	navigator.notification.alert(
-								 'Possibile errore GPS, assicurati di avere il gps del telefono attivato.',  // message
+								 alertgps,  // message
 								 alertDismissed,         // callback
-								 'Attenzione',           // title
+								 alertattenzione,           // title
 								 'Ok'                  // buttonName
 								 );
 	
@@ -1765,13 +1895,13 @@ function CenterControl(controlDiv, map) {
     
     db.transaction(function (tx) {
                    
-                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                   tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
                        var len = results.rows.length, i;
                                  
                             if(localStorage.getItem("lingua")=="it"){
                                  
                                  for (i = 0; i < len; i++){
-                                  //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                                  $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
                                  
                                     if(results.rows.item(i).id_traduzione == "btnModifica"){
                                      btnModifica = results.rows.item(i).italiano;
@@ -2424,10 +2554,35 @@ function codeLatLng(lati,lngi) {
 					 }
 					 
 					 } else {
+					 
+					 if(localStorage.getItem("lingua")=="it"){
+					 
+					 var alertattenzione = "Attenzione"
+					 var alertgps = "Non riesco a rilevare la tua posizione"
+					 var indirizzob = "Indirizzo"
+					 
+					 
+					 }
+					 else if(localStorage.getItem("lingua")=="en"){
+					 
+					 var alertattenzione = "Attention"
+					 var alertgps = "I can not detect your location"
+					 var indirizzob = "Address"
+					 
+					 
+					 }
+					 else{
+					 
+					 var alertattenzione = "Attention"
+					 var alertgps = "I can not detect your location"
+					 var indirizzob = "Address"
+					 
+					 }
+					 
 					 navigator.notification.alert(
-												  'Non riesco a rilevare la tua posizione',  // message
+												  alertgps,  // message
 												  alertDismissed,         // callback
-												  'Attenzione',            // title
+												  alertattenzione,            // title
 												  'OK'                  // buttonName
 												  );
 					 
@@ -2464,11 +2619,36 @@ function codeLatLng(lati,lngi) {
 
 function prendivia() {
 	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		var alertattenzione = "Attenzione"
+		var alertgps = "Inserire un indirizzo valido o utilizzare la posizione GPS"
+		var indirizzob = "Indirizzo"
+		
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Enter a valid address or use your GPS position"
+		var indirizzob = "Address"
+		
+		
+	}
+	else{
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Enter a valid address or use your GPS position"
+		var indirizzob = "Address"
+		
+	}
+	
+	
 	if (document.getElementById("modificastart").value == "") {
 		navigator.notification.alert(
-			'Inserire un indirizzo valido o utilizzare la posizione GPS',  // message
+			 alertgps,  // message
 			 alertDismissed,         // callback
-			 'Indirizzo',            // title
+			 indirizzob,            // title
 			 'OK'                  // buttonName
 		);
 		
@@ -2558,16 +2738,16 @@ function onPause() {
 	  window.clearInterval(i);
    }
    
-   //bgGeo.start();
-   backgroundGeolocation.start();
+   bgGeo.start();
+   //backgroundGeolocation.start();
 }
 
 
 
 function onResume() {
 	
-	//bgGeo.stop();
-	backgroundGeolocation.stop();
+	bgGeo.stop();
+	//backgroundGeolocation.stop();
 	
 	//app.initialize();
 	$("#blob5").hide();
@@ -4858,76 +5038,76 @@ function magia2C(utente,pass) {
     
     db.transaction(function (tx) {
                    
-            tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+            tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
             var len = results.rows.length, i;
                                  
-                    if(localStorage.getItem("lingua")=="it"){
+                if(localStorage.getItem("lingua")=="it"){
                                  
-                            for (i = 0; i < len; i++){
-                                 //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                    for (i = 0; i < len; i++){
+                            //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
                                  
-                                 if(results.rows.item(i).id_traduzione == "magiatitolo"){
-                                  magiatitolo = results.rows.item(i).italiano;
+                            if(results.rows.item(i).id_traduzione == "magiatitolo"){
+                                magiatitolo = results.rows.item(i).italiano;
                           
-                                  $("#win2header").html(magiatitolo + "&nbsp;&nbsp;");
+                                $("#win2header").html(magiatitolo + "&nbsp;&nbsp;");
                                  
-                                 }
+                            }
                           
                           if(results.rows.item(i).id_traduzione == "partenzaM"){
-                          partenzaM = results.rows.item(i).italiano;
+                            partenzaM = results.rows.item(i).italiano;
                           
                           }
                           
                           if(results.rows.item(i).id_traduzione == "arrivoM"){
-                          arrivoM = results.rows.item(i).italiano;
+                            arrivoM = results.rows.item(i).italiano;
                           
                           }
                           
                           if(results.rows.item(i).id_traduzione == "distanzaM"){
-                          distanzaM = results.rows.item(i).italiano;
+                            distanzaM = results.rows.item(i).italiano;
                           
                           }
                           
-                            }
+                    }
+                                 
+                }
+                                 
+                                 
+                if(localStorage.getItem("lingua")=="en"){
+                                 
+                    for (i = 0; i < len; i++){
+                                 
+                        //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
+                                 
+                        if(results.rows.item(i).id_traduzione == "magiatitolo"){
+                            magiatitolo = results.rows.item(i).inglese;
+                          
+                            $("#win2header").html(magiatitolo + "&nbsp;&nbsp;");
                                  
                         }
-                                 
-                                 
-                        if(localStorage.getItem("lingua")=="en"){
-                                 
-                            for (i = 0; i < len; i++){
-                                 
-                                 //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
-                                 
-                                 if(results.rows.item(i).id_traduzione == "magiatitolo"){
-                                   magiatitolo = results.rows.item(i).inglese;
                           
-                                   $("#win2header").html(magiatitolo + "&nbsp;&nbsp;");
-                                 
-                                 }
+                        if(results.rows.item(i).id_traduzione == "partenzaM"){
+                          partenzaM = results.rows.item(i).inglese;
                           
-                          if(results.rows.item(i).id_traduzione == "partenzaM"){
-                            partenzaM = results.rows.item(i).inglese;
+                        }
                           
-                          }
-                          
-                          if(results.rows.item(i).id_traduzione == "arrivoM"){
+                        if(results.rows.item(i).id_traduzione == "arrivoM"){
                           arrivoM = results.rows.item(i).inglese;
+                        
+                        }
                           
-                          }
-                          
-                          if(results.rows.item(i).id_traduzione == "distanzaM"){
+                        if(results.rows.item(i).id_traduzione == "distanzaM"){
                           distanzaM = results.rows.item(i).inglese;
                           
-                          }
+                        }
                           
 
-                             }
+                    }
                                  
-                        }
+                }
                                  
-                    }, null);
-            });
+        }, null);
+    });
     
     /////////
     
@@ -5832,6 +6012,31 @@ function elimina3(id_richiesta){
 
 function cancellapos(id){
 	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		var alertattenzione = "Attenzione"
+		var alertgps = "Richiesta cancellata dalla mappa"
+		var indirizzob = "Indirizzo"
+		
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Request erased from the map"
+		var indirizzob = "Address"
+		
+		
+	}
+	else{
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Request erased from the map"
+		var indirizzob = "Address"
+		
+	}
+	
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://purplemiles.com/www2/check_cancella_pos.php?id_richiesta="+ id +"&id_autista="+ localStorage.getItem("id_autista") +"",
@@ -5847,9 +6052,9 @@ function cancellapos(id){
 				  if(item.Token==1){
 				  
 				   navigator.notification.alert(
-											   'Richiesta cancellata dalla mappa',  // message
+											   alertgps,  // message
 											   alertDismissed,         // callback
-											   'Attenzione',           // title
+											   alertattenzione,           // title
 											   'Ok'                  // buttonName
 											   );
 				  
@@ -5862,9 +6067,9 @@ function cancellapos(id){
 				  }
 				  else{
 				   navigator.notification.alert(
-											   'Impossibile cancellare la richiesta.',  // message
+											   alertgps,  // message
 											   alertDismissed,         // callback
-											   'Attenzione',           // title
+											   alertattenzione,           // title
 											   'Ok'                  // buttonName
 											   );
 				  
@@ -6041,7 +6246,7 @@ function richiesta1() {
     
     db.transaction(function (tx) {
                    
-        tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+        tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
             var len = results.rows.length, i;
                                  
                 if(localStorage.getItem("lingua")=="it"){
@@ -6792,7 +6997,7 @@ function richiesta2() {
     
     db.transaction(function (tx) {
                    
-                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                   tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
                                  var len = results.rows.length, i;
                                  
                                  if(localStorage.getItem("lingua")=="it"){
@@ -7543,7 +7748,7 @@ function richiesta3() {
     
     db.transaction(function (tx) {
                    
-                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                   tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
                                  var len = results.rows.length, i;
                                  
                                  if(localStorage.getItem("lingua")=="it"){
@@ -8847,8 +9052,33 @@ function inviachat(id) {
 		
 		
 	if (indirizzo == "") {
+									  
+									  if(localStorage.getItem("lingua")=="it"){
+									  
+									  var alertattenzione = "Attenzione"
+									  var alertgps = "Devi inserire un messaggio"
+									  var indirizzob = "Indirizzo"
+									  
+									  
+									  }
+									  else if(localStorage.getItem("lingua")=="en"){
+									  
+									  var alertattenzione = "Attention"
+									  var alertgps = "insert a message"
+									  var indirizzob = "Address"
+									  
+									  
+									  }
+									  else{
+									  
+									  var alertattenzione = "Attention"
+									  var alertgps = "insert a message"
+									  var indirizzob = "Address"
+									  
+									  }
+									  
 		navigator.notification.alert(
-									 'Devi inserire un messaggio',  // message
+									 alertgps,  // message
 									 alertDismissed,         // callback
 									 'Chat',            // title
 									 'OK'                  // buttonName
@@ -8967,10 +9197,36 @@ function accetta11() {
 				  
 				  }
 				  else{
+				  
+				  if(localStorage.getItem("lingua")=="it"){
+				  
+				  var alertattenzione = "Attenzione"
+				  var alertgps = "Richiesta elaborata da altro utente."
+				  var indirizzob = "Indirizzo"
+				  
+				  
+				  }
+				  else if(localStorage.getItem("lingua")=="en"){
+				  
+				  var alertattenzione = "Attention"
+				  var alertgps = "Request processed by another user."
+				  var indirizzob = "Address"
+				  
+				  
+				  }
+				  else{
+				  
+				  var alertattenzione = "Attention"
+				  var alertgps = "Request processed by another user."
+				  var indirizzob = "Address"
+				  
+				  }
+				  
+				  
 				    navigator.notification.alert(
-											   'Richiesta elaborata da altro utente.',  // message
+											   alertgps,  // message
 											   alertDismissed,         // callback
-											   'Attenzione',           // title
+											   alertattenzione,           // title
 											   'Ok'                  // buttonName
 											   );
 				  
@@ -9039,10 +9295,36 @@ function accetta22() {
 				  
 				  }
 				  else{
+				  
+				  if(localStorage.getItem("lingua")=="it"){
+				  
+				  var alertattenzione = "Attenzione"
+				  var alertgps = "Richiesta elaborata da altro utente."
+				  var indirizzob = "Indirizzo"
+				  
+				  
+				  }
+				  else if(localStorage.getItem("lingua")=="en"){
+				  
+				  var alertattenzione = "Attention"
+				  var alertgps = "Request processed by another user."
+				  var indirizzob = "Address"
+				  
+				  
+				  }
+				  else{
+				  
+				  var alertattenzione = "Attention"
+				  var alertgps = "Request processed by another user."
+				  var indirizzob = "Address"
+				  
+				  }
+				  
+				  
 				    navigator.notification.alert(
-											   'Richiesta elaborata da altro utente.',  // message
+											   alertgps,  // message
 											   alertDismissed,         // callback
-											   'Attenzione',           // title
+											   alertattenzione,           // title
 											   'Ok'                  // buttonName
 											   );
 				  
@@ -9104,10 +9386,36 @@ function accetta33() {
 				  
 				  }
 				  else{
+				  
+				  if(localStorage.getItem("lingua")=="it"){
+				  
+				  var alertattenzione = "Attenzione"
+				  var alertgps = "Richiesta elaborata da altro utente."
+				  var indirizzob = "Indirizzo"
+				  
+				  
+				  }
+				  else if(localStorage.getItem("lingua")=="en"){
+				  
+				  var alertattenzione = "Attention"
+				  var alertgps = "Request processed by another user."
+				  var indirizzob = "Address"
+				  
+				  
+				  }
+				  else{
+				  
+				  var alertattenzione = "Attention"
+				  var alertgps = "Request processed by another user."
+				  var indirizzob = "Address"
+				  
+				  }
+
+				  
 				    navigator.notification.alert(
-											   'Richiesta elaborata da altro utente.',  // message
+											   alertgps,  // message
 											   alertDismissed,         // callback
-											   'Attenzione',           // title
+											   alertattenzione,           // title
 											   'Ok'                  // buttonName
 											   );
 				  
@@ -9161,6 +9469,38 @@ function rifiuta3() {
 
 
 function inviopasseggero(come){
+									  
+									  if(localStorage.getItem("lingua")=="it"){
+									  
+									  var alertattenzione = "Attenzione"
+									  var alertgps = "Richiesta elaborata da altro utente."
+									  var inserireb = "Inserire un importo"
+									  var annullab = "Il passeggero ha annullato la richiesta."
+									  var importob = "Importo"
+									  
+									  
+									  }
+									  else if(localStorage.getItem("lingua")=="en"){
+									  
+									  var alertattenzione = "Attention"
+									  var alertgps = "Request processed by another user."
+									  var inserireb = "Enter a price"
+									  var annullab = "The passenger has canceled the request."
+									  var importob = "Price"
+									  
+									  
+									  }
+									  else{
+									  
+									  var alertattenzione = "Attention"
+									  var alertgps = "Request processed by another user."
+									  var inserireb = "Enter a price"
+									  var annullab = "The passenger has canceled the request."
+									  var importob = "Price"
+									  
+									  }
+									  
+									  
 	
 	if(come==1){
 	  var coming = "GRATIS"
@@ -9169,9 +9509,9 @@ function inviopasseggero(come){
 	if(come==3){
 		if (self.document.formia.soldini.value == "") {
 			navigator.notification.alert(
-										 'Inserire un importo',  // message
+										 inserireb,  // message
 										 alertDismissed,         // callback
-										 'Importo',            // title
+										 importob,            // title
 										 'OK'                  // buttonName
 										 );
 			return;
@@ -9251,9 +9591,9 @@ function inviopasseggero(come){
 				  }
 				  else{
 				  navigator.notification.alert(
-						'Il passeggero ha annullato la richiesta.',  // message
+						annullab,  // message
 						alertDismissed,         // callback
-						'Attenzione',           // title
+						alertattenzione,           // title
 						'OK'                  // buttonName
 						);
 				  
@@ -9671,7 +10011,7 @@ function prendibanner() {
                               
                               db.transaction(function (tx) {
                                              
-                                             tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                                             tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
                                                         var len = results.rows.length, i;
                                                            
                                                         if(localStorage.getItem("lingua")=="it"){

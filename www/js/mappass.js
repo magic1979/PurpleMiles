@@ -2,7 +2,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
-	document.addEventListener("pause", onPause, false);
+	//document.addEventListener("pause", onPause, false);
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
@@ -32,8 +32,7 @@ function onDeviceReady() {
 	
 	//////////// TASTIERA ////////////////
 	
-	
-	window.addEventListener('native.keyboardhide', keyboardHideHandler);
+	 window.addEventListener('native.keyboardhide', keyboardHideHandler);
   
 	  function keyboardHideHandler(e){
 		  $("#btninizia").removeClass("divAA").addClass("div55");
@@ -46,6 +45,8 @@ function onDeviceReady() {
 	 }
 		
 	////////// FINE TASTIERA ////////////////
+	
+	
     var alertstart;
     var alertend;
     var alertinvio;
@@ -72,44 +73,109 @@ function onDeviceReady() {
     
     db.transaction(function (tx) {
                    
-                   tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                   tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
                                  var len = results.rows.length, i;
                                  
-                                 if(localStorage.getItem("lingua")=="it"){
+                        if(localStorage.getItem("lingua")=="it"){
                                  
-                                 for (i = 0; i < len; i++){
+                            for (i = 0; i < len; i++){
                                  
-                                 //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
+                                    $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
                                  
-                                 if(results.rows.item(i).id_traduzione == "alertpartenza"){
-                                   alertstart = results.rows.item(i).italiano;
+                                 if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                 h4richiesta = results.rows.item(i).italiano;
                                  
                                  }
                                  
-                                 if(results.rows.item(i).id_traduzione == "h4richiesta"){
-                                  h4richiesta = results.rows.item(i).italiano;
+                                 if(results.rows.item(i).id_traduzione == "h7quando"){
+                                 h7quando = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h7adesso"){
+                                 h7adesso = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h7partenza"){
+                                 h7partenza = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h7arrivo"){
+                                 h7arrivo = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7veicolo"){
+                                 h7veicolo = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7passeggeri"){
+                                 h7passeggeri = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7fumatori"){
+                                 h7fumatori = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7animali"){
+                                 h7animali = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7minori"){
+                                 h7minori = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7disabili"){
+                                 h7disabili = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7seggiolino"){
+                                 h7seggiolino = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7pacchi"){
+                                 h7pacchi = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 if(results.rows.item(i).id_traduzione == "h7gancio"){
+                                 h7gancio = results.rows.item(i).italiano;
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "alertpartenza"){
+                                 alertstart = results.rows.item(i).italiano;
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "alertdestinazione"){
-                                   alertend = results.rows.item(i).italiano;
+                                 alertend = results.rows.item(i).italiano;
                                  
                                  }
-                                 
                                  if(results.rows.item(i).id_traduzione == "alertinvio"){
-                                  alertinvio = results.rows.item(i).italiano;
+                                 alertinvio = results.rows.item(i).italiano;
                                  
                                  }
                                  
+                                 if(results.rows.item(i).id_traduzione == "adesso1"){
+                                 $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).italiano + "&nbsp;");
                                  }
                                  
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "tardi1"){
+                                 $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).italiano + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                                  }
                                  
+                            }
                                  
-                                 if(localStorage.getItem("lingua")=="en"){
+                        }
                                  
                                  
-                                 for (i = 0; i < len; i++){
+                            if(localStorage.getItem("lingua")=="en"){
+                                 
+                                 
+                              for (i = 0; i < len; i++){
                                    $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese);
                                  
                                  if(results.rows.item(i).id_traduzione == "h4richiesta"){
@@ -197,21 +263,63 @@ function onDeviceReady() {
                                    $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).inglese + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                                  }
                                  
-                                 }
+                                }
                                  
-                                 }
+                            }
                                  
-                                 }, null);
+                        }, null);
                    });
+	
+	
+	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		var alertattenzione = "Attenzione"
+		var chiudereA = "Vuoi chiudere purple miles?"
+		var spegniA = "Spegni"
+		var annullaA = "Spegni,Annulla"
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		var alertattenzione = "Attention"
+		var chiudereA = "do you want close purple miles?"
+		var spegniA = "Shut Down"
+		var annullaA = "Shut Down,Cancel"
+		
+	}
+	else if(localStorage.getItem("lingua")=="fr"){
+		
+		var alertattenzione = "Attention"
+		var chiudereA = "Voulez-vous fermer purple miles?"
+		var spegniA = "fermer"
+		var annullaA = "fermer,annuler"
+		
+	}
+	else if(localStorage.getItem("lingua")=="es"){
+		
+		var alertattenzione = "Attencion"
+		var chiudereA = "querer cerrar purple miles?"
+		var spegniA = "Cerca"
+		var annullaA = "Cerca,Cancela"
+		
+	}
+	else{
+		var alertattenzione = "Attention"
+		var chiudereA = "do you want close purple miles?"
+		var spegniA = "Shut Down"
+		var annullaA = "Shut Down,Cancel"
+	}
+	
 	
 	
 	document.addEventListener('backbutton', function(e) {
 							  
 	        navigator.notification.confirm(
-			'Vuoi chiudere purple miles?',  // message
+			chiudereA,  // message
 			 onConfirm2,              // callback to invoke with index of button pressed
-			'Spegni',            // title
-			'Spegni,Annulla'      // buttonLabels
+			spegniA,            // title
+			annullaA      // buttonLabels
 			);
 							  
 							  
@@ -278,10 +386,32 @@ function onDeviceReady() {
                                 
                                 }
                                 else{
+                                
+                                if(localStorage.getItem("lingua")=="it"){
+                                
+                                 var alertattenzione = "Attenzione"
+                                 var erroreA = "Errore di rete"
+                                
+                                }
+                                else if(localStorage.getItem("lingua")=="en"){
+                                
+                                 var alertattenzione = "Attention"
+                                 var erroreA = "Possible error network"
+
+                                
+                                }
+                                else{
+                                
+                                 var alertattenzione = "Attention"
+                                 var erroreA = "Possible error network"
+
+                                }
+                    
+                                
                                 navigator.notification.alert(
-                                                             'Errore di rete',  // message
+                                                             erroreA,  // message
                                                              alertDismissed,         // callback
-                                                             'Attenzione',            // title
+                                                             alertattenzione,            // title
                                                              'Done'                  // buttonName@
                                                              );
                                 }
@@ -297,10 +427,30 @@ function onDeviceReady() {
                          error: function(){
                          $(".spinner").hide();
                          
+                         if(localStorage.getItem("lingua")=="it"){
+                         
+                         var alertattenzione = "Attenzione"
+                         var erroreA = "Errore di rete"
+                         
+                         }
+                         else if(localStorage.getItem("lingua")=="en"){
+                         
+                         var alertattenzione = "Attention"
+                         var erroreA = "Possible error network"
+                         
+                         
+                         }
+                         else{
+                         
+                         var alertattenzione = "Attention"
+                         var erroreA = "Possible error network"
+                         
+                         }
+                         
                          navigator.notification.alert(
-                                                      'Possibile errore di rete, riprova tra qualche minuto',  // message
+                                                      erroreA,  // message
                                                       alertDismissed,         // callback
-                                                      'Attenzione',            // title
+                                                      alertattenzione,            // title
                                                       'Done'                  // buttonName
                                                       );
                          
@@ -447,7 +597,7 @@ function onDeviceReady() {
 				   });
 	
 	$(document).on("touchstart tap", "#cambiafuso", function(e){
-		//window.location.href = "Login.html?id=2";
+		window.location.href = "Login.html?id=2";
 				   
 		e.stopImmediatePropagation();
 				   
@@ -521,7 +671,7 @@ function onDeviceReady() {
 		$("#destinazione").hide();
 		$("#tbldestinazione").hide();
 				   
-				   /*if(screen.width < 768){
+				   if(screen.width < 768){
 				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
 				   }
@@ -535,7 +685,7 @@ function onDeviceReady() {
 				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
 				   }
-				   }*/
+				   }
 				   
 		
 		
@@ -568,9 +718,9 @@ function onDeviceReady() {
 				   $("#tbldestinazione").hide();
 				   
 				   $("#s_arrivo").hide();
-				   $("#s_partenza").show();
+				   $("#s_partenza2").show();
 				  
-				   /*if(screen.width < 768){
+				   if(screen.width < 768){
 				     $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				     $("#a1").html("<img src='img/ico_finish1.png' width='45px'>");
 				   }
@@ -584,7 +734,7 @@ function onDeviceReady() {
 				     $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				     $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
 				   }
-				   }*/
+				   }
 				   
 				   
 				   
@@ -866,6 +1016,28 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchstart", "#piu", function(e){
+                   
+                   if(localStorage.getItem("lingua")=="it"){
+                   
+                   var alertattenzione = "Attenzione"
+                   var erroreA = "Errore di rete"
+                   
+                   }
+                   else if(localStorage.getItem("lingua")=="en"){
+                   
+                   var alertattenzione = "Attention"
+                   var erroreA = "Possible error network"
+                   
+                   
+                   }
+                   else{
+                   
+                   var alertattenzione = "Attention"
+                   var erroreA = "Possible error network"
+                   
+                   }
+                   
+                   
 				   localStorage.setItem("dovesono", "1");
 				   document.getElementById("viale3").value = document.getElementById("viale").value;
 				   document.getElementById("destinazione3").value = document.getElementById("destinazione").value;
@@ -875,7 +1047,7 @@ function onDeviceReady() {
 				   navigator.notification.alert(
 												alertstart,  // message
 												alertDismissed,         // callback
-												'Attenzione',            // title
+												alertattenzione,            // title
 												'OK'                  // buttonName
 												);
 				   
@@ -886,7 +1058,7 @@ function onDeviceReady() {
 				   navigator.notification.alert(
 												alertend,  // message
 												alertDismissed,         // callback
-												'Attenzione',            // title
+												alertattenzione,            // title
 												'OK'                  // buttonName
 												);
 				   
@@ -1000,7 +1172,7 @@ function onDeviceReady() {
 		$("#destinazione").show();
 		$("#tbldestinazione").show();
 	
-		$("#s_partenza").hide();
+		$("#s_partenza2").hide();
 		$("#s_arrivo").show();
 		
 	     onResume();
@@ -1048,7 +1220,7 @@ function onDeviceReady() {
 				   $("#destinazione").show();
 				   $("#tbldestinazione").show();
 				   
-				   $("#s_partenza").hide();
+				   $("#s_partenza2").hide();
 				   $("#s_arrivo").show();
 				   
 				   
@@ -1158,6 +1330,27 @@ function onDeviceReady() {
 				   var note = document.getElementById("notepass").value.replace("'", "")
 				   var veicolo = document.getElementById("veicolo7").value.replace("'", "")
 				   
+                   
+                   if(localStorage.getItem("lingua")=="it"){
+                   
+                   var alertattenzione = "Attenzione"
+                   var richiestaA = "Richiesta"
+                   
+                   }
+                   else if(localStorage.getItem("lingua")=="en"){
+                   
+                   var alertattenzione = "Attention"
+                   var richiestaA = "Request"
+                   
+                   
+                   }
+                   else{
+                   
+                   var alertattenzione = "Attention"
+                   var richiestaA = "Request"
+                   
+                   }
+                   
 		
 		if(document.getElementById("datacal7").value == "ORA"){
 				   
@@ -1165,8 +1358,7 @@ function onDeviceReady() {
 				   
 				   
 		//alert("http://purplemiles.com/www2/check_richiesta5.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ indirizzo +"&indirizzo2="+ destinazione +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"&rimorchio="+ rimorchio +"&bluetooth="+ bluetooth +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"")
-		
-
+                   
 		$.ajax({
 			   type:"GET",
 			   url:"http://purplemiles.com/www2/check_richiesta5.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ indirizzo +"&indirizzo2="+ destinazione +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"&rimorchio="+ rimorchio +"&bluetooth="+ bluetooth +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"&note="+ note +"&veicolo="+ veicolo +"",
@@ -1184,7 +1376,7 @@ function onDeviceReady() {
 					  navigator.notification.alert(
 					   alertinvio,
 					   alertDismissed,
-					   'Richiesta',
+					   richiestaA,
 					   'OK'
 					   );
 					  
@@ -1195,7 +1387,7 @@ function onDeviceReady() {
 					   localStorage.setItem("dovesono", "3");
 					   $("#spinner4").show();
 					  
-					/*  if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
 				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -1280,7 +1472,7 @@ function onDeviceReady() {
 								 navigator.notification.alert(
 															  alertinvio,
 															  alertDismissed,
-															  'Richiesta',
+															  richiestaA,
 															  'Ok'
 															  );
 								 
@@ -1357,12 +1549,34 @@ function onDeviceReady() {
 	
 	
 	$(document).on("touchstart", "#inviarichiesta", function(e){
+                   
+                   if(localStorage.getItem("lingua")=="it"){
+                   
+                   var alertattenzione = "Attenzione"
+                   var inserireA = "Inserire una data valida"
+                   var orarioA = "Inserire un orario valido"
+                   
+                   }
+                   else if(localStorage.getItem("lingua")=="en"){
+                   
+                   var alertattenzione = "Attention"
+                   var inserireA = "Enter a valid date"
+                   var orarioA = "Enter a valid time"
+                   
+                   }
+                   else{
+                   
+                   var alertattenzione = "Attention"
+                   var inserireA = "Enter a valid date"
+                   var orarioA = "Enter a valid time"
+                   }
+                   
 				   
 				   if (document.getElementById("datacal").value == "") {
 				    navigator.notification.alert(
-							'inserire una data valida',  // message
+							inserireA,  // message
 							alertDismissed,         // callback
-							'Data',            // title
+							alertattenzione,            // title
 							'OK'                  // buttonName
 					);
 				   return;
@@ -1370,9 +1584,9 @@ function onDeviceReady() {
 				   
 				   if (document.getElementById("Orario").value == "--") {
 				   navigator.notification.alert(
-												'inserire un orario valido',  // message
+												orarioA,  // message
 												alertDismissed,         // callback
-												'Data',            // title
+												alertattenzione,            // title
 												'OK'                  // buttonName
 												);
 				   return;
@@ -1380,7 +1594,7 @@ function onDeviceReady() {
 				   
 				   if (document.getElementById("Minuti").value == "--") {
 				   navigator.notification.alert(
-												'inserire un orario valido',  // message
+												orarioA,  // message
 												alertDismissed,         // callback
 												'Data',            // title
 												'OK'                  // buttonName
@@ -1459,9 +1673,9 @@ function onDeviceReady() {
                    
                    if (datona2<datona) {
                       navigator.notification.alert(
-                                                'inserire una data valida',  // message
+                                                inserireA,  // message
                                                 alertDismissed,         // callback
-                                                'Data',            // title
+                                                alertattenzione,            // title
                                                 'OK'                  // buttonName
                                                 );
                      return;
@@ -1498,6 +1712,27 @@ function onDeviceReady() {
 
 	
 	$(document).on("touchstart", "#anteprima", function(e){
+                   
+                   if(localStorage.getItem("lingua")=="it"){
+                   
+                   var alertattenzione = "Attenzione"
+                   var inserireA = "Inserire una data valida"
+                   var orarioA = "Inserire un orario valido"
+                   
+                   }
+                   else if(localStorage.getItem("lingua")=="en"){
+                   
+                   var alertattenzione = "Attention"
+                   var inserireA = "Enter a valid date"
+                   var orarioA = "Enter a valid time"
+                   
+                   }
+                   else{
+                   
+                   var alertattenzione = "Attention"
+                   var inserireA = "Enter a valid date"
+                   var orarioA = "Enter a valid time"
+                   }
 				   
 		document.getElementById("viale7").value = document.getElementById("viale").value;
 		document.getElementById("destinazione7").value = document.getElementById("destinazione").value;
@@ -1506,7 +1741,7 @@ function onDeviceReady() {
 		 navigator.notification.alert(
 												alertstart,  // message
 												alertDismissed,         // callback
-												'Attenzione',            // title
+												alertattenzione,            // title
 												'OK'                  // buttonName
 												);
 				   
@@ -1517,7 +1752,7 @@ function onDeviceReady() {
 			navigator.notification.alert(
 				alertend,  // message
 				alertDismissed,         // callback
-				'Attenzione',            // title
+				alertattenzione,            // title
 				'OK'                  // buttonName
 		);
 				   
@@ -1801,7 +2036,7 @@ function onDeviceReady() {
                    }
                    
                    
-                   $.mobile.changePage ($("#home7"));
+        $.mobile.changePage ($("#home7"));
 		
 		e.stopImmediatePropagation();
 				   
@@ -1894,7 +2129,7 @@ function onDeviceReady() {
 		
 		/////// GEO TRAKER IOS//////
 		
-		/*	window.navigator.geolocation.getCurrentPosition(function(location) {
+		/*window.navigator.geolocation.getCurrentPosition(function(location) {
 			console.log('Location from Phonegap');
 		});
 		
@@ -1942,10 +2177,10 @@ function onDeviceReady() {
 						desiredAccuracy: 3,
 						stationaryRadius: 10,
 						distanceFilter: 20,
-						activityType: 'AutomotiveNavigation'
+						activityType: 'AutomotiveNavigation'*/
 						//debug: true
 						//stopOnTerminate: false
-		});*/
+		//});
 		
 		/////// FINE GEO TRAKER IOS//////////
 		
@@ -2004,6 +2239,8 @@ function onDeviceReady() {
 		
 		
 		/////// FINE GEO TRAKER ANDROID//////////
+		
+		
 
 		    localStorage.setItem("scroller","0")
 		
@@ -2058,13 +2295,13 @@ function CenterControl(controlDiv, map) {
 	controlText.style.lineHeight = '15px';
 	controlText.style.paddingLeft = '5px';
 	controlText.style.paddingRight = '5px';
-	//controlText.innerHTML = '<table width="100%" class="xalto" border="0"><tr><td align="right">&nbsp;<br><br><br></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_anteprima1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6"><table border="0" width="100%" align="center" valign="center" class="bannertbl"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl2"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="s_partenza" valign="center"><b>Scegli la partenza</b><br></div><div id="s_arrivo" style="display:none" valign="center"><b>Scegli l\'arrivo</b></div></font><br></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table>';
+	//controlText.innerHTML = '<table width="100%" class="xalto" border="0"><tr><td align="right">&nbsp;<br><br><br></td></tr></table><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_anteprima1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6"><table border="0" width="100%" align="center" valign="center" class="bannertbl"><tr><td align="center" valign="center">&nbsp;<br></td></tr></table><table border="0" width="100%" align="center" valign="center" class="bannertbl2"><tr><td align="center" valign="center">&nbsp;<font size="4" color="#fff"><div id="s_partenza2" valign="center"><b>Scegli la partenza</b><br></div><div id="s_arrivo" style="display:none" valign="center"><b>Scegli l\'arrivo</b></div></font><br></td></tr></table><table border="0" width="100%" align="right" valign="top" class="bannertbl3"><tr><td align="right" valign="top">&nbsp;&nbsp;<a id="XX3" href="#" rel="external"><img src="img/ico_close1.png" width="45px"></a></td></tr></table>';
 	
 	
 	//if(screen.width < 768){
 		controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" ><a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a></td><td align="center" ><a id="da1" href="#"><img src="img/ico_start3.png" width="55px"></a></td><td align="center" ><a id="a1" href="#"><img src="img/ico_finish1.png" width="45px"></a></td><td align="center" ><a id="piu" href="#"><img src="img/ico_plus1.png" width="45px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="45px"></td><td align="center" ><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="45px"></a></td></tr><tr><td align="center" valign="center" colspan="6">';
-	/*}
-	else
+	//}
+	/*else
 	{
 		if(screen.width > 719){
 			controlText.innerHTML = '<br><table width="100%" border="0" valign="center" align="center" ><tr><td align="center" width="16%"><a id="quando" href="#"><img src="img/ico_quando1.png" width="85px"></a></td><td align="center"  width="16%"><a id="da1" href="#"><img src="img/ico_start3.png" width="105px"></a></td><td align="center" width="16%"><a id="a1" href="#"><img src="img/ico_finish1.png" width="85px"></a></td><td align="center" width="16%"><a id="piu" href="#"><img src="img/ico_plus1.png" width="85px"></a></td><td align="center" ><a id="anteprima" href="#" ><img src="img/ico_go1.png" width="85px"></td><td align="center" width="16%"><a id="offerte" href="#" ><img src="img/ico_offerte1.png" width="85px"></a></td></tr><tr><td align="center" valign="center" colspan="6"></tr>';
@@ -2214,10 +2451,33 @@ function codeLatLng(lati,lngi) {
 					 }
 					 
 					 } else {
+                     
+                     if(localStorage.getItem("lingua")=="it"){
+                     
+                     var alertattenzione = "Attenzione"
+                     var posizioneA = "Non riesco a rilevare la tua posizione"
+                     var orarioA = "Inserire un orario valido"
+                     
+                     }
+                     else if(localStorage.getItem("lingua")=="en"){
+                     
+                     var alertattenzione = "Attention"
+                     var posizioneA = "I can not detect your location"
+                     var orarioA = "Enter a valid time"
+                     
+                     }
+                     else{
+                     
+                     var alertattenzione = "Attention"
+                     var posizioneA = "I can not detect your location"
+                     var orarioA = "Enter a valid time"
+                     }
+                     
+                     
 					 navigator.notification.alert(
-												  'Non riesco a rilevare la tua posizione',  // message
+												  posizioneA,  // message
 												  alertDismissed,         // callback
-												  'Attenzione',            // title
+												  alertattenzione,            // title
 												  'OK'                  // buttonName
 												  );
 					 
@@ -2300,10 +2560,32 @@ function codeLatLng2(posizione) {
 					 }
 					 
 					 } else {
+                     
+                     if(localStorage.getItem("lingua")=="it"){
+                     
+                     var alertattenzione = "Attenzione"
+                     var posizioneA = "Non riesco a rilevare la tua posizione"
+                     var orarioA = "Inserire un orario valido"
+                     
+                     }
+                     else if(localStorage.getItem("lingua")=="en"){
+                     
+                     var alertattenzione = "Attention"
+                     var posizioneA = "I can not detect your location"
+                     var orarioA = "Enter a valid time"
+                     
+                     }
+                     else{
+                     
+                     var alertattenzione = "Attention"
+                     var posizioneA = "I can not detect your location"
+                     var orarioA = "Enter a valid time"
+                     }
+                     
 					 navigator.notification.alert(
-												  'Non riesco a rilevare la tua posizione',  // message
+												  posizioneA,  // message
 												  alertDismissed,         // callback
-												  'Attenzione',            // title
+												  alertattenzione,            // title
 												  'OK'                  // buttonName
 												  );
 					 
@@ -2374,15 +2656,15 @@ function onPause() {
 	  window.clearInterval(i);
    }
    
-   //bgGeo.start();
-   backgroundGeolocation.start();
+   bgGeo.start();
+   //backgroundGeolocation.start();
 }
 
 
 function onResume() {
 	
 	//bgGeo.stop();
-	backgroundGeolocation.stop();
+	//backgroundGeolocation.stop();
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -3748,11 +4030,33 @@ function chatting(id) {
 		   
 		   },
 		   error: function(){
+           
+           if(localStorage.getItem("lingua")=="it"){
+           
+           var alertattenzione = "Attenzione"
+           var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+           var orarioA = "Inserire un orario valido"
+           
+           }
+           else if(localStorage.getItem("lingua")=="en"){
+           
+           var alertattenzione = "Attention"
+           var alerterrore = "Possible network error"
+           var orarioA = "Enter a valid time"
+           
+           }
+           else{
+           
+           var alertattenzione = "Attention"
+           var alerterrore = "Possible network error"
+           var orarioA = "Enter a valid time"
+           }
+           
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alerterrore,  // message
 										alertDismissed,         // callback
-										'Attenzione',           // title
+										alertattenzione,           // title
 										'Done'                  // buttonName
 										);
 		   
@@ -3805,12 +4109,33 @@ function inviachat() {
 	indirizzo = indirizzo.replace(")","777F");
 								  
 	indirizzo = indirizzo.replace(":","777F");
+                                  
+                                  if(localStorage.getItem("lingua")=="it"){
+                                  
+                                  var alertattenzione = "Attenzione"
+                                  var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+                                  var messaggioA = "inserire un messaggio"
+                                  
+                                  }
+                                  else if(localStorage.getItem("lingua")=="en"){
+                                  
+                                  var alertattenzione = "Attention"
+                                  var alerterrore = "Possible network error"
+                                  var messaggioA = "Insert a message"
+                                  
+                                  }
+                                  else{
+                                  
+                                  var alertattenzione = "Attention"
+                                  var alerterrore = "Possible network error"
+                                  var messaggioA = "Insert a message"
+                                  }
 								  
 								  
 	
 	if (indirizzo == "") {
 		navigator.notification.alert(
-									 'inserire un messaggio',  // message
+									 messaggioA,  // message
 									 alertDismissed,         // callback
 									 'Chat',            // title
 									 'OK'                  // buttonName
@@ -3857,9 +4182,9 @@ function inviachat() {
 		   error: function(){
 		   $("#spinner6").hide();
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alerterrore,  // message
 										alertDismissed,         // callback
-										'Attenzione',           // title
+										alertattenzione,           // title
 										'Done'                  // buttonName
 										);
 		   
@@ -4065,11 +4390,32 @@ function elimina(id_richiesta){
 		   
 		   },
 		   error: function(){
+           
+           if(localStorage.getItem("lingua")=="it"){
+           
+           var alertattenzione = "Attenzione"
+           var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+           var messaggioA = "inserire un messaggio"
+           
+           }
+           else if(localStorage.getItem("lingua")=="en"){
+           
+           var alertattenzione = "Attention"
+           var alerterrore = "Possible network error"
+           var messaggioA = "Insert a message"
+           
+           }
+           else{
+           
+           var alertattenzione = "Attention"
+           var alerterrore = "Possible network error"
+           var messaggioA = "Insert a message"
+           }
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alerterrore,  // message
 										alertDismissed,         // callback
-										'Attenzione',           // title
+										alertattenzione,           // title
 										'Done'                  // buttonName
 										);
 		   
@@ -4107,10 +4453,31 @@ function elimina2(id_richiesta,id_autista){
            },
            error: function(){
            
+           if(localStorage.getItem("lingua")=="it"){
+           
+           var alertattenzione = "Attenzione"
+           var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+           var messaggioA = "inserire un messaggio"
+           
+           }
+           else if(localStorage.getItem("lingua")=="en"){
+           
+           var alertattenzione = "Attention"
+           var alerterrore = "Possible network error"
+           var messaggioA = "Insert a message"
+           
+           }
+           else{
+           
+           var alertattenzione = "Attention"
+           var alerterrore = "Possible network error"
+           var messaggioA = "Insert a message"
+           }
+           
            navigator.notification.alert(
-                                        'Possibile errore di rete, riprova tra qualche minuto.',  // message
+                                        alerterrore,  // message
                                         alertDismissed,         // callback
-                                        'Attenzione',           // title
+                                        alertattenzione,           // title
                                         'Done'                  // buttonName
                                         );
            
@@ -4148,11 +4515,32 @@ function elimina2(id_richiesta,id_autista){
 										   
 										   },
 										   error: function(){
+                   
+                   if(localStorage.getItem("lingua")=="it"){
+                   
+                   var alertattenzione = "Attenzione"
+                   var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+                   var messaggioA = "inserire un messaggio"
+                   
+                   }
+                   else if(localStorage.getItem("lingua")=="en"){
+                   
+                   var alertattenzione = "Attention"
+                   var alerterrore = "Possible network error"
+                   var messaggioA = "Insert a message"
+                   
+                   }
+                   else{
+                   
+                   var alertattenzione = "Attention"
+                   var alerterrore = "Possible network error"
+                   var messaggioA = "Insert a message"
+                   }
 										   
 										   navigator.notification.alert(
-																		'Possibile errore di rete, riprova tra qualche minuto.',  // message
+																		alerterrore,  // message
 																		alertDismissed,         // callback
-																		'Attenzione',           // title
+																		alertattenzione,           // title
 																		'Done'                  // buttonName
 																		);
 										   
@@ -4192,11 +4580,32 @@ function feedofferta(id_richiesta,id_autista){
 		   
 		   },
 		   error: function(){
+           
+           if(localStorage.getItem("lingua")=="it"){
+           
+           var alertattenzione = "Attenzione"
+           var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+           var messaggioA = "inserire un messaggio"
+           
+           }
+           else if(localStorage.getItem("lingua")=="en"){
+           
+           var alertattenzione = "Attention"
+           var alerterrore = "Possible network error"
+           var messaggioA = "Insert a message"
+           
+           }
+           else{
+           
+           var alertattenzione = "Attention"
+           var alerterrore = "Possible network error"
+           var messaggioA = "Insert a message"
+           }
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alerterrore,  // message
 										alertDismissed,         // callback
-										'Attenzione',           // title
+										alertattenzione,           // title
 										'Done'                  // buttonName
 										);
 		   
@@ -4209,6 +4618,28 @@ function feedofferta(id_richiesta,id_autista){
 
 
 function accettaofferta(id,id_richiesta,id_autista){
+                                  
+                                  if(localStorage.getItem("lingua")=="it"){
+                                  
+                                   var alertattenzione = "Attenzione"
+                                   var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+                                   var offertaA = "Offerta gia accettata."
+                                  
+                                  }
+                                  else if(localStorage.getItem("lingua")=="en"){
+                                  
+                                   var alertattenzione = "Attention"
+                                   var alerterrore = "Possible network error"
+                                   var offertaA = "Offer already accepted"
+                                  
+                                  }
+                                  else{
+                                  
+                                   var alertattenzione = "Attention"
+                                   var alerterrore = "Possible network error"
+                                   var offertaA = "Offer already accepted"
+                                  
+                                  }
 	
 	
 	$.ajax({
@@ -4229,9 +4660,9 @@ function accettaofferta(id,id_richiesta,id_autista){
 				  }
 				  else{
 				    navigator.notification.alert(
-											   'Offerta gia accettata.',  // message
+											   offertaA,  // message
 											   alertDismissed,         // callback
-											   'Attenzione',           // title
+											   alertattenzione,           // title
 											   'Ok'                  // buttonName
 											   );
 				  }
@@ -4243,9 +4674,9 @@ function accettaofferta(id,id_richiesta,id_autista){
 		   error: function(){
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alerterrore,  // message
 										alertDismissed,         // callback
-										'Attenzione',           // title
+										alertattenzione,           // title
 										'Done'                  // buttonName
 										);
 									
@@ -4257,6 +4688,28 @@ function accettaofferta(id,id_richiesta,id_autista){
 }
 
 function scadutaofferta(id,id_richiesta,id_autista){
+                                  
+                                  if(localStorage.getItem("lingua")=="it"){
+                                  
+                                  var alertattenzione = "Attenzione"
+                                  var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+                                  var offertaA = "Offerta gia accettata."
+                                  
+                                  }
+                                  else if(localStorage.getItem("lingua")=="en"){
+                                  
+                                  var alertattenzione = "Attention"
+                                  var alerterrore = "Possible network error"
+                                  var offertaA = "Offer already accepted"
+                                  
+                                  }
+                                  else{
+                                  
+                                  var alertattenzione = "Attention"
+                                  var alerterrore = "Possible network error"
+                                  var offertaA = "Offer already accepted"
+                                  
+                                  }
 	
 	//alert("http://purplemiles.com/www2/check_confermapasseggero.php?conferma="+ id +"&id_richiesta="+ id_richiesta +"&id_autista="+ id_autista +"")
 	
@@ -4284,9 +4737,9 @@ function scadutaofferta(id,id_richiesta,id_autista){
 		   error: function(){
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
+										alerterrore,  // message
 										alertDismissed,         // callback
-										'Attenzione',           // title
+										alertattenzione,           // title
 										'Done'                  // buttonName
 										);
 		   
@@ -4339,6 +4792,28 @@ function mostracal(){
 }
 
 function prendinazione(){
+                                  
+                                  if(localStorage.getItem("lingua")=="it"){
+                                  
+                                  var alertattenzione = "Attenzione"
+                                  var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+                                  var offertaA = "Offerta gia accettata."
+                                  
+                                  }
+                                  else if(localStorage.getItem("lingua")=="en"){
+                                  
+                                  var alertattenzione = "Attention"
+                                  var alerterrore = "Possible network error"
+                                  var offertaA = "Offer already accepted"
+                                  
+                                  }
+                                  else{
+                                  
+                                  var alertattenzione = "Attention"
+                                  var alerterrore = "Possible network error"
+                                  var offertaA = "Offer already accepted"
+                                  
+                                  }
     
     var nazione = "";
     
@@ -4376,9 +4851,9 @@ function prendinazione(){
                   }
                   else{
                   navigator.notification.alert(
-                                               'Errore di rete',  // message
+                                               alerterrore,  // message
                                                alertDismissed,         // callback
-                                               'Attenzione',            // title
+                                               alertattenzione,            // title
                                                'Done'                  // buttonName@
                                                );
                   }
@@ -4414,6 +4889,27 @@ function prendinazione(){
 
 function prendicitta(id){
     
+                                  if(localStorage.getItem("lingua")=="it"){
+                                  
+                                  var alertattenzione = "Attenzione"
+                                  var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+                                  var offertaA = "Offerta gia accettata."
+                                  
+                                  }
+                                  else if(localStorage.getItem("lingua")=="en"){
+                                  
+                                  var alertattenzione = "Attention"
+                                  var alerterrore = "Possible network error"
+                                  var offertaA = "Offer already accepted"
+                                  
+                                  }
+                                  else{
+                                  
+                                  var alertattenzione = "Attention"
+                                  var alerterrore = "Possible network error"
+                                  var offertaA = "Offer already accepted"
+                                  
+                                  }
     var citta = "";
     
     
@@ -4437,9 +4933,9 @@ function prendicitta(id){
                   }
                   else{
                   navigator.notification.alert(
-                                               'Errore di rete',  // message
+                                               alerterrore,  // message
                                                alertDismissed,         // callback
-                                               'Attenzione',            // title
+                                               alertattenzione,            // title
                                                'Done'                  // buttonName@
                                                );
                   }
@@ -4562,7 +5058,14 @@ function prendicittaid(id){
 								  
 									
 							function prendimezzi(){
-									var mezzi = "<option value='Autovettura' selected>Auto/Taxi/NCC</option>"
+                                  
+                                  if(localStorage.getItem("lingua")=="it"){
+                                    var mezzi = "<option value='Autovettura' selected>Auto/Taxi/NCC</option>"
+                                  }
+                                  
+                                  if(localStorage.getItem("lingua")=="en"){
+                                    var mezzi = "<option value='Autovettura' selected>Car/Taxi/NCC</option>"
+                                  }
 									
 									$(".spinner").show();
 									$.ajax({
@@ -4576,11 +5079,16 @@ function prendicittaid(id){
 										   success:function(result){
 										   
 										   $.each(result, function(i,item){
-												  
+                                                  
+                                                  if(localStorage.getItem("lingua")=="it"){
+                                                    mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
+                                                  }
+                                                  if(localStorage.getItem("lingua")=="en"){
+                                                    mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.vehicle +"</option>"
+                                                  }
+                                            
+												//mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
 
-												mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
-
-												  
 												 /* if (item.Token == 1){
 												  if(localStorage.getItem("veicolo")==item.veicolo){
 												  mezzi = "";
@@ -4667,12 +5175,13 @@ function prendicittaid(id){
                                   
                                   db.transaction(function (tx) {
                                                  
-                                                 tx.executeSql('SELECT * FROM Testi', [], function (tx, results) {
+                                                 tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
                                                                var len = results.rows.length, i;
                                                                
-                                                               if(localStorage.getItem("lingua")=="it"){
+                                                        if(localStorage.getItem("lingua")=="it"){
                                                                
-                                                               for (i = 0; i < len; i++){
+                                                            for (i = 0; i < len; i++){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano);
 
                                                                if(results.rows.item(i).id_traduzione == "h4richiesta"){
                                                                h4richiesta = results.rows.item(i).italiano;
@@ -4680,12 +5189,12 @@ function prendicittaid(id){
                                                                }
        
                                                                
-                                                               }
+                                                            }
+                                                        
+                                                        }
                                                                
-                                                               }
                                                                
-                                                               
-                                                               if(localStorage.getItem("lingua")=="en"){
+                                                        if(localStorage.getItem("lingua")=="en"){
                                                                
                                                                
                                                                for (i = 0; i < len; i++){
@@ -4699,10 +5208,10 @@ function prendicittaid(id){
                                                                
                                                                }
                                                                
-                                                               }
+                                                        }
                                                                
-                                                        }, null);
-                                                 });
+                                            }, null);
+                                        });
                                   
                                   }
                                   
