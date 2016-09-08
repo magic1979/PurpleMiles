@@ -2,8 +2,8 @@
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "it.app-piu.purplemiles"
-		versionCode="1.0"
-		version   = "1.0">
+		versionCode="2.0"
+		version   = "2.0">
 		<name>PurpleMiles</name>
 		<description>Purplemiles, Passaggi</description>
 		<author href="http://purplemiles.com" email="demo@purplemiles.com">
