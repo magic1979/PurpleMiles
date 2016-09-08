@@ -3,7 +3,12 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	//$("body").bind('touchmove', function(e){e.preventDefault()})
-    
+	
+	if (localStorage.getItem("lingua") === null || localStorage.getItem("lingua")=="null" || typeof(localStorage.getItem("lingua")) == 'undefined' || localStorage.getItem("lingua")==0 || localStorage.getItem("lingua")=="") {
+		localStorage.setItem("lingua", "it")
+		
+		window.location.href = "#page6";
+	}
     
     agg();
 	
