@@ -6,8 +6,9 @@ function onDeviceReady() {
 	
 	if (localStorage.getItem("lingua") === null || localStorage.getItem("lingua")=="null" || typeof(localStorage.getItem("lingua")) == 'undefined' || localStorage.getItem("lingua")==0 || localStorage.getItem("lingua")=="") {
 		localStorage.setItem("lingua", "it")
-		
-		window.location.href = "#page6";
+		localStorage.setItem("veicolo", "Automobile")
+		localStorage.setItem("fuso", "Italy");
+		localStorage.setItem("citta", "154");
 	}
     
     agg();
@@ -63,11 +64,6 @@ function onDeviceReady() {
 	
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
 		localStorage.setItem("veicolo", "Automobile")
-	}
-
-	
-	if (localStorage.getItem("lingua") === null || localStorage.getItem("lingua")=="null" || typeof(localStorage.getItem("lingua")) == 'undefined' || localStorage.getItem("lingua")==0 || localStorage.getItem("lingua")=="") {
-		localStorage.setItem("lingua", "it")
 	}
 
 	
@@ -1293,6 +1289,30 @@ function onResume() {
 
 
 function login() {
+	
+	if(localStorage.getItem("lingua")=="it"){
+                   
+      var alertemail = "Inserire la email";
+      var alertpsw = "Inserire la password";
+	  var noemailpsw = "Email non valida";
+                   
+     }
+     else if(localStorage.getItem("lingua")=="en"){
+                   
+      var alertemail = "Insert Email";
+      var alertpsw = "Insert password";
+	  var noemailpsw = "Insert correct email";
+                   
+                   
+    }
+    else{
+                   
+       var alertemail = "Insert Email";
+       var alertpsw = "Insert password";
+	   var noemailpsw = "Insert correct email";
+                   
+   }
+
     
 	var email2 = self.document.formia2.email.value;
 	var pin2 = self.document.formia2.password.value;
@@ -1347,7 +1367,7 @@ function login() {
 		
 		navigator.notification.alert(
 				alertfuso,  // message
-				 alertDismissed,         // callback
+				alertDismissed,         // callback
 				alertattenzione,            // title
 				'OK'                  // buttonName
 		);
@@ -1470,6 +1490,33 @@ function LoginVera(email,pin){
 
 function iscriviti(){
 	
+	if(localStorage.getItem("lingua")=="it"){
+                   
+      var alertemail = "Inserire la email";
+      var alertpsw = "Inserire la password";
+	  var alertnome = "Insert name";
+	  var noemailpsw = "Email non valida";
+                   
+     }
+     else if(localStorage.getItem("lingua")=="en"){
+                   
+      var alertemail = "Insert Email";
+      var alertpsw = "Insert password";
+	  var alertnome = "Insert name";
+	  var noemailpsw = "Insert a correct email";
+                   
+                   
+    }
+    else{
+                   
+       var alertemail = "Insert Email";
+       var alertpsw = "Insert password";
+	   var alertnome = "Insert name";
+	   var noemailpsw = "Insert a correct email";
+                   
+   }
+   
+	
 	var emailreg = self.document.formia.emailreg.value;
 	var pinreg = self.document.formia.pinreg.value;
 	var nomereg = self.document.formia.nome.value;
@@ -1514,7 +1561,7 @@ function iscriviti(){
 	}
 	else {
 		navigator.notification.alert(
-									 verificaemial,  // message
+									 noemailpsw,  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
@@ -1530,6 +1577,7 @@ function iscriviti(){
         var regok = "Registrazione Eseguita"
         var clienteok = "Cliente gia registrato"
         var riprovaok = "Errore, riprova in seguito"
+		var errorrete = "Possibile errore di rete"
         
     }
     else if(localStorage.getItem("lingua")=="en"){
@@ -1538,6 +1586,7 @@ function iscriviti(){
         var regok = "Registration ok"
         var clienteok = "Already registered user"
         var riprovaok = "Error, try again"
+		var errorrete = "Possible error network"
         
     }
 	else if(localStorage.getItem("lingua")=="fr"){
@@ -1580,8 +1629,8 @@ function iscriviti(){
 				  if (item.Token == '1'){
 				  
 				  navigator.notification.alert(
-											   alertreg,  // message
-											    alertDismissed,         // callback
+											   regok,  // message
+											   alertDismissed,         // callback
 											   regok,            // title
 											   'Ok'                  // buttonName
 											   );
@@ -1638,6 +1687,9 @@ function recupera() {
         var recuperook2 = "Recupero Eseguito"
         var riprovaok = "Errore, riprova in seguito"
         var clienteok = "Cliente non trovato"
+		
+		var alertemail = "Inserire la email";
+	    var noemailpsw = "Email non valida";
         
     }
     else if(localStorage.getItem("lingua")=="en"){
@@ -1647,6 +1699,9 @@ function recupera() {
         var recuperook2 = "Recovered"
         var riprovaok = "Error, try again"
         var clienteok = "User not found"
+		
+		var alertemail = "Insert email";
+	    var noemailpsw = "Insert correct email";
         
     }
 	else if(localStorage.getItem("lingua")=="fr"){
@@ -1657,6 +1712,9 @@ function recupera() {
 		var riprovaok = "Erreur, s'il vous plaît essayer plus tard"
 		var clienteok = "Client non trouvé"
 		
+		var alertemail = "Insert email";
+	    var noemailpsw = "Insert correct email";
+		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
@@ -1666,6 +1724,9 @@ function recupera() {
 		var riprovaok = "Error, por favor intente más tarde"
 		var clienteok = "El cliente no encontrado"
 		
+		var alertemail = "Insert email";
+	    var noemailpsw = "Insert correct email";
+		
 	}
     else{
         var alertattenzione = "Attention"
@@ -1673,6 +1734,9 @@ function recupera() {
         var recuperook2 = "Recovered"
         var riprovaok = "Error, try again"
         var clienteok = "User not found"
+		
+		var alertemail = "Insert email";
+	    var noemailpsw = "Insert correct email";
     }
     
     
@@ -1697,7 +1761,7 @@ function recupera() {
 	 }
 	 else {
      navigator.notification.alert(
-	 verificaemial,  // message
+	 noemailpsw,  // message
 	 alertDismissed,         // callback
 	 'Email',            // title
 	 'OK'                  // buttonName
