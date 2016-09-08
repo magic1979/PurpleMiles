@@ -2,7 +2,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
-	//document.addEventListener("pause", onPause, false);
+	document.addEventListener("pause", onPause, false);
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
@@ -909,7 +909,7 @@ function onDeviceReady() {
 		   //bgGeo.start();
 		   //backgroundGeolocation.start();
 				   
-			bgGeo.start();
+			//bgGeo.start();
 		   
 		   	localStorage.setItem("dovesono", "3");
 			localStorage.setItem("scroller","0")

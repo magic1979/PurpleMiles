@@ -20,7 +20,7 @@ onDeviceReady: function() {
 	// Update DOM on a Received Event
 receivedEvent: function(id) {
     document.addEventListener("resume", onResume, false);
-	//document.addEventListener("pause", onPause, false);
+	document.addEventListener("pause", onPause, false);
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
@@ -1588,7 +1588,7 @@ receivedEvent: function(id) {
 				   }
 		
 				   
-				   bgGeo.start();
+				   //bgGeo.start();
 					
 						
 					$('#modificastart').blur()
