@@ -9,7 +9,6 @@ function onDeviceReady() {
 	
 	localStorage.setItem("pagina","log")
 	
-	
 	StatusBar.hide();
 	
 	
@@ -77,8 +76,9 @@ function onDeviceReady() {
       var spegniA = "Spegni"
       var annullaA = "Spegni,Annulla"
 		
-	  var mezzilingua = "<option value='it' selected>Italiano</option><option value='en'>Inglese</option><option value='fr'>Francese</option><option value='es'>Spagnolo</option>"
-        
+	  var mezzilingua = "<option value='it' selected>Italiano</option><option value='en'>Inglese</option>"
+      //<option value='fr'>Francese</option><option value='es'>Spagnolo</option>
+	  
 	}
 	else if(localStorage.getItem("lingua")=="en"){
       document.getElementById("lingua").value = "en"
@@ -88,8 +88,9 @@ function onDeviceReady() {
       var spegniA = "Shut Down"
 	  var annullaA = "Shut Down,Cancel"
 		
-		var mezzilingua = "<option value='en' selected>English</option><option value='it'>Italian</option><option value='fr'>French</option><option value='es'>Espanol</option>"
-        
+		var mezzilingua = "<option value='en' selected>English</option><option value='it'>Italian</option>"
+        //<option value='fr'>French</option><option value='es'>Espanol</option>
+		
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		document.getElementById("lingua").value = "fr"
@@ -127,7 +128,6 @@ function onDeviceReady() {
 	$("#lingua").html(mezzilingua);
 	
 	//$("#lingua").selectmenu("refresh");
-	
 	
 	
     // CHIUSURA ANDROID ///////
