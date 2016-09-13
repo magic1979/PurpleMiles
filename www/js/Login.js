@@ -77,7 +77,8 @@ function onDeviceReady() {
       var spegniA = "Spegni"
       var annullaA = "Spegni,Annulla"
 		
-	  var mezzilingua = "<option value='it' selected>Italiano</option><option value='en'>Inglese</option>"
+		
+	  var mezzilingua = "<option value='it' selected>Italiano</option><option value='en'>Inglese</option><option value='fr'>Francese</option><option value='es'>Spagnolo</option>"
       //<option value='fr'>Francese</option><option value='es'>Spagnolo</option>
 	  
 	}
@@ -89,7 +90,7 @@ function onDeviceReady() {
       var spegniA = "Shut Down"
 	  var annullaA = "Shut Down,Cancel"
 		
-		var mezzilingua = "<option value='en' selected>English</option><option value='it'>Italian</option>"
+		var mezzilingua = "<option value='en' selected>English</option><option value='it'>Italian</option><option value='fr'>French</option><option value='es'>Espanol</option>"
         //<option value='fr'>French</option><option value='es'>Espanol</option>
 		
 	}
@@ -100,6 +101,10 @@ function onDeviceReady() {
 		var chiudereA = "Voulez-vous fermer purple miles?"
 		var spegniA = "fermer"
 		var annullaA = "fermer,annuler"
+		$("#password").attr("placeholder", "Mot de passe");
+		$("#loginpsw").html("Mot de passe");
+		$("#registrapsw").html("Mot de passe");
+		
 		
 		var mezzilingua = "<option value='fr' selected>Français</option><option value='it'>Italien</option><option value='en'>Anglais</option><option value='es'>Espagnol</option>"
 		
@@ -107,10 +112,13 @@ function onDeviceReady() {
     else if(localStorage.getItem("lingua")=="es"){
         document.getElementById("lingua").value = "es"
         
-        var alertattenzione = "Attencion"
+        var alertattenzione = "Attenciòn"
         var chiudereA = "querer cerrar purple miles?"
         var spegniA = "Cerca"
         var annullaA = "Cerca,Cancela"
+		$("#password").attr("placeholder", "Contraseña");
+		$("#loginpsw").html("Contrase&ntilde;a");
+		$("#registrapsw").html("Contrase&ntilde;a");
 		
 		var mezzilingua = "<option value='es' selected>Espanol</option><option value='it'>Italiano</option><option value='en'>Ingles</option><option value='fr'>Frances</option>"
 
@@ -360,6 +368,7 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#conferma", function(e){
 				   
+   
 		/*if (document.getElementById("citta").value === null || document.getElementById("citta").value=="null" || typeof(document.getElementById("citta").value) == 'undefined' || document.getElementById("citta").value==0 || document.getElementById("citta").value=="") {
 			navigator.notification.alert(
 												'inserire una citta per il fuso orario',  // message
@@ -376,8 +385,6 @@ function onDeviceReady() {
 		localStorage.setItem("lingua", document.getElementById("lingua").value);
 		localStorage.setItem("fuso", document.getElementById("fuso").value);
         localStorage.setItem("citta", document.getElementById("citta").value);
-                   
-         //alert(document.getElementById("veicolo").value);
 		
 		localStorage.setItem("veicolo", document.getElementById("veicolo").value);
 				   
@@ -387,9 +394,10 @@ function onDeviceReady() {
 		}
 		else{
 				   
+          //window.location.href = "Login.html";
 		  window.location.href = "#page";
 		
-		  seleziona()
+		  agg()
 		  
 		}
 				   
@@ -503,6 +511,8 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#recuperopsw", function(e){
 		  window.location.href = "#page8";
+                   
+          seleziona()
 				   
 		  //var ref = window.open('http://www.purplemiles.com/www/rec_pw.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
 
@@ -524,8 +534,14 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#regsito", function(e){
 		window.location.href = "#page7";
+                   
+        seleziona()
 				   
 		var myScroll3;
+				   
+		//prendi nazione per select//
+		prendinuovanazione()
+		
 				   
 		myScroll3 = new IScroll('#wrapper3', { click: true });
 		setTimeout (function(){
@@ -698,7 +714,7 @@ function agg(){
 function agg2(){
 	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
 
-	$(".spinner").show();
+	$("#spinner").show();
 	$.ajax({
 		   type:"GET",
 		   url:"http://purplemiles.com/www2/check_testi.php",
@@ -740,7 +756,7 @@ function agg2(){
 		   setTimeout(function() {
 					  
 		   
-		     $(".spinner").hide();
+		     $("#spinner").hide();
 		     seleziona();
 					  
 		   }, 500);
@@ -753,36 +769,7 @@ function agg2(){
 		   //alert(jqxhr);
 		   //alert(textStatus);
 		   //alert(errorThrown);
-           
-           if(localStorage.getItem("lingua")=="it"){
-           
-             var alertattenzione = "Attenzione"
-             var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-           
-           }
-            else if(localStorage.getItem("lingua")=="en"){
 
-             var alertattenzione = "Attention"
-             var erroredirete = "Possible network error"
-           
-           }
-		   else if(localStorage.getItem("lingua")=="fr"){
-		   
-		   var alertattenzione = "Attention"
-		   var erroredirete = "possible erreur réseau"
-		   
-		   }
-		   else if(localStorage.getItem("lingua")=="es"){
-		   
-		   var alertattenzione = "Attencion"
-		   var erroredirete = "posible error en la red"
-		   
-		   }
-           else{
-             var alertattenzione = "Attention"
-             var erroredirete = "Possible network error"
-           }
-           
 		   
 		   navigator.notification.alert(
 										erroredirete,  // message
@@ -793,7 +780,57 @@ function agg2(){
 		   
 		   },
 		   dataType:"jsonp"});
-
+    
+    
+    
+    if(localStorage.getItem("lingua")=="it"){
+        
+        var alertattenzione = "Attenzione"
+        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+        $("#password").attr("placeholder","Password");
+        $("#pinreg").attr("placeholder","Password");
+        $("#loginpsw").html("Password");
+        $("#registrapsw").html("Password");
+        
+    }
+    else if(localStorage.getItem("lingua")=="en"){
+        
+        var alertattenzione = "Attention"
+        var erroredirete = "Possible network error"
+        $("#password").attr("placeholder","Password");
+        $("#pinreg").attr("placeholder","Password");
+        $("#loginpsw").html("Password");
+        $("#registrapsw").html("Password");
+        
+    }
+    else if(localStorage.getItem("lingua")=="fr"){
+        
+        var alertattenzione = "Attention"
+        var erroredirete = "possible erreur réseau"
+        $("#password").attr("placeholder", "Mot de passe");
+        $("#pinreg").attr("placeholder","Mot de passe");
+        $("#loginpsw").html("Mot de passe");
+        $("#registrapsw").html("Mot de passe");
+        
+    }
+    else if(localStorage.getItem("lingua")=="es"){
+        
+        var alertattenzione = "Attenciòn"
+        var erroredirete = "posible error en la red"
+        $("#password").attr("placeholder", "Contraseña");
+        $("#pinreg").attr("placeholder","Contraseña");
+        $("#loginpsw").html("Contrase&ntilde;a");
+        $("#registrapsw").html("Contrase&ntilde;a");
+        
+    }
+    else{
+        var alertattenzione = "Attention"
+        var erroredirete = "Possible network error"
+        $("#password").attr("placeholder", "Contraseña");
+        $("#loginpsw").html("Contrase&ntilde;a");
+        $("#registrapsw").html("Contrase&ntilde;a");
+    }
+    
 
 }
 
@@ -801,11 +838,10 @@ function agg2(){
 
 
 function seleziona() {
+	
 	var db;
 	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
 	
-	localStorage.setItem("sett_lingua", "OK");
-			
 	//$("#btnaccedi").html("sasa");
 	
 	db.transaction(function (tx) {
@@ -926,7 +962,8 @@ function seleziona() {
 					 alertfuso = results.rows.item(i).francese.replace("P0011", "'");
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertveicolo"){
-					 alertveicolo = results.rows.item(i).francese.replace("P0011", "'");
+					  alertveicolo = results.rows.item(i).francese.replace("P0011", "'");
+					  alertveicolo = results.rows.item(i).francese.replace("&eacute;", "ì");
 					 }
 					 if(results.rows.item(i).id_traduzione == "noemailpsw"){
 					 noemailpsw = results.rows.item(i).francese.replace("P0011", "'");
@@ -966,7 +1003,8 @@ function seleziona() {
 					 alertfuso = results.rows.item(i).spagnolo.replace("P0011", "'");
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertveicolo"){
-					 alertveicolo = results.rows.item(i).spagnolo.replace("P0011", "'");
+					    alertveicolo = results.rows.item(i).spagnolo.replace("P0011", "'");
+						alertveicolo = results.rows.item(i).spagnolo.replace("&iacute;", "ì");
 					 }
 					 if(results.rows.item(i).id_traduzione == "noemailpsw"){
 					 noemailpsw = results.rows.item(i).spagnolo.replace("P0011", "'");
@@ -987,6 +1025,56 @@ function seleziona() {
 					 
 	 }, null);
 	});
+    
+    
+    
+    if(localStorage.getItem("lingua")=="it"){
+        
+        var alertattenzione = "Attenzione"
+        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+        $("#password").attr("placeholder","Password");
+        $("#pinreg").attr("placeholder","Password");
+        $("#loginpsw").html("Password");
+        $("#registrapsw").html("Password");
+        
+    }
+    else if(localStorage.getItem("lingua")=="en"){
+        
+        var alertattenzione = "Attention"
+        var erroredirete = "Possible network error"
+        $("#password").attr("placeholder","Password");
+        $("#pinreg").attr("placeholder","Password");
+        $("#loginpsw").html("Password");
+        $("#registrapsw").html("Password");
+        
+    }
+    else if(localStorage.getItem("lingua")=="fr"){
+        
+        var alertattenzione = "Attention"
+        var erroredirete = "possible erreur réseau"
+        $("#password").attr("placeholder", "Mot de passe");
+        $("#pinreg").attr("placeholder","Mot de passe");
+        $("#loginpsw").html("Mot de passe");
+        $("#registrapsw").html("Mot de passe");
+        
+    }
+    else if(localStorage.getItem("lingua")=="es"){
+        
+        var alertattenzione = "Attenciòn"
+        var erroredirete = "posible error en la red"
+        $("#password").attr("placeholder", "Contraseña");
+        $("#pinreg").attr("placeholder","Contraseña");
+        $("#loginpsw").html("Contrase&ntilde;a");
+        $("#registrapsw").html("Contrase&ntilde;a");
+        
+    }
+    else{
+        var alertattenzione = "Attention"
+        var erroredirete = "Possible network error"
+        $("#password").attr("placeholder", "Contraseña");
+        $("#loginpsw").html("Contrase&ntilde;a");
+        $("#registrapsw").html("Contrase&ntilde;a");
+    }
 	
 }
 
@@ -1034,6 +1122,18 @@ function prendimezzi(){
         var alertattenzione = "Attention"
         var erroredirete = "Possible network error"
     }
+    else if(localStorage.getItem("lingua")=="fr"){
+        var mezzi = "<option value='Autovettura' selected>Automobile</option>"
+        
+        var alertattenzione = "Attention"
+        var erroredirete = "Possible network error"
+    }
+    else if(localStorage.getItem("lingua")=="es"){
+        var mezzi = "<option value='Autovettura' selected>Automòvil</option>"
+        
+        var alertattenzione = "Attenciòn"
+        var erroredirete = "Possible network error"
+    }
 	else{
 		var mezzi = "<option value='Autovettura' selected>Car</option>"
 		
@@ -1068,6 +1168,12 @@ function prendimezzi(){
                         else if(localStorage.getItem("lingua")=="en"){
                          mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Car</option>"
                        }
+                       else if(localStorage.getItem("lingua")=="fr"){
+                         mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Automobile</option>"
+                       }
+                       else if(localStorage.getItem("lingua")=="es"){
+                        mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Automòvil</option>"
+                       }
 				       else{
 				         mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Car</option>"
 				       }
@@ -1081,6 +1187,12 @@ function prendimezzi(){
                         else if(localStorage.getItem("lingua")=="en"){
                           mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.vehicle +"</option>"
                         }
+                        else if(localStorage.getItem("lingua")=="fr"){
+                          mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo_fr +"</option>"
+                        }
+                        else if(localStorage.getItem("lingua")=="es"){
+                           mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo_es +"</option>"
+                         }
 				        else{
 				          mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.vehicle +"</option>"
 				        }
@@ -1093,7 +1205,13 @@ function prendimezzi(){
                        mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.veicolo +"</option>"
                      }
                      else if(localStorage.getItem("lingua")=="en"){
-                      mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.vehicle +"</option>"
+                      mezzi = mezzi + "<option value='"+item.veicolo+"'>"+   item.vehicle +"</option>"
+                     }
+                     else if(localStorage.getItem("lingua")=="fr"){
+                      mezzi = mezzi + "<option value='"+item.veicolo+"'>"+   item.veicolo_fr +"</option>"
+                     }
+                     else if(localStorage.getItem("lingua")=="es"){
+                      mezzi = mezzi + "<option value='"+item.veicolo+"'>"+   item.veicolo_es +"</option>"
                      }
 				     else{
 				      mezzi = mezzi + "<option value='"+item.veicolo+"'>"+ item.vehicle +"</option>"
@@ -1137,11 +1255,113 @@ function prendimezzi(){
 	
 }
 
+function prendinuovanazione(){
+	
+	
+	if(localStorage.getItem("lingua")=="it"){
+		var mezzi = "<option value='105' selected>Italia</option>"
+		
+		var alertattenzione = "Attenzione"
+		var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+	}
+	
+	else if(localStorage.getItem("lingua")=="en"){
+		var mezzi = "<option value='105' selected>Italy</option>"
+		
+		var alertattenzione = "Attention"
+		var erroredirete = "Possible network error"
+	}
+	else if(localStorage.getItem("lingua")=="fr"){
+		var mezzi = "<option value='105' selected>Italie</option>"
+		
+		var alertattenzione = "Attention"
+		var erroredirete = "Possible network error"
+	}
+	else if(localStorage.getItem("lingua")=="es"){
+		var mezzi = "<option value='105' selected>Italia</option>"
+		
+		var alertattenzione = "Attenciòn"
+		var erroredirete = "Possible network error"
+	}
+	else{
+		var mezzi = "<option value='105' selected>Italia</option>"
+		
+		var alertattenzione = "Attention"
+		var erroredirete = "Possible network error"
+	}
+	
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_nazione.php",
+		   contentType: "application/json",
+		   //data: {email:email,pin:pin},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+			if (item.Token == 1){
+				  
+				 if(localStorage.getItem("lingua")=="it"){
+				    mezzi = mezzi + "<option value='"+item.id_nazione+"'>"+item.nazione.replace("P0011", "'")+"</option>"
+				  }
+				  else if(localStorage.getItem("lingua")=="en"){
+				    mezzi = mezzi + "<option value='"+item.id_nazione+"'>"+item.nazione_en.replace("P0011", "'")+"</option>"
+				  }
+				  else if(localStorage.getItem("lingua")=="fr"){
+				    mezzi = mezzi + "<option value='"+item.id_nazione+"'>"+item.nazione_fr.replace("P0011", "'")+"</option>"
+				  }
+				  else if(localStorage.getItem("lingua")=="es"){
+					mezzi = mezzi + "<option value='"+item.id_nazione+"'>"+item.nazione_es.replace("P0011", "'")+"</option>"
+				  }
+				  else{
+				    mezzi = mezzi + "<option value='"+item.id_nazione+"'>"+item.nazione_en.replace("P0011", "'")+"</option>"
+				  }
+				  
+			}
+			else{
+				  
+				  navigator.notification.alert(
+											   erroredirete,  // message
+											   alertDismissed,         // callback
+											   alertattenzione,            // title
+											   'Done'                  // buttonName@
+											   );
+			}
+		 });
+		   
+		   $("#nazione7").html(mezzi);
+		   
+		   $("#nazione7").selectmenu("refresh");
+		   
+		   $(".spinner").hide();
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   navigator.notification.alert(
+										erroredirete,  // message
+										alertDismissed,         // callback
+										alertattenzione,            // title
+										'Done'                  // buttonName
+										);
+		   
+		   },
+		   dataType:"jsonp"});
+	
+}
+
+
 
 function prendinazione(){
 	
 	var nazione = "<option value='Italy' selected>Italy</option>";
-    
+	
     $(".spinner").show();
      $.ajax({
 		   type:"GET",
@@ -1151,7 +1371,7 @@ function prendinazione(){
 		   jsonp: 'callback',
 		   crossDomain: true,
 		   success:function(result){
-		   
+			
 		   $.each(result, function(i,item){
 				 
      
@@ -1294,23 +1514,39 @@ function login() {
                    
       var alertemail = "Inserire la email";
       var alertpsw = "Inserire la password";
-	  var noemailpsw = "Email non valida";
+	  var noemailpsw = "Verificare la email";
                    
      }
      else if(localStorage.getItem("lingua")=="en"){
                    
-      var alertemail = "Insert Email";
-      var alertpsw = "Insert password";
-	  var noemailpsw = "Insert correct email";
+      var alertemail = "Enter the email";
+      var alertpsw = "Enter the password";
+	  var noemailpsw = "Please check your email";
                    
                    
     }
+	else if(localStorage.getItem("lingua")=="fr"){
+		 
+	   var alertemail = "Entrez l'e-mail";
+	   var alertpsw = "Entrez le mot de passe";
+	   var noemailpsw = "S'il vous plaît vèrifier votre e-mail";
+		 
+		 
+	 }
+	else if(localStorage.getItem("lingua")=="es"){
+		
+		var alertemail = "Insertar su correo electrònico";
+		var alertpsw = "Insertar la contraseña";
+		var noemailpsw = "Comprobar el correo electrònico";
+		
+		
+	}
     else{
-                   
-       var alertemail = "Insert Email";
-       var alertpsw = "Insert password";
-	   var noemailpsw = "Insert correct email";
-                   
+		
+		var alertemail = "Enter the email";
+		var alertpsw = "Enter the password";
+		var noemailpsw = "Please check your email";
+		
    }
 
     
@@ -1408,6 +1644,43 @@ function login() {
 }
 
 function LoginVera(email,pin){
+	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		var alertattenzione = "Attenzione"
+		var regok = "Registrazione Eseguita"
+		var Nocliente = "Utente non trovato"
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		var alertattenzione = "Attention"
+		var regok = "Registration ok"
+		var Nocliente = "User not found"
+
+		
+	}
+	else if(localStorage.getItem("lingua")=="fr"){
+		
+		var alertattenzione = "Attention"
+		var regok = "Lorsque l'enregistrement a été"
+		var Nocliente = "Utilisateur introuvable"
+
+		
+	}
+	else if(localStorage.getItem("lingua")=="es"){
+		
+		var alertattenzione = "Attenciòn"
+		var Nocliente = "Usuario no encontrado"
+		
+	}
+	else{
+		var alertattenzione = "Attention"
+		var erroredirete = "Possible network error"
+		var Nocliente = "User not found"
+	}
+	
+	
 	//alert(email+pin);
 	var lat = localStorage.getItem("lat");
 	var lng = localStorage.getItem("lng");
@@ -1461,10 +1734,11 @@ function LoginVera(email,pin){
 				  
 				}
 				else{
+				  
 				navigator.notification.alert(
-											   'Utente non trovato',  // message
+											   Nocliente,  // message
 											   alertDismissed,         // callback
-											   'Attenzione',            // title
+											   alertattenzione,            // title
 											   'Ok'                  // buttonName@
 											   );
 				}
@@ -1495,25 +1769,43 @@ function iscriviti(){
       var alertemail = "Inserire la email";
       var alertpsw = "Inserire la password";
 	  var alertnome = "Insert name";
-	  var noemailpsw = "Email non valida";
+	  var noemailpsw = "Verificare la email";
                    
      }
      else if(localStorage.getItem("lingua")=="en"){
                    
-      var alertemail = "Insert Email";
-      var alertpsw = "Insert password";
-	  var alertnome = "Insert name";
-	  var noemailpsw = "Insert a correct email";
+      var alertemail = "Enter the Email";
+      var alertpsw = "Enter the password";
+	  var alertnome = "Enter the name";
+	  var noemailpsw = "Please check your email";
                    
                    
     }
+	 else if(localStorage.getItem("lingua")=="fr"){
+		 
+		 var alertemail = "Entrez l'e-mail";
+		 var alertpsw = "Entrez le mot de passe";
+	  var alertnome = "Entrez le nom";
+	  var noemailpsw = "S'il vous plaît vèrifier votre e-mail";
+		 
+		 
+	 }
+	 else if(localStorage.getItem("lingua")=="es"){
+		 
+	 var alertemail = "Insertar su correo electrònico";
+	 var alertpsw = "Insertar la contraseña";
+	  var alertnome = "Insertar nombre";
+	  var noemailpsw = "Comprobar el correo electrònico";
+		 
+		 
+	 }
     else{
-                   
-       var alertemail = "Insert Email";
-       var alertpsw = "Insert password";
-	   var alertnome = "Insert name";
-	   var noemailpsw = "Insert a correct email";
-                   
+		
+		var alertemail = "Enter the Email";
+		var alertpsw = "Enter the password";
+		var alertnome = "Enter the name";
+		var noemailpsw = "Please check your email";
+		
    }
    
 	
@@ -1599,7 +1891,7 @@ function iscriviti(){
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attencion"
+		var alertattenzione = "Attenciòn"
 		var regok = "Cuando el registro se ha realizado"
 		var clienteok = "Cliente ya registrado"
 		var riprovaok = "error, por favor intente más tarde"
@@ -1700,8 +1992,8 @@ function recupera() {
         var riprovaok = "Error, try again"
         var clienteok = "User not found"
 		
-		var alertemail = "Insert email";
-	    var noemailpsw = "Insert correct email";
+		var alertemail = "Enter the email";
+	    var noemailpsw = "Enter correct email";
         
     }
 	else if(localStorage.getItem("lingua")=="fr"){
@@ -1712,20 +2004,20 @@ function recupera() {
 		var riprovaok = "Erreur, s'il vous plaît essayer plus tard"
 		var clienteok = "Client non trouvé"
 		
-		var alertemail = "Insert email";
-	    var noemailpsw = "Insert correct email";
+		var alertemail = "Entrez l'e-mail";
+	    var noemailpsw = "Entrez l'e-mail";
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attencion"
+		var alertattenzione = "Attenciòn"
 		var recuperook = "Recuperación exitosa, consultar su correo electrónico"
 		var recuperook2 = "ejecutado recuperación"
 		var riprovaok = "Error, por favor intente más tarde"
 		var clienteok = "El cliente no encontrado"
 		
-		var alertemail = "Insert email";
-	    var noemailpsw = "Insert correct email";
+		var alertemail = "Insertar su correo electrònico";
+	    var noemailpsw = "Insertar su correo electrònico";
 		
 	}
     else{
@@ -1735,8 +2027,8 @@ function recupera() {
         var riprovaok = "Error, try again"
         var clienteok = "User not found"
 		
-		var alertemail = "Insert email";
-	    var noemailpsw = "Insert correct email";
+		var alertemail = "Enter the email";
+		var noemailpsw = "Enter correct email";
     }
     
     
@@ -1889,7 +2181,7 @@ function gpsonError(){
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attencion"
+		var alertattenzione = "Attenciòn"
 		var alertgps = "Posible error de GPS, asegúrese de que tiene el teléfono activado gps"
 		
 	}
