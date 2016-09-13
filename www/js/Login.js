@@ -640,55 +640,57 @@ function onDeviceReady() {
 		
 		  window.location.href = "#page8";
 		  
-	if(localStorage.getItem("lingua")=="it"){
-        
-        var alertattenzione = "Attenzione"
-        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-        $("#password").attr("placeholder","Password");
-        $("#pinreg").attr("placeholder","Password");
-        $("#loginpsw").html("Password");
-        $("#registrapsw").html("Password");
-        
-    }
-    else if(localStorage.getItem("lingua")=="en"){
-        
-        var alertattenzione = "Attention"
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder","Password");
-        $("#pinreg").attr("placeholder","Password");
-        $("#loginpsw").html("Password");
-        $("#registrapsw").html("Password");
-        
-    }
-    else if(localStorage.getItem("lingua")=="fr"){
-        
-        var alertattenzione = "Attention"
-        var erroredirete = "possible erreur réseau"
-        $("#password").attr("placeholder", "Mot de passe");
-        $("#pinreg").attr("placeholder","Mot de passe");
-        $("#loginpsw").html("Mot de passe");
-        $("#registrapsw").html("Mot de passe");
-        
-    }
-    else if(localStorage.getItem("lingua")=="es"){
-        
-        var alertattenzione = "Attenciòn"
-        var erroredirete = "posible error en la red"
-        $("#password").attr("placeholder", "Contraseña");
-        $("#pinreg").attr("placeholder","Contraseña");
-        $("#loginpsw").html("Contrase&ntilde;a");
-        $("#registrapsw").html("Contrase&ntilde;a");
-        
-    }
-    else{
-        var alertattenzione = "Attention"
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder", "Contraseña");
-        $("#loginpsw").html("Contrase&ntilde;a");
-        $("#registrapsw").html("Contrase&ntilde;a");
-    }
+	setTimeout(function() {
+
+		if(localStorage.getItem("lingua")=="it"){
+			
+			var alertattenzione = "Attenzione"
+			var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+			$("#password").attr("placeholder","Password");
+			$("#pinreg").attr("placeholder","Password");
+			$("#loginpsw").html("Password");
+			$("#registrapsw").html("Password");
+			
+		}
+		else if(localStorage.getItem("lingua")=="en"){
+			
+			var alertattenzione = "Attention"
+			var erroredirete = "Possible network error"
+			$("#password").attr("placeholder","Password");
+			$("#pinreg").attr("placeholder","Password");
+			$("#loginpsw").html("Password");
+			$("#registrapsw").html("Password");
+			
+		}
+		else if(localStorage.getItem("lingua")=="fr"){
+			
+			var alertattenzione = "Attention"
+			var erroredirete = "possible erreur réseau"
+			$("#password").attr("placeholder", "Mot de passe");
+			$("#pinreg").attr("placeholder","Mot de passe");
+			$("#loginpsw").html("Mot de passe");
+			$("#registrapsw").html("Mot de passe");
+			
+		}
+		else if(localStorage.getItem("lingua")=="es"){
+			
+			var alertattenzione = "Attenciòn"
+			var erroredirete = "posible error en la red"
+			$("#password").attr("placeholder", "Contraseña");
+			$("#pinreg").attr("placeholder","Contraseña");
+			$("#loginpsw").html("Contrase&ntilde;a");
+			$("#registrapsw").html("Contrase&ntilde;a");
+			
+		}
+		else{
+			var alertattenzione = "Attention"
+			var erroredirete = "Possible network error"
+			$("#password").attr("placeholder", "Contraseña");
+			$("#loginpsw").html("Contrase&ntilde;a");
+			$("#registrapsw").html("Contrase&ntilde;a");
+		}
 	
-	
+	}, 1000);
                    
           seleziona()
 				   
@@ -764,53 +766,59 @@ function onDeviceReady() {
 		window.location.href = "#page7";
 		
 		
-	if(localStorage.getItem("lingua")=="it"){
-        
-        var alertattenzione = "Attenzione"
-        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-        $("#password").attr("placeholder","Password");
-        $("#pinreg").attr("placeholder","Password");
-        $("#loginpsw").html("Password");
-        $("#registrapsw").html("Password");
-        
-    }
-    else if(localStorage.getItem("lingua")=="en"){
-        
-        var alertattenzione = "Attention"
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder","Password");
-        $("#pinreg").attr("placeholder","Password");
-        $("#loginpsw").html("Password");
-        $("#registrapsw").html("Password");
-        
-    }
-    else if(localStorage.getItem("lingua")=="fr"){
-        
-        var alertattenzione = "Attention"
-        var erroredirete = "possible erreur réseau"
-        $("#password").attr("placeholder", "Mot de passe");
-        $("#pinreg").attr("placeholder","Mot de passe");
-        $("#loginpsw").html("Mot de passe");
-        $("#registrapsw").html("Mot de passe");
-        
-    }
-    else if(localStorage.getItem("lingua")=="es"){
-        
-        var alertattenzione = "Attenciòn"
-        var erroredirete = "posible error en la red"
-        $("#password").attr("placeholder", "Contraseña");
-        $("#pinreg").attr("placeholder","Contraseña");
-        $("#loginpsw").html("Contrase&ntilde;a");
-        $("#registrapsw").html("Contrase&ntilde;a");
-        
-    }
-    else{
-        var alertattenzione = "Attention"
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder", "Contraseña");
-        $("#loginpsw").html("Contrase&ntilde;a");
-        $("#registrapsw").html("Contrase&ntilde;a");
-    }
+	setTimeout(function() {
+
+		
+		if(localStorage.getItem("lingua")=="it"){
+			
+			var alertattenzione = "Attenzione"
+			var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+			$("#password").attr("placeholder","Password");
+			$("#pinreg").attr("placeholder","Password");
+			$("#loginpsw").html("Password");
+			$("#registrapsw").html("Password");
+			
+		}
+		else if(localStorage.getItem("lingua")=="en"){
+			
+			var alertattenzione = "Attention"
+			var erroredirete = "Possible network error"
+			$("#password").attr("placeholder","Password");
+			$("#pinreg").attr("placeholder","Password");
+			$("#loginpsw").html("Password");
+			$("#registrapsw").html("Password");
+			
+		}
+		else if(localStorage.getItem("lingua")=="fr"){
+			
+			var alertattenzione = "Attention"
+			var erroredirete = "possible erreur réseau"
+			$("#password").attr("placeholder", "Mot de passe");
+			$("#pinreg").attr("placeholder","Mot de passe");
+			$("#loginpsw").html("Mot de passe");
+			$("#registrapsw").html("Mot de passe");
+			
+		}
+		else if(localStorage.getItem("lingua")=="es"){
+			
+			var alertattenzione = "Attenciòn"
+			var erroredirete = "posible error en la red"
+			$("#password").attr("placeholder", "Contraseña");
+			$("#pinreg").attr("placeholder","Contraseña");
+			$("#loginpsw").html("Contrase&ntilde;a");
+			$("#registrapsw").html("Contrase&ntilde;a");
+			
+		}
+		else{
+			var alertattenzione = "Attention"
+			var erroredirete = "Possible network error"
+			$("#password").attr("placeholder", "Contraseña");
+			$("#loginpsw").html("Contrase&ntilde;a");
+			$("#registrapsw").html("Contrase&ntilde;a");
+		}
+	
+
+    }, 1000);
                    
         seleziona()
 				   
