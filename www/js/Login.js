@@ -10,6 +10,85 @@ function onDeviceReady() {
 		localStorage.setItem("fuso", "Italy");
 		localStorage.setItem("citta", "154");
 	}
+	
+	////// BASE LINGUA ////////
+	
+	
+	if(localStorage.getItem("lingua")=="it"){
+        
+        var alertattenzione = "Attenzione"
+        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+        $("#password").attr("placeholder","Password");
+        $("#pinreg").attr("placeholder","Password");
+        $("#loginpsw").html("Password");
+        $("#registrapsw").html("Password");
+		
+		$("#btnaccedi").html("Accedi");
+		$("#btnimp").html("Impostazioni");
+		$("#btnpsw").html("Password dimenticata?");
+		$("#btnreg").html("Registrati ora");
+        
+    }
+    else if(localStorage.getItem("lingua")=="en"){
+        
+        var alertattenzione = "Attention"
+        var erroredirete = "Possible network error"
+        $("#password").attr("placeholder","Password");
+        $("#pinreg").attr("placeholder","Password");
+        $("#loginpsw").html("Password");
+        $("#registrapsw").html("Password");
+		
+		$("#btnaccedi").html("Log in");
+		$("#btnimp").html("Settings");
+		$("#btnpsw").html("Forgot password?");
+		$("#btnreg").html("Register now");
+        
+    }
+    else if(localStorage.getItem("lingua")=="fr"){
+        
+        var alertattenzione = "Attention"
+        var erroredirete = "possible erreur réseau"
+        $("#password").attr("placeholder", "Mot de passe");
+        $("#pinreg").attr("placeholder","Mot de passe");
+        $("#loginpsw").html("Mot de passe");
+        $("#registrapsw").html("Mot de passe");
+		
+		$("#btnaccedi").html("Se connecter");
+		$("#btnimp").html("Paramètress");
+		$("#btnpsw").html("Mot de passe oubliè?");
+		$("#btnpsw").html("Inscrivez-vous maintenant");
+        
+    }
+    else if(localStorage.getItem("lingua")=="es"){
+        
+        var alertattenzione = "Attenciòn"
+        var erroredirete = "posible error en la red"
+        $("#password").attr("placeholder", "Contraseña");
+        $("#pinreg").attr("placeholder","Contraseña");
+        $("#loginpsw").html("Contrase&ntilde;a");
+        $("#registrapsw").html("Contrase&ntilde;a");
+		
+		$("#btnaccedi").html("Iniciar");
+		$("#btnimp").html("Ajustes");
+		$("#btnpsw").html("¿Contraseña olvidado?");
+		$("#btnpsw").html("Regìstrese ahora");
+        
+    }
+    else{
+        var alertattenzione = "Attention"
+        var erroredirete = "Possible network error"
+        $("#password").attr("placeholder", "Contraseña");
+        $("#loginpsw").html("Contrase&ntilde;a");
+        $("#registrapsw").html("Contrase&ntilde;a");
+		
+		$("#btnaccedi").html("Log in");
+		$("#btnimp").html("Settings");
+		$("#btnpsw").html("Forgot password?");
+		$("#btnreg").html("Register now");
+    }
+	
+	
+	///////////////////////////
     
     agg();
 	
@@ -394,10 +473,10 @@ function onDeviceReady() {
 		}
 		else{
 				   
-          //window.location.href = "Login.html";
-		  window.location.href = "#page";
+          window.location.href = "Login.html";
+		  //window.location.href = "#page";
 		
-		  agg()
+		  //agg()
 		  
 		}
 				   
