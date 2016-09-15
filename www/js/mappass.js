@@ -993,10 +993,14 @@ function onDeviceReady() {
 				   
 				   $("#s_arrivo").hide();
 				   $("#s_partenza2").show();
+				   
+				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
+				   $("#a1").html("<img src='img/ico_finish1.png' width='45px'>");
 				  
 				   /*if(screen.width < 768){
 				     $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				     $("#a1").html("<img src='img/ico_finish1.png' width='45px'>");
+
 				   }
 				   else
 				   {
@@ -1632,6 +1636,10 @@ function onDeviceReady() {
 				   
 				   $("#s_partenza2").hide();
 				   $("#s_arrivo").show();
+				   
+				   
+				   $("#da1").html("<img src='img/ico_start1.png' width='45px'>");
+				   $("#a1").html("<img src='img/ico_finish3.png' width='55px'>");
 				   
 				   
 				   /*if(screen.width < 768){
