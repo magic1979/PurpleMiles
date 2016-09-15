@@ -989,7 +989,7 @@ function onDeviceReady() {
 			else{
 				
 			  $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
-				
+              $("#citta").html(citta);
 				
 			}
 			
