@@ -527,6 +527,9 @@ function onDeviceReady() {
         localStorage.setItem("citta", document.getElementById("citta").value);
 		
 		localStorage.setItem("veicolo", document.getElementById("veicolo").value);
+                   
+                   
+        //alert(localStorage.getItem("citta"))
 				   
 		
 		if(IDPage==2){
@@ -552,26 +555,27 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#impostazioni", function(e){
 				   
-				   if(localStorage.getItem("start")!=1){
+				   if(localStorage.getItem("start")!="1"){
+                   
 				    localStorage.setItem("fuso", "Italy");
 				    localStorage.setItem("citta", "154");
+                   
 				   }
 
 				   prendinazione()
 				   
-				   //else{
-				    //prendinazione()
-				   //}
 				   
 				   $.mobile.changePage( "#page6", { transition: "slide", changeHash: false });
 				   
-				   //window.location.href = "#page6";
 				   localStorage.setItem("pagina","imp")
 				   
 				   var myScroll2;
 
 				   myScroll2 = new IScroll('#wrapper2', { click: true });
 				   setTimeout (function(){
+                     //$("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
+                     //$("#citta").selectmenu("refresh");
+                               
 					  myScroll2.refresh();
 							   
 				   }, 1700);
@@ -585,11 +589,11 @@ function onDeviceReady() {
 				   
 				   prendicittaid(localStorage.getItem("citta"))
 				   
-				   
-				   $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
-				   $("#citta").selectmenu("refresh");
+                   //alert(localStorage.getItem("citta") + " " + localStorage.getItem("city"))
+                   
+                   $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
+                   $("#citta").selectmenu("refresh");
 
-				   
 				   //alert(localStorage.getItem("citta"))
 				   
 				   //$("#fuso").html(nazione);
