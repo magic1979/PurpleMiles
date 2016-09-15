@@ -734,6 +734,7 @@ function onDeviceReady() {
 		
 	}*/
 	
+	
 	/*if(screen.width < 768){
 		$("#quando").html("<img src='img/ico_clock3.png' width='55px'>");
 		$("#da").html("<img src='img/ico_start1.png' width='45px'>");
@@ -3643,7 +3644,7 @@ function controllaofferte(){
 function vediofferte(){
 	
 	$("#timer2").show();
-	//alert("Vedo");
+	alert("Vedo");
 	var somma;
 	var tempistica;
 	var conta = 0;

@@ -1186,25 +1186,24 @@
 									localStorage.setItem("risppass", "")
 									
 									
-									cordova.plugins.backgroundMode.enable();
+									//cordova.plugins.backgroundMode.enable();
 									
-									cordova.plugins.backgroundMode.onactivate = function () {
+									//cordova.plugins.backgroundMode.onactivate = function () {
 										
 										
-									var watchID = navigator.geolocation.watchPosition(gpsonSuccess25, onError25, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
+									//var watchID = navigator.geolocation.watchPosition(gpsonSuccess25, onError25, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 										
-									vediofferte()
+									//vediofferte()
 										
 										// Modify the currently displayed notification
-										cordova.plugins.backgroundMode.configure({
-											text:'PurpleMilse'
+										//cordova.plugins.backgroundMode.configure({
+											//text:'PurpleMilse'
 																				 
-										});
-									}
+										//});
+									//}
 									
 									
 									vediofferte()
-									
 									
 									setTimeout(function () {
 									  myScroll.refresh();

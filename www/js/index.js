@@ -462,9 +462,9 @@ receivedEvent: function(id) {
 	
 	
 	
-	if(isMobileScreenWidth < 768){
+	if(screen.width < 768){
 
-		if(isMobileScreenHeight < 540){
+		if(screen.height < 540){
 			
 			$("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="80px"><p class="testo_sottotitoloIP4" id="vea">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">'+ profiloA +' '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="80px"><p class="testo_sottotitoloIP4" id="vep">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIP4">'+ profiloA +' '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		}
@@ -476,7 +476,7 @@ receivedEvent: function(id) {
 	else
 	{
 		
-		if(isMobileScreenWidth > 719){
+		if(screen.width > 719){
 		
 		   $("#tblhome").html('<table id="tblhome" width="90%" height="'+ altezzatbl2 +'" border="0" valign="center" align="center" class="tabella"><tr height="48%"><td width="100%" align="center"><a id="mappa6" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Volante.png" width="210px"><p class="testo_sottotitoloIPAD" id="vea">Voglio essere AUTISTA</p></a><table><tr><td><table id="profiloperc" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">'+ profiloA +' '+ localStorage.getItem("perc_autista") +'%</font></td></tr></table></td><td><div id="stelleautista"></div></td></tr></table></td></tr><tr height="2%"><td width="70%" align="center"><table width="70%"><tr><td><hr></td></tr></table></td></tr><tr height="48%"> <td width="100%" align="center"><a id="mappa7" href="#" rel="external" class="hvr-wobble-vertical"><img src="img/Valigia.png" width="210px"><p class="testo_sottotitoloIPAD" id="vep">Voglio essere PASSEGGERO</p></a><table><tr><td><table id="profiloperc2" class="button_small"><tr><td><font color="#FFF" size="4" class="testo_biancoIPAD">'+ profiloA +' '+ localStorage.getItem("perc_pass") +'%</font></td></tr></table></td><td><div id="stellepass"></div></td></tr></table></td> </tr><tr height="10%"> <td width="100%" align="center"></td></tr></table><br>')
 		}
@@ -7459,7 +7459,22 @@ function richiesta1() {
 									 
 					});
 					  
-					  
+				 if(localStorage.getItem("lingua")=="it"){
+				   var h5codici = "codice commento"
+				 }
+				 else if(localStorage.getItem("lingua")=="en"){
+					var h5codici = "Feedback code"
+				 }
+				 else if(localStorage.getItem("lingua")=="es"){
+					var h5codici = "Codigo del comentario"
+				 }
+				 else if(localStorage.getItem("lingua")=="fr"){
+					var h5codici = "Code de commentaire"
+				 }
+				 else{
+					 var h5codici = "Feedback code"
+				 }
+					 
 				   $("#code1").show();
 				   $("#code1").html("<b>"+h5codici+" : " + cod1 + "</b>");
 					  
@@ -8517,7 +8532,21 @@ function richiesta2() {
 							return false;
 					});
 
-
+					  if(localStorage.getItem("lingua")=="it"){
+						  var h5codici = "codice commento"
+					  }
+					  else if(localStorage.getItem("lingua")=="en"){
+						  var h5codici = "Feedback code"
+					  }
+					  else if(localStorage.getItem("lingua")=="es"){
+						  var h5codici = "Codigo del comentario"
+					  }
+					  else if(localStorage.getItem("lingua")=="fr"){
+						  var h5codici = "Code de commentaire"
+					  }
+					  else{
+						  var h5codici = "Feedback code"
+					  }
 					  
 				   $("#code2").show();
 				   $("#code2").html("<b>"+h5codici+" : " + cod2 + "</b>");
@@ -9548,6 +9577,23 @@ function richiesta3() {
 										 
 										 });
 				   }
+					
+					
+				 if(localStorage.getItem("lingua")=="it"){
+					var h5codici = "codice commento"
+				 }
+				 else if(localStorage.getItem("lingua")=="en"){
+					 var h5codici = "Feedback code"
+				 }
+				 else if(localStorage.getItem("lingua")=="es"){
+					 var h5codici = "Codigo del comentario"
+				 }
+				 else if(localStorage.getItem("lingua")=="fr"){
+					 var h5codici = "Code de commentaire"
+				 }
+				 else{
+					 var h5codici = "Feedback code"
+				 }
 
 				  
 				  $("#code3").html("<b>"+h5codici+" : " + cod3 + "</b>");
