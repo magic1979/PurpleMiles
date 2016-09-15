@@ -336,15 +336,11 @@ receivedEvent: function(id) {
 		$("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		$("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		
-		/*navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);*/
 		
+		setTimeout(function() {
+			window.location.href = "index.html";
+		}, 2500);
 		
-
 	}
 	
 		$(document).on("tap", "#esciapp", function(e){
@@ -6663,6 +6659,7 @@ function richiesta1() {
     var pagina4quando;
     var pagina4partenza
     var pagina4arrivo
+	var h5codici
     
     var db;
     db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
@@ -6673,7 +6670,10 @@ function richiesta1() {
             var len = results.rows.length, i;
                                  
                 if(localStorage.getItem("lingua")=="it"){
-                                 
+					
+					h5codici = "Codici commento"
+
+                                
                     for (i = 0; i < len; i++){
                       if(results.rows.item(i).id_traduzione == "pagina4quando"){
                         pagina4quando = results.rows.item(i).italiano.replace("P0011", "'");
@@ -6793,6 +6793,11 @@ function richiesta1() {
                                  
                                  
             if(localStorage.getItem("lingua")=="en"){
+				
+
+				h5codici = "Feedback code"
+
+
                                  
                 for (i = 0; i < len; i++){
                       
@@ -6914,6 +6919,10 @@ function richiesta1() {
                 }
 					  
 				if(localStorage.getItem("lingua")=="fr"){
+					
+
+				h5codici = "Code de commentaire"
+
 					  
 				  for (i = 0; i < len; i++){
 					  
@@ -7035,6 +7044,8 @@ function richiesta1() {
 				}
 					  
 				if(localStorage.getItem("lingua")=="es"){
+					
+					h5codici = "Codigo del comentario"
 					  
 					for (i = 0; i < len; i++){
 					  
@@ -7465,7 +7476,8 @@ function richiesta1() {
 						
 						var addressLongLat = lat1+","+lng1;
 	
-						window.open("maps:daddr="+ addressLongLat +"" , '_system');
+						//window.open("maps:daddr="+ addressLongLat +"" , '_system');
+						window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 								  
 						// ll=50.894967,4.341626
 						
@@ -7693,6 +7705,9 @@ function richiesta2() {
                                  var len = results.rows.length, i;
                                  
                                  if(localStorage.getItem("lingua")=="it"){
+									 
+									 h5codici = "Codici commento"
+
                                  
                                  for (i = 0; i < len; i++){
                                  if(results.rows.item(i).id_traduzione == "pagina4quando"){
@@ -7813,7 +7828,11 @@ function richiesta2() {
                                  
                                  
 							if(localStorage.getItem("lingua")=="en"){
-                                 
+								
+
+								h5codici = "Feedback code"
+
+
 								for (i = 0; i < len; i++){
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4quando"){
@@ -7933,6 +7952,10 @@ function richiesta2() {
 							}
 								 
 							if(localStorage.getItem("lingua")=="fr"){
+								
+
+							h5codici = "Code de commentaire"
+
 								 
 							  for (i = 0; i < len; i++){
 								 
@@ -8053,6 +8076,9 @@ function richiesta2() {
 							}
 								 
 							if(localStorage.getItem("lingua")=="es"){
+								
+
+								h5codici = "Codigo del comentario"
 								 
 							  for (i = 0; i < len; i++){
 								 
@@ -8507,7 +8533,8 @@ function richiesta2() {
 
 								 var addressLongLat = lat2+","+lng2;
 
-	                            window.open("maps:daddr="+ addressLongLat +"" , '_system');
+	                            //window.open("maps:daddr="+ addressLongLat +"" , '_system');
+								window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -8708,6 +8735,9 @@ function richiesta3() {
                                  var len = results.rows.length, i;
                                  
                                  if(localStorage.getItem("lingua")=="it"){
+									 
+								h5codici = "Codici commento"
+
                                  
                                  for (i = 0; i < len; i++){
                                  if(results.rows.item(i).id_traduzione == "pagina4quando"){
@@ -8828,6 +8858,10 @@ function richiesta3() {
                                  
                                  
 							if(localStorage.getItem("lingua")=="en"){
+								
+
+								h5codici = "Feedback code"
+
                                  
 								for (i = 0; i < len; i++){
                                  
@@ -8950,6 +8984,10 @@ function richiesta3() {
 								 
 								 
 							if(localStorage.getItem("lingua")=="fr"){
+								
+
+							h5codici = "Code de commentaire"
+
 								 
 							  for (i = 0; i < len; i++){
 								 
@@ -9071,6 +9109,8 @@ function richiesta3() {
 							}
 								 
 							if(localStorage.getItem("lingua")=="es"){
+								
+							h5codici = "Codigo del comentario"
 								 
 							  for (i = 0; i < len; i++){
 								 
@@ -9522,7 +9562,8 @@ function richiesta3() {
 
 						var addressLongLat = lat3+","+lng3;
 	
-	                             window.open("maps:daddr="+ addressLongLat +"" , '_system');
+	                             //window.open("maps:daddr="+ addressLongLat +"" , '_system');
+								 window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
 								 $("#blob2").hide();
 								 
