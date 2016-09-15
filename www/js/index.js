@@ -1097,9 +1097,9 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#legenda1", function(e){
 				   
-		var ref = window.open('http://pm.purplemiles.com/guida/index.php?lang='+ localStorage.getItem("lingua") +'', '_blank', 'location=no');
+		var ref = window.open('http://pm.purplemiles.com/guida/', '_blank', 'location=no');
 	
-	    //http://pm.purplemiles.com/guida/
+	    //http://pm.purplemiles.com/guida/index.php?lang='+ localStorage.getItem("lingua") +'
 	});
 	
 	
