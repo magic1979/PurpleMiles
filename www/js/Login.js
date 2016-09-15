@@ -2191,7 +2191,7 @@ function iscriviti(){
 	var nazionereg = document.getElementById("nazione7").value;
 	
 	
-	var specialChars = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-="
+	var specialChars = "<>!#$%^&*()[]{}?:;|'\"\\,/~`-="
 	var check = function(string){
 		
 		for(i = 0; i < specialChars.length;i++){
