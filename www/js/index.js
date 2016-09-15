@@ -7305,7 +7305,6 @@ function richiesta1() {
 	$("#nickblob3").html("<font color='#cc33cc' size='4'><b>"+ nick1 +" "+ percentuale1 +"%</b></font>");
 				  
 
-
 	
 	if(wifi1=="Si"){
 	  $("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi "+ wifi1 +"</b></font>");
@@ -7462,7 +7461,7 @@ function richiesta1() {
 					  
 					  
 				   $("#code1").show();
-				   $("#code1").html("<b>Codice Commento : " + cod1 + "</b>");
+				   $("#code1").html("<b>"+h5codici+" : " + cod1 + "</b>");
 					  
 				   $("#chat1").show();
 					  
@@ -8521,7 +8520,7 @@ function richiesta2() {
 
 					  
 				   $("#code2").show();
-				   $("#code2").html("<b>Codice Commento : " + cod2 + "</b>");
+				   $("#code2").html("<b>"+h5codici+" : " + cod2 + "</b>");
 					  
 				   $("#4img").html("&nbsp;&nbsp;<img src='img/2_verde.png' width='40'>");
 				   $("#3img").html("&nbsp;&nbsp;<img src='img/2_verde.png' width='40'>");
@@ -9551,7 +9550,7 @@ function richiesta3() {
 				   }
 
 				  
-				  $("#code3").html("<b>Codice Commento : " + cod3 + "</b>");
+				  $("#code3").html("<b>"+h5codici+" : " + cod3 + "</b>");
 				  $("#chat3").show();
 					  
 				  $("#4img").html("&nbsp;&nbsp;<img src='img/3_verde.png' width='40'>");
