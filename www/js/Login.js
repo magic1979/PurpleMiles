@@ -93,6 +93,7 @@ function onDeviceReady() {
     agg();
 	
 	localStorage.setItem("pagina","log")
+	localStorage.setItem("pagelog","log")
 	
 	StatusBar.hide();
 	
@@ -405,6 +406,8 @@ function onDeviceReady() {
 					    $("#precitta").html("<b><font color='#cc33cc'>" +item.city+"</font></b>");
 					    localStorage.setItem("city", item.city);
 					  
+						
+					  
 					  }
 					  else{
 					  
@@ -505,7 +508,7 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#conferma", function(e){
 				   
-   
+        localStorage.setItem("pagelog","log")
 		/*if (document.getElementById("citta").value === null || document.getElementById("citta").value=="null" || typeof(document.getElementById("citta").value) == 'undefined' || document.getElementById("citta").value==0 || document.getElementById("citta").value=="") {
 			navigator.notification.alert(
 												'inserire una citta per il fuso orario',  // message
@@ -582,6 +585,11 @@ function onDeviceReady() {
 				   
 				   prendicittaid(localStorage.getItem("citta"))
 				   
+				   
+				   $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
+				   $("#citta").selectmenu("refresh");
+
+				   
 				   //alert(localStorage.getItem("citta"))
 				   
 				   //$("#fuso").html(nazione);
@@ -631,7 +639,17 @@ function onDeviceReady() {
 		
 	});
 	
-	$(document).on("touchend", "#iscriviti", function(e){
+	$(document).on("touchend", "#accedi2", function(e){
+		localStorage.setItem("pagelog","log")
+		window.location.href = "#page";
+		//login();
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	
+	
+	$(document).on("touchstart", "#iscriviti", function(e){
 				   //window.location.href = "index.html";
 				   iscriviti();
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
@@ -648,7 +666,8 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#recuperopsw", function(e){
 		
-
+	localStorage.setItem("pagelog","recpsw")
+				   
     window.location.href = "#page8";
                    
 		  
@@ -755,6 +774,8 @@ function onDeviceReady() {
 	
 	$(document).on("tap", "#regsito", function(e){
 		
+	localStorage.setItem("pagelog","reg")
+				   
 	window.location.href = "#page7";
 		
 		
@@ -957,6 +978,7 @@ function onDeviceReady() {
 				
 				var citta = "<option value='154'>Rome</option>"
 				$("#citta").html(citta);
+				$("#citta").selectmenu("refresh");
 				
 				document.getElementById("citta").value = "Rome";
 				
@@ -965,7 +987,10 @@ function onDeviceReady() {
 				prendicittaid("Rome")
 			}
 			else{
+				
 			  $("#citta").html("<option value='"+localStorage.getItem("citta")+"'>"+ localStorage.getItem("city") +"</option>");
+				
+				
 			}
 			
 
@@ -1809,6 +1834,7 @@ function prendinazione(){
 
 
 
+
 function getKey(key){
  if ( key == null ) {
  keycode = event.keyCode;
@@ -1818,14 +1844,30 @@ function getKey(key){
  }
  
  if (keycode ==13){
+	 if(localStorage.getItem("pagelog")=="log"){
+      setTimeout(function() {
+	     login();
+      },   200);
+ 
+     }
 	 
-   setTimeout(function() {
-	 login();
-   }, 200);
- 
+	 if(localStorage.getItem("pagelog")=="reg"){
+		 setTimeout(function() {
+			  iscriviti();
+		  }, 200);
+
+	 }
+	 if(localStorage.getItem("pagelog")=="recpsw"){
+		 setTimeout(function() {
+			$("#recuperopsw").tap();
+		}, 200);
+		
+	 }
  }
- 
- }
+	
+}
+
+
 
 
 function verificawifi(){
@@ -2113,8 +2155,8 @@ function iscriviti(){
     }
 	 else if(localStorage.getItem("lingua")=="fr"){
 		 
-		 var alertemail = "Entrez l'e-mail";
-		 var alertpsw = "Entrez le mot de passe";
+	  var alertemail = "Entrez l'e-mail";
+	  var alertpsw = "Entrez le mot de passe";
 	  var alertnome = "Entrez le nom";
 	  var noemailpsw = "S'il vous plaît vèrifier votre e-mail";
 		 
@@ -2122,8 +2164,8 @@ function iscriviti(){
 	 }
 	 else if(localStorage.getItem("lingua")=="es"){
 		 
-	 var alertemail = "Insertar su correo electrònico";
-	 var alertpsw = "Insertar la contraseña";
+	  var alertemail = "Insertar su correo electrònico";
+	  var alertpsw = "Insertar la contraseña";
 	  var alertnome = "Insertar nombre";
 	  var noemailpsw = "Comprobar el correo electrònico";
 		 
@@ -2144,7 +2186,33 @@ function iscriviti(){
 	var nomereg = self.document.formia.nome.value;
 	var nazionereg = document.getElementById("nazione7").value;
 	
+	
+	var specialChars = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-="
+	var check = function(string){
+		
+		for(i = 0; i < specialChars.length;i++){
+			if(string.indexOf(specialChars[i]) > -1){
+				
+				return true
+			}
+		}
+		
+		return false;
+	}
+	
+	
+	if(check(pinreg) == false){
+		// Code that needs to execute when none of the above is in the string
+	}else{
+		alert('Your search string contains illegal characters.');
+		
+		return;
+	}
+	
+	
+	
 	if (emailreg == "") {
+		
 		navigator.notification.alert(
 									 alertemail,  // message
 									 alertDismissed,         // callback
@@ -2155,7 +2223,9 @@ function iscriviti(){
 	}
 	
 	
+	
 	if (pinreg == "") {
+		
 		navigator.notification.alert(
 									 alertpsw,  // message
 									 alertDismissed,         // callback
@@ -2166,10 +2236,11 @@ function iscriviti(){
 	}
 	
 	if (nomereg == "") {
+		
 		navigator.notification.alert(
 									 alertnome,  // message
 									 alertDismissed,         // callback
-									 'Nome',            // title
+									 'Name',            // title
 									 'OK'                  // buttonName
 									 );
 		return;
@@ -2182,6 +2253,7 @@ function iscriviti(){
 		
 	}
 	else {
+		
 		navigator.notification.alert(
 									 noemailpsw,  // message
 									 alertDismissed,         // callback
@@ -2191,6 +2263,22 @@ function iscriviti(){
 		return;
 	}
 	
+	
+	/*pinAddr = self.document.formia.pinreg.value;
+	Filtro = /^([a-zA-Z0-9_\.\-])+([a-zA-Z0-9]{2,})+$/;
+	if (Filtro.test(pinAddr)) {
+		
+	}
+	else {
+		
+		navigator.notification.alert(
+									 'NO',  // message
+									 alertDismissed,         // callback
+									 'Pin',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}*/
 	
 	
     if(localStorage.getItem("lingua")=="it"){
@@ -2250,6 +2338,10 @@ function iscriviti(){
 		   $.each(result, function(i,item){
 				  if (item.Token == '1'){
 				  
+				  document.getElementById("emailreg").value = "";
+				  document.getElementById("pinreg").value = "";
+				  document.getElementById("nome").value = "";
+				  
 				  navigator.notification.alert(
 											   regok,  // message
 											   alertDismissed,         // callback
@@ -2301,7 +2393,8 @@ function iscriviti(){
 
 
 function recupera() {
-    
+	
+	
     if(localStorage.getItem("lingua")=="it"){
         
         var alertattenzione = "Attenzione"

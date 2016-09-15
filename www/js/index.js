@@ -723,6 +723,7 @@ receivedEvent: function(id) {
     
     
     var dsconn;
+	var Tdsconn;
     var btnModifica;
     var pagina4quando;
     var s_partenza;
@@ -730,6 +731,9 @@ receivedEvent: function(id) {
     var partenzaM;
     var arrivoM;
     var distanzaM;
+	
+	var h5arrivo;
+	var h5partenza;
     
     var db;
     db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
@@ -741,7 +745,8 @@ receivedEvent: function(id) {
                                  
                             if(localStorage.getItem("lingua")=="it"){
                                  
-                                 for (i = 0; i < len; i++){
+								 Tdsconn = "Esci"
+								 for (i = 0; i < len; i++){
                                  
                                     $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano.replace("P0011", "'"));
                                  
@@ -784,15 +789,26 @@ receivedEvent: function(id) {
                                    distanzaM = results.rows.item(i).italiano.replace("P0011", "'");
                                  
                                  }
-                                 
-                                 
+								 
+								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
+								  h5arrivo = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h5partenza"){
+								  h5partenza = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 }
+								 
+								 
                                }
                                  
                             }
                                  
                                  
                             if(localStorage.getItem("lingua")=="en"){
-                                 
+								 
+								 Tdsconn = "Logout"
                                  for (i = 0; i < len; i++){
                                  
                                     $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
@@ -836,6 +852,16 @@ receivedEvent: function(id) {
                                    distanzaM = results.rows.item(i).inglese.replace("P0011", "'");
                                  
                                  }
+								 
+								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
+								 h5arrivo = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h5partenza"){
+								 h5partenza = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 }
 
                             }
                                  
@@ -843,6 +869,7 @@ receivedEvent: function(id) {
 								 
 						if(localStorage.getItem("lingua")=="fr"){
 								 
+							Tdsconn = "Logout"
 							for (i = 0; i < len; i++){
 								 
 								 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).francese.replace("P0011", "'"));
@@ -888,13 +915,24 @@ receivedEvent: function(id) {
 								 
 								 }
 								 
+								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
+								 h5arrivo = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h5partenza"){
+								 h5partenza = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 }
+								 
 								}
 								 
 							}
 								 
 								 
 							if(localStorage.getItem("lingua")=="es"){
-								 
+							
+							  Tdsconn = "Logout"
 							  for (i = 0; i < len; i++){
 								 
 								 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
@@ -943,6 +981,16 @@ receivedEvent: function(id) {
 								 
 								 }
 								 
+								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
+								 h5arrivo = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h5partenza"){
+								 h5partenza = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 }
+								 
 								}
 								 
 							}
@@ -952,7 +1000,6 @@ receivedEvent: function(id) {
 								 
                     }, null);
                 });
-	
 	
 	
     //////
@@ -1050,8 +1097,9 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#legenda1", function(e){
 				   
-		var ref = window.open('http://www.purplemiles.com/www/legenda.php?lang='+ localStorage.getItem("lingua") +'', '_blank', 'location=no');
-				   
+		var ref = window.open('http://pm.purplemiles.com/guida/index.php?lang='+ localStorage.getItem("lingua") +'', '_blank', 'location=no');
+	
+	    //http://pm.purplemiles.com/guida/
 	});
 	
 	
@@ -1596,7 +1644,7 @@ receivedEvent: function(id) {
 				   navigator.notification.confirm(
 												  dsconn + " " + localStorage.getItem("nick"),  // message
 												  onConfirm,              // callback to invoke with index of button pressed
-												  'Logout',            // title
+												  Tdsconn,            // title
 												  annallab      // buttonLabels
 												  );
 				   
@@ -2088,6 +2136,7 @@ function CenterControl(controlDiv, map) {
     var btnModifica;
     
     var dsconn;
+	var Tdsconn;
     var btnModifica;
     
     var db;
@@ -7649,7 +7698,7 @@ function richiesta2() {
                                  if(results.rows.item(i).id_traduzione == "pagina4quando"){
                                  pagina4quando = results.rows.item(i).italiano.replace("P0011", "'");
                                  
-                                 if(posticipata1==0){
+                                 if(posticipata2==0){
                                  $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
                                  $("#nickhome4").removeClass("button_small").addClass("button_small_green");
                                  }
@@ -7770,7 +7819,7 @@ function richiesta2() {
                                  if(results.rows.item(i).id_traduzione == "pagina4quando"){
                                  pagina4quando = results.rows.item(i).inglese.replace("P0011", "'");
                                  
-                                 if(posticipata1==0){
+                                 if(posticipata2==0){
                                  $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
                                  $("#nickhome4").removeClass("button_small").addClass("button_small_green");
                                  }
@@ -7890,7 +7939,7 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4quando"){
 								 pagina4quando = results.rows.item(i).francese.replace("P0011", "'");
 								 
-								 if(posticipata1==0){
+								 if(posticipata2==0){
 								 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
 								 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
 								 }
@@ -8010,7 +8059,7 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4quando"){
 								 pagina4quando = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 
-								 if(posticipata1==0){
+								 if(posticipata2==0){
 								 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando2 +", Ora: "+ ora2 +"<br><br>");
 								 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
 								 }
@@ -8664,7 +8713,7 @@ function richiesta3() {
                                  if(results.rows.item(i).id_traduzione == "pagina4quando"){
                                  pagina4quando = results.rows.item(i).italiano.replace("P0011", "'");
                                  
-                                 if(posticipata1==0){
+                                 if(posticipata3==0){
                                  $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
                                  $("#nickhome4").removeClass("button_small").addClass("button_small_green");
                                  }
@@ -8785,7 +8834,7 @@ function richiesta3() {
                                  if(results.rows.item(i).id_traduzione == "pagina4quando"){
                                  pagina4quando = results.rows.item(i).inglese.replace("P0011", "'");
                                  
-                                 if(posticipata1==0){
+                                 if(posticipata3==0){
                                  $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
                                  $("#nickhome4").removeClass("button_small").addClass("button_small_green");
                                  }
@@ -8907,7 +8956,7 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4quando"){
 								 pagina4quando = results.rows.item(i).francese.replace("P0011", "'");
 								 
-								 if(posticipata1==0){
+								 if(posticipata3==0){
 								 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
 								 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
 								 }
@@ -9028,7 +9077,7 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4quando"){
 								 pagina4quando = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 
-								 if(posticipata1==0){
+								 if(posticipata3==0){
 								 $("#quando").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4quando+": </font></b><br>&nbsp;&nbsp;"+ quando3 +", Ora: "+ ora3 +"<br><br>");
 								 $("#nickhome4").removeClass("button_small").addClass("button_small_green");
 								 }
@@ -9617,13 +9666,76 @@ function lista5() {
 	
 	var somma;
 	var tempistica;
+	var tempistica1;
+	var h5tempistica
+	var h5accettazione
+	var h5codici
+	var h5quando
+	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		tempistica1 = "Tempo di arrivo"
+		h5arrivo = "Arrivo"
+		h5partenza = "Partenza"
+		h5tempistica = "Orario confermato"
+		
+		h5accettazione = "Accettazione confermata"
+		h5codici = "Codici commento"
+		h5quando = "Quando"
+		
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		tempistica1 = "Time of arrival"
+		h5arrivo = "Arrival"
+		h5partenza = "Departure"
+		h5tempistica = "Time confirmed"
+		
+		h5accettazione = "Acceptance confirmed"
+		h5codici = "Feedback code"
+		h5quando = "When"
+	}
+	else if(localStorage.getItem("lingua")=="fr"){
+		
+		tempistica1 = "Heure d'arriv&eacute;e"
+		h5arrivo = "Arriv&eacute;e"
+		h5partenza = "D&eacute;part"
+		h5tempistica = "Temps confirm&eacute;"
+		
+		h5accettazione = "Acceptation confirm&eacute;e"
+		h5codici = "Code de commentaire"
+		h5quando = "Quand"
+	}
+	else if(localStorage.getItem("lingua")=="es"){
+		
+		tempistica1 = "Hora de llegada"
+		h5arrivo = "Llegada"
+		h5partenza = "Salida"
+		h5tempistica = "Hora confirmada"
+		
+		h5accettazione = "Aceptaci&oacute;n confirmada"
+		h5codici = "Codigo del comentario"
+		h5quando = "Cuando"
+	}
+	else{
+		
+		tempistica1 = "Time of arrival"
+		h5arrivo = "Arrival"
+		h5partenza = "Departure"
+		h5tempistica = "Time confirmed"
+		
+		h5accettazione = "Acceptance confirmed"
+		h5codici = "Feedback code"
+		h5quando = "When"
+	}
+	
+
 	
 	$.mobile.changePage( "#home5", { transition: "slide", changeHash: false });
 
 	$("#nickhome5").html(localStorage.getItem("nick"));
 	
-	
-	//alert("http://purplemiles.com/www2/check_stato2.php?id_autista="+ localStorage.getItem("id_autista") +"")
 	
 	$.ajax({
 		   type:"GET",
@@ -9641,9 +9753,6 @@ function lista5() {
 				  
 				if(item.Token==1){
 				  
-				  //$("#offerte5").html("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ item.importo +"<br><b>Quando: </b>"+ item.quando +"&nbsp;<b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo: </b>"+ item.arrivo +"</td></tr><tr><td align='center'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr></table>");
-				  
-				  
 				  if(item.importo==0){
 				    somma = "Gratis"
 				  }
@@ -9652,19 +9761,19 @@ function lista5() {
 				  }
 				  
 				  if(item.posticipata==0){
-				    tempistica = "Tempo di arrivo: " + item.tempo + " minuti";
+				    tempistica = ""+tempistica1+": " + item.tempo + " minuti";
 				  }
 				  else{
-				    tempistica = "Confermato l'orario";
+				    tempistica = h5tempistica;
 				  }
 				  
 				  //"+ item.note_autista +"
 				  
 				  if(item.cell!=""){
-				  $("#offerte5").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small_green' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>Accettazione confermata</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>"+ item.note_autista +" </b>Note</td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<b>Codice Commento: "+ item.cod_autista +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				  $("#offerte5").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small_green' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>"+h5accettazione+"</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>"+h5quando+": </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>"+h5partenza+" : </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>"+h5arrivo+" : </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>"+ item.note_autista +" </b>Note</td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<b>"+h5codici+": "+ item.cod_autista +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  }
 				  else{
-				  $("#offerte5").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small_green' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>Accettazione confermata</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>Quando: </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>Partenza: </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>Arrivo </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><br><a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<b>Codice Commento: "+ item.cod_autista +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				  $("#offerte5").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small_green' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>"+h5accettazione+"</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>"+h5quando+": </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>"+h5partenza+" : </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>"+h5arrivo+" :  </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><br><a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<b>"+h5codici+": "+ item.cod_autista +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  }
 				  
 				  
@@ -9685,29 +9794,29 @@ function lista5() {
                                         
                                         if(localStorage.getItem("lingua")=="it"){
                                         
-                                        $("#chattext5").attr("placeholder", "Scrivi un messaggio");
+                                          $("#chattext5").attr("placeholder", "Scrivi un messaggio");
                                         
                                         }
                                         else if(localStorage.getItem("lingua")=="en"){
                                         
-                                        $("#chattext5").attr("placeholder", "Write a message");
+                                          $("#chattext5").attr("placeholder", "Write a message");
                                         
                                         }
                                         else if(localStorage.getItem("lingua")=="fr"){
                                         
-                                        $("#chattext5").attr("placeholder", "Ecrire un message");
+										  $("#chattext5").attr("placeholder", "Ecrire un message");
                                         
                                         }
                                         else if(localStorage.getItem("lingua")=="es"){
                                         
-                                        $("#chattext5").attr("placeholder", "Escribir mensaje");
+                                          $("#chattext5").attr("placeholder", "Escribir mensaje");
                                         
                                         }
                                         else{
                                         
-                                        $("#chattext5").attr("placeholder", "Write a message");
+                                          $("#chattext5").attr("placeholder", "Write a message");
                                         
-                                        }
+							}
                                         
 								
 								localStorage.setItem("chatpass5", "")
@@ -10309,7 +10418,7 @@ function inviachat(id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/pubblica_chat_autista.php?id_messaggio="+ localStorage.getItem("id_richiesta") +"&nick="+ localStorage.getItem("nick") +"&messaggio="+ indirizzo +"",
+		   url:"http://purplemiles.com/www2/pubblica_chat_autista.php?id_messaggio="+ localStorage.getItem("id_richiesta") +"&nick="+ localStorage.getItem("nickpass") +"&messaggio="+ indirizzo +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -10898,10 +11007,12 @@ function inviopasseggero(come){
 
 
 function controllachat(uman) {
+							  
+	//alert("http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nickpass") +"")
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
+		   url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nickpass") +"",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -10910,6 +11021,8 @@ function controllachat(uman) {
 		   success:function(result){
 		   
 		   if(localStorage.getItem("chatcontroll")==JSON.stringify(result)){
+		   
+		     //alert("uguale")
 		   
 		   }
 		   else{
@@ -10930,7 +11043,8 @@ function controllachat(uman) {
 				  if( $(".ui-panel").hasClass("ui-panel-open") == true ){
 				    //alert("OPENED");
 				  }else{
-                   
+				   
+				    //alert("NO OPENED");
                    if(localStorage.getItem("lingua")=="it"){
                    
                    $("#chattext").attr("placeholder", "Scrivi un messaggio");
@@ -11048,7 +11162,7 @@ function controllachat2(ric,id) {
 	
 							  $.ajax({
 									 type:"GET",
-									 url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
+									 url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nickpass") +"",
 									 contentType: "application/json",
 									 //data: {ID: "Lazio"}, LIMIT 10
 									 timeout: 7000,
@@ -11130,7 +11244,7 @@ function controllachat2(ric,id) {
 
 							  $.ajax({
 									 type:"GET",
-									 url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
+									 url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nickpass") +"",
 									 contentType: "application/json",
 									 //data: {ID: "Lazio"}, LIMIT 10
 									 timeout: 7000,
@@ -11225,7 +11339,7 @@ function controllachat2(ric,id) {
 							  
 							  $.ajax({
 									 type:"GET",
-									 url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nick") +"",
+									 url:"http://purplemiles.com/www2/controlla_chat.php?nick="+ localStorage.getItem("nickpass") +"",
 									 contentType: "application/json",
 									 //data: {ID: "Lazio"}, LIMIT 10
 									 timeout: 7000,
