@@ -3644,7 +3644,7 @@ function controllaofferte(){
 function vediofferte(){
 	
 	$("#timer2").show();
-	alert("Vedo");
+	//alert("Vedo");
 	var somma;
 	var tempistica;
 	var conta = 0;
