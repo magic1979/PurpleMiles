@@ -911,7 +911,7 @@ function onDeviceReady() {
 				   
 		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 				   
-				   /*$('#nome').focus(function(){
+				   $('#nome').focus(function(){
 									//window.scrollTo(0, 100);
 									//document.body.scrollTop = $(this).offset().top;
 						myScroll3.scrollToElement("#nazione7", "1s");
@@ -927,7 +927,7 @@ function onDeviceReady() {
 						$('#pinreg').blur();
 								  
 						cordova.plugins.Keyboard.close();
-					});*/
+					});
 				   
 				   
 		//var ref = window.open('http://www.purplemiles.com/www/enter.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
