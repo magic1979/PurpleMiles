@@ -12,23 +12,7 @@ function onDeviceReady() {
 	}
 	
 	
-	$('#nome').focus(function(){
-		myScroll3.scrollToElement("#nome", "1s");
-	});
-	
-	$('#pinreg').focus(function(){
-		myScroll3.scrollToElement("#pinreg", "1s");
-	});
-	
-	
-	$(document).on("touchmove", function(e){
-		$('#nome').blur();
-		$('#pinreg').blur();
-				   
-		cordova.plugins.Keyboard.close();
-	});
-	
-	
+
 	////// BASE LINGUA ////////
 	
 	
@@ -919,12 +903,32 @@ function onDeviceReady() {
 		myScroll3 = new IScroll('#wrapper3', { click: true });
 		setTimeout (function(){
 			myScroll3.refresh();
+					
+					
 		}, 1000);
 				   
 		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
 				   
 		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-
+				   
+				   /*$('#nome').focus(function(){
+									//window.scrollTo(0, 100);
+									//document.body.scrollTop = $(this).offset().top;
+						myScroll3.scrollToElement("#nazione7", "1s");
+					});
+				   
+				   $('#pinreg').focus(function(){
+						myScroll3.scrollToElement("#nazione7", "1s");
+					});
+				   
+				   
+				   $(document).on("touchmove", function(e){
+						$('#nome').blur();
+						$('#pinreg').blur();
+								  
+						cordova.plugins.Keyboard.close();
+					});*/
+				   
 				   
 		//var ref = window.open('http://www.purplemiles.com/www/enter.php?lang='+ localStorage.getItem("lingua") +'', '_system', 'location=no');
 
