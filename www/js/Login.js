@@ -2146,6 +2146,7 @@ function iscriviti(){
       var alertpsw = "Inserire la password";
 	  var alertnome = "Insert name";
 	  var noemailpsw = "Verificare la email";
+	  var nocorrectpsw = "La tua password contiene caratteri non corretti";
                    
      }
      else if(localStorage.getItem("lingua")=="en"){
@@ -2154,7 +2155,7 @@ function iscriviti(){
       var alertpsw = "Enter the password";
 	  var alertnome = "Enter the name";
 	  var noemailpsw = "Please check your email";
-                   
+	  var nocorrectpsw = "Your password contains illegal characters";
                    
     }
 	 else if(localStorage.getItem("lingua")=="fr"){
@@ -2163,7 +2164,7 @@ function iscriviti(){
 	  var alertpsw = "Entrez le mot de passe";
 	  var alertnome = "Entrez le nom";
 	  var noemailpsw = "S'il vous plaît vèrifier votre e-mail";
-		 
+	  var nocorrectpsw = "Votre mot de passe contient des caractères non valides";
 		 
 	 }
 	 else if(localStorage.getItem("lingua")=="es"){
@@ -2172,8 +2173,8 @@ function iscriviti(){
 	  var alertpsw = "Insertar la contraseña";
 	  var alertnome = "Insertar nombre";
 	  var noemailpsw = "Comprobar el correo electrònico";
-		 
-		 
+	  var nocorrectpsw = "Su contrase&ntilde;a contiene caracteres no vàlidos";
+ 
 	 }
     else{
 		
@@ -2181,7 +2182,7 @@ function iscriviti(){
 		var alertpsw = "Enter the password";
 		var alertnome = "Enter the name";
 		var noemailpsw = "Please check your email";
-		
+		var nocorrectpsw = "Your password contains illegal characters";
    }
    
 	
@@ -2208,7 +2209,14 @@ function iscriviti(){
 	if(check(pinreg) == false){
 		// Code that needs to execute when none of the above is in the string
 	}else{
-		alert('Your search string contains illegal characters.');
+		//alert('Your search string contains illegal characters.');
+		
+		navigator.notification.alert(
+									 nocorrectpsw,  // message
+									 alertDismissed,         // callback
+									 'Password',            // title
+									 'OK'                  // buttonName
+									 );
 		
 		return;
 	}
@@ -2290,6 +2298,7 @@ function iscriviti(){
         var alertattenzione = "Attenzione"
         var regok = "Registrazione Eseguita"
         var clienteok = "Cliente gia registrato"
+		var nickok = "Nickname gia registrato"
         var riprovaok = "Errore, riprova in seguito"
 		var errorrete = "Possibile errore di rete"
         
@@ -2299,6 +2308,9 @@ function iscriviti(){
         var alertattenzione = "Attention"
         var regok = "Registration ok"
         var clienteok = "Already registered user"
+		
+		var nickok = "Nickname already registered"
+		
         var riprovaok = "Error, try again"
 		var errorrete = "Possible error network"
         
@@ -2308,6 +2320,9 @@ function iscriviti(){
 		var alertattenzione = "Attention"
 		var regok = "Lorsque l'enregistrement a été"
 		var clienteok = "Client déjà enregistré"
+		
+		var nickok = "Pseudo déjà enregistré"
+		
 		var riprovaok = "Erreur, s'il vous plaît essayer plus tard"
 		
 	}
@@ -2316,6 +2331,9 @@ function iscriviti(){
 		var alertattenzione = "Attenciòn"
 		var regok = "Cuando el registro se ha realizado"
 		var clienteok = "Cliente ya registrado"
+		
+		var nickok = "El apodo ya registrado"
+		
 		var riprovaok = "error, por favor intente más tarde"
 		
 	}
@@ -2324,14 +2342,18 @@ function iscriviti(){
         var erroredirete = "Possible network error"
         var regok = "Registration ok"
         var clienteok = "Already registered user"
+		
+		var nickok = "Nickname already registered"
+		
         var riprovaok = "Error, try again"
     }
 
+	var cambiapag = "0";
 	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www/include/form_cell.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"&id_nazione="+ nazionereg +"",
+		   url:"http://purplemiles.com/www/include/form_cell.php?email="+ emailreg +"&password="+ pinreg +"&nickname="+ nomereg +"&id_nazione="+ nazionereg +"&lang="+localStorage.getItem("lingua")+"",
 		   contentType: "application/json",
 		   //data: {email:emailreg,nickname:nomereg,pin:pinreg},
 		   timeout: 7000,
@@ -2352,32 +2374,49 @@ function iscriviti(){
 											   regok,            // title
 											   'Ok'                  // buttonName
 											   );
-				  
+				  cambiapag = "1";
 				  
 				  }
 				  else{
-				   if (item.Token == '2'){
-				    navigator.notification.alert(
+					if (item.Token == '2'){
+						navigator.notification.alert(
 											   clienteok,  // message
 											   alertDismissed,         // callback
 											   alertattenzione,            // title
 											   'Ok'                  // buttonName
 											   );
 				    }
-				   else{
-				     navigator.notification.alert(
+				  
+					else if (item.Token == '3'){
+						navigator.notification.alert(
+											   nickok,  // message
+											   alertDismissed,         // callback
+											   alertattenzione,            // title
+											   'Ok'                  // buttonName
+											   );
+					}
+				  
+					 else{
+						navigator.notification.alert(
 											   riprovaok,  // message
 											   alertDismissed,         // callback
 											   alertattenzione,            // title
 											   'Ok'                  // buttonName
 											   );
-				   }
+					 }
 				  
 				  }
-				  });
+				});
 		   
 		   $(".spinner").hide();
-		   window.location.href = "#page";
+		   
+		   if (cambiapag == "1"){
+		    self.document.formia.emailreg.value="";
+		    self.document.formia.pinreg.value="";
+		    self.document.formia.nome.value="";
+		   
+		    window.location.href = "#page";
+		   }
 		   
 		   },
 		   error: function(){
@@ -2492,7 +2531,7 @@ function recupera() {
 	 $(".spinner").show();
 	 $.ajax({
 	 type:"GET",
-	 url:"http://purplemiles.com/www/include/form_pwd.php?email="+ recemail +"",
+	 url:"http://purplemiles.com/www/include/form_pwd.php?email="+ recemail +"&lang="+localStorage.getItem("lingua")+"",
 	 contentType: "application/json",
 	 //data: {email:emailreg,nickname:nomereg,pin:pinreg},
 	 timeout: 7000,
