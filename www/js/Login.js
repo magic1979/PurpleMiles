@@ -11,6 +11,24 @@ function onDeviceReady() {
 		localStorage.setItem("citta", "154");
 	}
 	
+	
+	$('#nome').focus(function(){
+		myScroll3.scrollToElement("#nome", "1s");
+	});
+	
+	$('#pinreg').focus(function(){
+		myScroll3.scrollToElement("#pinreg", "1s");
+	});
+	
+	
+	$(document).on("touchmove", function(e){
+		$('#nome').blur();
+		$('#pinreg').blur();
+				   
+		cordova.plugins.Keyboard.close();
+	});
+	
+	
 	////// BASE LINGUA ////////
 	
 	
