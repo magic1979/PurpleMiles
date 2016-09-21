@@ -43,6 +43,13 @@ receivedEvent: function(id) {
 	StatusBar.hide();
 	
 	
+	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
+		
+		window.location.href = "Login.html";
+		
+	}
+	
+	
 	//// PUSH //////
 	
 	/*if(PushbotsPlugin.isiOS()){
@@ -434,11 +441,6 @@ receivedEvent: function(id) {
 	var email = localStorage.getItem("email");
 	
 	
-	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
-		
-		window.location.href = "Login.html";
-		
-	}
 	
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
 		

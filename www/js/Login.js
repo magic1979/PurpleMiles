@@ -4,6 +4,9 @@ function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	//$("body").bind('touchmove', function(e){e.preventDefault()})
 	
+	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+	
+	
 	if (localStorage.getItem("lingua") === null || localStorage.getItem("lingua")=="null" || typeof(localStorage.getItem("lingua")) == 'undefined' || localStorage.getItem("lingua")==0 || localStorage.getItem("lingua")=="") {
 		localStorage.setItem("lingua", "it")
 		localStorage.setItem("veicolo", "Automobile")
@@ -1111,7 +1114,7 @@ function onDeviceReady() {
 			document.getElementById("email").value = localStorage.getItem("email2")
 		
 			
-			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+			//var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 			
 		}
 		else{
@@ -2948,7 +2951,7 @@ function gpsonError(){
     else if(localStorage.getItem("lingua")=="en"){
         
         var alertattenzione = "Attention"
-        var alertgps = "Possible error GPS"
+        var alertgps = "Possible GPS error"
         
     }
 	else if(localStorage.getItem("lingua")=="fr"){
