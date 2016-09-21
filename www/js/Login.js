@@ -12,7 +12,9 @@ function onDeviceReady() {
 	}
 	
 	
-	cordova.plugins.diagnostic.isLocationAvailable(successCallback, errorCallback);
+	//cordova.plugins.diagnostic.isLocationAvailable(successCallback, errorCallback);
+	
+	cordova.plugins.diagnostic.isLocationEnabled(successCallback, errorCallback);
 
 	////// BASE LINGUA ////////
 	
@@ -1112,7 +1114,7 @@ function onDeviceReady() {
 			document.getElementById("email").value = localStorage.getItem("email2")
 		
 			
-			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: true, maximumAge: 90000 });
+			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 0, enableHighAccuracy: true, maximumAge: 90000 });
 			
 		}
 		else{
@@ -2922,14 +2924,14 @@ function gpsonSuccess(position){
 	
 	localStorage.setItem("geostory", "SI")
 	
-	alert('Latitude: '          + position.coords.latitude          + '\n' +
+	/*alert('Latitude: '          + position.coords.latitude          + '\n' +
 	 'Longitude: '         + position.coords.longitude         + '\n' +
 	 'Altitude: '          + position.coords.altitude          + '\n' +
 	 'Accuracy: '          + position.coords.accuracy          + '\n' +
 	 'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
 	 'Heading: '           + position.coords.heading           + '\n' +
 	 'Speed: '             + position.coords.speed             + '\n' +
-	 'Timestamp: '         + position.timestamp                + '\n');
+	 'Timestamp: '         + position.timestamp                + '\n');*/
 	
 	
 	//$("#distanza").html("<span style = 'font-size: 18px;'>"+ position.coords.speed +","+ position.coords.heading  +"</span>");
@@ -2940,13 +2942,7 @@ function gpsonSuccess(position){
 
 function gpsonError(){
 	
-	navigator.notification.alert(
-								 'erorregps',  // message
-								 alertDismissed,         // callback
-								 'erorregps',           // title
-								 'Ok'                  // buttonName
-								 );
-    
+
     if(localStorage.getItem("lingua")=="it"){
         
         var alertattenzione = "Attenzione"
@@ -2982,6 +2978,7 @@ function gpsonError(){
 	
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
+	
 	
 	navigator.notification.alert(
 								 alertgps,  // message
@@ -3022,7 +3019,7 @@ function successCallback(){
 								 'Ok'                  // buttonName
 								 );
 	
-	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 0, enableHighAccuracy: true, maximumAge: 90000 });
 	
 }
 
