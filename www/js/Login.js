@@ -4,10 +4,8 @@ function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	//$("body").bind('touchmove', function(e){e.preventDefault()})
 	
-	localStorage.setItem("gpswork","0")
 	
-	
-	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	
 	if (localStorage.getItem("lingua") === null || localStorage.getItem("lingua")=="null" || typeof(localStorage.getItem("lingua")) == 'undefined' || localStorage.getItem("lingua")==0 || localStorage.getItem("lingua")=="") {
@@ -1052,8 +1050,6 @@ function onDeviceReady() {
 			//localStorage.setItem("citta", "154");
 			
 			//if(localStorage.getItem("sett_lingua")!="OK"){
-				
-			   controllagps()
 			
 			   agg();
 				
@@ -2915,56 +2911,6 @@ function alertDismissed() {
 	
 }
 
-function controllagps(){
-	
-	if (localStorage.getItem("gpswork")=="0"){
-
-		if(localStorage.getItem("lingua")=="it"){
-			
-			var alertattenzione = "Attenzione"
-			var alertgps = "Possibile errore GPS, assicurati di avere il gps del telefono attivato."
-			
-		}
-		else if(localStorage.getItem("lingua")=="en"){
-			
-			var alertattenzione = "Attention"
-			var alertgps = "Possible GPS error"
-			
-		}
-		else if(localStorage.getItem("lingua")=="fr"){
-			
-			var alertattenzione = "Attention"
-			var alertgps = "Possible erreur de GPS, assurez-vous que vous avez le téléphone activé gps"
-			
-		}
-		else if(localStorage.getItem("lingua")=="es"){
-			
-			var alertattenzione = "Attenciòn"
-			var alertgps = "Posible error de GPS, asegúrese de que tiene el teléfono activado gps"
-			
-		}
-		else{
-			var alertattenzione = "Attention"
-			var alertgps = "Possible error GPS"
-		}
-		
-		
-		var lat = "41.889191";
-		var lng = "12.492475";
-		
-		localStorage.setItem("lat", lat)
-		localStorage.setItem("lng", lng)
-		
-		navigator.notification.alert(
-									 alertgps,  // message
-									 alertDismissed,         // callback
-									 alertattenzione,           // title
-									 'Ok'                  // buttonName
-									 );
-								 
-	}
-}
-
 
 function gpsonSuccess(position){
 	
@@ -2978,7 +2924,6 @@ function gpsonSuccess(position){
 	localStorage.setItem("gradi", gradi)
 	
 	localStorage.setItem("geostory", "SI")
-	localStorage.setItem("gpswork","1")
 	
 	/*alert('Latitude: '          + position.coords.latitude          + '\n' +
 	 'Longitude: '         + position.coords.longitude         + '\n' +
@@ -2997,16 +2942,49 @@ function gpsonSuccess(position){
 
 
 function gpsonError(){
+    
+    if(localStorage.getItem("lingua")=="it"){
+        
+        var alertattenzione = "Attenzione"
+        var alertgps = "Possibile errore GPS, assicurati di avere il gps del telefono attivato."
+        
+    }
+    else if(localStorage.getItem("lingua")=="en"){
+        
+        var alertattenzione = "Attention"
+        var alertgps = "Possible GPS error"
+        
+    }
+	else if(localStorage.getItem("lingua")=="fr"){
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Possible erreur de GPS, assurez-vous que vous avez le téléphone activé gps"
+		
+	}
+	else if(localStorage.getItem("lingua")=="es"){
+		
+		var alertattenzione = "Attenciòn"
+		var alertgps = "Posible error de GPS, asegúrese de que tiene el teléfono activado gps"
+		
+	}
+    else{
+        var alertattenzione = "Attention"
+        var alertgps = "Possible error GPS"
+    }
+    
 	
-	localStorage.setItem("gpswork","0")
-	
- 
 	var lat = "41.889191";
 	var lng = "12.492475";
 	
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
 	
+	navigator.notification.alert(
+								 alertgps,  // message
+								 alertDismissed,         // callback
+								 alertattenzione,           // title
+								 'Ok'                  // buttonName
+								 );
 	
 }
 
