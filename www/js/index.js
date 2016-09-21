@@ -43,6 +43,22 @@ receivedEvent: function(id) {
 	StatusBar.hide();
 	
 	
+	//// PUSH //////
+	
+	/*if(PushbotsPlugin.isiOS()){
+		PushbotsPlugin.initializeiOS("56bc6513177959982a8b4567");
+	}
+	if(PushbotsPlugin.isAndroid()){
+		PushbotsPlugin.initializeAndroid("56bc6513177959982a8b4567", "458447197779");
+		
+	}
+	
+	PushbotsPlugin.resetBadge();*/
+	
+	
+	//// FINE PUSH /////
+	
+	
 	/*$("#modificastart").blur(function() {
 		$("#btninizia").removeClass("divAA").addClass("div55");
 	});
@@ -716,7 +732,7 @@ receivedEvent: function(id) {
 	var watchID5 = null;
     
     // DB //
-    
+    //Destinazione	Destination	Destination	Destino
     
     var dsconn;
 	var Tdsconn;
@@ -730,6 +746,7 @@ receivedEvent: function(id) {
 	
 	var h5arrivo;
 	var h5partenza;
+	var h3rispondi
     
     var db;
     db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
@@ -774,6 +791,15 @@ receivedEvent: function(id) {
                                  if(results.rows.item(i).id_traduzione == "partenzaM"){
                                    partenzaM = results.rows.item(i).italiano.replace("P0011", "'");
                                  
+                                 localStorage.setItem("sessionPartenza",partenzaM);
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "hdpp"){
+                                 hdpp = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionHdpp",hdpp);
+                                 
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "arrivoM"){
@@ -795,7 +821,10 @@ receivedEvent: function(id) {
 								  h5partenza = results.rows.item(i).italiano.replace("P0011", "'");
 								 
 								 }
+								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
+								 h3rispondi = results.rows.item(i).italiano.replace("P0011", "'");
 								 
+								 }
 								 
                                }
                                  
@@ -834,8 +863,17 @@ receivedEvent: function(id) {
                                  
                                  }
                                  
+                                 if(results.rows.item(i).id_traduzione == "hdpp"){
+                                 hdpp = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionHdpp",hdpp);
+                                 
+                                 }
+                                 
                                  if(results.rows.item(i).id_traduzione == "partenzaM"){
                                    partenzaM = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								   localStorage.setItem("sessionPartenza",partenzaM);
                                  
                                  }
                                  
@@ -856,6 +894,11 @@ receivedEvent: function(id) {
 								 
 								 if(results.rows.item(i).id_traduzione == "h5partenza"){
 								 h5partenza = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
+								 h3rispondi = results.rows.item(i).inglese.replace("P0011", "'");
 								 
 								 }
 
@@ -882,9 +925,16 @@ receivedEvent: function(id) {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "inizia"){
-								  $("#inizia").html('<font color="#fff"><b>'+ results.rows.item(i).inglese.replace("P0011", "'") +'</b></font>')
+								  $("#inizia").html('<font color="#fff"><b>'+ results.rows.item(i).francese.replace("P0011", "'") +'</b></font>')
 								 
 								 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "hdpp"){
+                                 hdpp = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionHdpp",hdpp);
+                                 
+                                 }
 								 
 								 if(results.rows.item(i).id_traduzione == "s_partenza"){
 								  s_partenza = results.rows.item(i).francese.replace("P0011", "'");
@@ -898,6 +948,8 @@ receivedEvent: function(id) {
 								 
 								 if(results.rows.item(i).id_traduzione == "partenzaM"){
 								  partenzaM = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionPartenza",partenzaM);
 								 
 								 }
 								 
@@ -918,6 +970,11 @@ receivedEvent: function(id) {
 								 
 								 if(results.rows.item(i).id_traduzione == "h5partenza"){
 								 h5partenza = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
+								 h3rispondi = results.rows.item(i).francese.replace("P0011", "'");
 								 
 								 }
 								 
@@ -964,8 +1021,17 @@ receivedEvent: function(id) {
 								 
 								 if(results.rows.item(i).id_traduzione == "partenzaM"){
 								 partenzaM = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionPartenza",partenzaM);
 								 
 								 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "hdpp"){
+                                 hdpp = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionHdpp",hdpp);
+                                 
+                                 }
 								 
 								 if(results.rows.item(i).id_traduzione == "arrivoM"){
 								 arrivoM = results.rows.item(i).spagnolo.replace("P0011", "'");
@@ -984,6 +1050,11 @@ receivedEvent: function(id) {
 								 
 								 if(results.rows.item(i).id_traduzione == "h5partenza"){
 								 h5partenza = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
+								 h3rispondi = results.rows.item(i).italiano.replace("P0011", "'");
 								 
 								 }
 								 
@@ -1638,7 +1709,7 @@ receivedEvent: function(id) {
 				   }
 				   
 				   navigator.notification.confirm(
-												  dsconn + " " + localStorage.getItem("nick"),  // message
+												  dsconn + " " + localStorage.getItem("nickpass"),  // message
 												  onConfirm,              // callback to invoke with index of button pressed
 												  Tdsconn,            // title
 												  annallab      // buttonLabels
@@ -4332,6 +4403,17 @@ function timer(){
 												  rating1 = item.rating;
 												  cell1 = item.cell;
 												  posticipata1 = item.posticipata;
+												  
+												  
+												  var partenzaM2;
+												  var arrivoM;
+												  var distanzaM;
+												  var h3rispondi
+												  
+												  setTimeout(function() {
+													//alert(partenzaM2)
+												   }, 1000);
+												  
 
 												  
 												  if(localStorage.getItem("palla1")!="1"){
@@ -4457,7 +4539,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -4467,16 +4549,20 @@ function timer(){
 												  if(item.stato==0){
 													var icon3 = new google.maps.MarkerImage("img/marker_fucsia_1.png", null, null, null, new google.maps.Size(40,40));
 													
-												     marker1 = new google.maps.Marker ({
+	
+												  marker1 = new google.maps.Marker ({
 																					map : map,
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
 																					});
+												  
+												  
+												  
 												  }
 												  if(item.stato==2){
 													 var icon3 = new google.maps.MarkerImage("img/marker_verde_1.png", null, null, null, new google.maps.Size(40,40));
@@ -4485,7 +4571,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -4752,7 +4838,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -4765,7 +4851,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -4778,7 +4864,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -4948,7 +5034,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -4961,7 +5047,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -4974,7 +5060,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>Partenza: '+ item.partenza +'<br>Distanza dal passeggero (l.a.): '+ item.distanza +' km</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -7296,7 +7382,6 @@ function richiesta1() {
 	}
 
 
-
 	localStorage.setItem("id_nick", nick1)
 	localStorage.setItem("id_utente_pass1", id_utente_pass1)
 	
@@ -7490,8 +7575,8 @@ function richiesta1() {
 						
 						var addressLongLat = lat1+","+lng1;
 	
-						//window.open("maps:daddr="+ addressLongLat +"" , '_system');
-						window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+						window.open("maps:daddr="+ addressLongLat +"" , '_system');
+						//window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 								  
 						// ll=50.894967,4.341626
 						
@@ -8561,8 +8646,8 @@ function richiesta2() {
 
 								 var addressLongLat = lat2+","+lng2;
 
-	                            //window.open("maps:daddr="+ addressLongLat +"" , '_system');
-								window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	                            window.open("maps:daddr="+ addressLongLat +"" , '_system');
+								//window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -9607,8 +9692,8 @@ function richiesta3() {
 
 						var addressLongLat = lat3+","+lng3;
 	
-	                             //window.open("maps:daddr="+ addressLongLat +"" , '_system');
-								 window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	                             window.open("maps:daddr="+ addressLongLat +"" , '_system');
+								 //window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -9761,7 +9846,7 @@ function lista5() {
 	if(localStorage.getItem("lingua")=="it"){
 		
 		tempistica1 = "Tempo di arrivo"
-		h5arrivo = "Arrivo"
+		h5arrivo = "Destinazione"
 		h5partenza = "Partenza"
 		h5tempistica = "Orario confermato"
 		
@@ -9774,7 +9859,7 @@ function lista5() {
 	else if(localStorage.getItem("lingua")=="en"){
 		
 		tempistica1 = "Time of arrival"
-		h5arrivo = "Arrival"
+		h5arrivo = "Destination"
 		h5partenza = "Departure"
 		h5tempistica = "Time confirmed"
 		
@@ -9785,7 +9870,7 @@ function lista5() {
 	else if(localStorage.getItem("lingua")=="fr"){
 		
 		tempistica1 = "Heure d'arriv&eacute;e"
-		h5arrivo = "Arriv&eacute;e"
+		h5arrivo = "Destination"
 		h5partenza = "D&eacute;part"
 		h5tempistica = "Temps confirm&eacute;"
 		
@@ -9796,7 +9881,7 @@ function lista5() {
 	else if(localStorage.getItem("lingua")=="es"){
 		
 		tempistica1 = "Hora de llegada"
-		h5arrivo = "Llegada"
+		h5arrivo = "Destino"
 		h5partenza = "Salida"
 		h5tempistica = "Hora confirmada"
 		
@@ -10068,7 +10153,7 @@ function chatting(pass,id) {
 			   
 			  if(item.Token==1){
 				
-				  if(item.nick==localStorage.getItem("nick")){
+				  if(item.nick==localStorage.getItem("nickpass")){
 				   
 				       var indirizzo = item.messaggio.replace("777A","'");
 				   
@@ -10146,6 +10231,8 @@ function chatting66(pass,id) {
 	
 	localStorage.setItem("pagina","chat")
 	
+	//alert("chatting66")
+	
 	
 	$.ajax({
 		   type:"GET",
@@ -10172,9 +10259,10 @@ function chatting66(pass,id) {
 			   
 				  if(item.Token==1){
 				  
-				  if(item.nick==localStorage.getItem("nick")){
 				  
+				  if(item.nick==localStorage.getItem("nickpass")){
 				  
+			
 				     var indirizzo2 = item.messaggio.replace("777A","'");
 				  
 				  indirizzo2 = indirizzo2.replace("777B", "+");
@@ -10276,7 +10364,7 @@ function chatting5(pass,id) {
 			   
 				  if(item.Token==1){
 				  
-				  if(item.nick==localStorage.getItem("nick")){
+				  if(item.nick==localStorage.getItem("nickpass")){
 				  
 				  var indirizzo = item.messaggio.replace("777A","'");
 				   
@@ -11121,7 +11209,7 @@ function controllachat(uman) {
 				  
 				if(item.Token==1){
 				  
-				  $("#nickhome6").html(item.nick);
+				  $("#nickhome6").html(localStorage.getItem("nick"));
 				  
 				  localStorage.setItem("id_richiesta",item.canale)
 				  
@@ -11241,9 +11329,12 @@ function controllachat(uman) {
 
 function controllachat2(ric,id) {
 							  
+							  
 							  setTimeout(function() {
 								  controllachat2(ric,id);
 							   }, 6000);
+							  
+							  //alert("?");
 							  
 	
 							  $.ajax({
@@ -11264,18 +11355,24 @@ function controllachat2(ric,id) {
 									 localStorage.setItem("chatcontroll", JSON.stringify(result))
 									 
 									 
-									 $.each(result, function(i,item){
+								$.each(result, function(i,item){
 											
-											if(item.Token==1){
+									if(item.Token==1){
 											
 											$("#nickhome6").html(item.nick);
 											
 											localStorage.setItem("id_richiesta",id)
 											
-											if( $(".ui-panel").hasClass("ui-panel-open") == true ){
-												//alert("OPENED");
-											}else{
-                                            
+										if( $(".ui-panel").hasClass("ui-panel-open") == true ){
+												alert("OPENED");
+										}else{
+									   
+									   
+											setTimeout(function() {
+											  $("#btnpanel").click();
+											}, 500);
+									   
+									   
                                             if(localStorage.getItem("lingua")=="it"){
                                             
                                              $("#chattext66").attr("placeholder", "Scrivi un messaggio");
@@ -11301,21 +11398,24 @@ function controllachat2(ric,id) {
                                              $("#chattext66").attr("placeholder", "Write a message");
                                             
                                             }
-                                            
-                                            
-												$("#btnpanel").click();
-											}
+
+											
+										}
 											
 											chatting66(ric,id);
 											
-											}
+									}
 											
-											});
+								});
 
 									 }
 									 
 									 },
 									 error: function(){
+									 
+									    setTimeout(function() {
+											controllachat2(ric,id);
+										}, 5000);
 									 
 									 
 									 },
@@ -11361,6 +11461,10 @@ function controllachat2(ric,id) {
 											  //alert("OPENED");
 											
 											}else{
+											
+											setTimeout(function() {
+													   $("#btnpanel3").click();
+											}, 500);
                                             
                                             if(localStorage.getItem("lingua")=="it"){
                                             
@@ -11388,7 +11492,7 @@ function controllachat2(ric,id) {
                                             
                                             }
                                             
-											  $("#btnpanel3").click();
+											
 											}
 											
 											  //alert(item.canale);
@@ -11403,6 +11507,8 @@ function controllachat2(ric,id) {
 									 
 									 },
 									 error: function(){
+									 
+									  controllachat5()
 
 									 
 									 },
@@ -11456,6 +11562,10 @@ function controllachat2(ric,id) {
 											//alert("OPENED");
 											
 											}else{
+											
+											setTimeout(function() {
+													   $("#btnpanel3").click();
+													   }, 500);
                                             
                                             if(localStorage.getItem("lingua")=="it"){
                                             
@@ -11483,7 +11593,7 @@ function controllachat2(ric,id) {
                                             
                                             }
                                             
-											$("#btnpanel3").click();
+											
 											}
 											
 											//alert(item.canale);
@@ -11591,13 +11701,19 @@ function prendibanner() {
 }
                 // LINGUE //
                 function seleziona() {
-                    var db;
-                    db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+							  
+					var partenzaM
+							  
+							  
+                    var db2;
+                    db2 = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
                               
-                              db.transaction(function (tx) {
+                              db2.transaction(function (tx) {
                                              
                                              tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
                                                         var len = results.rows.length, i;
+														   
+														//alert(len)
                                                            
                                                         if(localStorage.getItem("lingua")=="it"){
                                                            
@@ -11611,12 +11727,19 @@ function prendibanner() {
                                                            
                                                            
                                                         if(localStorage.getItem("lingua")=="en"){
-                                                           
+
                                                            
                                                            for (i = 0; i < len; i++){
                                                            
                                                              $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
-                                                           
+														   
+														     if(results.rows.item(i).id_traduzione == "partenzaM"){
+														       partenzaM = results.rows.item(i).inglese.replace("P0011", "'");
+														   
+														       //alert(partenzaM)
+														   
+														     }
+														   
                                                            
 
                                                            }
@@ -11653,6 +11776,88 @@ function prendibanner() {
                                 });
 							  
                     }
+							  
+							  
+							  
+					function seleziona2() {
+							  
+						var partenzaM
+							  
+							  
+							var db2;
+							db2 = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+							  
+							db2.transaction(function (tx) {
+											  
+											  tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
+															var len = results.rows.length, i;
+															
+															
+															if(localStorage.getItem("lingua")=="it"){
+															
+															for (i = 0; i < len; i++){
+															//$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano.replace("P0011", "'"));
+															
+															
+															}
+															
+															}
+															
+															
+															if(localStorage.getItem("lingua")=="en"){
+															
+															
+															for (i = 0; i < len; i++){
+															
+															$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
+															
+															if(results.rows.item(i).id_traduzione == "partenzaM"){
+															partenzaM = results.rows.item(i).inglese.replace("P0011", "'");
+															
+															//alert(partenzaM)
+															
+															return partenzaM;
+															
+															}
+															
+															
+															
+															}
+															
+															}
+															
+															if(localStorage.getItem("lingua")=="fr"){
+															
+															
+															for (i = 0; i < len; i++){
+															
+															$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).francese.replace("P0011", "'"));
+															
+															
+															
+															}
+															
+															}
+															
+															if(localStorage.getItem("lingua")=="es"){
+															
+															
+															for (i = 0; i < len; i++){
+															
+															$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+															
+															
+															
+															}
+															
+															}
+															
+															}, null);
+											  });
+							  
+							  }
+							  
+
 
 
 

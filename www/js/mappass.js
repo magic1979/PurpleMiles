@@ -55,6 +55,7 @@ function onDeviceReady() {
     var h7partenza;
     var h7arrivo;
     var h7veicolo;
+	 var h7destinazione;
     
     var h7passeggeri;
     var h7fumatori;
@@ -89,8 +90,84 @@ function onDeviceReady() {
                                  if(results.rows.item(i).id_traduzione == "h7quando"){
                                  h7quando = results.rows.item(i).italiano.replace("P0011", "'");
                                  
+                                 localStorage.setItem("sessionQuando",h7quando)
+                                 
+                                 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h7destinazione"){
+								 h7destinazione = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionArrivo",h7destinazione)
+								 
+								 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4tempo"){
+                                 h4tempo = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionTempo",h4tempo)
+                                 
                                  }
                                  
+                                 if(results.rows.item(i).id_traduzione == "h4ora"){
+                                 h4ora = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionOra",h4ora)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4prezzo"){
+                                 h4prezzo = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionPrezzo",h4prezzo)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4confermato"){
+                                 h4confermato = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionConfermato",h4confermato)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4commento"){
+                                 h4commento = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionCommento",h4commento)
+                                 
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4rifiutata"){
+                                 h4rifiutata = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionRifiutata",h4rifiutata)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4reinoltra"){
+                                 h4reinoltra = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionReinoltra",h4reinoltra)
+                                 
+                                 }
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4attendere"){
+                                 h4attendere = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionAttendere",h4attendere)
+                                 
+                                 }
+                                 
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4accettazione"){
+                                 h4accettazione = results.rows.item(i).italiano.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionAccettazione",h4accettazione)
+                                 
+                                 }
+								 
                                  if(results.rows.item(i).id_traduzione == "h7adesso"){
                                  h7adesso = results.rows.item(i).italiano.replace("P0011", "'");
                                  
@@ -98,11 +175,14 @@ function onDeviceReady() {
                                  
                                  if(results.rows.item(i).id_traduzione == "h7partenza"){
                                  h7partenza = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionPartenza",h7partenza)
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "h7arrivo"){
                                  h7arrivo = results.rows.item(i).italiano.replace("P0011", "'");
+								 
                                  
                                  }
                                  if(results.rows.item(i).id_traduzione == "h7veicolo"){
@@ -182,10 +262,83 @@ function onDeviceReady() {
                                  
                                  }
                                  
+                                 if(results.rows.item(i).id_traduzione == "h4tempo"){
+                                 h4tempo = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionTempo",h4tempo)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4reinoltra"){
+                                 h4reinoltra = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionReinoltra",h4reinoltra)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4commento"){
+                                 h4commento = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionCommento",h4commento)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4prezzo"){
+                                 h4prezzo = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionPrezzo",h4prezzo)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4confermato"){
+                                 h4confermato = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionConfermato",h4confermato)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4attendere"){
+                                 h4attendere = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionAttendere",h4attendere)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4accettazione"){
+                                 h4accettazione = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionAccettazione",h4accettazione)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4rifiutata"){
+                                 h4rifiutata = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionRifiutata",h4rifiutata)
+                                 
+                                 }
+                                 
                                  if(results.rows.item(i).id_traduzione == "h7quando"){
                                  h7quando = results.rows.item(i).inglese.replace("P0011", "'");
                                  
+                                 localStorage.setItem("sessionQuando",h7quando)
+                                 
                                  }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4ora"){
+                                 h4ora = results.rows.item(i).inglese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionOra",h4ora)
+                                 
+                                 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h7destinazione"){
+								 h7destinazione = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionArrivo",h7destinazione)
+								 
+								 
+								 }
                                  
                                  if(results.rows.item(i).id_traduzione == "h7adesso"){
                                  h7adesso = results.rows.item(i).inglese.replace("P0011", "'");
@@ -194,11 +347,15 @@ function onDeviceReady() {
                                  
                                  if(results.rows.item(i).id_traduzione == "h7partenza"){
                                  h7partenza = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionPartenza",h7partenza)
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "h7arrivo"){
                                  h7arrivo = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 
                                  
                                  }
                                  if(results.rows.item(i).id_traduzione == "h7veicolo"){
@@ -276,9 +433,81 @@ function onDeviceReady() {
 								 h4richiesta = results.rows.item(i).francese.replace("P0011", "'");
 								 
 								 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4tempo"){
+                                 h4tempo = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionTempo",h4tempo)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4prezzo"){
+                                 h4prezzo = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionPrezzo",h4prezzo)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4commento"){
+                                 h4commento = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionCommento",h4commento)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4reinoltra"){
+                                 h4reinoltra = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionReinoltra",h4reinoltra)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4attendere"){
+                                 h4attendere = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionAttendere",h4attendere)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4rifiutata"){
+                                 h4rifiutata = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionRifiutata",h4rifiutata)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4confermato"){
+                                 h4confermato = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionConfermato",h4confermato)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4ora"){
+                                 h4ora = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionOra",h4ora)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4accettazione"){
+                                 h4accettazione = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionAccettazione",h4accettazione)
+                                 
+                                 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h7quando"){
 								 h7quando = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionQuando",h7quando)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h7destinazione"){
+								 h7destinazione = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionArrivo",h7destinazione)
 								 
 								 }
 								 
@@ -289,6 +518,8 @@ function onDeviceReady() {
 								 
 								 if(results.rows.item(i).id_traduzione == "h7partenza"){
 								 h7partenza = results.rows.item(i).francese.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionPartenza",h7partenza)
 								 
 								 }
 								 
@@ -375,9 +606,83 @@ function onDeviceReady() {
 								 h4richiesta = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 
 								 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4commento"){
+                                 h4commento = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionCommento",h4commento)
+                                 
+                                 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h7quando"){
 								 h7quando = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionQuando",h7quando)
+								 
+								 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4tempo"){
+                                 h4tempo = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionTempo",h4tempo)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4rifiutata"){
+                                 h4rifiutata = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionRifiutata",h4rifiutata)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4attendere"){
+                                 h4attendere = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionAttendere",h4attendere)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4reinoltra"){
+                                 h4reinoltra = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionReinoltra",h4reinoltra)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4ora"){
+                                 h4ora = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionOra",h4ora)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4accettazione"){
+                                 h4accettazione = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionAccettazione",h4accettazione)
+                                 
+                                 }
+                                 
+                                 
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4prezzo"){
+                                 h4prezzo = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionPrezzo",h4prezzo)
+                                 
+                                 }
+                                 
+                                 if(results.rows.item(i).id_traduzione == "h4confermato"){
+                                 h4confermato = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionConfermato",h4confermato)
+                                 
+                                 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h7destinazione"){
+								 h7destinazione = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionArrivo",h7destinazione)
 								 
 								 }
 								 
@@ -388,6 +693,8 @@ function onDeviceReady() {
 								 
 								 if(results.rows.item(i).id_traduzione == "h7partenza"){
 								 h7partenza = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                 
+                                 localStorage.setItem("sessionPartenza",h7partenza)
 								 
 								 }
 								 
@@ -709,30 +1016,6 @@ function onDeviceReady() {
 		
 	}
 	
-	
-	/*if(screen.width < 768){
-		
-	 <td align="center" >
-	 <a id="quando" href="#"><img src="img/ico_quando1.png" width="45px"></a>
-	 </td>
-	 <td align="center" >
-	 <a id="da" href="#"><img src="img/ico_start1.png" width="45px"></a>
-	 </td>
-	 <td align="center" >
-	 <a id="a2" href="#"><img src="img/ico_finish1.png" width="45px"></a>
-	 </td>
-	 <td align="center" >
-	 <a id="piu" href="#"><img src="img/ico_plus3.png" width="55px"></a>
-	 
-	 </td>
-	 <td align="center" valign="center">
-	 <a id="anteprima" href="#"><img src="img/ico_go1.png" width="45px"></a>
-	 </td>
-	 <td align="center" valign="center">
-	 <a id="offerte" href="#"><img src="img/ico_offerte1.png" width="45px"></a>
-	 </td>
-		
-	}*/
 	
 	
 	/*if(screen.width < 768){
@@ -1817,7 +2100,7 @@ function onDeviceReady() {
 					   localStorage.setItem("dovesono", "3");
 					   $("#spinner4").show();
 					  
-				/*if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
 				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
 				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -2348,7 +2631,7 @@ function onDeviceReady() {
 				   
 				   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Partenza </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
                    
-				   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>Arrivo </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
+				   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>Destinazione </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
                    }
                    
                    else{
@@ -2455,7 +2738,7 @@ function onDeviceReady() {
                    
                    $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7partenza +" </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
                    
-                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7arrivo +" </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
+                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7destinazione +" </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
                    
                    
                    }
@@ -3739,10 +4022,10 @@ function vediofferte(){
 				  }
 				   
 				   if(item.posticipata==0){
-				     tempistica = "<table><tr><td><b><div id='h4tempo'>Tempo di arrivo </div></b></td><td><b> " + item.tempo + " </b></td><td><div id='h4minuti'>minuti</div></td></tr></table>";
+				     tempistica = "<table><tr><td><b><div>"+localStorage.getItem("sessionTempo")+" </div></b></td><td><b> " + item.tempo + " </b></td><td><div id='h4minuti'>minuti</div></td></tr></table>";
 				   }
 				   else{
-				     tempistica = "<div id='h4confermato'>Confermato l'orario</div>";
+				     tempistica = "<div id='h4confermato'>"+localStorage.getItem("sessionConfermato")+"</div>";
 				   }
 				  
 				  
@@ -3752,12 +4035,12 @@ function vediofferte(){
 				  if(item.accettata==1){
 				  
 				    if(item.cell!=""){
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br><font color='#cc33cc' size='4'><b><p id='h4accettazione'>Accettazione confermata</p></b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><b>"+ tempistica +"</b><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p id='h4commento'>Codice Commento</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br><font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionAccettazione")+"</p></b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                    seleziona();
 				    }
 				    else{
-				      $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p id='h4accettazione'>Accettazione confermata</p></b></font></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>"+ tempistica +"</b><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><table><tr><td><b><p id='h4commento'>Codice Commento</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				      $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionAccettazione")+"</p></b></font></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p >"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                    seleziona();
 					}
@@ -3772,7 +4055,7 @@ function vediofferte(){
 				  else{
                    
                    
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font><br>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b>&nbsp;<div id='h4attendere'>ATTENDERE</div></font><font color='#cc33cc' size='2'><div id='puntini' class='loading'>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font><br>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b>&nbsp;<div>"+localStorage.getItem("sessionAttendere")+"</div></font><font color='#cc33cc' size='2'><div id='puntini' class='loading'>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                    seleziona();
 					
@@ -4020,7 +4303,7 @@ function vediofferte(){
 				   //
 				   if(item.accettata==1 && item.stato==3){
 				   
-				   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p id='h4rifiutata'>RIFIUTATA</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4prezzo'>Prezzo</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </b></p></td><td> "+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p id='h4commento'>Codice Commento</p> </d><td>"+ item.cod_passeggero +"</b></td></tr></table><br><a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_trash.png' width='50'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionRifiutata")+"</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </b></p></td><td> "+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p> </d><td>"+ item.cod_passeggero +"</b></td></tr></table><br><a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_trash.png' width='50'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                    seleziona();
 				   
@@ -4123,14 +4406,14 @@ function vediofferte(){
 				   if(item.confermata==1){
                    
 
-					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><p id='h4reinoltra'>L\'Autista tarda a rispondere.<br> Vuoi reinoltrare la richiesta</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4prezzo'>Prezzo</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>"+ accetta +"</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>"+ cancella +"</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><p>"+localStorage.getItem("sessionReinoltra")+"</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p >"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>"+ accetta +"</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>"+ cancella +"</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                      seleziona();
 				   }
 				   else{
                    
 
-					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p id='h4prezzo'>Prezzo</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>"+ accetta +"</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>"+ cancella +"</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>Note </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>"+ accetta +"</font></a>&nbsp;&nbsp;<a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>"+ cancella +"</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                       seleziona();
 				   
@@ -4236,19 +4519,23 @@ function vediofferte(){
 				  if(item.stato==0){
                    
 					 if(item.nick==""){
-					   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><b><p id='h4richiesta'>RICHIESTA</p></b></td></tr><tr><td align='left'><br><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr><tr><td align='center'><a id='elimina"+ item.id_richiesta +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center'></td></tr></table>");
+				   
+					   item.stato==2
+				   
+					   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><b><p id='h4richiesta'>RICHIESTA</p></b></td></tr><tr><td align='left'><br><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr><tr><td align='center'><a id='elimina"+ item.id_richiesta +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center'></td></tr></table>");
 				  
 				           $(document).on("touchstart", "#elimina"+ item.id_richiesta +"", function(e){
 							 elimina(item.id_richiesta)
 							 if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 						   });
-                   
+				   
+				   
                       seleziona();
 				  
 					 }
 					 else{
 				   
-				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass00' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><font color='#fff'><b>"+ nuovonick +" "+ item.percentuale +"%</b></font></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br><table><tr><td><b><p id='h4quando'>Quando </p></td><td> </b>"+ item.quando +" </td><td><b><p id='h4ora'>Ora </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p id='h4partenza'>Partenza </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p id='h4arrivo'>Arrivo </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass00' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><font color='#fff'><b>"+ nuovonick +" "+ item.percentuale +"%</b></font></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  
                    
                      seleziona();
@@ -4537,7 +4824,7 @@ function chatting(id) {
 				  
 				  indirizzo = indirizzo.replace("777F", ":");
 				  
-				  if(item.nick==localStorage.getItem("nick")){
+				  if(item.nick==localStorage.getItem("nickpass")){
 				  //$("#offerta6").append("<br><br><table width='70%' border='0' valign='center' align='left' class='tabella'><tr><td align='center'><div class='custom-pass33'><font color='#fff' size='4'>"+ item.nick +"</font></div></tr><tr><td align='left'><br><b>Mesaggio: </b>"+ item.messaggio +"<br><b>Data: </b>"+ item.data +"</td></tr></table>");
 				  $("#offerta6").append("<div class='bubbledLeft'>"+ indirizzo +"</div>")
 				  }
