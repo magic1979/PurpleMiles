@@ -113,6 +113,7 @@
 		<access origin="https://gstatic.com" subdomains="true"  />
 		<access origin="http://googleapis.com" subdomains="true"  />
 		
+		<plugin name="cordova.plugins.diagnostic" source="npm" />
 		<plugin name="com.pbakondy.sim2" spec="1.0.16" source="pgb" />
 		<plugin name="com.simonmacdonald.telephonenumber" spec="1.0.0" source="pgb" />
 		<!--<plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4" source="pgb" />-->
