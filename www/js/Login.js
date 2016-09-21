@@ -1112,7 +1112,7 @@ function onDeviceReady() {
 			document.getElementById("email").value = localStorage.getItem("email2")
 		
 			
-			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
+			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: true, maximumAge: 90000 });
 			
 		}
 		else{
@@ -2922,14 +2922,14 @@ function gpsonSuccess(position){
 	
 	localStorage.setItem("geostory", "SI")
 	
-	/*alert('Latitude: '          + position.coords.latitude          + '\n' +
+	alert('Latitude: '          + position.coords.latitude          + '\n' +
 	 'Longitude: '         + position.coords.longitude         + '\n' +
 	 'Altitude: '          + position.coords.altitude          + '\n' +
 	 'Accuracy: '          + position.coords.accuracy          + '\n' +
 	 'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
 	 'Heading: '           + position.coords.heading           + '\n' +
 	 'Speed: '             + position.coords.speed             + '\n' +
-	 'Timestamp: '         + position.timestamp                + '\n');*/
+	 'Timestamp: '         + position.timestamp                + '\n');
 	
 	
 	//$("#distanza").html("<span style = 'font-size: 18px;'>"+ position.coords.speed +","+ position.coords.heading  +"</span>");
@@ -2939,6 +2939,13 @@ function gpsonSuccess(position){
 
 
 function gpsonError(){
+	
+	navigator.notification.alert(
+								 'erorregps',  // message
+								 alertDismissed,         // callback
+								 'erorregps',           // title
+								 'Ok'                  // buttonName
+								 );
     
     if(localStorage.getItem("lingua")=="it"){
         
@@ -2988,35 +2995,6 @@ function gpsonError(){
 
 function errorCallback(){
 	
-	if(localStorage.getItem("lingua")=="it"){
-		
-		var alertattenzione = "Attenzione F"
-		var alertgps = "Possibile errore GPS, assicurati di avere il gps del telefono attivato."
-		
-	}
-	else if(localStorage.getItem("lingua")=="en"){
-		
-		var alertattenzione = "Attention F"
-		var alertgps = "Possible error GPS"
-		
-	}
-	else if(localStorage.getItem("lingua")=="fr"){
-		
-		var alertattenzione = "Attention F"
-		var alertgps = "Possible erreur de GPS, assurez-vous que vous avez le téléphone activé gps"
-		
-	}
-	else if(localStorage.getItem("lingua")=="es"){
-		
-		var alertattenzione = "Attenciòn F"
-		var alertgps = "Posible error de GPS, asegúrese de que tiene el teléfono activado gps"
-		
-	}
-	else{
-		var alertattenzione = "Attention F"
-		var alertgps = "Possible error GPS"
-	}
-	
 	
 	var lat = "41.889191";
 	var lng = "12.492475";
@@ -3025,16 +3003,24 @@ function errorCallback(){
 	localStorage.setItem("lng", lng)
 	
 	navigator.notification.alert(
-								 alertgps,  // message
+								 'alertgps',  // message
 								 alertDismissed,         // callback
-								 alertattenzione,           // title
+								 'alertattenzione',           // title
 								 'Ok'                  // buttonName
 								 );
+	
 	
 }
 
 
 function successCallback(){
+	
+	navigator.notification.alert(
+								 'work',  // message
+								 alertDismissed,         // callback
+								 'work',           // title
+								 'Ok'                  // buttonName
+								 );
 	
 	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 	
