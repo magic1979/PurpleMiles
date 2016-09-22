@@ -20,6 +20,9 @@
                                 
                             <script src="jquery-1.10.2.min.js"></script>
                             <script src="js/jquery.mobile-1.4.2.min.js"></script>
+							
+							 <script type="text/javascript" src="js/iscroll.js"></script>
+							 
                       <style>
 						  
 						  body {
@@ -49,6 +52,61 @@
 						  text-align: center;
 						  font-weight: bold;
 					  }
+					  
+					  
+					  #wrapper {
+						  position: absolute;
+						  z-index: 1;
+						  top: 50px;
+						  bottom: 0px;
+						  left: 0;
+						  width: 100%;
+						  overflow: hidden;
+					  }
+					  
+					  #wrapper2 {
+						  position: absolute;
+						  z-index: 1;
+						  top: 70px;
+						  bottom: 50px;
+						  left: 0;
+						  width: 100%;
+						  overflow: hidden;
+					  }
+					  
+					  #wrapper3 {
+						  position: absolute;
+						  z-index: 1;
+						  top: 50px;
+						  bottom: 0px;
+						  left: 0;
+						  width: 100%;
+						  overflow: hidden;
+					  }
+					  
+					  .iScroller {
+						  position: absolute;
+						  z-index: 1;
+						  -webkit-tap-highlight-color: rgba(0,0,0,0);
+						  width: 100%;
+						  -webkit-transform: translateZ(0);
+						  -moz-transform: translateZ(0);
+						  -ms-transform: translateZ(0);
+						  -o-transform: translateZ(0);
+						  transform: translateZ(0);
+						  -webkit-touch-callout: none;
+						  -webkit-user-select: none;
+						  -moz-user-select: none;
+						  -ms-user-select: none;
+						  user-select: none;
+						  -webkit-text-size-adjust: none;
+						  -moz-text-size-adjust: none;
+						  -ms-text-size-adjust: none;
+						  -o-text-size-adjust: none;
+						  text-size-adjust: none;
+					  }
+					  
+					  
 					  
 					  .div4 {
 						  background-color: #cc33cc;
@@ -154,14 +212,26 @@
                           opacity:0.2;
                       }
 					  
-                      #content {
-                          /*padding: 0;*/
+                      /*#content {
+                          padding: 0;
                           position : absolute !important;
                           top : 0px !important;
                           right : 0;
                           bottom : 0px !important;
                           left : 0 !important;
-                      }
+                      }*/
+					  
+					  .contento {
+						  padding: 0;
+						  position : absolute !important;
+						  top : 50px !important;
+						  right : 0;
+						  bottom : 0px !important;
+						  left : 0 !important;
+						  height : 100%;
+					  }
+					  
+					  
                       .circolare {
                           width: 110px;
                           height: 110px;
@@ -1383,6 +1453,8 @@
 					  
 					  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJOv5sDH5zm_JjcuHEfkhk1DtF6XJVXdE&callback=initMap"
 						  type="text/javascript"></script>
+					  
+					 
     </head>
     <body>
 
@@ -1482,7 +1554,7 @@
 				</table>
 			</div>
 			
-			<div data-role="content"></div>
+			<div data-role="content" class="contento"></div>
 			
 			<table id="blob" width="100%" border="0" align="center" valign="center" class="div56" style="display:none">
 				<tr>
@@ -1717,8 +1789,8 @@
 					<td width="65px" align="right" valign="top">
 						<a id="ricarica" href="#" rel="external"><img src="img/ico_mirino.png" width="58px"></a>
 					</td>
-					<td width="5px" align="right" valign="center">
-						&nbsp;
+					<td width="5px" align="right" valign="center">&nbsp;
+						
 					</td>
 					<td width="160px" align="left" valign="center">
 						<table align="left" border="0" width="100%" valign="center">
@@ -1742,8 +1814,8 @@
 							
 						</table>
 					</td>
-					<td width="5px" align="right">
-						&nbsp;
+					<td width="5px" align="right">&nbsp;
+						
 					</td>
 					<td width="65px" align="left" valign="center">
 						<a id="lista" href="#" style="display:none"><img id="#" src="img/ico_verde_post.png" width="50px"></a>
@@ -1823,11 +1895,14 @@
 					</tr>
 				</table>
 			</div>
+			
+			<div id="wrapper">
+				<div class="iScroller">
 
 
 			<div class="spinner" id="spinner3"></div>
 			
-			<table border="0" hight="30px"><tr><td></td></tr></table>
+			<table border="0" hight="100px"><tr><td><br><br></td></tr></table>
 			
 			<form name="formia" action="entra.asp" method="post">
 			
@@ -1898,14 +1973,34 @@
 				</tr>
 				<tr>
 					<td width="100%" align="center" colspan="2">
-						<a id="back3" href="#" class="button_big">Invia offerta</a><br><br>
+						<br><br>
 					</td>
 				</tr>
 			</table>
 			
-			<br><br><br>
+			<br><br><br><br><br>
 			
 			</form>
+			
+			</div>
+				</div>
+			
+			<table id="zoccolo" width="100%" border="0" align="center" valign="center" class="div59" >
+				<tr>
+					<td algn="center" width="100%" align="center" valign="center">
+						
+					</td>
+				</tr>
+			</table>
+			
+			<table width="98%" border="0" align="center" valign="center" class="div599" >
+				<tr>
+					<td width="100%" align="center" valign="center">
+						<a id="back3" href="#" class="button_middle">Invia offerta</a>
+					</td>
+
+				</tr>
+			</table>
 		
 				
 		</div>
@@ -1929,8 +2024,10 @@
 				</table>
 			</div>
 			
+			<div id="wrapper2">
+				<div class="iScroller">
 			
-			<table border="0" hight="45px"><tr><td></td></tr></table>
+			<table border="0" hight="70px"><tr><td></td></tr></table>
 
 			
 			<table width="100%" align="center">
@@ -2053,6 +2150,8 @@
 
 			</table>
 			
+				</div>
+			</div>
 			
 			<table id="zoccolo" width="100%" border="0" align="center" valign="center" class="div59" >
 				<tr>
@@ -2107,6 +2206,8 @@
 					</td>
 				</tr>
 			</table>
+			
+			
 			
 			<a href="#mypanelH" data-role=button id=btnpanel data-theme="b" style="display:none"></a>
 			

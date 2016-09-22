@@ -188,14 +188,25 @@
                           box-shadow:0 0 10px 5px rgba(100,255,0,0.5);
                           opacity:0.2;
                       }
+					  
                       #content {
                           padding: 0;
-                          <!--position : absolute !important;
+                          position : absolute !important;
                           top : 0px !important;
                           right : 0;
                           bottom : 0px !important;
-                          left : 0 !important;-->
+                          left : 0 !important;
                       }
+					  
+					  .contento {
+						  padding: 0;
+						  position : absolute !important;
+						  top : 50px !important;
+						  right : 0;
+						  bottom : 0px !important;
+						  left : 0 !important;
+					  }
+					  
                       .circolare {
                           width: 110px;
                           height: 110px;
@@ -1037,6 +1048,26 @@
 						  overflow: hidden;
 					  }
 					  
+					  #wrapper2 {
+						  position: absolute;
+						  z-index: 1;
+						  top: 50px;
+						  bottom: 0px;
+						  left: 0;
+						  width: 100%;
+						  overflow: hidden;
+					  }
+					  
+					  #wrapper3 {
+						  position: absolute;
+						  z-index: 1;
+						  top: 50px;
+						  bottom: 0px;
+						  left: 0;
+						  width: 100%;
+						  overflow: hidden;
+					  }
+					  
 					  .iScroller {
 						  position: absolute;
 						  z-index: 1;
@@ -1607,7 +1638,7 @@
 
 			</div>
 			
-			<div data-role="content"></div>
+			<div data-role="content" class="contento"></div>
 			
 			<table id="blob" width="100%" border="0" align="center" valign="center" class="div56" style="display:none">
 				<tr>
@@ -1770,18 +1801,11 @@
 					</td>
 				</tr>
 			</table>
+			
+			<div id="wrapper2">
+				<div class="iScroller">
+					
 
-
-			<!--<table border="0" valign="center" align="center" class="transbox">
-				<tr>
-					<td align="center">
-						<a data-role="button" id="annulla" href="#" data-theme="b" class="custom-pass11">Annulla</a>
-					</td>
-					<td align="center" id="btnofferte" >
-						<a data-role="button" id="offerte" href="#" data-theme="b" class="custom-pass">Offerte</a>
-					</td>
-				</tr>
-			</table>-->
 			<table id="spazioipad3" height="70px"><tr><td></td></tr></table>
 			
 			<div class="spinner" id="spinner"></div>
@@ -2005,7 +2029,10 @@
 				</tr>
 			</table>
 			</form>
-		
+			
+			
+		</div>
+			</div>
 			<!--<div id="footer" data-role="footer" align="left" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div3">
 				 <a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
 				 </div>-->
@@ -2067,13 +2094,15 @@
 			 </td>
 				</tr>
 			 </table>-->
-			<table id="spazioipad7" height="45px"><tr><td></td></tr></table>
-			<div data-role=content class="div2">
-				
-			</div>
+			
 			
 			<div class="spinner" id="spinner7"></div>
 			
+			<div id="wrapper3">
+				<div class="iScroller">
+					
+			<table id="spazioipad7" height="70px"><tr><td></td></tr></table>
+					
 			<form name="formia7" action="entra.asp" method="post">
 				
 				<table align="center" width="90%" height="" border="0" valign="center" class="tabella">
@@ -2221,6 +2250,9 @@
 				</tr>
 			</table>
 			
+				</div>
+			</div>
+			
 			<table width="100%" border="0" align="center" valign="center" class="div599" >
 				<tr>
 					<td width="100%" align="center" valign="center">
@@ -2228,8 +2260,8 @@
 					</td>
 				</tr>
 			</table>
-
 			
+
 			<!--<div id="footer9" data-position="fixed" data-role="footer" data-theme="b" data-tap-toggle="false" class="div1" data-transition="none">
 				<table id="idfooter4" width="100%" align="center">
 					<tr>

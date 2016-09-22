@@ -6,32 +6,34 @@ function onDeviceReady() {
 	
 	if (localStorage.getItem("lingua") === null || localStorage.getItem("lingua")=="null" || typeof(localStorage.getItem("lingua")) == 'undefined' || localStorage.getItem("lingua")==0 || localStorage.getItem("lingua")=="") {
 		localStorage.setItem("lingua", "it")
-		localStorage.setItem("veicolo", "Automobile")
+		localStorage.setItem("veicolo", "Autovettura")
 		localStorage.setItem("fuso", "Italy");
 		localStorage.setItem("citta", "154");
 	}
 	
 	
+	// ANDROID CHECK POSITION //
+	
 	//cordova.plugins.diagnostic.isLocationAvailable(successCallback, errorCallback);
 	
 	//cordova.plugins.diagnostic.isLocationEnabled(successCallback, errorCallback);
 	
-	
 	cordova.plugins.locationAccuracy.canRequest(function(canRequest){
-    if(canRequest){
-        cordova.plugins.locationAccuracy.request(function (success){
-            alert("Successfully requested accuracy: "+success.message);
-        }, function (error){
-           console.error("Accuracy request failed: error code="+error.code+"; error message="+error.message);
-		   alert("Accuracy request failed");
-           if(error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED){
-               if(window.confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")){
-                   cordova.plugins.diagnostic.switchToLocationSettings();
-               }
-           }
-        }, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
-    }
+		if(canRequest){
+			cordova.plugins.locationAccuracy.request(function (success){
+			//alert("Successfully requested accuracy: "+success.message);
+			}, function (error){
+				 console.error("Accuracy request failed: error code="+error.code+"; error message="+error.message);
+				if(error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED){
+					if(window.confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")){
+						cordova.plugins.diagnostic.switchToLocationSettings();
+					}
+				}
+			}, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
+		}
 	});
+	
+	
 
 	////// BASE LINGUA ////////
 	
@@ -40,7 +42,8 @@ function onDeviceReady() {
         
         var alertattenzione = "Attenzione"
         var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-        $("#password").attr("placeholder","Password");
+        $("#password").attr("placeholder","Inserire la password");
+		$("#email").attr("placeholder","Inserire la email");
         $("#pinreg").attr("placeholder","Password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
@@ -55,7 +58,8 @@ function onDeviceReady() {
         
         var alertattenzione = "Attention"
         var erroredirete = "Possible network error"
-        $("#password").attr("placeholder","Password");
+        $("#password").attr("placeholder","Enter the password");
+		$("#email").attr("placeholder","Enter the email");
         $("#pinreg").attr("placeholder","Password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
@@ -70,7 +74,8 @@ function onDeviceReady() {
         
         var alertattenzione = "Attention"
         var erroredirete = "possible erreur réseau"
-        $("#password").attr("placeholder", "Mot de passe");
+        $("#password").attr("placeholder", "Entrez le mot de passe");
+		$("#email").attr("placeholder","Entrez l'e-mail");
         $("#pinreg").attr("placeholder","Mot de passe");
         $("#loginpsw").html("Mot de passe");
         $("#registrapsw").html("Mot de passe");
@@ -85,7 +90,8 @@ function onDeviceReady() {
         
         var alertattenzione = "Attenciòn"
         var erroredirete = "posible error en la red"
-        $("#password").attr("placeholder", "Contraseña");
+        $("#password").attr("placeholder", "Insertar la contrase&ntilde;a");
+		$("#email").attr("placeholder","Insertar su correo electr&oacute;nico");
         $("#pinreg").attr("placeholder","Contraseña");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
@@ -152,6 +158,7 @@ function onDeviceReady() {
 		$("#hveicolo").html("Tipo veicolo");
 		$("#haiuto").html("Aiuto");
 		$("#hsalva").html("Salva");
+		$("#himpostazioni").html("Impostazioni");
 					
 	   }
 	   else if($value=="en"){
@@ -161,6 +168,7 @@ function onDeviceReady() {
 		$("#hveicolo").html("Vehicle type");
 		$("#haiuto").html("Help");
 		$("#hsalva").html("Save");
+		$("#himpostazioni").html("Settings");
 					
 	    }
 		else if($value=="fr"){
@@ -170,6 +178,7 @@ function onDeviceReady() {
 			$("#hveicolo").html("Type de v&eacute;hicule");
 			$("#haiuto").html("Aider");
 			$("#hsalva").html("Sauver");
+			$("#himpostazioni").html("Param&eacute;tress");
 		}
 		else if($value=="es"){
 					
@@ -178,6 +187,7 @@ function onDeviceReady() {
 			$("#hveicolo").html("Tipo de veh&iacute;culo");
 			$("#haiuto").html("Ayuda");
 			$("#hsalva").html("Salva");
+			$("#himpostazioni").html("Ajustes");
 		}
 		else{
 					
@@ -196,6 +206,8 @@ function onDeviceReady() {
 					
 	//alert(document.getElementById("veicolo").value)
 	//alert(document.getElementById("citta").value)
+					
+	seleziona()
 					
 
 	 prendimezzi2()
@@ -232,7 +244,7 @@ function onDeviceReady() {
 
 	
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
-		localStorage.setItem("veicolo", "Automobile")
+		localStorage.setItem("veicolo", "Autovettura")
 	}
 
 	
@@ -282,8 +294,8 @@ function onDeviceReady() {
         document.getElementById("lingua").value = "es"
         
         var alertattenzione = "Attenciòn"
-        var chiudereA = "querer cerrar Purple Miles?"
-        var spegniA = "Cerca"
+        var chiudereA = "¿querer cerrar Purple Miles?"
+        var spegniA = "Cerra"
         var annullaA = "Cerra,Cancela"
 		$("#password").attr("placeholder", "Contraseña");
 		$("#loginpsw").html("Contrase&ntilde;a");
@@ -758,7 +770,7 @@ function onDeviceReady() {
 			
 			var alertattenzione = "Attenzione"
 			var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-			$("#password").attr("placeholder","Password");
+			$("#password").attr("placeholder","Inserire la password");
 			$("#pinreg").attr("placeholder","Password");
 			$("#loginpsw").html("Password");
 			$("#registrapsw").html("Password");
@@ -773,7 +785,7 @@ function onDeviceReady() {
 			
 			var alertattenzione = "Attention"
 			var erroredirete = "Possible network error"
-			$("#password").attr("placeholder","Password");
+			$("#password").attr("placeholder","Enter the password");
 			$("#pinreg").attr("placeholder","Password");
 			$("#loginpsw").html("Password");
 			$("#registrapsw").html("Password");
@@ -817,7 +829,7 @@ function onDeviceReady() {
 		else{
 			   var alertattenzione = "Attention"
 			   var erroredirete = "Possible network error"
-			   $("#password").attr("placeholder","Password");
+			   $("#password").attr("placeholder","Enter the password");
 			   $("#pinreg").attr("placeholder","Password");
 			   $("#loginpsw").html("Password");
 			   $("#registrapsw").html("Password");
@@ -867,7 +879,7 @@ function onDeviceReady() {
 			   
 			   var alertattenzione = "Attenzione"
 			   var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-			   $("#password").attr("placeholder","Password");
+			   $("#password").attr("placeholder","Inserire la password");
 			   $("#pinreg").attr("placeholder","Password");
 			   $("#loginpsw").html("Password");
 			   $("#registrapsw").html("Password");
@@ -886,7 +898,7 @@ function onDeviceReady() {
 			   
 			   var alertattenzione = "Attention"
 			   var erroredirete = "Possible network error"
-			   $("#password").attr("placeholder","Password");
+			   $("#password").attr("placeholder","Enter the password");
 			   $("#pinreg").attr("placeholder","Password");
 			   $("#loginpsw").html("Password");
 			   $("#registrapsw").html("Password");
@@ -946,7 +958,7 @@ function onDeviceReady() {
 		else{
 			   var alertattenzione = "Attention"
 			   var erroredirete = "Possible network error"
-			   $("#password").attr("placeholder","Password");
+			  $("#password").attr("placeholder","Enter the password");
 			   $("#pinreg").attr("placeholder","Password");
 			   $("#loginpsw").html("Password");
 			   $("#registrapsw").html("Password");
@@ -1246,7 +1258,7 @@ function agg2(){
         
         var alertattenzione = "Attenzione"
         var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-        $("#password").attr("placeholder","Password");
+        $("#password").attr("placeholder","Inserire la password");
         $("#pinreg").attr("placeholder","Password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
@@ -1256,7 +1268,7 @@ function agg2(){
         
         var alertattenzione = "Attention"
         var erroredirete = "Possible network error"
-        $("#password").attr("placeholder","Password");
+       $("#password").attr("placeholder","Enter the password");
         $("#pinreg").attr("placeholder","Password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
@@ -1341,7 +1353,44 @@ function seleziona() {
                 if(results.rows.item(i).id_traduzione == "alertreg"){
                   alertreg = results.rows.item(i).italiano.replace("P0011", "'");
                 }
-                     
+					 
+				if(results.rows.item(i).id_traduzione == "himpostazioni"){
+					 
+					$("#himpostazioni").html(results.rows.item(i).italiano.replace("P0011", "'"));
+				}
+					 
+					 if(results.rows.item(i).id_traduzione == "hlingua"){
+					 
+					 $("#hlingua").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 }
+					 
+					 
+					 if(results.rows.item(i).id_traduzione == "hfuso"){
+					 
+					 $("#hfuso").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hveicolo"){
+					 
+					 $("#hveicolo").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "haiuto"){
+					 
+					 $("#haiuto").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hsalva"){
+					 
+					 $("#hsalva").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
+					 
+					 $("#himpostazioni").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 }
+					 
+ 
                 /*if(results.rows.item(i).id_traduzione == "errorconnection"){
                   errorconnection = results.rows.item(i).italiano;
                 }*/
@@ -1389,6 +1438,43 @@ function seleziona() {
                      if(results.rows.item(i).id_traduzione == "alertreg"){
                        alertreg = results.rows.item(i).inglese.replace("P0011", "'");
                      }
+					 
+					 
+					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
+					 
+					 $("#himpostazioni").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hlingua"){
+					 
+					 $("#hlingua").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 }
+					 
+					 
+					 if(results.rows.item(i).id_traduzione == "hfuso"){
+					 
+					 $("#hfuso").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hveicolo"){
+					 
+					 $("#hveicolo").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "haiuto"){
+					 
+					 $("#haiuto").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hsalva"){
+					 
+					 $("#hsalva").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
+					 
+					 $("#himpostazioni").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 }
                      
                      
                      // TEST //
@@ -1438,6 +1524,43 @@ function seleziona() {
 					 }
 					 
 					 
+					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
+					 
+					 $("#himpostazioni").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hlingua"){
+					 
+					 $("#hlingua").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 }
+					 
+					 
+					 if(results.rows.item(i).id_traduzione == "hfuso"){
+					 
+					 $("#hfuso").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hveicolo"){
+					 
+					 $("#hveicolo").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "haiuto"){
+					 
+					 $("#haiuto").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hsalva"){
+					 
+					 $("#hsalva").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
+					 
+					 $("#himpostazioni").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 }
+					 
+					 
 				}
 					 
 		}
@@ -1478,6 +1601,42 @@ function seleziona() {
 					 alertreg = results.rows.item(i).spagnolo.replace("P0011", "'");
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
+					 
+					 $("#himpostazioni").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hlingua"){
+					 
+					 $("#hlingua").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 }
+					 
+					 
+					 if(results.rows.item(i).id_traduzione == "hfuso"){
+					 
+					 $("#hfuso").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hveicolo"){
+					 
+					 $("#hveicolo").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "haiuto"){
+					 
+					 $("#haiuto").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "hsalva"){
+					 
+					 $("#hsalva").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
+					 
+					 $("#himpostazioni").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 }
+					 
 				}
 					 
 		}
@@ -1491,7 +1650,7 @@ function seleziona() {
         
         var alertattenzione = "Attenzione"
         var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-        $("#password").attr("placeholder","Password");
+        $("#password").attr("placeholder","Inserire la password");
         $("#pinreg").attr("placeholder","Password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
@@ -1501,7 +1660,7 @@ function seleziona() {
         
         var alertattenzione = "Attention"
         var erroredirete = "Possible network error"
-        $("#password").attr("placeholder","Password");
+        $("#password").attr("placeholder","Enter the password");
         $("#pinreg").attr("placeholder","Password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
@@ -1582,7 +1741,7 @@ function prendimezzi(){
         var erroredirete = "Possible network error"
     }
     else if(localStorage.getItem("lingua")=="fr"){
-        var mezzi = "<option value='Autovettura' selected>Automobile</option>"
+        var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
         
         var alertattenzione = "Attention"
         var erroredirete = "Possible network error"
@@ -1628,7 +1787,7 @@ function prendimezzi(){
                          mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Car</option>"
                        }
                        else if(localStorage.getItem("lingua")=="fr"){
-                         mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Automobile</option>"
+                         mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Autovettura</option>"
                        }
                        else if(localStorage.getItem("lingua")=="es"){
                         mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Automòvil</option>"
@@ -1835,7 +1994,7 @@ function prendimezzi2(){
 		var erroredirete = "Possible network error"
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
-		var mezzi = "<option value='Autovettura' selected>Automobile</option>"
+		var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
 		
 		var alertattenzione = "Attention"
 		var erroredirete = "Possible network error"
@@ -1881,7 +2040,7 @@ function prendimezzi2(){
 				  mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Car</option>"
 				  }
 				  else if(localStorage.getItem("lingua")=="fr"){
-				  mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Automobile</option>"
+				  mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Autovettura</option>"
 				  }
 				  else if(localStorage.getItem("lingua")=="es"){
 				  mezzi = mezzi + "<option value='"+item.veicolo+"' selected>Automòvil</option>"
@@ -2958,8 +3117,7 @@ function gpsonSuccess(position){
 
 
 function gpsonError(){
-	
-
+    
     if(localStorage.getItem("lingua")=="it"){
         
         var alertattenzione = "Attenzione"
@@ -2969,7 +3127,7 @@ function gpsonError(){
     else if(localStorage.getItem("lingua")=="en"){
         
         var alertattenzione = "Attention"
-        var alertgps = "Possible GPS error"
+        var alertgps = "Possible error GPS"
         
     }
 	else if(localStorage.getItem("lingua")=="fr"){
@@ -2996,6 +3154,53 @@ function gpsonError(){
 	localStorage.setItem("lat", lat)
 	localStorage.setItem("lng", lng)
 	
+	navigator.notification.alert(
+								 alertgps,  // message
+								 alertDismissed,         // callback
+								 alertattenzione,           // title
+								 'Ok'                  // buttonName
+								 );
+	
+}
+
+
+/*function errorCallback(){
+	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		var alertattenzione = "Attenzione"
+		var alertgps = "Possibile errore GPS, assicurati di avere il gps del telefono attivato."
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Possible error GPS"
+		
+	}
+	else if(localStorage.getItem("lingua")=="fr"){
+		
+		var alertattenzione = "Attention"
+		var alertgps = "Possible erreur de GPS, assurez-vous que vous avez le téléphone activé gps"
+		
+	}
+	else if(localStorage.getItem("lingua")=="es"){
+		
+		var alertattenzione = "Attenciòn"
+		var alertgps = "Posible error de GPS, asegúrese de que tiene el teléfono activado gps"
+		
+	}
+	else{
+		var alertattenzione = "Attention"
+		var alertgps = "Possible error GPS"
+	}
+	
+	
+	var lat = "41.889191";
+	var lng = "12.492475";
+	
+	localStorage.setItem("lat", lat)
+	localStorage.setItem("lng", lng)
 	
 	navigator.notification.alert(
 								 alertgps,  // message
@@ -3007,41 +3212,11 @@ function gpsonError(){
 }
 
 
-function errorCallback(){
-	
-	
-	var lat = "41.889191";
-	var lng = "12.492475";
-	
-	localStorage.setItem("lat", lat)
-	localStorage.setItem("lng", lng)
-	
-	navigator.notification.alert(
-								 'alertgps',  // message
-								 alertDismissed,         // callback
-								 'alertattenzione',           // title
-								 'Ok'                  // buttonName
-								 );
-	
-	
-}
-
-
 function successCallback(){
 	
-	/*navigator.notification.alert(
-								 'work',  // message
-								 alertDismissed,         // callback
-								 'work',           // title
-								 'Ok'                  // buttonName
-								 );*/
+	var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
 	
-	//var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 0, enableHighAccuracy: true, maximumAge: 90000 });
-	
-}
-
-
-
+}*/
 
 
 function EmailDimenticata() {

@@ -41,14 +41,8 @@ receivedEvent: function(id) {
 	
 	
 	StatusBar.hide();
-	
-	
-	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
-		
-		window.location.href = "Login.html";
-		
-	}
-	
+	var myScroll;
+	var myScroll2;
 	
 	//// PUSH //////
 	
@@ -91,6 +85,27 @@ receivedEvent: function(id) {
 			$("#btninizia").removeClass("div55").addClass("divAA");
 		}
 	
+	
+	   /// FOCUS ////
+	
+	$('#soldini').focus(function(){
+	 //window.scrollTo(0, 100);
+	 //document.body.scrollTop = $(this).offset().top;
+	  myScroll.scrollToElement("#tempooff", "1s");
+	 });
+	 
+	 $('#noteautista').focus(function(){
+	  myScroll.scrollToElement("#tempooff", "1s");
+	 });
+	 
+	 
+	  $(document).on("touchmove", function(e){
+	  $('#soldini').blur();
+	  $('#noteautista').blur();
+	 
+	 cordova.plugins.Keyboard.close();
+	 });
+	
 	///////// FINE TASTIERA ///////////
 	
 	
@@ -124,8 +139,8 @@ receivedEvent: function(id) {
 	else if(localStorage.getItem("lingua")=="es"){
 		
 		var alertattenzione = "Attenciòn"
-		var chiudereA = "querer cerrar purple miles?"
-		var spegniA = "Cerca"
+		var chiudereA = "¿querer cerrar purple miles?"
+		var spegniA = "Cerra"
 		var annullaA = "Cerca,Cancela"
 		var profiloA = "Perfil"
 		
@@ -430,17 +445,22 @@ receivedEvent: function(id) {
 	//localStorage.setItem("lng", "12.492475")
 	
 	
-	var altezzatbl = getRealContentHeight()+40;
+	var altezzatbl = getRealContentHeight2()+40;
 	if(localStorage.getItem("okprima")!="1"){
-	  var altezzatbl2 = getRealContentHeight()-10;
+	  var altezzatbl2 = getRealContentHeight2()-10;
 	}
 	else{
-	   var altezzatbl2 = getRealContentHeight()-30;
+	   var altezzatbl2 = getRealContentHeight2()-30;
 	}
 	
 	var email = localStorage.getItem("email");
 	
 	
+	if (localStorage.getItem("email") === null || localStorage.getItem("email")=="null" || typeof(localStorage.getItem("email")) == 'undefined' || localStorage.getItem("email")==0 || localStorage.getItem("email")=="") {
+		
+		window.location.href = "Login.html";
+		
+	}
 	
 	if (localStorage.getItem("veicolo") === null || localStorage.getItem("veicolo")=="null" || typeof(localStorage.getItem("veicolo")) == 'undefined' || localStorage.getItem("veicolo")==0 || localStorage.getItem("veicolo")=="") {
 		
@@ -508,7 +528,7 @@ receivedEvent: function(id) {
 	$("#nickhome").html(localStorage.getItem("nick"));
 	$("#nickhome3").html(localStorage.getItem("nick"));
 	
-	var height = getRealContentHeight();
+	var height = getRealContentHeight2();
 	$("#tblhome").attr("height",height);
 	$("#tblhome3").attr("height",height);
 	
@@ -749,6 +769,8 @@ receivedEvent: function(id) {
 	var h5arrivo;
 	var h5partenza;
 	var h3rispondi
+	
+	//lista55
     
     var db;
     db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
@@ -796,7 +818,8 @@ receivedEvent: function(id) {
                                  localStorage.setItem("sessionPartenza",partenzaM);
                                  
                                  }
-                                 
+								 
+								 
                                  if(results.rows.item(i).id_traduzione == "hdpp"){
                                  hdpp = results.rows.item(i).italiano.replace("P0011", "'");
                                  
@@ -814,17 +837,108 @@ receivedEvent: function(id) {
                                  
                                  }
 								 
+								 if(results.rows.item(i).id_traduzione == "h4arrivo"){
+								 h4arrivo = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionTempo5",h4arrivo)
+								 
+								 }
+								 
 								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
 								  h5arrivo = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionDestinazione5",h5arrivo)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h5partenza"){
 								  h5partenza = results.rows.item(i).italiano.replace("P0011", "'");
 								 
+								 localStorage.setItem("sessionPartenza5",h5partenza)
+								 
 								 }
 								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
 								 h3rispondi = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionRispondi",h3rispondi)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4confermato"){
+								 h4confermato = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionConfermato5",h4confermato)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4minuti"){
+								 h4minuti = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionMinuti5",h4minuti)
+								 
+								 }
+								 
+								 
+								 if(results.rows.item(i).id_traduzione == "offerta"){
+								 offerta = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOfferta5",offerta)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "gratis"){
+								 gratis = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionGratis5",gratis)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4accettazione"){
+								 h4accettazione = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionAccettazione5",h4accettazione)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4commento"){
+								 h4commento = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionCodici5",h4commento)
+								 
+								 }
+
+								 if(results.rows.item(i).id_traduzione == "h4quando"){
+								 h4quando = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionQuando5",h4quando)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4ora"){
+								 h4ora = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOra5",h4ora)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4prezzo"){
+								 h4prezzo = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionPrezzo5",h4prezzo)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3note"){
+								 h3note = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNote5",h3note)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4nessuna"){
+								 h4nessuna = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNessuna5",h4nessuna)
 								 
 								 }
 								 
@@ -892,15 +1006,98 @@ receivedEvent: function(id) {
 								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
 								 h5arrivo = results.rows.item(i).inglese.replace("P0011", "'");
 								 
+								 localStorage.setItem("sessionDestinazione5",h5arrivo)
+								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h5partenza"){
 								 h5partenza = results.rows.item(i).inglese.replace("P0011", "'");
 								 
+								 localStorage.setItem("sessionPartenza5",h5partenza)
+								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
 								 h3rispondi = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionRispondi",h3rispondi)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4confermato"){
+								 h4confermato = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionConfermato5",h4confermato)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4minuti"){
+								 h4minuti = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionMinuti5",h4minuti)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "offerta"){
+								 offerta = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOfferta5",offerta)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "gratis"){
+								 gratis = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionGratis5",gratis)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4accettazione"){
+								 h4accettazione = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionAccettazione5",h4accettazione)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4commento"){
+								 h4commento = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionCodici5",h4commento)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4quando"){
+								 h4quando = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionQuando5",h4quando)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4ora"){
+								 h4ora = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOra5",h4ora)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4prezzo"){
+								 h4prezzo = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionPrezzo5",h4prezzo)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3note"){
+								 h3note = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNote5",h3note)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4nessuna"){
+								 h4nessuna = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNessuna5",h4nessuna)
 								 
 								 }
 
@@ -968,17 +1165,102 @@ receivedEvent: function(id) {
 								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
 								 h5arrivo = results.rows.item(i).francese.replace("P0011", "'");
 								 
+								 localStorage.setItem("sessionDestinazione5",h5arrivo)
+								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h5partenza"){
 								 h5partenza = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionPartenza5",h5partenza)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
 								 h3rispondi = results.rows.item(i).francese.replace("P0011", "'");
 								 
+								 localStorage.setItem("sessionRispondi",h3rispondi)
+								 
 								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4confermato"){
+								 h4confermato = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionConfermato5",h4confermato)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4minuti"){
+								 h4minuti = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionMinuti5",h4minuti)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "offerta"){
+								 offerta = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOfferta5",offerta)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "gratis"){
+								 gratis = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionGratis5",gratis)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4accettazione"){
+								 h4accettazione = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionAccettazione5",h4accettazione)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4commento"){
+								 h4commento = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionCodici5",h4commento)
+								 
+								 }
+								 
+								 
+								 if(results.rows.item(i).id_traduzione == "h4quando"){
+								 h4quando = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionQuando5",h4quando)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4ora"){
+								 h4ora = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOra5",h4ora)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4prezzo"){
+								 h4prezzo = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionPrezzo5",h4prezzo)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3note"){
+								 h3note = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNote5",h3note)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4nessuna"){
+								 h4nessuna = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNessuna5",h4nessuna)
+								 
+								 }
+								 
 								 
 								}
 								 
@@ -1048,17 +1330,107 @@ receivedEvent: function(id) {
 								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
 								 h5arrivo = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 
+								 localStorage.setItem("sessionDestinazione5",h5arrivo)
+								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h5partenza"){
 								 h5partenza = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionPartenza5",h5partenza)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
 								 h3rispondi = results.rows.item(i).italiano.replace("P0011", "'");
 								 
+								 localStorage.setItem("sessionRispondi",h3rispondi)
+								 
 								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4confermato"){
+								 h4confermato = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionConfermato5",h4confermato)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4minuti"){
+								 h4minuti = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionMinuti5",h4minuti)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "offerta"){
+								 offerta = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOfferta5",offerta)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "gratis"){
+								 gratis = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionGratis5",gratis)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4accettazione"){
+								 h4accettazione = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionAccettazione5",h4accettazione)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4commento"){
+								 h4commento = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionCodici5",h4commento)
+								 
+								 }
+								 
+								 
+								 if(results.rows.item(i).id_traduzione == "h4quando"){
+								 h4quando = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionQuando5",h4quando)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4ora"){
+								 h4ora = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOra5",h4ora)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h4prezzo"){
+								 h4prezzo = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionPrezzo5",h4prezzo)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3note"){
+								 h3note = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNote5",h3note)
+								 
+								 }
+								 
+								 
+								 if(results.rows.item(i).id_traduzione == "h4nessuna"){
+								 h4nessuna = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNessuna5",h4nessuna)
+								 
+								 }
+								 
+								 
+								 
+								 
+								 
 								 
 								}
 								 
@@ -1812,7 +2184,7 @@ receivedEvent: function(id) {
 				   
 		
 		window.location.href = "index.html";
-		var altezzatbl2 = getRealContentHeight()-10;
+		var altezzatbl2 = getRealContentHeight2()-10;
 				   
 		e.stopImmediatePropagation();
 				   
@@ -1823,8 +2195,13 @@ receivedEvent: function(id) {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("touchstart tap", "#XX3", function(e){
+	$(document).on("tap", "#XX3", function(e){
 				   localStorage.setItem("ritornaweb","0")
+				   
+				   for(i=0; i<10000; i++)
+				   {
+				   window.clearInterval(i);
+				   }
 				   
 				   
 				   $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
@@ -1832,14 +2209,9 @@ receivedEvent: function(id) {
 				   
 				   if(localStorage.getItem("stomessa")=="1"){
 				   
-				   localStorage.setItem("primavolta","0");
+				     localStorage.setItem("primavolta","0");
 				   
-				   for(i=0; i<10000; i++)
-				   {
-				   window.clearInterval(i);
-				   }
-				   
-				   resetta1(1)
+				     resetta1(1)
 				   }
 				   
 				   e.stopImmediatePropagation();
@@ -1850,6 +2222,7 @@ receivedEvent: function(id) {
 				   
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
+	
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
 				   
@@ -1911,7 +2284,9 @@ receivedEvent: function(id) {
 					   }
 				   }
 				   
+				   
 				   localStorage.setItem("pagina","inizia")
+				   
 				   $("#win2header").html(s_partenza);
 				   
 				   	setTimeout(function() {
@@ -3118,7 +3493,21 @@ function getRealContentHeight() {
 	var content = $.mobile.activePage.find("div[data-role='content']:visible:visible");
 	var viewport_height = $(window).height();
     
-	var content_height = viewport_height - header.outerHeight() ;//footer.outerHeight(); -48
+	var content_height = viewport_height - header.outerHeight();//footer.outerHeight(); -48
+	if((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
+		content_height -= (content.outerHeight() - content.height());
+	}
+	
+	return content_height;
+}
+
+function getRealContentHeight2() {
+	var header = $.mobile.activePage.find("div[data-role='header']:visible");
+	var footer = $.mobile.activePage.find("div[data-role='footer']:visible");
+	var content = $.mobile.activePage.find("div[data-role='content']:visible:visible");
+	var viewport_height = $(window).height();
+	
+	var content_height = viewport_height - header.outerHeight();//footer.outerHeight(); -48
 	if((content.outerHeight() - header.outerHeight() - footer.outerHeight()) <= viewport_height) {
 		content_height -= (content.outerHeight() - content.height());
 	}
@@ -3275,7 +3664,7 @@ function resetta1(focus) {
       $content.height (getRealContentHeight());
 	}
 	else{
-	   $content.height (getRealContentHeight()-20);
+	   $content.height (getRealContentHeight());
 	}
 		
 		
@@ -3292,6 +3681,7 @@ function resetta1(focus) {
 	  map = new google.maps.Map($content[0], options);
 	
 	  $.mobile.changePage ($("#win2"));
+		
 	  setTimeout(function() {
 		 google.maps.event.trigger(map, "resize");
 		 map.setCenter(latlng);
@@ -3523,7 +3913,7 @@ function resetta1(focus) {
 		centerControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
         
-        seleziona();
+        //seleziona();
 	}
 
 		
@@ -3533,7 +3923,7 @@ function resetta1(focus) {
 		$("#Modifica").hide();
 		$("#lista").hide();
 
-        seleziona();
+        //seleziona();
         
         var today = new Date();
         var dd = today.getDate();
@@ -4327,7 +4717,7 @@ function timer(){
 												  $("#pass3").hide();
 												  
 												  //$("#pass0").show();
-												  $("#win2header").html(s_partenza);
+												  //$("#win2header").html(s_partenza);
 												  }
 												  
 												  
@@ -4338,7 +4728,7 @@ function timer(){
 												  $("#esci").hide();
 												  
 												  //$("#pass0").show();
-												  $("#win2header").html(s_partenza);
+												  //$("#win2header").html(s_partenza);
 												  
 												  //resetta1(1);
 												  
@@ -4557,7 +4947,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">'+ localStorage.getItem("sessionRispondi") +'</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -4853,7 +5243,7 @@ function timer(){
 																					   icon: icon3,
 																					   optimized: false,
 																					   position : myLatLng,
-																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					   content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">'+ localStorage.getItem("sessionRispondi") +'</a></div>',
 																					   title: item.nick,
 																					   //label: ''+ beach[1] +','+ beach[2] +'',
 																					   zIndex: posizione
@@ -5049,7 +5439,7 @@ function timer(){
 																					icon: icon3,
 																					optimized: false,
 																					position : myLatLng,
-																					content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">RISPONDI</a></div>',
+																					content:'<div class="popup"><b>'+ item.nick +'</b><br>'+ localStorage.getItem("sessionPartenza") +': '+ item.partenza +'<br>'+ localStorage.getItem("sessionHdpp") +': '+ item.distanza +' km<br><a id="rispmarker1" href="#home3">'+ localStorage.getItem("sessionRispondi") +'</a></div>',
 																					title: item.nick,
 																					//label: ''+ beach[1] +','+ beach[2] +'',
 																					zIndex: posizione
@@ -6741,6 +7131,22 @@ function resetta22() {
 
 function richiesta1() {
 	
+	setTimeout(function() {
+			   
+			   myScroll2 = new IScroll('#wrapper2', { click: true });
+			   
+			   
+			   setTimeout (function(){
+				myScroll2.refresh();
+						   
+				}, 500);
+			   
+			   
+			   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+			   
+			   document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	}, 500);
+	
 	$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 	
 	id = item1
@@ -7303,9 +7709,7 @@ function richiesta1() {
 	localStorage.setItem("tastiera","1")
 
 
-	$("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
-	
-	
+
 	
 	if(parseFloat(rating1)==0){
 		$("#stelle4").html("<a id='linkstelle1' href='#'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'></a>")
@@ -7382,11 +7786,27 @@ function richiesta1() {
 	else if (parseFloat(rating1)>=5) {
 		$("#stelle3").html(ratio = "<a id='linkstelle1' href='#'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'></a>")
 	}
-
-
+	
 	localStorage.setItem("id_nick", nick1)
+
+	var contanick = nick1.length;
+	var nuovonick;
+	
+	if(contanick <= 12){
+		
+		
+	}
+	else{
+		nuovonick = nick1.slice(0,10)
+		nuovonick = nuovonick + ".."
+		
+		nick1 = nuovonick
+	}
+	
+	
 	localStorage.setItem("id_utente_pass1", id_utente_pass1)
 	
+	$("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	$("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	$("#nickhome66").html("<font color='#fff'>"+ nick1 +"</font>");
 	$("#nickblob3").html("<font color='#cc33cc' size='4'><b>"+ nick1 +" "+ percentuale1 +"%</b></font>");
@@ -7733,6 +8153,23 @@ function richiesta1() {
 	
 	$(document).on("tap", "#risp1", function(e){
 				   
+				   setTimeout(function() {
+							  
+						myScroll = new IScroll('#wrapper', { click: true });
+							  
+							  
+							setTimeout (function(){
+								myScroll.refresh();
+										
+							}, 500);
+							  
+							  
+							document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+							  
+							document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+					}, 500);
+				   
+				   
 				   $.mobile.changePage ($("#home3"));
 				   
 				   	setTimeout(function() {
@@ -7753,6 +8190,22 @@ function richiesta1() {
 }
 
 function richiesta2() {
+	
+	setTimeout(function() {
+			   
+			   myScroll2 = new IScroll('#wrapper2', { click: true });
+			   
+			   
+			   setTimeout (function(){
+						   myScroll2.refresh();
+						   
+						   }, 500);
+			   
+			   
+			   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+			   
+			   document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+			   }, 500);
 	
 	$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 	
@@ -8316,6 +8769,22 @@ function richiesta2() {
 	localStorage.setItem("tastiera","1")
 	localStorage.setItem("stomessa", "0")
 	
+	
+	var contanick = nick2.length;
+	var nuovonick;
+	
+	if(contanick <= 12){
+		
+		
+	}
+	else{
+		nuovonick = nick2.slice(0,10)
+		nuovonick = nuovonick + ".."
+		
+		nick2 = nuovonick
+	}
+	
+	
 	$("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a></font>");
 	$("#nickhome3").html("<a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a>");
 	$("#nickhome66").html("<font color='#fff'>"+ nick2 +"</font>");
@@ -8787,6 +9256,24 @@ function richiesta2() {
 	
 	$(document).on("tap", "#risp2", function(e){
 				   $("#blob2").hide();
+				   
+				   setTimeout(function() {
+							  
+							  myScroll = new IScroll('#wrapper', { click: true });
+							  
+							  
+							  setTimeout (function(){
+										  myScroll.refresh();
+										  
+										  }, 500);
+							  
+							  
+							  document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+							  
+							  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+							  }, 500);
+				   
+				   
 				    $.mobile.changePage ($("#home3"));
 					
 					setTimeout(function() {
@@ -8798,6 +9285,22 @@ function richiesta2() {
 }
 
 function richiesta3() {
+	
+	setTimeout(function() {
+			   
+			   myScroll2 = new IScroll('#wrapper2', { click: true });
+			   
+			   
+			   setTimeout (function(){
+						   myScroll2.refresh();
+						   
+						   }, 500);
+			   
+			   
+			   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+			   
+			   document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+			   }, 500);
 	
 	$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 	
@@ -9360,6 +9863,20 @@ function richiesta3() {
 	localStorage.setItem("ritornaweb","1")
 	localStorage.setItem("tastiera","1")
 	
+	var contanick = nick3.length;
+	var nuovonick;
+	
+	if(contanick <= 12){
+		
+		
+	}
+	else{
+		nuovonick = nick3.slice(0,10)
+		nuovonick = nuovonick + ".."
+		
+		nick3 = nuovonick
+	}
+	
 
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a></font>");
 				  $("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a>");
@@ -9824,6 +10341,24 @@ function richiesta3() {
 	
 	$(document).on("tap", "#risp3", function(e){
 				   $("#blob2").hide();
+				   
+				   setTimeout(function() {
+							  
+							  myScroll = new IScroll('#wrapper', { click: true });
+							  
+							  
+							  setTimeout (function(){
+										  myScroll.refresh();
+										  
+										  }, 500);
+							  
+							  
+							  document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+							  
+							  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+							  }, 500);
+				   
+				   
 				   $.mobile.changePage ($("#home3"));
 				   
 				     setTimeout(function() {
@@ -9844,67 +10379,24 @@ function lista5() {
 	var h5accettazione
 	var h5codici
 	var h5quando
+	var h5ora
+	var h5prezzo
+	var h5note
 	
-	if(localStorage.getItem("lingua")=="it"){
 		
-		tempistica1 = "Tempo di arrivo"
-		h5arrivo = "Destinazione"
-		h5partenza = "Partenza"
-		h5tempistica = "Orario confermato"
+	tempistica1 = "Tempo di arrivo"
+	h5arrivo = localStorage.getItem("sessionDestinazione5")
+	h5partenza = localStorage.getItem("sessionPartenza5")
+	h5tempistica = "Orario confermato"
 		
-		h5accettazione = "Accettazione confermata"
-		h5codici = "Codici commento"
-		h5quando = "Quando"
-		
-		
-	}
-	else if(localStorage.getItem("lingua")=="en"){
-		
-		tempistica1 = "Time of arrival"
-		h5arrivo = "Destination"
-		h5partenza = "Departure"
-		h5tempistica = "Time confirmed"
-		
-		h5accettazione = "Acceptance confirmed"
-		h5codici = "Feedback code"
-		h5quando = "When"
-	}
-	else if(localStorage.getItem("lingua")=="fr"){
-		
-		tempistica1 = "Heure d'arriv&eacute;e"
-		h5arrivo = "Destination"
-		h5partenza = "D&eacute;part"
-		h5tempistica = "Temps confirm&eacute;"
-		
-		h5accettazione = "Acceptation confirm&eacute;e"
-		h5codici = "Code de commentaire"
-		h5quando = "Quand"
-	}
-	else if(localStorage.getItem("lingua")=="es"){
-		
-		tempistica1 = "Hora de llegada"
-		h5arrivo = "Destino"
-		h5partenza = "Salida"
-		h5tempistica = "Hora confirmada"
-		
-		h5accettazione = "Aceptaci&oacute;n confirmada"
-		h5codici = "Codigo del comentario"
-		h5quando = "Cuando"
-	}
-	else{
-		
-		tempistica1 = "Time of arrival"
-		h5arrivo = "Arrival"
-		h5partenza = "Departure"
-		h5tempistica = "Time confirmed"
-		
-		h5accettazione = "Acceptance confirmed"
-		h5codici = "Feedback code"
-		h5quando = "When"
-	}
+	h5accettazione = localStorage.getItem("sessionAccettazione5")
+	h5codici = localStorage.getItem("sessionCodici5")
+	h5quando = localStorage.getItem("sessionQuando5")
+	h5ora = localStorage.getItem("sessionOra5")
+	h5prezzo = localStorage.getItem("sessionPrezzo5")
+	h5note = localStorage.getItem("sessionNote5")
 	
 
-	
 	$.mobile.changePage( "#home5", { transition: "slide", changeHash: false });
 
 	$("#nickhome5").html(localStorage.getItem("nick"));
@@ -9926,27 +10418,54 @@ function lista5() {
 				  
 				if(item.Token==1){
 				  
-				  if(item.importo==0){
-				    somma = "Gratis"
+				  var contanick = item.nick.length;
+				  var nuovonick;
+				  
+				  if(contanick <= 12){
+				  
+					nuovonick = item.nick
+				  
+				  }
+				  else{
+					nuovonick = item.nick.slice(0,10)
+					nuovonick = nuovonick + ".."
+				  
+				  }
+				  
+				  
+				  if((item.importo==0)||(item.importo=="GRATIS")){
+				  
+				    somma = localStorage.getItem("sessionGratis5")
+				  
+				  }
+				  else{
+				  
+				  
+				  if(item.importo=="OFFERTA LIBERA"){
+				    somma = localStorage.getItem("sessionOfferta5")
 				  }
 				  else{
 				    somma = item.importo;
 				  }
 				  
+				  }
+				  
+				  
 				  if(item.posticipata==0){
-				    tempistica = ""+tempistica1+": " + item.tempo + " minuti";
+				    tempistica = ""+localStorage.getItem("sessionTempo5")+": " + item.tempo + " "+localStorage.getItem("sessionMinuti5")+"";
 				  }
 				  else{
-				    tempistica = h5tempistica;
+				    tempistica = localStorage.getItem("sessionConfermato5");
+				  
 				  }
 				  
 				  //"+ item.note_autista +"
 				  
 				  if(item.cell!=""){
-				  $("#offerte5").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small_green' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>"+h5accettazione+"</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>"+h5quando+": </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>"+h5partenza+" : </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>"+h5arrivo+" : </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>"+ item.note_autista +" </b>Note</td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<b>"+h5codici+": "+ item.cod_autista +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				  $("#offerte5").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small_green' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>"+h5accettazione+"</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>"+h5prezzo+": </b>"+ somma +"<br>&nbsp;&nbsp;<b>"+h5quando+": </b>"+ item.quando +" <b>"+h5ora+": </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>"+h5partenza+" : </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>"+h5arrivo+" : </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>"+ item.note_autista +" </b>"+h5note+"</td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<b>"+h5codici+": "+ item.cod_autista +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  }
 				  else{
-				  $("#offerte5").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small_green' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ item.nick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>"+h5accettazione+"</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>Prezzo: </b>"+ somma +"<br>&nbsp;&nbsp;<b>"+h5quando+": </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>"+h5partenza+" : </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>"+h5arrivo+" :  </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>Note </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><br><a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<b>"+h5codici+": "+ item.cod_autista +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				  $("#offerte5").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='button_small_green' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b>"+h5accettazione+"</b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br>&nbsp;&nbsp;<b>"+ tempistica +"</b><br>&nbsp;&nbsp;<b>"+h5prezzo+": </b>"+ somma +"<br>&nbsp;&nbsp;<b>"+h5quando+": </b>"+ item.quando +" <b>Ora: </b>"+ item.ora +"<br>&nbsp;&nbsp;<b>"+h5partenza+" : </b>"+ item.partenza +"<br>&nbsp;&nbsp;<b>"+h5arrivo+" :  </b>"+ item.arrivo +"<br>&nbsp;&nbsp;<b>"+h5note+" </b>"+ item.note_autista +"</td></tr><tr><td align='center' colspan='2'><br><a id='5chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<b>"+h5codici+": "+ item.cod_autista +"</b></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  }
 				  
 				  
@@ -10083,7 +10602,7 @@ function lista5() {
 				  
 				}
 				else{
-					 $("#offerte5").html("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><img src='img/Logo.png' width='160px'><br></td></tr><tr><td align='center'>Nessuna Richiesta Posticipata<br></td></tr></table>")
+					 $("#offerte5").html("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><img src='img/Logo.png' width='160px'><br></td></tr><tr><td align='center'>"+localStorage.getItem("sessionNessuna5")+"<br></td></tr></table>")
 				}
 			});
 		   
