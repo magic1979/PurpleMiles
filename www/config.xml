@@ -124,6 +124,7 @@
 		<gap:plugin name="cordova-plugin-datepicker" source="npm" />
 		<plugin name="cordova-plugin-statusbar" source="npm" spec="1.0.0" />
 		<gap:plugin name="cordova-plugin-mauron85-background-geolocation" source="npm"/>
+		<plugin name="cordova-plugin-request-location-accuracy" source="npm" />
 		
 		<gap:config-file platform="android" parent="/manifest" mode="add" xmlns:android="http://schemas.android.com/apk/res/android">
 			<!--android:windowSoftInputMode="stateVisible"-->
