@@ -6778,7 +6778,7 @@ function magia2C(utente,pass) {
 	function onError3(error) {
 		localStorage.setItem("geostory", "NO")
 		
-		window.location.href = "index.html";
+		//window.location.href = "index.html";
 	}
 	
 	
