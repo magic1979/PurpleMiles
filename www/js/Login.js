@@ -328,7 +328,8 @@ function onDeviceReady() {
 	//$("#lingua").selectmenu("refresh");
 	
 	
-    // CHIUSURA ANDROID ///////
+	
+    /// CHIUSURA ANDROID ///////
     document.addEventListener('backbutton', function(e) {
                               
 			if(localStorage.getItem("pagina")=="log"){
