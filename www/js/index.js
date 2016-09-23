@@ -1922,7 +1922,14 @@ receivedEvent: function(id) {
 				   
 	});
 	
-	$(document).on("touchstart tap", "#tornareset", function(e){
+	$(document).on("tap", "#tornareset", function(e){
+		
+		  navigator.notification.alert(
+			   'Ritorno alla mappa',  // message
+			   alertDismissed,         // callback
+			   'Ritorno',           // title
+			   'Ok'                  // buttonName
+		   );
 				   
 		//bgGeo.stop();
 
@@ -5976,6 +5983,7 @@ function magia2C(utente,pass) {
     $("#win2header").html("Dettaglio richiesta&nbsp;&nbsp;");
 	
 	$("#XXX").hide();
+	
 	$("#tornareset").show();
 	
 	for(i=0; i<10000; i++)
@@ -6021,6 +6029,9 @@ function magia2C(utente,pass) {
 		   $.each(result, function(i,item){
 				  
 				  if(item.Token==1){
+					  
+					$("#XXX").hide();
+					$("#tornareset").show();
 				  
 				  if(item.posticipata==1){
 				   $("#lista").show();
@@ -6417,6 +6428,10 @@ function magia2C(utente,pass) {
 	}, 1000);
 	
 	localStorage.setItem("fatto","1")
+	
+	$("#XXX").hide();
+	
+	$("#tornareset").show();
 	
 	
 	/*refreshIntervalId33 = setInterval(function() {
@@ -8160,11 +8175,11 @@ function richiesta1() {
 					$('#soldini').focus(function(){
 					 //window.scrollTo(0, 100);
 					 //document.body.scrollTop = $(this).offset().top;
-					  myScroll.scrollToElement("#tempooff", "1s");
+					  myScroll.scrollToElement("#offerta", "1s");
 					 });
 					 
 					 $('#noteautista').focus(function(){
-					  myScroll.scrollToElement("#tempooff", "1s");
+					  myScroll.scrollToElement("#soldini", "1s");
 					 });
 					 
 					 
