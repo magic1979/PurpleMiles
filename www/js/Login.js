@@ -44,7 +44,9 @@ function onDeviceReady() {
         var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
         $("#password").attr("placeholder","Inserire la password");
 		$("#email").attr("placeholder","Inserire la email");
-        $("#pinreg").attr("placeholder","Password");
+		$("#emailreg").attr("placeholder","Inserire la email");
+		$("#recemail").attr("placeholder","Inserire la email");
+        $("#pinreg").attr("placeholder","Inserire la password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
 		
@@ -60,7 +62,9 @@ function onDeviceReady() {
         var erroredirete = "Possible network error"
         $("#password").attr("placeholder","Enter the password");
 		$("#email").attr("placeholder","Enter the email");
-        $("#pinreg").attr("placeholder","Password");
+		$("#emailreg").attr("placeholder","Enter the email");
+		$("#recemail").attr("placeholder","Enter the email");
+        $("#pinreg").attr("placeholder","Enter the password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
 		
@@ -76,7 +80,9 @@ function onDeviceReady() {
         var erroredirete = "possible erreur réseau"
         $("#password").attr("placeholder", "Entrez le mot de passe");
 		$("#email").attr("placeholder","Entrez l'e-mail");
-        $("#pinreg").attr("placeholder","Mot de passe");
+		$("#emailreg").attr("placeholder","Entrez l'e-mail");
+		$("#recemail").attr("placeholder","Entrez l'e-mail");
+        $("#pinreg").attr("placeholder","Entrez le mot de passe");
         $("#loginpsw").html("Mot de passe");
         $("#registrapsw").html("Mot de passe");
 		
@@ -92,7 +98,9 @@ function onDeviceReady() {
         var erroredirete = "posible error en la red"
         $("#password").attr("placeholder", "Insertar la contrase&ntilde;a");
 		$("#email").attr("placeholder","Insertar su correo electr&oacute;nico");
-        $("#pinreg").attr("placeholder","Contraseña");
+		$("#emailreg").attr("placeholder","Insertar su correo electr&oacute;nico");
+		$("#recemail").attr("placeholder","Insertar su correo electr&oacute;nico");
+        $("#pinreg").attr("placeholder","Insertar la contrase&ntilde;a");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
 		
@@ -773,6 +781,7 @@ function onDeviceReady() {
 	$(document).on("tap", "#recuperopsw", function(e){
 		
 	localStorage.setItem("pagelog","recpsw")
+	localStorage.setItem("pagina","recpsw")
 				   
     window.location.href = "#page8";
                    
@@ -881,6 +890,7 @@ function onDeviceReady() {
 	$(document).on("tap", "#regsito", function(e){
 		
 	localStorage.setItem("pagelog","reg")
+	localStorage.setItem("pagina","reg")
 				   
 	window.location.href = "#page7";
 		
