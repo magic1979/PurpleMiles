@@ -6007,6 +6007,8 @@ function magia2C(utente,pass) {
 	
 	var centromap = new google.maps.LatLng(lat, lng, posizione);
 	
+	setTimeout(function() {
+	
 	$.ajax({
 		   type:"GET",
 		   url:"http://purplemiles.com/www2/check_richiesta_autista_id.php?email="+ localStorage.getItem("email") +"&lat="+ localStorage.getItem("lat") +"&lng="+ localStorage.getItem("lng") +"&id_richiesta="+ pass +"&id_autista="+ localStorage.getItem("id_autista") +"",
@@ -6412,6 +6414,7 @@ function magia2C(utente,pass) {
 		   dataType:"jsonp"});
 	
 	
+	}, 1500);
 	
 	localStorage.setItem("fatto","1")
 	
