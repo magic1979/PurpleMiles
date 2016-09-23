@@ -294,7 +294,7 @@ function onDeviceReady() {
         document.getElementById("lingua").value = "es"
         
         var alertattenzione = "Attenciòn"
-        var chiudereA = "¿querer cerrar Purple Miles?"
+        var chiudereA = "¿Querer cerrar Purple Miles?"
         var spegniA = "Cerra"
         var annullaA = "Cerra,Cancela"
 		$("#password").attr("placeholder", "Contraseña");
@@ -323,22 +323,34 @@ function onDeviceReady() {
     // CHIUSURA ANDROID ///////
     document.addEventListener('backbutton', function(e) {
                               
-        //if(localStorage.getItem("pagina")=="log"){
-                              
-            navigator.notification.confirm(
-                chiudereA,  // message
-                onConfirm2,              // callback to invoke with index of button pressed
-                spegniA,            // title
-                annullaA      // buttonLabels
-            );
-                              
-        //}
-                              
-        //if(localStorage.getItem("pagina")=="imp"){
-                              
-            //$("#conferma").tap();
-                              
-        //}
+			if(localStorage.getItem("pagina")=="log"){
+								  
+				navigator.notification.confirm(
+					chiudereA,  // message
+					onConfirm2,              // callback to invoke with index of button pressed
+					spegniA,            // title
+					annullaA      // buttonLabels
+				);
+								  
+			}
+								  
+			if(localStorage.getItem("pagina")=="imp"){
+								  
+				$("#conferma").tap();
+								  
+			}
+			
+			if(localStorage.getItem("pagina")=="reg"){
+								  
+				$("#accedi2").tap();
+								  
+			}
+			
+			if(localStorage.getItem("pagina")=="recpsw"){
+								  
+				window.location.href = "#page";
+								  
+			}
                               
         }, false);
     
@@ -732,10 +744,11 @@ function onDeviceReady() {
 		
 	});
 	
-	$(document).on("touchend", "#accedi2", function(e){
+	$(document).on("tap", "#accedi2", function(e){
 		localStorage.setItem("pagelog","log")
 		window.location.href = "#page";
 		//login();
+		
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   
 	});
@@ -893,6 +906,8 @@ function onDeviceReady() {
 			   $("#rreg2").html("Registrati");
 			   $("#raccedi").html("Accedi");
 			   
+			   $("#footer3").show();
+			   
 			   }
 			   else if(localStorage.getItem("lingua")=="en"){
 			   
@@ -913,6 +928,8 @@ function onDeviceReady() {
 			   
 			   $("#acconsentire").html("");
 			   
+			   $("#footer3").hide();
+			   
 		}
 		else if(localStorage.getItem("lingua")=="fr"){
 			   
@@ -932,6 +949,8 @@ function onDeviceReady() {
 			   $("#raccedi").html("Se connecter");
 			   
 			   $("#acconsentire").html("");
+			   
+			   $("#footer3").hide();
 			   
 			   
 		}
@@ -954,6 +973,8 @@ function onDeviceReady() {
 			   
 			   $("#acconsentire").html("");
 			   
+			   $("#footer3").hide();
+			   
 		}
 		else{
 			   var alertattenzione = "Attention"
@@ -972,6 +993,8 @@ function onDeviceReady() {
 			   $("#raccedi").html("Log in");
 			   
 			   $("#acconsentire").html("");
+			   
+			   $("#footer3").hide();
 		}
                
                

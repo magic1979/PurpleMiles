@@ -92,7 +92,7 @@ receivedEvent: function(id) {
 	if(localStorage.getItem("lingua")=="it"){
 		
 		var alertattenzione = "Attenzione"
-		var chiudereA = "Vuoi chiudere purple miles?"
+		var chiudereA = "Vuoi chiudere Purple Miles?"
 		var spegniA = "Spegni"
 		var annullaA = "Spegni,Annulla"
 		var profiloA = "Profilo"
@@ -101,7 +101,7 @@ receivedEvent: function(id) {
 	else if(localStorage.getItem("lingua")=="en"){
 		
 		var alertattenzione = "Attention"
-		var chiudereA = "do you want close purple miles?"
+		var chiudereA = "do you want close Purple Miles?"
 		var spegniA = "Shut Down"
 		var annullaA = "Shut Down,Cancel"
 		var profiloA = "Profile"
@@ -110,7 +110,7 @@ receivedEvent: function(id) {
 	else if(localStorage.getItem("lingua")=="fr"){
 		
 		var alertattenzione = "Attention"
-		var chiudereA = "Voulez-vous fermer purple miles?"
+		var chiudereA = "Voulez-vous fermer Purple Miles?"
 		var spegniA = "fermer"
 		var annullaA = "fermer,annuler"
 		var profiloA = "Profil"
@@ -119,15 +119,15 @@ receivedEvent: function(id) {
 	else if(localStorage.getItem("lingua")=="es"){
 		
 		var alertattenzione = "Attenciòn"
-		var chiudereA = "¿querer cerrar purple miles?"
+		var chiudereA = "¿Querer cerrar Purple Miles?"
 		var spegniA = "Cerra"
-		var annullaA = "Cerca,Cancela"
+		var annullaA = "Cerra,Cancela"
 		var profiloA = "Perfil"
 		
 	}
 	else{
 		var alertattenzione = "Attention"
-		var chiudereA = "do you want close purple miles?"
+		var chiudereA = "do you want close Purple Miles?"
 		var spegniA = "Shut Down"
 		var annullaA = "Shut Down,Cancel"
 		var profiloA = "Profilo"
@@ -2283,7 +2283,7 @@ receivedEvent: function(id) {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
-	$(document).on("tap", "#back3", function(e){
+	$(document).on("tap", "#back33", function(e){
 				   
 		localStorage.setItem("tastiera","1");
 				   
@@ -3526,7 +3526,7 @@ function onPause() {
 function onResume() {
 	
 	//bgGeo.stop();
-	backgroundGeolocation.stop();
+	//backgroundGeolocation.stop();
 	
 	//app.initialize();
 	$("#blob5").hide();
@@ -6414,7 +6414,7 @@ function magia2C(utente,pass) {
 		   dataType:"jsonp"});
 	
 	
-	}, 1500);
+	}, 1000);
 	
 	localStorage.setItem("fatto","1")
 	
@@ -7122,7 +7122,7 @@ function richiesta1() {
 			   setTimeout (function(){
 				myScroll2.refresh();
 						   
-				}, 500);
+				}, 1000);
 			   
 			   
 			   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -8146,7 +8146,7 @@ function richiesta1() {
 							setTimeout (function(){
 								myScroll.refresh();
 										
-							}, 500);
+							}, 1000);
 							  
 							  
 							document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -8205,7 +8205,7 @@ function richiesta2() {
 			   setTimeout (function(){
 						   myScroll2.refresh();
 						   
-						   }, 500);
+						   }, 1000);
 			   
 			   
 			   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -9271,7 +9271,7 @@ function richiesta2() {
 							  setTimeout (function(){
 										  myScroll.refresh();
 										  
-										  }, 500);
+										  }, 1000);
 							  
 							  
 							  document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -9321,7 +9321,7 @@ function richiesta3() {
 			   setTimeout (function(){
 						   myScroll2.refresh();
 						   
-						   }, 500);
+						   }, 1000);
 			   
 			   
 			   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -10377,7 +10377,7 @@ function richiesta3() {
 							  setTimeout (function(){
 										  myScroll.refresh();
 										  
-										  }, 500);
+										  }, 1000);
 							  
 							  
 							  document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -11933,7 +11933,7 @@ function controllachat2(ric,id) {
 											localStorage.setItem("id_richiesta",id)
 											
 										if( $(".ui-panel").hasClass("ui-panel-open") == true ){
-												alert("OPENED");
+												//alert("OPENED");
 										}else{
 									   
 									   
