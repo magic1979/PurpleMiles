@@ -86,26 +86,6 @@ receivedEvent: function(id) {
 		}
 	
 	
-	   /// FOCUS ////
-	
-	$('#soldini').focus(function(){
-	 //window.scrollTo(0, 100);
-	 //document.body.scrollTop = $(this).offset().top;
-	  myScroll.scrollToElement("#tempooff", "1s");
-	 });
-	 
-	 $('#noteautista').focus(function(){
-	  myScroll.scrollToElement("#tempooff", "1s");
-	 });
-	 
-	 
-	  $(document).on("touchmove", function(e){
-	  $('#soldini').blur();
-	  $('#noteautista').blur();
-	 
-	 cordova.plugins.Keyboard.close();
-	 });
-	
 	///////// FINE TASTIERA ///////////
 	
 	
@@ -7997,8 +7977,8 @@ function richiesta1() {
 						
 						var addressLongLat = lat1+","+lng1;
 	
-						window.open("maps:daddr="+ addressLongLat +"" , '_system');
-						//window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+						//window.open("maps:daddr="+ addressLongLat +"" , '_system');
+						window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 								  
 						// ll=50.894967,4.341626
 						
@@ -8152,6 +8132,8 @@ function richiesta1() {
 	
 	
 	$(document).on("tap", "#risp1", function(e){
+		
+				   var myScroll;
 				   
 				   setTimeout(function() {
 							  
@@ -8168,6 +8150,27 @@ function richiesta1() {
 							  
 							document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 					}, 500);
+					
+					
+					   /// FOCUS ////
+	
+					$('#soldini').focus(function(){
+					 //window.scrollTo(0, 100);
+					 //document.body.scrollTop = $(this).offset().top;
+					  myScroll.scrollToElement("#tempooff", "1s");
+					 });
+					 
+					 $('#noteautista').focus(function(){
+					  myScroll.scrollToElement("#tempooff", "1s");
+					 });
+					 
+					 
+					  $(document).on("touchmove", function(e){
+					  $('#soldini').blur();
+					  $('#noteautista').blur();
+					 
+					 cordova.plugins.Keyboard.close();
+					 });
 				   
 				   
 				   $.mobile.changePage ($("#home3"));
@@ -9117,8 +9120,8 @@ function richiesta2() {
 
 								 var addressLongLat = lat2+","+lng2;
 
-	                            window.open("maps:daddr="+ addressLongLat +"" , '_system');
-								//window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	                            //window.open("maps:daddr="+ addressLongLat +"" , '_system');
+								window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -9272,6 +9275,27 @@ function richiesta2() {
 							  
 							  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 							  }, 500);
+							  
+							  
+							     /// FOCUS ////
+	
+					$('#soldini').focus(function(){
+					 //window.scrollTo(0, 100);
+					 //document.body.scrollTop = $(this).offset().top;
+					  myScroll.scrollToElement("#tempooff", "1s");
+					 });
+					 
+					 $('#noteautista').focus(function(){
+					  myScroll.scrollToElement("#tempooff", "1s");
+					 });
+					 
+					 
+					  $(document).on("touchmove", function(e){
+					  $('#soldini').blur();
+					  $('#noteautista').blur();
+					 
+					 cordova.plugins.Keyboard.close();
+					 });
 				   
 				   
 				    $.mobile.changePage ($("#home3"));
@@ -10211,8 +10235,8 @@ function richiesta3() {
 
 						var addressLongLat = lat3+","+lng3;
 	
-	                             window.open("maps:daddr="+ addressLongLat +"" , '_system');
-								 //window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
+	                             //window.open("maps:daddr="+ addressLongLat +"" , '_system');
+								 window.open("google.navigation:q="+ addressLongLat +"&mode=d" , '_system');
 	
 								 $("#blob2").hide();
 								 
@@ -10357,6 +10381,27 @@ function richiesta3() {
 							  
 							  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 							  }, 500);
+				   
+				   
+				      /// FOCUS ////
+	
+					$('#soldini').focus(function(){
+					 //window.scrollTo(0, 100);
+					 //document.body.scrollTop = $(this).offset().top;
+					  myScroll.scrollToElement("#tempooff", "1s");
+					 });
+					 
+					 $('#noteautista').focus(function(){
+					  myScroll.scrollToElement("#tempooff", "1s");
+					 });
+					 
+					 
+					  $(document).on("touchmove", function(e){
+					  $('#soldini').blur();
+					  $('#noteautista').blur();
+					 
+					 cordova.plugins.Keyboard.close();
+					 });
 				   
 				   
 				   $.mobile.changePage ($("#home3"));
