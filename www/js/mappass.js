@@ -2403,12 +2403,12 @@ function onDeviceReady() {
 									  window.location.href = "mappass.html";
 									  //////////
 								 
-								 document.getElementById("viale7").value = ""
+								 /*document.getElementById("viale7").value = ""
 								 
 								 document.getElementById("destinazione7").value = ""
 								 
 								 
-								 $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+								 $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });*/
 								 
 								 $("#spinner4").show();
 								 

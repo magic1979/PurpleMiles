@@ -97,10 +97,10 @@ function onDeviceReady() {
         var alertattenzione = "Attenciòn"
         var erroredirete = "posible error en la red"
         $("#password").attr("placeholder", "Insertar la contrase&ntilde;a");
-		$("#email").attr("placeholder","Insertar su correo electr&oacute;nico");
-		$("#emailreg").attr("placeholder","Insertar su correo electr&oacute;nico");
-		$("#recemail").attr("placeholder","Insertar su correo electr&oacute;nico");
-        $("#pinreg").attr("placeholder","Insertar la contrase&ntilde;a");
+		$("#email").attr("placeholder","Insertar su correo electrònico");
+		$("#emailreg").attr("placeholder","Insertar su correo electrònico");
+		$("#recemail").attr("placeholder","Insertar su correo electrònico");
+        $("#pinreg").attr("placeholder","Insertar la contraseña");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
 		
@@ -349,13 +349,15 @@ function onDeviceReady() {
 			}
 			
 			if(localStorage.getItem("pagina")=="reg"){
-								  
+				
+				 localStorage.setItem("pagina","log")
 				$("#accedi2").tap();
 								  
 			}
 			
 			if(localStorage.getItem("pagina")=="recpsw"){
-								  
+				
+				localStorage.setItem("pagina","log")
 				window.location.href = "#page";
 								  
 			}
