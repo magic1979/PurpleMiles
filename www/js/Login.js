@@ -18,7 +18,7 @@ function onDeviceReady() {
 	
 	//cordova.plugins.diagnostic.isLocationEnabled(successCallback, errorCallback);
 	
-	/*cordova.plugins.locationAccuracy.canRequest(function(canRequest){
+	cordova.plugins.locationAccuracy.canRequest(function(canRequest){
 		if(canRequest){
 			cordova.plugins.locationAccuracy.request(function (success){
 			//alert("Successfully requested accuracy: "+success.message);
@@ -31,7 +31,7 @@ function onDeviceReady() {
 				}
 			}, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
 		}
-	});*/
+	});
 	
 	
 
