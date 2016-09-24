@@ -2275,12 +2275,23 @@ function onDeviceReady() {
 					   'OK'
 					   );
 					  
-					  //$("#btnofferte").show();
-					  //$.mobile.changePage( "#home", { transition: "slide", changeHash: false });
+					  
+					 // CANCELLO CACHE INPUT RICHIESTE //
+					  localStorage.setItem("viale", "");
+					  localStorage.setItem("destinazione", "");
 				   
-					   $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
-					   localStorage.setItem("dovesono", "3");
-					   $("#spinner4").show();
+					  document.getElementById("viale").value = ""
+					  document.getElementById("destinazione").value = ""
+					  
+					  
+					  window.location.href = "mappass.html";
+					  //////////
+				   
+					   //$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+					   //localStorage.setItem("dovesono", "3");
+					   //$("#spinner4").show();
+					  
+					  
 					  
 				/*if(screen.width < 768){
 				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");

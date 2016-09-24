@@ -1946,13 +1946,15 @@ receivedEvent: function(id) {
 				$("#tornareset").hide();
 				   
 				$("#magia").hide();
+				
+				$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
 				//$("#puntina").hide();
 				   
 				setTimeout(function() {
-					$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
+					resetta1(1);
 				}, 5000);
 			
-				resetta1(1);
+				
 				   
 			}
 			else
