@@ -1923,13 +1923,6 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("tap", "#tornareset", function(e){
-		
-		  navigator.notification.alert(
-			   'Ritorno alla mappa',  // message
-			   alertDismissed,         // callback
-			   'Ritorno',           // title
-			   'Ok'                  // buttonName
-		   );
 				   
 		//bgGeo.stop();
 
