@@ -2268,12 +2268,17 @@ function onDeviceReady() {
 				  if(item.Token==1){
 					  $("#spinner7").hide();
 					  
-					  navigator.notification.alert(
-					   alertinvio,
-					   alertDismissed,
-					   richiestaA,
-					   'OK'
-					   );
+					  
+					  setTimeout(function() {
+				    
+						  navigator.notification.alert(
+						   alertinvio,
+						   alertDismissed,
+						   richiestaA,
+						   'OK'
+						   );
+					   
+					  },2000);
 					  
 					  
 					 // CANCELLO CACHE INPUT RICHIESTE //
@@ -2328,7 +2333,7 @@ function onDeviceReady() {
 				   }*/
 					  
 					  
-					   vediofferte()
+					  // vediofferte()
 					  
 					  e.stopImmediatePropagation();
 				   
@@ -2375,13 +2380,28 @@ function onDeviceReady() {
 								 if(item.Token==1){
 								 $("#spinner7").hide();
 									 
-								 navigator.notification.alert(
+									 
+									 setTimeout(function() {
+	
+								         navigator.notification.alert(
 															  alertinvio,
 															  alertDismissed,
 															  richiestaA,
 															  'Ok'
 															  );
+									 },2000);
 								 
+								 
+									  // CANCELLO CACHE INPUT RICHIESTE //
+									  localStorage.setItem("viale", "");
+									  localStorage.setItem("destinazione", "");
+								   
+									  document.getElementById("viale").value = ""
+									  document.getElementById("destinazione").value = ""
+									  
+									  
+									  window.location.href = "mappass.html";
+									  //////////
 								 
 								 document.getElementById("viale7").value = ""
 								 
@@ -2389,7 +2409,9 @@ function onDeviceReady() {
 								 
 								 
 								 $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+								 
 								 $("#spinner4").show();
+								 
 								 
 								 /*if(screen.width < 768){
 								 $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
