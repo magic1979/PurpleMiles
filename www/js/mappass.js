@@ -2449,7 +2449,7 @@ function onDeviceReady() {
 								 }*/
 								 
 								 
-								 vediofferte()
+								 //vediofferte()
 								 
 								 e.stopImmediatePropagation();
 								 
@@ -3888,8 +3888,9 @@ function resetta1(focus) {
 			
 		}
 		else{
+			 document.getElementById("viale").value = localStorage.getItem("viale");
+			 
 			 codeLatLng(lat,lng);
-			 //document.getElementById("viale").value = localStorage.getItem("viale");
 		}
 		
 	}
@@ -3901,8 +3902,9 @@ function resetta1(focus) {
 			
 		}
 		else{
+			document.getElementById("destinazione").value = localStorage.getItem("destinazione");
+			
 			codeLatLng(lat,lng);
-			//document.getElementById("destinazione").value = localStorage.getItem("destinazione");
 		}
 	}
 		
