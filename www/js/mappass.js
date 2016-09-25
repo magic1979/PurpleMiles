@@ -46,6 +46,19 @@ function onDeviceReady() {
 	 }
 		
 	////////// FINE TASTIERA ////////////////
+	
+	
+	$('#veicolo').on('change', function(){
+		 var $this = $(this),
+		 $value = $this.val();
+					 
+		 document.getElementById("veicolo11").value = $value;
+					 
+		 //alert(document.getElementById("veicolo11").value)
+					 
+	});
+	
+	
     var alertstart;
     var alertend;
     var alertinvio;
@@ -930,7 +943,7 @@ function onDeviceReady() {
 	else if(localStorage.getItem("lingua")=="en"){
 		
 		var alertattenzione = "Attention"
-		var chiudereA = "do you want close Purple Miles?"
+		var chiudereA = "do you want close purple miles?"
 		var spegniA = "Shut Down"
 		var annullaA = "Shut Down,Cancel"
 		var profiloA = "Profile"
@@ -939,7 +952,7 @@ function onDeviceReady() {
 	else if(localStorage.getItem("lingua")=="fr"){
 		
 		var alertattenzione = "Attention"
-		var chiudereA = "Voulez-vous fermer Purple Miles?"
+		var chiudereA = "Voulez-vous fermer purple miles?"
 		var spegniA = "fermer"
 		var annullaA = "fermer,annuler"
 		var profiloA = "Profil"
@@ -948,9 +961,9 @@ function onDeviceReady() {
 	else if(localStorage.getItem("lingua")=="es"){
 		
 		var alertattenzione = "Attenciòn"
-		var chiudereA = "¿Querer cerrar Purple Miles?"
+		var chiudereA = "¿querer cerrar purple miles?"
 		var spegniA = "Cerra"
-		var annullaA = "Cerra,Cancela"
+		var annullaA = "Cerca,Cancela"
 		var profiloA = "Perfil"
 		
 	}
@@ -1314,7 +1327,6 @@ function onDeviceReady() {
 		localStorage.setItem("pagebtn", "da")
 				   
 		document.getElementById("datacal").value = "";
-
 				   
 		$("#Orario").html("<option selected>--</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option>");
 		$("#Minuti").html("<option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>");
@@ -1348,7 +1360,6 @@ function onDeviceReady() {
 				   
 		$("#destinazione").hide();
 		$("#tbldestinazione").hide();
-				   
 				   
 				   /*if(screen.width < 768){
 				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
@@ -1425,7 +1436,6 @@ function onDeviceReady() {
 				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				   $("#a1").html("<img src='img/ico_finish1.png' width='45px'>");
 				  
-				  
 				   /*if(screen.width < 768){
 				     $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				     $("#a1").html("<img src='img/ico_finish1.png' width='45px'>");
@@ -1444,13 +1454,15 @@ function onDeviceReady() {
 				   }*/
 				   
 				   
+				   
+				   //$("#da1").removeClass("bottoni").addClass("bottoni1");
+				   //$("#a1").removeClass("bottoni1").addClass("bottoni");
 				   setTimeout(function() {
 				     $("#ricarica").tap();
 				   },2000);
-				   
+				   //resetta1(1);
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				   
-		});
+				   });
 	
 	$(document).on("touchstart tap", "#adesso", function(e){
 				   localStorage.setItem("dovesono", "1");
@@ -1529,14 +1541,8 @@ function onDeviceReady() {
 		localStorage.setItem("destinazione", document.getElementById("destinazione").value);
 				   
 				   
-        //localStorage.setItem("fuso", document.getElementById("fuso").value);
-        //localStorage.setItem("citta", document.getElementById("citta").value);
-				   
 		 $("#fuso3").html(localStorage.getItem("fuso") + "," + localStorage.getItem("citta"));
 				   
-         //$("#fuso2").html(localStorage.getItem("fuso"));
-				   
-		 //$("#citta2").html(localStorage.getItem("citta"));
 				   
 		prendicittaid(localStorage.getItem("citta"))
 				   
@@ -1915,7 +1921,7 @@ function onDeviceReady() {
 							  document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
 							  
 							  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-					}, 1000);
+					}, 500);
 				   
 				   
 				   $.mobile.changePage ($("#home3"));
@@ -1924,15 +1930,16 @@ function onDeviceReady() {
 				   
 				   $('#notepass').focus(function(){
 
-						myScroll2.scrollToElement("#bluetooth", "1s");
+						myScroll.scrollToElement("#veicolo", "1s");
 				   });
 				   
 				   
 				   $(document).on("touchmove", function(e){
-						$('#notepass').blur();
+								  $('#notepass').blur();
 								  
-						 cordova.plugins.Keyboard.close();
+								  cordova.plugins.Keyboard.close();
 					});
+				   
 				   
 				   
 				    //$("#offerte").tap();
@@ -2242,8 +2249,6 @@ function onDeviceReady() {
 		
 		if(document.getElementById("datacal7").value == "ORA"){
 				   
-		//alert(document.getElementById("viale3").value.replace("'", ""))
-				   
 				   
 		//alert("http://purplemiles.com/www2/check_richiesta5.php?email="+ localStorage.getItem("emailpass") +"&indirizzo="+ indirizzo +"&indirizzo2="+ destinazione +"&passeggeri="+ passeggeri +"&animali="+ animali +"&fumatori="+ fumatori +"&meno18="+ meno18 +"&disabili="+ disabili +"&bambini="+ bambini +"&wifi="+ wifi +"&portapacchi="+ portapacchi +"&rimorchio="+ rimorchio +"&bluetooth="+ bluetooth +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"")
                    
@@ -2262,19 +2267,7 @@ function onDeviceReady() {
 					  $("#spinner7").hide();
 					  
 					  
-					  setTimeout(function() {
-				    
-						  navigator.notification.alert(
-						   alertinvio,
-						   alertDismissed,
-						   richiestaA,
-						   'OK'
-						   );
-					   
-					  },2000);
-					  
-					  
-					 // CANCELLO CACHE INPUT RICHIESTE //
+					  // CANCELLO CACHE INPUT RICHIESTE //
 					  localStorage.setItem("viale", "");
 					  localStorage.setItem("destinazione", "");
 				   
@@ -2284,10 +2277,22 @@ function onDeviceReady() {
 					  
 					  window.location.href = "mappass.html";
 					  //////////
+					  
+					  
+					  navigator.notification.alert(
+					   alertinvio,
+					   alertDismissed,
+					   richiestaA,
+					   'OK'
+					   );
+					  
+					  //$("#btnofferte").show();
+					  //$.mobile.changePage( "#home", { transition: "slide", changeHash: false });
+					  
 				   
-					   //$.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
-					   //localStorage.setItem("dovesono", "3");
-					   //$("#spinner4").show();
+					   $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
+					   localStorage.setItem("dovesono", "3");
+					   $("#spinner4").show();
 					  
 					  
 					  
@@ -2373,38 +2378,17 @@ function onDeviceReady() {
 								 if(item.Token==1){
 								 $("#spinner7").hide();
 									 
-									 
-									 setTimeout(function() {
-	
-								         navigator.notification.alert(
+								 navigator.notification.alert(
 															  alertinvio,
 															  alertDismissed,
 															  richiestaA,
 															  'Ok'
 															  );
-									 },2000);
 								 
+								 //$("#btnofferte").show();
 								 
-									  // CANCELLO CACHE INPUT RICHIESTE //
-									  localStorage.setItem("viale", "");
-									  localStorage.setItem("destinazione", "");
-								   
-									  document.getElementById("viale").value = ""
-									  document.getElementById("destinazione").value = ""
-									  
-									  
-									  window.location.href = "mappass.html";
-									  //////////
-								 
-								 /*document.getElementById("viale7").value = ""
-								 
-								 document.getElementById("destinazione7").value = ""
-								 
-								 
-								 $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });*/
-								 
+								 $.mobile.changePage( "#home4", { transition: "slide", changeHash: false });
 								 $("#spinner4").show();
-								 
 								 
 								 /*if(screen.width < 768){
 								 $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
@@ -2532,13 +2516,6 @@ function onDeviceReady() {
 				   return;
 				   }
 				   
-				   
-				   // CONTROLLO ORA //
-				   
-				   
-				   //////////////////
-				   
-				   
 				   if (document.getElementById("Minuti").value == "--") {
 				   navigator.notification.alert(
 												orarioA,  // message
@@ -2581,8 +2558,8 @@ function onDeviceReady() {
                    
 
                    var datona = yyyy+mm+dd;
-                   var orona = ora+""+minuti;
-                   
+                   var orona = ora;
+				   
                    
                    var testo = document.getElementById("datacal").value;
                    
@@ -2609,16 +2586,20 @@ function onDeviceReady() {
                    var anno2 = testo14.substring(10, 6);
                    
                    var datona2 = anno2+mese2+giorno2
-                   var orona2 = document.getElementById("Orario").value + document.getElementById("Minuti").value;
 				   
-                   //alert(anno2)
-                   
-                   datona2 = datona2.replace(" ","")
+				   datona2 = datona2.replace(" ","")
+				   
+				   var orona2 = document.getElementById("Orario").value
+				   
 				   
 				   var cista;
                    cista = 0;
-                   
+				   
+				   
+				   
                    if (datona2<datona) {
+				   
+				   
                       navigator.notification.alert(
                                                 inserireA,  // message
                                                 alertDismissed,         // callback
@@ -2627,10 +2608,29 @@ function onDeviceReady() {
                                                 );
                      return;
                    }
-                   
-                   
-                   /*if (cista==1) {
 				   
+				   
+				   
+				   
+				   if (orona2<orona) {
+				   
+				     navigator.notification.alert(
+												inserireA,  // message
+												alertDismissed,         // callback
+												alertattenzione,            // title
+												'OK'                  // buttonName
+												);
+				   return;
+				   }
+
+
+				   
+				   
+				   
+				   
+				   
+                   /*if (cista==1) {
+					
                     if (orona2<orona) {
                         navigator.notification.alert(
                                                 'inserire una orario valido',  // message
@@ -2729,6 +2729,8 @@ function onDeviceReady() {
 		localStorage.setItem("viale", document.getElementById("viale").value);
 		localStorage.setItem("destinazione", document.getElementById("destinazione").value);
 				   
+	   
+				   
 		localStorage.setItem("datacal", document.getElementById("datacal").value);
 		localStorage.setItem("orario", document.getElementById("Orario").value);
 		localStorage.setItem("minuti", document.getElementById("Minuti").value);
@@ -2747,26 +2749,42 @@ function onDeviceReady() {
 				   
                    if(localStorage.getItem("lingua")=="it"){
 				   
-				   if (localStorage.getItem("veicolo")=="Autovettura"){
-					 var veicolando = "Auto/Taxi/NCC"
-				   }
-				   else{
-					   
-					   var veicolando = localStorage.getItem("veicolo")
-				   }
+				   
 				   
                    if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
-                   
-                   document.getElementById("veicolo7").value = localStorage.getItem("veicolo");
-                   
-                   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				   
+				       alert(document.getElementById("veicolo7").value)
+				   
+				   
+				   
+	                    document.getElementById("veicolo7").value = "Autovettura"
+				   
+				        if (document.getElementById("veicolo7").value=="Autovettura"){
+				          var veicolando = "Auto/Taxi/NCC"
+				        }
+				        else {
+				          var veicolando = document.getElementById("veicolo7").value
+				         }
+				   
+				   
+						$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
                    
                    }
                    else{
+				   
+				       alert(document.getElementById("veicolo7").value)
                    
-                   document.getElementById("veicolo7").value = document.getElementById("veicolo").value;
+                        document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
+				   
+				        if (document.getElementById("veicolo7").value=="Autovettura"){
+					        var veicolando = "Auto/Taxi/NCC"
+						}
+				        else {
+						    var veicolando = document.getElementById("veicolo7").value
+				         }
+				   
                    
-                   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
                    }
                    
                    if(document.getElementById("passeggeri").value!="01"){
@@ -2867,50 +2885,53 @@ function onDeviceReady() {
 				     if (localStorage.getItem("veicolo")=="Autovettura"){
 				      var veicolando = "Car/Taxi/Limo"
 				     }
-					  else{
-					   var veicolando = localStorage.getItem("veicolo")
-					  }
 				   }
 				   else if (localStorage.getItem("lingua")=="fr"){
 				     if (localStorage.getItem("veicolo")=="Autovettura"){
 				       var veicolando = "Auto/Taxi/VTC"
 				     }
-					  else{
-					   var veicolando = localStorage.getItem("veicolo")
-					  }
 				   }
 				   else if (localStorage.getItem("lingua")=="es"){
 				     if (localStorage.getItem("veicolo")=="Autovettura"){
 				       var veicolando = "Auto/Taxi/ACC"
 				     }
-					  else{
-					   var veicolando = localStorage.getItem("veicolo")
-					  }
 				   }
 				   else{
-					  if (localStorage.getItem("veicolo")=="Autovettura"){
-				       var veicolando = "Auto/Taxi/Limo"
-				     }
-					  else{
-					   var veicolando = localStorage.getItem("veicolo")
-					  }
+				   
 				   }
 				   
                    
-                    if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
-                   
-                     document.getElementById("veicolo7").value = localStorage.getItem("veicolo");
-                   
-                     $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +" </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-                   
-                   }
-                   else{
-                   
-                     document.getElementById("veicolo7").value = document.getElementById("veicolo").value;
-                   
-                     $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +" </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-                   }
-                   
+				   if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
+				   
+				   document.getElementById("veicolo7").value = document.getElementById("veicolo11").value
+				   
+				   if (document.getElementById("veicolo7").value=="Autovettura"){
+				   var veicolando = "Auto/Taxi/Limo"
+				   }
+				   else {
+				   var veicolando = document.getElementById("veicolo7").value
+				   }
+				   
+				   
+				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				   
+				   }
+				   else{
+				   
+				   document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
+				   
+				   if (document.getElementById("veicolo7").value=="Autovettura"){
+				   var veicolando = "Auto/Taxi/Limo"
+				   }
+				   else {
+				   var veicolando = document.getElementById("veicolo7").value
+				   }
+				   
+				   
+				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +" </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				   }
+
+				   
                    // QUI
                    if(document.getElementById("passeggeri").value!="01"){
                      $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7passeggeri +" " + document.getElementById("passeggeri").value + "</b></font>");
@@ -3108,6 +3129,7 @@ function onDeviceReady() {
 		
 			 //localStorage.setItem("lat", lat)
 			 //localStorage.setItem("lng", lng)
+		
 		
 			  var watchID = navigator.geolocation.watchPosition(gpsonSuccess, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
@@ -3872,6 +3894,7 @@ function resetta1(focus) {
 					});
 		
 		
+		
 	if(localStorage.getItem("destination")==0){
 
 		
@@ -3881,9 +3904,11 @@ function resetta1(focus) {
 			
 		}
 		else{
+			
+			
 			 document.getElementById("viale").value = localStorage.getItem("viale");
-			 
-			 codeLatLng(lat,lng);
+			
+			codeLatLng(lat,lng);
 		}
 		
 	}
@@ -3895,6 +3920,9 @@ function resetta1(focus) {
 			
 		}
 		else{
+			
+			//alert("dest")
+			
 			document.getElementById("destinazione").value = localStorage.getItem("destinazione");
 			
 			codeLatLng(lat,lng);
@@ -4331,12 +4359,12 @@ function vediofferte(){
 				    if(item.cell!=""){
 				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br><font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionAccettazione")+"</p></b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
-                   //seleziona();
+                   seleziona();
 				    }
 				    else{
 				      $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionAccettazione")+"</p></b></font></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p >"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
-                   //seleziona();
+                   seleziona();
 					}
 				  
 				  
@@ -4351,7 +4379,7 @@ function vediofferte(){
                    
 				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font><br>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b>&nbsp;<div>"+localStorage.getItem("sessionAttendere")+"</div></font><font color='#cc33cc' size='2'><div id='puntini' class='loading'>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='rifiuta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
-                   //seleziona();
+                   seleziona();
 					
 					//<a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4'><font color='#fff'>ACCETTA</font></a>&nbsp;&nbsp;    class='loading'
 				  }
@@ -5017,6 +5045,7 @@ function vediofferte(){
 		localStorage.setItem("lng3", ciao1)
 		
 	}
+	
 	
 	function onError22(error) {
 		navigator.geolocation.watchPosition(gpsonSuccess2, onError33, {timeout: 50000, enableHighAccuracy: false, maximumAge: 0 });
@@ -6447,6 +6476,9 @@ function prendicittaid(id){
 									
 								localStorage.setItem("lat3", ciao)
 								localStorage.setItem("lng3", ciao1)
+								  
+								localStorage.setItem("lat", ciao)
+								localStorage.setItem("lng", ciao1)
 								  
 								//alert(ciao)
 									
