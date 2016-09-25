@@ -1930,7 +1930,7 @@ function onDeviceReady() {
 				   
 				   $('#notepass').focus(function(){
 
-						myScroll.scrollToElement("#bluetooth", "1s");
+						myScroll2.scrollToElement("#bluetooth", "1s");
 				   });
 				   
 				   
@@ -2769,10 +2769,8 @@ function onDeviceReady() {
 				   
                    if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
 				   
-				       alert(document.getElementById("veicolo7").value)
-				   
-				   
-				   
+				       //alert(document.getElementById("veicolo7").value)
+	
 	                    document.getElementById("veicolo7").value = "Autovettura"
 				   
 				        if (document.getElementById("veicolo7").value=="Autovettura"){
@@ -2788,7 +2786,7 @@ function onDeviceReady() {
                    }
                    else{
 				   
-				       alert(document.getElementById("veicolo7").value)
+				       //alert(document.getElementById("veicolo7").value)
                    
                         document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
 				   
