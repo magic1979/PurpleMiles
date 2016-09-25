@@ -1930,7 +1930,7 @@ function onDeviceReady() {
 				   
 				   $('#notepass').focus(function(){
 
-						myScroll.scrollToElement("#veicolo", "1s");
+						myScroll.scrollToElement("#bluetooth", "1s");
 				   });
 				   
 				   
@@ -2559,6 +2559,7 @@ function onDeviceReady() {
 
                    var datona = yyyy+mm+dd;
                    var orona = ora;
+				   var minutoni = minuti;
 				   
                    
                    var testo = document.getElementById("datacal").value;
@@ -2590,7 +2591,7 @@ function onDeviceReady() {
 				   datona2 = datona2.replace(" ","")
 				   
 				   var orona2 = document.getElementById("Orario").value
-				   
+				   var minutoni2 = document.getElementById("Minuti").value
 				   
 				   var cista;
                    cista = 0;
@@ -2615,7 +2616,7 @@ function onDeviceReady() {
 				   if (orona2<orona) {
 				   
 				     navigator.notification.alert(
-												inserireA,  // message
+												orarioA,  // message
 												alertDismissed,         // callback
 												alertattenzione,            // title
 												'OK'                  // buttonName
@@ -2623,7 +2624,22 @@ function onDeviceReady() {
 				   return;
 				   }
 
-
+					
+					if (orona2==orona) {
+						
+						if (minutoni2<minutoni) {
+							
+							navigator.notification.alert(
+												orarioA,  // message
+												alertDismissed,         // callback
+												alertattenzione,            // title
+												'OK'                  // buttonName
+												);
+						}
+				   
+				     
+				   return;
+				   }
 				   
 				   
 				   
@@ -3333,6 +3349,7 @@ function CenterControl(controlDiv, map) {
 	//});
 	
 }
+
 
 function getKey(key){
 	if((localStorage.getItem("pagebtn") != "da") && (localStorage.getItem("pagebtn") != "a")){
@@ -5303,6 +5320,16 @@ function inviachat() {
 								  
 	
 	if (indirizzo == "") {
+		navigator.notification.alert(
+									 messaggioA,  // message
+									 alertDismissed,         // callback
+									 'Chat',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (indirizzo == " ") {
 		navigator.notification.alert(
 									 messaggioA,  // message
 									 alertDismissed,         // callback

@@ -1945,7 +1945,7 @@ receivedEvent: function(id) {
 				   
 				setTimeout(function() {
 					resetta1(1);
-				}, 2000);
+				}, 1000);
 			
 				
 				   
