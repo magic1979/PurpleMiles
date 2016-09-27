@@ -963,7 +963,7 @@ function onDeviceReady() {
 		var alertattenzione = "Attenciòn"
 		var chiudereA = "¿querer cerrar purple miles?"
 		var spegniA = "Cerra"
-		var annullaA = "Cerca,Cancela"
+		var annullaA = "Cerra,Cancela"
 		var profiloA = "Perfil"
 		
 	}
@@ -1004,10 +1004,14 @@ function onDeviceReady() {
 				navigator.app.exitApp();
 			}
 			
+			//navigator.device.exitApp();
 			
-			navigator.device.exitApp();
+			if (navigator.app && navigator.app.exitApp) {
+				navigator.app.exitApp();
+			} else if (navigator.device && navigator.device.exitApp) {
+				navigator.device.exitApp();
+			}
 			
-			//navigator.app.exitApp();
 			
 			e.stopImmediatePropagation();
 			
@@ -1388,18 +1392,76 @@ function onDeviceReady() {
 		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
+	
+	$(document).on("touchstart", "#da2", function(e){
+				   localStorage.setItem("dovesono", "1");
+				   localStorage.setItem("destination", "0")
+				   localStorage.setItem("pagebtn", "da")
+
+				   
+				   $("#viale").show();
+				   $("#tblviale").show();
+				   
+				   if(localStorage.getItem("lingua")=="it"){
+				   $("#viale").attr("placeholder","partenza");
+				   }
+				   else if(localStorage.getItem("lingua")=="en"){
+				   $("#viale").attr("placeholder","Departure");
+				   
+				   }
+				   else if(localStorage.getItem("lingua")=="fr"){
+				   
+				   $("#viale").attr("placeholder","départ");
+				   
+				   }
+				   else if(localStorage.getItem("lingua")=="es"){
+				   
+				   $("#viale").attr("placeholder","Salida");
+				   }
+				   else{
+				   $("#viale").attr("placeholder","Departure");
+				   
+				   }
+				   
+				   $("#destinazione").hide();
+				   $("#tbldestinazione").hide();
+				   
+				   if(screen.width < 768){
+				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
+				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
+				   }
+				   else
+				   {
+				   if(screen.width > 719){
+				   $("#da1").html("<img src='img/ico_start3.png' width='110px'>");
+				   $("#a1").html("<img src='img/ico_finish2.png' width='90px'>");
+				   }
+				   else{
+				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
+				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
+				   }
+				   }
+				   
+				   
+				   
+				   onResume();
+				   
+				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
+	
+	
 	$(document).on("touchstart", "#da1", function(e){
 				   localStorage.setItem("dovesono", "1");
 				   localStorage.setItem("destination", "0")
 				   localStorage.setItem("pagebtn", "da")
 				   
-				   document.getElementById("datacal").value = "";
+				   //document.getElementById("datacal").value = "";
 				   
-				   $("#Orario").html("<option selected>--</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option>");
-				   $("#Minuti").html("<option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>");
+				   //$("#Orario").html("<option selected>--</option><option>00</option><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option>");
+				   //$("#Minuti").html("<option selected>--</option><option>00</option><option>15</option><option>30</option><option>45</option>");
 				   
-				   $("#Orario").selectmenu("refresh");
-				   $("#Minuti").selectmenu("refresh");
+				   //$("#Orario").selectmenu("refresh");
+				   //$("#Minuti").selectmenu("refresh");
 				   
 				   $("#viale").show();
 				   $("#tblviale").show();
@@ -2377,6 +2439,17 @@ function onDeviceReady() {
 								 
 								 if(item.Token==1){
 								 $("#spinner7").hide();
+								 
+								 // CANCELLO CACHE INPUT RICHIESTE //
+								  localStorage.setItem("viale", "");
+								  localStorage.setItem("destinazione", "");
+							   
+								  document.getElementById("viale").value = ""
+								  document.getElementById("destinazione").value = ""
+								  
+								  
+								  window.location.href = "mappass.html";
+								  //////////
 									 
 								 navigator.notification.alert(
 															  alertinvio,
@@ -2600,66 +2673,51 @@ function onDeviceReady() {
 				   
                    if (datona2<datona) {
 				   
+				       navigator.notification.alert(
+												inserireA,  // message
+												alertDismissed,         // callback
+												alertattenzione,            // title
+												'OK'                  // buttonName
+												);
+				     return;
+				   }
 				   
-                      navigator.notification.alert(
-                                                inserireA,  // message
-                                                alertDismissed,         // callback
-                                                alertattenzione,            // title
-                                                'OK'                  // buttonName
-                                                );
-                     return;
-                   }
+
 				   
+				   if (parseInt(datona2)==parseInt(datona)) {
 				   
+				     if (orona2<orona) {
+					  
 				   
-				   
-				   if (orona2<orona) {
-				   
-				     navigator.notification.alert(
+				       navigator.notification.alert(
 												orarioA,  // message
 												alertDismissed,         // callback
 												alertattenzione,            // title
 												'OK'                  // buttonName
 												);
-				   return;
-				   }
+				      return;
+				     }
+				   
 
-					
-					if (orona2==orona) {
-						
+					if (parseInt(orona2)==parseInt(orona)) {
 						if (minutoni2<minutoni) {
 							
-							navigator.notification.alert(
-												orarioA,  // message
-												alertDismissed,         // callback
-												alertattenzione,            // title
-												'OK'                  // buttonName
-												);
-						}
+						   navigator.notification.alert(
+														 orarioA,  // message
+														 alertDismissed,         // callback
+														 alertattenzione,            // title
+														 'OK'                  // buttonName
+														 );
+				           return;
 				   
-				     
-				   return;
+						}
+
+				   
+					}
+				   
 				   }
 				   
-				   
-				   
-				   
-				   
-                   /*if (cista==1) {
-					
-                    if (orona2<orona) {
-                        navigator.notification.alert(
-                                                'inserire una orario valido',  // message
-                                                alertDismissed,         // callback
-                                                'Data',            // title
-                                                'OK'                  // buttonName
-                                                );
-                      return;
-                    }
-				   
-                   }*/
-				   
-                   
+	 
 				   
 				   onResume();
 				   
@@ -5146,7 +5204,21 @@ function chatting(id) {
 				  
 				  
 			   if(item.Token==1){
-				  $("#nickhome6").html(item.nick);
+				   
+				  var contanick = item.nick.length;
+				  var nuovonick;
+				  
+				  if(contanick <= 12){
+				  
+				  
+				  }
+				  else{
+				  nuovonick = item.nick.slice(0,10)
+				  nuovonick = nuovonick + ".."
+				  
+				  }
+				   
+				  $("#nickhome6").html(nuovonick);
 				  
 				  var indirizzo = item.messaggio.replace("777A","'");
 				  

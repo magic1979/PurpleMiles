@@ -1460,11 +1460,14 @@ receivedEvent: function(id) {
 				navigator.app.exitApp();
 			}
 			
-			//navigator.app.exitApp();
-			
-			navigator.device.exitApp();
-			
 			//navigator.device.exitApp();
+			
+			if (navigator.app && navigator.app.exitApp) {
+				navigator.app.exitApp();
+			} else if (navigator.device && navigator.device.exitApp) {
+				navigator.device.exitApp();
+			}
+
 
 			e.stopImmediatePropagation();
 			
@@ -2292,7 +2295,7 @@ receivedEvent: function(id) {
 		var e = jQuery.Event("keydown");
 		e.which = 13; // # Some key code value
 		e.keyCode = 13
-		$("#back3").trigger(e);
+		$("#back33").trigger(e);
 				   
 				   
 		//setTimeout(function() {5
@@ -4999,6 +5002,7 @@ function timer(){
 												  
 												    $("#viaaccetta3").html(item.partenza);
 												    $("#adaccetta3").html(item.arrivo);
+													$("#importo3").html(item.importo);
 												  
 												  function countdown1(minutes) {
 												  var seconds = 30;
@@ -5283,6 +5287,7 @@ function timer(){
 												  
 												  $("#viaaccetta2").html(item.partenza);
 												   $("#adaccetta2").html(item.arrivo);
+												   $("#importo4").html(item.importo);
 												  
 												  function countdown2(minutes2) {
 												  var seconds2 = 30;
@@ -5535,6 +5540,7 @@ function timer(){
 												  
 												  $("#viaaccetta5").html(item.partenza);
 												   $("#adaccetta5").html(item.arrivo);
+												   $("#importo5").html(item.importo);
 												  
 												  function countdown3(minutes3) {
 												  var seconds3 = 30;
@@ -6824,6 +6830,11 @@ function elimina2(id_richiesta){
 				  localStorage.setItem("ritornaweb","0")
 				  
 				  $.mobile.changePage( "#win2", { transition: "slide", changeHash: false, reverse: true });
+				  
+				  setTimeout(function() {
+					resetta1(1)
+				  }, 1000);
+				  
 
 				}
 				  
@@ -8152,11 +8163,10 @@ function richiesta1() {
 							  
 						myScroll = new IScroll('#wrapper', { click: true });
 							  
-							  
 							setTimeout (function(){
 								myScroll.refresh();
 										
-							}, 1000);
+							}, 1300);
 							  
 							  
 							document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -9917,7 +9927,7 @@ function richiesta3() {
 
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a></font>");
 				  $("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a>");
-	              $("#nickhome66").html("<font color='#fff'>"+ nick1 +" </font>");
+	              $("#nickhome66").html("<font color='#fff'>"+ nick3 +" </font>");
 				  $("#nickblob5").html("<font color='#cc33cc' size='4'><b>"+ nick3 +" "+ percentuale3 +"%</b></font>");
 	
 	              localStorage.setItem("id_utente_pass3", id_utente_pass3)
