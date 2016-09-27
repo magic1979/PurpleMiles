@@ -1258,6 +1258,7 @@ function agg2(){
 		  });
 		   
 		   //alert("ok")
+		   localStorage.setItem("caricatodb", "1");
 		   
 		   setTimeout(function() {
 					  
@@ -2632,7 +2633,17 @@ function LoginVera(email,pin){
 				  localStorage.setItem("id_utente", item.id_utente);
 				  localStorage.setItem("pin", pin);
 				  
-				  window.location.href = "index.html";
+				  
+				  if(localStorage.getItem("caricatodb")!="1"){
+					  agg()
+					  $("#impostazioni").tap();
+				  }
+				  else{
+					  
+				  	window.location.href = "index.html";
+				  
+				  }
+				  
 				  
 				}
 				else{

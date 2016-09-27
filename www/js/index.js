@@ -669,6 +669,7 @@ receivedEvent: function(id) {
 	var rating1;
 	var cell1;
 	var posticipata1;
+	var importo1;
 	
 	var nick2;
 	var quando2;
@@ -696,6 +697,7 @@ receivedEvent: function(id) {
 	var rating2;
 	var cell2;
 	var posticipata2;
+	var importo2;
 	
 	var nick3;
 	var quando3;
@@ -723,6 +725,7 @@ receivedEvent: function(id) {
 	var rating3;
 	var cell3;
 	var posticipata3;
+	var importo3;
 	
 	var muoviti;
 	var setGPS;
@@ -4781,7 +4784,7 @@ function timer(){
 												  rating1 = item.rating;
 												  cell1 = item.cell;
 												  posticipata1 = item.posticipata;
-												  
+												  importo1 = item.importo;
 												  
 												  var partenzaM2;
 												  var arrivoM;
@@ -5078,6 +5081,7 @@ function timer(){
 												  rating2 = item.rating;
 												  cell2 = item.cell;
 												  posticipata2 = item.posticipata;
+												  importo2 = item.importo;
 												  
 												  if (localStorage.getItem("quando2")==quando2 &&
 													  localStorage.getItem("ora2") == ora2 &&
@@ -5357,6 +5361,7 @@ function timer(){
 												  rating3 = item.rating;
 												  cell3 = item.cell;
 												  posticipata3 = item.posticipata;
+												  importo3 = item.importo;
 												  
 												  
 												  if (localStorage.getItem("quando3")==quando3 && localStorage.getItem("ora3") == ora3 && localStorage.getItem("partenza3")==partenza3 && localStorage.getItem("arrivo3")==arrivo3 && localStorage.getItem("stato3")==stato3 && localStorage.getItem("passeggeri3")==passeggeri3 && localStorage.getItem("animali3")==animali3 && localStorage.getItem("fumatori3")==fumatori3 && localStorage.getItem("meno183")==meno183 && localStorage.getItem("disabili3")==disabili3 && localStorage.getItem("bambini3")==bambini3 && localStorage.getItem("wifi3")==wifi3 && localStorage.getItem("portapacchi3")==portapacchi3 && localStorage.getItem("rimorchio3")==rimorchio3 && localStorage.getItem("bluetooth3")==bluetooth3 && localStorage.getItem("note3")==note3 ) {
@@ -5988,10 +5993,10 @@ function magia2C(utente,pass) {
 	
 	$("#tornareset").show();
 	
-	for(i=0; i<10000; i++)
+	/*for(i=0; i<10000; i++)
 	{
 		window.clearInterval(i);
-	}
+	}*/
 	
 	
 	$("#magia").show();
@@ -6043,10 +6048,10 @@ function magia2C(utente,pass) {
 				  var icon2a = new google.maps.MarkerImage("img/marker_rosso_1.png", null, null, null, new google.maps.Size(40,40));
 				  
 				  if(utente==1){
-				  for(i=0; i<10000; i++)
+				  /*for(i=0; i<10000; i++)
 				  {
 				  window.clearInterval(i);
-				  }
+				  }*/
 				  
 				  
 				  var icon2 = new google.maps.MarkerImage("img/marker_rosso_1.png", null, null, null, new google.maps.Size(40,40));
@@ -6169,10 +6174,10 @@ function magia2C(utente,pass) {
 				  }
 				  
 				  if(utente==2){
-				  for(i=0; i<10000; i++)
+				  /*for(i=0; i<10000; i++)
 				  {
 				  window.clearInterval(i);
-				  }
+				  }*/
 				  
 				  var icon3a = new google.maps.MarkerImage("img/marker_rosso_2.png", null, null, null, new google.maps.Size(40,40));
 				  stato2 = item.stato
@@ -6292,10 +6297,10 @@ function magia2C(utente,pass) {
 				  }
 				  
 				  if(utente==3){
-				  for(i=0; i<10000; i++)
+				  /*for(i=0; i<10000; i++)
 				  {
 				  window.clearInterval(i);
-				  }
+				  }*/
 				  
 				  var icon4a = new google.maps.MarkerImage("img/marker_rosso_3.png", null, null, null, new google.maps.Size(40,40));
 				  stato3 = item.stato
@@ -7198,6 +7203,11 @@ function richiesta1() {
                         $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +": </font></b><br>&nbsp;&nbsp;"+ arrivo1 +"<br><br>");
                       }
                       
+					  if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					  pagina4prezzo = results.rows.item(i).italiano.replace("P0011", "'");
+					  $("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo1 +" <br><br>");
+					  }
+					  
                       
                       if(results.rows.item(i).id_traduzione == "pagina4distanza"){
                         pagina4distanza = results.rows.item(i).italiano.replace("P0011", "'");
@@ -7330,6 +7340,11 @@ function richiesta1() {
                        pagina4distanza = results.rows.item(i).inglese.replace("P0011", "'");
                        $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza1 +" Km<br><br>");
                     }
+					
+					if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					  pagina4prezzo = results.rows.item(i).inglese.replace("P0011", "'");
+					  $("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo1 +" <br><br>");
+					  }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
                        pagina4passeggeri = results.rows.item(i).inglese.replace("P0011", "'");
@@ -7456,6 +7471,11 @@ function richiesta1() {
 					  $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza1 +" Km<br><br>");
 					  }
 					  
+					  if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					  pagina4prezzo = results.rows.item(i).francese.replace("P0011", "'");
+					  $("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo1 +" <br><br>");
+					  }
+					  
 					  if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
 					  pagina4passeggeri = results.rows.item(i).francese.replace("P0011", "'");
 					  if(passeggeri1!="1"){
@@ -7577,6 +7597,11 @@ function richiesta1() {
 					  if(results.rows.item(i).id_traduzione == "pagina4distanza"){
 					  pagina4distanza = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza1 +" Km<br><br>");
+					  }
+					  
+					  if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					  pagina4prezzo = results.rows.item(i).spagnolo.replace("P0011", "'");
+					  $("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo1 +" <br><br>");
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
@@ -8304,6 +8329,12 @@ function richiesta2() {
                                  }
                                  }
                                  
+								 
+								 if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					 				 pagina4prezzo = results.rows.item(i).italiano.replace("P0011", "'");
+					  				$("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo1 +" <br><br>");
+					  			  }
+					  
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4partenza"){
                                  pagina4partenza = results.rows.item(i).italiano.replace("P0011", "'");
@@ -8454,6 +8485,12 @@ function richiesta2() {
                                  $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri2);
                                  }
                                  }
+								 
+								 if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					 				 pagina4prezzo = results.rows.item(i).inglese.replace("P0011", "'");
+					  				$("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo2 +" <br><br>");
+					  			  }
+								  
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4animali"){
                                  pagina4animali = results.rows.item(i).inglese.replace("P0011", "'");
@@ -8598,6 +8635,11 @@ function richiesta2() {
 								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori2);
 								 }
 								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					 				 pagina4prezzo = results.rows.item(i).francese.replace("P0011", "'");
+					  				$("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo2 +" <br><br>");
+					  			  }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4minori"){
 								 pagina4minori = results.rows.item(i).francese.replace("P0011", "'");
@@ -8751,6 +8793,11 @@ function richiesta2() {
 								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini2);
 								 }
 								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					 				 pagina4prezzo = results.rows.item(i).spagnolo.replace("P0011", "'");
+					  				$("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo2 +" <br><br>");
+					  			  }
 								 
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
@@ -9435,6 +9482,11 @@ function richiesta3() {
                                  pagina4distanza = results.rows.item(i).italiano.replace("P0011", "'");
                                  $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza3 +" Km<br><br>");
                                  }
+								 
+								  if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					 				 pagina4prezzo = results.rows.item(i).italiano.replace("P0011", "'");
+					  				$("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo3 +" <br><br>");
+					  			  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
                                  pagina4passeggeri = results.rows.item(i).italiano.replace("P0011", "'");
@@ -9569,6 +9621,11 @@ function richiesta3() {
                                  $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri3);
                                  }
                                  }
+								 
+								  if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					 				 pagina4prezzo = results.rows.item(i).inglese.replace("P0011", "'");
+					  				$("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo3 +" <br><br>");
+					  			  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4animali"){
                                  pagina4animali = results.rows.item(i).inglese.replace("P0011", "'");
@@ -9696,6 +9753,11 @@ function richiesta3() {
 								 }
 								 }
 								 
+								 if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					 				 pagina4prezzo = results.rows.item(i).francese.replace("P0011", "'");
+					  				$("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo3 +" <br><br>");
+					  			  }
+								 
 								 if(results.rows.item(i).id_traduzione == "pagina4animali"){
 								 pagina4animali = results.rows.item(i).francese.replace("P0011", "'");
 								 if(animali1=="Si"){
@@ -9818,6 +9880,11 @@ function richiesta3() {
 								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri3);
 								 }
 								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
+					 				 pagina4prezzo = results.rows.item(i).spagnolo.replace("P0011", "'");
+					  				$("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo3 +" <br><br>");
+					  			  }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4animali"){
 								 pagina4animali = results.rows.item(i).spagnolo.replace("P0011", "'");
