@@ -5001,9 +5001,9 @@ function timer(){
 												     window.clearInterval(i);
 												    }
 												  
-												    $("#viaaccetta3").html(item.partenza);
-												    $("#adaccetta3").html(item.arrivo);
-													$("#importo3").html(item.importo);
+												    $("#viaaccetta3").html("<font color='#000' size='2'>"+item.partenza+"</font>");
+												    $("#adaccetta3").html("<font color='#000' size='2'>"+item.arrivo+"</font>");
+													$("#importo3").html("<font color='#000' size='2'>"+item.importo+"</font>");
 												  
 												  function countdown1(minutes) {
 												  var seconds = 30;
@@ -5286,9 +5286,9 @@ function timer(){
 												    window.clearInterval(i);
 												   }
 												  
-												  $("#viaaccetta2").html(item.partenza);
-												   $("#adaccetta2").html(item.arrivo);
-												   $("#importo4").html(item.importo);
+												  $("#viaaccetta2").html("<font color='#000' size='2'>"+item.partenza+"</font>");
+												   $("#adaccetta2").html("<font color='#000' size='2'>"+item.arrivo+"</font>");
+												   $("#importo4").html("<font color='#000' size='2'>"+item.importo+"</font>");
 												  
 												  function countdown2(minutes2) {
 												  var seconds2 = 30;
@@ -5539,9 +5539,9 @@ function timer(){
 												  window.clearInterval(i);
 												  }
 												  
-												  $("#viaaccetta5").html(item.partenza);
-												   $("#adaccetta5").html(item.arrivo);
-												   $("#importo5").html(item.importo);
+												  $("#viaaccetta5").html("<font color='#000' size='2'>"+item.partenza+"</font>");
+												   $("#adaccetta5").html("<font color='#000' size='2'>"+item.arrivo+"</font>");
+												   $("#importo5").html("<font color='#000' size='2'>"+item.importo+"</font>");
 												  
 												  function countdown3(minutes3) {
 												  var seconds3 = 30;
