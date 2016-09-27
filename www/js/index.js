@@ -1936,18 +1936,19 @@ receivedEvent: function(id) {
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
 				   
 			if(connectionStatus=='online'){
-				   
-				$("#win2header").html(s_partenza);
-				$("#XXX").show();
-				$("#tornareset").hide();
-				   
-				$("#magia").hide();
 				
 				$.mobile.changePage( "#home4", { transition: "slide", changeHash: false, reverse: true });
+				
 				//$("#puntina").hide();
 				   
 				setTimeout(function() {
 					resetta1(1);
+					
+					$("#win2header").html(s_partenza);
+				    $("#XXX").show();
+				    $("#tornareset").hide();
+				   
+				    $("#magia").hide();
 				}, 1000);
 			
 				
