@@ -107,6 +107,13 @@ function onDeviceReady() {
                                  
                                  }
 								 
+								 if(results.rows.item(i).id_traduzione == "rispopzioni"){
+									rispopzioni = results.rows.item(i).italiano.replace("P0011", "'");
+									//:&nbsp;
+									//.replace("Si",""+rispopzioni+"")
+							    }
+								 
+								 
 								 if(results.rows.item(i).id_traduzione == "h7destinazione"){
 								 h7destinazione = results.rows.item(i).italiano.replace("P0011", "'");
 								 
@@ -306,6 +313,12 @@ function onDeviceReady() {
                                  
                               for (i = 0; i < len; i++){
                                    $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
+								   
+								   if(results.rows.item(i).id_traduzione == "rispopzioni"){
+									rispopzioni = results.rows.item(i).inglese.replace("P0011", "'");
+									//:&nbsp;
+									//.replace("Si",""+rispopzioni+"")
+							    }
                                  
                                  if(results.rows.item(i).id_traduzione == "h4richiesta"){
                                    h4richiesta = results.rows.item(i).inglese.replace("P0011", "'");
@@ -514,6 +527,12 @@ function onDeviceReady() {
 								for (i = 0; i < len; i++){
 								 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).francese.replace("P0011", "'"));
 								 
+								  if(results.rows.item(i).id_traduzione == "rispopzioni"){
+									rispopzioni = results.rows.item(i).francese.replace("P0011", "'");
+									//:&nbsp;
+									//.replace("Si",""+rispopzioni+"")
+							    }
+								 
 								 if(results.rows.item(i).id_traduzione == "h4richiesta"){
 								 h4richiesta = results.rows.item(i).francese.replace("P0011", "'");
 								 
@@ -721,6 +740,12 @@ function onDeviceReady() {
 								 
 							for (i = 0; i < len; i++){
 								 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+								 
+								if(results.rows.item(i).id_traduzione == "rispopzioni"){
+									rispopzioni = results.rows.item(i).spagnolo.replace("P0011", "'");
+									//:&nbsp;
+									//.replace("Si",""+rispopzioni+"")
+							    }
 								 
 								 if(results.rows.item(i).id_traduzione == "h4richiesta"){
 								 h4richiesta = results.rows.item(i).spagnolo.replace("P0011", "'");
@@ -2832,7 +2857,7 @@ function onDeviceReady() {
 	                    document.getElementById("veicolo7").value = "Autovettura"
 				   
 				        if (document.getElementById("veicolo7").value=="Autovettura"){
-				          var veicolando = "Auto/Taxi/NCC"
+				          var veicolando = "Autovettura"
 				        }
 				        else {
 				          var veicolando = document.getElementById("veicolo7").value
@@ -2844,128 +2869,128 @@ function onDeviceReady() {
                    }
                    else{
 				   
-				       //alert(document.getElementById("veicolo7").value)
                    
                         document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
 				   
 				        if (document.getElementById("veicolo7").value=="Autovettura"){
-					        var veicolando = "Auto/Taxi/NCC"
+					        //var veicolando = "Auto/Taxi/NCC"
+							var veicolando = "Autovettura"
 						}
 				        else {
 						    var veicolando = document.getElementById("veicolo7").value
 				         }
 				   
                    
-                    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo: </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
                    }
                    
                    if(document.getElementById("passeggeri").value!="01"){
-				     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri " + document.getElementById("passeggeri").value + "</b></font>");
+				     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri:&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
                    }
                    else{
-                     $("#passeggeri7").html("&nbsp;&nbsp;N. Passeggeri " + document.getElementById("passeggeri").value);
+                     $("#passeggeri7").html("&nbsp;&nbsp;N. Passeggeri:&nbsp; " + document.getElementById("passeggeri").value);
                    }
                    
                    if(document.getElementById("animali").value=="Si"){
-                      $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>Animale a seguito " + document.getElementById("animali").value + "</b></font>");
+                      $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>Animale a seguito:&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                      $("#animali7").html("&nbsp;&nbsp;Animale a seguito " + document.getElementById("animali").value);
+                      $("#animali7").html("&nbsp;&nbsp;Animale a seguito:&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+""));
                    }
 
                    if(document.getElementById("fumatori").value=="Si"){
-                     $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>Fumatori " + document.getElementById("fumatori").value + "</b></font>");
+                     $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>Fumatori:&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#fumatori7").html("&nbsp;&nbsp;Fumatori: " + document.getElementById("fumatori").value);
+                     $("#fumatori7").html("&nbsp;&nbsp;Fumatori:&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("meno18").value=="Si"){
-                     $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>Minori non accompagnati " + document.getElementById("meno18").value + "</b></font>");
+                     $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>Minori non accompagnati:&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#meno187").html("&nbsp;&nbsp;Minori non accompagnati: " + document.getElementById("meno18").value);
+                     $("#meno187").html("&nbsp;&nbsp;Minori non accompagnati:&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("disabili").value=="Si"){
-                     $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>Diversamente abili " + document.getElementById("disabili").value + "</b></font>");
+                     $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>Diversamente abili:&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#disabili7").html("&nbsp;&nbsp;Diversamente abili: " + document.getElementById("disabili").value);
+                     $("#disabili7").html("&nbsp;&nbsp;Diversamente abili:&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("bambini").value=="Si"){
-                     $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>Seggiolino per bambini " + document.getElementById("bambini").value + "</b></font>");
+                     $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>Seggiolino per bambini:&nbsp; " + document.getElementById("bambini").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#bambini7").html("&nbsp;&nbsp;Seggiolino per bambini :" + document.getElementById("bambini").value);
+                     $("#bambini7").html("&nbsp;&nbsp;Seggiolino per bambini:&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("wifi").value=="Si"){
-                     $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi " + document.getElementById("wifi").value + "</b></font>");
+                     $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi:&nbsp; " + document.getElementById("wifi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#wifi7").html("&nbsp;&nbsp;WiFi :" + document.getElementById("wifi").value);
+                     $("#wifi7").html("&nbsp;&nbsp;WiFi :&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("portapacchi").value=="Si"){
-                     $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>Portapacchi " + document.getElementById("portapacchi").value + "</b></font>");
+                     $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>Portapacchi:&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#portapacchi7").html("&nbsp;&nbsp;Portapacchi :" + document.getElementById("portapacchi").value);
+                     $("#portapacchi7").html("&nbsp;&nbsp;Portapacchi :&nbsp;" + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+""));
                    }
 
                    if(document.getElementById("rimorchio").value=="Si"){
-                     $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>Gancio rimorchio " + document.getElementById("rimorchio").value + "</b></font>");
+                     $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>Gancio rimorchio:&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#rimorchio7").html("&nbsp;&nbsp;Gancio rimorchio :" + document.getElementById("rimorchio").value);
+                     $("#rimorchio7").html("&nbsp;&nbsp;Gancio rimorchio:&nbsp;" + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("bluetooth").value=="Si"){
-                     $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth " + document.getElementById("bluetooth").value + "</b></font>");
+                     $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth:&nbsp; " + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#bluetooth7").html("&nbsp;&nbsp;Gancio rimorchio :" + document.getElementById("bluetooth").value);
+                     $("#bluetooth7").html("&nbsp;&nbsp;Gancio rimorchio:&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("notepass").value!=""){
-                     $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note " + document.getElementById("notepass").value + "</b></font>");
+                     $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note:&nbsp; " + document.getElementById("notepass").value + "</b></font>");
                    }
                    else{
-                     $("#note7").html("&nbsp;&nbsp;Note :" + document.getElementById("notepass").value);
+                     $("#note7").html("&nbsp;&nbsp;Note:&nbsp;" + document.getElementById("notepass").value);
                    }
                    
                 
 				   if(document.getElementById("datacal").value==""){
-				     $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>Quando </font></b><br>&nbsp;&nbsp; Adesso, prima possibile <br><br>" );
+				     $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>Quando:&nbsp; </font></b><br>&nbsp;&nbsp; Adesso, prima possibile <br><br>" );
 				   }
 				   else{
-					  $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Quando </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
+					  $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Quando:&nbsp; </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
 				   }
 				   
 				   
 				   
-				   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Partenza </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
+				   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Partenza:&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
                    
-				   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>Destinazione </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
+				   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>Destinazione:&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
                    }
                    
                    else{
 				   
 				   if(localStorage.getItem("lingua")=="en"){
 				     if (localStorage.getItem("veicolo")=="Autovettura"){
-				      var veicolando = "Car/Taxi/Limo"
+				      var veicolando = "Car"
 				     }
 				   }
 				   else if (localStorage.getItem("lingua")=="fr"){
 				     if (localStorage.getItem("veicolo")=="Autovettura"){
-				       var veicolando = "Auto/Taxi/VTC"
+				       var veicolando = "Automobile"
 				     }
 				   }
 				   else if (localStorage.getItem("lingua")=="es"){
 				     if (localStorage.getItem("veicolo")=="Autovettura"){
-				       var veicolando = "Auto/Taxi/ACC"
+				       var veicolando = "Autom&oacute;vil"
 				     }
 				   }
 				   else{
@@ -2978,14 +3003,14 @@ function onDeviceReady() {
 				   document.getElementById("veicolo7").value = document.getElementById("veicolo11").value
 				   
 				   if (document.getElementById("veicolo7").value=="Autovettura"){
-				   var veicolando = "Auto/Taxi/Limo"
+					var veicolando = "Auto/Taxi/Limo"
 				   }
 				   else {
-				   var veicolando = document.getElementById("veicolo7").value
+					var veicolando = document.getElementById("veicolo7").value
 				   }
 				   
 				   
-				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo:&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 				   
 				   }
 				   else{
@@ -2993,106 +3018,106 @@ function onDeviceReady() {
 				   document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
 				   
 				   if (document.getElementById("veicolo7").value=="Autovettura"){
-				   var veicolando = "Auto/Taxi/Limo"
+					var veicolando = "Auto/Taxi/Limo"
 				   }
 				   else {
-				   var veicolando = document.getElementById("veicolo7").value
+					var veicolando = document.getElementById("veicolo7").value
 				   }
 				   
 				   
-				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +" </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 				   }
 
 				   
                    // QUI
                    if(document.getElementById("passeggeri").value!="01"){
-                     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7passeggeri +" " + document.getElementById("passeggeri").value + "</b></font>");
+                     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7passeggeri +":&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
                    }
                    else{
-                     $("#passeggeri7").html("&nbsp;&nbsp;"+ h7passeggeri +" " + document.getElementById("passeggeri").value);
+                     $("#passeggeri7").html("&nbsp;&nbsp;"+ h7passeggeri +":&nbsp; " + document.getElementById("passeggeri").value);
                    }
                    
                    if(document.getElementById("animali").value=="Si"){
-                   $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7animali +" " + document.getElementById("animali").value + "</b></font>");
+                   $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7animali +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#animali7").html("&nbsp;&nbsp;"+ h7animali +" " + document.getElementById("animali").value);
+                   $("#animali7").html("&nbsp;&nbsp;"+ h7animali +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("fumatori").value=="Si"){
-                   $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7fumatori +" " + document.getElementById("fumatori").value + "</b></font>");
+                   $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7fumatori +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#fumatori7").html("&nbsp;&nbsp;"+ h7fumatori +" " + document.getElementById("fumatori").value);
+                   $("#fumatori7").html("&nbsp;&nbsp;"+ h7fumatori +" " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
                    }
                    if(document.getElementById("meno18").value=="Si"){
-                   $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7minori +" " + document.getElementById("meno18").value + "</b></font>");
+                   $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7minori +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#meno187").html("&nbsp;&nbsp;"+ h7minori +" " + document.getElementById("meno18").value);
+                   $("#meno187").html("&nbsp;&nbsp;"+ h7minori +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("disabili").value=="Si"){
-                   $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7disabili +" " + document.getElementById("disabili").value + "</b></font>");
+                   $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7disabili +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#disabili7").html("&nbsp;&nbsp;"+ h7disabili +" " + document.getElementById("disabili").value);
+                   $("#disabili7").html("&nbsp;&nbsp;"+ h7disabili +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+""));
                    }
                    if(document.getElementById("bambini").value=="Si"){
-                   $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7seggiolino +" " + document.getElementById("bambini").value + "</b></font>");
+                   $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7seggiolino +":&nbsp; " + document.getElementById("bambini").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#bambini7").html("&nbsp;&nbsp;"+ h7seggiolino +" :" + document.getElementById("bambini").value);
+                   $("#bambini7").html("&nbsp;&nbsp;"+ h7seggiolino +":&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("wifi").value=="Si"){
-                   $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi " + document.getElementById("wifi").value + "</b></font>");
+                   $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi :&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#wifi7").html("&nbsp;&nbsp;WiFi :" + document.getElementById("wifi").value);
+                   $("#wifi7").html("&nbsp;&nbsp;WiFi:&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("portapacchi").value=="Si"){
-                   $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7pacchi +" " + document.getElementById("portapacchi").value + "</b></font>");
+                   $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7pacchi +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#portapacchi7").html("&nbsp;&nbsp;"+ h7pacchi +" " + document.getElementById("portapacchi").value);
+                   $("#portapacchi7").html("&nbsp;&nbsp;"+ h7pacchi +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("rimorchio").value=="Si"){
-                   $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7gancio +" " + document.getElementById("rimorchio").value + "</b></font>");
+                   $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7gancio +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#rimorchio7").html("&nbsp;&nbsp;"+ h7gancio +" " + document.getElementById("rimorchio").value);
+                   $("#rimorchio7").html("&nbsp;&nbsp;"+ h7gancio +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("bluetooth").value=="Si"){
-                   $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth " + document.getElementById("bluetooth").value + "</b></font>");
+                   $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#bluetooth7").html("&nbsp;&nbsp;Bluetooth :" + document.getElementById("bluetooth").value);
+                   $("#bluetooth7").html("&nbsp;&nbsp;Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("notepass").value!=""){
-                   $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note " + document.getElementById("notepass").value + "</b></font>");
+                   $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note:&nbsp; " + document.getElementById("notepass").value + "</b></font>");
                    }
                    else{
-                   $("#note7").html("&nbsp;&nbsp;Note :" + document.getElementById("notepass").value);
+                   $("#note7").html("&nbsp;&nbsp;Note :&nbsp;" + document.getElementById("notepass").value);
                    }
                    
                    
                    if(document.getElementById("datacal").value==""){
-                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>"+ h7quando +" </font></b><br>&nbsp;&nbsp; "+ h7adesso +" <br><br>" );
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>"+ h7quando +":&nbsp;</font></b><br>&nbsp;&nbsp; "+ h7adesso +" <br><br>" );
                    }
                    else{
-                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7quando +" </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7quando +":&nbsp; </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
                    }
                    
                    
                    
-                   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7partenza +" </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
+                   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7partenza +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
                    
-                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7destinazione +" </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
+                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7destinazione +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
                    
                    
                    }
@@ -5253,7 +5278,21 @@ function chatting(id) {
 				}
 				  
 				  if(item.Token==2){
-					$("#nickhome6").html(item.nick);
+					  
+				  var contanick = item.nick.length;
+				  var nuovonick;
+				  
+				  if(contanick <= 12){
+				    nuovonick = item.nick
+				  
+				  }
+				  else{
+				  nuovonick = item.nick.slice(0,10)
+				  nuovonick = nuovonick + ".."
+				  
+				  }
+					  
+					$("#nickhome6").html(nuovonick);
 				  }
 				  
 				});

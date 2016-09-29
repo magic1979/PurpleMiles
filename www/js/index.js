@@ -2072,7 +2072,7 @@ receivedEvent: function(id) {
 				   }
 				   
 				   navigator.notification.confirm(
-												  dsconn + " " + localStorage.getItem("nickpass") + "?f",  // message
+												  dsconn + " " + localStorage.getItem("nickpass") + "?",  // message
 												  onConfirm,              // callback to invoke with index of button pressed
 												  Tdsconn,            // title
 												  annallab      // buttonLabels
@@ -7191,96 +7191,102 @@ function richiesta1() {
                         $("#nickhome4").removeClass("button_small_green").addClass("button_small");
                       }
                       }
-                      
+					  
+					  if(results.rows.item(i).id_traduzione == "rispopzioni"){
+                        rispopzioni = results.rows.item(i).italiano.replace("P0011", "'");
+						//:&nbsp;
+						//.replace("Si",""+rispopzioni+"")
+                      }
+					  
                       
                       if(results.rows.item(i).id_traduzione == "pagina4partenza"){
                         pagina4partenza = results.rows.item(i).italiano.replace("P0011", "'");
-                        $("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4partenza +": </font></b><br>&nbsp;&nbsp;"+ partenza1 +"<br><br>");
+                        $("#Da").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4partenza +":&nbsp; </font></b><br>&nbsp;&nbsp;"+ partenza1 +"<br><br>");
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4arrivo"){
                         pagina4arrivo = results.rows.item(i).italiano.replace("P0011", "'");
-                        $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +": </font></b><br>&nbsp;&nbsp;"+ arrivo1 +"<br><br>");
+                        $("#Ad").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ pagina4arrivo +":&nbsp; </font></b><br>&nbsp;&nbsp;"+ arrivo1 +"<br><br>");
                       }
                       
 					  if(results.rows.item(i).id_traduzione == "pagina4prezzo"){
 					  pagina4prezzo = results.rows.item(i).italiano.replace("P0011", "'");
-					  $("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+": </font></b>"+ importo1 +" <br><br>");
+					  $("#prezzo").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4prezzo+":&nbsp; </font></b>"+ importo1 +" <br><br>");
 					  }
 					  
                       
                       if(results.rows.item(i).id_traduzione == "pagina4distanza"){
                         pagina4distanza = results.rows.item(i).italiano.replace("P0011", "'");
-                        $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+": </font></b>"+ distanza1 +" Km<br><br>");
+                        $("#distanza").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+pagina4distanza+":&nbsp; </font></b>"+ distanza1 +" Km<br><br>");
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
                         pagina4passeggeri = results.rows.item(i).italiano.replace("P0011", "'");
                         if(passeggeri1!="1"){
-                            $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri1 + "</b></font>");
+                            $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri1 + "</b></font>");
                         }
                         else{
-                            $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri1);
+                            $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri1);
                         }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4animali"){
                        pagina4animali = results.rows.item(i).italiano.replace("P0011", "'");
                        if(animali1=="Si"){
-                        $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali1 + "</b></font>");
+                        $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali1.replace("Si",""+rispopzioni+"") + "</b></font>");
                        }
                        else{
-                         $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali1);
+                         $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali1.replace("Si",""+rispopzioni+""));
                        }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
                       pagina4fumatori = results.rows.item(i).italiano.replace("P0011", "'");
                       if(fumatori1=="Si"){
-                      $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori1 + "</b></font>");
+                      $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+"") + "</b></font>");
                       }
                       else{
-                      $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori1);
+                      $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni"+"));
                       }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4minori"){
                       pagina4minori = results.rows.item(i).italiano.replace("P0011", "'");
                       if(meno181=="Si"){
-                      $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno181 +"</b></font>");
+                      $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno181.replace("Si",""+rispopzioni+"") +"</b></font>");
                       }
                       else{
-                      $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno181);
+                      $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno181.replace("Si",""+rispopzioni"+"));
                       }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4disabili"){
                       pagina4disabili = results.rows.item(i).italiano.replace("P0011", "'");
                       if(disabili1=="Si"){
-                      $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili1 +"</b></font>");
+                      $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili1.replace("Si",""+rispopzioni+"") +"</b></font>");
                       }
                       else{
-                      $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili1);
+                      $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili1);
                       }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4bambini"){
                       pagina4bambini = results.rows.item(i).italiano.replace("P0011", "'");
                       if(bambini1=="Si"){
-                      $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini1 +"</b></font>");
+                      $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini1.replace("Si",""+rispopzioni+"") +"</b></font>");
                       }
                       else{
-                      $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini1);
+                      $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini1.replace("Si",""+rispopzioni+""));
                       }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
                       pagina4pacchi = results.rows.item(i).italiano.replace("P0011", "'");
                       if(portapacchi1=="Si"){
-                      $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi1 +"</b></font>");
+                      $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi1.replace("Si",""+rispopzioni+"") +"</b></font>");
                       }
                       else{
-                      $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi1);
+                      $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi1.replace("Si",""+rispopzioni+""));
                       }
                       }
                       
@@ -7288,10 +7294,10 @@ function richiesta1() {
                       if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
                       pagina4rimorchio = results.rows.item(i).italiano.replace("P0011", "'");
                       if(rimorchio1=="Si"){
-                      $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio1 +"</b></font>");
+                      $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio1.replace("Si",""+rispopzioni+"") +"</b></font>");
                       }
                       else{
-                      $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio1);
+                      $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio1.replace("Si",""+rispopzioni+""));
                       }
                       }
                       
@@ -7324,6 +7330,12 @@ function richiesta1() {
                         $("#nickhome4").removeClass("button_small_green").addClass("button_small");
                       }
                       }
+					  
+					  if(results.rows.item(i).id_traduzione == "rispopzioni"){
+                        rispopzioni = results.rows.item(i).inglese.replace("P0011", "'");
+						//:&nbsp;
+						//.replace("Si",""+rispopzioni+"")
+                      }
 
                       
                     if(results.rows.item(i).id_traduzione == "pagina4partenza"){
@@ -7349,60 +7361,60 @@ function richiesta1() {
                       if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
                        pagina4passeggeri = results.rows.item(i).inglese.replace("P0011", "'");
                        if(passeggeri1!="1"){
-                       $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri1 + "</b></font>");
+                       $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri1 + "</b></font>");
                        }
                        else{
-                       $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri1);
+                       $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri1);
                        }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4animali"){
                        pagina4animali = results.rows.item(i).inglese.replace("P0011", "'");
                        if(animali1=="Si"){
-                        $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali1 + "</b></font>");
+                        $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali1.replace("Si",""+rispopzioni+"") + "</b></font>");
                        }
                        else{
-                        $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali1);
+                        $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali1.replace("Si",""+rispopzioni+""));
                        }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
                        pagina4fumatori = results.rows.item(i).inglese.replace("P0011", "'");
                        if(fumatori1=="Si"){
-                        $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori1 + "</b></font>");
+                        $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+"") + "</b></font>");
                        }
                        else{
-                        $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori1);
+                        $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+""));
                        }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4minori"){
                        pagina4minori = results.rows.item(i).inglese.replace("P0011", "'");
                        if(meno181=="Si"){
-                        $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno181 +"</b></font>");
+                        $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno181.replace("Si",""+rispopzioni+"") +"</b></font>");
                        }
                        else{
-                        $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno181);
+                        $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno181.replace("Si",""+rispopzioni+""));
                        }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4disabili"){
                        pagina4disabili = results.rows.item(i).inglese.replace("P0011", "'");
                        if(disabili1=="Si"){
-                        $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili1 +"</b></font>");
+                        $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili1.replace("Si",""+rispopzioni+"") +"</b></font>");
                        }
                        else{
-                        $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili1);
+                        $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili1.replace("Si",""+rispopzioni+""));
                        }
                       }
                       
                       if(results.rows.item(i).id_traduzione == "pagina4bambini"){
                        pagina4bambini = results.rows.item(i).inglese.replace("P0011", "'");
                        if(bambini1=="Si"){
-                        $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini1 +"</b></font>");
+                        $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini1.replace("Si",""+rispopzioni+"") +"</b></font>");
                        }
                        else{
-                        $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini1);
+                        $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini1.replace("Si",""+rispopzioni+""));
                        }
                       }
                       
@@ -7410,10 +7422,10 @@ function richiesta1() {
                       if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
                        pagina4pacchi = results.rows.item(i).inglese.replace("P0011", "'");
                         if(portapacchi1=="Si"){
-                         $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi1 +"</b></font>");
+                         $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi1.replace("Si",""+rispopzioni+"") +"</b></font>");
                         }
                         else{
-                         $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi1);
+                         $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi1.replace("Si",""+rispopzioni+""));
                         }
                       }
                       
@@ -7421,10 +7433,10 @@ function richiesta1() {
                       if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
                        pagina4rimorchio = results.rows.item(i).inglese.replace("P0011", "'");
                        if(rimorchio1=="Si"){
-                        $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio1 +"</b></font>");
+                        $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio1.replace("Si",""+rispopzioni+"") +"</b></font>");
                        }
                        else{
-                        $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio1);
+                        $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio1.replace("Si",""+rispopzioni+""));
                        }
                       }
 					  
@@ -7440,7 +7452,13 @@ function richiesta1() {
 					  
 				  for (i = 0; i < len; i++){
 					  
-					  //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					  
+					  
+					  if(results.rows.item(i).id_traduzione == "rispopzioni"){
+                        rispopzioni = results.rows.item(i).francese.replace("P0011", "'");
+						//:&nbsp;
+						//.replace("Si",""+rispopzioni+"")
+                      }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4quando"){
 					  pagina4quando = results.rows.item(i).francese.replace("P0011", "'");
@@ -7479,60 +7497,63 @@ function richiesta1() {
 					  if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
 					  pagina4passeggeri = results.rows.item(i).francese.replace("P0011", "'");
 					  if(passeggeri1!="1"){
-					  $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri1 + "</b></font>");
+						  ////:&nbsp;
+						//.replace("Si",""+rispopzioni+"")
+						
+					  $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri1 + "</b></font>");
 					  }
 					  else{
-					  $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri1);
+					  $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri1);
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4animali"){
 					  pagina4animali = results.rows.item(i).francese.replace("P0011", "'");
 					  if(animali1=="Si"){
-					  $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali1 + "</b></font>");
+					  $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali1.replace("Si",""+rispopzioni+"") + "</b></font>");
 					  }
 					  else{
-					  $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali1);
+					  $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
 					  pagina4fumatori = results.rows.item(i).francese.replace("P0011", "'");
 					  if(fumatori1=="Si"){
-					  $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori1 + "</b></font>");
+					  $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+"") + "</b></font>");
 					  }
 					  else{
-					  $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori1);
+					  $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4minori"){
 					  pagina4minori = results.rows.item(i).francese.replace("P0011", "'");
 					  if(meno181=="Si"){
-					  $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno181 +"</b></font>");
+					  $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno181.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno181);
+					  $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno181.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4disabili"){
 					  pagina4disabili = results.rows.item(i).francese.replace("P0011", "'");
 					  if(disabili1=="Si"){
-					  $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili1 +"</b></font>");
+					  $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili1.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili1);
+					  $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4bambini"){
 					  pagina4bambini = results.rows.item(i).francese.replace("P0011", "'");
 					  if(bambini1=="Si"){
-					  $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini1 +"</b></font>");
+					  $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini1.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini1);
+					  $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
@@ -7540,10 +7561,10 @@ function richiesta1() {
 					  if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
 					  pagina4pacchi = results.rows.item(i).francese.replace("P0011", "'");
 					  if(portapacchi1=="Si"){
-					  $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi1 +"</b></font>");
+					  $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi1.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi1);
+					  $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
@@ -7551,10 +7572,10 @@ function richiesta1() {
 					  if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
 					  pagina4rimorchio = results.rows.item(i).francese.replace("P0011", "'");
 					  if(rimorchio1=="Si"){
-					  $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio1 +"</b></font>");
+					  $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio1.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio1);
+					  $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
@@ -7569,6 +7590,12 @@ function richiesta1() {
 					for (i = 0; i < len; i++){
 					  
 					  //$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					  
+					  if(results.rows.item(i).id_traduzione == "rispopzioni"){
+                        rispopzioni = results.rows.item(i).spagnolo.replace("P0011", "'");
+						//:&nbsp;
+						//.replace("Si",""+rispopzioni+"")
+                      }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4quando"){
 					  pagina4quando = results.rows.item(i).spagnolo.replace("P0011", "'");
@@ -7607,60 +7634,60 @@ function richiesta1() {
 					  if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
 					  pagina4passeggeri = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  if(passeggeri1!="1"){
-					  $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri1 + "</b></font>");
+					  $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri1 + "</b></font>");
 					  }
 					  else{
-					  $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri1);
+					  $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri1);
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4animali"){
 					  pagina4animali = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  if(animali1=="Si"){
-					  $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali1 + "</b></font>");
+					  $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali1.replace("Si",""+rispopzioni+"") + "</b></font>");
 					  }
 					  else{
-					  $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali1);
+					  $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
 					  pagina4fumatori = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  if(fumatori1=="Si"){
-					  $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori1 + "</b></font>");
+					  $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+"") + "</b></font>");
 					  }
 					  else{
-					  $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori1);
+					  $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4minori"){
 					  pagina4minori = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  if(meno181=="Si"){
-					  $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno181 +"</b></font>");
+					  $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno181.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno181);
+					  $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno181.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4disabili"){
 					  pagina4disabili = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  if(disabili1=="Si"){
-					  $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili1 +"</b></font>");
+					  $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili1.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili1);
+					  $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
 					  if(results.rows.item(i).id_traduzione == "pagina4bambini"){
 					  pagina4bambini = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  if(bambini1=="Si"){
-					  $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini1 +"</b></font>");
+					  $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini1.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini1);
+					  $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
@@ -7668,10 +7695,10 @@ function richiesta1() {
 					  if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
 					  pagina4pacchi = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  if(portapacchi1=="Si"){
-					  $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi1 +"</b></font>");
+					  $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi1.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi1);
+					  $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
@@ -7679,10 +7706,10 @@ function richiesta1() {
 					  if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
 					  pagina4rimorchio = results.rows.item(i).spagnolo.replace("P0011", "'");
 					  if(rimorchio1=="Si"){
-					  $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio1 +"</b></font>");
+					  $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio1.replace("Si",""+rispopzioni+"") +"</b></font>");
 					  }
 					  else{
-					  $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio1);
+					  $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio1.replace("Si",""+rispopzioni+""));
 					  }
 					  }
 					  
@@ -7839,6 +7866,8 @@ function richiesta1() {
 	$("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	$("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	$("#nickhome66").html("<font color='#fff'>"+ nick1 +"</font>");
+	$("#nickhome5").html("<font color='#fff'>"+ nick1 +"</font>");
+	$("#nickhome6").html("<font color='#fff'>"+ nick1 +"</font>");
 	$("#nickblob3").html("<font color='#cc33cc' size='4'><b>"+ nick1 +" "+ percentuale1 +"%</b></font>");
 				  
 
@@ -8862,6 +8891,8 @@ function richiesta2() {
 	$("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a></font>");
 	$("#nickhome3").html("<a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a>");
 	$("#nickhome66").html("<font color='#fff'>"+ nick2 +"</font>");
+	$("#nickhome5").html("<font color='#fff'>"+ nick2 +"</font>");
+	$("#nickhome6").html("<font color='#fff'>"+ nick2 +"</font>");
 	$("#nickblob4").html("<font color='#cc33cc' size='4'><b>"+ nick2 +" "+ percentuale2 +"%</b></font>");
 	
 	localStorage.setItem("id_utente_pass2", id_utente_pass2)
@@ -9996,6 +10027,8 @@ function richiesta3() {
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a></font>");
 				  $("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a>");
 	              $("#nickhome66").html("<font color='#fff'>"+ nick3 +" </font>");
+				  $("#nickhome5").html("<font color='#fff'>"+ nick3 +" </font>");
+				  $("#nickhome6").html("<font color='#fff'>"+ nick3 +" </font>");
 				  $("#nickblob5").html("<font color='#cc33cc' size='4'><b>"+ nick3 +" "+ percentuale3 +"%</b></font>");
 	
 	              localStorage.setItem("id_utente_pass3", id_utente_pass3)
@@ -10823,9 +10856,9 @@ function chatting(pass,id) {
 				   
 				   }
 				   
-				   $("#nickhome5").html(nuovonick);
-				   $("#nickhome6").html(nuovonick);
-				   $("#nickhome66").html(nuovonick);
+				   //$("#nickhome5").html(nuovonick);
+				   //$("#nickhome6").html(nuovonick);
+				   //$("#nickhome66").html(nuovonick);
 				
 				  if(item.nick==localStorage.getItem("nickpass")){
 				   
@@ -10946,9 +10979,9 @@ function chatting66(pass,id) {
 				   
 				   }
 				   
-				   $("#nickhome5").html(nuovonick);
+				   /*$("#nickhome5").html(nuovonick);
 				   $("#nickhome6").html(nuovonick);
-				   $("#nickhome66").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);*/
 				  
 				  
 				  if(item.nick==localStorage.getItem("nickpass")){
@@ -11068,9 +11101,9 @@ function chatting5(pass,id) {
 				   
 				   }
 				   
-				   $("#nickhome5").html(nuovonick);
+				   /*$("#nickhome5").html(nuovonick);
 				   $("#nickhome6").html(nuovonick);
-				   $("#nickhome66").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);*/
 				  
 				  if(item.nick==localStorage.getItem("nickpass")){
 				  
