@@ -2072,7 +2072,7 @@ receivedEvent: function(id) {
 				   }
 				   
 				   navigator.notification.confirm(
-												  dsconn + " " + localStorage.getItem("nickpass"),  // message
+												  dsconn + " " + localStorage.getItem("nickpass") + "?f",  // message
 												  onConfirm,              // callback to invoke with index of button pressed
 												  Tdsconn,            // title
 												  annallab      // buttonLabels
@@ -10809,6 +10809,23 @@ function chatting(pass,id) {
  
 			   
 			  if(item.Token==1){
+				  
+				  var contanick = item.nick.length;
+				   var nuovonick;
+				   
+				   if(contanick <= 12){
+				   nuovonick = item.nick;
+				   
+				   }
+				   else{
+				   nuovonick = item.nick.slice(0,10)
+				   nuovonick = nuovonick + ".."
+				   
+				   }
+				   
+				   $("#nickhome5").html(nuovonick);
+				   $("#nickhome6").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);
 				
 				  if(item.nick==localStorage.getItem("nickpass")){
 				   
@@ -10915,12 +10932,29 @@ function chatting66(pass,id) {
 				  
 			   
 				  if(item.Token==1){
+					  
+					var contanick = item.nick.length;
+				   var nuovonick;
+				   
+				   if(contanick <= 12){
+				   nuovonick = item.nick;
+				   
+				   }
+				   else{
+				   nuovonick = item.nick.slice(0,10)
+				   nuovonick = nuovonick + ".."
+				   
+				   }
+				   
+				   $("#nickhome5").html(nuovonick);
+				   $("#nickhome6").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);
 				  
 				  
 				  if(item.nick==localStorage.getItem("nickpass")){
 				  
 			
-				     var indirizzo2 = item.messaggio.replace("777A","'");
+				  var indirizzo2 = item.messaggio.replace("777A","'");
 				  
 				  indirizzo2 = indirizzo2.replace("777B", "+");
 				  
@@ -11012,7 +11046,7 @@ function chatting5(pass,id) {
 		   }
 		   else{
 		   $("#offerta65").html("");
-		   $("#spinner5").hide();
+		   $("#spinner5").hide();xxxxxx
 		   
 		    $.each(result, function(i,item){
 				  
@@ -11020,6 +11054,23 @@ function chatting5(pass,id) {
 				  
 			   
 				  if(item.Token==1){
+					  
+					  var contanick = item.nick.length;
+				   var nuovonick;
+				   
+				   if(contanick <= 12){
+				   nuovonick = item.nick;
+				   
+				   }
+				   else{
+				   nuovonick = item.nick.slice(0,10)
+				   nuovonick = nuovonick + ".."
+				   
+				   }
+				   
+				   $("#nickhome5").html(nuovonick);
+				   $("#nickhome6").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);
 				  
 				  if(item.nick==localStorage.getItem("nickpass")){
 				  

@@ -5215,7 +5215,7 @@ function chatting(id) {
 				  var nuovonick;
 				  
 				  if(contanick <= 12){
-				  
+				    nuovonick = item.nick
 				  
 				  }
 				  else{
