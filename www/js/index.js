@@ -9414,6 +9414,10 @@ function richiesta2() {
 					}, 500);
 				   
 				   });
+				   
+				   
+				   
+				   controllachat2(1,id)
 	
 }
 
@@ -10542,6 +10546,10 @@ function richiesta3() {
 					}, 500);
 
 				   });
+				   
+				   
+				   controllachat2(1,id)
+				   
 	
 }
 
