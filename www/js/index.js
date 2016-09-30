@@ -10822,7 +10822,7 @@ function chatting(pass,id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
+		   url:"http://purplemiles.com/www2/leggi_chat_autista.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -10930,9 +10930,22 @@ function chatting(pass,id) {
 				}
 				else{
 				
-				   $("#nickhome5").html(localStorage.getItem("nick"));
-				   $("#nickhome6").html(localStorage.getItem("nick"));
-				   $("#nickhome66").html(localStorage.getItem("nick"));
+				  var contanick = item.nick2.length;
+				  var nuovonick;
+				  
+				  if(contanick <= 12){
+				    nuovonick = item.nick2
+				  
+				  }
+				  else{
+				  nuovonick = item.nick2.slice(0,10)
+				  nuovonick = nuovonick + ".."
+				  
+				  }
+					  
+				   $("#nickhome5").html(nuovonick);
+				   $("#nickhome6").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);
 			
 				}
 				  
@@ -10978,7 +10991,7 @@ function chatting66(pass,id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
+		   url:"http://purplemiles.com/www2/leggi_chat_autista.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -11083,9 +11096,22 @@ function chatting66(pass,id) {
 				  }
 				  else{
 					  
-				   $("#nickhome5").html(localStorage.getItem("nick"));
-				   $("#nickhome6").html(localStorage.getItem("nick"));
-				   $("#nickhome66").html(localStorage.getItem("nick"));
+				   var contanick = item.nick2.length;
+				  var nuovonick;
+				  
+				  if(contanick <= 12){
+				    nuovonick = item.nick2
+				  
+				  }
+				  else{
+				  nuovonick = item.nick2.slice(0,10)
+				  nuovonick = nuovonick + ".."
+				  
+				  }
+					  
+				   $("#nickhome5").html(nuovonick);
+				   $("#nickhome6").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);
 					  
 				  }
 				  
@@ -11129,7 +11155,7 @@ function chatting5(pass,id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/leggi_chat.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
+		   url:"http://purplemiles.com/www2/leggi_chat_autista.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -11233,9 +11259,22 @@ function chatting5(pass,id) {
 				  }
 				  else{
 					  
-				    $("#nickhome5").html(localStorage.getItem("nick"));
-				   $("#nickhome6").html(localStorage.getItem("nick"));
-				   $("#nickhome66").html(localStorage.getItem("nick"));
+				  var contanick = item.nick2.length;
+				  var nuovonick;
+				  
+				  if(contanick <= 12){
+				    nuovonick = item.nick2
+				  
+				  }
+				  else{
+				  nuovonick = item.nick2.slice(0,10)
+				  nuovonick = nuovonick + ".."
+				  
+				  }
+					  
+				   $("#nickhome5").html(nuovonick);
+				   $("#nickhome6").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);
 					  
 				  }
 				  

@@ -2799,6 +2799,7 @@ function onDeviceReady() {
 				veicolando = "Autovettura"
 				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 			}
+		}
 		else if(localStorage.getItem("lingua")=="en"){
 			if (document.getElementById("veicolo11").value=="Autovettura"){
 				veicolando = "Car"
@@ -5343,18 +5344,40 @@ function chatting(id) {
 				  
 			   if(item.Token==1){
 				   
-				  var contanick = item.nick.length;
-				  var nuovonick;
-				  
-				  if(contanick <= 12){
-				    nuovonick = item.nick
-				  
-				  }
-				  else{
-				  nuovonick = item.nick.slice(0,10)
-				  nuovonick = nuovonick + ".."
-				  
-				  }
+				  if(item.nick==localStorage.getItem("nickpass")){
+					
+					   var contanick = item.nick_destinatario.length;
+					   var nuovonick;
+				   
+				   
+					   if(contanick <= 12){
+						nuovonick = item.nick_destinatario;
+					   
+					   }
+					   else{
+						nuovonick = item.nick_destinatario.slice(0,10)
+						 nuovonick = nuovonick + ".."
+					   
+					   }
+					
+					}
+					else{
+						
+					   var contanick = item.nick.length;
+					   var nuovonick;
+				   
+				   
+					   if(contanick <= 12){
+						nuovonick = item.item.nick;
+					   
+					   }
+					   else{
+						nuovonick = item.item.nick.slice(0,10)
+						 nuovonick = nuovonick + ".."
+					   
+					   }
+						
+					}
 				   
 				  
 				  
@@ -5390,15 +5413,15 @@ function chatting(id) {
 				  
 				  if(item.Token==2){
 					  
-				  var contanick = item.nick.length;
+				  var contanick = item.nick2.length;
 				  var nuovonick;
 				  
 				  if(contanick <= 12){
-				    nuovonick = item.nick
+				    nuovonick = item.nick2
 				  
 				  }
 				  else{
-				  nuovonick = item.nick.slice(0,10)
+				  nuovonick = item.nick2.slice(0,10)
 				  nuovonick = nuovonick + ".."
 				  
 				  }
