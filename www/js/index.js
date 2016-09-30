@@ -7880,7 +7880,7 @@ function richiesta1() {
 
 	
 	if(wifi1=="Si"){
-	  $("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi "+ wifi1 +"</b></font>");
+	  $("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi:&nbsp; "+ wifi1 +"</b></font>");
 	}
 	else{
 		$("#wifi").html("&nbsp;&nbsp;WiFi " + wifi1);
@@ -7888,14 +7888,14 @@ function richiesta1() {
 	
 	
 	if(bluetooth1=="Si"){
-		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth "+ bluetooth1 +"</b></font>");
+		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth:&nbsp; "+ bluetooth1 +"</b></font>");
 	}
 	else{
 		$("#bluetooth").html("&nbsp;&nbsp;Bluetooth " + bluetooth1);
 	}
 	
 	if(note1!=""){
-		$("#note").html("&nbsp;&nbsp;<b><font color='#000000'><b>Note "+ note1 +"</b></font>");
+		$("#note").html("&nbsp;&nbsp;<b><font color='#000000'><b>Note:&nbsp; "+ note1 +"</b></font>");
 	}
 	else{
 		$("#note").html("&nbsp;&nbsp;Note " + note1);
