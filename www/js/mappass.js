@@ -2789,8 +2789,38 @@ function onDeviceReady() {
 	
 	$(document).on("touchstart", "#anteprima", function(e){
 		
+		
+		var veicolando;
 		/// prendo veicolo ////
 		document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
+		
+		if(localStorage.getItem("lingua")=="it"){
+			if (document.getElementById("veicolo11").value=="Autovettura"){
+				veicolando = "Autovettura"
+				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+			}
+		else if(localStorage.getItem("lingua")=="en"){
+			if (document.getElementById("veicolo11").value=="Autovettura"){
+				veicolando = "Car"
+				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+			}
+		}
+		else if (localStorage.getItem("lingua")=="fr"){
+			if (document.getElementById("veicolo11").value=="Autovettura"){
+				veicolando = "Automobile"
+				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+			}
+		}
+		else if (localStorage.getItem("lingua")=="es"){
+			if (document.getElementById("veicolo11").value=="Autovettura"){
+				veicolando = "Autom&oacute;vil"
+				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+			}
+		}
+			else{
+				   
+		}
+		
 		
 		$.ajax({
 						  type:"GET",
@@ -2806,23 +2836,22 @@ function onDeviceReady() {
 								 
 								 if(localStorage.getItem("lingua")=="it"){
 								   veicolando = item.italia;
-								   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+								   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 								 }
 								 if(localStorage.getItem("lingua")=="en"){
 								    veicolando = item.inglese;
-									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 								 }
 								 if(localStorage.getItem("lingua")=="fr"){
 								    veicolando = item.francia;
-								    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+								    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 								 }
 								 if(localStorage.getItem("lingua")=="es"){
 								    veicolando = item.spagna;
-									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 								 }
 								 
 							});
-						  
 						  
 						  
 						  },

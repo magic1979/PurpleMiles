@@ -7883,7 +7883,7 @@ function richiesta1() {
 	  $("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi:&nbsp; "+ wifi1 +"</b></font>");
 	}
 	else{
-		$("#wifi").html("&nbsp;&nbsp;WiFi " + wifi1);
+		$("#wifi").html("&nbsp;&nbsp;WiFi:&nbsp; " + wifi1);
 	}
 	
 	
@@ -7891,14 +7891,14 @@ function richiesta1() {
 		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth:&nbsp; "+ bluetooth1 +"</b></font>");
 	}
 	else{
-		$("#bluetooth").html("&nbsp;&nbsp;Bluetooth " + bluetooth1);
+		$("#bluetooth").html("&nbsp;&nbsp;Bluetooth:&nbsp; " + bluetooth1);
 	}
 	
 	if(note1!=""){
 		$("#note").html("&nbsp;&nbsp;<b><font color='#000000'><b>Note:&nbsp; "+ note1 +"</b></font>");
 	}
 	else{
-		$("#note").html("&nbsp;&nbsp;Note " + note1);
+		$("#note").html("&nbsp;&nbsp;Note:&nbsp; " + note1);
 	}
 	
 	
@@ -9069,10 +9069,10 @@ function richiesta2() {
 	}
 	
 	if(note2!=""){
-		$("#note").html("&nbsp;&nbsp;<b><font color='#000000'><b>Note "+ note2 +"</b></font>");
+		$("#note").html("&nbsp;&nbsp;<b><font color='#000000'><b>Note:&nbsp; "+ note2 +"</b></font>");
 	}
 	else{
-		$("#note").html("&nbsp;&nbsp;Note " + note2);
+		$("#note").html("&nbsp;&nbsp;Note:&nbsp;" + note2);
 	}
 	
 	
@@ -10205,10 +10205,10 @@ function richiesta3() {
 	}
 	
 	if(note3!=""){
-		$("#note").html("&nbsp;&nbsp;<b><font color='#000000'><b>Note "+ note3 +"</b></font>");
+		$("#note").html("&nbsp;&nbsp;<b><font color='#000000'><b>Note:&nbsp; "+ note3 +"</b></font>");
 	}
 	else{
-		$("#note").html("&nbsp;&nbsp;Note " + note3);
+		$("#note").html("&nbsp;&nbsp;Note:&nbsp; " + note3);
 	}
 	
 	
@@ -10928,6 +10928,13 @@ function chatting(pass,id) {
 				    }
 				  
 				}
+				else{
+				
+				   $("#nickhome5").html(localStorage.getItem("nick"));
+				   $("#nickhome6").html(localStorage.getItem("nick"));
+				   $("#nickhome66").html(localStorage.getItem("nick"));
+			
+				}
 				  
 			 });
 		   
@@ -11074,6 +11081,13 @@ function chatting66(pass,id) {
 				  
 				  
 				  }
+				  else{
+					  
+				   $("#nickhome5").html(localStorage.getItem("nick"));
+				   $("#nickhome6").html(localStorage.getItem("nick"));
+				   $("#nickhome66").html(localStorage.getItem("nick"));
+					  
+				  }
 				  
 			});
 		   
@@ -11216,6 +11230,13 @@ function chatting5(pass,id) {
 				   
 				  }
 				  
+				  }
+				  else{
+					  
+				    $("#nickhome5").html(localStorage.getItem("nick"));
+				   $("#nickhome6").html(localStorage.getItem("nick"));
+				   $("#nickhome66").html(localStorage.getItem("nick"));
+					  
 				  }
 				  
 			 });
