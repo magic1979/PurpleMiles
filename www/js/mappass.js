@@ -121,6 +121,14 @@ function onDeviceReady() {
 								 
 								 }
 								 
+								 if(results.rows.item(i).id_traduzione == "h7valutazione"){
+								 h7valutazione = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionValutazione",h7destinazione)
+								 
+								 }
+								 
+								 
 								 if(results.rows.item(i).id_traduzione == "offerta"){
 								 var offerta = results.rows.item(i).italiano.replace("P0011", "'");
 								 
@@ -449,6 +457,14 @@ function onDeviceReady() {
 								 localStorage.setItem("sessionPartenza",h7partenza)
                                  
                                  }
+								 
+								 if(results.rows.item(i).id_traduzione == "h7valutazione"){
+								 h7valutazione = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionValutazione",h7destinazione)
+								 
+								 }
+								 
                                  
                                  if(results.rows.item(i).id_traduzione == "h7arrivo"){
                                  h7arrivo = results.rows.item(i).inglese.replace("P0011", "'");
@@ -570,6 +586,13 @@ function onDeviceReady() {
 								 var gratis = results.rows.item(i).francese.replace("P0011", "'");
 								 
 								 localStorage.setItem("sessionGratis",gratis)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h7valutazione"){
+								 h7valutazione = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionValutazione",h7destinazione)
 								 
 								 }
 								 
@@ -777,6 +800,13 @@ function onDeviceReady() {
 								 var offerta = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 
 								 localStorage.setItem("sessionOfferta",offerta)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h7valutazione"){
+								 h7valutazione = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionValutazione",h7destinazione)
 								 
 								 }
 								 
@@ -2758,6 +2788,51 @@ function onDeviceReady() {
 
 	
 	$(document).on("touchstart", "#anteprima", function(e){
+		
+		/// prendo veicolo ////
+		
+		$.ajax({
+						  type:"GET",
+						  url:"http://purplemiles.com/www2/check_Mezzi_Lingua.php?mezzo="+document.getElementById("veicolo11").value+"",
+						  contentType: "application/json",
+						  //data: {email:email,pin:pin},
+						  timeout: 7000,
+						  jsonp: 'callback',
+						  crossDomain: true,
+						  success:function(result){
+						  
+						  $.each(result, function(i,item){
+								 
+								 if(localStorage.getItem("lingua")=="it"){
+								   veicolando = item.italia;
+								   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+								 }
+								 if(localStorage.getItem("lingua")=="en"){
+								    veicolando = item.inglese;
+									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+								 }
+								 if(localStorage.getItem("lingua")=="fr"){
+								    veicolando = item.francia;
+								    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+								 }
+								 if(localStorage.getItem("lingua")=="es"){
+								    veicolando = item.spagna;
+									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+								 }
+								 
+							});
+						  
+						  
+						  
+						  },
+						  error: function(){
+						  $(".spinner").hide();
+						  
+						   veicolando = document.getElementById("veicolo11").value
+						  $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+						  
+						  },
+						  dataType:"jsonp"});
 				   
 				   
 		document.getElementById("viale7").value = document.getElementById("viale").value;
@@ -2849,8 +2924,7 @@ function onDeviceReady() {
                    if(localStorage.getItem("lingua")=="it"){
 				   
 				   
-				   
-                   if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
+                   /*if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
 				   
 				       //alert(document.getElementById("veicolo7").value)
 	
@@ -2882,7 +2956,7 @@ function onDeviceReady() {
 				   
                    
                     $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo: </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-                   }
+                   }*/
                    
                    if(document.getElementById("passeggeri").value!="01"){
 				     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri:&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
@@ -2978,6 +3052,10 @@ function onDeviceReady() {
                    
                    else{
 				   
+                   
+				   /*
+				   
+				   
 				   if(localStorage.getItem("lingua")=="en"){
 				     if (localStorage.getItem("veicolo")=="Autovettura"){
 				      var veicolando = "Car"
@@ -2997,7 +3075,6 @@ function onDeviceReady() {
 				   
 				   }
 				   
-                   
 				   if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
 				   
 				   document.getElementById("veicolo7").value = document.getElementById("veicolo11").value
@@ -3026,7 +3103,7 @@ function onDeviceReady() {
 				   
 				   
 				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-				   }
+				   }*/
 
 				   
                    // QUI
@@ -4455,12 +4532,12 @@ function vediofferte(){
 				  if(item.accettata==1){
 				  
 				    if(item.cell!=""){
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br><font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionAccettazione")+"</p></b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><br><font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionAccettazione")+"</p></b></font><br></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p>: </b></td><td>"+ somma +"</td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+": </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='cell"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_telephone.png' width='50'></a>&nbsp;&nbsp;<a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                    seleziona();
 				    }
 				    else{
-				      $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionAccettazione")+"</p></b></font></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p >"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				      $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass2' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionAccettazione")+"</p></b></font></td></tr><tr><td align='left' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2'></div></b></font><br><b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+":</p> </b></td><td>"+ somma +"</td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p >"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+": </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><a id='chat"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/chat.png' width='50'></a>&nbsp;&nbsp;<a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a></td></tr><tr><td align='center' colspan='2'><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p></td><td> "+ item.cod_passeggero +"</b></td></tr></table></td></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;</td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                    seleziona();
 					}
@@ -4475,7 +4552,7 @@ function vediofferte(){
 				  else{
                    
                    
-				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font><br>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b>&nbsp;<div>"+localStorage.getItem("sessionAttendere")+"</div></font><font color='#cc33cc' size='2'><div id='puntini' class='loading'>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				    $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href=''class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'><font color='#cc33cc' size='5'><b><div id='timer2' style='display:none'></div></b></font><br>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b>&nbsp;<div>"+localStorage.getItem("sessionAttendere")+"</div></font><font color='#cc33cc' size='2'><div id='puntini' class='loading'>L'autista sta valutando la richiesta</div></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+":</p> </b></td><td>"+ somma +"</td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +": </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+": </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><font color='#fff'><img src='img/ico_trash.png' width='45'></font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                    seleziona();
 					
@@ -4729,7 +4806,7 @@ function vediofferte(){
 				   //
 				   if(item.accettata==1 && item.stato==3){
 				   
-				   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionRifiutata")+"</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </b></p></td><td> "+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p> </d><td>"+ item.cod_passeggero +"</b></td></tr></table><br><a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a>&nbsp;&nbsp;<a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_trash.png' width='50'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='4'><b><p>"+localStorage.getItem("sessionRifiutata")+"</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+":</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+":</b></p></td><td> "+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+": </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionCommento")+"</p> </d><td>"+ item.cod_passeggero +"</b></td></tr></table><br><a id='rifiuta2"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_feedback.png' width='50'></a>&nbsp;&nbsp;<a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#'><img src='img/ico_trash.png' width='50'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                    seleziona();
 				   
@@ -4832,14 +4909,14 @@ function vediofferte(){
 				   if(item.confermata==1){
                    
 
-					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><p>"+localStorage.getItem("sessionReinoltra")+"</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p >"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>"+ accetta +"</font></a>&nbsp;&nbsp;<a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>"+ cancella +"</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='center' colspan='2'>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b><p>"+localStorage.getItem("sessionReinoltra")+"</p></b></font></td></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+":</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p >"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+": </b></td><td>"+ item.note_autista +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>"+ accetta +"</font></a>&nbsp;&nbsp;<a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>"+ cancella +"</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                      seleziona();
 				   }
 				   else{
                    
 
-					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+"</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+" </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>"+ accetta +"</font></a>&nbsp;&nbsp;<a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>"+ cancella +"</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+					 $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass11' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"' href='' class='linkchat'><font color='#fff'>"+ nuovonick +" "+ item.percentuale +"%</font></a></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></tr><tr><td align='left' colspan='2'>&nbsp;&nbsp;<b>"+ tempistica +"</b><table><tr><td><b><p>"+localStorage.getItem("sessionPrezzo")+":</p> </b></td><td>"+ somma +"</td></tr></table><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table><table><tr><td><b>"+localStorage.getItem("sessionNote")+": </b></td><td>"+ item.note_autista +"</td></tr></table><br></td></tr><tr><td align='center' colspan='2'><a id='accetta"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4accetta'><font color='#fff'>"+ accetta +"</font></a>&nbsp;&nbsp;<a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' data-role='button' data-theme='b' class='custom-btn4rifiuta'><font color='#fff'>"+ cancella +"</font></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
                    
                       seleziona();
 				   
@@ -4948,7 +5025,7 @@ function vediofferte(){
 				   
 					   item.stato==2
 				   
-					   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><b><p id='h4richiesta'>RICHIESTA</p></b></td></tr><tr><td align='left'><br><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr><tr><td align='center'><a id='elimina"+ item.id_richiesta +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center'></td></tr></table>");
+					   $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='center'><b><p id='h4richiesta'>RICHIESTA</p></b></td></tr><tr><td align='left'><br><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center'></td></tr><tr><td align='center'><br></td></tr><tr><td align='center'><a id='elimina"+ item.id_richiesta +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center'></td></tr></table>");
 				  
 				           $(document).on("touchstart", "#elimina"+ item.id_richiesta +"", function(e){
 							 elimina(item.id_richiesta)
@@ -4961,7 +5038,7 @@ function vediofferte(){
 					 }
 					 else{
 				   
-				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass00' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><font color='#fff'><b>"+ nuovonick +" "+ item.percentuale +"%</b></font></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br><table><tr><td><b><p>"+localStorage.getItem("sessionQuando")+" </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+" </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+" </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+" </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass00' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><font color='#fff'><b>"+ nuovonick +" "+ item.percentuale +"%</b></font></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br><table><tr><td><br>&nbsp;&nbsp;<font color='#cc33cc' size='3'><b>&nbsp;<div>"+localStorage.getItem("sessionValutazione")+"</div></font></td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  
                    
                      seleziona();

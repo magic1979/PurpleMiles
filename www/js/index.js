@@ -3768,13 +3768,20 @@ function resetta1(focus) {
 		
 		//alert(localStorage.getItem("tuaposizione"))
 		
+		if(document.getElementById("modificastart").value ==""){
+			modificastart = localStorage.getItem("tuaposizione")
+		}
+		else{
+			modificastart = document.getElementById("modificastart").value
+		}
+		
 		
 		marker2 = new google.maps.Marker ({
 										  map : map,
 										  icon: icon,
 										  optimized: false,
 										  position : myLatLng,
-										  content:'<div class="popup">'+ localStorage.getItem("tuaposizione") +'</div>',
+										  content:'<div class="popup">'+ modificastart +'</div>',
 										  title: '1',
 										  //label: ''+ beach[1] +','+ beach[2] +'',
 										  zIndex: 100
@@ -6958,12 +6965,12 @@ function cancellapos(id){
 				  
 				  if(item.Token==1){
 				  
-				   navigator.notification.alert(
+				   /*navigator.notification.alert(
 											   alertgps,  // message
 											   alertDismissed,         // callback
 											   alertattenzione,           // title
 											   'Ok'                  // buttonName
-											   );
+											   );*/
 				  
 				  setTimeout(function() {
 					$("#ritorna").tap();
@@ -7246,7 +7253,7 @@ function richiesta1() {
                       $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+"") + "</b></font>");
                       }
                       else{
-                      $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni"+"));
+                      $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori1.replace("Si",""+rispopzioni+""));
                       }
                       }
                       
@@ -7256,7 +7263,7 @@ function richiesta1() {
                       $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno181.replace("Si",""+rispopzioni+"") +"</b></font>");
                       }
                       else{
-                      $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno181.replace("Si",""+rispopzioni"+"));
+                      $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno181.replace("Si",""+rispopzioni+""));
                       }
                       }
                       
