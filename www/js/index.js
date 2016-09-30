@@ -1548,7 +1548,7 @@ receivedEvent: function(id) {
 				   lista5();
 				   controllachat5();
 				   
-				   localStorage.setItem("chatpass5", "")
+				   localStorage.setItem("chatpass", "")
 				
 				   e.stopImmediatePropagation();
 				   
@@ -7872,9 +7872,9 @@ function richiesta1() {
 	
 	$("#nickhome4").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
 	$("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick1 +" "+ percentuale1 +"%</font></a>");
-	$("#nickhome66").html("<font color='#fff'>"+ nick1 +"</font>");
+	/*$("#nickhome66").html("<font color='#fff'>"+ nick1 +"</font>");
 	$("#nickhome5").html("<font color='#fff'>"+ nick1 +"</font>");
-	$("#nickhome6").html("<font color='#fff'>"+ nick1 +"</font>");
+	$("#nickhome6").html("<font color='#fff'>"+ nick1 +"</font>");*/
 	$("#nickblob3").html("<font color='#cc33cc' size='4'><b>"+ nick1 +" "+ percentuale1 +"%</b></font>");
 				  
 
@@ -8083,7 +8083,7 @@ function richiesta1() {
 							localStorage.setItem("pagechat", "1")
 							localStorage.setItem("stomessa", "1")
 									 
-							localStorage.setItem("chatpass66", "")
+							localStorage.setItem("chatpass", "")
                                      
                                      
                                      if(localStorage.getItem("lingua")=="it"){
@@ -8391,70 +8391,70 @@ function richiesta2() {
                                  if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
                                  pagina4passeggeri = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(passeggeri1!="1"){
-                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri2 + "</b></font>");
+                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri2 + "</b></font>");
                                  }
                                  else{
-                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri2);
+                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri2);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4animali"){
                                  pagina4animali = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(animali1=="Si"){
-                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali2 + "</b></font>");
+                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali2 + "</b></font>");
                                  }
                                  else{
-                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali2);
+                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali2);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
                                  pagina4fumatori = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(fumatori1=="Si"){
-                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori2 + "</b></font>");
+                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori2 + "</b></font>");
                                  }
                                  else{
-                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori2);
+                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori2);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4minori"){
                                  pagina4minori = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(meno181=="Si"){
-                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno182 +"</b></font>");
+                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno182 +"</b></font>");
                                  }
                                  else{
-                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno182);
+                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno182);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4disabili"){
                                  pagina4disabili = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(disabili1=="Si"){
-                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili2 +"</b></font>");
+                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili2 +"</b></font>");
                                  }
                                  else{
-                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili2);
+                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili2);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4bambini"){
                                  pagina4bambini = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(bambini1=="Si"){
-                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini2 +"</b></font>");
+                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini2 +"</b></font>");
                                  }
                                  else{
-                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini2);
+                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini2);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
                                  pagina4pacchi = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(portapacchi1=="Si"){
-                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi2 +"</b></font>");
+                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi2 +"</b></font>");
                                  }
                                  else{
-                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi2);
+                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi2);
                                  }
                                  }
                                  
@@ -8462,10 +8462,10 @@ function richiesta2() {
                                  if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
                                  pagina4rimorchio = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(rimorchio1=="Si"){
-                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio2 +"</b></font>");
+                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio2 +"</b></font>");
                                  }
                                  else{
-                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio2);
+                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio2);
                                  }
                                  }
                                  
@@ -8515,10 +8515,10 @@ function richiesta2() {
                                  if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
                                  pagina4passeggeri = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(passeggeri1!="1"){
-                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri2 + "</b></font>");
+                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri2 + "</b></font>");
                                  }
                                  else{
-                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri2);
+                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri2);
                                  }
                                  }
 								 
@@ -8531,50 +8531,50 @@ function richiesta2() {
                                  if(results.rows.item(i).id_traduzione == "pagina4animali"){
                                  pagina4animali = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(animali1=="Si"){
-                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali2 + "</b></font>");
+                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali2 + "</b></font>");
                                  }
                                  else{
-                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali2);
+                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali2);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
                                  pagina4fumatori = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(fumatori1=="Si"){
-                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori2 + "</b></font>");
+                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori2 + "</b></font>");
                                  }
                                  else{
-                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori2);
+                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori2);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4minori"){
                                  pagina4minori = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(meno181=="Si"){
-                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno182 +"</b></font>");
+                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno182 +"</b></font>");
                                  }
                                  else{
-                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno182);
+                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno182);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4disabili"){
                                  pagina4disabili = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(disabili1=="Si"){
-                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili2 +"</b></font>");
+                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili2 +"</b></font>");
                                  }
                                  else{
-                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili2);
+                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili2);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4bambini"){
                                  pagina4bambini = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(bambini1=="Si"){
-                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini2 +"</b></font>");
+                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini2 +"</b></font>");
                                  }
                                  else{
-                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini2);
+                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini2);
                                  }
                                  }
                                  
@@ -8582,10 +8582,10 @@ function richiesta2() {
                                  if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
                                  pagina4pacchi = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(portapacchi1=="Si"){
-                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi2 +"</b></font>");
+                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi2 +"</b></font>");
                                  }
                                  else{
-                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi2);
+                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi2);
                                  }
                                  }
                                  
@@ -8593,10 +8593,10 @@ function richiesta2() {
                                  if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
                                  pagina4rimorchio = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(rimorchio1=="Si"){
-                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio2 +"</b></font>");
+                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio2 +"</b></font>");
                                  }
                                  else{
-                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio2);
+                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp;" + rimorchio2);
                                  }
                                  }
                                  
@@ -8645,30 +8645,30 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
 								 pagina4passeggeri = results.rows.item(i).francese.replace("P0011", "'");
 								 if(passeggeri1!="1"){
-								 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri2 + "</b></font>");
+								 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri2 + "</b></font>");
 								 }
 								 else{
-								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri2);
+								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri2);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4animali"){
 								 pagina4animali = results.rows.item(i).francese.replace("P0011", "'");
 								 if(animali1=="Si"){
-								 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali2 + "</b></font>");
+								 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali2 + "</b></font>");
 								 }
 								 else{
-								 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali2);
+								 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali2);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
 								 pagina4fumatori = results.rows.item(i).francese.replace("P0011", "'");
 								 if(fumatori1=="Si"){
-								 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori2 + "</b></font>");
+								 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori2 + "</b></font>");
 								 }
 								 else{
-								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori2);
+								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori2);
 								 }
 								 }
 								 
@@ -8680,30 +8680,30 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4minori"){
 								 pagina4minori = results.rows.item(i).francese.replace("P0011", "'");
 								 if(meno181=="Si"){
-								 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno182 +"</b></font>");
+								 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno182 +"</b></font>");
 								 }
 								 else{
-								 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno182);
+								 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno182);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4disabili"){
 								 pagina4disabili = results.rows.item(i).francese.replace("P0011", "'");
 								 if(disabili1=="Si"){
-								 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili2 +"</b></font>");
+								 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili2 +"</b></font>");
 								 }
 								 else{
-								 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili2);
+								 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili2);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4bambini"){
 								 pagina4bambini = results.rows.item(i).francese.replace("P0011", "'");
 								 if(bambini1=="Si"){
-								 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini2 +"</b></font>");
+								 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini2 +"</b></font>");
 								 }
 								 else{
-								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini2);
+								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini2);
 								 }
 								 }
 								 
@@ -8711,10 +8711,10 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
 								 pagina4pacchi = results.rows.item(i).francese.replace("P0011", "'");
 								 if(portapacchi1=="Si"){
-								 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi2 +"</b></font>");
+								 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi2 +"</b></font>");
 								 }
 								 else{
-								 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi2);
+								 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi2);
 								 }
 								 }
 								 
@@ -8722,10 +8722,10 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
 								 pagina4rimorchio = results.rows.item(i).francese.replace("P0011", "'");
 								 if(rimorchio1=="Si"){
-								 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio2 +"</b></font>");
+								 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio2 +"</b></font>");
 								 }
 								 else{
-								 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio2);
+								 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio2);
 								 }
 								 }
 								 
@@ -8773,60 +8773,60 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
 								 pagina4passeggeri = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(passeggeri1!="1"){
-								 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri2 + "</b></font>");
+								 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri2 + "</b></font>");
 								 }
 								 else{
-								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri2);
+								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri2);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4animali"){
 								 pagina4animali = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(animali1=="Si"){
-								 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali2 + "</b></font>");
+								 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali2 + "</b></font>");
 								 }
 								 else{
-								 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali2);
+								 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali2);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
 								 pagina4fumatori = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(fumatori1=="Si"){
-								 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori2 + "</b></font>");
+								 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori2 + "</b></font>");
 								 }
 								 else{
-								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori2);
+								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori2);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4minori"){
 								 pagina4minori = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(meno181=="Si"){
-								 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno182 +"</b></font>");
+								 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno182 +"</b></font>");
 								 }
 								 else{
-								 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno182);
+								 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno182);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4disabili"){
 								 pagina4disabili = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(disabili1=="Si"){
-								 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili2 +"</b></font>");
+								 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili2 +"</b></font>");
 								 }
 								 else{
-								 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili2);
+								 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili2);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4bambini"){
 								 pagina4bambini = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(bambini1=="Si"){
-								 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini2 +"</b></font>");
+								 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini2 +"</b></font>");
 								 }
 								 else{
-								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini2);
+								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini2);
 								 }
 								 }
 								 
@@ -8839,10 +8839,10 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
 								 pagina4pacchi = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(portapacchi1=="Si"){
-								 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi2 +"</b></font>");
+								 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi2 +"</b></font>");
 								 }
 								 else{
-								 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi2);
+								 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi2);
 								 }
 								 }
 								 
@@ -8850,10 +8850,10 @@ function richiesta2() {
 								 if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
 								 pagina4rimorchio = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(rimorchio1=="Si"){
-								 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio2 +"</b></font>");
+								 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio2 +"</b></font>");
 								 }
 								 else{
-								 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio2);
+								 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio2);
 								 }
 								 }
 								 
@@ -8897,9 +8897,9 @@ function richiesta2() {
 	
 	$("#nickhome4").html("<font color='#fff'><a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a></font>");
 	$("#nickhome3").html("<a id='linknick2' href='#' class='noblu'><font color='#fff'>"+ nick2 +" "+ percentuale2 +"%</font></a>");
-	$("#nickhome66").html("<font color='#fff'>"+ nick2 +"</font>");
+	/*$("#nickhome66").html("<font color='#fff'>"+ nick2 +"</font>");
 	$("#nickhome5").html("<font color='#fff'>"+ nick2 +"</font>");
-	$("#nickhome6").html("<font color='#fff'>"+ nick2 +"</font>");
+	$("#nickhome6").html("<font color='#fff'>"+ nick2 +"</font>");*/
 	$("#nickblob4").html("<font color='#cc33cc' size='4'><b>"+ nick2 +" "+ percentuale2 +"%</b></font>");
 	
 	localStorage.setItem("id_utente_pass2", id_utente_pass2)
@@ -9055,17 +9055,17 @@ function richiesta2() {
      */
     
 	if(wifi2=="Si"){
-		$("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi "+ wifi2 +"</b></font>");
+		$("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi:&nbsp; "+ wifi2 +"</b></font>");
 	}
 	else{
-		$("#wifi").html("&nbsp;&nbsp;WiFi " + wifi2);
+		$("#wifi").html("&nbsp;&nbsp;WiFi:&nbsp; " + wifi2);
 	}
 	
 	if(bluetooth2=="Si"){
-		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth "+ bluetooth2 +"</b></font>");
+		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth:&nbsp; "+ bluetooth2 +"</b></font>");
 	}
 	else{
-		$("#bluetooth").html("&nbsp;&nbsp;Bluetooth " + bluetooth2);
+		$("#bluetooth").html("&nbsp;&nbsp;Bluetooth:&nbsp; " + bluetooth2);
 	}
 	
 	if(note2!=""){
@@ -9247,7 +9247,7 @@ function richiesta2() {
 							localStorage.setItem("pagechat", "2")
 							localStorage.setItem("stomessa", "1")
 									 
-							localStorage.setItem("chatpass66", "")
+							localStorage.setItem("chatpass", "")
                                      
                                      if(localStorage.getItem("lingua")=="it"){
                                      
@@ -9529,70 +9529,70 @@ function richiesta3() {
                                  if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
                                  pagina4passeggeri = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(passeggeri1!="1"){
-                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri3 + "</b></font>");
+                                 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri3 + "</b></font>");
                                  }
                                  else{
-                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri3);
+                                 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri3);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4animali"){
                                  pagina4animali = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(animali1=="Si"){
-                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali3 + "</b></font>");
+                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali3 + "</b></font>");
                                  }
                                  else{
-                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali3);
+                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali3);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
                                  pagina4fumatori = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(fumatori1=="Si"){
-                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori3 + "</b></font>");
+                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori3 + "</b></font>");
                                  }
                                  else{
-                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori3);
+                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori3);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4minori"){
                                  pagina4minori = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(meno181=="Si"){
-                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno183 +"</b></font>");
+                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno183 +"</b></font>");
                                  }
                                  else{
-                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno183);
+                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno183);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4disabili"){
                                  pagina4disabili = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(disabili1=="Si"){
-                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili3 +"</b></font>");
+                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili3 +"</b></font>");
                                  }
                                  else{
-                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili3);
+                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili3);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4bambini"){
                                  pagina4bambini = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(bambini1=="Si"){
-                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini3 +"</b></font>");
+                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini3 +"</b></font>");
                                  }
                                  else{
-                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini3);
+                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini3);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
                                  pagina4pacchi = results.rows.item(i).italiano.replace("P0011", "'");
                                  if(portapacchi1=="Si"){
-                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi3 +"</b></font>");
+                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi3 +"</b></font>");
                                  }
                                  else{
-                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi3);
+                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi3);
                                  }
                                  }
                                  
@@ -9668,50 +9668,50 @@ function richiesta3() {
                                  if(results.rows.item(i).id_traduzione == "pagina4animali"){
                                  pagina4animali = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(animali1=="Si"){
-                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali3 + "</b></font>");
+                                 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali3 + "</b></font>");
                                  }
                                  else{
-                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali3);
+                                 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali3);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
                                  pagina4fumatori = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(fumatori1=="Si"){
-                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori3 + "</b></font>");
+                                 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori3 + "</b></font>");
                                  }
                                  else{
-                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori3);
+                                 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori3);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4minori"){
                                  pagina4minori = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(meno181=="Si"){
-                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno183 +"</b></font>");
+                                 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno183 +"</b></font>");
                                  }
                                  else{
-                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno183);
+                                 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno183);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4disabili"){
                                  pagina4disabili = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(disabili1=="Si"){
-                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili3 +"</b></font>");
+                                 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili3 +"</b></font>");
                                  }
                                  else{
-                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili3);
+                                 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili3);
                                  }
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "pagina4bambini"){
                                  pagina4bambini = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(bambini1=="Si"){
-                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini3 +"</b></font>");
+                                 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini3 +"</b></font>");
                                  }
                                  else{
-                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini3);
+                                 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini3);
                                  }
                                  }
                                  
@@ -9719,10 +9719,10 @@ function richiesta3() {
                                  if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
                                  pagina4pacchi = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(portapacchi1=="Si"){
-                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi3 +"</b></font>");
+                                 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi3 +"</b></font>");
                                  }
                                  else{
-                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi3);
+                                 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi3);
                                  }
                                  }
                                  
@@ -9730,10 +9730,10 @@ function richiesta3() {
                                  if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
                                  pagina4rimorchio = results.rows.item(i).inglese.replace("P0011", "'");
                                  if(rimorchio1=="Si"){
-                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio3 +"</b></font>");
+                                 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio3 +"</b></font>");
                                  }
                                  else{
-                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio3);
+                                 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio3);
                                  }
                                  }
                                  
@@ -9784,10 +9784,10 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
 								 pagina4passeggeri = results.rows.item(i).francese.replace("P0011", "'");
 								 if(passeggeri1!="1"){
-								 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri3 + "</b></font>");
+								 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri3 + "</b></font>");
 								 }
 								 else{
-								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri3);
+								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri3);
 								 }
 								 }
 								 
@@ -9799,50 +9799,50 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4animali"){
 								 pagina4animali = results.rows.item(i).francese.replace("P0011", "'");
 								 if(animali1=="Si"){
-								 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali3 + "</b></font>");
+								 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali3 + "</b></font>");
 								 }
 								 else{
-								 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali3);
+								 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali3);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
 								 pagina4fumatori = results.rows.item(i).francese.replace("P0011", "'");
 								 if(fumatori1=="Si"){
-								 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori3 + "</b></font>");
+								 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori3 + "</b></font>");
 								 }
 								 else{
-								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori3);
+								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori3);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4minori"){
 								 pagina4minori = results.rows.item(i).francese.replace("P0011", "'");
 								 if(meno181=="Si"){
-								 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno183 +"</b></font>");
+								 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno183 +"</b></font>");
 								 }
 								 else{
-								 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno183);
+								 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno183);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4disabili"){
 								 pagina4disabili = results.rows.item(i).francese.replace("P0011", "'");
 								 if(disabili1=="Si"){
-								 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili3 +"</b></font>");
+								 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili3 +"</b></font>");
 								 }
 								 else{
-								 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili3);
+								 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili3);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4bambini"){
 								 pagina4bambini = results.rows.item(i).francese.replace("P0011", "'");
 								 if(bambini1=="Si"){
-								 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini3 +"</b></font>");
+								 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini3 +"</b></font>");
 								 }
 								 else{
-								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini3);
+								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini3);
 								 }
 								 }
 								 
@@ -9850,10 +9850,10 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
 								 pagina4pacchi = results.rows.item(i).francese.replace("P0011", "'");
 								 if(portapacchi1=="Si"){
-								 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi3 +"</b></font>");
+								 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi3 +"</b></font>");
 								 }
 								 else{
-								 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi3);
+								 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi3);
 								 }
 								 }
 								 
@@ -9861,10 +9861,10 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
 								 pagina4rimorchio = results.rows.item(i).francese.replace("P0011", "'");
 								 if(rimorchio1=="Si"){
-								 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio3 +"</b></font>");
+								 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio3 +"</b></font>");
 								 }
 								 else{
-								 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio3);
+								 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio3);
 								 }
 								 }
 								 
@@ -9912,10 +9912,10 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4passeggeri"){
 								 pagina4passeggeri = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(passeggeri1!="1"){
-								 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+" " + passeggeri3 + "</b></font>");
+								 $("#passeggeri").html("&nbsp;&nbsp;<font color='#000000'><b>"+pagina4passeggeri+":&nbsp; " + passeggeri3 + "</b></font>");
 								 }
 								 else{
-								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+" " + passeggeri3);
+								 $("#passeggeri").html("&nbsp;&nbsp;"+pagina4passeggeri+":&nbsp; " + passeggeri3);
 								 }
 								 }
 								 
@@ -9927,50 +9927,50 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4animali"){
 								 pagina4animali = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(animali1=="Si"){
-								 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +" " + animali3 + "</b></font>");
+								 $("#animali").html("&nbsp;&nbsp;<font color='#000000'><b>"+ pagina4animali +":&nbsp; " + animali3 + "</b></font>");
 								 }
 								 else{
-								 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +" " + animali3);
+								 $("#animali").html("&nbsp;&nbsp;"+ pagina4animali +":&nbsp; " + animali3);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4fumatori"){
 								 pagina4fumatori = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(fumatori1=="Si"){
-								 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+" " + fumatori3 + "</b></font>");
+								 $("#fumatori").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4fumatori+":&nbsp; " + fumatori3 + "</b></font>");
 								 }
 								 else{
-								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+" " + fumatori3);
+								 $("#fumatori").html("&nbsp;&nbsp;"+pagina4fumatori+":&nbsp; " + fumatori3);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4minori"){
 								 pagina4minori = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(meno181=="Si"){
-								 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+" "+ meno183 +"</b></font>");
+								 $("#meno18").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4minori+":&nbsp; "+ meno183 +"</b></font>");
 								 }
 								 else{
-								 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+" " + meno183);
+								 $("#meno18").html("&nbsp;&nbsp;"+pagina4minori+":&nbsp; " + meno183);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4disabili"){
 								 pagina4disabili = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(disabili1=="Si"){
-								 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+" "+ disabili3 +"</b></font>");
+								 $("#disabili").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4disabili+":&nbsp; "+ disabili3 +"</b></font>");
 								 }
 								 else{
-								 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+" " + disabili3);
+								 $("#disabili").html("&nbsp;&nbsp;"+pagina4disabili+":&nbsp; " + disabili3);
 								 }
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "pagina4bambini"){
 								 pagina4bambini = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(bambini1=="Si"){
-								 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+" "+ bambini3 +"</b></font>");
+								 $("#bambini").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4bambini+":&nbsp; "+ bambini3 +"</b></font>");
 								 }
 								 else{
-								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+" " + bambini3);
+								 $("#bambini").html("&nbsp;&nbsp;"+pagina4bambini+":&nbsp; " + bambini3);
 								 }
 								 }
 								 
@@ -9978,10 +9978,10 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4pacchi"){
 								 pagina4pacchi = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(portapacchi1=="Si"){
-								 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+" "+ portapacchi3 +"</b></font>");
+								 $("#portapacchi").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4pacchi+":&nbsp; "+ portapacchi3 +"</b></font>");
 								 }
 								 else{
-								 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+" " + portapacchi3);
+								 $("#portapacchi").html("&nbsp;&nbsp;"+pagina4pacchi+":&nbsp; " + portapacchi3);
 								 }
 								 }
 								 
@@ -9989,10 +9989,10 @@ function richiesta3() {
 								 if(results.rows.item(i).id_traduzione == "pagina4rimorchio"){
 								 pagina4rimorchio = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 if(rimorchio1=="Si"){
-								 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+" "+ rimorchio3 +"</b></font>");
+								 $("#rimorchio").html("&nbsp;&nbsp;<b><font color='#000000'><b>"+pagina4rimorchio+":&nbsp; "+ rimorchio3 +"</b></font>");
 								 }
 								 else{
-								 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+" " + rimorchio3);
+								 $("#rimorchio").html("&nbsp;&nbsp;"+pagina4rimorchio+":&nbsp; " + rimorchio3);
 								 }
 								 }
 								 
@@ -10033,9 +10033,9 @@ function richiesta3() {
 
 				  $("#nickhome4").html("<font color='#fff'><a id='linknick3' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a></font>");
 				  $("#nickhome3").html("<a id='linknick1' href='#' class='noblu'><font color='#fff'>"+ nick3 +" "+ percentuale3 +"%</font></a>");
-	              $("#nickhome66").html("<font color='#fff'>"+ nick3 +" </font>");
+	              /*$("#nickhome66").html("<font color='#fff'>"+ nick3 +" </font>");
 				  $("#nickhome5").html("<font color='#fff'>"+ nick3 +" </font>");
-				  $("#nickhome6").html("<font color='#fff'>"+ nick3 +" </font>");
+				  $("#nickhome6").html("<font color='#fff'>"+ nick3 +" </font>");*/
 				  $("#nickblob5").html("<font color='#cc33cc' size='4'><b>"+ nick3 +" "+ percentuale3 +"%</b></font>");
 	
 	              localStorage.setItem("id_utente_pass3", id_utente_pass3)
@@ -10190,18 +10190,18 @@ function richiesta3() {
      */
     
 	if(wifi3=="Si"){
-		$("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi "+ wifi3 +"</b></font>");
+		$("#wifi").html("&nbsp;&nbsp;<b><font color='#000000'><b>WiFi:&nbsp; "+ wifi3 +"</b></font>");
 	}
 	else{
-		$("#wifi").html("&nbsp;&nbsp;WiFi " + wifi3);
+		$("#wifi").html("&nbsp;&nbsp;WiFi:&nbsp; " + wifi3);
 	}
 	
 	
 	if(bluetooth3=="Si"){
-		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth "+ bluetooth3 +"</b></font>");
+		$("#bluetooth").html("&nbsp;&nbsp;<b><font color='#000000'><b>Bluetooth:&nbsp; "+ bluetooth3 +"</b></font>");
 	}
 	else{
-		$("#bluetooth").html("&nbsp;&nbsp;Bluetooth " + bluetooth3);
+		$("#bluetooth").html("&nbsp;&nbsp;Bluetooth:&nbsp; " + bluetooth3);
 	}
 	
 	if(note3!=""){
@@ -10384,7 +10384,7 @@ function richiesta3() {
 									 localStorage.setItem("pagechat", "1")
 									 localStorage.setItem("stomessa", "1")
 									 
-									 localStorage.setItem("chatpass66", "")
+									 localStorage.setItem("chatpass", "")
                                      
                                      if(localStorage.getItem("lingua")=="it"){
                                      
@@ -10687,7 +10687,7 @@ function lista5() {
 							}
                                         
 								
-								localStorage.setItem("chatpass5", "")
+								localStorage.setItem("chatpass", "")
 								$("#btnpanel3").click();
 								 
 								chatting5(item.id_richiesta)
@@ -10805,11 +10805,9 @@ function lista5() {
 	
 	
 	setTimeout(function() {
-		 localStorage.setItem("chatcontroll5", localStorage.getItem("chatcontroll"))
+		 //localStorage.setItem("chatcontroll5", localStorage.getItem("chatcontroll"))
 		 controllachat5();
 	}, 2000);
-	
-	
 	
 	
 
@@ -10818,12 +10816,9 @@ function lista5() {
 
 function chatting(pass,id) {
 	
-
 	localStorage.setItem("tastiera","0")
 	
-	
 	localStorage.setItem("pagina","chat")
-
 	
 	$.ajax({
 		   type:"GET",
@@ -10850,22 +10845,48 @@ function chatting(pass,id) {
 			   
 			  if(item.Token==1){
 				  
-				  var contanick = item.nick.length;
-				   var nuovonick;
+
+				    if(item.nick==localStorage.getItem("nickpass")){
+					
+					   var contanick = item.nick_destinatario.length;
+					   var nuovonick;
 				   
-				   if(contanick <= 12){
-				   nuovonick = item.nick;
 				   
-				   }
-				   else{
-				   nuovonick = item.nick.slice(0,10)
-				   nuovonick = nuovonick + ".."
+					   if(contanick <= 12){
+						nuovonick = item.nick_destinatario;
+					   
+					   }
+					   else{
+						nuovonick = item.nick_destinatario.slice(0,10)
+						 nuovonick = nuovonick + ".."
+					   
+					   }
+					
+					}
+					else{
+						
+					   var contanick = item.nick.length;
+					   var nuovonick;
 				   
-				   }
 				   
-				   //$("#nickhome5").html(nuovonick);
-				   //$("#nickhome6").html(nuovonick);
-				   //$("#nickhome66").html(nuovonick);
+					   if(contanick <= 12){
+						nuovonick = item.item.nick;
+					   
+					   }
+					   else{
+						nuovonick = item.item.nick.slice(0,10)
+						 nuovonick = nuovonick + ".."
+					   
+					   }
+						
+					}
+				   
+				   
+				   $("#nickhome5").html(nuovonick);
+				   $("#nickhome6").html(nuovonick);
+				   $("#nickhome66").html(nuovonick);
+				   
+				   
 				
 				  if(item.nick==localStorage.getItem("nickpass")){
 				   
@@ -10958,7 +10979,7 @@ function chatting66(pass,id) {
 		   crossDomain: true,
 		   success:function(result){
 		   
-		   if(localStorage.getItem("chatpass66")==JSON.stringify(result)){
+		   if(localStorage.getItem("chatpass")==JSON.stringify(result)){
 		   
 		   $("#spinner66").hide();
 		   }
@@ -10968,27 +10989,49 @@ function chatting66(pass,id) {
 		   
 		   $.each(result, function(i,item){
 				  
-			   localStorage.setItem("chatpass66", JSON.stringify(result))
+			   localStorage.setItem("chatpass", JSON.stringify(result))
 				  
 			   
 				  if(item.Token==1){
 					  
-					var contanick = item.nick.length;
-				   var nuovonick;
+					if(item.nick==localStorage.getItem("nickpass")){
+					
+					   var contanick = item.nick_destinatario.length;
+					   var nuovonick;
 				   
-				   if(contanick <= 12){
-				   nuovonick = item.nick;
 				   
-				   }
-				   else{
-				   nuovonick = item.nick.slice(0,10)
-				   nuovonick = nuovonick + ".."
+					   if(contanick <= 12){
+						nuovonick = item.nick_destinatario;
+					   
+					   }
+					   else{
+						nuovonick = item.nick_destinatario.slice(0,10)
+						 nuovonick = nuovonick + ".."
+					   
+					   }
+					
+					}
+					else{
+						
+					   var contanick = item.nick.length;
+					   var nuovonick;
 				   
-				   }
 				   
-				   /*$("#nickhome5").html(nuovonick);
+					   if(contanick <= 12){
+						nuovonick = item.item.nick;
+					   
+					   }
+					   else{
+						nuovonick = item.item.nick.slice(0,10)
+						 nuovonick = nuovonick + ".."
+					   
+					   }
+						
+					}
+				   
+				   $("#nickhome5").html(nuovonick);
 				   $("#nickhome6").html(nuovonick);
-				   $("#nickhome66").html(nuovonick);*/
+				   $("#nickhome66").html(nuovonick);
 				  
 				  
 				  if(item.nick==localStorage.getItem("nickpass")){
@@ -11080,7 +11123,7 @@ function chatting5(pass,id) {
 		   crossDomain: true,
 		   success:function(result){
 		   
-		   if(localStorage.getItem("chatpass5")==JSON.stringify(result)){
+		   if(localStorage.getItem("chatpass")==JSON.stringify(result)){
 		   
 		     $("#spinner5").hide();
 		   }
@@ -11090,27 +11133,49 @@ function chatting5(pass,id) {
 		   
 		    $.each(result, function(i,item){
 				  
-			   localStorage.setItem("chatpass5", JSON.stringify(result))
+			   localStorage.setItem("chatpass", JSON.stringify(result))
 				  
 			   
 				  if(item.Token==1){
 					  
-					  var contanick = item.nick.length;
-				   var nuovonick;
+					if(item.nick==localStorage.getItem("nickpass")){
+					
+					   var contanick = item.nick_destinatario.length;
+					   var nuovonick;
 				   
-				   if(contanick <= 12){
-				   nuovonick = item.nick;
 				   
-				   }
-				   else{
-				   nuovonick = item.nick.slice(0,10)
-				   nuovonick = nuovonick + ".."
+					   if(contanick <= 12){
+						nuovonick = item.nick_destinatario;
+					   
+					   }
+					   else{
+						nuovonick = item.nick_destinatario.slice(0,10)
+						 nuovonick = nuovonick + ".."
+					   
+					   }
+					
+					}
+					else{
+						
+					   var contanick = item.nick.length;
+					   var nuovonick;
 				   
-				   }
 				   
-				   /*$("#nickhome5").html(nuovonick);
+					   if(contanick <= 12){
+						nuovonick = item.item.nick;
+					   
+					   }
+					   else{
+						nuovonick = item.item.nick.slice(0,10)
+						 nuovonick = nuovonick + ".."
+					   
+					   }
+						
+					}
+				   
+				   $("#nickhome5").html(nuovonick);
 				   $("#nickhome6").html(nuovonick);
-				   $("#nickhome66").html(nuovonick);*/
+				   $("#nickhome66").html(nuovonick);
 				  
 				  if(item.nick==localStorage.getItem("nickpass")){
 				  
@@ -11957,7 +12022,7 @@ function controllachat(uman) {
 				  
 				if(item.Token==1){
 				  
-				  $("#nickhome6").html(localStorage.getItem("nick"));
+				  //$("#nickhome6").html(localStorage.getItem("nick"));
 				  
 				  localStorage.setItem("id_richiesta",item.canale)
 				  
@@ -12107,7 +12172,7 @@ function controllachat2(ric,id) {
 											
 									if(item.Token==1){
 											
-											$("#nickhome6").html(item.nick);
+											//$("#nickhome6").html(item.nick);
 											
 											localStorage.setItem("id_richiesta",id)
 											
@@ -12186,14 +12251,14 @@ function controllachat2(ric,id) {
 									 crossDomain: true,
 									 success:function(result){
 									 
-									 if(localStorage.getItem("chatcontroll5")==JSON.stringify(result)){
+									 if(localStorage.getItem("chatcontroll")==JSON.stringify(result)){
 										//alert("1");
 									 }
 									 else{
 									 
 									    //alert("2");
 									 
-									 localStorage.setItem("chatcontroll5", JSON.stringify(result))
+									 localStorage.setItem("chatcontroll", JSON.stringify(result))
 									 
 
 									 $.each(result, function(i,item){
@@ -12287,14 +12352,14 @@ function controllachat2(ric,id) {
 									 crossDomain: true,
 									 success:function(result){
 									 
-									 if(localStorage.getItem("chatcontroll5")==JSON.stringify(result)){
+									 if(localStorage.getItem("chatcontroll")==JSON.stringify(result)){
 										//alert("1");
 									 }
 									 else{
 									 
 									    //alert("2");
 									 
-									 localStorage.setItem("chatcontroll5", JSON.stringify(result))
+									 localStorage.setItem("chatcontroll", JSON.stringify(result))
 									 
 									 
 									 $.each(result, function(i,item){

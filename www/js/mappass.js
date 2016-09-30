@@ -5327,7 +5327,11 @@ function chatting(id) {
 				  
 				  }
 				   
+				  
+				  
 				  $("#nickhome6").html(nuovonick);
+				  
+				  
 				  
 				  var indirizzo = item.messaggio.replace("777A","'");
 				  
@@ -5370,7 +5374,10 @@ function chatting(id) {
 				  
 				  }
 					  
+					  
 					$("#nickhome6").html(nuovonick);
+					
+					
 				  }
 				  
 				});
