@@ -3156,7 +3156,7 @@ function onDeviceReady() {
                    $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7fumatori +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#fumatori7").html("&nbsp;&nbsp;"+ h7fumatori +" " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
+                   $("#fumatori7").html("&nbsp;&nbsp;"+ h7fumatori +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
                    }
                    if(document.getElementById("meno18").value=="Si"){
                    $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7minori +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+"") + "</b></font>");
@@ -5069,7 +5069,7 @@ function vediofferte(){
 					 }
 					 else{
 				   
-				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass00' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><font color='#fff'><b>"+ nuovonick +" "+ item.percentuale +"%</b></font></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br><table><tr><td align='center'><font color='#cc33cc' size='3'><b>&nbsp;<div>"+localStorage.getItem("sessionValutazione")+"</div></font></td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
+				       $("#offerte4").append("<br><table width='90%' border='0' valign='center' align='center' class='tabella'><tr><td align='right' width='60%'><div class='custom-pass00' align='center'><a id='linkpass"+ item.id_richiesta +"_"+ item.id_autista +"'><font color='#fff'><b>"+ nuovonick +" "+ item.percentuale +"%</b></font></div></td><td align='left' width='40%'><div id='stelleautista"+ item.id_richiesta +"_"+ item.id_autista +"'></div></td></tr><tr><td align='left' colspan='2'><br><table><tr><td align='center' colspan='2'><font color='#cc33cc' size='3'><b>&nbsp;<div>"+localStorage.getItem("sessionValutazione")+"</div></font></td></tr><tr><td><b><p>"+localStorage.getItem("sessionQuando")+": </p></td><td> </b>"+ item.quando +" </td><td><b><p>"+localStorage.getItem("sessionOra")+": </p></td><td> </b>"+ item.ora +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionPartenza")+": </p></b></td><td> "+ item.partenza +"</td></tr></table><br><table><tr><td valign='top'><b><p>"+localStorage.getItem("sessionArrivo")+": </p> </b></td><td>"+ item.arrivo +"</td></tr></table></td></tr><tr><td align='center' colspan='2'><a id='elimina"+ item.id_richiesta +"_"+ item.id_autista +"' href='#' ><img src='img/ico_trash.png' width='45'></a></td></tr><tr><td align='center' colspan='2'></td></tr></table>");
 				  
                    
                      seleziona();
@@ -5310,14 +5310,12 @@ function onError34(error) {
 
 
 function chatting(id) {
-	//$("#nickhome6").html("Chat");
+	var nuovonick;
 	
 	localStorage.setItem("id_richiesta",id)
 	
 	localStorage.setItem("pagebtn", "chat")
-	
-	
-	//$.mobile.changePage( "#home6", { transition: "slide", changeHash: false });
+
 	
 	
 	$.ajax({
@@ -5331,54 +5329,56 @@ function chatting(id) {
 		   success:function(result){
 		   
 		   if(localStorage.getItem("chatpass")===JSON.stringify(result)){
-
-		     ("#spinner6").hide();
+		   
+		   ("#spinner6").hide();
 		   }
 		   else{
-		     $("#offerta6").html("");
-		     $("#spinner6").hide();
-		     localStorage.setItem("chatpass", JSON.stringify(result))
+		   $("#offerta6").html("");
+		   $("#spinner6").hide();
+		   localStorage.setItem("chatpass", JSON.stringify(result))
 		   
 		   $.each(result, function(i,item){
 				  
 				  
 			   if(item.Token==1){
-				   
+				  
+				  //alert(item.nick + localStorage.getItem("nickpass"))
+				  
+				  
 				  if(item.nick==localStorage.getItem("nickpass")){
-					
-					   var contanick = item.nick_destinatario.length;
-					   var nuovonick;
-				   
-				   
-					   if(contanick <= 12){
-						nuovonick = item.nick_destinatario;
-					   
-					   }
-					   else{
-						nuovonick = item.nick_destinatario.slice(0,10)
-						 nuovonick = nuovonick + ".."
-					   
-					   }
-					
-					}
-					else{
+				  
+					contanick = item.nick_destinatario.length;
+				
+				  
+				   if(contanick <= 12){
+					  nuovonick = item.nick_destinatario;
+				  
+				   }
+				    else{
+					  nuovonick = item.nick_destinatario.slice(0,10)
+					  nuovonick = nuovonick + ".."
+				  
+				  
+				   }
+				  
+				  }
+				  else{
 						
-					   var contanick = item.nick.length;
-					   var nuovonick;
-				   
-				   
-					   if(contanick <= 12){
-						nuovonick = item.item.nick;
-					   
-					   }
-					   else{
-						nuovonick = item.item.nick.slice(0,10)
-						 nuovonick = nuovonick + ".."
-					   
-					   }
+					 contanick = item.nick.length;
+				
+				    if(contanick <= 12){
+					 nuovonick = item.nick;
+				  
+				    }
+				    else{
+				  	 nuovonick = item.nick.slice(0,10)
+				     nuovonick = nuovonick + ".."
+				  
+					 //alert(nuovonick)
+				  
+				    }
 						
-					}
-				   
+				  }
 				  
 				  
 				  $("#nickhome6").html(nuovonick);
@@ -5409,30 +5409,31 @@ function chatting(id) {
 				  
 				  }
 				  
-				}
+				  }
 				  
 				  if(item.Token==2){
-					  
-				  var contanick = item.nick2.length;
-				  var nuovonick;
+				  
+				  var contanick = item.nick.length;
+					nuovonick;
 				  
 				  if(contanick <= 12){
-				    nuovonick = item.nick2
+				   nuovonick = item.nick
 				  
 				  }
 				  else{
-				  nuovonick = item.nick2.slice(0,10)
-				  nuovonick = nuovonick + ".."
+				    nuovonick = item.nick.slice(0,10)
+				    nuovonick = nuovonick + ".."
 				  
 				  }
-					  
-					  
-					$("#nickhome6").html(nuovonick);
-					
-					
+				  
+				  //alert("2-"+nuovonick)
+				  
+				   $("#nickhome6").html(nuovonick);
+				  
+				  
 				  }
 				  
-				});
+				  });
 		   
 		   playChat2('successChat2');
 		   
@@ -5440,42 +5441,42 @@ function chatting(id) {
 		   
 		   },
 		   error: function(){
-           
-           if(localStorage.getItem("lingua")=="it"){
-           
-            var alertattenzione = "Attenzione"
-            var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-            var orarioA = "Inserire un orario valido"
-           
-           }
-           else if(localStorage.getItem("lingua")=="en"){
-           
-            var alertattenzione = "Attention"
-            var alerterrore = "Possible network error"
-            var orarioA = "Enter a valid time"
-           
-           }
+		   
+		   if(localStorage.getItem("lingua")=="it"){
+		   
+		   var alertattenzione = "Attenzione"
+		   var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+		   var orarioA = "Inserire un orario valido"
+		   
+		   }
+		   else if(localStorage.getItem("lingua")=="en"){
+		   
+		   var alertattenzione = "Attention"
+		   var alerterrore = "Possible network error"
+		   var orarioA = "Enter a valid time"
+		   
+		   }
 		   else if(localStorage.getItem("lingua")=="fr"){
 		   
-		    var alertattenzione = "Attention"
-		    var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-		    var orarioA = "Entrez une heure valide"
+		   var alertattenzione = "Attention"
+		   var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
+		   var orarioA = "Entrez une heure valide"
 		   
 		   }
 		   else if(localStorage.getItem("lingua")=="es"){
 		   
-		    var alertattenzione = "Attenciòn"
-		    var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-		    var orarioA = "Introduzca una hora válida"
+		   var alertattenzione = "Attenciòn"
+		   var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
+		   var orarioA = "Introduzca una hora válida"
 		   
 		   }
 		   else{
 		   
-            var alertattenzione = "Attention"
-            var alerterrore = "Possible network error"
-            var orarioA = "Enter a valid time"
-           }
-           
+		   var alertattenzione = "Attention"
+		   var alerterrore = "Possible network error"
+		   var orarioA = "Enter a valid time"
+		   }
+		   
 		   
 		   navigator.notification.alert(
 										alerterrore,  // message
@@ -5493,12 +5494,13 @@ function chatting(id) {
 	
 	
 	setTimeout(function() {
-		localStorage.setItem("chatpass", "")
-		chatting(id)
-	}, 5000);
+			   localStorage.setItem("chatpass", "")
+			   chatting(id)
+			   }, 5000);
 	
 	
 }
+
 
 function playChat2(id) {
 	var audioElement = document.getElementById(id);

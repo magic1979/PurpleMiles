@@ -10823,6 +10823,8 @@ function lista5() {
 
 
 function chatting(pass,id) {
+	var contanick
+	 var nuovonick;
 	
 	localStorage.setItem("tastiera","0")
 	
@@ -10856,8 +10858,7 @@ function chatting(pass,id) {
 
 				    if(item.nick==localStorage.getItem("nickpass")){
 					
-					   var contanick = item.nick_destinatario.length;
-					   var nuovonick;
+					   	contanick = item.nick_destinatario.length;
 				   
 				   
 					   if(contanick <= 12){
@@ -10873,16 +10874,14 @@ function chatting(pass,id) {
 					}
 					else{
 						
-					   var contanick = item.nick.length;
-					   var nuovonick;
-				   
+					   var contanick = item.nick.length;				   
 				   
 					   if(contanick <= 12){
-						nuovonick = item.item.nick;
+						nuovonick = item.nick;
 					   
 					   }
 					   else{
-						nuovonick = item.item.nick.slice(0,10)
+						nuovonick = item.nick.slice(0,10)
 						 nuovonick = nuovonick + ".."
 					   
 					   }
@@ -10938,16 +10937,15 @@ function chatting(pass,id) {
 				}
 				else{
 				
-				  var contanick = item.nick2.length;
-				  var nuovonick;
+				  contanick = item.nick2.length;
 				  
 				  if(contanick <= 12){
 				    nuovonick = item.nick2
 				  
 				  }
 				  else{
-				  nuovonick = item.nick2.slice(0,10)
-				  nuovonick = nuovonick + ".."
+				  	nuovonick = item.nick2.slice(0,10)
+				  	nuovonick = nuovonick + ".."
 				  
 				  }
 					  
@@ -10987,8 +10985,9 @@ function chatting(pass,id) {
 }
 
 function chatting66(pass,id) {
-	
-	
+	var contanick;
+	var nuovonick;
+					   
 	localStorage.setItem("tastiera","0")
 	
 	
@@ -11024,8 +11023,7 @@ function chatting66(pass,id) {
 					  
 					if(item.nick==localStorage.getItem("nickpass")){
 					
-					   var contanick = item.nick_destinatario.length;
-					   var nuovonick;
+					   contanick = item.nick_destinatario.length;
 				   
 				   
 					   if(contanick <= 12){
@@ -11041,16 +11039,15 @@ function chatting66(pass,id) {
 					}
 					else{
 						
-					   var contanick = item.nick.length;
-					   var nuovonick;
+					  	  contanick = item.nick.length;
 				   
 				   
 					   if(contanick <= 12){
-						nuovonick = item.item.nick;
+						nuovonick = item.nick;
 					   
 					   }
 					   else{
-						nuovonick = item.item.nick.slice(0,10)
+						nuovonick = item.nick.slice(0,10)
 						 nuovonick = nuovonick + ".."
 					   
 					   }
@@ -11153,7 +11150,8 @@ function chatting66(pass,id) {
 }
 
 function chatting5(pass,id) {
-	
+	var contanick
+	var nuovonick;
 	
 	localStorage.setItem("tastiera","0")
 	
@@ -11188,8 +11186,8 @@ function chatting5(pass,id) {
 					  
 					if(item.nick==localStorage.getItem("nickpass")){
 					
-					   var contanick = item.nick_destinatario.length;
-					   var nuovonick;
+					   contanick = item.nick_destinatario.length;
+					   nuovonick;
 				   
 				   
 					   if(contanick <= 12){
@@ -11210,11 +11208,11 @@ function chatting5(pass,id) {
 				   
 				   
 					   if(contanick <= 12){
-						nuovonick = item.item.nick;
+						nuovonick = item.nick;
 					   
 					   }
 					   else{
-						nuovonick = item.item.nick.slice(0,10)
+						nuovonick = item.nick.slice(0,10)
 						 nuovonick = nuovonick + ".."
 					   
 					   }
@@ -11275,8 +11273,8 @@ function chatting5(pass,id) {
 				  
 				  }
 				  else{
-				  nuovonick = item.nick2.slice(0,10)
-				  nuovonick = nuovonick + ".."
+				  	nuovonick = item.nick2.slice(0,10)
+				  	nuovonick = nuovonick + ".."
 				  
 				  }
 					  
