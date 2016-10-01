@@ -11205,7 +11205,7 @@ function chatting5(id) {
 		   }
 		   else{
 		   $("#offerta65").html("");
-		   $("#spinner5").hide();xxxxxx
+		   $("#spinner5").hide();
 		   
 		    $.each(result, function(i,item){
 				  
