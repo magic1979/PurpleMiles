@@ -225,6 +225,8 @@ receivedEvent: function(id) {
 		
 		localStorage.setItem("aspetta","0")
 		localStorage.setItem("chatpass", "")
+		localStorage.setItem("chatpass5", "")
+		localStorage.setItem("chatpass66", "")
 		localStorage.setItem("notap","0")
 			
 		playAudioA('successSound');
@@ -1549,6 +1551,8 @@ receivedEvent: function(id) {
 				   controllachat5();
 				   
 				   localStorage.setItem("chatpass", "")
+				   localStorage.setItem("chatpass5", "")
+				   localStorage.setItem("chatpass66", "")
 				
 				   e.stopImmediatePropagation();
 				   
@@ -8084,6 +8088,8 @@ function richiesta1() {
 							localStorage.setItem("stomessa", "1")
 									 
 							localStorage.setItem("chatpass", "")
+							localStorage.setItem("chatpass5", "")
+							localStorage.setItem("chatpass66", "")
                                      
                                      
                                      if(localStorage.getItem("lingua")=="it"){
@@ -9248,6 +9254,8 @@ function richiesta2() {
 							localStorage.setItem("stomessa", "1")
 									 
 							localStorage.setItem("chatpass", "")
+							localStorage.setItem("chatpass5", "")
+							localStorage.setItem("chatpass66", "")
                                      
                                      if(localStorage.getItem("lingua")=="it"){
                                      
@@ -10389,6 +10397,8 @@ function richiesta3() {
 									 localStorage.setItem("stomessa", "1")
 									 
 									 localStorage.setItem("chatpass", "")
+									 localStorage.setItem("chatpass5", "")
+									 localStorage.setItem("chatpass66", "")
                                      
                                      if(localStorage.getItem("lingua")=="it"){
                                      
@@ -10937,14 +10947,14 @@ function chatting(pass,id) {
 				}
 				else{
 				
-				  contanick = item.nick2.length;
+				  contanick = item.nick.length;
 				  
 				  if(contanick <= 12){
-				    nuovonick = item.nick2
+				    nuovonick = item.nick
 				  
 				  }
 				  else{
-				  	nuovonick = item.nick2.slice(0,10)
+				  	nuovonick = item.nick.slice(0,10)
 				  	nuovonick = nuovonick + ".."
 				  
 				  }
@@ -11006,7 +11016,7 @@ function chatting66(pass,id) {
 		   crossDomain: true,
 		   success:function(result){
 		   
-		   if(localStorage.getItem("chatpass")==JSON.stringify(result)){
+		   if(localStorage.getItem("chatpass66")==JSON.stringify(result)){
 		   
 		   $("#spinner66").hide();
 		   }
@@ -11016,7 +11026,7 @@ function chatting66(pass,id) {
 		   
 		   $.each(result, function(i,item){
 				  
-			   localStorage.setItem("chatpass", JSON.stringify(result))
+			   localStorage.setItem("chatpass66", JSON.stringify(result))
 				  
 			   
 				  if(item.Token==1){
@@ -11101,15 +11111,15 @@ function chatting66(pass,id) {
 				  }
 				  else{
 					  
-				   var contanick = item.nick2.length;
+				   var contanick = item.nick.length;
 				  var nuovonick;
 				  
 				  if(contanick <= 12){
-				    nuovonick = item.nick2
+				    nuovonick = item.nick
 				  
 				  }
 				  else{
-				  nuovonick = item.nick2.slice(0,10)
+				  nuovonick = item.nick.slice(0,10)
 				  nuovonick = nuovonick + ".."
 				  
 				  }
@@ -11169,7 +11179,7 @@ function chatting5(pass,id) {
 		   crossDomain: true,
 		   success:function(result){
 		   
-		   if(localStorage.getItem("chatpass")==JSON.stringify(result)){
+		   if(localStorage.getItem("chatpass5")==JSON.stringify(result)){
 		   
 		     $("#spinner5").hide();
 		   }
@@ -11179,7 +11189,7 @@ function chatting5(pass,id) {
 		   
 		    $.each(result, function(i,item){
 				  
-			   localStorage.setItem("chatpass", JSON.stringify(result))
+			   localStorage.setItem("chatpass5", JSON.stringify(result))
 				  
 			   
 				  if(item.Token==1){
@@ -11265,15 +11275,15 @@ function chatting5(pass,id) {
 				  }
 				  else{
 					  
-				  var contanick = item.nick2.length;
+				  var contanick = item.nick.length;
 				  var nuovonick;
 				  
 				  if(contanick <= 12){
-				    nuovonick = item.nick2
+				    nuovonick = item.nick
 				  
 				  }
 				  else{
-				  	nuovonick = item.nick2.slice(0,10)
+				  	nuovonick = item.nick.slice(0,10)
 				  	nuovonick = nuovonick + ".."
 				  
 				  }
@@ -11360,7 +11370,7 @@ function inviachat(id) {
 		
 	  $("#spinner6").show();
 									
-	  localStorage.setItem("aspetta","1")
+	  //localStorage.setItem("aspetta","1")
 	}
 	
 	if(id==66){
@@ -11385,7 +11395,7 @@ function inviachat(id) {
 		
 	  $("#spinner4").show();
 									
-	  localStorage.setItem("aspetta","1")
+	 // localStorage.setItem("aspetta","1")
 									
 	}
 									
@@ -11411,7 +11421,7 @@ function inviachat(id) {
 																  
 		$("#spinner5").show();
 																  
-		localStorage.setItem("aspetta","1")
+		//localStorage.setItem("aspetta","1")
 																  
 	}
 		
