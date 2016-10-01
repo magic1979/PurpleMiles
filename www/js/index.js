@@ -43,6 +43,7 @@ receivedEvent: function(id) {
 	StatusBar.hide();
 	var myScroll;
 	var myScroll2;
+	var myScroll5;
 	
 	//// PUSH //////
 	
@@ -8289,11 +8290,10 @@ function richiesta2() {
 			   
 			   myScroll2 = new IScroll('#wrapper2', { click: true });
 			   
-			   
 			   setTimeout (function(){
-						   myScroll2.refresh();
+					myScroll2.refresh();
 						   
-						   }, 1000);
+				}, 1000);
 			   
 			   
 			   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -10566,6 +10566,24 @@ function richiesta3() {
 					
 function lista5() {
 	
+	
+	setTimeout(function() {
+			   
+			   myScroll5 = new IScroll('#wrapper5', { click: true });
+			   
+			   
+			   setTimeout (function(){
+				 myScroll5.refresh();
+						   
+				}, 1500);
+			   
+			   
+			   document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+			   
+			   document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	}, 500);
+	
+	
 	var somma;
 	var tempistica;
 	var tempistica1;
@@ -10706,6 +10724,8 @@ function lista5() {
                                         
 								
 								localStorage.setItem("chatpass", "")
+								localStorage.setItem("chatpass5", "")
+								localStorage.setItem("chatpass66", "")
 								$("#btnpanel3").click();
 								 
 								chatting5(item.id_richiesta)
@@ -11159,7 +11179,7 @@ function chatting66(pass,id) {
 	
 }
 
-function chatting5(pass,id) {
+function chatting5(id) {
 	var contanick
 	var nuovonick;
 	
@@ -11171,7 +11191,7 @@ function chatting5(pass,id) {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/leggi_chat_autista.php?id_richiesta="+ localStorage.getItem("id_richiesta") +"&last_id=0",
+		   url:"http://purplemiles.com/www2/leggi_chat_autista.php?id_richiesta="+ id +"&last_id=0",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
@@ -11197,7 +11217,6 @@ function chatting5(pass,id) {
 					if(item.nick==localStorage.getItem("nickpass")){
 					
 					   contanick = item.nick_destinatario.length;
-					   nuovonick;
 				   
 				   
 					   if(contanick <= 12){
@@ -11213,8 +11232,7 @@ function chatting5(pass,id) {
 					}
 					else{
 						
-					   var contanick = item.nick.length;
-					   var nuovonick;
+					   contanick = item.nick.length;
 				   
 				   
 					   if(contanick <= 12){
@@ -11275,8 +11293,8 @@ function chatting5(pass,id) {
 				  }
 				  else{
 					  
-				  var contanick = item.nick.length;
-				  var nuovonick;
+				  contanick = item.nick.length;
+
 				  
 				  if(contanick <= 12){
 				    nuovonick = item.nick
@@ -11317,7 +11335,7 @@ function chatting5(pass,id) {
 	
 	
 	setTimeout(function() {
-		chatting5(pass,id);
+		chatting5(id);
 	}, 3000);
 	
 	
@@ -12386,7 +12404,7 @@ function controllachat2(ric,id) {
 											
 											  //alert(item.canale);
 
-											  chatting5(0,item.canale);
+											  chatting5(item.canale);
 
 											}
 											
@@ -12487,7 +12505,7 @@ function controllachat2(ric,id) {
 											
 											//alert(item.canale);
 											
-											chatting5(0,item.canale);
+											chatting5(item.canale);
 											
 											}
 											
