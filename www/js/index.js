@@ -103,8 +103,8 @@ receivedEvent: function(id) {
 		
 		var alertattenzione = "Attention"
 		var chiudereA = "do you want close Purple Miles?"
-		var spegniA = "Shut Down"
-		var annullaA = "Shut Down,Cancel"
+		var spegniA = "Close"
+		var annullaA = "Close,Cancel"
 		var profiloA = "Profile"
 		
 	}
@@ -7739,7 +7739,7 @@ function richiesta1() {
 	$("#risp3").hide();
 	$("#gps3").hide();
 	
-	$("#close3").hide();
+	$("#Close3").hide();
 	$("#close2").hide();
 	$("#close1").show();
 	

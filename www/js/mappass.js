@@ -2685,7 +2685,7 @@ function onDeviceReady() {
                    today = dd+'/'+mm+'/'+yyyy;
                    
 
-                   var datona = yyyy+mm+dd;
+                   var datona = yyyy+""+mm+""+dd;
                    var orona = ora;
 				   var minutoni = minuti;
 				   
@@ -2714,7 +2714,7 @@ function onDeviceReady() {
                    var giorno2 = testo13.substring(6, 2);
                    var anno2 = testo14.substring(10, 6);
                    
-                   var datona2 = anno2+mese2+giorno2
+                   var datona2 = anno2+""+mese2+""+giorno2
 				   
 				   datona2 = datona2.replace(" ","")
 				   
@@ -2726,7 +2726,7 @@ function onDeviceReady() {
 				   
 				   
 				   
-                   if (datona2<datona) {
+                   if (parseInt(datona2)<parseInt(datona)) {
 				   
 				       navigator.notification.alert(
 												inserireA,  // message
@@ -2741,7 +2741,7 @@ function onDeviceReady() {
 				   
 				   if (parseInt(datona2)==parseInt(datona)) {
 				   
-				     if (orona2<orona) {
+				     if (parseInt(orona2)<parseInt(orona)) {
 					  
 				   
 				       navigator.notification.alert(
@@ -2755,7 +2755,8 @@ function onDeviceReady() {
 				   
 
 					if (parseInt(orona2)==parseInt(orona)) {
-						if (minutoni2<minutoni) {
+						
+						if (parseInt(minutoni2)<parseInt(minutoni)) {
 							
 						   navigator.notification.alert(
 														 orarioA,  // message
