@@ -3547,12 +3547,15 @@ function onResume() {
 	$("#blob4").hide();
 	$("#blob3").hide();
 	
-	if(localStorage.setItem("ritornaweb")!="1"){
+	/*if(localStorage.setItem("ritornaweb")!="1"){
 	
-	for(i=0; i<10000; i++)
-	{
-		window.clearInterval(i);
-	}
+		for(i=0; i<10000; i++)
+		{
+			window.clearInterval(i);
+		}
+
+	}*/
+	
 	
 	if(localStorage.getItem("dovesono")=="1"){
 	
@@ -3561,8 +3564,8 @@ function onResume() {
 	  }, 700);
 	
     }
-
-	}
+	
+	
 	/*var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	

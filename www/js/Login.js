@@ -40,7 +40,7 @@ function onDeviceReady() {
 	
 	if(localStorage.getItem("lingua")=="it"){
         
-        var alertattenzione = "Attenzione"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
         $("#password").attr("placeholder","Inserire la password");
 		$("#email").attr("placeholder","Inserire la email");
@@ -58,7 +58,7 @@ function onDeviceReady() {
     }
     else if(localStorage.getItem("lingua")=="en"){
         
-        var alertattenzione = "Attention"
+        var alertattenzione =  localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
         $("#password").attr("placeholder","Enter the password");
 		$("#email").attr("placeholder","Enter the email");
@@ -76,7 +76,7 @@ function onDeviceReady() {
     }
     else if(localStorage.getItem("lingua")=="fr"){
         
-        var alertattenzione = "Attention"
+        var alertattenzione =  localStorage.getItem("sessionAttenzione")
         var erroredirete = "possible erreur réseau"
         $("#password").attr("placeholder", "Entrez le mot de passe");
 		$("#email").attr("placeholder","Entrez l'e-mail");
@@ -94,7 +94,7 @@ function onDeviceReady() {
     }
     else if(localStorage.getItem("lingua")=="es"){
         
-        var alertattenzione = "Attenciòn"
+        var alertattenzione =  localStorage.getItem("sessionAttenzione")
         var erroredirete = "posible error en la red"
         $("#password").attr("placeholder", "Insertar la contrase&ntilde;a");
 		$("#email").attr("placeholder","Insertar su correo electrònico");
@@ -111,7 +111,7 @@ function onDeviceReady() {
         
     }
     else{
-        var alertattenzione = "Attention"
+        var alertattenzione =  localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
         $("#password").attr("placeholder", "Contraseña");
         $("#loginpsw").html("Contrase&ntilde;a");
@@ -792,7 +792,7 @@ function onDeviceReady() {
 
 		if(localStorage.getItem("lingua")=="it"){
 			
-			var alertattenzione = "Attenzione"
+			var alertattenzione =  localStorage.getItem("sessionAttenzione")
 			var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
 			$("#password").attr("placeholder","Inserire la password");
 			$("#pinreg").attr("placeholder","Password");
@@ -807,7 +807,7 @@ function onDeviceReady() {
 		}
 		else if(localStorage.getItem("lingua")=="en"){
 			
-			var alertattenzione = "Attention"
+			var alertattenzione =  localStorage.getItem("sessionAttenzione")
 			var erroredirete = "Possible network error"
 			$("#password").attr("placeholder","Enter the password");
 			$("#pinreg").attr("placeholder","Password");
@@ -822,7 +822,7 @@ function onDeviceReady() {
 		}
 		else if(localStorage.getItem("lingua")=="fr"){
 			
-			var alertattenzione = "Attention"
+			var alertattenzione =  localStorage.getItem("sessionAttenzione")
 			var erroredirete = "possible erreur réseau"
 			$("#password").attr("placeholder", "Mot de passe");
 			$("#pinreg").attr("placeholder","Mot de passe");
@@ -837,7 +837,7 @@ function onDeviceReady() {
 		}
 		else if(localStorage.getItem("lingua")=="es"){
 			
-			var alertattenzione = "Attenciòn"
+			var alertattenzione =  localStorage.getItem("sessionAttenzione")
 			var erroredirete = "posible error en la red"
 			$("#password").attr("placeholder", "Contraseña");
 			$("#pinreg").attr("placeholder","Contraseña");
@@ -851,7 +851,7 @@ function onDeviceReady() {
 			
 		}
 		else{
-			   var alertattenzione = "Attention"
+			   var alertattenzione =  localStorage.getItem("sessionAttenzione")
 			   var erroredirete = "Possible network error"
 			   $("#password").attr("placeholder","Enter the password");
 			   $("#pinreg").attr("placeholder","Password");
@@ -1292,7 +1292,7 @@ function agg2(){
     
     if(localStorage.getItem("lingua")=="it"){
         
-        var alertattenzione = "Attenzione"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
         $("#password").attr("placeholder","Inserire la password");
         $("#pinreg").attr("placeholder","Password");
@@ -1302,7 +1302,7 @@ function agg2(){
     }
     else if(localStorage.getItem("lingua")=="en"){
         
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
        $("#password").attr("placeholder","Enter the password");
         $("#pinreg").attr("placeholder","Password");
@@ -1312,7 +1312,7 @@ function agg2(){
     }
     else if(localStorage.getItem("lingua")=="fr"){
         
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "possible erreur réseau"
         $("#password").attr("placeholder", "Mot de passe");
         $("#pinreg").attr("placeholder","Mot de passe");
@@ -1322,7 +1322,7 @@ function agg2(){
     }
     else if(localStorage.getItem("lingua")=="es"){
         
-        var alertattenzione = "Attenciòn"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "posible error en la red"
         $("#password").attr("placeholder", "Contraseña");
         $("#pinreg").attr("placeholder","Contraseña");
@@ -1331,7 +1331,7 @@ function agg2(){
         
     }
     else{
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
         $("#password").attr("placeholder", "Contraseña");
         $("#loginpsw").html("Contrase&ntilde;a");
@@ -1348,8 +1348,6 @@ function seleziona() {
 	
 	var db;
 	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
-	
-	//$("#btnaccedi").html("sasa");
 	
 	db.transaction(function (tx) {
                    
@@ -1425,6 +1423,13 @@ function seleziona() {
 					 
 					 $("#himpostazioni").html(results.rows.item(i).italiano.replace("P0011", "'"));
 					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
+					 	S_attenzione = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionAttenzione",S_attenzione)
+					 }
+					 
+					 
 					 
  
                 /*if(results.rows.item(i).id_traduzione == "errorconnection"){
@@ -1511,6 +1516,11 @@ function seleziona() {
 					 
 					 $("#himpostazioni").html(results.rows.item(i).inglese.replace("P0011", "'"));
 					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
+					 	S_attenzione = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionAttenzione",S_attenzione)
+					 }
                      
                      
                      // TEST //
@@ -1596,6 +1606,11 @@ function seleziona() {
 					 $("#himpostazioni").html(results.rows.item(i).francese.replace("P0011", "'"));
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
+					 	S_attenzione = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionAttenzione",S_attenzione)
+					 }
+					 
 					 
 				}
 					 
@@ -1673,6 +1688,11 @@ function seleziona() {
 					 $("#himpostazioni").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
+					 	S_attenzione = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionAttenzione",S_attenzione)
+					 }
+					 
 				}
 					 
 		}
@@ -1684,7 +1704,7 @@ function seleziona() {
     
     if(localStorage.getItem("lingua")=="it"){
         
-        var alertattenzione = "Attenzione"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
         $("#password").attr("placeholder","Inserire la password");
         $("#pinreg").attr("placeholder","Password");
@@ -1694,7 +1714,7 @@ function seleziona() {
     }
     else if(localStorage.getItem("lingua")=="en"){
         
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
         $("#password").attr("placeholder","Enter the password");
         $("#pinreg").attr("placeholder","Password");
@@ -1704,7 +1724,7 @@ function seleziona() {
     }
     else if(localStorage.getItem("lingua")=="fr"){
         
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "possible erreur réseau"
         $("#password").attr("placeholder", "Mot de passe");
         $("#pinreg").attr("placeholder","Mot de passe");
@@ -1714,7 +1734,7 @@ function seleziona() {
     }
     else if(localStorage.getItem("lingua")=="es"){
         
-        var alertattenzione = "Attenciòn"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "posible error en la red"
         $("#password").attr("placeholder", "Contraseña");
         $("#pinreg").attr("placeholder","Contraseña");
@@ -1723,7 +1743,7 @@ function seleziona() {
         
     }
     else{
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
         $("#password").attr("placeholder", "Contraseña");
         $("#loginpsw").html("Contrase&ntilde;a");
@@ -1766,32 +1786,32 @@ function prendimezzi(){
     if(localStorage.getItem("lingua")=="it"){
 	  var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
         
-      var alertattenzione = "Attenzione"
+      var alertattenzione = localStorage.getItem("sessionAttenzione")
       var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
     }
     
     else if(localStorage.getItem("lingua")=="en"){
         var mezzi = "<option value='Autovettura' selected>Car</option>"
         
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
     }
     else if(localStorage.getItem("lingua")=="fr"){
         var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
         
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
     }
     else if(localStorage.getItem("lingua")=="es"){
         var mezzi = "<option value='Autovettura' selected>Automòvil</option>"
         
-        var alertattenzione = "Attenciòn"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var erroredirete = "Possible network error"
     }
 	else{
 		var mezzi = "<option value='Autovettura' selected>Car</option>"
 		
-		var alertattenzione = "Attention"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
 		var erroredirete = "Possible network error"
 	}
 	
@@ -1917,32 +1937,32 @@ function prendinuovanazione(){
 	if(localStorage.getItem("lingua")=="it"){
 		var mezzi = "<option value='105' selected>Italia</option>"
 		
-		var alertattenzione = "Attenzione"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
 		var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
 	}
 	
 	else if(localStorage.getItem("lingua")=="en"){
 		var mezzi = "<option value='105' selected>Italy</option>"
 		
-		var alertattenzione = "Attention"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
 		var erroredirete = "Possible network error"
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		var mezzi = "<option value='105' selected>Italie</option>"
 		
-		var alertattenzione = "Attention"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
 		var erroredirete = "Possible network error"
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		var mezzi = "<option value='105' selected>Italia</option>"
 		
-		var alertattenzione = "Attenciòn"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
 		var erroredirete = "Possible network error"
 	}
 	else{
 		var mezzi = "<option value='105' selected>Italia</option>"
 		
-		var alertattenzione = "Attention"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
 		var erroredirete = "Possible network error"
 	}
 	
