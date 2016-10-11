@@ -9,6 +9,7 @@ function onDeviceReady() {
 		localStorage.setItem("veicolo", "Autovettura")
 		localStorage.setItem("fuso", "Italy");
 		localStorage.setItem("citta", "154");
+		
 	}
 	
 	
@@ -41,12 +42,12 @@ function onDeviceReady() {
 	if(localStorage.getItem("lingua")=="it"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-        $("#password").attr("placeholder","Inserire la password");
-		$("#email").attr("placeholder","Inserire la email");
-		$("#emailreg").attr("placeholder","Inserire la email");
-		$("#recemail").attr("placeholder","Inserire la email");
-        $("#pinreg").attr("placeholder","Inserire la password");
+        var erroredirete = localStorage.getItem("sessionErrorrete") //localStorage.getItem("sessionAttenzione")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
 		
@@ -59,12 +60,12 @@ function onDeviceReady() {
     else if(localStorage.getItem("lingua")=="en"){
         
         var alertattenzione =  localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder","Enter the password");
-		$("#email").attr("placeholder","Enter the email");
-		$("#emailreg").attr("placeholder","Enter the email");
-		$("#recemail").attr("placeholder","Enter the email");
-        $("#pinreg").attr("placeholder","Enter the password");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
 		
@@ -77,12 +78,12 @@ function onDeviceReady() {
     else if(localStorage.getItem("lingua")=="fr"){
         
         var alertattenzione =  localStorage.getItem("sessionAttenzione")
-        var erroredirete = "possible erreur réseau"
-        $("#password").attr("placeholder", "Entrez le mot de passe");
-		$("#email").attr("placeholder","Entrez l'e-mail");
-		$("#emailreg").attr("placeholder","Entrez l'e-mail");
-		$("#recemail").attr("placeholder","Entrez l'e-mail");
-        $("#pinreg").attr("placeholder","Entrez le mot de passe");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Mot de passe");
         $("#registrapsw").html("Mot de passe");
 		
@@ -95,12 +96,12 @@ function onDeviceReady() {
     else if(localStorage.getItem("lingua")=="es"){
         
         var alertattenzione =  localStorage.getItem("sessionAttenzione")
-        var erroredirete = "posible error en la red"
-        $("#password").attr("placeholder", "Insertar la contrase&ntilde;a");
-		$("#email").attr("placeholder","Insertar su correo electrònico");
-		$("#emailreg").attr("placeholder","Insertar su correo electrònico");
-		$("#recemail").attr("placeholder","Insertar su correo electrònico");
-        $("#pinreg").attr("placeholder","Insertar la contraseña");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
 		
@@ -112,8 +113,8 @@ function onDeviceReady() {
     }
     else{
         var alertattenzione =  localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder", "Contraseña");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
 		
@@ -161,49 +162,49 @@ function onDeviceReady() {
 					
 	  if($value=="it"){
 					
-		$("#hlingua").html("Lingua");
-		$("#hfuso").html("Fuso orario");
-		$("#hveicolo").html("Tipo veicolo");
-		$("#haiuto").html("Aiuto");
-		$("#hsalva").html("Salva");
-		$("#himpostazioni").html("Impostazioni");
+		$("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+		$("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+		$("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+		$("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+		$("#hsalva").html(""+localStorage.getItem("hsalva")+"");
+		$("#himpostazioni").html(""+localStorage.getItem("himpostazioni")+"");
 					
 	   }
 	   else if($value=="en"){
 					
-		$("#hlingua").html("Language");
-		$("#hfuso").html("Time zone");
-		$("#hveicolo").html("Vehicle type");
-		$("#haiuto").html("Help");
-		$("#hsalva").html("Save");
-		$("#himpostazioni").html("Settings");
+		$("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+		$("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+		$("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+		$("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+		$("#hsalva").html(""+localStorage.getItem("hsalva")+"");
+		$("#himpostazioni").html(""+localStorage.getItem("himpostazioni")+"");
 					
 	    }
 		else if($value=="fr"){
 					
-			$("#hlingua").html("Langue");
-			$("#hfuso").html("Fuseau horaire");
-			$("#hveicolo").html("Type de v&eacute;hicule");
-			$("#haiuto").html("Aider");
-			$("#hsalva").html("Sauver");
-			$("#himpostazioni").html("Param&eacute;tress");
+			$("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+			$("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+			$("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+			$("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+			$("#hsalva").html(""+localStorage.getItem("hsalva")+"");
+			$("#himpostazioni").html(""+localStorage.getItem("himpostazioni")+"");
 		}
 		else if($value=="es"){
 					
-			$("#hlingua").html("Idioma");
-			$("#hfuso").html("Zona horaria");
-			$("#hveicolo").html("Tipo de veh&iacute;culo");
-			$("#haiuto").html("Ayuda");
-			$("#hsalva").html("Salva");
-			$("#himpostazioni").html("Ajustes");
+			$("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+			$("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+			$("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+			$("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+			$("#hsalva").html(""+localStorage.getItem("hsalva")+"");
+			$("#himpostazioni").html(""+localStorage.getItem("himpostazioni")+"");
 		}
 		else{
 					
-			$("#hlingua").html("Language");
-			$("#hfuso").html("Time zone");
-			$("#hveicolo").html("Vehicle type");
-			$("#haiuto").html("Help");
-			$("#hsalva").html("Save");
+			$("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+			$("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+			$("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+			$("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+			$("#hsalva").html(""+localStorage.getItem("hsalva")+"");
 		}
 	
 		
@@ -261,10 +262,10 @@ function onDeviceReady() {
 	if(localStorage.getItem("lingua")=="it"){
 	  document.getElementById("lingua").value = "it"
         
-      var alertattenzione = "Attenzione"
-      var chiudereA = "Vuoi chiudere Purple Miles?"
-      var spegniA = "Spegni"
-      var annullaA = "Spegni,Annulla"
+      var alertattenzione = localStorage.getItem("sessionAttenzione")
+      var chiudereA = localStorage.getItem("sessionChiudere")
+      var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+      var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		
 		
 	  var mezzilingua = "<option value='it' selected>Italiano</option><option value='en'>Inglese</option><option value='fr'>Francese</option><option value='es'>Spagnolo</option>"
@@ -274,10 +275,10 @@ function onDeviceReady() {
 	else if(localStorage.getItem("lingua")=="en"){
       document.getElementById("lingua").value = "en"
         
-      var alertattenzione = "Attention"
-      var chiudereA = "do you want close Purple Miles?"
-      var spegniA = "Close"
-	  var annullaA = "Close,Cancel"
+      var alertattenzione = localStorage.getItem("sessionAttenzione")
+      var chiudereA = localStorage.getItem("sessionChiudere")
+      var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+	  var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		
 		var mezzilingua = "<option value='en' selected>English</option><option value='it'>Italian</option><option value='fr'>French</option><option value='es'>Espanol</option>"
         //<option value='fr'>French</option><option value='es'>Espanol</option>
@@ -286,10 +287,10 @@ function onDeviceReady() {
 	else if(localStorage.getItem("lingua")=="fr"){
 		document.getElementById("lingua").value = "fr"
 		
-		var alertattenzione = "Attention"
-		var chiudereA = "Voulez-vous fermer Purple Miles?"
-		var spegniA = "fermer"
-		var annullaA = "fermer,annuler"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = localStorage.getItem("sessionChiudere")
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		$("#password").attr("placeholder", "Mot de passe");
 		$("#loginpsw").html("Mot de passe");
 		$("#registrapsw").html("Mot de passe");
@@ -301,10 +302,11 @@ function onDeviceReady() {
     else if(localStorage.getItem("lingua")=="es"){
         document.getElementById("lingua").value = "es"
         
-        var alertattenzione = "Attenciòn"
-        var chiudereA = "¿Querer cerrar Purple Miles?"
-        var spegniA = "Cerra"
-        var annullaA = "Cerra,Cancela"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
+        var chiudereA = localStorage.getItem("sessionChiudere")
+        var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+        var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
+		
 		$("#password").attr("placeholder", "Contraseña");
 		$("#loginpsw").html("Contrase&ntilde;a");
 		$("#registrapsw").html("Contrase&ntilde;a");
@@ -315,10 +317,10 @@ function onDeviceReady() {
 	else{
 		document.getElementById("lingua").value = "en"
 		
-		var alertattenzione = "Attention"
-		var chiudereA = "do you want close Purple Miles?"
-		var spegniA = "Close"
-		var annullaA = "Close,Cancel"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = localStorage.getItem("sessionChiudere")
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		
 		var mezzilingua = "<option value='en' selected>English</option><option value='it'>Italian</option><option value='fr'>French</option><option value='es'>Espanol</option>"
 	}
@@ -545,10 +547,10 @@ function onDeviceReady() {
 				   if(localStorage.getItem("pagina")=="log"){
 				   
 				   navigator.notification.confirm(
-												  'Vuoi chiudere purple miles?',  // message
+												  ''+localStorage.getItem("sessionChiudere")+'',  // message
 												  onConfirm2,              // callback to invoke with index of button pressed
-												  'Spegni',            // title
-												  'Spegni,Annulla'      // buttonLabels
+												  ''+localStorage.getItem("sessionSpegni")+'',            // title
+												  ''+localStorage.getItem("sessionSpegni")+','+localStorage.getItem("sessionSannulla")+''      // buttonLabels
 												  );
 				   
 				   }
@@ -633,45 +635,45 @@ function onDeviceReady() {
 				   
 				   if(localStorage.getItem("lingua")=="it"){
 				   
-				   $("#hlingua").html("Lingua");
-				   $("#hfuso").html("Fuso orario");
-				   $("#hveicolo").html("Tipo veicolo");
-				   $("#haiuto").html("Aiuto");
-				   $("#hsalva").html("Salva");
+				   $("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+				   $("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+				   $("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+				   $("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+				   $("#hsalva").html(""+localStorage.getItem("hsalva")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
 				   
-				   $("#hlingua").html("Language");
-				   $("#hfuso").html("Time zone");
-				   $("#hveicolo").html("Vehicle type");
-				   $("#haiuto").html("Help");
-				   $("#hsalva").html("Save");
+				   $("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+				   $("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+				   $("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+				   $("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+				   $("#hsalva").html(""+localStorage.getItem("hsalva")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				   $("#hlingua").html("Langue");
-				   $("#hfuso").html("Fuseau horaire");
-				   $("#hveicolo").html("Type de v&eacute;hicule");
-				   $("#haiuto").html("Aider");
-				   $("#hsalva").html("Sauver");
+				   $("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+				   $("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+				   $("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+				   $("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+				   $("#hsalva").html(""+localStorage.getItem("hsalva")+"");
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				   $("#hlingua").html("Idioma");
-				   $("#hfuso").html("Zona horaria");
-				   $("#hveicolo").html("Tipo de veh&iacute;culo");
-				   $("#haiuto").html("Ayuda");
-				   $("#hsalva").html("Salva");
+				   $("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+				   $("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+				   $("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+				   $("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+				   $("#hsalva").html(""+localStorage.getItem("hsalva")+"");
 				   }
 				   else{
 				   
-				   $("#hlingua").html("Language");
-				   $("#hfuso").html("Time zone");
-				   $("#hveicolo").html("Vehicle type");
-				   $("#haiuto").html("Help");
-				   $("#hsalva").html("Save");
+				   $("#hlingua").html(""+localStorage.getItem("hlingua")+"");
+				   $("#hfuso").html(""+localStorage.getItem("hfuso")+"");
+				   $("#hveicolo").html(""+localStorage.getItem("hveicolo")+"");
+				   $("#haiuto").html(""+localStorage.getItem("haiuto")+"");
+				   $("#hsalva").html(""+localStorage.getItem("hsalva")+"");
 				   }
 				   
 				   
@@ -793,75 +795,75 @@ function onDeviceReady() {
 		if(localStorage.getItem("lingua")=="it"){
 			
 			var alertattenzione =  localStorage.getItem("sessionAttenzione")
-			var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-			$("#password").attr("placeholder","Inserire la password");
-			$("#pinreg").attr("placeholder","Password");
+			var erroredirete = localStorage.getItem("sessionErrorrete")
+			$("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+			$("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			$("#loginpsw").html("Password");
 			$("#registrapsw").html("Password");
                
-            $("#recpsw").html("Recupera la password");
-            $("#recreg").html("Registrati");
+            $("#recpsw").html(""+localStorage.getItem("sessionRecpassword")+"");
+            $("#recreg").html(""+localStorage.getItem("sessionRecreg")+"");
             
-            $("#recemail").attr("placeholder","Email");
+            $("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
 			
 		}
 		else if(localStorage.getItem("lingua")=="en"){
 			
 			var alertattenzione =  localStorage.getItem("sessionAttenzione")
-			var erroredirete = "Possible network error"
+			var erroredirete = localStorage.getItem("sessionErrorrete")
 			$("#password").attr("placeholder","Enter the password");
-			$("#pinreg").attr("placeholder","Password");
+			$("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			$("#loginpsw").html("Password");
 			$("#registrapsw").html("Password");
 			   
-            $("#recpsw").html("Recover password");
-            $("#recreg").html("Register");
+            $("#recpsw").html(""+localStorage.getItem("sessionRecpassword")+"");
+            $("#recreg").html(""+localStorage.getItem("sessionRecreg")+"");
                
-            $("#recemail").attr("placeholder","Email");
+            $("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
 			
 		}
 		else if(localStorage.getItem("lingua")=="fr"){
 			
 			var alertattenzione =  localStorage.getItem("sessionAttenzione")
-			var erroredirete = "possible erreur réseau"
+			var erroredirete = localStorage.getItem("sessionErrorrete")
 			$("#password").attr("placeholder", "Mot de passe");
-			$("#pinreg").attr("placeholder","Mot de passe");
+			$("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			$("#loginpsw").html("Mot de passe");
 			$("#registrapsw").html("Mot de passe");
                
-            $("#recpsw").html("R&eacute;cup&eacute;rez votre mot de passe");
-            $("#recreg").html("Inscrivez-vous");
+            $("#recpsw").html(""+localStorage.getItem("sessionRecpassword")+"");
+            $("#recreg").html(""+localStorage.getItem("sessionRecreg")+"");
                
-            $("#recemail").attr("placeholder","Email");
+            $("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
 			
 		}
 		else if(localStorage.getItem("lingua")=="es"){
 			
 			var alertattenzione =  localStorage.getItem("sessionAttenzione")
-			var erroredirete = "posible error en la red"
+			var erroredirete = localStorage.getItem("sessionErrorrete")
 			$("#password").attr("placeholder", "Contraseña");
-			$("#pinreg").attr("placeholder","Contraseña");
+			$("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			$("#loginpsw").html("Contrase&ntilde;a");
 			$("#registrapsw").html("Contrase&ntilde;a");
                
-            $("#recpsw").html("Recuperar su contrase&ntilde;a");
-            $("#recreg").html("Subscribe");
+            $("#recpsw").html(""+localStorage.getItem("sessionRecpassword")+"");
+            $("#recreg").html(""+localStorage.getItem("sessionRecreg")+"");
                
-            $("#recemail").attr("placeholder","Email");
+            $("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
 			
 		}
 		else{
 			   var alertattenzione =  localStorage.getItem("sessionAttenzione")
-			   var erroredirete = "Possible network error"
-			   $("#password").attr("placeholder","Enter the password");
-			   $("#pinreg").attr("placeholder","Password");
+			   var erroredirete = localStorage.getItem("sessionErrorrete")
+			   $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   $("#loginpsw").html("Password");
 			   $("#registrapsw").html("Password");
 			   
-			   $("#recpsw").html("Recover password");
-			   $("#recreg").html("Register");
+			   $("#recpsw").html(""+localStorage.getItem("sessionRecpassword")+"");
+			   $("#recreg").html(""+localStorage.getItem("sessionRecreg")+"");
 			   
-			   $("#recemail").attr("placeholder","Email");
+			   $("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
 		}
 			   
                
@@ -902,41 +904,41 @@ function onDeviceReady() {
 		
 	if(localStorage.getItem("lingua")=="it"){
 			   
-			   var alertattenzione = "Attenzione"
-			   var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-			   $("#password").attr("placeholder","Inserire la password");
-			   $("#pinreg").attr("placeholder","Password");
+			   var alertattenzione = localStorage.getItem("sessionAttenzione")
+			   var erroredirete = localStorage.getItem("sessionErrorrete")
+			   $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   $("#loginpsw").html("Password");
 			   $("#registrapsw").html("Password");
 			   
 			   //QUI
-			   $("#rreg").html("Registrazione gratuita");
-			   $("#rpaese").html("Selezione il tuo paese");
+			   $("#rreg").html(""+localStorage.getItem("sessionRreg")+"");
+			   $("#rpaese").html(""+localStorage.getItem("sessionRpaese")+"");
 			   $("#registrapsw").html("Password");
-			   $("#pinreg").attr("placeholder","Password");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   
-			   $("#rreg2").html("Registrati");
-			   $("#raccedi").html("Accedi");
+			   $("#rreg2").html(""+localStorage.getItem("sessionRreg2")+"");
+			   $("#raccedi").html(""+localStorage.getItem("sessionRaccedi")+"");
 			   
 			   $("#footer3").show();
 			   
 			   }
 			   else if(localStorage.getItem("lingua")=="en"){
 			   
-			   var alertattenzione = "Attention"
-			   var erroredirete = "Possible network error"
-			   $("#password").attr("placeholder","Enter the password");
-			   $("#pinreg").attr("placeholder","Password");
+			   var alertattenzione = localStorage.getItem("sessionAttenzione")
+			   var erroredirete = localStorage.getItem("sessionErrorrete")
+			   $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   $("#loginpsw").html("Password");
 			   $("#registrapsw").html("Password");
 			   
-			   $("#rreg").html("Free registration");
-			   $("#rpaese").html("Select Your Country");
+			   $("#rreg").html(""+localStorage.getItem("sessionRreg")+"");
+			   $("#rpaese").html(""+localStorage.getItem("sessionRpaese")+"");
 			   $("#registrapsw").html("Password");
-			   $("#pinreg").attr("placeholder","Password");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   
-			   $("#rreg2").html("Register");
-			   $("#raccedi").html("Log in");
+			   $("#rreg2").html(""+localStorage.getItem("sessionRreg2")+"");
+			   $("#raccedi").html(""+localStorage.getItem("sessionRaccedi")+"");
 			   
 			   $("#acconsentire").html("");
 			   
@@ -945,20 +947,20 @@ function onDeviceReady() {
 		}
 		else if(localStorage.getItem("lingua")=="fr"){
 			   
-			   var alertattenzione = "Attention"
-			   var erroredirete = "possible erreur réseau"
-			   $("#password").attr("placeholder", "Mot de passe");
-			   $("#pinreg").attr("placeholder","Mot de passe");
+			   var alertattenzione = localStorage.getItem("sessionAttenzione")
+			   var erroredirete = localStorage.getItem("sessionErrorrete")
+			   $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   $("#loginpsw").html("Mot de passe");
 			   $("#registrapsw").html("Mot de passe");
 			   
-			   $("#rreg").html("Inscription gratuite");
-			   $("#rpaese").html("S&eacute;lectionnez votre pays");
+			   $("#rreg").html(""+localStorage.getItem("sessionRreg")+"");
+			   $("#rpaese").html(""+localStorage.getItem("sessionRpaese")+"");
 			   $("#registrapsw").html("Mot de passe");
-			   $("#pinreg").attr("placeholder","Mot de passe");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   
-			   $("#rreg2").html("Inscrivez-vous");
-			   $("#raccedi").html("Se connecter");
+			   $("#rreg2").html(""+localStorage.getItem("sessionRreg2")+"");
+			   $("#raccedi").html(""+localStorage.getItem("sessionRaccedi")+"");
 			   
 			   $("#acconsentire").html("");
 			   
@@ -968,20 +970,20 @@ function onDeviceReady() {
 		}
 		else if(localStorage.getItem("lingua")=="es"){
 			   
-			   var alertattenzione = "Attenciòn"
-			   var erroredirete = "posible error en la red"
-			   $("#password").attr("placeholder", "Contraseña");
-			   $("#pinreg").attr("placeholder","Contraseña");
+			   var alertattenzione = localStorage.getItem("sessionAttenzione")
+			   var erroredirete = localStorage.getItem("sessionErrorrete")
+			   $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   $("#loginpsw").html("Contrase&ntilde;a");
 			   $("#registrapsw").html("Contrase&ntilde;a");
 			   
-			   $("#rreg").html("Subscription gratuita");
-			   $("#rpaese").html("Seleccione su pa&iacute;s");
+			   $("#rreg").html(""+localStorage.getItem("sessionRreg")+"");
+			   $("#rpaese").html(""+localStorage.getItem("sessionRpaese")+"");
 			   $("#registrapsw").html("Contrase&ntilde;a");
-			   $("#pinreg").attr("placeholder","Contrase&ntilde;a");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   
-			   $("#rreg2").html("Subscribe");
-			   $("#raccedi").html("Iniciar");
+			   $("#rreg2").html(""+localStorage.getItem("sessionRreg2")+"");
+			   $("#raccedi").html(""+localStorage.getItem("sessionRaccedi")+"");
 			   
 			   $("#acconsentire").html("");
 			   
@@ -989,20 +991,20 @@ function onDeviceReady() {
 			   
 		}
 		else{
-			   var alertattenzione = "Attention"
-			   var erroredirete = "Possible network error"
-			  $("#password").attr("placeholder","Enter the password");
-			   $("#pinreg").attr("placeholder","Password");
+			   var alertattenzione = localStorage.getItem("sessionAttenzione")
+			   var erroredirete = localStorage.getItem("sessionErrorrete")
+			  $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   $("#loginpsw").html("Password");
 			   $("#registrapsw").html("Password");
 			   
-			   $("#rreg").html("Free registration");
-			   $("#rpaese").html("Select Your Country");
+			   $("#rreg").html(""+localStorage.getItem("sessionRreg")+"");
+			   $("#rpaese").html(""+localStorage.getItem("sessionRpaese")+"");
 			   $("#registrapsw").html("Password");
-			   $("#pinreg").attr("placeholder","Password");
+			   $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
 			   
-			   $("#rreg2").html("Register");
-			   $("#raccedi").html("Log in");
+			   $("#rreg2").html(""+localStorage.getItem("sessionRreg2")+"");
+			   $("#raccedi").html(""+localStorage.getItem("sessionRaccedi")+"");
 			   
 			   $("#acconsentire").html("");
 			   
@@ -1293,9 +1295,9 @@ function agg2(){
     if(localStorage.getItem("lingua")=="it"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-        $("#password").attr("placeholder","Inserire la password");
-        $("#pinreg").attr("placeholder","Password");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
         
@@ -1303,9 +1305,9 @@ function agg2(){
     else if(localStorage.getItem("lingua")=="en"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
-       $("#password").attr("placeholder","Enter the password");
-        $("#pinreg").attr("placeholder","Password");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+       $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
         
@@ -1313,9 +1315,9 @@ function agg2(){
     else if(localStorage.getItem("lingua")=="fr"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "possible erreur réseau"
-        $("#password").attr("placeholder", "Mot de passe");
-        $("#pinreg").attr("placeholder","Mot de passe");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Mot de passe");
         $("#registrapsw").html("Mot de passe");
         
@@ -1323,17 +1325,17 @@ function agg2(){
     else if(localStorage.getItem("lingua")=="es"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "posible error en la red"
-        $("#password").attr("placeholder", "Contraseña");
-        $("#pinreg").attr("placeholder","Contraseña");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
         
     }
     else{
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder", "Contraseña");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
     }
@@ -1361,11 +1363,14 @@ function seleziona() {
 			   $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano.replace("P0011", "'"));
                      
                 if(results.rows.item(i).id_traduzione == "alertemail"){
-                     alertemail = results.rows.item(i).italiano.replace("P0011", "'");
+                     alertemail = results.rows.item(i).italiano.replace("P0011", "'").replace("&oacute;", "ò");
+					 localStorage.setItem("sessionEmail",alertemail)
                 }
                 if(results.rows.item(i).id_traduzione == "alertpsw"){
                      alertpsw = results.rows.item(i).italiano.replace("P0011", "'");
+					 localStorage.setItem("sessionPassword",alertpsw)
                 }
+					 
                 if(results.rows.item(i).id_traduzione == "verificaemial"){
                   verificaemial = results.rows.item(i).italiano.replace("P0011", "'");
                 }
@@ -1377,51 +1382,62 @@ function seleziona() {
                 }
                 if(results.rows.item(i).id_traduzione == "noemailpsw"){
                    noemailpsw = results.rows.item(i).italiano.replace("P0011", "'");
+				   localStorage.setItem("sessionNoPassword",noemailpsw)
                 }
                 if(results.rows.item(i).id_traduzione == "errorrete"){
                     errorrete = results.rows.item(i).italiano.replace("P0011", "'");
                 }
                 if(results.rows.item(i).id_traduzione == "alertnome"){
                     alertnome = results.rows.item(i).italiano.replace("P0011", "'");
+					 localStorage.setItem("sessionNome",alertnome)
                 }
                 if(results.rows.item(i).id_traduzione == "alertreg"){
                   alertreg = results.rows.item(i).italiano.replace("P0011", "'");
+					 localStorage.setItem("sessionRegok",alertreg)
                 }
 					 
 				if(results.rows.item(i).id_traduzione == "himpostazioni"){
 					 
 					$("#himpostazioni").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 localStorage.setItem("himpostazioni",results.rows.item(i).italiano.replace("P0011", "'"))
 				}
 					 
 					 if(results.rows.item(i).id_traduzione == "hlingua"){
 					 
 					 $("#hlingua").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 localStorage.setItem("hlingua",results.rows.item(i).italiano.replace("P0011", "'"))
+					 
 					 }
 					 
 					 
 					 if(results.rows.item(i).id_traduzione == "hfuso"){
 					 
 					 $("#hfuso").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 localStorage.setItem("hfuso",results.rows.item(i).italiano.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hveicolo"){
 					 
 					 $("#hveicolo").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 localStorage.setItem("hveicolo",results.rows.item(i).italiano.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "haiuto"){
 					 
 					 $("#haiuto").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 localStorage.setItem("haiuto",results.rows.item(i).italiano.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hsalva"){
 					 
 					 $("#hsalva").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 localStorage.setItem("hsalva",results.rows.item(i).italiano.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
 					 
 					 $("#himpostazioni").html(results.rows.item(i).italiano.replace("P0011", "'"));
+					 localStorage.setItem("himpostazioni",results.rows.item(i).italiano.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
@@ -1429,7 +1445,109 @@ function seleziona() {
 						localStorage.setItem("sessionAttenzione",S_attenzione)
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "errorrete"){
+					 S_errorrete = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionErrorrete",S_errorrete)
+					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "nocliente"){
+					 nocliente = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionNocliente",nocliente)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "clienteok"){
+					 clienteok = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionClienteok",clienteok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "nickok"){
+					 nickok = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionNickok",nickok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "riprovaok"){
+					 riprovaok = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionRiprovaok",riprovaok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recuperook"){
+					 recuperook = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionRecuperook",recuperook)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "clientenonok"){
+					 clientenonok = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionClientenonok",clientenonok)
+					 }
+					 
+					 
+					 if(results.rows.item(i).id_traduzione == "btnaccedi"){
+					   $("#btnaccedi").html(""+results.rows.item(i).italiano.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnpsw"){
+					 $("#btnpsw").html(""+results.rows.item(i).italiano.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnimp"){
+					 $("#btnimp").html(""+results.rows.item(i).italiano.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnreg"){
+					 $("#btnreg").html(""+results.rows.item(i).italiano.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recpsw"){
+					 recpsw = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionRecpassword",recpsw)
+					 }
+					 
+
+					 if(results.rows.item(i).id_traduzione == "recreg"){
+					 recreg = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionRecreg",recreg)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rreg"){
+					 rreg = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionRreg",rreg)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rpaese"){
+					 rpaese = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionRpaese",rpaese)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rreg2"){
+					 rreg2 = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionRreg2",rreg2)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "raccedi"){
+					 raccedi = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionRaccedi",raccedi)
+					 }
+					 
+					 
+					 if(results.rows.item(i).id_traduzione == "chiudere"){
+					 chiudere = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionChiudere",chiudere)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "S_annulla"){
+					 S_annulla = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionSannulla",S_annulla)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "spegni"){
+					 spegni = results.rows.item(i).italiano.replace("P0011", "'");
+						localStorage.setItem("sessionSpegni",spegni)
+					 }
+
 					 
  
                 /*if(results.rows.item(i).id_traduzione == "errorconnection"){
@@ -1453,10 +1571,12 @@ function seleziona() {
 				$("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
 					 
                      if(results.rows.item(i).id_traduzione == "alertemail"){
-                       alertemail = results.rows.item(i).inglese.replace("P0011", "'");
+                       alertemail = results.rows.item(i).inglese.replace("P0011", "'").replace("&oacute;", "ò");
+					 localStorage.setItem("sessionEmail",alertemail)
                      }
                      if(results.rows.item(i).id_traduzione == "alertpsw"){
                       alertpsw = results.rows.item(i).inglese.replace("P0011", "'");
+					  localStorage.setItem("sessionPassword",alertpsw)
                      }
                      if(results.rows.item(i).id_traduzione == "verificaemial"){
                        verificaemial = results.rows.item(i).inglese.replace("P0011", "'");
@@ -1469,60 +1589,169 @@ function seleziona() {
                      }
                      if(results.rows.item(i).id_traduzione == "noemailpsw"){
                        noemailpsw = results.rows.item(i).inglese.replace("P0011", "'");
+					   localStorage.setItem("sessionNoPassword",noemailpsw)
                      }
                      if(results.rows.item(i).id_traduzione == "errorrete"){
                        errorrete = results.rows.item(i).inglese.replace("P0011", "'");
                      }
                      if(results.rows.item(i).id_traduzione == "alertnome"){
                        alertnome = results.rows.item(i).inglese.replace("P0011", "'");
+					 localStorage.setItem("sessionNome",alertnome)
                      }
                      if(results.rows.item(i).id_traduzione == "alertreg"){
                        alertreg = results.rows.item(i).inglese.replace("P0011", "'");
+					 localStorage.setItem("sessionRegok",alertreg)
                      }
 					 
 					 
 					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
 					 
 					 $("#himpostazioni").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 localStorage.setItem("himpostazioni",results.rows.item(i).inglese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hlingua"){
 					 
 					 $("#hlingua").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 localStorage.setItem("hlingua",results.rows.item(i).inglese.replace("P0011", "'"))
 					 }
 					 
 					 
 					 if(results.rows.item(i).id_traduzione == "hfuso"){
 					 
 					 $("#hfuso").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 localStorage.setItem("hfuso",results.rows.item(i).inglese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hveicolo"){
 					 
 					 $("#hveicolo").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 localStorage.setItem("hveicolo",results.rows.item(i).inglese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "haiuto"){
 					 
 					 $("#haiuto").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 localStorage.setItem("haiuto",results.rows.item(i).inglese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hsalva"){
 					 
 					 $("#hsalva").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 localStorage.setItem("hsalva",results.rows.item(i).inglese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
 					 
 					 $("#himpostazioni").html(results.rows.item(i).inglese.replace("P0011", "'"));
+					 localStorage.setItem("himpostazioni",results.rows.item(i).inglese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
 					 	S_attenzione = results.rows.item(i).inglese.replace("P0011", "'");
 						localStorage.setItem("sessionAttenzione",S_attenzione)
 					 }
-                     
-                     
+					 
+					 if(results.rows.item(i).id_traduzione == "errorrete"){
+					 S_errorrete = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionErrorrete",S_errorrete)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "nocliente"){
+					 nocliente = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionNocliente",nocliente)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "clienteok"){
+					 clienteok = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionClienteok",clienteok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "nickok"){
+					 nickok = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionNickok",nickok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "riprovaok"){
+					 riprovaok = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionRiprovaok",riprovaok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recuperook"){
+					 recuperook = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionRecuperook",recuperook)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "clientenonok"){
+					 clientenonok = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionClientenonok",clientenonok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnaccedi"){
+					 $("#btnaccedi").html(""+results.rows.item(i).inglese.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnpsw"){
+					 $("#btnpsw").html(""+results.rows.item(i).inglese.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnimp"){
+					 $("#btnimp").html(""+results.rows.item(i).inglese.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnreg"){
+					 $("#btnreg").html(""+results.rows.item(i).inglese.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recpsw"){
+					 recpsw = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionRecpassword",recpsw)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recreg"){
+					 recreg = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionRecreg",recreg)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rreg"){
+					 rreg = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionRreg",rreg)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rpaese"){
+					 rpaese = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionRpaese",rpaese)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rreg2"){
+					 rreg2 = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionRreg2",rreg2)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "raccedi"){
+					 raccedi = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionRaccedi",raccedi)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "chiudere"){
+					 chiudere = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionChiudere",chiudere)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "S_annulla"){
+					 S_annulla = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionSannulla",S_annulla)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "spegni"){
+					 spegni = results.rows.item(i).inglese.replace("P0011", "'");
+						localStorage.setItem("sessionSpegni",spegni)
+					 }
+					 
                      // TEST //
                      /*if(results.rows.item(i).id_traduzione == "puntini"){
                         alert(results.rows.item(i).inglese.replace("P0011", "'"));
@@ -1541,10 +1770,12 @@ function seleziona() {
 					 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).francese.replace("P0011", "'"));
 					 
 					 if(results.rows.item(i).id_traduzione == "alertemail"){
-					 alertemail = results.rows.item(i).francese.replace("P0011", "'");
+					 alertemail = results.rows.item(i).francese.replace("P0011", "'").replace("&oacute;", "ò");
+					 localStorage.setItem("sessionEmail",alertemail)
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertpsw"){
 					 alertpsw = results.rows.item(i).francese.replace("P0011", "'");
+					 localStorage.setItem("sessionPassword",alertpsw)
 					 }
 					 if(results.rows.item(i).id_traduzione == "verificaemial"){
 					 verificaemial = results.rows.item(i).francese.replace("P0011", "'");
@@ -1558,52 +1789,63 @@ function seleziona() {
 					 }
 					 if(results.rows.item(i).id_traduzione == "noemailpsw"){
 					 noemailpsw = results.rows.item(i).francese.replace("P0011", "'");
+					 localStorage.setItem("sessionNoPassword",noemailpsw)
 					 }
 					 if(results.rows.item(i).id_traduzione == "errorrete"){
 					 errorrete = results.rows.item(i).francese.replace("P0011", "'");
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertnome"){
 					 alertnome = results.rows.item(i).francese.replace("P0011", "'");
+					 localStorage.setItem("sessionNome",alertnome)
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertreg"){
 					 alertreg = results.rows.item(i).francese.replace("P0011", "'");
+					 localStorage.setItem("sessionRegok",alertreg)
 					 }
 					 
 					 
 					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
 					 
 					 $("#himpostazioni").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 localStorage.setItem("himpostazioni",results.rows.item(i).francese.replace("P0011", "'"))
+					 
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hlingua"){
 					 
 					 $("#hlingua").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 localStorage.setItem("hlingua",results.rows.item(i).francese.replace("P0011", "'"))
 					 }
 					 
 					 
 					 if(results.rows.item(i).id_traduzione == "hfuso"){
 					 
 					 $("#hfuso").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 localStorage.setItem("hfuso",results.rows.item(i).francese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hveicolo"){
 					 
 					 $("#hveicolo").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 localStorage.setItem("hveicolo",results.rows.item(i).francese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "haiuto"){
 					 
 					 $("#haiuto").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 localStorage.setItem("haiuto",results.rows.item(i).francese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hsalva"){
 					 
 					 $("#hsalva").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 localStorage.setItem("hsalva",results.rows.item(i).francese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
 					 
 					 $("#himpostazioni").html(results.rows.item(i).francese.replace("P0011", "'"));
+					 localStorage.setItem("himpostazioni",results.rows.item(i).francese.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
@@ -1611,7 +1853,105 @@ function seleziona() {
 						localStorage.setItem("sessionAttenzione",S_attenzione)
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "errorrete"){
+					 S_errorrete = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionErrorrete",S_errorrete)
+					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "nocliente"){
+					 nocliente = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionNocliente",nocliente)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "clienteok"){
+					 clienteok = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
+						localStorage.setItem("sessionClienteok",clienteok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "nickok"){
+					 nickok = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
+						localStorage.setItem("sessionNickok",nickok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "riprovaok"){
+					 riprovaok = results.rows.item(i).francese.replace("P0011", "'").replace("&iacute;", "ì");
+						localStorage.setItem("sessionRiprovaok",riprovaok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recuperook"){
+					 recuperook = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è");
+						localStorage.setItem("sessionRecuperook",recuperook)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "clientenonok"){
+					 clientenonok = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+						localStorage.setItem("sessionClientenonok",clientenonok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnaccedi"){
+					 $("#btnaccedi").html(""+results.rows.item(i).francese.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnpsw"){
+					 $("#btnpsw").html(""+results.rows.item(i).francese.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnimp"){
+					 $("#btnimp").html(""+results.rows.item(i).francese.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnreg"){
+					 $("#btnreg").html(""+results.rows.item(i).francese.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recpsw"){
+					 recpsw = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionRecpassword",recpsw)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recreg"){
+					 recreg = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionRecreg",recreg)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rreg"){
+					 rreg = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionRreg",rreg)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rpaese"){
+					 rpaese = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionRpaese",rpaese)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rreg2"){
+					 rreg2 = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionRreg2",rreg2)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "raccedi"){
+					 raccedi = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionRaccedi",raccedi)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "chiudere"){
+					 chiudere = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionChiudere",chiudere)
+					 }
+
+					 if(results.rows.item(i).id_traduzione == "S_annulla"){
+					 S_annulla = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionSannulla",S_annulla)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "spegni"){
+					 spegni = results.rows.item(i).francese.replace("P0011", "'");
+						localStorage.setItem("sessionSpegni",spegni)
+					 }
 				}
 					 
 		}
@@ -1624,10 +1964,12 @@ function seleziona() {
 					 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
 					 
 					 if(results.rows.item(i).id_traduzione == "alertemail"){
-					 alertemail = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 alertemail = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+					 localStorage.setItem("sessionEmail",alertemail)
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertpsw"){
-					 alertpsw = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 alertpsw = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ");
+					 localStorage.setItem("sessionPassword",alertpsw)
 					 }
 					 if(results.rows.item(i).id_traduzione == "verificaemial"){
 					 verificaemial = results.rows.item(i).spagnolo.replace("P0011", "'");
@@ -1640,59 +1982,168 @@ function seleziona() {
 						alertveicolo = results.rows.item(i).spagnolo.replace("&iacute;", "ì");
 					 }
 					 if(results.rows.item(i).id_traduzione == "noemailpsw"){
-					 noemailpsw = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 noemailpsw = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ");
+					 localStorage.setItem("sessionNoPassword",noemailpsw)
 					 }
 					 if(results.rows.item(i).id_traduzione == "errorrete"){
 					 errorrete = results.rows.item(i).spagnolo.replace("P0011", "'");
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertnome"){
 					 alertnome = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 localStorage.setItem("sessionNome",alertnome)
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertreg"){
 					 alertreg = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 localStorage.setItem("sessionRegok",alertreg)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
 					 
 					 $("#himpostazioni").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 localStorage.setItem("himpostazioni",results.rows.item(i).spagnolo.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hlingua"){
 					 
 					 $("#hlingua").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 localStorage.setItem("hlingua",results.rows.item(i).spagnolo.replace("P0011", "'"))
 					 }
 					 
 					 
 					 if(results.rows.item(i).id_traduzione == "hfuso"){
 					 
 					 $("#hfuso").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 localStorage.setItem("hfuso",results.rows.item(i).spagnolo.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hveicolo"){
 					 
 					 $("#hveicolo").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					  localStorage.setItem("hveicolo",results.rows.item(i).spagnolo.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "haiuto"){
 					 
 					 $("#haiuto").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					  localStorage.setItem("haiuto",results.rows.item(i).spagnolo.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "hsalva"){
 					 
 					 $("#hsalva").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 localStorage.setItem("hsalva",results.rows.item(i).spagnolo.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "himpostazioni"){
 					 
 					 $("#himpostazioni").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+					 localStorage.setItem("himpostazioni",results.rows.item(i).spagnolo.replace("P0011", "'"))
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
-					 	S_attenzione = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 	S_attenzione = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
 						localStorage.setItem("sessionAttenzione",S_attenzione)
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "errorrete"){
+					 S_errorrete = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionErrorrete",S_errorrete)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "nocliente"){
+					 nocliente = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionNocliente",nocliente)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "clienteok"){
+					 clienteok = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionClienteok",clienteok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "nickok"){
+					 nickok = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionNickok",nickok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "riprovaok"){
+					 riprovaok = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à");
+						localStorage.setItem("sessionRiprovaok",riprovaok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recuperook"){
+					 recuperook = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+						localStorage.setItem("sessionRecuperook",recuperook)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "clientenonok"){
+					 clientenonok = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionClientenonok",clientenonok)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnaccedi"){
+					 $("#btnaccedi").html(""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnpsw"){
+					 $("#btnpsw").html(""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnimp"){
+					 $("#btnimp").html(""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnreg"){
+					 $("#btnreg").html(""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recpsw"){
+					 recpsw = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionRecpassword",recpsw)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "recreg"){
+					 recreg = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionRecreg",recreg)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rreg"){
+					 rreg = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionRreg",rreg)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rpaese"){
+					 rpaese = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionRpaese",rpaese)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "rreg2"){
+					 rreg2 = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionRreg2",rreg2)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "raccedi"){
+					 raccedi = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionRaccedi",raccedi)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "chiudere"){
+					 chiudere = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&iquest;", "¿");
+						localStorage.setItem("sessionChiudere",chiudere)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "S_annulla"){
+					 S_annulla = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionSannulla",S_annulla)
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "spegni"){
+					 spegni = results.rows.item(i).spagnolo.replace("P0011", "'");
+						localStorage.setItem("sessionSpegni",spegni)
+					 }
 				}
 					 
 		}
@@ -1705,9 +2156,9 @@ function seleziona() {
     if(localStorage.getItem("lingua")=="it"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
-        $("#password").attr("placeholder","Inserire la password");
-        $("#pinreg").attr("placeholder","Password");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
         
@@ -1715,9 +2166,9 @@ function seleziona() {
     else if(localStorage.getItem("lingua")=="en"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder","Enter the password");
-        $("#pinreg").attr("placeholder","Password");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
         
@@ -1725,9 +2176,9 @@ function seleziona() {
     else if(localStorage.getItem("lingua")=="fr"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "possible erreur réseau"
-        $("#password").attr("placeholder", "Mot de passe");
-        $("#pinreg").attr("placeholder","Mot de passe");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Mot de passe");
         $("#registrapsw").html("Mot de passe");
         
@@ -1735,17 +2186,17 @@ function seleziona() {
     else if(localStorage.getItem("lingua")=="es"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "posible error en la red"
-        $("#password").attr("placeholder", "Contraseña");
-        $("#pinreg").attr("placeholder","Contraseña");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
         
     }
     else{
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
-        $("#password").attr("placeholder", "Contraseña");
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
     }
@@ -1787,32 +2238,32 @@ function prendimezzi(){
 	  var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
         
       var alertattenzione = localStorage.getItem("sessionAttenzione")
-      var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+      var erroredirete = localStorage.getItem("sessionErrorrete")
     }
     
     else if(localStorage.getItem("lingua")=="en"){
         var mezzi = "<option value='Autovettura' selected>Car</option>"
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
+        var erroredirete = localStorage.getItem("sessionErrorrete")
     }
     else if(localStorage.getItem("lingua")=="fr"){
         var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
+        var erroredirete = localStorage.getItem("sessionErrorrete")
     }
     else if(localStorage.getItem("lingua")=="es"){
         var mezzi = "<option value='Autovettura' selected>Automòvil</option>"
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = "Possible network error"
+        var erroredirete = localStorage.getItem("sessionErrorrete")
     }
 	else{
 		var mezzi = "<option value='Autovettura' selected>Car</option>"
 		
 		var alertattenzione = localStorage.getItem("sessionAttenzione")
-		var erroredirete = "Possible network error"
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	
    //alert( localStorage.getItem("veicolo") )
@@ -1938,32 +2389,32 @@ function prendinuovanazione(){
 		var mezzi = "<option value='105' selected>Italia</option>"
 		
 		var alertattenzione = localStorage.getItem("sessionAttenzione")
-		var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	
 	else if(localStorage.getItem("lingua")=="en"){
 		var mezzi = "<option value='105' selected>Italy</option>"
 		
 		var alertattenzione = localStorage.getItem("sessionAttenzione")
-		var erroredirete = "Possible network error"
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		var mezzi = "<option value='105' selected>Italie</option>"
 		
 		var alertattenzione = localStorage.getItem("sessionAttenzione")
-		var erroredirete = "Possible network error"
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		var mezzi = "<option value='105' selected>Italia</option>"
 		
 		var alertattenzione = localStorage.getItem("sessionAttenzione")
-		var erroredirete = "Possible network error"
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	else{
 		var mezzi = "<option value='105' selected>Italia</option>"
 		
 		var alertattenzione = localStorage.getItem("sessionAttenzione")
-		var erroredirete = "Possible network error"
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	
 	
@@ -2039,33 +2490,33 @@ function prendimezzi2(){
 	if(localStorage.getItem("lingua")=="it"){
 		var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
 		
-		var alertattenzione = "Attenzione"
-		var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	
 	else if(localStorage.getItem("lingua")=="en"){
 		var mezzi = "<option value='Autovettura' selected>Car</option>"
 		
-		var alertattenzione = "Attention"
-		var erroredirete = "Possible network error"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		var mezzi = "<option value='Autovettura' selected>Autovettura</option>"
 		
-		var alertattenzione = "Attention"
-		var erroredirete = "Possible network error"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		var mezzi = "<option value='Autovettura' selected>Automòvil</option>"
 		
-		var alertattenzione = "Attenciòn"
-		var erroredirete = "Possible network error"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	else{
 		var mezzi = "<option value='Autovettura' selected>Car</option>"
 		
-		var alertattenzione = "Attention"
-		var erroredirete = "Possible network error"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var erroredirete = localStorage.getItem("sessionErrorrete")
 	}
 	
 	//alert( localStorage.getItem("veicolo") )
@@ -2273,19 +2724,19 @@ function prendinazione(){
             
             if(localStorage.getItem("lingua")=="it"){
             
-            var alertattenzione = "Attenzione"
-            var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+            var alertattenzione = localStorage.getItem("sessionAttenzione")
+            var erroredirete = localStorage.getItem("sessionErrorrete")
             
             }
             else if(localStorage.getItem("lingua")=="en"){
             
-            var alertattenzione = "Attention"
-            var erroredirete = "Possible network error"
+            var alertattenzione = localStorage.getItem("sessionAttenzione")
+            var erroredirete = localStorage.getItem("sessionErrorrete")
             
             }
             else{
-            var alertattenzione = "Attention"
-            var erroredirete = "Possible network error"
+            var alertattenzione = localStorage.getItem("sessionAttenzione")
+            var erroredirete = localStorage.getItem("sessionErrorrete")
             }
             
             
@@ -2334,7 +2785,7 @@ function prendinazione2(){
 				}
 				  else{
 				  navigator.notification.alert(
-											   'Errore di rete',  // message
+											   localStorage.getItem("sessionErrorrete"),  // message
 											   alertDismissed,         // callback
 											   alertattenzione,            // title
 											   'Done'                  // buttonName@
@@ -2355,19 +2806,19 @@ function prendinazione2(){
 		   
 		   if(localStorage.getItem("lingua")=="it"){
 		   
-		   var alertattenzione = "Attenzione"
-		   var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var erroredirete = localStorage.getItem("sessionErrorrete")
 		   
 		   }
 		   else if(localStorage.getItem("lingua")=="en"){
 		   
-		   var alertattenzione = "Attention"
-		   var erroredirete = "Possible network error"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var erroredirete = localStorage.getItem("sessionErrorrete")
 		   
 		   }
 		   else{
-		   var alertattenzione = "Attention"
-		   var erroredirete = "Possible network error"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var erroredirete = localStorage.getItem("sessionErrorrete")
 		   }
 		   
 		   
@@ -2435,40 +2886,40 @@ function login() {
 	
 	if(localStorage.getItem("lingua")=="it"){
                    
-      var alertemail = "Inserire la email";
-      var alertpsw = "Inserire la password";
-	  var noemailpsw = "Verificare la email";
+      var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+      var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+	  var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
                    
      }
      else if(localStorage.getItem("lingua")=="en"){
                    
-      var alertemail = "Enter the email";
-      var alertpsw = "Enter the password";
-	  var noemailpsw = "Please check your email";
+      var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+      var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+	  var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
                    
                    
     }
 	else if(localStorage.getItem("lingua")=="fr"){
 		 
-	   var alertemail = "Entrez l'e-mail";
-	   var alertpsw = "Entrez le mot de passe";
-	   var noemailpsw = "S'il vous plaît vèrifier votre e-mail";
+	   var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+	   var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+	   var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 		 
 		 
 	 }
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertemail = "Insertar su correo electrònico";
-		var alertpsw = "Insertar la contraseña";
-		var noemailpsw = "Comprobar el correo electrònico";
+		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+		var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+		var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 		
 		
 	}
     else{
 		
-		var alertemail = "Enter the email";
-		var alertpsw = "Enter the password";
-		var noemailpsw = "Please check your email";
+		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+		var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+		var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 		
    }
 
@@ -2570,37 +3021,38 @@ function LoginVera(email,pin){
 	
 	if(localStorage.getItem("lingua")=="it"){
 		
-		var alertattenzione = "Attenzione"
-		var regok = "Registrazione Eseguita"
-		var Nocliente = "Utente non trovato"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var Nocliente = localStorage.getItem("sessionNocliente")
 		
 	}
 	else if(localStorage.getItem("lingua")=="en"){
 		
-		var alertattenzione = "Attention"
-		var regok = "Registration ok"
-		var Nocliente = "User not found"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var Nocliente = localStorage.getItem("sessionNocliente")
 
 		
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
-		var regok = "Lorsque l'enregistrement a été"
-		var Nocliente = "Utilisateur introuvable"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var Nocliente = localStorage.getItem("sessionNocliente")
 
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
-		var Nocliente = "Usuario no encontrado"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var Nocliente = localStorage.getItem("sessionNocliente")
 		
 	}
 	else{
-		var alertattenzione = "Attention"
-		var erroredirete = "Possible network error"
-		var Nocliente = "User not found"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var erroredirete = localStorage.getItem("sessionErrorrete")
+		var Nocliente = localStorage.getItem("sessionNocliente")
 	}
 	
 	
@@ -2699,46 +3151,46 @@ function iscriviti(){
 	
 	if(localStorage.getItem("lingua")=="it"){
                    
-      var alertemail = "Inserire la email";
-      var alertpsw = "Inserire la password";
-	  var alertnome = "Insert name";
-	  var noemailpsw = "Verificare la email";
+      var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+      var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+	  var alertnome = ""+localStorage.getItem("sessionNome")+"";
+	  var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 	  var nocorrectpsw = "La tua password contiene caratteri non corretti";
                    
      }
      else if(localStorage.getItem("lingua")=="en"){
                    
-      var alertemail = "Enter the Email";
-      var alertpsw = "Enter the password";
-	  var alertnome = "Enter the name";
-	  var noemailpsw = "Please check your email";
+      var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+      var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+	  var alertnome = ""+localStorage.getItem("sessionNome")+"";
+	  var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 	  var nocorrectpsw = "Your password contains illegal characters";
                    
     }
 	 else if(localStorage.getItem("lingua")=="fr"){
 		 
-	  var alertemail = "Entrez l'e-mail";
-	  var alertpsw = "Entrez le mot de passe";
-	  var alertnome = "Entrez le nom";
-	  var noemailpsw = "S'il vous plaît vèrifier votre e-mail";
+	  var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+	  var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+	  var alertnome = ""+localStorage.getItem("sessionNome")+"";
+	  var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 	  var nocorrectpsw = "Votre mot de passe contient des caractères non valides";
 		 
 	 }
 	 else if(localStorage.getItem("lingua")=="es"){
 		 
-	  var alertemail = "Insertar su correo electrònico";
-	  var alertpsw = "Insertar la contraseña";
-	  var alertnome = "Insertar nombre";
-	  var noemailpsw = "Comprobar el correo electrònico";
+	  var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+	  var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
+	  var alertnome = ""+localStorage.getItem("sessionNome")+"";
+	  var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 	  var nocorrectpsw = "Su contrase&ntilde;a contiene caracteres no vàlidos";
  
 	 }
     else{
 		
-		var alertemail = "Enter the Email";
-		var alertpsw = "Enter the password";
+		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+		var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
 		var alertnome = "Enter the name";
-		var noemailpsw = "Please check your email";
+		var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 		var nocorrectpsw = "Your password contains illegal characters";
    }
    
@@ -2852,57 +3304,57 @@ function iscriviti(){
 	
     if(localStorage.getItem("lingua")=="it"){
         
-        var alertattenzione = "Attenzione"
-        var regok = "Registrazione Eseguita"
-        var clienteok = "Cliente gia registrato"
-		var nickok = "Nickname gia registrato"
-        var riprovaok = "Errore, riprova in seguito"
-		var errorrete = "Possibile errore di rete"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
+        var regok = localStorage.getItem("sessionRegok")
+        var clienteok = localStorage.getItem("sessionClienteok")
+		var nickok = localStorage.getItem("sessionNickok")
+        var riprovaok = localStorage.getItem("sessionRiprovaok")
+		var errorrete = localStorage.getItem("sessionErrorrete")
         
     }
     else if(localStorage.getItem("lingua")=="en"){
         
-        var alertattenzione = "Attention"
-        var regok = "Registration ok"
-        var clienteok = "Already registered user"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
+        var regok = localStorage.getItem("sessionRegok")
+        var clienteok = localStorage.getItem("sessionClienteok")
 		
-		var nickok = "Nickname already registered"
+		var nickok = localStorage.getItem("sessionNickok")
 		
-        var riprovaok = "Error, try again"
-		var errorrete = "Possible error network"
+        var riprovaok = localStorage.getItem("sessionRiprovaok")
+		var errorrete = localStorage.getItem("sessionErrorrete")
         
     }
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
-		var regok = "Lorsque l'enregistrement a été"
-		var clienteok = "Client déjà enregistré"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var clienteok = localStorage.getItem("sessionClienteok")
 		
-		var nickok = "Pseudo déjà enregistré"
+		var nickok = localStorage.getItem("sessionNickok")
 		
-		var riprovaok = "Erreur, s'il vous plaît essayer plus tard"
+		var riprovaok = localStorage.getItem("sessionRiprovaok")
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
-		var regok = "Cuando el registro se ha realizado"
-		var clienteok = "Cliente ya registrado"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var clienteok = localStorage.getItem("sessionClienteok")
 		
-		var nickok = "El apodo ya registrado"
+		var nickok = localStorage.getItem("sessionNickok")
 		
-		var riprovaok = "error, por favor intente más tarde"
+		var riprovaok = localStorage.getItem("sessionRiprovaok")
 		
 	}
     else{
-        var alertattenzione = "Attention"
-        var erroredirete = "Possible network error"
-        var regok = "Registration ok"
-        var clienteok = "Already registered user"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        var regok = localStorage.getItem("sessionRegok")
+        var clienteok = localStorage.getItem("sessionClienteok")
 		
-		var nickok = "Nickname already registered"
+		var nickok = localStorage.getItem("sessionNickok")
 		
-        var riprovaok = "Error, try again"
+        var riprovaok = localStorage.getItem("sessionRiprovaok")
     }
 
 	var cambiapag = "0";
@@ -2997,61 +3449,61 @@ function recupera() {
 	
     if(localStorage.getItem("lingua")=="it"){
         
-        var alertattenzione = "Attenzione"
-        var recuperook = "Recupero effettuata correttamente, controlla la tua email"
-        var recuperook2 = "Recupero Eseguito"
-        var riprovaok = "Errore, riprova in seguito"
-        var clienteok = "Cliente non trovato"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
+        var recuperook = localStorage.getItem("sessionRecuperook")
+        var recuperook2 = "OK"
+        var riprovaok = localStorage.getItem("sessionRiprovaok")
+        var clienteok = localStorage.getItem("sessionClientenonok")
 		
-		var alertemail = "Inserire la email";
-	    var noemailpsw = "Email non valida";
+		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+	    var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
         
     }
     else if(localStorage.getItem("lingua")=="en"){
         
-        var alertattenzione = "Attention"
-        var recuperook = "Recovered properly, check your email"
-        var recuperook2 = "Recovered"
-        var riprovaok = "Error, try again"
-        var clienteok = "User not found"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
+        var recuperook = localStorage.getItem("sessionRecuperook")
+        var recuperook2 = "OK"
+        var riprovaok = localStorage.getItem("sessionRiprovaok")
+        var clienteok = localStorage.getItem("sessionClientenonok")
 		
-		var alertemail = "Enter the email";
-	    var noemailpsw = "Enter correct email";
+		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+	    var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
         
     }
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
-		var recuperook = "Récupération réussie, vérifiez votre email"
-		var recuperook2 = "récupération Exécuté"
-		var riprovaok = "Erreur, s'il vous plaît essayer plus tard"
-		var clienteok = "Client non trouvé"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var recuperook = localStorage.getItem("sessionRecuperook")
+		var recuperook2 = "OK"
+		var riprovaok = localStorage.getItem("sessionRiprovaok")
+		var clienteok = localStorage.getItem("sessionClientenonok")
 		
-		var alertemail = "Entrez l'e-mail";
-	    var noemailpsw = "Entrez l'e-mail";
+		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+	    var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
-		var recuperook = "Recuperación exitosa, consultar su correo electrónico"
-		var recuperook2 = "ejecutado recuperación"
-		var riprovaok = "Error, por favor intente más tarde"
-		var clienteok = "El cliente no encontrado"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var recuperook = localStorage.getItem("sessionRecuperook")
+		var recuperook2 = "OK"
+		var riprovaok = localStorage.getItem("sessionRiprovaok")
+		var clienteok = localStorage.getItem("sessionClientenonok")
 		
-		var alertemail = "Insertar su correo electrònico";
-	    var noemailpsw = "Insertar su correo electrònico";
+		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+	    var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
 		
 	}
     else{
-        var alertattenzione = "Attention"
-        var recuperook = "Recovered properly, check your email"
-        var recuperook2 = "Recovered"
-        var riprovaok = "Error, try again"
-        var clienteok = "User not found"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
+        var recuperook = localStorage.getItem("sessionRecuperook")
+        var recuperook2 = "OK"
+        var riprovaok = localStorage.getItem("sessionRiprovaok")
+        var clienteok = localStorage.getItem("sessionClientenonok")
 		
-		var alertemail = "Enter the email";
-		var noemailpsw = "Enter correct email";
+		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
+		var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
     }
     
     
@@ -3186,30 +3638,30 @@ function gpsonError(){
     
     if(localStorage.getItem("lingua")=="it"){
         
-        var alertattenzione = "Attenzione"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var alertgps = "Possibile errore GPS, assicurati di avere il gps del telefono attivato."
         
     }
     else if(localStorage.getItem("lingua")=="en"){
         
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var alertgps = "Possible error GPS"
         
     }
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
 		var alertgps = "Possible erreur de GPS, assurez-vous que vous avez le téléphone activé gps"
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
 		var alertgps = "Posible error de GPS, asegúrese de que tiene el teléfono activado gps"
 		
 	}
     else{
-        var alertattenzione = "Attention"
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
         var alertgps = "Possible error GPS"
     }
     

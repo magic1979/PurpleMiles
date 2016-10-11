@@ -47,28 +47,6 @@ receivedEvent: function(id) {
 	
 	//// PUSH //////
 	
-	/*if(PushbotsPlugin.isiOS()){
-		PushbotsPlugin.initializeiOS("56bc6513177959982a8b4567");
-	}
-	if(PushbotsPlugin.isAndroid()){
-		PushbotsPlugin.initializeAndroid("56bc6513177959982a8b4567", "458447197779");
-		
-	}
-	
-	PushbotsPlugin.resetBadge();*/
-	
-	
-	//// FINE PUSH /////
-	
-	
-	/*$("#modificastart").blur(function() {
-		$("#btninizia").removeClass("divAA").addClass("div55");
-	});
-	
-	
-	$("#modificastart").focus(function() {
-		$("#btninizia").removeClass("div55").addClass("divAA");
-	});*/
 	
 	
 	////////// TASTIERA ///////////
@@ -92,45 +70,45 @@ receivedEvent: function(id) {
 	
 	if(localStorage.getItem("lingua")=="it"){
 		
-		var alertattenzione = "Attenzione"
-		var chiudereA = "Vuoi chiudere Purple Miles?"
-		var spegniA = "Spegni"
-		var annullaA = "Spegni,Annulla"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Profilo"
 		
 	}
 	else if(localStorage.getItem("lingua")=="en"){
 		
-		var alertattenzione = "Attention"
-		var chiudereA = "do you want close Purple Miles?"
-		var spegniA = "Close"
-		var annullaA = "Close,Cancel"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Profile"
 		
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
-		var chiudereA = "Voulez-vous fermer Purple Miles?"
-		var spegniA = "fermer"
-		var annullaA = "fermer,annuler"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Profil"
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
-		var chiudereA = "¿Querer cerrar Purple Miles?"
-		var spegniA = "Cerra"
-		var annullaA = "Cerra,Cancela"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Perfil"
 		
 	}
 	else{
-		var alertattenzione = "Attention"
-		var chiudereA = "do you want close Purple Miles?"
-		var spegniA = "Shut Down"
-		var annullaA = "Shut Down,Cancel"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Profilo"
 	}
 	
@@ -928,6 +906,86 @@ receivedEvent: function(id) {
 								 
 								 }
 								 
+								 if(results.rows.item(i).id_traduzione == "errorgps"){
+								 errorgps = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionErrorgps",errorgps)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
+								 nonrilevare = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNonrilevare",nonrilevare)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "alertend"){
+								 alertend = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionAlertend",alertend)
+								 
+								 }
+								 
+								 
+								 if(results.rows.item(i).id_traduzione == "cancmappa"){
+								 cancmappa = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionCancmappa",cancmappa)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "modinizia"){
+								 modinizia = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionModinizia",modinizia)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "ricelaborata"){
+								 ricelaborata = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionRicelaborata",ricelaborata)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "insimporto"){
+								 insimporto = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionInsimporto",insimporto)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "ricannullata"){
+								 ricannullata = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionRicannullata",ricannullata)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3importo3"){
+								 h3importo3 = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionImporto3",h3importo3)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "scrivimess"){
+								 scrivimess = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionScrivimess",scrivimess)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "insmessaggio"){
+								 insmessaggio = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionInsmessaggio",insmessaggio)
+								 
+								 }
+								 
+								 
+								 
                                }
                                  
                             }
@@ -1084,6 +1142,83 @@ receivedEvent: function(id) {
 								 h4nessuna = results.rows.item(i).inglese.replace("P0011", "'");
 								 
 								 localStorage.setItem("sessionNessuna5",h4nessuna)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "errorgps"){
+								 errorgps = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionErrorgps",errorgps)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
+								 nonrilevare = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNonrilevare",nonrilevare)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "alertend"){
+								 alertend = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionAlertend",alertend)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "cancmappa"){
+								 cancmappa = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionCancmappa",cancmappa)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "modinizia"){
+								 modinizia = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionModinizia",modinizia)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "ricelaborata"){
+								 ricelaborata = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionRicelaborata",ricelaborata)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "insimporto"){
+								 insimporto = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionInsimporto",insimporto)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "ricannullata"){
+								 ricannullata = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionRicannullata",ricannullata)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3importo3"){
+								 h3importo3 = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionImporto3",h3importo3)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "scrivimess"){
+								 scrivimess = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionScrivimess",scrivimess)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "insmessaggio"){
+								 insmessaggio = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionInsmessaggio",insmessaggio)
 								 
 								 }
 
@@ -1247,6 +1382,82 @@ receivedEvent: function(id) {
 								 
 								 }
 								 
+								 if(results.rows.item(i).id_traduzione == "errorgps"){
+								 errorgps = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionErrorgps",errorgps)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
+								 nonrilevare = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 
+								 localStorage.setItem("sessionNonrilevare",nonrilevare)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "alertend"){
+								 alertend = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionAlertend",alertend)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "cancmappa"){
+								 cancmappa = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 
+								 localStorage.setItem("sessionCancmappa",cancmappa)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "modinizia"){
+								 modinizia = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionModinizia",modinizia)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "ricelaborata"){
+								 ricelaborata = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 
+								 localStorage.setItem("sessionRicelaborata",ricelaborata)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "insimporto"){
+								 insimporto = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 
+								 localStorage.setItem("sessionInsimporto",insimporto)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "ricannullata"){
+								 ricannullata = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 
+								 localStorage.setItem("sessionRicannullata",ricannullata)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3importo3"){
+								 h3importo3 = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionImporto3",h3importo3)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "scrivimess"){
+								 scrivimess = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionScrivimess",scrivimess)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "insmessaggio"){
+								 insmessaggio = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionInsmessaggio",insmessaggio)
+								 
+								 }
 								 
 								}
 								 
@@ -1415,7 +1626,82 @@ receivedEvent: function(id) {
 								 
 								 
 								 
+								 if(results.rows.item(i).id_traduzione == "errorgps"){
+								 errorgps = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 
+								 localStorage.setItem("sessionErrorgps",errorgps)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
+								 nonrilevare = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNonrilevare",nonrilevare)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "alertend"){
+								 alertend = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&oacute;", "ò").replace("&aacute;", "à");
+								 
+								 localStorage.setItem("sessionAlertend",alertend)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "cancmappa"){
+								 cancmappa = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 
+								 localStorage.setItem("sessionCancmappa",cancmappa)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "modinizia"){
+								 modinizia = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 
+								 localStorage.setItem("sessionModinizia",modinizia)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "ricelaborata"){
+								 ricelaborata = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&eacute;", "è");
+								 
+								 localStorage.setItem("sessionRicelaborata",ricelaborata)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "insimporto"){
+								 insimporto = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionInsimporto",insimporto)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "ricannullata"){
+								 ricannullata = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionRicannullata",ricannullata)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "h3importo3"){
+								 h3importo3 = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionImporto3",h3importo3)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "scrivimess"){
+								 scrivimess = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionScrivimess",scrivimess)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "insmessaggio"){
+								 insmessaggio = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionInsmessaggio",insmessaggio)
+								 
+								 }
 								 
 								 
 								}
@@ -1512,6 +1798,8 @@ receivedEvent: function(id) {
 				   
 		  //alert(localStorage.getItem("lingua"))
 				   
+		  localStorage.setItem("dovesono","0");
+				   
 		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
 	   	  e.stopImmediatePropagation();
@@ -1534,6 +1822,8 @@ receivedEvent: function(id) {
 	
 	
 	$(document).on("touchstart tap", "#profiloperc2", function(e){
+				   
+		  localStorage.setItem("dovesono","0");
 				   
 		  var ref = window.open('http://www.purplemiles.com/www/profile.php?lang='+ localStorage.getItem("lingua") +'&id='+localStorage.getItem("id_utente")+'&pm='+localStorage.getItem("md5")+'', '_system', 'location=no');
 				   
@@ -1687,27 +1977,27 @@ receivedEvent: function(id) {
 				   
 				   if(localStorage.getItem("lingua")=="it"){
 				   
-					 $("#modificastart").attr("placeholder", "Indirizzo dell'autista");
+					 $("#modificastart").attr("placeholder", ""+localStorage.getItem("sessionModinizia")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
 				   
-				     $("#modificastart").attr("placeholder", "Driver address");
+				     $("#modificastart").attr("placeholder", ""+localStorage.getItem("sessionModinizia")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				     $("#modificastart").attr("placeholder", "Adresse du chauffeur");
+				     $("#modificastart").attr("placeholder", ""+localStorage.getItem("sessionModinizia")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				     $("#modificastart").attr("placeholder", "Direcciòn del conductor");
+				     $("#modificastart").attr("placeholder", ""+localStorage.getItem("sessionModinizia")+"");
 				   
 				   }
 				   else{
 				   
-				     $("#modificastart").attr("placeholder", "Indirizzo dell'autista");
+				     $("#modificastart").attr("placeholder", ""+localStorage.getItem("sessionModinizia")+"");
 				   
 				   }
 				   
@@ -1880,36 +2170,36 @@ receivedEvent: function(id) {
 		
 			if(localStorage.getItem("lingua")=="it"){
 				   
-				   var alertattenzione = "Attenzione"
-				   var chiudere = "Possibile errore di rete, riprova tra qualche minuto."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var chiudere = localStorage.getItem("sessionErrorrete")
 				   
 				   
 			}
 			else if(localStorage.getItem("lingua")=="en"){
 				   
-				   var alertattenzione = "Attention"
-				   var chiudere = "Possible network error, please try again in a few minutes"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var chiudere = localStorage.getItem("sessionErrorrete")
 
 				   
 			}
 			else if(localStorage.getItem("lingua")=="fr"){
 				   
-				   var alertattenzione = "Attention"
-				   var chiudere = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var chiudere = localStorage.getItem("sessionErrorrete")
 				   
 				   
 			}
 			else if(localStorage.getItem("lingua")=="es"){
 				   
-				   var alertattenzione = "Attenciòn"
-				   var chiudere = "Posible error en la red, por favor intente nuevamente en unos minutos"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var chiudere = localStorage.getItem("sessionErrorrete")
 				   
 				   
 			}
 			else{
 				   
-				   var alertattenzione = "Attention"
-				   var chiudere = "Possible network error"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var chiudere = localStorage.getItem("sessionErrorrete")
 
 			}
 				   
@@ -2043,35 +2333,35 @@ receivedEvent: function(id) {
 				   
 				   if(localStorage.getItem("lingua")=="it"){
 				   
-				   var alertattenzione = "Attenzione"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
 				   var annallab = "Ok,Annulla"
 				   
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
 				   
-				   var alertattenzione = "Attention"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
 				   var annallab = "Ok,Cancel"
 				   
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				    var alertattenzione = "Attention"
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
 				    var annallab = "Ok,Annuler"
 				   
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				    var alertattenzione = "Attention"
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
 				    var annallab = "Ok,Cancela"
 				   
 				   
 				   }
 				   else{
 				   
-				   var alertattenzione = "Attention"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
 				   var annallab = "Ok,Cancel"
 				   
 				   }
@@ -2222,35 +2512,35 @@ receivedEvent: function(id) {
 				   
 				   if(localStorage.getItem("lingua")=="it"){
 				   
-				    var alertgps = "Inserire un indirizzo valido o utilizzare la posizione GPS"
+				    var alertgps = localStorage.getItem("sessionAlertend")
 				    var indirizzob = "Indirizzo"
 				   
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
 				   
-				    var alertgps = "Enter a valid address or use the GPS position"
+				    var alertgps = localStorage.getItem("sessionAlertend")
 				    var indirizzob = "Address"
 				   
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				    var alertgps = "Entrez une adresse valide ou utiliser la position GPS"
+				    var alertgps = localStorage.getItem("sessionAlertend")
 				    var indirizzob = "Addresse"
 				   
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				   var alertgps = "Insertar una direcciòn vàlida o utilizar su posiciòn GPS"
+				   var alertgps = localStorage.getItem("sessionAlertend")
 				   var indirizzob = "Address"
 				   
 				   }
 				   
 				   else{
 				   
-				    var alertgps = "Enter a valid address or use the GPS position"
+				    var alertgps = localStorage.getItem("sessionAlertend")
 				    var indirizzob = "Direction"
 				   
 				   }
@@ -2512,40 +2802,41 @@ function gpsonError(){
 	
 	if(localStorage.getItem("lingua")=="it"){
 		
-		var alertattenzione = "Attenzione"
-		var alertgps = "Possibile errore GPS, assicurati di avere il gps del telefono attivato."
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionErrorgps")
+		
 		var indirizzob = "Indirizzo"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="en"){
 		
-		var alertattenzione = "Attention"
-		var alertgps = "Possible GPS error, make sure you have your GPS enabled phone."
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionErrorgps")
 		var indirizzob = "Address"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
-		var alertgps = "possible erreur de GPS, assurez-vous que vous avez le téléphone activé gps"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionErrorgps")
 		var indirizzob = "Addresse"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
-		var alertgps = "posible error del GPS, asegúrese de que tiene el teléfono activado gps"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionErrorgps")
 		var indirizzob = "Direcciòn"
 		
 		
 	}
 	else{
 		
-		var alertattenzione = "Attention"
-		var alertgps = "Possible GPS error, make sure you have your GPS enabled phone."
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionErrorgps")
 		var indirizzob = "Address"
 		
 	}
@@ -3304,40 +3595,40 @@ function codeLatLng(lati,lngi) {
 					 
 					 if(localStorage.getItem("lingua")=="it"){
 					 
-					  var alertattenzione = "Attenzione"
-					  var alertgps = "Non riesco a rilevare la tua posizione"
+					  var alertattenzione = localStorage.getItem("sessionAttenzione")
+					  var alertgps = localStorage.getItem("sessionNonrilevare")
 					  var indirizzob = "Indirizzo"
 					 
 					 
 					 }
 					 else if(localStorage.getItem("lingua")=="en"){
 					 
-					  var alertattenzione = "Attention"
-					  var alertgps = "I can not detect your location"
+					  var alertattenzione = localStorage.getItem("sessionAttenzione")
+					  var alertgps = localStorage.getItem("sessionNonrilevare")
 					  var indirizzob = "Address"
 					 
 					 
 					 }
 					 else if(localStorage.getItem("lingua")=="fr"){
 					 
-					   var alertattenzione = "Attention"
-					   var alertgps = "Je ne peux pas détecter votre emplacement"
+					   var alertattenzione = localStorage.getItem("sessionAttenzione")
+					   var alertgps = localStorage.getItem("sessionNonrilevare")
 					   var indirizzob = "Addresse"
 					 
 					 
 					 }
 					 else if(localStorage.getItem("lingua")=="es"){
 					 
-					  var alertattenzione = "Attenciòn"
-					  var alertgps = "No puedo detectar su ubicación"
+					  var alertattenzione = localStorage.getItem("sessionAttenzione")
+					  var alertgps = localStorage.getItem("sessionNonrilevare")
 					  var indirizzob = "Direction"
 					 
 					 
 					 }
 					 else{
 					 
-					  var alertattenzione = "Attention"
-					  var alertgps = "I can not detect your location"
+					  var alertattenzione = localStorage.getItem("sessionAttenzione")
+					  var alertgps = localStorage.getItem("sessionNonrilevare")
 					  var indirizzob = "Address"
 					 
 					 }
@@ -3384,40 +3675,40 @@ function prendivia() {
 	
 	if(localStorage.getItem("lingua")=="it"){
 		
-		var alertattenzione = "Attenzione"
-		var alertgps = "Inserire un indirizzo valido o utilizzare la posizione GPS"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionAlertend")
 		var indirizzob = "Indirizzo"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="en"){
 		
-		var alertattenzione = "Attention"
-		var alertgps = "Enter a valid address or use the GPS position"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionAlertend")
 		var indirizzob = "Address"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
-		var alertgps = "Entrez une adresse valide ou utiliser la position GPS"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionAlertend")
 		var indirizzob = "Addresse"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
-		var alertgps = "Insertar una direcciòn vàlida o utilizar su posiciòn GPS"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionAlertend")
 		var indirizzob = "Direcciòn"
 		
 		
 	}
 	else{
 		
-		var alertattenzione = "Attention"
-		var alertgps = "Enter a valid address or use your GPS position"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionAlertend")
 		var indirizzob = "Address"
 		
 	}
@@ -3532,7 +3823,7 @@ function onPause() {
    }
    
    //bgGeo.start();
-   backgroundGeolocation.start();
+   //backgroundGeolocation.start();
 }
 
 
@@ -4622,6 +4913,33 @@ function posizionegps(){
 	
 		
 function timer(){
+	
+	
+	// ANDROID CHECK LINE //
+	cordova.plugins.locationAccuracy.canRequest(function(canRequest){
+		if(canRequest){
+			cordova.plugins.locationAccuracy.request(function (success){
+			//alert("Successfully requested accuracy: "+success.message);
+			}, function (error){
+				 console.error("Accuracy request failed: error code="+error.code+"; error message="+error.message);
+				if(error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED){
+					if(window.confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")){
+						cordova.plugins.diagnostic.switchToLocationSettings();
+						
+						if(localStorage.getItem("dovesono")=="1"){
+	
+						  setTimeout(function() {
+						   resetta1(1);
+						  }, 500);
+						
+						}
+						
+					}
+				}
+			}, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
+		}
+	});
+	////////////FINE/////////////
 	
 	
 	var dindon;
@@ -5762,14 +6080,15 @@ function timer(){
 								    //}, 1000);
 			}
 	else{
-		for(i=0; i<10000; i++)
+		/*for(i=0; i<10000; i++)
 		{
 		 window.clearInterval(i);
-		}
+		}*/
 									
 		setTimeout(function() {
-		  timer();
-		}, 10000);
+		  resetta1(1);
+		}, 1000);
+		
 									
 	}
 						
@@ -6920,40 +7239,41 @@ function cancellapos(id){
 	
 	if(localStorage.getItem("lingua")=="it"){
 		
-		var alertattenzione = "Attenzione"
-		var alertgps = "Richiesta cancellata dalla mappa"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionCancmappa")
+		
 		var indirizzob = "Indirizzo"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="en"){
 		
-		var alertattenzione = "Attention"
-		var alertgps = "Request erased from the map"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionCancmappa")
 		var indirizzob = "Address"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
-		var alertgps = "Demander effacé de la carte"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionCancmappa")
 		var indirizzob = "Addresse"
 		
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
-		var alertgps = "Solicitud borrada del mapa"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionCancmappa")
 		var indirizzob = "Direcciòn"
 		
 		
 	}
 	else{
 		
-		var alertattenzione = "Attention"
-		var alertgps = "Request erased from the map"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var alertgps = localStorage.getItem("sessionCancmappa")
 		var indirizzob = "Address"
 		
 	}
@@ -8098,27 +8418,27 @@ function richiesta1() {
                                      
                                      if(localStorage.getItem("lingua")=="it"){
                                      
-                                     $("#chattext66").attr("placeholder", "Scrivi un messaggio");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="en"){
                                      
-                                     $("#chattext66").attr("placeholder", "Write a message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="fr"){
                                      
-                                     $("#chattext66").attr("placeholder", "Ecrire un message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="es"){
                                      
-                                     $("#chattext66").attr("placeholder", "Escribir mensaje");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else{
                                      
-                                     $("#chattext66").attr("placeholder", "Write a message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      
@@ -8250,13 +8570,11 @@ function richiesta1() {
 					   /// FOCUS ////
 	
 					$('#soldini').focus(function(){
-					 //window.scrollTo(0, 100);
-					 //document.body.scrollTop = $(this).offset().top;
-					  myScroll.scrollToElement("#offerta", "1s");
+						myScroll.scrollToElement("#offerta", "1s");
 					 });
 					 
 					 $('#noteautista').focus(function(){
-					  myScroll.scrollToElement("#soldini", "1s");
+						myScroll.scrollToElement("#soldini", "1s");
 					 });
 					 
 					 
@@ -8264,7 +8582,7 @@ function richiesta1() {
 					  $('#soldini').blur();
 					  $('#noteautista').blur();
 					 
-					 cordova.plugins.Keyboard.close();
+					  cordova.plugins.Keyboard.close();
 					 });
 				   
 				   
@@ -9262,27 +9580,27 @@ function richiesta2() {
                                      
                                      if(localStorage.getItem("lingua")=="it"){
                                      
-                                     $("#chattext66").attr("placeholder", "Scrivi un messaggio");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="en"){
                                      
-                                     $("#chattext66").attr("placeholder", "Write a message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="fr"){
                                      
-                                     $("#chattext66").attr("placeholder", "Ecrire un message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="es"){
                                      
-                                     $("#chattext66").attr("placeholder", "Escribir mensaje");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else{
                                      
-                                     $("#chattext66").attr("placeholder", "Write a message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
 									 
@@ -9400,8 +9718,6 @@ function richiesta2() {
 							     /// FOCUS ////
 	
 					$('#soldini').focus(function(){
-					 //window.scrollTo(0, 100);
-					 //document.body.scrollTop = $(this).offset().top;
 					  myScroll.scrollToElement("#tempooff", "1s");
 					 });
 					 
@@ -10405,27 +10721,27 @@ function richiesta3() {
                                      
                                      if(localStorage.getItem("lingua")=="it"){
                                      
-                                     $("#chattext66").attr("placeholder", "Scrivi un messaggio");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="en"){
                                      
-                                     $("#chattext66").attr("placeholder", "Write a message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="fr"){
                                      
-                                     $("#chattext66").attr("placeholder", "Ecrire un message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else if(localStorage.getItem("lingua")=="es"){
                                      
-                                     $("#chattext66").attr("placeholder", "Escribir mensaje");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
                                      else{
                                      
-                                     $("#chattext66").attr("placeholder", "Write a message");
+                                     $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                      
                                      }
 									 
@@ -10534,8 +10850,6 @@ function richiesta3() {
 				      /// FOCUS ////
 	
 					$('#soldini').focus(function(){
-					 //window.scrollTo(0, 100);
-					 //document.body.scrollTop = $(this).offset().top;
 					  myScroll.scrollToElement("#tempooff", "1s");
 					 });
 					 
@@ -10548,9 +10862,8 @@ function richiesta3() {
 					  $('#soldini').blur();
 					  $('#noteautista').blur();
 					 
-					 cordova.plugins.Keyboard.close();
+					  cordova.plugins.Keyboard.close();
 					 });
-				   
 				   
 				   $.mobile.changePage ($("#home3"));
 				   
@@ -10701,27 +11014,27 @@ function lista5() {
                                         
                                         if(localStorage.getItem("lingua")=="it"){
                                         
-                                          $("#chattext5").attr("placeholder", "Scrivi un messaggio");
+                                          $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                         
                                         }
                                         else if(localStorage.getItem("lingua")=="en"){
                                         
-                                          $("#chattext5").attr("placeholder", "Write a message");
+                                          $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                         
                                         }
                                         else if(localStorage.getItem("lingua")=="fr"){
                                         
-										  $("#chattext5").attr("placeholder", "Ecrire un message");
+										  $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                         
                                         }
                                         else if(localStorage.getItem("lingua")=="es"){
                                         
-                                          $("#chattext5").attr("placeholder", "Escribir mensaje");
+                                          $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                         
                                         }
                                         else{
                                         
-                                          $("#chattext5").attr("placeholder", "Write a message");
+                                          $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                         
 							}
                                         
@@ -11451,40 +11764,40 @@ function inviachat(id) {
 									  
 									  if(localStorage.getItem("lingua")=="it"){
 									  
-									  var alertattenzione = "Attenzione"
-									  var alertgps = "Inserire un messaggio"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = localStorage.getItem("sessionInsmessaggio")
 									  var indirizzob = "Indirizzo"
 									  
 									  
 									  }
 									  else if(localStorage.getItem("lingua")=="en"){
 									  
-									  var alertattenzione = "Attention"
-									  var alertgps = "Enter a message"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = localStorage.getItem("sessionInsmessaggio")
 									  var indirizzob = "Address"
 									  
 									  
 									  }
 									  else if(localStorage.getItem("lingua")=="fr"){
 									  
-									  var alertattenzione = "Attention"
-									  var alertgps = "Entrez un message"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = localStorage.getItem("sessionInsmessaggio")
 									  var indirizzob = "Addresse"
 									  
 									  
 									  }
 									  else if(localStorage.getItem("lingua")=="es"){
 									  
-									  var alertattenzione = "Attenciòn"
-									  var alertgps = "Insertar una respuesta"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = localStorage.getItem("sessionInsmessaggio")
 									  var indirizzob = "Direction"
 									  
 									  
 									  }
 									  else{
 									  
-									  var alertattenzione = "Attention"
-									  var alertgps = "insert a message"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = localStorage.getItem("sessionInsmessaggio")
 									  var indirizzob = "Address"
 									  
 									  }
@@ -11612,36 +11925,36 @@ function accetta11() {
 				  
 				  if(localStorage.getItem("lingua")=="it"){
 				  
-				   var alertattenzione = "Attenzione"
-				   var alertgps = "Richiesta elaborata da altro utente."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Indirizzo"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="en"){
 				  
-				   var alertattenzione = "Attention"
-				   var alertgps = "Request processed by another user."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Address"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="fr"){
 				  
-				   var alertattenzione = "Attention"
-				   var alertgps = "demande traitée par un autre utilisateur"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Addresse"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="es"){
 				  
-				   var alertattenzione = "Attenciòn"
-				   var alertgps = "Solicitud procesada por otro usuario."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Direction"
 				  
 				  }
 				  else{
 				  
-				   var alertattenzione = "Attention"
-				   var alertgps = "Request processed by another user."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Address"
 				  
 				  }
@@ -11722,36 +12035,36 @@ function accetta22() {
 				  
 				  if(localStorage.getItem("lingua")=="it"){
 				  
-				  var alertattenzione = "Attenzione"
-				  var alertgps = "Richiesta elaborata da altro utente."
+				  var alertattenzione = localStorage.getItem("sessionAttenzione")
+				  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				  var indirizzob = "Indirizzo"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="en"){
 				  
-				  var alertattenzione = "Attention"
-				  var alertgps = "Request processed by another user."
+				  var alertattenzione = localStorage.getItem("sessionAttenzione")
+				  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				  var indirizzob = "Address"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="fr"){
 				  
-				  var alertattenzione = "Attention"
-				  var alertgps = "demande traitée par un autre utilisateur"
+				  var alertattenzione = localStorage.getItem("sessionAttenzione")
+				  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				  var indirizzob = "Addresse"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="es"){
 				  
-				  var alertattenzione = "Attenciòn"
-				  var alertgps = "Solicitud procesada por otro usuario."
+				  var alertattenzione = localStorage.getItem("sessionAttenzione")
+				  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				  var indirizzob = "Direction"
 				  
 				  }
 				  else{
 				  
-				  var alertattenzione = "Attention"
-				  var alertgps = "Request processed by another user."
+				  var alertattenzione = localStorage.getItem("sessionAttenzione")
+				  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				  var indirizzob = "Address"
 				  
 				  }
@@ -11825,36 +12138,36 @@ function accetta33() {
 				  
 				  if(localStorage.getItem("lingua")=="it"){
 				  
-				   var alertattenzione = "Attenzione"
-				   var alertgps = "Richiesta elaborata da altro utente."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Indirizzo"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="en"){
 				  
-				   var alertattenzione = "Attention"
-				   var alertgps = "Request processed by another user."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Address"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="fr"){
 				  
-				   var alertattenzione = "Attention"
-				   var alertgps = "demande traitée par un autre utilisateur"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Addresse"
 				  
 				  }
 				  else if(localStorage.getItem("lingua")=="es"){
 				  
-				   var alertattenzione = "Attenciòn"
-				   var alertgps = "Solicitud procesada por otro usuario."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Direction"
 				  
 				  }
 				  else{
 				  
-				   var alertattenzione = "Attention"
-				   var alertgps = "Request processed by another user."
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
 				   var indirizzob = "Address"
 				  
 				  }
@@ -11920,51 +12233,52 @@ function inviopasseggero(come){
 									  
 									  if(localStorage.getItem("lingua")=="it"){
 									  
-									  var alertattenzione = "Attenzione"
-									  var alertgps = "Richiesta elaborata da altro utente."
-									  var inserireb = "Inserire un importo"
-									  var annullab = "Il passeggero ha annullato la richiesta."
-									  var importob = "Importo"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
+									  var inserireb = ""+localStorage.getItem("sessionInsimporto")+""
+									  var annullab = ""+localStorage.getItem("sessionRicannullata")+""
+									  var importob = ""+localStorage.getItem("sessionImporto3")+""
+									  
 									  
 									  
 									  }
 									  else if(localStorage.getItem("lingua")=="en"){
 									  
-									  var alertattenzione = "Attention"
-									  var alertgps = "Request processed by another user."
-									  var inserireb = "Enter a price"
-									  var annullab = "The passenger has canceled the request."
-									  var importob = "Price"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
+									  var inserireb = ""+localStorage.getItem("sessionInsimporto")+""
+									  var annullab = ""+localStorage.getItem("sessionRicannullata")+""
+									  var importob = ""+localStorage.getItem("sessionImporto3")+""
 									  
 									  
 									  }
 									  else if(localStorage.getItem("lingua")=="fr"){
 									  
-									  var alertattenzione = "Attention"
-									  var alertgps = "demande traitée par un autre utilisateur"
-									  var inserireb = "Entrez un prix"
-									  var annullab = "le passager a annulé la demande"
-									  var importob = "Prix"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
+									  var inserireb = ""+localStorage.getItem("sessionInsimporto")+""
+									  var annullab = ""+localStorage.getItem("sessionRicannullata")+""
+									  var importob = ""+localStorage.getItem("sessionImporto3")+""
 									  
 									  
 									  }
 									  else if(localStorage.getItem("lingua")=="es"){
 									  
-									  var alertattenzione = "Attenciòn"
-									  var alertgps = "Solicitud procesada por otro usuario."
-									  var inserireb = "Insertar un importe"
-									  var annullab = "el pasajero ha cancelado la solicitud"
-									  var importob = "Precio"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
+									  var inserireb = ""+localStorage.getItem("sessionInsimporto")+""
+									  var annullab = ""+localStorage.getItem("sessionRicannullata")+""
+									  var importob = ""+localStorage.getItem("sessionImporto3")+""
 									  
 									  
 									  }
 									  else{
 									  
-									  var alertattenzione = "Attention"
-									  var alertgps = "Request processed by another user."
-									  var inserireb = "Enter a price"
-									  var annullab = "The passenger has canceled the request."
-									  var importob = "Price"
+									  var alertattenzione = localStorage.getItem("sessionAttenzione")
+									  var alertgps = ""+localStorage.getItem("sessionRicelaborata")+""
+									  var inserireb = ""+localStorage.getItem("sessionInsimporto")+""
+									  var annullab = ""+localStorage.getItem("sessionRicannullata")+""
+									  var importob = ""+localStorage.getItem("sessionImporto3")+""
 									  
 									  }
 									  
@@ -12131,27 +12445,27 @@ function controllachat(uman) {
 				    //alert("NO OPENED");
                    if(localStorage.getItem("lingua")=="it"){
                    
-                   $("#chattext").attr("placeholder", "Scrivi un messaggio");
+                   $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                    
                    }
                    else if(localStorage.getItem("lingua")=="en"){
                    
-                   $("#chattext").attr("placeholder", "Write a message");
+                   $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                    
                    }
                    else if(localStorage.getItem("lingua")=="fr"){
                    
-                   $("#chattext").attr("placeholder", "Ecrire un message");
+                   $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                    
                    }
                    else if(localStorage.getItem("lingua")=="es"){
                    
-                   $("#chattext").attr("placeholder", "Escribir mensaje");
+                   $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                    
                    }
                    else{
                    
-                   $("#chattext").attr("placeholder", "Write a message");
+                   $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                    
                    }
                    
@@ -12285,27 +12599,27 @@ function controllachat2(ric,id) {
 									   
                                             if(localStorage.getItem("lingua")=="it"){
                                             
-                                             $("#chattext66").attr("placeholder", "Scrivi un messaggio");
+                                             $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="en"){
                                             
-                                             $("#chattext66").attr("placeholder", "Write a message");
+                                             $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="fr"){
                                             
-                                             $("#chattext66").attr("placeholder", "Ecrire un message");
+                                             $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="es"){
                                             
-                                             $("#chattext66").attr("placeholder", "Escribir mensaje");
+                                             $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else{
                                             
-                                             $("#chattext66").attr("placeholder", "Write a message");
+                                             $("#chattext66").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
 
@@ -12378,27 +12692,27 @@ function controllachat2(ric,id) {
                                             
                                             if(localStorage.getItem("lingua")=="it"){
                                             
-                                            $("#chattext5").attr("placeholder", "Scrivi un messaggio");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="en"){
                                             
-                                            $("#chattext5").attr("placeholder", "Write a message");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="fr"){
                                             
-                                            $("#chattext5").attr("placeholder", "Ecrire un message");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="es"){
                                             
-                                            $("#chattext5").attr("placeholder", "Escribir mensaje");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else{
                                             
-                                            $("#chattext5").attr("placeholder", "Write a message");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             
@@ -12479,27 +12793,27 @@ function controllachat2(ric,id) {
                                             
                                             if(localStorage.getItem("lingua")=="it"){
                                             
-                                            $("#chattext5").attr("placeholder", "Scrivi un messaggio");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="en"){
                                             
-                                            $("#chattext5").attr("placeholder", "Write a message");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="fr"){
                                             
-                                            $("#chattext5").attr("placeholder", "Ecrire un message");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else if(localStorage.getItem("lingua")=="es"){
                                             
-                                            $("#chattext5").attr("placeholder", "Escribir mensaje");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             else{
                                             
-                                            $("#chattext5").attr("placeholder", "Write a message");
+                                            $("#chattext5").attr("placeholder", ""+localStorage.getItem("sessionScrivimess")+"");
                                             
                                             }
                                             

@@ -289,11 +289,15 @@ function onDeviceReady() {
                                  
                                  if(results.rows.item(i).id_traduzione == "alertpartenza"){
                                  alertstart = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionStart",alertstart)
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "alertdestinazione"){
                                  alertend = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionEnd",alertend)
                                  
                                  }
                                  if(results.rows.item(i).id_traduzione == "alertinvio"){
@@ -310,7 +314,38 @@ function onDeviceReady() {
                                  if(results.rows.item(i).id_traduzione == "tardi1"){
                                  $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).italiano.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                                  }
-                                 
+								 
+								 
+								 if(results.rows.item(i).id_traduzione == "datavalida"){
+								 datavalida = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionDatavalida",datavalida)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "orariovalido"){
+								 orariovalido = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOrariovalido",orariovalido)
+								 
+								 }
+								 
+								 
+								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
+								 nonrilevare = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNonrilevare",nonrilevare)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "offertaacc"){
+								 offertaacc = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOffertaacc",offertaacc)
+								 
+								 }
+								 
+								 
                             }
                                  
                         }
@@ -511,11 +546,15 @@ function onDeviceReady() {
                                  
                                  if(results.rows.item(i).id_traduzione == "alertpartenza"){
                                    alertstart = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								   localStorage.setItem("sessionStart",alertstart)
                                  
                                  }
                                  
                                  if(results.rows.item(i).id_traduzione == "alertdestinazione"){
                                    alertend = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								   localStorage.setItem("sessionEnd",alertend)
                                  
                                  }
                                  if(results.rows.item(i).id_traduzione == "alertinvio"){
@@ -526,7 +565,34 @@ function onDeviceReady() {
                                  if(results.rows.item(i).id_traduzione == "adesso1"){
                                    $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).inglese.replace("P0011", "'") + "&nbsp;");
                                  }
-                                 
+								 
+								 if(results.rows.item(i).id_traduzione == "datavalida"){
+								 datavalida = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionDatavalida",datavalida)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "orariovalido"){
+								 orariovalido = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOrariovalido",orariovalido)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
+								 nonrilevare = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionNonrilevare",nonrilevare)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "offertaacc"){
+								 offertaacc = results.rows.item(i).inglese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOffertaacc",offertaacc)
+								 
+								 }
                                  
                                  
                                  if(results.rows.item(i).id_traduzione == "tardi1"){
@@ -679,7 +745,7 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h7partenza"){
-								 h7partenza = results.rows.item(i).francese.replace("P0011", "'");
+								 h7partenza = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
                                  
                                  localStorage.setItem("sessionPartenza",h7partenza)
 								 
@@ -727,12 +793,16 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "alertpartenza"){
-								 alertstart = results.rows.item(i).francese.replace("P0011", "'");
+								 alertstart = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 
+								 localStorage.setItem("sessionStart",alertstart)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "alertdestinazione"){
 								 alertend = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionEnd",alertend)
 								 
 								 }
 								 if(results.rows.item(i).id_traduzione == "alertinvio"){
@@ -744,6 +814,33 @@ function onDeviceReady() {
 								 $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).francese.replace("P0011", "'") + "&nbsp;");
 								 }
 								 
+								 if(results.rows.item(i).id_traduzione == "datavalida"){
+								 datavalida = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionDatavalida",datavalida)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "orariovalido"){
+								 orariovalido = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOrariovalido",orariovalido)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
+								 nonrilevare = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 
+								 localStorage.setItem("sessionNonrilevare",nonrilevare)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "offertaacc"){
+								 offertaacc = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
+								 
+								 localStorage.setItem("sessionOffertaacc",offertaacc)
+								 
+								 }
 								 
 								 
 								 if(results.rows.item(i).id_traduzione == "tardi1"){
@@ -753,6 +850,8 @@ function onDeviceReady() {
 								 if(results.rows.item(i).id_traduzione == "adesso"){
 								  $("#"+ results.rows.item(i).id_traduzione +"").html("<font size='2'>"+results.rows.item(i).francese.replace("P0011", "'")+"</font>");
 								 }
+								 
+								 
 								 
 								}
 								 
@@ -911,6 +1010,7 @@ function onDeviceReady() {
 								 if(results.rows.item(i).id_traduzione == "h7arrivo"){
 								 h7arrivo = results.rows.item(i).spagnolo.replace("P0011", "'");
 								 
+								 
 								 }
 								 if(results.rows.item(i).id_traduzione == "h7veicolo"){
 								 h7veicolo = results.rows.item(i).spagnolo.replace("P0011", "'");
@@ -950,12 +1050,16 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "alertpartenza"){
-								 alertstart = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 alertstart = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 
+								 localStorage.setItem("sessionStart",alertstart)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "alertdestinazione"){
-								 alertend = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 alertend = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 
+								 localStorage.setItem("sessionEnd",alertend)
 								 
 								 }
 								 if(results.rows.item(i).id_traduzione == "alertinvio"){
@@ -967,6 +1071,33 @@ function onDeviceReady() {
 								 $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).spagnolo.replace("P0011", "'") + "&nbsp;");
 								 }
 								 
+								 if(results.rows.item(i).id_traduzione == "datavalida"){
+								 datavalida = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à");
+								 
+								 localStorage.setItem("sessionDatavalida",datavalida)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "orariovalido"){
+								 orariovalido = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à");
+								 
+								 localStorage.setItem("sessionOrariovalido",orariovalido)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
+								 nonrilevare = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 
+								 localStorage.setItem("sessionNonrilevare",nonrilevare)
+								 
+								 }
+								 
+								 if(results.rows.item(i).id_traduzione == "offertaacc"){
+								 offertaacc = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("sessionOffertaacc",offertaacc)
+								 
+								 }
 								 
 								 
 								 if(results.rows.item(i).id_traduzione == "tardi1"){
@@ -988,45 +1119,45 @@ function onDeviceReady() {
 	
 	if(localStorage.getItem("lingua")=="it"){
 		
-		var alertattenzione = "Attenzione"
-		var chiudereA = "Vuoi chiudere purple miles?"
-		var spegniA = "Spegni"
-		var annullaA = "Spegni,Annulla"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Profilo"
 		
 	}
 	else if(localStorage.getItem("lingua")=="en"){
 		
-		var alertattenzione = "Attention"
-		var chiudereA = "do you want close purple miles?"
-		var spegniA = "Shut Down"
-		var annullaA = "Shut Down,Cancel"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Profile"
 		
 	}
 	else if(localStorage.getItem("lingua")=="fr"){
 		
-		var alertattenzione = "Attention"
-		var chiudereA = "Voulez-vous fermer purple miles?"
-		var spegniA = "fermer"
-		var annullaA = "fermer,annuler"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Profil"
 		
 	}
 	else if(localStorage.getItem("lingua")=="es"){
 		
-		var alertattenzione = "Attenciòn"
-		var chiudereA = "¿querer cerrar purple miles?"
-		var spegniA = "Cerra"
-		var annullaA = "Cerra,Cancela"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Perfil"
 		
 	}
 	else{
-		var alertattenzione = "Attention"
-		var chiudereA = "do you want close purple miles?"
-		var spegniA = "Shut Down"
-		var annullaA = "Shut Down,Cancel"
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var chiudereA = ""+localStorage.getItem("sessionChiudere")+""
+		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
+		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		var profiloA = "Profilo"
 	}
 	
@@ -1112,34 +1243,34 @@ function onDeviceReady() {
                                 
                                 if(localStorage.getItem("lingua")=="it"){
                                 
-                                 var alertattenzione = "Attenzione"
-                                 var erroreA = "Errore di rete"
+                                 var alertattenzione = localStorage.getItem("sessionAttenzione")
+                                var alerterrore = localStorage.getItem("sessionErrorrete")
                                 
                                 }
                                 else if(localStorage.getItem("lingua")=="en"){
                                 
-                                 var alertattenzione = "Attention"
-                                 var erroreA = "Possible network error, please try again in a few minutes"
+                                 var alertattenzione = localStorage.getItem("sessionAttenzione")
+                                 var alerterrore = localStorage.getItem("sessionErrorrete")
 
                                 
                                 }
 								else if(localStorage.getItem("lingua")=="fr"){
 								
-								 var alertattenzione = "Attention"
-								 var erroreA = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
+								 var alertattenzione = localStorage.getItem("sessionAttenzione")
+								 var alerterrore = localStorage.getItem("sessionErrorrete")
 								
 								
 								}
 								else if(localStorage.getItem("lingua")=="es"){
 								
-								 var alertattenzione = "Attenciòn"
-								 var erroreA = "Posible error en la red, por favor intente nuevamente en unos minutos"
+								 var alertattenzione = localStorage.getItem("sessionAttenzione")
+								 var alerterrore = localStorage.getItem("sessionErrorrete")
 								
 								
 								}
 								else{
 								
-                                 var alertattenzione = "Attention"
+                                 var alertattenzione = localStorage.getItem("sessionAttenzione")
                                  var erroreA = "Possible error network"
 
                                 }
@@ -1166,34 +1297,34 @@ function onDeviceReady() {
                          
                          if(localStorage.getItem("lingua")=="it"){
                          
-                         var alertattenzione = "Attenzione"
-                         var erroreA = "Errore di rete"
+                         var alertattenzione = localStorage.getItem("sessionAttenzione")
+                        var alerterrore = localStorage.getItem("sessionErrorrete")
                          
                          }
                          else if(localStorage.getItem("lingua")=="en"){
                          
-                         var alertattenzione = "Attention"
-                         var erroreA = "Possible network error, please try again in a few minutes"
+                         var alertattenzione = localStorage.getItem("sessionAttenzione")
+                         var alerterrore = localStorage.getItem("sessionErrorrete")
                          
                          
                          }
 						 else if(localStorage.getItem("lingua")=="fr"){
 						 
-						 var alertattenzione = "Attention"
-						 var erroreA = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
+						 var alertattenzione = localStorage.getItem("sessionAttenzione")
+						 var alerterrore = localStorage.getItem("sessionErrorrete")
 						 
 						 
 						 }
 						 else if(localStorage.getItem("lingua")=="es"){
 						 
-						 var alertattenzione = "Attenciòn"
-						 var erroreA = "Posible error en la red, por favor intente nuevamente en unos minutos"
+						 var alertattenzione = localStorage.getItem("sessionAttenzione")
+						 var alerterrore = localStorage.getItem("sessionErrorrete")
 						 
 						 
 						 }
 						 else{
 						 
-                         var alertattenzione = "Attention"
+                         var alertattenzione = localStorage.getItem("sessionAttenzione")
                          var erroreA = "Possible error network"
                          
                          }
@@ -1229,7 +1360,6 @@ function onDeviceReady() {
 		window.location.href = "Login.html";
 		
 	}
-	
 	
 	
 	/*if(screen.width < 768){
@@ -1397,23 +1527,23 @@ function onDeviceReady() {
 		$("#tblviale").show();
 				   
 				   if(localStorage.getItem("lingua")=="it"){
-				   $("#viale").attr("placeholder","partenza");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
-				   $("#viale").attr("placeholder","Departure");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				   $("#viale").attr("placeholder","départ");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				   $("#viale").attr("placeholder","Salida");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   }
 				   else{
-				   $("#viale").attr("placeholder","Departure");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   
@@ -1458,30 +1588,30 @@ function onDeviceReady() {
 				   $("#tblviale").show();
 				   
 				   if(localStorage.getItem("lingua")=="it"){
-				   $("#viale").attr("placeholder","partenza");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
-				   $("#viale").attr("placeholder","Departure");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				   $("#viale").attr("placeholder","départ");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				   $("#viale").attr("placeholder","Salida");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   }
 				   else{
-				   $("#viale").attr("placeholder","Departure");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   
 				   $("#destinazione").hide();
 				   $("#tbldestinazione").hide();
 				   
-				   if(screen.width < 768){
+				   /*if(screen.width < 768){
 				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
 				   }
@@ -1495,7 +1625,7 @@ function onDeviceReady() {
 				   $("#da1").html("<img src='img/ico_start3.png' width='55px'>");
 				   $("#a1").html("<img src='img/ico_finish2.png' width='45px'>");
 				   }
-				   }
+				   }*/
 				   
 				   
 				   
@@ -1523,23 +1653,23 @@ function onDeviceReady() {
 				   
 				   
 				   if(localStorage.getItem("lingua")=="it"){
-				     $("#viale").attr("placeholder","partenza");
+				     $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
-				     $("#viale").attr("placeholder","Departure");
+				     $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				    $("#viale").attr("placeholder","départ");
+				    $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				    $("#viale").attr("placeholder","Salida");
+				    $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   }
 				   else{
-				    $("#viale").attr("placeholder","Departure");
+				    $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   
@@ -1601,23 +1731,23 @@ function onDeviceReady() {
 				   
 				   
 				   if(localStorage.getItem("lingua")=="it"){
-				   $("#viale").attr("placeholder","partenza");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
-				   $("#viale").attr("placeholder","Departure");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				   $("#viale").attr("placeholder","départ");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				   $("#viale").attr("placeholder","Salida");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   }
 				   else{
-				   $("#viale").attr("placeholder","Departure");
+				   $("#viale").attr("placeholder",""+localStorage.getItem("sessionPartenza")+"");
 				   
 				   }
 				   
@@ -1767,6 +1897,7 @@ function onDeviceReady() {
 		   //bgGeo.start();
 		   //backgroundGeolocation.start();
 				   
+				   
 			//bgGeo.start();
 		   
 		   	localStorage.setItem("dovesono", "3");
@@ -1879,45 +2010,45 @@ function onDeviceReady() {
                    
                    if(localStorage.getItem("lingua")=="it"){
                    
-                    var alertattenzione = "Attenzione"
-                    var erroreA = "Errore di rete"
-				    var alertstart = "Inserire un indirizzo di partenza"
-				    var alertend = "Inserire un indirizzo di destinazione"
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                   var alerterrore = localStorage.getItem("sessionErrorrete")
+				    var alertstart = localStorage.getItem("sessionStart")
+				    var alertend = localStorage.getItem("sessionEnd")
 				    $("#notepass").attr("placeholder","Note");
                    
                    }
                    else if(localStorage.getItem("lingua")=="en"){
                    
-                    var alertattenzione = "Attention"
-                    var erroreA = "Possible error network"
-				    var alertstart = "Enter a starting address"
-				    var alertend = "Choose the arrival address"
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                    var erroreA = localStorage.getItem("sessionErrorrete")
+				    var alertstart = localStorage.getItem("sessionStart")
+				    var alertend = localStorage.getItem("sessionEnd")
 				    $("#notepass").attr("placeholder","Note");
 				   
                    }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				    var alertattenzione = "Attention"
-				    var erroreA = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-				    var alertstart = "Entrez une adresse de dèpart"
-				    var alertend = "Entrez une adresse de destination"
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
+				    var alerterrore = localStorage.getItem("sessionErrorrete")
+				    var alertstart = localStorage.getItem("sessionStart")
+				    var alertend = localStorage.getItem("sessionEnd")
 				    $("#notepass").attr("placeholder","Remarque");
 				   
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				    var alertattenzione = "Attenciòn"
-				    var erroreA = "Posible error en la red, por favor intente nuevamente en unos minutos"
-				    var alertstart = "Introducir una direcciòn de inicio"
-				    var alertend = "Insertar una direcciòn de destino"
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
+				    var alerterrore = localStorage.getItem("sessionErrorrete")
+				    var alertstart = localStorage.getItem("sessionStart")
+				    var alertend = localStorage.getItem("sessionEnd")
 				    $("#notepass").attr("placeholder","Notas");
 				   
 				   }
 				   else{
 				   
-                    var alertattenzione = "Attention"
-                    var erroreA = "Possible error network"
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                    var erroreA = localStorage.getItem("sessionErrorrete")
 				    var alertstart = "Enter a starting address"
 				    var alertend = "Choose the arrival address"
 				    $("#notepass").attr("placeholder","Note");
@@ -1961,7 +2092,7 @@ function onDeviceReady() {
 				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
 				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
 				   
-				   $("#spazioipad3").attr("height","70px");
+				   //$("#spazioipad3").attr("height","70px");
 				   
 				   }
 				   else
@@ -1975,7 +2106,8 @@ function onDeviceReady() {
 				   $("#anteprima3").attr("width", "90px");
 				   $("#offerte3").attr("width", "90px");
 				   
-				   $("#spazioipad3").attr("height","130");
+				   $("#spazioipad3").show();
+				   //$("#spazioipad3").attr("height","130");
 				   
 				   }
 				   else{
@@ -2196,23 +2328,23 @@ function onDeviceReady() {
 				   
 				   
 				   if(localStorage.getItem("lingua")=="it"){
-				   $("#destinazione").attr("placeholder","destinazione");
+				   $("#destinazione").attr("placeholder",""+localStorage.getItem("sessionArrivo")+"");
 				   }
 				   else if(localStorage.getItem("lingua")=="en"){
-				   $("#destinazione").attr("placeholder","Destination");
+				   $("#destinazione").attr("placeholder",""+localStorage.getItem("sessionArrivo")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				   $("#destinazione").attr("placeholder","Destination");
+				   $("#destinazione").attr("placeholder",""+localStorage.getItem("sessionArrivo")+"");
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				   $("#destinazione").attr("placeholder","Destino");
+				   $("#destinazione").attr("placeholder",""+localStorage.getItem("sessionArrivo")+"");
 				   }
 				   else{
-				   $("#destinazione").attr("placeholder","Destination");
+				   $("#destinazione").attr("placeholder",""+localStorage.getItem("sessionArrivo")+"");
 				   
 				   }
 				   
@@ -2334,31 +2466,31 @@ function onDeviceReady() {
                    
                    if(localStorage.getItem("lingua")=="it"){
                    
-                    var alertattenzione = "Attenzione"
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
                     var richiestaA = "Richiesta"
                    
                    }
                    else if(localStorage.getItem("lingua")=="en"){
                    
-                    var alertattenzione = "Attention"
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
                     var richiestaA = "Request"
 				   
                    }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				    var alertattenzione = "Attention"
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
 				    var richiestaA = "Demande"
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				    var alertattenzione = "Attenciòn"
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
 				    var richiestaA = "Solicitud"
 				   
 				   }
 				   else{
 				   
-                   var alertattenzione = "Attention"
+                   var alertattenzione = localStorage.getItem("sessionAttenzione")
                    var richiestaA = "Request"
                    
                    }
@@ -2589,37 +2721,37 @@ function onDeviceReady() {
                    
                    if(localStorage.getItem("lingua")=="it"){
                    
-                    var alertattenzione = "Attenzione"
-                    var inserireA = "Inserire una data valida"
-                    var orarioA = "Inserire un orario valido"
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                    var inserireA = localStorage.getItem("sessionDatavalida")
+                    var orarioA = localStorage.getItem("sessionOrariovalido")
                    
                    }
                    else if(localStorage.getItem("lingua")=="en"){
                    
-                    var alertattenzione = "Attention"
-                    var inserireA = "Enter a valid date"
-                    var orarioA = "Enter a valid time"
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                    var inserireA = localStorage.getItem("sessionDatavalida")
+                    var orarioA = localStorage.getItem("sessionOrariovalido")
                    
                    }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				    var alertattenzione = "Attention"
-				    var inserireA = "entrer une date valide"
-				    var orarioA = "entrer une heure valide"
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
+				    var inserireA = localStorage.getItem("sessionDatavalida")
+				    var orarioA = localStorage.getItem("sessionOrariovalido")
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				   var alertattenzione = "Attenciòn"
-				   var inserireA = "introducir una fecha válida"
-				   var orarioA = "introducir una hora válida"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var inserireA = localStorage.getItem("sessionDatavalida")
+				   var orarioA = localStorage.getItem("sessionOrariovalido")
 				   
 				   }
 				   else{
 				   
-                    var alertattenzione = "Attention"
-                    var inserireA = "Enter a valid date"
-                    var orarioA = "Enter a valid time"
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                    var inserireA = localStorage.getItem("sessionDatavalida")
+                    var orarioA = localStorage.getItem("sessionOrariovalido")
 				   
                    }
                    
@@ -2913,7 +3045,7 @@ function onDeviceReady() {
 				   $("#anteprima7").attr("width", "110px");
 				   $("#offerte7").attr("width", "90px");
 				   
-				   $("#spazioipad7").attr("height","130");
+				   $("#spazioipad7").attr("height","70");
 				   
 				   }
 				   else{
@@ -3344,7 +3476,7 @@ function onDeviceReady() {
 		
 		/////// GEO TRAKER IOS//////
 		
-		/*	window.navigator.geolocation.getCurrentPosition(function(location) {
+		/*window.navigator.geolocation.getCurrentPosition(function(location) {
 			console.log('Location from Phonegap');
 		});
 		
@@ -3668,36 +3800,36 @@ function codeLatLng(lati,lngi) {
                      
                      if(localStorage.getItem("lingua")=="it"){
                      
-                      var alertattenzione = "Attenzione"
-                      var posizioneA = "Non riesco a rilevare la tua posizione"
+                      var alertattenzione = localStorage.getItem("sessionAttenzione")
+                      var posizioneA = localStorage.getItem("sessionNonrilevare")
                       var orarioA = "Inserire un orario valido"
                      
                      }
                      else if(localStorage.getItem("lingua")=="en"){
                      
-                      var alertattenzione = "Attention"
+                      var alertattenzione = localStorage.getItem("sessionAttenzione")
                       var posizioneA = "I can not detect your location"
                       var orarioA = "Enter a valid time"
                      
                      }
 					 else if(localStorage.getItem("lingua")=="fr"){
 					 
-					  var alertattenzione = "Attention"
-					  var posizioneA = "Je ne peux pas détecter votre emplacement"
+					  var alertattenzione = localStorage.getItem("sessionAttenzione")
+					  var posizioneA = localStorage.getItem("sessionNonrilevare")
 					  var orarioA = "Entrer une heure valide"
 					 
 					 }
 					 else if(localStorage.getItem("lingua")=="es"){
 					 
-					  var alertattenzione = "Attenciòn"
-					  var posizioneA = "No puedo detectar su ubicación"
+					  var alertattenzione = localStorage.getItem("sessionAttenzione")
+					  var posizioneA = localStorage.getItem("sessionNonrilevare")
 					  var orarioA = "Introduzca una hora válida"
 					 
 					 }
 					 else{
 					 
-                      var alertattenzione = "Attention"
-                      var posizioneA = "I can not detect your location"
+                      var alertattenzione = localStorage.getItem("sessionAttenzione")
+                      var posizioneA = localStorage.getItem("sessionNonrilevare")
                       var orarioA = "Enter a valid time"
                      }
                      
@@ -3791,36 +3923,36 @@ function codeLatLng2(posizione) {
                      
 					 if(localStorage.getItem("lingua")=="it"){
 					 
-					 var alertattenzione = "Attenzione"
-					 var posizioneA = "Non riesco a rilevare la tua posizione"
+					 var alertattenzione = localStorage.getItem("sessionAttenzione")
+					 var posizioneA = localStorage.getItem("sessionNonrilevare")
 					 var orarioA = "Inserire un orario valido"
 					 
 					 }
 					 else if(localStorage.getItem("lingua")=="en"){
 					 
-					 var alertattenzione = "Attention"
-					 var posizioneA = "I can not detect your location"
+					 var alertattenzione = localStorage.getItem("sessionAttenzione")
+					 var posizioneA = localStorage.getItem("sessionNonrilevare")
 					 var orarioA = "Enter a valid time"
 					 
 					 }
 					 else if(localStorage.getItem("lingua")=="fr"){
 					 
-					 var alertattenzione = "Attention"
-					 var posizioneA = "Je ne peux pas détecter votre emplacement"
+					 var alertattenzione = localStorage.getItem("sessionAttenzione")
+					 var posizioneA = localStorage.getItem("sessionNonrilevare")
 					 var orarioA = "Entrer une heure valide"
 					 
 					 }
 					 else if(localStorage.getItem("lingua")=="es"){
 					 
-					 var alertattenzione = "Attenciòn"
-					 var posizioneA = "No puedo detectar su ubicación"
+					 var alertattenzione = localStorage.getItem("sessionAttenzione")
+					 var posizioneA = localStorage.getItem("sessionNonrilevare")
 					 var orarioA = "Introduzca una hora válida"
 					 
 					 }
 					 else{
 					 
-					 var alertattenzione = "Attention"
-					 var posizioneA = "I can not detect your location"
+					 var alertattenzione = localStorage.getItem("sessionAttenzione")
+					 var posizioneA = localStorage.getItem("sessionNonrilevare")
 					 var orarioA = "Enter a valid time"
 					 }
 					 
@@ -4625,27 +4757,27 @@ function vediofferte(){
                                  
                                  if(localStorage.getItem("lingua")=="it"){
                                  
-                                 $("#chattext").attr("placeholder", "Scrivi un messaggio");
+                                 $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                                  
                                  }
                                  else if(localStorage.getItem("lingua")=="en"){
                                  
-                                 $("#chattext").attr("placeholder", "Write a message");
+                                 $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                                  
                                  }
                                  else if(localStorage.getItem("lingua")=="fr"){
                                  
-                                 $("#chattext").attr("placeholder", "Ecrire un message");
+                                 $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                                  
                                  }
                                  else if(localStorage.getItem("lingua")=="es"){
                                  
-                                 $("#chattext").attr("placeholder", "Escribir mensaje");
+                                 $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                                  
                                  }
                                  else{
                                  
-                                 $("#chattext").attr("placeholder", "Write a message");
+                                 $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                                  
                                  }
                                  
@@ -5445,36 +5577,36 @@ function chatting(id) {
 		   
 		   if(localStorage.getItem("lingua")=="it"){
 		   
-		   var alertattenzione = "Attenzione"
-		   var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
 		   var orarioA = "Inserire un orario valido"
 		   
 		   }
 		   else if(localStorage.getItem("lingua")=="en"){
 		   
-		   var alertattenzione = "Attention"
-		   var alerterrore = "Possible network error"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
 		   var orarioA = "Enter a valid time"
 		   
 		   }
 		   else if(localStorage.getItem("lingua")=="fr"){
 		   
-		   var alertattenzione = "Attention"
-		   var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
 		   var orarioA = "Entrez une heure valide"
 		   
 		   }
 		   else if(localStorage.getItem("lingua")=="es"){
 		   
-		   var alertattenzione = "Attenciòn"
-		   var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
 		   var orarioA = "Introduzca una hora válida"
 		   
 		   }
 		   else{
 		   
-		   var alertattenzione = "Attention"
-		   var alerterrore = "Possible network error"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
 		   var orarioA = "Enter a valid time"
 		   }
 		   
@@ -5539,37 +5671,37 @@ function inviachat() {
                                   
                                   if(localStorage.getItem("lingua")=="it"){
                                   
-                                   var alertattenzione = "Attenzione"
-                                   var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-                                   var messaggioA = "inserire un messaggio"
+                                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                                   var messaggioA = localStorage.getItem("sessionInsmessaggio")
                                   
                                   }
                                   else if(localStorage.getItem("lingua")=="en"){
                                   
-                                   var alertattenzione = "Attention"
-                                   var alerterrore = "Possible network error"
-                                   var messaggioA = "Enter a message"
+                                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                                   var messaggioA = localStorage.getItem("sessionInsmessaggio")
                                   
                                   }
 								  else if(localStorage.getItem("lingua")=="fr"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-								  var messaggioA = "Entrez un message"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var messaggioA = localStorage.getItem("sessionInsmessaggio")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="es"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-								  var messaggioA = "Insertar una respuesta"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var messaggioA = localStorage.getItem("sessionInsmessaggio")
 								  
 								  }
 								  else{
 								  
-                                   var alertattenzione = "Attention"
-                                   var alerterrore = "Possible network error"
-                                   var messaggioA = "Insert a message"
+                                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                                   var messaggioA = localStorage.getItem("sessionInsmessaggio")
                                   }
 								  
 								  
@@ -5694,27 +5826,27 @@ function controllachat(uman) {
                    
                    if(localStorage.getItem("lingua")=="it"){
                    
-                     $("#chattext").attr("placeholder", "Scrivi un messaggio");
+                     $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                    
                    }
                    else if(localStorage.getItem("lingua")=="en"){
                    
-                     $("#chattext").attr("placeholder", "Write a message");
+                     $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                    
                    }
                    else if(localStorage.getItem("lingua")=="fr"){
                    
-                     $("#chattext").attr("placeholder", "Ecrire un message");
+                     $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                    
                    }
                    else if(localStorage.getItem("lingua")=="es"){
                    
-                     $("#chattext").attr("placeholder", "Escribir mensaje");
+                     $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                    
                    }
                    else{
                    
-                     $("#chattext").attr("placeholder", "Write a message");
+                     $("#chattext").attr("placeholder", ""+localStorage.getItem("sessionInsmessaggio")+"");
                    
                    }
                    
@@ -5871,37 +6003,37 @@ function elimina(id_richiesta){
            
            if(localStorage.getItem("lingua")=="it"){
            
-           var alertattenzione = "Attenzione"
-           var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-           var messaggioA = "inserire un messaggio"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            
            }
            else if(localStorage.getItem("lingua")=="en"){
            
-           var alertattenzione = "Attention"
-           var alerterrore = "Possible network error"
-           var messaggioA = "Insert a message"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            
            }
 		   else if(localStorage.getItem("lingua")=="fr"){
 		   
-		   var alertattenzione = "Attention"
-		   var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-		   var messaggioA = "Entrez un message"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
+		   var messaggioA = localStorage.getItem("sessionInsmessaggio")
 		   
 		   }
 		   else if(localStorage.getItem("lingua")=="es"){
 		   
-		   var alertattenzione = "Attention"
-		   var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-		   var messaggioA = "Insertar una respuesta"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
+		   var messaggioA = localStorage.getItem("sessionInsmessaggio")
 		   
 		   }
 		   else{
 		   
-           var alertattenzione = "Attention"
-           var alerterrore = "Possible network error"
-           var messaggioA = "Insert a message"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            }
 		   
 		   navigator.notification.alert(
@@ -5947,37 +6079,37 @@ function elimina2(id_richiesta,id_autista){
            
            if(localStorage.getItem("lingua")=="it"){
            
-           var alertattenzione = "Attenzione"
-           var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-           var messaggioA = "inserire un messaggio"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            
            }
            else if(localStorage.getItem("lingua")=="en"){
            
-           var alertattenzione = "Attention"
-           var alerterrore = "Possible network error"
-           var messaggioA = "Insert a message"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            
            }
 		   else if(localStorage.getItem("lingua")=="fr"){
 		   
-		   var alertattenzione = "Attention"
-		   var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-		   var messaggioA = "Entrez un message"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
+		   var messaggioA = localStorage.getItem("sessionInsmessaggio")
 		   
 		   }
 		   else if(localStorage.getItem("lingua")=="es"){
 		   
-		   var alertattenzione = "Attenciòn"
-		   var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-		   var messaggioA = "Insertar una respuesta"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
+		   var messaggioA = localStorage.getItem("sessionInsmessaggio")
 		   
 		   }
 		   else{
 		   
-           var alertattenzione = "Attention"
-           var alerterrore = "Possible network error"
-           var messaggioA = "Insert a message"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            }
            
            navigator.notification.alert(
@@ -6024,37 +6156,37 @@ function elimina2(id_richiesta,id_autista){
                    
                    if(localStorage.getItem("lingua")=="it"){
                    
-                   var alertattenzione = "Attenzione"
-                   var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-                   var messaggioA = "inserire un messaggio"
+                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                   var messaggioA = localStorage.getItem("sessionInsmessaggio")
                    
                    }
                    else if(localStorage.getItem("lingua")=="en"){
                    
-                   var alertattenzione = "Attention"
-                   var alerterrore = "Possible network error"
-                   var messaggioA = "Insert a message"
+                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                   var messaggioA = localStorage.getItem("sessionInsmessaggio")
                    
                    }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
-				   var alertattenzione = "Attention"
-				   var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-				   var messaggioA = "Entrez un message"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alerterrore = localStorage.getItem("sessionErrorrete")
+				   var messaggioA = localStorage.getItem("sessionInsmessaggio")
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
-				   var alertattenzione = "Attention"
-				   var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-				   var messaggioA = "Insertar una respuesta"
+				   var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alerterrore = localStorage.getItem("sessionErrorrete")
+				   var messaggioA = localStorage.getItem("sessionInsmessaggio")
 				   
 				   }
 				   else{
 				   
-                   var alertattenzione = "Attention"
-                   var alerterrore = "Possible network error"
-                   var messaggioA = "Insert a message"
+                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                   var messaggioA = localStorage.getItem("sessionInsmessaggio")
                    }
 										   
 										   navigator.notification.alert(
@@ -6103,37 +6235,37 @@ function feedofferta(id_richiesta,id_autista){
            
            if(localStorage.getItem("lingua")=="it"){
            
-           var alertattenzione = "Attenzione"
-           var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-           var messaggioA = "inserire un messaggio"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            
            }
            else if(localStorage.getItem("lingua")=="en"){
            
-           var alertattenzione = "Attention"
-           var alerterrore = "Possible network error"
-           var messaggioA = "Insert a message"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            
            }
 		   else if(localStorage.getItem("lingua")=="fr"){
 		   
-		   var alertattenzione = "Attention"
-		   var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-		   var messaggioA = "Entrez un message"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
+		   var messaggioA = localStorage.getItem("sessionInsmessaggio")
 		   
 		   }
 		   else if(localStorage.getItem("lingua")=="es"){
 		   
-		   var alertattenzione = "Attenciòn"
-		   var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-		   var messaggioA = "Insertar una respuesta"
+		   var alertattenzione = localStorage.getItem("sessionAttenzione")
+		   var alerterrore = localStorage.getItem("sessionErrorrete")
+		   var messaggioA = localStorage.getItem("sessionInsmessaggio")
 		   
 		   }
 		   else{
 		   
-           var alertattenzione = "Attention"
-           var alerterrore = "Possible network error"
-           var messaggioA = "Insert a message"
+           var alertattenzione = localStorage.getItem("sessionAttenzione")
+           var alerterrore = localStorage.getItem("sessionErrorrete")
+           var messaggioA = localStorage.getItem("sessionInsmessaggio")
            }
 		   
 		   navigator.notification.alert(
@@ -6155,39 +6287,40 @@ function accettaofferta(id,id_richiesta,id_autista){
                                   
                                   if(localStorage.getItem("lingua")=="it"){
                                   
-                                   var alertattenzione = "Attenzione"
-                                   var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-                                   var offertaA = "Offerta gia accettata."
+                                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                                   var offertaA = localStorage.getItem("sessionOffertaacc")
+								  
                                   
                                   }
                                   else if(localStorage.getItem("lingua")=="en"){
                                   
-                                   var alertattenzione = "Attention"
-                                   var alerterrore = "Possible network error"
-                                   var offertaA = "Offer already accepted"
+                                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                                   var offertaA = localStorage.getItem("sessionOffertaacc")
                                   
                                   }
 								  else if(localStorage.getItem("lingua")=="fr"){
 								  
-								   var alertattenzione = "Attention"
-								   var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-								   var offertaA = "Offre déjà acceptée"
+								   var alertattenzione = localStorage.getItem("sessionAttenzione")
+								   var alerterrore = localStorage.getItem("sessionErrorrete")
+								   var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="es"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-								  var offertaA = "Oferta ya aceptada"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  
 								  
 								  else{
 								  
-                                   var alertattenzione = "Attention"
-                                   var alerterrore = "Possible network error"
-                                   var offertaA = "Offer already accepted"
+                                   var alertattenzione = localStorage.getItem("sessionAttenzione")
+                                   var alerterrore = localStorage.getItem("sessionErrorrete")
+                                   var offertaA = localStorage.getItem("sessionOffertaacc")
                                   
                                   }
 	
@@ -6241,39 +6374,39 @@ function scadutaofferta(id,id_richiesta,id_autista){
                                   
 								  if(localStorage.getItem("lingua")=="it"){
 								  
-								  var alertattenzione = "Attenzione"
-								  var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-								  var offertaA = "Offerta gia accettata."
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="en"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Possible network error"
-								  var offertaA = "Offer already accepted"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="fr"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-								  var offertaA = "Offre déjà acceptée"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="es"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-								  var offertaA = "Oferta ya aceptada"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  
 								  
 								  else{
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Possible network error"
-								  var offertaA = "Offer already accepted"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  
@@ -6361,39 +6494,39 @@ function prendinazione(){
                                   
 								  if(localStorage.getItem("lingua")=="it"){
 								  
-								  var alertattenzione = "Attenzione"
-								  var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-								  var offertaA = "Offerta gia accettata."
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="en"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Possible network error"
-								  var offertaA = "Offer already accepted"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="fr"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-								  var offertaA = "Offre déjà acceptée"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="es"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-								  var offertaA = "Oferta ya aceptada"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  
 								  
 								  else{
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Possible network error"
-								  var offertaA = "Offer already accepted"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  
@@ -6473,39 +6606,39 @@ function prendicitta(id){
     
 								  if(localStorage.getItem("lingua")=="it"){
 								  
-								  var alertattenzione = "Attenzione"
-								  var alerterrore = "Possibile errore di rete, riprova tra qualche minuto."
-								  var offertaA = "Offerta gia accettata."
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="en"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Possible network error"
-								  var offertaA = "Offer already accepted"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="fr"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Erreur rèseau possible, s'il vous plaît essayer à nouveau dans quelques minutes"
-								  var offertaA = "Offre déjà acceptée"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  else if(localStorage.getItem("lingua")=="es"){
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Posible error en la red, por favor intente nuevamente en unos minutos"
-								  var offertaA = "Oferta ya aceptada"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  
 								  
 								  else{
 								  
-								  var alertattenzione = "Attention"
-								  var alerterrore = "Possible network error"
-								  var offertaA = "Offer already accepted"
+								  var alertattenzione = localStorage.getItem("sessionAttenzione")
+								  var alerterrore = localStorage.getItem("sessionErrorrete")
+								  var offertaA = localStorage.getItem("sessionOffertaacc")
 								  
 								  }
 								  var citta = "";
@@ -6892,6 +7025,8 @@ function prendicittaid(id){
 															   
 															   if(results.rows.item(i).id_traduzione == "h7partenza"){
 															   h7partenza = results.rows.item(i).italiano.replace("P0011", "'");
+															   
+															   
 															   
 															   }
 															   
