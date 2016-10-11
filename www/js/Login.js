@@ -528,6 +528,7 @@ function onDeviceReady() {
 			   error: function(){
 			   $(".spinner").hide();
 			   
+			   
 			     /*navigator.notification.alert(
 											'Possibile errore di rete, riprova tra qualche minuto',  // message
 											alertDismissed,         // callback
