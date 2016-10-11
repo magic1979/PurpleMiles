@@ -42,12 +42,12 @@ function onDeviceReady() {
 	if(localStorage.getItem("lingua")=="it"){
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var erroredirete = localStorage.getItem("sessionErrorrete") //localStorage.getItem("sessionAttenzione")
-        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
-		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        var erroredirete = "Possibile errore di rete, riprova tra qualche minuto"
+        $("#password").attr("placeholder","Inserire la password");
+		$("#email").attr("placeholder","Inserire la email");
+		$("#emailreg").attr("placeholder","Inserire la email");
+		$("#recemail").attr("placeholder","Inserire la email");
+        $("#pinreg").attr("placeholder","Inserire la password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
 		
@@ -60,12 +60,12 @@ function onDeviceReady() {
     else if(localStorage.getItem("lingua")=="en"){
         
         var alertattenzione =  localStorage.getItem("sessionAttenzione")
-        var erroredirete = localStorage.getItem("sessionErrorrete")
-        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
-		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        var erroredirete = "Possible network error"
+        $("#password").attr("placeholder","Enter the password");
+		$("#email").attr("placeholder","Enter the email");
+		$("#emailreg").attr("placeholder","Enter the email");
+		$("#recemail").attr("placeholder","Enter the email");
+        $("#pinreg").attr("placeholder","Enter the password");
         $("#loginpsw").html("Password");
         $("#registrapsw").html("Password");
 		
@@ -78,12 +78,12 @@ function onDeviceReady() {
     else if(localStorage.getItem("lingua")=="fr"){
         
         var alertattenzione =  localStorage.getItem("sessionAttenzione")
-        var erroredirete = localStorage.getItem("sessionErrorrete")
-        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
-		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        var erroredirete = "possible erreur réseau"
+        $("#password").attr("placeholder", "Entrez le mot de passe");
+		$("#email").attr("placeholder","Entrez l'e-mail");
+		$("#emailreg").attr("placeholder","Entrez l'e-mail");
+		$("#recemail").attr("placeholder","Entrez l'e-mail");
+        $("#pinreg").attr("placeholder","Entrez le mot de passe");
         $("#loginpsw").html("Mot de passe");
         $("#registrapsw").html("Mot de passe");
 		
@@ -96,12 +96,12 @@ function onDeviceReady() {
     else if(localStorage.getItem("lingua")=="es"){
         
         var alertattenzione =  localStorage.getItem("sessionAttenzione")
-        var erroredirete = localStorage.getItem("sessionErrorrete")
-        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
-		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
-        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        var erroredirete = "posible error en la red"
+        $("#password").attr("placeholder", "Insertar la contrase&ntilde;a");
+		$("#email").attr("placeholder","Insertar su correo electrònico");
+		$("#emailreg").attr("placeholder","Insertar su correo electrònico");
+		$("#recemail").attr("placeholder","Insertar su correo electrònico");
+        $("#pinreg").attr("placeholder","Insertar la contraseña");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
 		
@@ -113,8 +113,8 @@ function onDeviceReady() {
     }
     else{
         var alertattenzione =  localStorage.getItem("sessionAttenzione")
-        var erroredirete = localStorage.getItem("sessionErrorrete")
-        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        var erroredirete = "Possible network error"
+        $("#password").attr("placeholder", "Contraseña");
         $("#loginpsw").html("Contrase&ntilde;a");
         $("#registrapsw").html("Contrase&ntilde;a");
 		
@@ -123,6 +123,44 @@ function onDeviceReady() {
 		$("#btnpsw").html("Forgot password?");
 		$("#btnreg").html("Register now");
     }
+	
+	// LOGIN ///
+	
+	if(localStorage.getItem("lingua")=="it"){
+                   
+      localStorage.setItem("sessionEmail","Inserire la email")
+      localStorage.setItem("sessionPassword","Inserire la password")
+	  localStorage.setItem("sessionNoPassword","Verificare la email")
+                   
+     }
+     else if(localStorage.getItem("lingua")=="en"){
+                   
+      localStorage.setItem("sessionEmail","Enter the email")
+      localStorage.setItem("sessionPassword","Enter the password")
+	  localStorage.setItem("sessionNoPassword","Please check your email")
+                   
+                   
+    }
+	else if(localStorage.getItem("lingua")=="fr"){
+		 
+	  localStorage.setItem("sessionEmail","Entrez l'e-mail")
+      localStorage.setItem("sessionPassword","Entrez le mot de passe")
+	  localStorage.setItem("sessionNoPassword","S'il vous plaît vèrifier votre e-mail")
+		 
+		 
+	 }
+	else if(localStorage.getItem("lingua")=="es"){
+		
+	   localStorage.setItem("sessionEmail","Insertar su correo electrònico")
+      localStorage.setItem("sessionPassword","Insertar la contraseña")
+	  localStorage.setItem("sessionNoPassword","Comprobar el correo electrònico")
+		
+		
+	}
+    else{
+		
+		
+   }
 	
 	
 	///////////////////////////
@@ -216,9 +254,8 @@ function onDeviceReady() {
 	//alert(document.getElementById("veicolo").value)
 	//alert(document.getElementById("citta").value)
 					
-	seleziona()
+	 seleziona()
 					
-
 	 prendimezzi2()
 					
 	 prendinazione2()
@@ -259,14 +296,19 @@ function onDeviceReady() {
 	
 	
 	// LINGUA INPUT //////
+	
+	
 	if(localStorage.getItem("lingua")=="it"){
 	  document.getElementById("lingua").value = "it"
         
-      var alertattenzione = localStorage.getItem("sessionAttenzione")
+     /* var alertattenzione = localStorage.getItem("sessionAttenzione")
       var chiudereA = localStorage.getItem("sessionChiudere")
       var spegniA = ""+localStorage.getItem("sessionSpegni")+""
-      var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
-		
+      var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""*/
+	  
+	  localStorage.setItem("sessionChiudere","Vuoi chiudere Purple Miles?")
+	  localStorage.setItem("sessionSpegni","Spegni")
+	  localStorage.getItem("sessionSannulla","Annulla")
 		
 	  var mezzilingua = "<option value='it' selected>Italiano</option><option value='en'>Inglese</option><option value='fr'>Francese</option><option value='es'>Spagnolo</option>"
       //<option value='fr'>Francese</option><option value='es'>Spagnolo</option>
@@ -276,9 +318,9 @@ function onDeviceReady() {
       document.getElementById("lingua").value = "en"
         
       var alertattenzione = localStorage.getItem("sessionAttenzione")
-      var chiudereA = localStorage.getItem("sessionChiudere")
-      var spegniA = ""+localStorage.getItem("sessionSpegni")+""
-	  var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
+	  localStorage.setItem("sessionChiudere","do you want close Purple Miles?")
+	  localStorage.setItem("sessionSpegni","Close")
+	  localStorage.getItem("sessionSannulla","Cancel")
 		
 		var mezzilingua = "<option value='en' selected>English</option><option value='it'>Italian</option><option value='fr'>French</option><option value='es'>Espanol</option>"
         //<option value='fr'>French</option><option value='es'>Espanol</option>
@@ -288,9 +330,9 @@ function onDeviceReady() {
 		document.getElementById("lingua").value = "fr"
 		
 		var alertattenzione = localStorage.getItem("sessionAttenzione")
-		var chiudereA = localStorage.getItem("sessionChiudere")
-		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
-		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
+		localStorage.setItem("sessionChiudere","Voulez-vous fermer Purple Miles?")
+	  	localStorage.setItem("sessionSpegni","fermer")
+	  	localStorage.getItem("sessionSannulla","annuler")
 		$("#password").attr("placeholder", "Mot de passe");
 		$("#loginpsw").html("Mot de passe");
 		$("#registrapsw").html("Mot de passe");
@@ -303,9 +345,9 @@ function onDeviceReady() {
         document.getElementById("lingua").value = "es"
         
         var alertattenzione = localStorage.getItem("sessionAttenzione")
-        var chiudereA = localStorage.getItem("sessionChiudere")
-        var spegniA = ""+localStorage.getItem("sessionSpegni")+""
-        var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
+		localStorage.setItem("sessionChiudere","¿Querer cerrar Purple Miles?")
+	  	localStorage.setItem("sessionSpegni","Cerra")
+	  	localStorage.getItem("sessionSannulla","Cancela")
 		
 		$("#password").attr("placeholder", "Contraseña");
 		$("#loginpsw").html("Contrase&ntilde;a");
@@ -318,9 +360,6 @@ function onDeviceReady() {
 		document.getElementById("lingua").value = "en"
 		
 		var alertattenzione = localStorage.getItem("sessionAttenzione")
-		var chiudereA = localStorage.getItem("sessionChiudere")
-		var spegniA = ""+localStorage.getItem("sessionSpegni")+""
-		var annullaA = ""+localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")+""
 		
 		var mezzilingua = "<option value='en' selected>English</option><option value='it'>Italian</option><option value='fr'>French</option><option value='es'>Espanol</option>"
 	}
@@ -336,10 +375,10 @@ function onDeviceReady() {
 			if(localStorage.getItem("pagina")=="log"){
 								  
 				navigator.notification.confirm(
-					chiudereA,  // message
+					localStorage.getItem("sessionChiudere"),  // message
 					onConfirm2,              // callback to invoke with index of button pressed
-					spegniA,            // title
-					annullaA      // buttonLabels
+					localStorage.getItem("sessionSpegni"),            // title
+					localStorage.getItem("sessionSpegni")+","+localStorage.getItem("sessionSannulla")      // buttonLabels
 				);
 								  
 			}
@@ -488,7 +527,6 @@ function onDeviceReady() {
 			   },
 			   error: function(){
 			   $(".spinner").hide();
-			   
 			   
 			     /*navigator.notification.alert(
 											'Possibile errore di rete, riprova tra qualche minuto',  // message
@@ -2147,6 +2185,96 @@ function seleziona() {
 				}
 					 
 		}
+		
+		
+		//// Etichette /////
+		
+		if(localStorage.getItem("lingua")=="it"){
+        
+        var alertattenzione = localStorage.getItem("sessionAttenzione")
+        var erroredirete = localStorage.getItem("sessionErrorrete") //localStorage.getItem("sessionAttenzione")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#loginpsw").html("Password");
+        $("#registrapsw").html("Password");
+		
+		$("#btnaccedi").html("Accedi");
+		$("#btnimp").html("Impostazioni");
+		$("#btnpsw").html("Password dimenticata?");
+		$("#btnreg").html("Registrati ora");
+        
+    }
+    else if(localStorage.getItem("lingua")=="en"){
+        
+        var alertattenzione =  localStorage.getItem("sessionAttenzione")
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#loginpsw").html("Password");
+        $("#registrapsw").html("Password");
+		
+		$("#btnaccedi").html("Log in");
+		$("#btnimp").html("Settings");
+		$("#btnpsw").html("Forgot password?");
+		$("#btnreg").html("Register now");
+        
+    }
+    else if(localStorage.getItem("lingua")=="fr"){
+        
+        var alertattenzione =  localStorage.getItem("sessionAttenzione")
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#loginpsw").html("Mot de passe");
+        $("#registrapsw").html("Mot de passe");
+		
+		$("#btnaccedi").html("Se connecter");
+		$("#btnimp").html("Paramètress");
+		$("#btnpsw").html("Mot de passe oubliè?");
+		$("#btnreg").html("Inscrivez-vous maintenant");
+        
+    }
+    else if(localStorage.getItem("lingua")=="es"){
+        
+        var alertattenzione =  localStorage.getItem("sessionAttenzione")
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+		$("#email").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#emailreg").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+		$("#recemail").attr("placeholder",""+localStorage.getItem("sessionEmail")+"");
+        $("#pinreg").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#loginpsw").html("Contrase&ntilde;a");
+        $("#registrapsw").html("Contrase&ntilde;a");
+		
+		$("#btnaccedi").html("Iniciar");
+		$("#btnimp").html("Ajustes");
+		$("#btnpsw").html("¿Contraseña olvidado?");
+		$("#btnreg").html("Regìstrese ahora");
+        
+    }
+    else{
+        var alertattenzione =  localStorage.getItem("sessionAttenzione")
+        var erroredirete = localStorage.getItem("sessionErrorrete")
+        $("#password").attr("placeholder",""+localStorage.getItem("sessionPassword")+"");
+        $("#loginpsw").html("Contrase&ntilde;a");
+        $("#registrapsw").html("Contrase&ntilde;a");
+		
+		$("#btnaccedi").html("Log in");
+		$("#btnimp").html("Settings");
+		$("#btnpsw").html("Forgot password?");
+		$("#btnreg").html("Register now");
+    }
+	
+	//// fine etichette /////
 					 
 	 }, null);
 	});
@@ -2884,45 +3012,6 @@ function onResume() {
 
 function login() {
 	
-	if(localStorage.getItem("lingua")=="it"){
-                   
-      var alertemail = ""+localStorage.getItem("sessionEmail")+"";
-      var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
-	  var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
-                   
-     }
-     else if(localStorage.getItem("lingua")=="en"){
-                   
-      var alertemail = ""+localStorage.getItem("sessionEmail")+"";
-      var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
-	  var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
-                   
-                   
-    }
-	else if(localStorage.getItem("lingua")=="fr"){
-		 
-	   var alertemail = ""+localStorage.getItem("sessionEmail")+"";
-	   var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
-	   var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
-		 
-		 
-	 }
-	else if(localStorage.getItem("lingua")=="es"){
-		
-		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
-		var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
-		var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
-		
-		
-	}
-    else{
-		
-		var alertemail = ""+localStorage.getItem("sessionEmail")+"";
-		var alertpsw = ""+localStorage.getItem("sessionPassword")+"";
-		var noemailpsw = ""+localStorage.getItem("sessionNoPassword")+"";
-		
-   }
-
     
 	var email2 = self.document.formia2.email.value;
 	var pin2 = self.document.formia2.password.value;
@@ -2930,7 +3019,7 @@ function login() {
 	if (email2 == "") {
         
 		navigator.notification.alert(
-									 alertemail,  // message
+									 localStorage.getItem("sessionEmail"),  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
@@ -2942,7 +3031,7 @@ function login() {
 	if (pin2 == "") {
         
 		navigator.notification.alert(
-									 alertpsw,  // message
+									 localStorage.getItem("sessionPassword"),  // message
 									 alertDismissed,         // callback
 									 'Password',            // title
 									 'OK'                  // buttonName
@@ -2961,7 +3050,7 @@ function login() {
 	}
 	else {
 		navigator.notification.alert(
-									 noemailpsw,  // message
+									 localStorage.getItem("sessionNoPassword"),  // message
 									 alertDismissed,         // callback
 									 'Email',            // title
 									 'OK'                  // buttonName
