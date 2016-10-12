@@ -1827,18 +1827,18 @@ function seleziona() {
 					  alertveicolo = results.rows.item(i).francese.replace("&eacute;", "ì");
 					 }
 					 if(results.rows.item(i).id_traduzione == "noemailpsw"){
-					 noemailpsw = results.rows.item(i).francese.replace("P0011", "'");
+					 noemailpsw = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 					 localStorage.setItem("sessionNoPassword",noemailpsw)
 					 }
 					 if(results.rows.item(i).id_traduzione == "errorrete"){
-					 errorrete = results.rows.item(i).francese.replace("P0011", "'");
+					 errorrete = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertnome"){
-					 alertnome = results.rows.item(i).francese.replace("P0011", "'");
+					 alertnome = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 					 localStorage.setItem("sessionNome",alertnome)
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertreg"){
-					 alertreg = results.rows.item(i).francese.replace("P0011", "'");
+					 alertreg = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 					 localStorage.setItem("sessionRegok",alertreg)
 					 }
 					 
@@ -1913,7 +1913,7 @@ function seleziona() {
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "riprovaok"){
-					 riprovaok = results.rows.item(i).francese.replace("P0011", "'").replace("&iacute;", "ì");
+					 riprovaok = results.rows.item(i).francese.replace("P0011", "'").replace("&iacute;", "ì").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionRiprovaok",riprovaok)
 					 }
 					 
@@ -1953,42 +1953,42 @@ function seleziona() {
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "recreg"){
-					 recreg = results.rows.item(i).francese.replace("P0011", "'");
+					 recreg = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionRecreg",recreg)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "rreg"){
-					 rreg = results.rows.item(i).francese.replace("P0011", "'");
+					 rreg = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionRreg",rreg)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "rpaese"){
-					 rpaese = results.rows.item(i).francese.replace("P0011", "'");
+					 rpaese = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionRpaese",rpaese)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "rreg2"){
-					 rreg2 = results.rows.item(i).francese.replace("P0011", "'");
+					 rreg2 = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionRreg2",rreg2)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "raccedi"){
-					 raccedi = results.rows.item(i).francese.replace("P0011", "'");
+					 raccedi = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionRaccedi",raccedi)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "chiudere"){
-					 chiudere = results.rows.item(i).francese.replace("P0011", "'");
+					 chiudere = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionChiudere",chiudere)
 					 }
 
 					 if(results.rows.item(i).id_traduzione == "S_annulla"){
-					 S_annulla = results.rows.item(i).francese.replace("P0011", "'");
+					 S_annulla = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionSannulla",S_annulla)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "spegni"){
-					 spegni = results.rows.item(i).francese.replace("P0011", "'");
+					 spegni = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&aacute;", "à");
 						localStorage.setItem("sessionSpegni",spegni)
 					 }
 				}
@@ -2003,11 +2003,11 @@ function seleziona() {
 					 $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
 					 
 					 if(results.rows.item(i).id_traduzione == "alertemail"){
-					 alertemail = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+					 alertemail = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&ntilde;", "ñ");
 					 localStorage.setItem("sessionEmail",alertemail)
 					 }
 					 if(results.rows.item(i).id_traduzione == "alertpsw"){
-					 alertpsw = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ");
+					 alertpsw = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 					 localStorage.setItem("sessionPassword",alertpsw)
 					 }
 					 if(results.rows.item(i).id_traduzione == "verificaemial"){
@@ -2021,7 +2021,7 @@ function seleziona() {
 						alertveicolo = results.rows.item(i).spagnolo.replace("&iacute;", "ì");
 					 }
 					 if(results.rows.item(i).id_traduzione == "noemailpsw"){
-					 noemailpsw = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ");
+					 noemailpsw = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 					 localStorage.setItem("sessionNoPassword",noemailpsw)
 					 }
 					 if(results.rows.item(i).id_traduzione == "errorrete"){
@@ -2080,22 +2080,22 @@ function seleziona() {
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "S_attenzione"){
-					 	S_attenzione = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+					 	S_attenzione = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionAttenzione",S_attenzione)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "errorrete"){
-					 S_errorrete = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 S_errorrete = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionErrorrete",S_errorrete)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "nocliente"){
-					 nocliente = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 nocliente = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionNocliente",nocliente)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "clienteok"){
-					 clienteok = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 clienteok = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionClienteok",clienteok)
 					 }
 					 
@@ -2105,17 +2105,17 @@ function seleziona() {
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "riprovaok"){
-					 riprovaok = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à");
+					 riprovaok = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionRiprovaok",riprovaok)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "recuperook"){
-					 recuperook = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+					 recuperook = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionRecuperook",recuperook)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "clientenonok"){
-					 clientenonok = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 clientenonok = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionClientenonok",clientenonok)
 					 }
 					 
@@ -2140,22 +2140,22 @@ function seleziona() {
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "recpsw"){
-					 recpsw = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 recpsw = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionRecpassword",recpsw)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "recreg"){
-					 recreg = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 recreg = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionRecreg",recreg)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "rreg"){
-					 rreg = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 rreg = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionRreg",rreg)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "rpaese"){
-					 rpaese = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 rpaese = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionRpaese",rpaese)
 					 }
 					 
@@ -2165,7 +2165,7 @@ function seleziona() {
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "raccedi"){
-					 raccedi = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 raccedi = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionRaccedi",raccedi)
 					 }
 					 
@@ -2175,12 +2175,12 @@ function seleziona() {
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "S_annulla"){
-					 S_annulla = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 S_annulla = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionSannulla",S_annulla)
 					 }
 					 
 					 if(results.rows.item(i).id_traduzione == "spegni"){
-					 spegni = results.rows.item(i).spagnolo.replace("P0011", "'");
+					 spegni = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 						localStorage.setItem("sessionSpegni",spegni)
 					 }
 				}

@@ -1390,7 +1390,7 @@ receivedEvent: function(id) {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
-								 nonrilevare = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 nonrilevare = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
 								 
 								 localStorage.setItem("sessionNonrilevare",nonrilevare)
 								 
@@ -1404,7 +1404,7 @@ receivedEvent: function(id) {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "cancmappa"){
-								 cancmappa = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 cancmappa = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
 								 
 								 localStorage.setItem("sessionCancmappa",cancmappa)
 								 
@@ -1418,21 +1418,21 @@ receivedEvent: function(id) {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "ricelaborata"){
-								 ricelaborata = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 ricelaborata = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
 								 
 								 localStorage.setItem("sessionRicelaborata",ricelaborata)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "insimporto"){
-								 insimporto = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 insimporto = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
 								 
 								 localStorage.setItem("sessionInsimporto",insimporto)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "ricannullata"){
-								 ricannullata = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 ricannullata = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
 								 
 								 localStorage.setItem("sessionRicannullata",ricannullata)
 								 
@@ -1501,7 +1501,7 @@ receivedEvent: function(id) {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "partenzaM"){
-								 partenzaM = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 partenzaM = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
                                  
                                  localStorage.setItem("sessionPartenza",partenzaM);
 								 
@@ -1515,45 +1515,45 @@ receivedEvent: function(id) {
                                  }
 								 
 								 if(results.rows.item(i).id_traduzione == "arrivoM"){
-								 arrivoM = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 arrivoM = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "distanzaM"){
-								 distanzaM = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 distanzaM = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h5arrivo"){
-								 h5arrivo = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h5arrivo = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionDestinazione5",h5arrivo)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h5partenza"){
-								 h5partenza = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h5partenza = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionPartenza5",h5partenza)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h3rispondi"){
-								 h3rispondi = results.rows.item(i).italiano.replace("P0011", "'");
+								 h3rispondi = results.rows.item(i).italiano.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionRispondi",h3rispondi)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h4confermato"){
-								 h4confermato = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h4confermato = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionConfermato5",h4confermato)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h4minuti"){
-								 h4minuti = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h4minuti = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionMinuti5",h4minuti)
 								 
@@ -1567,21 +1567,21 @@ receivedEvent: function(id) {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "gratis"){
-								 gratis = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 gratis = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionGratis5",gratis)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h4accettazione"){
-								 h4accettazione = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h4accettazione = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionAccettazione5",h4accettazione)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h4commento"){
-								 h4commento = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h4commento = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionCodici5",h4commento)
 								 
@@ -1589,28 +1589,28 @@ receivedEvent: function(id) {
 								 
 								 
 								 if(results.rows.item(i).id_traduzione == "h4quando"){
-								 h4quando = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h4quando = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionQuando5",h4quando)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h4ora"){
-								 h4ora = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h4ora = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionOra5",h4ora)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h4prezzo"){
-								 h4prezzo = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h4prezzo = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionPrezzo5",h4prezzo)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h3note"){
-								 h3note = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h3note = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionNote5",h3note)
 								 
@@ -1618,7 +1618,7 @@ receivedEvent: function(id) {
 								 
 								 
 								 if(results.rows.item(i).id_traduzione == "h4nessuna"){
-								 h4nessuna = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 h4nessuna = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionNessuna5",h4nessuna)
 								 
@@ -1627,42 +1627,42 @@ receivedEvent: function(id) {
 								 
 								 
 								 if(results.rows.item(i).id_traduzione == "errorgps"){
-								 errorgps = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 errorgps = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionErrorgps",errorgps)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
-								 nonrilevare = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 nonrilevare = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionNonrilevare",nonrilevare)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "alertend"){
-								 alertend = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&oacute;", "ò").replace("&aacute;", "à");
+								 alertend = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&oacute;", "ò").replace("&aacute;", "à").replace("&ntilde;", "ñ");
 								 
 								 localStorage.setItem("sessionAlertend",alertend)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "cancmappa"){
-								 cancmappa = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 cancmappa = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionCancmappa",cancmappa)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "modinizia"){
-								 modinizia = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 modinizia = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionModinizia",modinizia)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "ricelaborata"){
-								 ricelaborata = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&eacute;", "è");
+								 ricelaborata = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&eacute;", "è").replace("&ntilde;", "ñ").replace("&oacute;", "ò");
 								 
 								 localStorage.setItem("sessionRicelaborata",ricelaborata)
 								 

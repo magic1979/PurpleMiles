@@ -745,7 +745,7 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "h7partenza"){
-								 h7partenza = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 h7partenza = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
                                  
                                  localStorage.setItem("sessionPartenza",h7partenza)
 								 
@@ -793,7 +793,7 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "alertpartenza"){
-								 alertstart = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 alertstart = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
 								 
 								 localStorage.setItem("sessionStart",alertstart)
 								 
@@ -811,7 +811,7 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "adesso1"){
-								 $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).francese.replace("P0011", "'") + "&nbsp;");
+								 $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).francese.replace("P0011", "'") + "&nbsp;").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "datavalida"){
@@ -829,7 +829,7 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
-								 nonrilevare = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è");
+								 nonrilevare = results.rows.item(i).francese.replace("P0011", "'").replace("&eacute;", "è").replace("&eacute;", "è").replace("&eacute;", "è").replace("&iacute;", "ì");
 								 
 								 localStorage.setItem("sessionNonrilevare",nonrilevare)
 								 
@@ -1050,14 +1050,14 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "alertpartenza"){
-								 alertstart = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 alertstart = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&ntilde;", "ñ");
 								 
 								 localStorage.setItem("sessionStart",alertstart)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "alertdestinazione"){
-								 alertend = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 alertend = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&oacute;", "ò").replace("&ntilde;", "ñ");
 								 
 								 localStorage.setItem("sessionEnd",alertend)
 								 
@@ -1072,21 +1072,21 @@ function onDeviceReady() {
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "datavalida"){
-								 datavalida = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à");
+								 datavalida = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à").replace("&oacute;", "ò").replace("&ntilde;", "ñ");
 								 
 								 localStorage.setItem("sessionDatavalida",datavalida)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "orariovalido"){
-								 orariovalido = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à");
+								 orariovalido = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&aacute;", "à").replace("&oacute;", "ò").replace("&ntilde;", "ñ");
 								 
 								 localStorage.setItem("sessionOrariovalido",orariovalido)
 								 
 								 }
 								 
 								 if(results.rows.item(i).id_traduzione == "nonrilevare"){
-								 nonrilevare = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò");
+								 nonrilevare = results.rows.item(i).spagnolo.replace("P0011", "'").replace("&oacute;", "ò").replace("&oacute;", "ò").replace("&ntilde;", "ñ");
 								 
 								 localStorage.setItem("sessionNonrilevare",nonrilevare)
 								 
