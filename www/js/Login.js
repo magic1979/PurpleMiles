@@ -131,6 +131,7 @@ function onDeviceReady() {
       localStorage.setItem("sessionEmail","Inserire la email")
       localStorage.setItem("sessionPassword","Inserire la password")
 	  localStorage.setItem("sessionNoPassword","Verificare la email")
+	  localStorage.setItem("sessionNocliente","Utente non trovato")
                    
      }
      else if(localStorage.getItem("lingua")=="en"){
@@ -138,6 +139,7 @@ function onDeviceReady() {
       localStorage.setItem("sessionEmail","Enter the email")
       localStorage.setItem("sessionPassword","Enter the password")
 	  localStorage.setItem("sessionNoPassword","Please check your email")
+	  localStorage.setItem("sessionNocliente","User not found")
                    
                    
     }
@@ -146,14 +148,16 @@ function onDeviceReady() {
 	  localStorage.setItem("sessionEmail","Entrez l'e-mail")
       localStorage.setItem("sessionPassword","Entrez le mot de passe")
 	  localStorage.setItem("sessionNoPassword","S'il vous plaît vèrifier votre e-mail")
+	  localStorage.setItem("sessionNocliente","Client non trouvè")
 		 
 		 
 	 }
 	else if(localStorage.getItem("lingua")=="es"){
 		
-	   localStorage.setItem("sessionEmail","Insertar su correo electrònico")
+	  localStorage.setItem("sessionEmail","Insertar su correo electrònico")
       localStorage.setItem("sessionPassword","Insertar la contraseña")
 	  localStorage.setItem("sessionNoPassword","Comprobar el correo electrònico")
+	  localStorage.setItem("sessionNocliente","El cliente no encontrado")
 		
 		
 	}
