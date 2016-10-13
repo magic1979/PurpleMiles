@@ -370,7 +370,7 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("touchstart", "#chiudibanner", function(e){
-				   localStorage.setItem("nobanner","1")
+				   localStorage.setItem("nobanner","0")
 				   $("#bannerp").hide()
 				   
 				   e.stopImmediatePropagation();

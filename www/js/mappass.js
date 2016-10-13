@@ -1468,7 +1468,7 @@ function onDeviceReady() {
 	});
 	
 	$(document).on("touchstart", "#chiudibanner", function(e){
-				   localStorage.setItem("nobanner","1")
+				   localStorage.setItem("nobanner","0")
 				   $("#bannerp").hide()
 				   
 				   e.stopImmediatePropagation();
@@ -1510,7 +1510,7 @@ function onDeviceReady() {
 				   
 	});
 	
-	$(document).on("touchstart", "#da", function(e){
+	$(document).on("tap", "#da", function(e){
 		localStorage.setItem("dovesono", "1");
 		localStorage.setItem("destination", "0")
 		localStorage.setItem("pagebtn", "da")
@@ -2062,25 +2062,33 @@ function onDeviceReady() {
 				   
 				   
 				   if (document.getElementById("viale").value == "") {
+					   
+					
 				    navigator.notification.alert(
 												alertstart,  // message
 												alertDismissed,         // callback
 												alertattenzione,            // title
 												'OK'                  // buttonName
 												);
+												
+					$("#da").tap();
 				   
-				   return;
+				    return;
 				   }
 				   
 				   if (document.getElementById("destinazione3").value == "") {
+					   
+					   
 				    navigator.notification.alert(
 												alertend,  // message
 												alertDismissed,         // callback
 												alertattenzione,            // title
 												'OK'                  // buttonName
 												);
+												
+					$("#a1").tap();
 				   
-				   return;
+				    return;
 				   }
 				   
 
@@ -2315,7 +2323,7 @@ function onDeviceReady() {
 				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 				   });
 	
-	$(document).on("touchstart", "#a1", function(e){
+	$(document).on("tap", "#a1", function(e){
 				   localStorage.setItem("dovesono", "1");
 				   localStorage.setItem("destination", "1");
 				   localStorage.setItem("pagebtn", "a")
@@ -3003,23 +3011,31 @@ function onDeviceReady() {
 		document.getElementById("destinazione7").value = document.getElementById("destinazione").value;
 				   
 		if (document.getElementById("viale7").value == "") {
+			
+			
 		 navigator.notification.alert(
 												alertstart,  // message
 												alertDismissed,         // callback
 												alertattenzione,            // title
 												'OK'                  // buttonName
 												);
+												
+		  $("#da").tap();
 				   
 		  return;
 		}
 				   
 		if (document.getElementById("destinazione7").value == "") {
+
+			
 			navigator.notification.alert(
 				alertend,  // message
 				alertDismissed,         // callback
 				alertattenzione,            // title
 				'OK'                  // buttonName
 		);
+		
+		 	$("#a1").tap();
 				   
 			return;
 	    }
