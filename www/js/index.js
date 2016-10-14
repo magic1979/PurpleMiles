@@ -4916,7 +4916,7 @@ function timer(){
 	
 	
 	// ANDROID CHECK LINE //
-	cordova.plugins.locationAccuracy.canRequest(function(canRequest){
+	/*cordova.plugins.locationAccuracy.canRequest(function(canRequest){
 		if(canRequest){
 			cordova.plugins.locationAccuracy.request(function (success){
 			//alert("Successfully requested accuracy: "+success.message);
@@ -4933,12 +4933,11 @@ function timer(){
 						  }, 500);
 						
 						}
-						
 					}
 				}
 			}, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
 		}
-	});
+	});*/
 	////////////FINE/////////////
 	
 	
@@ -4951,11 +4950,23 @@ function timer(){
 	}
 	
 	refreshIntervalId = setInterval(function() {
+		
+	checkConnection();
 									
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 									
 	if(connectionStatus=='online'){
+									
+									// Failed to load the Google Maps
+									if (typeof google === 'object' && typeof google.maps === 'object') {
+										// Google maps loaded
+									} else {
+										
+										setTimeout(function() {
+										  resetta1(1);
+										}, 500);
+									}
 									
 									//alert("prova")
 									//playAudio('successArrivo');
@@ -6084,6 +6095,7 @@ function timer(){
 		{
 		 window.clearInterval(i);
 		}*/
+		
 									
 		setTimeout(function() {
 		  resetta1(1);
@@ -12870,6 +12882,25 @@ function chiudi22(id) {
 	
 		$("#blob").hide();
 }
+
+
+
+function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
+
 
 							  
 function prendibanner() {
