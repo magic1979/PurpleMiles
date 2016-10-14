@@ -3823,7 +3823,7 @@ function onPause() {
    }
    
    //bgGeo.start();
-   //backgroundGeolocation.start();
+   backgroundGeolocation.start();
 }
 
 
@@ -12897,8 +12897,17 @@ function checkConnection() {
     states[Connection.CELL_4G]  = 'Cell 4G connection';
     states[Connection.CELL]     = 'Cell generic connection';
     states[Connection.NONE]     = 'No network connection';
+	
+	
+	if (states[networkState] == "No network connection" || states[networkState] == "Unknown connection") {
+		
+		setTimeout(function() {
+			resetta1(1);
+		}, 1000);
+		
+	}
 
-    alert('Connection type: ' + states[networkState]);
+    //alert('Connection type: ' + states[networkState]);
 }
 
 
