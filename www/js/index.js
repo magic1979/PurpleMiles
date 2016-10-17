@@ -4262,16 +4262,12 @@ function resetta1(focus) {
 		
 		$("#loading").show();
 		
+		
 		// CONTROLLO MAPPA GOOGLE //
 		
-		if (typeof google === 'object' && typeof google.maps === 'object') {
-			// Google maps loaded
-		} else {
-					
-			setTimeout(function() {
-				resetta1(1);
-			}, 500);
-		}
+		google.maps.event.addListenerOnce(map, 'idle', function() {
+   			google.maps.event.trigger(map, 'resize');
+		});
 	
 	
 	$.ajax({
@@ -4982,6 +4978,11 @@ function timer(){
 	refreshIntervalId = setInterval(function() {
 		
 	//checkConnection();
+	
+	google.maps.event.addListenerOnce(map, 'idle', function() {
+   		google.maps.event.trigger(map, 'resize');
+	});
+	
 									
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -6003,10 +6004,10 @@ function timer(){
 												
 												setTimeout(function() {
 												  resetta1(1);
-												}, 500);
+												}, 5000);
 											}
 										   
-										    onResume();
+										    //onResume();
 										   
 										   },
 										   dataType:"jsonp"});
@@ -6817,7 +6818,7 @@ function magia2C(utente,pass) {
 					
 					setTimeout(function() {
 					  resetta1(1);
-					}, 500);
+					}, 5000);
 				}
 		   
 		   },
@@ -7265,7 +7266,7 @@ function elimina2(id_richiesta){
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   
@@ -7312,7 +7313,7 @@ function elimina3(id_richiesta){
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   
@@ -7417,7 +7418,7 @@ function cancellapos(id){
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   },
@@ -7473,7 +7474,7 @@ function cancella(id){
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 
 			}
@@ -7493,7 +7494,7 @@ function cancella(id){
 			
 			setTimeout(function() {
 			  resetta1(1);
-			}, 500);
+			}, 5000);
 		}
 	 
 	 /*navigator.notification.alert(
@@ -11267,7 +11268,7 @@ function lista5() {
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   /*navigator.notification.alert(
@@ -11277,7 +11278,7 @@ function lista5() {
 										'Ok'                  // buttonName
 										);*/
 		   
-		   onResume();
+		   //onResume();
 		   
 		   },
 		   dataType:"jsonp"});
@@ -11445,7 +11446,7 @@ function chatting(pass,id) {
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   /*navigator.notification.alert(
@@ -11620,7 +11621,7 @@ function chatting66(pass,id) {
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   /*navigator.notification.alert(
@@ -11792,7 +11793,7 @@ function chatting5(id) {
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   /*navigator.notification.alert(
@@ -12023,7 +12024,7 @@ function inviachat(id) {
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		
 		   /*navigator.notification.alert(
@@ -12154,7 +12155,7 @@ function accetta11() {
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   /*navigator.notification.alert(
@@ -12274,7 +12275,7 @@ function accetta22() {
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   /*navigator.notification.alert(
@@ -12387,7 +12388,7 @@ function accetta33() {
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   /*navigator.notification.alert(
@@ -12596,7 +12597,7 @@ function inviopasseggero(come){
 				
 				setTimeout(function() {
 				  resetta1(1);
-				}, 500);
+				}, 5000);
 			}
 		   
 		   /*navigator.notification.alert(
