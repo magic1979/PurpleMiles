@@ -4261,6 +4261,18 @@ function resetta1(focus) {
 		$("#lista").hide();
 		
 		$("#loading").show();
+		
+		// CONTROLLO MAPPA GOOGLE //
+		
+		if (typeof google === 'object' && typeof google.maps === 'object') {
+			// Google maps loaded
+		} else {
+					
+			setTimeout(function() {
+				resetta1(1);
+			}, 500);
+		}
+	
 	
 	$.ajax({
 		   type:"GET",
@@ -4600,6 +4612,15 @@ function resetta1(focus) {
 		   
 		   },
 		   error: function(){
+			   
+		   if (typeof google === 'object' && typeof google.maps === 'object') {
+					// Google maps loaded
+			} else {
+					
+				setTimeout(function() {
+					 resetta1(1);
+				}, 500);
+			}
 		   
 		   /*navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto.',  // message
@@ -4896,6 +4917,15 @@ function resetta1(focus) {
 	
         function onError3(error) {
             localStorage.setItem("geostory", "NO")
+			
+			if (typeof google === 'object' && typeof google.maps === 'object') {
+					// Google maps loaded
+			} else {
+					
+				setTimeout(function() {
+					 resetta1(1);
+				}, 500);
+			}
             
 			//window.location.href = "index.html";
         }
@@ -7164,6 +7194,15 @@ function magia2C(utente,pass) {
 	
 	function onError3(error) {
 		localStorage.setItem("geostory", "NO")
+		
+		if (typeof google === 'object' && typeof google.maps === 'object') {
+			// Google maps loaded
+		} else {
+					
+		setTimeout(function() {
+			resetta1(1);
+		}, 500);
+	}
 		
 		//window.location.href = "index.html";
 	}
