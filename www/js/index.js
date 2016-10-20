@@ -307,11 +307,11 @@ receivedEvent: function(id) {
 		
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
-			desiredAccuracy: 3,
-			stationaryRadius: 10,
-			distanceFilter: 20,
+			desiredAccuracy: 10,
+			stationaryRadius: 50,
+			distanceFilter: 50,
 			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-			interval: 30000,
+			interval: 10000,
 			fastestInterval: 5000,
 			activitiesInterval: 10000,
 			//debug: true,
@@ -322,6 +322,20 @@ receivedEvent: function(id) {
 			notificationIconSmall: 'mappointer_small'
 		});
 		
+		
+	  /*	desiredAccuracy: 10,
+      stationaryRadius: 50,
+      distanceFilter: 50,
+      locationTimeout: 30,
+      notificationTitle: 'Background tracking',
+      notificationText: 'enabled',
+      debug: true,
+      startOnBoot: false,
+      stopOnTerminate: false,
+      locationProvider: BackgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+      interval: 10000,
+      fastestInterval: 5000,
+      activitiesInterval: 10000,*/
 		
 		/////// FINE GEO TRAKER /////////
 		
@@ -13136,7 +13150,6 @@ function prendibanner() {
 															
 												var ref = window.open(''+item.link+'', '_system', 'location=no');
 															
-															
 												e.stopImmediatePropagation();
 															
 												e.preventDefault();
@@ -13150,7 +13163,6 @@ function prendibanner() {
 										}
 											
 									    });
-
 									 
 									 },
 									 error: function(){

@@ -3584,11 +3584,11 @@ function onDeviceReady() {
 		
 		
 		backgroundGeolocation.configure(callbackFn, failureFn, {
-			desiredAccuracy: 3,
-			stationaryRadius: 10,
-			distanceFilter: 20,
+			desiredAccuracy: 10,
+			stationaryRadius: 50,
+			distanceFilter: 50,
 			locationProvider: backgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-			interval: 30000,
+			interval: 10000,
 			fastestInterval: 5000,
 			activitiesInterval: 10000,
 			//debug: true,
