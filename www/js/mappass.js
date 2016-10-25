@@ -3561,7 +3561,7 @@ function onDeviceReady() {
 			
 			$.ajax({
 				   type:"GET",
-				   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&trakka=1",
+				   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&trakka=1&bck=1",
 				   contentType: "application/json",
 				   timeout: 7000,
 				   jsonp: 'callback',
@@ -4519,7 +4519,7 @@ function controllaofferte(){
     $("#spinner").show();
     $.ajax({
            type:"GET",
-           url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"",
+           url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat") +"&longitudine="+ localStorage.getItem("lng") +"&bck=0",
            contentType: "application/json",
            //data: {ID: "Lazio"}, LIMIT 10
            timeout: 7000,
@@ -4618,7 +4618,7 @@ function vediofferte(){
 
 	$.ajax({
 		   type:"GET",
-		   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat3") +"&longitudine="+ localStorage.getItem("lng3") +"&trakka=1",
+		   url:"http://purplemiles.com/www2/check_richiesta_passeggeroV3.php?email="+ localStorage.getItem("emailpass") +"&id_passeggero="+ localStorage.getItem("id_pass") +"&latitudine="+ localStorage.getItem("lat3") +"&longitudine="+ localStorage.getItem("lng3") +"&trakka=1&bck=0",
 		   contentType: "application/json",
 		   //data: {ID: "Lazio"}, LIMIT 10
 		   timeout: 7000,
