@@ -12,6 +12,72 @@ function onDeviceReady() {
 		
 	}
 	
+	openFB.init({appId: '537161096479495'});
+	
+
+	function loginFacebook() {
+		
+		openFB.login(
+					 function(response) {
+					 if(response.status === 'connected') {
+					 //alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
+					 getInfo()
+					 } else {
+					 //alert('Facebook login failed: ' + response.error);
+					 navigator.notification.alert(
+												  'Login Facebook fallita, riprova in seguito o fai login con Ridy',  // message
+												  alertDismissed,         // callback
+												  'Login Facebook',            // title
+												  'OK'                  // buttonName
+												  );
+					 }
+					 }, {scope: 'email,public_profile,user_friends'});
+	}
+	
+	
+	function getInfo() {
+		
+		openFB.api({
+				   path: '/me',
+				   success: function(data) {
+				   console.log(JSON.stringify(data));
+				   
+				   //alert(data.name);
+				   //alert(data.email);
+				   
+				   //alert('http://graph.facebook.com/' + data.id + '/picture?type=small');
+				   //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+				   
+				   
+				   LoginFacebookVera(data.email,data.name)
+				   
+				   },
+				   
+				   error: errorHandler});
+	}
+	
+	
+	function errorHandler(error) {
+		alert(error.message);
+	}
+	
+	
+	
+	function logout() {
+		//openFB.logout(
+					  //function() {
+					  
+					  //},
+					  
+					  //errorHandler);
+		
+		localStorage.setItem("email", "");
+		localStorage.setItem("emailpass", "");
+		localStorage.setItem("patente", "");
+		
+		var ref = window.open('https://m.facebook.com/', '_blank', 'location=no');
+	}
+	
 	
 	// ANDROID CHECK POSITION //
 	
@@ -52,6 +118,7 @@ function onDeviceReady() {
         $("#registrapsw").html("Password");
 		
 		$("#btnaccedi").html("Accedi");
+		$("#btnaccedifb").html("Accedi con facebook");
 		$("#btnimp").html("Impostazioni");
 		$("#btnpsw").html("Password dimenticata?");
 		$("#btnreg").html("Registrati ora");
@@ -70,6 +137,7 @@ function onDeviceReady() {
         $("#registrapsw").html("Password");
 		
 		$("#btnaccedi").html("Log in");
+		$("#btnaccedifb").html("Log in Facebook");
 		$("#btnimp").html("Settings");
 		$("#btnpsw").html("Forgot password?");
 		$("#btnreg").html("Register now");
@@ -88,6 +156,7 @@ function onDeviceReady() {
         $("#registrapsw").html("Mot de passe");
 		
 		$("#btnaccedi").html("Se connecter");
+		$("#btnaccedifb").html("Se connecter Facebook");
 		$("#btnimp").html("Paramètress");
 		$("#btnpsw").html("Mot de passe oubliè?");
 		$("#btnreg").html("Inscrivez-vous maintenant");
@@ -106,6 +175,7 @@ function onDeviceReady() {
         $("#registrapsw").html("Contrase&ntilde;a");
 		
 		$("#btnaccedi").html("Iniciar");
+		$("#btnaccedifb").html("Iniciar Facebook");
 		$("#btnimp").html("Ajustes");
 		$("#btnpsw").html("¿Contraseña olvidado?");
 		$("#btnreg").html("Regìstrese ahora");
@@ -604,6 +674,36 @@ function onDeviceReady() {
 				   
 				   }
 
+				   
+		e.stopImmediatePropagation();
+				   
+		e.preventDefault();
+				   
+		return false;
+				   
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	$(document).on("tap", "#accedifb", function(e){
+				   
+		loginFacebook()
+				   
+				   
+		e.stopImmediatePropagation();
+				   
+		e.preventDefault();
+				   
+		return false;
+				   
+		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				   
+	});
+	
+	$(document).on("tap", "#logoutfacebook", function(e){
+				   
+		logout()
+				   
 				   
 		e.stopImmediatePropagation();
 				   
@@ -1529,6 +1629,11 @@ function seleziona() {
 					 
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "btnaccedifb"){
+					 $("#btnaccedifb").html(""+results.rows.item(i).italiano.replace("P0011", "'")+"");
+					 
+					 }
+					 
 					 if(results.rows.item(i).id_traduzione == "btnpsw"){
 					 $("#btnpsw").html(""+results.rows.item(i).italiano.replace("P0011", "'")+"");
 					 
@@ -1735,6 +1840,11 @@ function seleziona() {
 					 
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "btnaccedifb"){
+					 $("#btnaccedifb").html(""+results.rows.item(i).inglese.replace("P0011", "'")+"");
+					 
+					 }
+					 
 					 if(results.rows.item(i).id_traduzione == "btnpsw"){
 					 $("#btnpsw").html(""+results.rows.item(i).inglese.replace("P0011", "'")+"");
 					 
@@ -1936,6 +2046,11 @@ function seleziona() {
 					 
 					 }
 					 
+					 if(results.rows.item(i).id_traduzione == "btnaccedifb"){
+					 $("#btnaccedifb").html(""+results.rows.item(i).francese.replace("P0011", "'")+"");
+					 
+					 }
+					 
 					 if(results.rows.item(i).id_traduzione == "btnpsw"){
 					 $("#btnpsw").html(""+results.rows.item(i).francese.replace("P0011", "'")+"");
 					 
@@ -2125,6 +2240,11 @@ function seleziona() {
 					 
 					 if(results.rows.item(i).id_traduzione == "btnaccedi"){
 					 $("#btnaccedi").html(""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
+					 
+					 }
+					 
+					 if(results.rows.item(i).id_traduzione == "btnaccedifb"){
+					 $("#btnaccedifb").html(""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
 					 
 					 }
 					 
@@ -3239,6 +3359,134 @@ function LoginVera(email,pin){
 		   },
 		   dataType:"jsonp"});
 }
+
+
+function LoginFacebookVera(email,nome){
+	
+	if(localStorage.getItem("lingua")=="it"){
+		
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var Nocliente = localStorage.getItem("sessionNocliente")
+		
+	}
+	else if(localStorage.getItem("lingua")=="en"){
+		
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var Nocliente = localStorage.getItem("sessionNocliente")
+		
+		
+	}
+	else if(localStorage.getItem("lingua")=="fr"){
+		
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var Nocliente = localStorage.getItem("sessionNocliente")
+		
+		
+	}
+	else if(localStorage.getItem("lingua")=="es"){
+		
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var regok = localStorage.getItem("sessionRegok")
+		var Nocliente = localStorage.getItem("sessionNocliente")
+		
+	}
+	else{
+		var alertattenzione = localStorage.getItem("sessionAttenzione")
+		var erroredirete = localStorage.getItem("sessionErrorrete")
+		var Nocliente = localStorage.getItem("sessionNocliente")
+	}
+	
+	var lat = localStorage.getItem("lat");
+	var lng = localStorage.getItem("lng");
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://purplemiles.com/www2/check_facebook.php?email="+ email +"&nome="+ nome +"&lat="+ lat +"&lon="+ lng +"",
+		   contentType: "application/json",
+		   //data: {email:email,pin:pin},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  //alert(item.Token);
+				  
+				  if (item.Token == 1){
+				  localStorage.setItem("email", email);
+				  localStorage.setItem("email2", email);
+				  localStorage.setItem("emailpass", email);
+				  localStorage.setItem("id_autista", item.id_autista);
+				  
+				  var contanick = item.nick.length;
+				  var nuovonick;
+				  
+				  if(contanick <= 12){
+				  
+				  localStorage.setItem("nick", item.nick);
+				  
+				  }
+				  else{
+				  nuovonick = item.nick.slice(0,10)
+				  nuovonick = nuovonick + ".."
+				  localStorage.setItem("nick", nuovonick);
+				  }
+				  
+				  localStorage.setItem("id_pass", item.id_passeggero);
+				  localStorage.setItem("nickpass", item.nick);
+				  
+				  localStorage.setItem("stelleautista", item.voto_autista);
+				  localStorage.setItem("stellepass", item.voto_passeggero);
+				  localStorage.setItem("md5", item.md5);
+				  localStorage.setItem("perc_autista", item.perc_aut);
+				  localStorage.setItem("perc_pass", item.perc_pass);
+				  localStorage.setItem("id_utente", item.id_utente);
+				  //localStorage.setItem("pin", pin);
+				  
+				  
+				  if(localStorage.getItem("caricatodb")!="1"){
+					agg()
+					$("#impostazioni").tap();
+				  }
+				  else{
+				  
+					window.location.href = "index.html";
+				  
+				  }
+				  
+				  
+				  }
+				  else{
+				   navigator.notification.alert(
+											   Nocliente,  // message
+											   alertDismissed,         // callback
+											   alertattenzione,            // title
+											   'Ok'                  // buttonName@
+											   );
+				  }
+				});
+		   
+		   $(".spinner").hide();
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   navigator.notification.alert(
+										errorrete,  // message
+										alertDismissed,         // callback
+										alertattenzione,            // title
+										'Done'                  // buttonName
+										);
+		   
+		   },
+		   dataType:"jsonp"});
+}
+
 
 
 function iscriviti(){
