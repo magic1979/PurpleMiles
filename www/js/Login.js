@@ -1320,7 +1320,7 @@ function onDeviceReady() {
 			
 			$(".spinner").hide();
 			
-			document.getElementById("email").value = localStorage.getItem("email2")
+			//document.getElementById("email").value = localStorage.getItem("email2")
 		
 			
 			var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 10000, enableHighAccuracy: true, maximumAge: 0 });
