@@ -83,27 +83,20 @@ receivedEvent: function(id) {
 	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
 	window.plugins.PushbotsPlugin.on("registered", function(token){
-		console.log(token);
-	});
-
-
-	//Get device token
-	window.plugins.PushbotsPlugin.getRegistrationId(function(token){
-    	console.log("Registration Id:" + token);
-		
-		testa (token)
+		//console.log(token);
+		alert(token)
 	});
 
 
 	
-	function testa (testo) {
+	function testa(testo) {
 		
 		
 		setTimeout (function(){
 		
 		$.ajax({
 			   type:"GET",
-			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+testo+"&platform=android",
+			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+localStorage.getItem("Token")+"&platform=android",
 			   //data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
 			   contentType: "application/json",
 			   json: 'callback',
@@ -114,9 +107,8 @@ receivedEvent: function(id) {
 			   $.each(result, function(i,item){
 			   
 			     setTimeout (function(){
-					localStorage.setItem("Token", testo);
-					//alert(testo);
-				}, 500);
+					alert(localStorage.getItem("Token"));
+				 }, 500);
 			   
 			   });
 			   
@@ -132,6 +124,21 @@ receivedEvent: function(id) {
 		
 		
 	}
+	
+	
+	
+	setTimeout (function(){
+
+	    //Get device token
+	    window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+    	//console.log("Registration Id:" + token);
+		  localStorage.setItem("Token", token);
+		  testa()
+		  //regToken()
+		  
+	    });
+						
+	}, 2000);
 	
 	
 /*
