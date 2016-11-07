@@ -89,7 +89,7 @@ receivedEvent: function(id) {
 
 
 	
-	function testa(testo) {
+	function testa() {
 		
 		
 		setTimeout (function(){
