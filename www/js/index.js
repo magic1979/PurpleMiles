@@ -61,7 +61,7 @@ receivedEvent: function(id) {
     successHandler,
     errorHandler,
     {
-        "senderID":"793349777727",
+        "senderID":"239377205014",
         "ecb":"onNotification"
     });	// required!
 	//}
