@@ -83,35 +83,25 @@ receivedEvent: function(id) {
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	if(PushbotsPlugin.isiOS()){
-		PushbotsPlugin.initializeiOS("5820b7164a9efa81998b4567");
-	}
-	if(PushbotsPlugin.isAndroid()){
-		PushbotsPlugin.initializeAndroid("5820b7164a9efa81998b4567", "239377205014");
-	}
+	window.cordova.plugins.firebase.messaging.onMessage(function(payload) {
+    	console.log("New FCM message: ", payload);
+	});
 	
 	
-	setTimeout (function(){
-						
-		PushbotsPlugin.getToken(function(token){
-			
-			localStorage.setItem("Token", token);
-
-			testa()
-								
-		});
-				
-	}, 2000);
-	
+	window.cordova.plugins.firebase.messaging.onTokenRefresh(function(token) {
+    	alert("Got device token: ", token);
+		
+		testa(token)
+	});
 	
 
-	function testa() {
+	function testa(testo) {
 		
 		setTimeout (function(){
 		
 		$.ajax({
 			   type:"GET",
-			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+localStorage.getItem("Token")+"&platform=android",
+			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+testo+"&platform=android",
 			   //data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
 			   contentType: "application/json",
 			   json: 'callback',
