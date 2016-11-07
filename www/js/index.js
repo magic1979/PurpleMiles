@@ -50,7 +50,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	pushNotification = window.plugins.pushNotification;
+	/*pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -77,26 +77,41 @@ receivedEvent: function(id) {
 	function errorHandler (error) {
 
 	}
-	
+	*/
 	
 	
 	//pushbots 
-	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	window.plugins.PushbotsPlugin.on("registered", function(token){
-		alert(token)
-		testa(result);
-	});
+	if(PushbotsPlugin.isiOS()){
+		PushbotsPlugin.initializeiOS("5820b7164a9efa81998b4567");
+	}
+	if(PushbotsPlugin.isAndroid()){
+		PushbotsPlugin.initializeAndroid("5820b7164a9efa81998b4567", "239377205014");
+	}
+	
+	
+	setTimeout (function(){
+						
+		PushbotsPlugin.getToken(function(token){
+			
+			localStorage.setItem("Token", token);
+
+			testa()
+								
+		});
+				
+	}, 2000);
 	
 	
 
-	function testa(testo) {
+	function testa() {
 		
 		setTimeout (function(){
 		
 		$.ajax({
 			   type:"GET",
-			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+testo+"&platform=android",
+			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+localStorage.getItem("Token")+"&platform=android",
 			   //data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
 			   contentType: "application/json",
 			   json: 'callback',
@@ -124,15 +139,15 @@ receivedEvent: function(id) {
 		
 	}
 	
-	
+	/*
 	window.plugins.PushbotsPlugin.getRegistrationId(function(token){
    	 alert("Registration Id:" + token);
 	});
+	*/
 	
 	
 	
-	
-
+/*
 function onNotification(e) {
 	
 
@@ -186,7 +201,7 @@ function onNotification(e) {
     break;
   }
 }
-
+*/
 	
 	////////// TASTIERA ///////////
 	
