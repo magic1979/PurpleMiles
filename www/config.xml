@@ -131,7 +131,7 @@
 		
 		<plugin name="cordova-plugin-pushplugin" source="npm" />
 		
-		<gap:plugin name="pushbots-cordova-plugin" version="1.3.6" source="npm" />
+		<gap:plugin name="pushbots-cordova-plugin" spec="^1.3.6" source="npm" />
 		
 		
 		<gap:config-file platform="android" parent="/manifest" mode="add" xmlns:android="http://schemas.android.com/apk/res/android">
