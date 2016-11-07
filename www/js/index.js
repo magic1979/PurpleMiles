@@ -70,7 +70,7 @@ receivedEvent: function(id) {
 	
 	function successHandler (result) {
 
-		testa(result);
+		//testa(result);
 	}
 	
 	
@@ -85,6 +85,7 @@ receivedEvent: function(id) {
 	
 	window.plugins.PushbotsPlugin.on("registered", function(token){
 		alert(token)
+		testa(result);
 	});
 	
 	
@@ -106,7 +107,7 @@ receivedEvent: function(id) {
 			   $.each(result, function(i,item){
 			   
 			     setTimeout (function(){
-					alert(localStorage.getItem("Token"));
+					//alert(localStorage.getItem("Token"));
 				 }, 500);
 			   
 			   });
@@ -122,6 +123,11 @@ receivedEvent: function(id) {
 		}, 500);
 		
 	}
+	
+	
+	window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+   	 alert("Registration Id:" + token);
+	});
 	
 	
 	
