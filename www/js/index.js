@@ -50,7 +50,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	/*pushNotification = window.plugins.pushNotification;
+	pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -73,56 +73,21 @@ receivedEvent: function(id) {
 		testa(result);
 	}
 	
+	
 	function errorHandler (error) {
 
 	}
 	
-	*/
 	
 	
-	
-	/* pushbots 
+	//pushbots 
 	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
 	window.plugins.PushbotsPlugin.on("registered", function(token){
 		alert(token)
 	});
-	*/
-	
-	setTimeout (function(){
-		
-		FCMPlugin.getToken(
-		  function(token){
-			alert(token);
-			testa(token)
-		  },
-		  function(err){
-			console.log('error retrieving token: ' + err);
-		  }
-		)
-		
-					
-	}, 2000);
 	
 	
-	FCMPlugin.onNotification(
-	  function(data){
-		if(data.wasTapped){
-		  //Notification was received on device tray and tapped by the user. 
-		  alert( JSON.stringify(data) );
-		}else{
-		  //Notification was received in foreground. Maybe the user needs to be notified. 
-		  alert( JSON.stringify(data) );
-		}
-	  },
-	  function(msg){
-		console.log('onNotification callback successfully registered: ' + msg);
-	  },
-	  function(err){
-		console.log('Error registering onNotification callback: ' + err);
-	  }
-	);
-
 
 	function testa(testo) {
 		
@@ -161,7 +126,7 @@ receivedEvent: function(id) {
 	
 	
 	
-/*
+
 function onNotification(e) {
 	
 
@@ -215,7 +180,7 @@ function onNotification(e) {
     break;
   }
 }
-*/
+
 	
 	////////// TASTIERA ///////////
 	
