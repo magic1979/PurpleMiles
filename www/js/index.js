@@ -50,65 +50,60 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	pushNotification = window.plugins.pushNotification;
-	
-	/*if (device.platform == 'android' || device.platform == 'Android' ||
-		device.platform == 'amazon-fireos' ) {
-		pushNotification.register(successHandler, errorHandler, {"senderID":"12250132047","ecb":"onNotification"});		// required!
-	} else {*/
-	
+	/*pushNotification = window.plugins.pushNotification;
+
 	pushNotification.register(
     successHandler,
     errorHandler,
     {
         "senderID":"239377205014",
         "ecb":"onNotification"
-    });	// required!
-	//}
+    });	
+
 	
 	function tokenHandler (result) {
-		//$("#app-status-ul").append('<li>token: '+ result +'</li>');
-		// Your iOS push server needs to know the token before it can push to this device
 		
 		testa(result);
-		//if (localStorage.getItem("Token") === null || typeof(localStorage.getItem("Token")) == 'undefined' || localStorage.getItem("Token")=="null") {
-			
-			//return;
-		//}
-		//else
-		//{
-			
-		
-		//}
-
 		
 	}
 	
 	
 	function successHandler (result) {
-		//$("#app-status-ul").append('<li>success:'+ result +'</li>');
-		
-		//alert('result = ' + result);
+
 		testa(result);
 	}
 	
 	function errorHandler (error) {
-		//$("#app-status-ul").append('<li>error:'+ error +'</li>');
-		
-		//alert('result = ' + error);
+
 	}
+	
+	*/
+	
+	
+	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	
+	window.plugins.PushbotsPlugin.on("registered", function(token){
+		console.log(token);
+	});
+
+
+	//Get device token
+	window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+    	console.log("Registration Id:" + token);
+		
+		testa (token)
+	});
+
+
 	
 	function testa (testo) {
 		
 		
 		setTimeout (function(){
-					
-		//alert("http://www.msop.it/rides/Check_RegToken.asp?email="+ localStorage.getItem("email") +"&token="+ testo +"&platform=ios")
-		//?email="+ localStorage.getItem("email") +"&token="+ testo +"&platform=ios
 		
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/rides/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+testo+"&platform=android",
+			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+testo+"&platform=android",
 			   //data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
 			   contentType: "application/json",
 			   json: 'callback',
@@ -139,8 +134,8 @@ receivedEvent: function(id) {
 	}
 	
 	
-	function onNotification(e) {
-    //$("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+/*
+function onNotification(e) {
 	
 
     switch( e.event )
@@ -148,10 +143,7 @@ receivedEvent: function(id) {
     case 'registered':
         if ( e.regid.length > 0 )
         {
-            //$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
-            // Your GCM push server needs to know the regID before it can push to this device
-            // here is where you might want to send it the regID for later use.
-            //console.log("regID = " + e.regid);
+
 			testa (e.regid)
         }
     break;
@@ -183,26 +175,20 @@ receivedEvent: function(id) {
             }
         }
 
-       //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
-           //Only works for GCM
-       //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
-       //Only works on Amazon Fire OS
-       //$status.append('<li>MESSAGE -> TIME: ' + e.payload.timeStamp + '</li>');
-	   
 		playAudioA('successSound');
     break;
 
     case 'error':
-        //$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+
     break;
 
     default:
-        //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+
 		playAudioA('successSound');
     break;
   }
 }
-	
+*/
 	
 	////////// TASTIERA ///////////
 	
