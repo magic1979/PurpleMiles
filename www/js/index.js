@@ -47,6 +47,161 @@ receivedEvent: function(id) {
 	
 	//// PUSH //////
 	
+	var pushNotification;
+	var token
+	
+	pushNotification = window.plugins.pushNotification;
+	
+	/*if (device.platform == 'android' || device.platform == 'Android' ||
+		device.platform == 'amazon-fireos' ) {
+		pushNotification.register(successHandler, errorHandler, {"senderID":"12250132047","ecb":"onNotification"});		// required!
+	} else {*/
+	
+	pushNotification.register(
+    successHandler,
+    errorHandler,
+    {
+        "senderID":"410529288817",
+        "ecb":"onNotification"
+    });	// required!
+	//}
+	
+	function tokenHandler (result) {
+		//$("#app-status-ul").append('<li>token: '+ result +'</li>');
+		// Your iOS push server needs to know the token before it can push to this device
+		
+		testa(result);
+		//if (localStorage.getItem("Token") === null || typeof(localStorage.getItem("Token")) == 'undefined' || localStorage.getItem("Token")=="null") {
+			
+			//return;
+		//}
+		//else
+		//{
+			
+		
+		//}
+
+		
+	}
+	
+	
+	function successHandler (result) {
+		//$("#app-status-ul").append('<li>success:'+ result +'</li>');
+		
+		//alert('result = ' + result);
+		testa(result);
+	}
+	
+	function errorHandler (error) {
+		//$("#app-status-ul").append('<li>error:'+ error +'</li>');
+		
+		//alert('result = ' + error);
+	}
+	
+	function testa (testo) {
+		
+		
+		setTimeout (function(){
+					
+		//alert("http://www.msop.it/rides/Check_RegToken.asp?email="+ localStorage.getItem("email") +"&token="+ testo +"&platform=ios")
+		//?email="+ localStorage.getItem("email") +"&token="+ testo +"&platform=ios
+		
+		$.ajax({
+			   type:"GET",
+			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+testo+"&platform=android",
+			   //data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
+			   contentType: "application/json",
+			   json: 'callback',
+			   timeout: 7000,
+			   crossDomain: true,
+			   success:function(result){
+			   
+			   $.each(result, function(i,item){
+			   
+			     setTimeout (function(){
+					localStorage.setItem("Token", testo);
+					//alert(testo);
+				}, 500);
+			   
+			   });
+			   
+			   },
+			   error: function(){
+			   
+				 //alert("No")
+			   
+			   },
+			   dataType:"json"});
+					
+		}, 500);
+		
+		
+	}
+	
+	
+	function onNotification(e) {
+    //$("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+	
+
+    switch( e.event )
+    {
+    case 'registered':
+        if ( e.regid.length > 0 )
+        {
+            //$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+            // Your GCM push server needs to know the regID before it can push to this device
+            // here is where you might want to send it the regID for later use.
+            //console.log("regID = " + e.regid);
+			testa (e.regid)
+        }
+    break;
+
+    case 'message':
+        // if this flag is set, this notification happened while we were in the foreground.
+        // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+        if ( e.foreground )
+        {
+            //$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+
+            // on Android soundname is outside the payload.
+            // On Amazon FireOS all custom attributes are contained within payload
+            var soundfile = e.soundname || e.payload.sound;
+            // if the notification contains a soundname, play it.
+			playAudioA('successSound');
+        }
+        else
+        {  // otherwise we were launched because the user touched a notification in the notification tray.
+            if ( e.coldstart )
+            {
+                //$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+				playAudioA('successSound');
+            }
+            else
+            {
+                //$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+				playAudioA('successSound');
+            }
+        }
+
+       //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+           //Only works for GCM
+       //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+       //Only works on Amazon Fire OS
+       //$status.append('<li>MESSAGE -> TIME: ' + e.payload.timeStamp + '</li>');
+	   
+		playAudioA('successSound');
+    break;
+
+    case 'error':
+        //$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+    break;
+
+    default:
+        //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+		playAudioA('successSound');
+    break;
+  }
+}
 	
 	
 	////////// TASTIERA ///////////
