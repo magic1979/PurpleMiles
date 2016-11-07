@@ -91,26 +91,40 @@ receivedEvent: function(id) {
 	
 	setTimeout (function(){
 		
-		window.FirebasePlugin.getToken(function(token) {
-    		// save this server-side and use it to push notifications to this device
+		FCMPlugin.getToken(
+		  function(token){
 			alert(token);
-			testa(testo)
-		}, function(error) {
-			console.error(error);
-		});
+			testa(token)
+		  },
+		  function(err){
+			console.log('error retrieving token: ' + err);
+		  }
+		)
 		
 					
 	}, 2000);
 	
 	
-	window.FirebasePlugin.onNotificationOpen(function(notification) {
-		alert(notification);
-	}, function(error) {
-		//console.error(error);
-	});
+	FCMPlugin.onNotification(
+	  function(data){
+		if(data.wasTapped){
+		  //Notification was received on device tray and tapped by the user. 
+		  alert( JSON.stringify(data) );
+		}else{
+		  //Notification was received in foreground. Maybe the user needs to be notified. 
+		  alert( JSON.stringify(data) );
+		}
+	  },
+	  function(msg){
+		console.log('onNotification callback successfully registered: ' + msg);
+	  },
+	  function(err){
+		console.log('Error registering onNotification callback: ' + err);
+	  }
+	);
+
 
 	function testa(testo) {
-		
 		
 		setTimeout (function(){
 		
