@@ -80,23 +80,57 @@ receivedEvent: function(id) {
 	*/
 	
 	
+	
+	/* pushbots 
 	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
 	window.plugins.PushbotsPlugin.on("registered", function(token){
-		//console.log(token);
 		alert(token)
 	});
-
-
+	*/
 	
-	function testa() {
+	setTimeout (function(){
+		
+		FCMPlugin.getToken(
+		  function(token){
+			alert(token);
+			testa(testo)
+		  },
+		  function(err){
+			console.log('error retrieving token: ' + err);
+		  }
+		)
+		
+					
+	}, 2000);
+	
+	
+	FCMPlugin.onNotification(
+	  function(data){
+		if(data.wasTapped){
+		  //Notification was received on device tray and tapped by the user.
+		  alert( JSON.stringify(data) );
+		}else{
+		  //Notification was received in foreground. Maybe the user needs to be notified.
+		  alert( JSON.stringify(data) );
+		}
+	  },
+	  function(msg){
+		console.log('onNotification callback successfully registered: ' + msg);
+	  },
+	  function(err){
+		console.log('Error registering onNotification callback: ' + err);
+	  }
+	);
+
+	function testa(testo) {
 		
 		
 		setTimeout (function(){
 		
 		$.ajax({
 			   type:"GET",
-			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+localStorage.getItem("Token")+"&platform=android",
+			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+testo+"&platform=android",
 			   //data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
 			   contentType: "application/json",
 			   json: 'callback',
@@ -122,23 +156,9 @@ receivedEvent: function(id) {
 					
 		}, 500);
 		
-		
 	}
 	
 	
-	
-	setTimeout (function(){
-
-	    //Get device token
-	    window.plugins.PushbotsPlugin.getRegistrationId(function(token){
-    	//console.log("Registration Id:" + token);
-		  localStorage.setItem("Token", token);
-		  testa()
-		  //regToken()
-		  
-	    });
-						
-	}, 2000);
 	
 	
 /*

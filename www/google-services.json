@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "239377205014",
+    "project_id": "firebase-purplemiles"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239377205014:android:7d368ca8ea878e56",
+        "android_client_info": {
+          "package_name": "it.purplemiles"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn7QFtVCRnTp14yTUv_S4ON9F1nCh0fIY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
