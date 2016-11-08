@@ -165,7 +165,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	/*pushNotification = window.plugins.pushNotification;
+	pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -185,50 +185,17 @@ receivedEvent: function(id) {
 	
 	function successHandler (result) {
 
-		//testa(result);
+		testa(result);
 	}
 	
 	
 	function errorHandler (error) {
 
-	}*/
+	}
 	
 	
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
-	
-	var push = PushNotification.init({
-    android: {
-        senderID: "239377205014"
-    },
-    browser: {
-        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-    },
-    ios: {
-        alert: "true",
-        badge: "true",
-        sound: "true"
-    },
-    windows: {}
-	});
-	
-	push.on('registration', function(data) {
-		// data.registrationId
-		testa(data.registrationId)
-	});
-	
-	push.on('notification', function(data) {
-		// data.message,
-		// data.title,
-		// data.count,
-		// data.sound,
-		// data.image,
-		// data.additionalData
-	});
-	
-	push.on('error', function(e) {
-		// e.message
-	});
 	
 
 	function testa(testo) {
