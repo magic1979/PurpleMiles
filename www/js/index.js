@@ -82,7 +82,7 @@ receivedEvent: function(id) {
 	//pushbots 
 	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	window.plugins.PushbotsPlugin.on("registered", function(token){
+	PushbotsPlugin.on("registered", function(token){
 		
 		testa(token)
 		
@@ -99,7 +99,7 @@ receivedEvent: function(id) {
 	setTimeout (function(){
 
 		//Get device token
-		window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+		PushbotsPlugin.getRegistrationId(function(token){
 			
 			navigator.notification.alert(
 			   token,  // message
