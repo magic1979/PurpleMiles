@@ -165,7 +165,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	pushNotification = window.plugins.pushNotification;
+	/*pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -191,11 +191,35 @@ receivedEvent: function(id) {
 	
 	function errorHandler (error) {
 
-	}
+	}*/
 	
 	
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	
+	var push = PushNotification.init({ "android": {"senderID": "239377205014"},
+         "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+ 
+    push.on('registration', function(data) {
+        // data.registrationId 
+		
+		alert(data.registrationId)
+		
+		testa(data.registrationId)
+    });
+ 
+    push.on('notification', function(data) {
+        // data.message, 
+        // data.title, 
+        // data.count, 
+        // data.sound, 
+        // data.image, 
+        // data.additionalData 
+    });
+ 
+    push.on('error', function(e) {
+        // e.message 
+    });
 	
 
 	function testa(testo) {
