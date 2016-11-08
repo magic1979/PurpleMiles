@@ -80,17 +80,25 @@ receivedEvent: function(id) {
 	
 	
 	//pushbots 
-	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	var Pushbots = PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	window.plugins.PushbotsPlugin.on("registered", function(token){
+		console.log(token);
+		alert(token);
+		
+		testa(token)
+	});
+	
 	
 	setTimeout (function(){
-		Pushbots.on("registered", function(token){
-			//console.log(token);
-			localStorage.setItem("Token", token);
-			testa(token)
+
+		//Get device token
+		window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+    		alert("Registration Id:" + token);
 		});
 	}, 2000);
+	
+	
 
 	function testa(testo) {
 		
@@ -128,10 +136,6 @@ receivedEvent: function(id) {
 		
 	}
 	
-	Pushbots.getRegistrationId(function(token){
-    	console.log("Registration Id:" + token);
-		alert("Registration Id:" + token)
-	});
 	
 	
 /*
