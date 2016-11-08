@@ -149,7 +149,7 @@ onDeviceReady: function() {
 		
 		localStorage.setItem("token1",token)
 		testa(token);
-	});*/
+	});
 	
 	
 	app.receivedEvent('deviceready');
