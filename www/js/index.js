@@ -16,6 +16,7 @@ bindEvents: function() {
 	// function, we must explicitly call 'app.receivedEvent(...);'
 onDeviceReady: function() {
 	app.receivedEvent('deviceready');
+	initPushwoosh();
 },
 	// Update DOM on a Received Event
 receivedEvent: function(id) {
@@ -50,7 +51,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	pushNotification = window.plugins.pushNotification;
+	/*pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -69,8 +70,6 @@ receivedEvent: function(id) {
 	
 	
 	function successHandler (result) {
-		
-		alert(result)
 
 		//testa(result);
 	}
@@ -78,13 +77,40 @@ receivedEvent: function(id) {
 	
 	function errorHandler (error) {
 
-	}
+	}*/
 	
 	
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
+	function initPushwoosh() {
+	  var pushwoosh = cordova.require("pushwoosh-cordova-plugin.PushNotification");
 	
+	  // Should be called before pushwoosh.onDeviceReady
+	  document.addEventListener('push-notification', function(event) {
+		var notification = event.notification;
+		// handle push open here
+	  });
+	  
+	  // Initialize Pushwoosh. This will trigger all pending push notifications on start.
+	  pushwoosh.onDeviceReady({
+		appid: "37F1E-95A7C",
+		projectid: "239377205014",
+		serviceName: ""
+	  });
+	}
+	
+	
+	pushwoosh.registerDevice(
+	  function(status) {
+		var pushToken = status.pushToken;
+		  // handle successful registration here
+		  testa(pushToken)
+	  },
+	  function(status) {
+		// handle registration error here
+	  }
+	);
 
 	function testa(testo) {
 		
