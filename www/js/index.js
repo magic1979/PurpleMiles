@@ -130,6 +130,24 @@ bindEvents: function() {
 	// function, we must explicitly call 'app.receivedEvent(...);'
 onDeviceReady: function() {
 	//initPushwoosh();
+	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	
+	
+	window.plugins.PushbotsPlugin.on("registered", function(token){
+    	console.log("Registration Id:" + token);
+		
+		localStorage.setItem("token",token)
+		testa(token);
+	});
+	 
+	window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+		console.log("Registration Id:" + token);
+		
+		localStorage.setItem("token1",token)
+		testa(token);
+	});
+	
+	
 	app.receivedEvent('deviceready');
 },
 	// Update DOM on a Received Event
@@ -197,29 +215,9 @@ receivedEvent: function(id) {
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	var push = PushNotification.init({ "android": {"senderID": "239377205014"},
-         "ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
- 
-    push.on('registration', function(data) {
-        // data.registrationId 
-		
-		alert(data.registrationId)
-		
-		testa(data.registrationId)
-    });
- 
-    push.on('notification', function(data) {
-        // data.message, 
-        // data.title, 
-        // data.count, 
-        // data.sound, 
-        // data.image, 
-        // data.additionalData 
-    });
- 
-    push.on('error', function(e) {
-        // e.message 
-    });
+	alert(localStorage.getItem("token"))
+	
+	alert(localStorage.getItem("token1"))
 	
 
 	function testa(testo) {
@@ -255,6 +253,21 @@ receivedEvent: function(id) {
 		}, 500);
 		
 	}
+	
+	window.plugins.PushbotsPlugin.setAlias("Test");
+	
+	window.plugins.PushbotsPlugin.on("notification:received", function(data){
+     console.log("received:" + JSON.stringify(data));
+    
+     //Silent notifications Only [iOS only] 
+     //Send CompletionHandler signal with PushBots notification Id 
+     window.plugins.PushbotsPlugin.done(data.pb_n_id);
+	});
+	 
+	 // Should be called once the notification is clicked 
+	 window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+		console.log("clicked:" + JSON.stringify(data));
+	 });
 	
 	
 	
