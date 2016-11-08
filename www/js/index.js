@@ -1,15 +1,14 @@
-function onPushwooshInitialized(pushNotification) {
+/*function onPushwooshInitialized(pushNotification) {
 
     //if you need push token at a later time you can always get it from Pushwoosh plugin
     pushNotification.getPushToken(
         function(token) {
             console.info('push token: ' + token);
 			
-			//testa(token)
         }
     );
 
-    //and HWID if you want to communicate with Pushwoosh API
+
     pushNotification.getPushwooshHWID(
         function(token) {
             console.info('Pushwoosh HWID: ' + token);
@@ -18,7 +17,6 @@ function onPushwooshInitialized(pushNotification) {
         }
     );
 
-    //settings tags
     pushNotification.setTags({
             tagName: "tagValue",
             intTagName: 10
@@ -40,8 +38,7 @@ function onPushwooshInitialized(pushNotification) {
         }
     );
 
-    //start geo tracking.
-    //pushNotification.startLocationTracking();
+
 }
 
 function initPushwoosh() {
@@ -53,10 +50,6 @@ function initPushwoosh() {
             var message = event.notification.message;
             var userData = event.notification.userdata;
 
-            //document.getElementById("pushMessage").innerHTML = message + "<p>";
-            //document.getElementById("pushData").innerHTML = JSON.stringify(event.notification) + "<p>";
-
-            //dump custom data to the console if it exists
             if (typeof(userData) != "undefined") {
                 console.warn('user data: ' + JSON.stringify(userData));
             }
@@ -64,14 +57,13 @@ function initPushwoosh() {
     );
 	
 
-    //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
     pushNotification.onDeviceReady({
         projectid: "239377205014",
         appid: "37F1E-95A7C",
         serviceName: ""
     });
 
-    //register for push notifications
+
     pushNotification.registerDevice(
         function(status) {
             //document.getElementById("pushToken").innerHTML = status.pushToken + "<p>";
@@ -118,7 +110,7 @@ function testa(testo) {
 		}, 500);
 		
 	}
-
+*/
 
 var app = {
 	// Application Constructor
@@ -137,7 +129,7 @@ bindEvents: function() {
 	// The scope of 'this' is the event. In order to call the 'receivedEvent'
 	// function, we must explicitly call 'app.receivedEvent(...);'
 onDeviceReady: function() {
-	initPushwoosh();
+	//initPushwoosh();
 	app.receivedEvent('deviceready');
 },
 	// Update DOM on a Received Event
@@ -204,6 +196,39 @@ receivedEvent: function(id) {
 	
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	
+	var push = PushNotification.init({
+    android: {
+        senderID: "239377205014"
+    },
+    browser: {
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+    },
+    ios: {
+        alert: "true",
+        badge: "true",
+        sound: "true"
+    },
+    windows: {}
+	});
+	
+	push.on('registration', function(data) {
+		// data.registrationId
+		testa(data.registrationId)
+	});
+	
+	push.on('notification', function(data) {
+		// data.message,
+		// data.title,
+		// data.count,
+		// data.sound,
+		// data.image,
+		// data.additionalData
+	});
+	
+	push.on('error', function(e) {
+		// e.message
+	});
 	
 
 	function testa(testo) {
