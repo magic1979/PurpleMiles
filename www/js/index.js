@@ -50,7 +50,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	/*pushNotification = window.plugins.pushNotification;
+	pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -69,6 +69,8 @@ receivedEvent: function(id) {
 	
 	
 	function successHandler (result) {
+		
+		alert(result)
 
 		//testa(result);
 	}
@@ -76,28 +78,12 @@ receivedEvent: function(id) {
 	
 	function errorHandler (error) {
 
-	}*/
+	}
 	
 	
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	window.GcmPushPlugin.register(successHandler, errorHandler, {
-    	"senderId":"239377205014",
-    	"jsCallback":"onNotification"
-	});
-	
-	
-		function successHandler(result) {
-			console.log("Token: " + result.gcm);
-		
-			testa(result.gcm)
-		}
-		
-	
-		function errorHandler(error) {
-		  console.log("Error: " + error);
-		}
 	
 
 	function testa(testo) {
