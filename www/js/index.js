@@ -82,35 +82,7 @@ receivedEvent: function(id) {
 	//pushbots 
 	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	PushbotsPlugin.on("registered", function(token){
-		
-		testa(token)
-		
-		navigator.notification.alert(
-			   token,  // message
-			   alertDismissed,         // callback
-			   'Attenzione',           // title
-			   'Ok'                  // buttonName
-			  );
-			  
-	});
-	
-	
-	setTimeout (function(){
 
-		//Get device token
-		PushbotsPlugin.getRegistrationId(function(token){
-			
-			navigator.notification.alert(
-			   token,  // message
-			   alertDismissed,         // callback
-			   'Attenzione',           // title
-			   'Ok'                  // buttonName
-			  );
-		});
-	}, 2000);
-	
-	
 
 	function testa(testo) {
 		
@@ -597,6 +569,36 @@ function onNotification(e) {
 		localStorage.setItem("veicolo", "6");
 		
 	}
+	
+	
+	window.plugins.PushbotsPlugin.on("registered", function(token){
+		
+		testa(token)
+		
+		navigator.notification.alert(
+			   token,  // message
+			   alertDismissed,         // callback
+			   'Attenzione',           // title
+			   'Ok'                  // buttonName
+			  );
+			  
+	});
+	
+	
+	setTimeout (function(){
+
+		//Get device token
+		window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+			
+			navigator.notification.alert(
+			   token,  // message
+			   alertDismissed,         // callback
+			   'Attenzione',           // title
+			   'Ok'                  // buttonName
+			  );
+		});
+	}, 2000);
+	
 	
 	var IDPage;
 	var ODPage;
