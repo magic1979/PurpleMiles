@@ -50,7 +50,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	/*pushNotification = window.plugins.pushNotification;
+	pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -59,6 +59,7 @@ receivedEvent: function(id) {
         "senderID":"239377205014",
         "ecb":"onNotification"
     });	
+	//239377205014
 
 	
 	function tokenHandler (result) {
@@ -77,22 +78,11 @@ receivedEvent: function(id) {
 	function errorHandler (error) {
 
 	}
-	*/
 	
 	
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	window.cordova.plugins.firebase.messaging.onMessage(function(payload) {
-    	console.log("New FCM message: ", payload);
-	});
-	
-	
-	window.cordova.plugins.firebase.messaging.onTokenRefresh(function(token) {
-    	alert("Got device token: ", token);
-		
-		testa(token)
-	});
 	
 
 	function testa(testo) {
@@ -137,7 +127,7 @@ receivedEvent: function(id) {
 	
 	
 	
-/*
+
 function onNotification(e) {
 	
 
@@ -191,7 +181,7 @@ function onNotification(e) {
     break;
   }
 }
-*/
+
 	
 	////////// TASTIERA ///////////
 	

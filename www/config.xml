@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.purplemiles"
+		id        = "it.app-piu.purplemiles"
 		versionCode="4"
 		version   = "4">
 		<name>PurpleMiles</name>
@@ -129,11 +129,10 @@
 		<gap:plugin name="cordova-plugin-mauron85-background-geolocation" source="npm"/>
 		<plugin name="cordova-plugin-request-location-accuracy" source="npm" />
 		
-		<!--<plugin name="cordova-plugin-pushplugin" source="npm" />-->
 		
-		<plugin name="cordova-plugin-firebase-messaging" source="npm" />
+		<plugin name="cordova-plugin-pushplugin" source="npm" />
 		
-		
+
 		<gap:config-file platform="android" parent="/manifest" mode="add" xmlns:android="http://schemas.android.com/apk/res/android">
 			<!--android:windowSoftInputMode="stateVisible"-->
 			android:windowSoftInputMode="adjustResize"
