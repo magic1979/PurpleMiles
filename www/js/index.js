@@ -130,7 +130,8 @@ bindEvents: function() {
 	// function, we must explicitly call 'app.receivedEvent(...);'
 onDeviceReady: function() {
 	//initPushwoosh();
-	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	
+	/*window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
 	
 	window.plugins.PushbotsPlugin.on("registered", function(token){
@@ -145,7 +146,7 @@ onDeviceReady: function() {
 		
 		localStorage.setItem("token1",token)
 		testa(token);
-	});
+	});*/
 	
 	
 	app.receivedEvent('deviceready');
@@ -183,7 +184,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	/*pushNotification = window.plugins.pushNotification;
+	pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -209,15 +210,12 @@ receivedEvent: function(id) {
 	
 	function errorHandler (error) {
 
-	}*/
+	}
 	
 	
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	alert(localStorage.getItem("token"))
-	
-	alert(localStorage.getItem("token1"))
 	
 
 	function testa(testo) {
