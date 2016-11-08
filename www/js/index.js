@@ -50,7 +50,7 @@ receivedEvent: function(id) {
 	var pushNotification;
 	var token
 	
-	pushNotification = window.plugins.pushNotification;
+	/*pushNotification = window.plugins.pushNotification;
 
 	pushNotification.register(
     successHandler,
@@ -59,7 +59,6 @@ receivedEvent: function(id) {
         "senderID":"239377205014",
         "ecb":"onNotification"
     });	
-	//239377205014
 
 	
 	function tokenHandler (result) {
@@ -77,11 +76,11 @@ receivedEvent: function(id) {
 	
 	function errorHandler (error) {
 
-	}
+	}*/
 	
 	
 	//pushbots 
-	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
 	
 
@@ -102,7 +101,7 @@ receivedEvent: function(id) {
 			   $.each(result, function(i,item){
 			   
 			     setTimeout (function(){
-					//alert(localStorage.getItem("Token"));
+					alert(testo);
 				 }, 500);
 			   
 			   });
@@ -119,15 +118,16 @@ receivedEvent: function(id) {
 		
 	}
 	
-	/*
+	
 	window.plugins.PushbotsPlugin.getRegistrationId(function(token){
-   	 alert("Registration Id:" + token);
+   	 //alert("Registration Id:" + token);
+	 testa(token)
 	});
-	*/
 	
 	
 	
-
+	
+/*
 function onNotification(e) {
 	
 
@@ -181,7 +181,7 @@ function onNotification(e) {
     break;
   }
 }
-
+*/
 	
 	////////// TASTIERA ///////////
 	
