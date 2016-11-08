@@ -131,8 +131,11 @@ bindEvents: function() {
 onDeviceReady: function() {
 	//initPushwoosh();
 	
-	/*window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
+	
+	//getToken(function(token)
+	//getRegistrationId
 	
 	window.plugins.PushbotsPlugin.on("registered", function(token){
     	console.log("Registration Id:" + token);
@@ -141,7 +144,7 @@ onDeviceReady: function() {
 		testa(token);
 	});
 	 
-	window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+	window.plugins.PushbotsPlugin.getToken(function(token){
 		console.log("Registration Id:" + token);
 		
 		localStorage.setItem("token1",token)
@@ -181,7 +184,7 @@ receivedEvent: function(id) {
 	
 	//// PUSH //////
 	
-	var pushNotification;
+	/*var pushNotification;
 	var token
 	
 	pushNotification = window.plugins.pushNotification;
@@ -210,7 +213,7 @@ receivedEvent: function(id) {
 	
 	function errorHandler (error) {
 
-	}
+	}*/
 	
 	
 	//pushbots 
