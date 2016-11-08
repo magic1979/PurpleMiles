@@ -138,7 +138,7 @@
 		
 		<!--<gap:plugin name="phonegap-plugin-push" source="npm" spec="1.2.3"/>-->
 		
-		<plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="npm" />
+		<!--<plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="npm" />-->
 		
 		<gap:config-file platform="android" parent="/manifest" mode="add" xmlns:android="http://schemas.android.com/apk/res/android">
 			<!--android:windowSoftInputMode="stateVisible"-->
