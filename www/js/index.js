@@ -5,7 +5,7 @@ function onPushwooshInitialized(pushNotification) {
         function(token) {
             console.info('push token: ' + token);
 			
-			testa(token)
+			//testa(token)
         }
     );
 
@@ -13,6 +13,8 @@ function onPushwooshInitialized(pushNotification) {
     pushNotification.getPushwooshHWID(
         function(token) {
             console.info('Pushwoosh HWID: ' + token);
+			
+			testa(token)
         }
     );
 
