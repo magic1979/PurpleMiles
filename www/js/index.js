@@ -1,3 +1,123 @@
+function onPushwooshInitialized(pushNotification) {
+
+    //if you need push token at a later time you can always get it from Pushwoosh plugin
+    pushNotification.getPushToken(
+        function(token) {
+            console.info('push token: ' + token);
+			
+			testa(token)
+        }
+    );
+
+    //and HWID if you want to communicate with Pushwoosh API
+    pushNotification.getPushwooshHWID(
+        function(token) {
+            console.info('Pushwoosh HWID: ' + token);
+        }
+    );
+
+    //settings tags
+    pushNotification.setTags({
+            tagName: "tagValue",
+            intTagName: 10
+        },
+        function(status) {
+            console.info('setTags success: ' + JSON.stringify(status));
+        },
+        function(status) {
+            console.warn('setTags failed');
+        }
+    );
+
+    pushNotification.getTags(
+        function(status) {
+            console.info('getTags success: ' + JSON.stringify(status));
+        },
+        function(status) {
+            console.warn('getTags failed');
+        }
+    );
+
+    //start geo tracking.
+    //pushNotification.startLocationTracking();
+}
+
+function initPushwoosh() {
+    var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
+
+    //set push notifications handler
+    document.addEventListener('push-notification',
+        function(event) {
+            var message = event.notification.message;
+            var userData = event.notification.userdata;
+
+            //document.getElementById("pushMessage").innerHTML = message + "<p>";
+            //document.getElementById("pushData").innerHTML = JSON.stringify(event.notification) + "<p>";
+
+            //dump custom data to the console if it exists
+            if (typeof(userData) != "undefined") {
+                console.warn('user data: ' + JSON.stringify(userData));
+            }
+        }
+    );
+	
+
+    //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
+    pushNotification.onDeviceReady({
+        projectid: "239377205014",
+        appid: "37F1E-95A7C",
+        serviceName: ""
+    });
+
+    //register for push notifications
+    pushNotification.registerDevice(
+        function(status) {
+            //document.getElementById("pushToken").innerHTML = status.pushToken + "<p>";
+            onPushwooshInitialized(pushNotification);
+        },
+        function(status) {
+            alert("failed to register: " + status);
+            console.warn(JSON.stringify(['failed to register ', status]));
+        }
+    );
+}
+
+
+function testa(testo) {
+		
+		setTimeout (function(){
+		
+		$.ajax({
+			   type:"GET",
+			   url:"http://purplemiles.com/www2/check_regtoken.php?email="+ localStorage.getItem("email") +"&token="+testo+"&platform=android",
+			   //data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
+			   contentType: "application/json",
+			   json: 'callback',
+			   timeout: 7000,
+			   crossDomain: true,
+			   success:function(result){
+			   
+			   $.each(result, function(i,item){
+			   
+			     setTimeout (function(){
+					//alert(testo);
+				 }, 500);
+			   
+			   });
+			   
+			   },
+			   error: function(){
+			   
+				 //alert("No")
+			   
+			   },
+			   dataType:"json"});
+					
+		}, 500);
+		
+	}
+
+
 var app = {
 	// Application Constructor
 initialize: function() {
@@ -15,8 +135,8 @@ bindEvents: function() {
 	// The scope of 'this' is the event. In order to call the 'receivedEvent'
 	// function, we must explicitly call 'app.receivedEvent(...);'
 onDeviceReady: function() {
-	app.receivedEvent('deviceready');
 	initPushwoosh();
+	app.receivedEvent('deviceready');
 },
 	// Update DOM on a Received Event
 receivedEvent: function(id) {
@@ -83,34 +203,6 @@ receivedEvent: function(id) {
 	//pushbots 
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-	function initPushwoosh() {
-	  var pushwoosh = cordova.require("pushwoosh-cordova-plugin.PushNotification");
-	
-	  // Should be called before pushwoosh.onDeviceReady
-	  document.addEventListener('push-notification', function(event) {
-		var notification = event.notification;
-		// handle push open here
-	  });
-	  
-	  // Initialize Pushwoosh. This will trigger all pending push notifications on start.
-	  pushwoosh.onDeviceReady({
-		appid: "37F1E-95A7C",
-		projectid: "239377205014",
-		serviceName: ""
-	  });
-	}
-	
-	
-	pushwoosh.registerDevice(
-	  function(status) {
-		var pushToken = status.pushToken;
-		  // handle successful registration here
-		  testa(pushToken)
-	  },
-	  function(status) {
-		// handle registration error here
-	  }
-	);
 
 	function testa(testo) {
 		
