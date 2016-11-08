@@ -144,7 +144,8 @@ onDeviceReady: function() {
 		testa(token);
 	});
 	 
-	window.plugins.PushbotsPlugin.getToken(function(token){
+	 
+	window.plugins.PushbotsPlugin.getRegistrationId(function(token){
 		console.log("Registration Id:" + token);
 		
 		localStorage.setItem("token1",token)
@@ -220,6 +221,22 @@ receivedEvent: function(id) {
 	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
 	
+	window.plugins.PushbotsPlugin.setAlias("Test");
+	
+	window.plugins.PushbotsPlugin.on("notification:received", function(data){
+     console.log("received:" + JSON.stringify(data));
+    
+     //Silent notifications Only [iOS only] 
+     //Send CompletionHandler signal with PushBots notification Id 
+     window.plugins.PushbotsPlugin.done(data.pb_n_id);
+	});
+	 
+	 // Should be called once the notification is clicked 
+	 window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+		console.log("clicked:" + JSON.stringify(data));
+	 });
+	
+	
 
 	function testa(testo) {
 		
@@ -255,20 +272,7 @@ receivedEvent: function(id) {
 		
 	}
 	
-	window.plugins.PushbotsPlugin.setAlias("Test");
 	
-	window.plugins.PushbotsPlugin.on("notification:received", function(data){
-     console.log("received:" + JSON.stringify(data));
-    
-     //Silent notifications Only [iOS only] 
-     //Send CompletionHandler signal with PushBots notification Id 
-     window.plugins.PushbotsPlugin.done(data.pb_n_id);
-	});
-	 
-	 // Should be called once the notification is clicked 
-	 window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-		console.log("clicked:" + JSON.stringify(data));
-	 });
 	
 	
 	
