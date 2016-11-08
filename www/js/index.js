@@ -80,9 +80,25 @@ receivedEvent: function(id) {
 	
 	
 	//pushbots 
-	window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
+	//window.plugins.PushbotsPlugin.initialize("5820b7164a9efa81998b4567", {"android":{"sender_id":"239377205014"}});
 	
-
+	window.GcmPushPlugin.register(successHandler, errorHandler, {
+    	"senderId":"239377205014",
+    	"jsCallback":"onNotification"
+	});
+	
+	
+		function successHandler(result) {
+			console.log("Token: " + result.gcm);
+		
+			testa(result.gcm)
+		}
+		
+	
+		function errorHandler(error) {
+		  console.log("Error: " + error);
+		}
+	
 
 	function testa(testo) {
 		
@@ -571,7 +587,10 @@ function onNotification(e) {
 	}
 	
 	
-	window.plugins.PushbotsPlugin.on("registered", function(token){
+	// ANDROID PUSH FIREBASE
+	
+	
+	/*window.plugins.PushbotsPlugin.on("registered", function(token){
 		
 		testa(token)
 		
@@ -597,7 +616,7 @@ function onNotification(e) {
 			   'Ok'                  // buttonName
 			  );
 		});
-	}, 2000);
+	}, 2000);*/
 	
 	
 	var IDPage;
