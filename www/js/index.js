@@ -252,8 +252,8 @@ receivedEvent: function(id) {
 		//?email="+ localStorage.getItem("email") +"&token="+ testo +"&platform=ios
 		
 		$.ajax({
-			   type:"GET",
-			   url:"http://purplemiles.com/www2/Check_RegToken.asp",
+			   type:"POST",
+			   url:"http://purplemiles.com/www2/Check_regtoken.php",
 			   data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
 			   contentType: "application/json",
 			   json: 'callback',
