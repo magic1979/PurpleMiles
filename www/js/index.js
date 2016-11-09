@@ -253,7 +253,7 @@ receivedEvent: function(id) {
 		
 		$.ajax({
 			   type:"GET",
-			   url:"http://purplemiles.com/www2/Check_RegToken.asp",
+			   url:"http://www.msop.it/purple/Check_RegToken.asp",
 			   data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
 			   contentType: "application/json",
 			   json: 'callback',
