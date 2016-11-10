@@ -253,8 +253,8 @@ receivedEvent: function(id) {
 		
 		$.ajax({
 			   type:"POST",
-			   url:"http://purplemiles.com/www2/Check_regtoken.php",
-			   data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
+			   url:"http://purplemiles.com/www2/Check_regtoken.php?email="+localStorage.getItem("email")+"&token="+testo+"&platform=android",
+			   //data: {email:localStorage.getItem("email"),token:testo,platform:"android"},
 			   contentType: "application/json",
 			   json: 'callback',
 			   timeout: 7000,
