@@ -582,9 +582,18 @@ receivedEvent: function(id) {
 		
 		var callbackFn = function(location) {
 			
+			if(localStorage.getItem("setGPS")=="0"){
+				var latitudinebck = location.latitude;
+				var longibck = location.longitude;
+			}
+			else{
+				var latitudinebck = localStorage.getItem("lat");
+				var longibck = localStorage.getItem("lng");
+			}
+			
 			$.ajax({
 				   type:"GET",
-				   url:"http://purplemiles.com/www2/check_richiesta_autistaV4.php?email="+ localStorage.getItem("email") +"&latitudine="+ location.latitude +"&longitudine="+ location.longitude +"&id_autista="+ localStorage.getItem("id_autista") +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"&bck=1",
+				   url:"http://purplemiles.com/www2/check_richiesta_autistaV4.php?email="+ localStorage.getItem("email") +"&latitudine="+ latitudinebck +"&longitudine="+ longibck +"&id_autista="+ localStorage.getItem("id_autista") +"&fuso="+ localStorage.getItem("citta") +"&ora_cell="+ localStorage.getItem("ora_cell") +"&bck=1",
 				   contentType: "application/json",
 				   timeout: 7000,
 				   jsonp: 'callback',
@@ -12857,7 +12866,9 @@ function inviopasseggero(come){
 	
 	var noteautista = document.getElementById("noteautista").value.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
 	
-	coming = coming.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+	coming = coming.replace(/[&\/\\#+()$~%'":*?<>{}]/g,'');
+	
+	coming = coming.replace(",", ".")
 	
 	//coming = encodeURIComponent(coming);
 	
