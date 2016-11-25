@@ -1582,6 +1582,9 @@ function onDeviceReady() {
 				   localStorage.setItem("dovesono", "1");
 				   localStorage.setItem("destination", "0")
 				   localStorage.setItem("pagebtn", "da")
+				   
+				   $("#s_arrivo").hide();
+				   $("#s_partenza2").show();
 
 				   
 				   $("#viale").show();
