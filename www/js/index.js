@@ -6355,9 +6355,19 @@ function timer(){
 											
 											// Failed to load the Google Maps
 											if (typeof google === 'object' && typeof google.maps === 'object') {
-												// Google maps loaded
+												for(i=0; i<10000; i++)
+												{
+												  window.clearInterval(i);
+												 }
+		   
+												setTimeout(function() {
+												  resetta1(1);
+												  }, 3000);
 											} else {
-												
+												for(i=0; i<10000; i++)
+												{
+												  window.clearInterval(i);
+												 }
 												setTimeout(function() {
 												  resetta1(1);
 												}, 5000);
@@ -7169,9 +7179,19 @@ function magia2C(utente,pass) {
 			 
 				 // Failed to load the Google Maps
 				if (typeof google === 'object' && typeof google.maps === 'object') {
-					// Google maps loaded
+					for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 				} else {
-					
+					for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 					setTimeout(function() {
 					  resetta1(1);
 					}, 5000);
@@ -7664,9 +7684,19 @@ function elimina3(id_richiesta){
 			 
 			 // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -7769,9 +7799,19 @@ function cancellapos(id){
 			
 			// Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -7825,9 +7865,19 @@ function cancella(id){
 			 
 			 // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -7845,9 +7895,19 @@ function cancella(id){
 	 
 	 	// Failed to load the Google Maps
 		if (typeof google === 'object' && typeof google.maps === 'object') {
-			// Google maps loaded
+			for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 		} else {
-			
+			for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 			setTimeout(function() {
 			  resetta1(1);
 			}, 5000);
@@ -11619,9 +11679,19 @@ function lista5() {
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -11797,9 +11867,19 @@ function chatting(pass,id) {
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -11972,9 +12052,19 @@ function chatting66(pass,id) {
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -12144,9 +12234,19 @@ function chatting5(id) {
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -12375,9 +12475,19 @@ function inviachat(id) {
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -12506,9 +12616,19 @@ function accetta11() {
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -12626,9 +12746,19 @@ function accetta22() {
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -12739,9 +12869,19 @@ function accetta33() {
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
@@ -12950,9 +13090,19 @@ function inviopasseggero(come){
 		   
 		   // Failed to load the Google Maps
 			if (typeof google === 'object' && typeof google.maps === 'object') {
-				// Google maps loaded
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+
+					setTimeout(function() {
+					  resetta1(1);
+					  }, 3000);
 			} else {
-				
+				for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
 				setTimeout(function() {
 				  resetta1(1);
 				}, 5000);
