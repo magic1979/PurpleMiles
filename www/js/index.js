@@ -4624,6 +4624,15 @@ function resetta1(focus) {
 		google.maps.event.addListenerOnce(map, 'idle', function() {
    			google.maps.event.trigger(map, 'resize');
 		});
+		
+		
+		setTimeout(function() {
+			if (typeof google === 'object' && typeof google.maps === 'object') {
+						// Google maps loaded
+			} else {
+				resetta1(1);
+			}
+		}, 1000);
 	
 	
 	$.ajax({
@@ -4965,6 +4974,7 @@ function resetta1(focus) {
 		   },
 		   error: function(){
 			   
+			   
 		   if (typeof google === 'object' && typeof google.maps === 'object') {
 					// Google maps loaded
 			} else {
@@ -4974,15 +4984,9 @@ function resetta1(focus) {
 				}, 500);
 			}
 		   
-		   /*navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);*/
 		   
 		   },
-		   dataType:"jsonp"});
+		 dataType:"jsonp"});
 
 	
 		//$("#blob1").attr("href", "javascript:alert()");
@@ -6496,7 +6500,9 @@ function timer(){
 		
 		// Failed to load the Google Maps
 		if (typeof google === 'object' && typeof google.maps === 'object') {
-			// Google maps loaded
+			setTimeout(function() {
+			  resetta1(1);
+			}, 500);
 		} else {
 			
 			setTimeout(function() {
