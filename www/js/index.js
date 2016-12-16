@@ -4625,15 +4625,38 @@ function resetta1(focus) {
    			google.maps.event.trigger(map, 'resize');
 		});
 		
-		
+
+	var connectionStatus = false;
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	
+	if(connectionStatus=='online'){
+	}
+	else{
+		for(i=0; i<10000; i++)
+		{
+		  window.clearInterval(i);
+		 }
+												 
 		setTimeout(function() {
+			resetta1(1);
+		}, 1000);
+	}
+	
+	
+	setTimeout(function() {
 			if (typeof google === 'object' && typeof google.maps === 'object') {
 						// Google maps loaded
 			} else {
+				for(i=0; i<10000; i++)
+				{
+				  window.clearInterval(i);
+				 }
+				 
 				resetta1(1);
 			}
 		}, 1000);
-	
+		
+		
 	
 	$.ajax({
 		   type:"GET",
@@ -4974,15 +4997,41 @@ function resetta1(focus) {
 		   },
 		   error: function(){
 			   
-			   
-		   if (typeof google === 'object' && typeof google.maps === 'object') {
-					// Google maps loaded
-			} else {
+			   	var connectionStatus = false;
+				connectionStatus = navigator.onLine ? 'online' : 'offline';
+				
+				if(connectionStatus=='online'){
 					
-				setTimeout(function() {
-					 resetta1(1);
-				}, 500);
-			}
+				}
+				else{
+					setTimeout(function() {
+						for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						resetta1(1);
+					}, 3000);
+				}
+			   
+			   
+			   if (typeof google === 'object' && typeof google.maps === 'object') {
+				   		for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+					  setTimeout(function() {
+						 resetta1(1);
+					  }, 2000);
+				} else {
+					for(i=0; i<10000; i++)
+					{
+					  window.clearInterval(i);
+					 }
+		 
+					setTimeout(function() {
+						 resetta1(1);
+					}, 2000);
+				}
 		   
 		   
 		   },
@@ -6475,7 +6524,7 @@ function timer(){
 												 
 										timer();
 												 
-									  }, 2000);
+									  }, 7000);
 									
 									}
 									
@@ -7960,6 +8009,7 @@ function casa(){
 
 function start() {
 	//chiamo e setto a 1 lo stato dell'autista (ok lavoro)
+	
 	
 	$("#setGPS").hide();
 	$("#Modifica").hide();
