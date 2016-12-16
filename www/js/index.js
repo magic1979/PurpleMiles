@@ -6401,24 +6401,27 @@ function timer(){
 										    $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 										    $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 											
-											// Failed to load the Google Maps
-											if (typeof google === 'object' && typeof google.maps === 'object') {
-												for(i=0; i<10000; i++)
-												{
-												  window.clearInterval(i);
-												 }
-		   
-												setTimeout(function() {
-												  resetta1(1);
-												  }, 3000);
-											} else {
-												for(i=0; i<10000; i++)
-												{
-												  window.clearInterval(i);
-												 }
-												setTimeout(function() {
-												  resetta1(1);
-												}, 5000);
+											var connectionStatus = false;
+											connectionStatus = navigator.onLine ? 'online' : 'offline';
+											
+											if(connectionStatus=='online'){
+												
+												if (typeof google === 'object' && typeof google.maps === 'object') {
+													for(i=0; i<10000; i++)
+													{
+													  window.clearInterval(i);
+													 }
+													  setTimeout(function() {
+														 resetta1(1);
+													  }, 2000);
+												} else {
+													window.location.href = "index.html"
+												}
+											
+											}
+											else{
+												
+												window.location.href = "index.html"
 											}
 										   
 										    //onResume();
@@ -7219,24 +7222,27 @@ function magia2C(utente,pass) {
 		   
 		     $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 			 
-				 // Failed to load the Google Maps
-				if (typeof google === 'object' && typeof google.maps === 'object') {
-					for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-
-					setTimeout(function() {
-					  resetta1(1);
-					  }, 3000);
-				} else {
-					for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-					setTimeout(function() {
-					  resetta1(1);
-					}, 5000);
+				var connectionStatus = false;
+				connectionStatus = navigator.onLine ? 'online' : 'offline';
+				
+				if(connectionStatus=='online'){
+					
+					if (typeof google === 'object' && typeof google.maps === 'object') {
+				   		for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						  setTimeout(function() {
+							 resetta1(1);
+						  }, 2000);
+					} else {
+						window.location.href = "index.html"
+					}
+				
+				}
+				else{
+					
+					window.location.href = "index.html"
 				}
 		   
 		   },
@@ -11908,32 +11914,28 @@ function chatting(pass,id) {
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
-		   // Failed to load the Google Maps
-			if (typeof google === 'object' && typeof google.maps === 'object') {
-				for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-
-					setTimeout(function() {
-					  resetta1(1);
-					  }, 3000);
-			} else {
-				for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-				setTimeout(function() {
-				  resetta1(1);
-				}, 5000);
-			}
-		   
-		   /*navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);*/
+		   	var connectionStatus = false;
+				connectionStatus = navigator.onLine ? 'online' : 'offline';
+				
+				if(connectionStatus=='online'){
+					
+					if (typeof google === 'object' && typeof google.maps === 'object') {
+				   		for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						  setTimeout(function() {
+							 resetta1(1);
+						  }, 2000);
+					} else {
+						window.location.href = "index.html"
+					}
+				
+				}
+				else{
+					
+					window.location.href = "index.html"
+				}
 		   
 		   
 		   },
@@ -12093,33 +12095,28 @@ function chatting66(pass,id) {
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
-		   // Failed to load the Google Maps
-			if (typeof google === 'object' && typeof google.maps === 'object') {
-				for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-
-					setTimeout(function() {
-					  resetta1(1);
-					  }, 3000);
-			} else {
-				for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-				setTimeout(function() {
-				  resetta1(1);
-				}, 5000);
-			}
-		   
-		   /*navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);*/
-		   
+		   var connectionStatus = false;
+				connectionStatus = navigator.onLine ? 'online' : 'offline';
+				
+				if(connectionStatus=='online'){
+					
+					if (typeof google === 'object' && typeof google.maps === 'object') {
+				   		for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						  setTimeout(function() {
+							 resetta1(1);
+						  }, 2000);
+					} else {
+						window.location.href = "index.html"
+					}
+				
+				}
+				else{
+					
+					window.location.href = "index.html"
+				}
 		   
 		   },
 		   dataType:"jsonp"});
@@ -12275,32 +12272,28 @@ function chatting5(id) {
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
-		   // Failed to load the Google Maps
-			if (typeof google === 'object' && typeof google.maps === 'object') {
-				for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-
-					setTimeout(function() {
-					  resetta1(1);
-					  }, 3000);
-			} else {
-				for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-				setTimeout(function() {
-				  resetta1(1);
-				}, 5000);
-			}
-		   
-		   /*navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);*/
+		   var connectionStatus = false;
+				connectionStatus = navigator.onLine ? 'online' : 'offline';
+				
+				if(connectionStatus=='online'){
+					
+					if (typeof google === 'object' && typeof google.maps === 'object') {
+				   		for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						  setTimeout(function() {
+							 resetta1(1);
+						  }, 2000);
+					} else {
+						window.location.href = "index.html"
+					}
+				
+				}
+				else{
+					
+					window.location.href = "index.html"
+				}
 		   
 		   
 		   },
