@@ -4630,6 +4630,7 @@ function resetta1(focus) {
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
 	if(connectionStatus=='online'){
+		
 	}
 	else{
 		for(i=0; i<10000; i++)
@@ -4642,20 +4643,6 @@ function resetta1(focus) {
 		}, 1000);
 	}
 	
-	
-	setTimeout(function() {
-			if (typeof google === 'object' && typeof google.maps === 'object') {
-						// Google maps loaded
-			} else {
-				for(i=0; i<10000; i++)
-				{
-				  window.clearInterval(i);
-				 }
-				 
-				resetta1(1);
-			}
-		}, 1000);
-		
 		
 	
 	$.ajax({
@@ -5002,38 +4989,24 @@ function resetta1(focus) {
 				
 				if(connectionStatus=='online'){
 					
-				}
-				else{
-					setTimeout(function() {
-						for(i=0; i<10000; i++)
-						{
-						  window.clearInterval(i);
-						 }
-						resetta1(1);
-					}, 3000);
-				}
-			   
-			   
-			   if (typeof google === 'object' && typeof google.maps === 'object') {
+					if (typeof google === 'object' && typeof google.maps === 'object') {
 				   		for(i=0; i<10000; i++)
 						{
 						  window.clearInterval(i);
 						 }
-					  setTimeout(function() {
-						 resetta1(1);
-					  }, 2000);
-				} else {
-					for(i=0; i<10000; i++)
-					{
-					  window.clearInterval(i);
-					 }
-		 
-					setTimeout(function() {
-						 resetta1(1);
-					}, 2000);
+						  setTimeout(function() {
+							 resetta1(1);
+						  }, 2000);
+					} else {
+						window.location.href = "index.html"
+					}
+				
 				}
-		   
-		   
+				else{
+					
+					window.location.href = "index.html"
+				}
+	
 		   },
 		 dataType:"jsonp"});
 
@@ -6372,7 +6345,29 @@ function timer(){
 
 										   },
 										   error: function(){
-										   
+											   
+											   	var connectionStatus = false;
+												connectionStatus = navigator.onLine ? 'online' : 'offline';
+												
+												if(connectionStatus=='online'){
+													
+													if (typeof google === 'object' && typeof google.maps === 'object') {
+														for(i=0; i<10000; i++)
+														{
+														  window.clearInterval(i);
+														 }
+														  setTimeout(function() {
+															 resetta1(1);
+														  }, 2000);
+													} else {
+														window.location.href = "index.html"
+													}
+												
+												}
+												else{
+													
+													window.location.href = "index.html"
+												}
 										   
 										   },
 										   dataType:"jsonp"});
@@ -6541,25 +6536,17 @@ function timer(){
 								    //}, 1000);
 			}
 	else{
-		/*for(i=0; i<10000; i++)
-		{
-		 window.clearInterval(i);
-		}*/
-		
-		
+	
 		// Failed to load the Google Maps
 		if (typeof google === 'object' && typeof google.maps === 'object') {
 			setTimeout(function() {
 			  resetta1(1);
-			}, 500);
+			}, 1000);
 		} else {
 			
-			setTimeout(function() {
-			  resetta1(1);
-			}, 500);
+			window.location.href = "index.html"
 		}
-		
-									
+					
 	}
 						
 	
