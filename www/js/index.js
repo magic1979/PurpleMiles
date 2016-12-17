@@ -4625,6 +4625,11 @@ function resetta1(focus) {
    			google.maps.event.trigger(map, 'resize');
 		});
 		
+	
+	if (localStorage.getItem("controllo")=="3"){
+		window.location.href = "index.html"
+	}
+		
 
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -5365,14 +5370,39 @@ function timer(){
    		google.maps.event.trigger(map, 'resize');
 	});
 	
+	
 									
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 									
 	if(connectionStatus=='online'){
+		
+		//se tre volte
+		//window.location.href = "index.html"
+		
+									if (localStorage.getItem("controllo")=="3"){
+										window.location.href = "index.html"
+									}
+		
 									
-									//alert("prova")
-									//playAudio('successArrivo');
+									
+									if (typeof google === 'object' && typeof google.maps === 'object') {
+										
+									} else {
+										for(i=0; i<10000; i++)
+										{
+										  window.clearInterval(i);
+										 }
+										 
+										 var conta = localStorage.getItem("controllo")+1
+										 
+										 localStorage.setItem("controllo",conta);
+										 
+										  setTimeout(function() {
+											 resetta1(1);
+										  }, 1000);
+									}
+									
 									
 									
 									if(localStorage.getItem("nobanner")=="0"){
