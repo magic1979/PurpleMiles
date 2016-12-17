@@ -5421,8 +5421,6 @@ function timer(){
 									var lat = localStorage.getItem("lat");
 									var lng = localStorage.getItem("lng");
 		
-									//var lat = "41.770447";  //  "41.783780"  "41.783780" localStorage.getItem("lat")
-									//var lng = "12.373529";  //  "12.364947"  "12.364947" localStorage.getItem("lng")
 									
 									var beaches1 = [];
 									var posizione = 1;
@@ -6569,16 +6567,18 @@ function timer(){
 								    //}, 1000);
 			}
 	else{
-	
+		
+		window.location.href = "index.html";
+		
 		// Failed to load the Google Maps
-		if (typeof google === 'object' && typeof google.maps === 'object') {
+		/*if (typeof google === 'object' && typeof google.maps === 'object') {
 			setTimeout(function() {
 			  resetta1(1);
 			}, 1000);
 		} else {
 			
 			window.location.href = "index.html"
-		}
+		}*/
 					
 	}
 						
