@@ -4254,6 +4254,35 @@ function deg2rad(deg) {
 
 
 function resetta1(focus) {
+	
+	
+	
+	var connectionStatus = false;
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	
+	if(connectionStatus=='online'){
+		
+	}
+	else{
+		for(i=0; i<10000; i++)
+		{
+		  window.clearInterval(i);
+		 }
+												 
+		window.location.href = "#home"
+		
+		 e.stopImmediatePropagation();
+				   
+	   e.preventDefault();
+	   
+	   return false;
+	   
+	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	}
+	
+	
+	
+	
 	muoviti = 1;
 	localStorage.setItem("pagemodifica","0")
 	localStorage.setItem("ritornaweb","0")
