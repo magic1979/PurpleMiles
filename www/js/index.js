@@ -4256,7 +4256,6 @@ function deg2rad(deg) {
 function resetta1(focus) {
 	
 	
-	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
@@ -6431,7 +6430,12 @@ function timer(){
 									
 									
 				/////////////////////////vedo se ci sono posticipate////////////////////////////////
+				
+									var connectionStatus = false;
+									connectionStatus = navigator.onLine ? 'online' : 'offline';
 									
+									if(connectionStatus=='online'){
+		
 									$.ajax({
 										   type:"GET",
 										   url:"http://purplemiles.com/www2/check_prendiposticipata.php?id_autista="+ localStorage.getItem("id_autista") +"",
@@ -6485,6 +6489,18 @@ function timer(){
 										   
 										   },
 										   dataType:"jsonp"});
+										   
+											}
+											else{
+												for(i=0; i<10000; i++)
+												{
+												  window.clearInterval(i);
+												 }
+																						 
+												setTimeout(function() {
+													resetta1(1);
+												}, 1000);
+											}
 									
 				/////////////////////////FINE vedo se ci sono posticipate////////////////////////////////					
 									
@@ -6576,8 +6592,23 @@ function timer(){
 										{
 									      window.clearInterval(i);
 										}
-												 
+										
+										var connectionStatus = false;
+										connectionStatus = navigator.onLine ? 'online' : 'offline';
+										
+										if(connectionStatus=='online'){
+				 
 										timer();
+										
+										}
+										else{
+											for(i=0; i<10000; i++)
+											{
+											  window.clearInterval(i);
+											 }
+																					 
+											window.location.href = "index.html";
+										}
 												 
 									  }, 7000);
 									
@@ -6588,7 +6619,6 @@ function timer(){
 									}
 									
 
-									
 									//setTimeout(function() {
 
 										//map.setCenter(centromap);
