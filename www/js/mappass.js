@@ -2941,25 +2941,25 @@ function onDeviceReady() {
 		if(localStorage.getItem("lingua")=="it"){
 			if (document.getElementById("veicolo11").value=="Autovettura"){
 				veicolando = "Autovettura"
-				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 			}
 		}
 		else if(localStorage.getItem("lingua")=="en"){
 			if (document.getElementById("veicolo11").value=="Autovettura"){
 				veicolando = "Car"
-				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 			}
 		}
 		else if (localStorage.getItem("lingua")=="fr"){
 			if (document.getElementById("veicolo11").value=="Autovettura"){
 				veicolando = "Automobile"
-				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 			}
 		}
 		else if (localStorage.getItem("lingua")=="es"){
 			if (document.getElementById("veicolo11").value=="Autovettura"){
 				veicolando = "Autom&oacute;vil"
-				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 			}
 		}
 			else{
@@ -2981,19 +2981,19 @@ function onDeviceReady() {
 								 
 								 if(localStorage.getItem("lingua")=="it"){
 								   veicolando = item.italia;
-								   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+								   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 								 }
 								 if(localStorage.getItem("lingua")=="en"){
 								    veicolando = item.inglese;
-									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 								 }
 								 if(localStorage.getItem("lingua")=="fr"){
 								    veicolando = item.francia;
-								    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+								    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 								 }
 								 if(localStorage.getItem("lingua")=="es"){
 								    veicolando = item.spagna;
-									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
 								 }
 								 
 							});
@@ -3291,43 +3291,43 @@ function onDeviceReady() {
 				   
                    // QUI
                    if(document.getElementById("passeggeri").value!="01"){
-                     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7passeggeri +":&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
+                     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7passeggeri") +":&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
                    }
                    else{
-                     $("#passeggeri7").html("&nbsp;&nbsp;"+ h7passeggeri +":&nbsp; " + document.getElementById("passeggeri").value);
+                     $("#passeggeri7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7passeggeri") +":&nbsp; " + document.getElementById("passeggeri").value);
                    }
                    
                    if(document.getElementById("animali").value=="Si"){
-                   $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7animali +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7animali") +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#animali7").html("&nbsp;&nbsp;"+ h7animali +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+""));
+                   $("#animali7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7animali") +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("fumatori").value=="Si"){
-                   $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7fumatori +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7fumatori") +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#fumatori7").html("&nbsp;&nbsp;"+ h7fumatori +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
+                   $("#fumatori7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7fumatori")  +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
                    }
                    if(document.getElementById("meno18").value=="Si"){
-                   $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7minori +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7minori")  +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#meno187").html("&nbsp;&nbsp;"+ h7minori +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+""));
+                   $("#meno187").html("&nbsp;&nbsp;"+ localStorage.getItem("h7minori") +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("disabili").value=="Si"){
-                   $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7disabili +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7disabili") +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#disabili7").html("&nbsp;&nbsp;"+ h7disabili +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+""));
+                   $("#disabili7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7disabili") +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+""));
                    }
                    if(document.getElementById("bambini").value=="Si"){
-                   $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7seggiolino +":&nbsp; " + document.getElementById("bambini").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7seggiolino") +":&nbsp; " + document.getElementById("bambini").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#bambini7").html("&nbsp;&nbsp;"+ h7seggiolino +":&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
+                   $("#bambini7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7seggiolino") +":&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("wifi").value=="Si"){
@@ -3338,17 +3338,17 @@ function onDeviceReady() {
                    }
                    
                    if(document.getElementById("portapacchi").value=="Si"){
-                   $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7pacchi +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7pacchi") +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#portapacchi7").html("&nbsp;&nbsp;"+ h7pacchi +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+""));
+                   $("#portapacchi7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7pacchi") +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("rimorchio").value=="Si"){
-                   $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ h7gancio +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7gancio") +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                   $("#rimorchio7").html("&nbsp;&nbsp;"+ h7gancio +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+""));
+                   $("#rimorchio7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7gancio") +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("bluetooth").value=="Si"){
@@ -3490,8 +3490,8 @@ function onDeviceReady() {
 		
 			  var watchID = navigator.geolocation.watchPosition(gpsonSuccess, onError2, {maximumAge:600000, timeout:80000, enableHighAccuracy: true});
 			 //var watchID = navigator.geolocation.getCurrentPosition(gpsonSuccess, gpsonError, {timeout: 30000, enableHighAccuracy: true, maximumAge: 90000 });
-		
-		
+			 
+			 ripetiseleziona();
 		
 		/////// GEO TRAKER IOS//////
 		
@@ -7027,6 +7027,12 @@ function prendicittaid(id){
 															   
 															   $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano.replace("P0011", "'"));
 															   
+															   if(results.rows.item(i).id_traduzione == "datacal"){
+															   
+															   $("#datacal").attr("placeholder",""+results.rows.item(i).italiano.replace("P0011", "'")+"");
+															   
+															   }
+															   
 															   if(results.rows.item(i).id_traduzione == "h4richiesta"){
 															   h4richiesta = results.rows.item(i).italiano.replace("P0011", "'");
 															   
@@ -7055,38 +7061,47 @@ function prendicittaid(id){
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7veicolo"){
 															   h7veicolo = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7veicolo",h7veicolo)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7passeggeri"){
 															   h7passeggeri = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7passeggeri",h7passeggeri)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7fumatori"){
 															   h7fumatori = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7fumatori",h7fumatori)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7animali"){
 															   h7animali = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7animali",h7animali)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7minori"){
 															   h7minori = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7minori",h7minori)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7disabili"){
 															   h7disabili = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7disabili",h7disabili)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7seggiolino"){
 															   h7seggiolino = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7seggiolino",h7seggiolino)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7pacchi"){
 															   h7pacchi = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7pacchi",h7pacchi)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7gancio"){
 															   h7gancio = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7gancio",h7gancio)
 															   
 															   }
 															   
@@ -7130,6 +7145,12 @@ function prendicittaid(id){
 															   
 															   }
 															   
+															   if(results.rows.item(i).id_traduzione == "datacal"){
+															   
+															   $("#datacal").attr("placeholder",""+results.rows.item(i).inglese.replace("P0011", "'")+"");
+															   
+															   }
+															   
 															   if(results.rows.item(i).id_traduzione == "h7quando"){
 															   h7quando = results.rows.item(i).inglese.replace("P0011", "'");
 															   
@@ -7151,38 +7172,47 @@ function prendicittaid(id){
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7veicolo"){
 															   h7veicolo = results.rows.item(i).inglese.replace("P0011", "'");
+															   localStorage.setItem("h7veicolo",h7veicolo)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7passeggeri"){
 															   h7passeggeri = results.rows.item(i).inglese.replace("P0011", "'");
+															   localStorage.setItem("h7passeggeri",h7passeggeri)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7fumatori"){
 															   h7fumatori = results.rows.item(i).inglese.replace("P0011", "'");
+															   localStorage.setItem("h7fumatori",h7fumatori)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7animali"){
 															   h7animali = results.rows.item(i).inglese.replace("P0011", "'");
+															   localStorage.setItem("h7animali",h7animali)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7minori"){
 															   h7minori = results.rows.item(i).inglese.replace("P0011", "'");
+															   localStorage.setItem("h7minori",h7minori)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7disabili"){
 															   h7disabili = results.rows.item(i).inglese.replace("P0011", "'");
+															   localStorage.setItem("h7disabili",h7disabili)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7seggiolino"){
 															   h7seggiolino = results.rows.item(i).inglese.replace("P0011", "'");
+															   localStorage.setItem("h7seggiolino",h7seggiolino)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7pacchi"){
 															   h7pacchi = results.rows.item(i).inglese.replace("P0011", "'");
+															   localStorage.setItem("h7pacchi",h7pacchi)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7gancio"){
 															   h7gancio = results.rows.item(i).inglese.replace("P0011", "'");
+															    localStorage.setItem("h7gancio",h7gancio)
 															   
 															   }
 															   
@@ -7230,6 +7260,12 @@ function prendicittaid(id){
 															   
 															   }
 															   
+															   if(results.rows.item(i).id_traduzione == "datacal"){
+															   
+															   $("#datacal").attr("placeholder",""+results.rows.item(i).francese.replace("P0011", "'")+"");
+															   
+															   }
+															   
 															   if(results.rows.item(i).id_traduzione == "h7adesso"){
 															   h7adesso = results.rows.item(i).francese.replace("P0011", "'");
 															   
@@ -7246,38 +7282,47 @@ function prendicittaid(id){
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7veicolo"){
 															   h7veicolo = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7veicolo",h7veicolo)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7passeggeri"){
 															   h7passeggeri = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7passeggeri",h7passeggeri)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7fumatori"){
 															   h7fumatori = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7fumatori",h7fumatori)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7animali"){
 															   h7animali = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7animali",h7animali)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7minori"){
 															   h7minori = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7minori",h7minori)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7disabili"){
 															   h7disabili = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7disabili",h7disabili)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7seggiolino"){
 															   h7seggiolino = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7seggiolino",h7seggiolino)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7pacchi"){
 															   h7pacchi = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7pacchi",h7pacchi)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7gancio"){
 															   h7gancio = results.rows.item(i).francese.replace("P0011", "'");
+															   localStorage.setItem("h7gancio",h7gancio)
 															   
 															   }
 															   
@@ -7329,6 +7374,12 @@ function prendicittaid(id){
 															   
 															   }
 															   
+															   if(results.rows.item(i).id_traduzione == "datacal"){
+															   
+															   $("#datacal").attr("placeholder",""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
+															   
+															   }
+															   
 															   if(results.rows.item(i).id_traduzione == "h7adesso"){
 															   h7adesso = results.rows.item(i).spagnolo.replace("P0011", "'");
 															   
@@ -7345,38 +7396,47 @@ function prendicittaid(id){
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7veicolo"){
 															   h7veicolo = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7veicolo",h7veicolo)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7passeggeri"){
 															   h7passeggeri = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7passeggeri",h7passeggeri)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7fumatori"){
 															   h7fumatori = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7fumatori",h7fumatori)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7animali"){
 															   h7animali = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7animali",h7animali)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7minori"){
 															   h7minori = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7minori",h7minori)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7disabili"){
 															   h7disabili = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7disabili",h7disabili)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7seggiolino"){
 															   h7seggiolino = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7seggiolino",h7seggiolino)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7pacchi"){
 															   h7pacchi = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7pacchi",h7pacchi)
 															   
 															   }
 															   if(results.rows.item(i).id_traduzione == "h7gancio"){
 															   h7gancio = results.rows.item(i).spagnolo.replace("P0011", "'");
+															   localStorage.setItem("h7gancio",h7gancio)
 															   
 															   }
 															   
