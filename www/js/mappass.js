@@ -3367,10 +3367,10 @@ function onDeviceReady() {
                    
                    
                    if(document.getElementById("datacal").value==""){
-                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>"+ h7quando +":&nbsp;</font></b><br>&nbsp;&nbsp; "+ h7adesso +" <br><br>" );
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>"+ localStorage.getItem("h7quando") +":&nbsp;</font></b><br>&nbsp;&nbsp; "+ localStorage.getItem("h7quando") +" <br><br>" );
                    }
                    else{
-                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7quando +":&nbsp; </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7quando") +":&nbsp; </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
                    }
                    
                    
@@ -7040,12 +7040,13 @@ function prendicittaid(id){
 															   
 															   if(results.rows.item(i).id_traduzione == "h7quando"){
 															   h7quando = results.rows.item(i).italiano.replace("P0011", "'");
+															   localStorage.setItem("h7quando",h7quando)
 															   
 															   }
 															   
 															   if(results.rows.item(i).id_traduzione == "h7adesso"){
 															   h7adesso = results.rows.item(i).italiano.replace("P0011", "'");
-															   
+															   localStorage.setItem("h7adesso",h7adesso)
 															   }
 															   
 															   if(results.rows.item(i).id_traduzione == "h7partenza"){
@@ -7154,11 +7155,13 @@ function prendicittaid(id){
 															   if(results.rows.item(i).id_traduzione == "h7quando"){
 															   h7quando = results.rows.item(i).inglese.replace("P0011", "'");
 															   
+															   localStorage.setItem("h7quando",h7quando)
+															   
 															   }
 															   
 															   if(results.rows.item(i).id_traduzione == "h7adesso"){
 															   h7adesso = results.rows.item(i).inglese.replace("P0011", "'");
-															   
+															   localStorage.setItem("h7adesso",h7adesso)
 															   }
 															   
 															   if(results.rows.item(i).id_traduzione == "h7partenza"){
@@ -7258,6 +7261,8 @@ function prendicittaid(id){
 															   if(results.rows.item(i).id_traduzione == "h7quando"){
 															   h7quando = results.rows.item(i).francese.replace("P0011", "'");
 															   
+															   localStorage.setItem("h7quando",h7quando)
+															   
 															   }
 															   
 															   if(results.rows.item(i).id_traduzione == "datacal"){
@@ -7268,7 +7273,7 @@ function prendicittaid(id){
 															   
 															   if(results.rows.item(i).id_traduzione == "h7adesso"){
 															   h7adesso = results.rows.item(i).francese.replace("P0011", "'");
-															   
+															   localStorage.setItem("h7adesso",h7adesso)
 															   }
 															   
 															   if(results.rows.item(i).id_traduzione == "h7partenza"){
@@ -7372,6 +7377,8 @@ function prendicittaid(id){
 															   if(results.rows.item(i).id_traduzione == "h7quando"){
 															   h7quando = results.rows.item(i).spagnolo.replace("P0011", "'");
 															   
+															   localStorage.setItem("h7quando",h7quando)
+															   
 															   }
 															   
 															   if(results.rows.item(i).id_traduzione == "datacal"){
@@ -7382,7 +7389,7 @@ function prendicittaid(id){
 															   
 															   if(results.rows.item(i).id_traduzione == "h7adesso"){
 															   h7adesso = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   
+															   localStorage.setItem("h7adesso",h7adesso)
 															   }
 															   
 															   if(results.rows.item(i).id_traduzione == "h7partenza"){
