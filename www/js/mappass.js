@@ -2932,369 +2932,369 @@ function onDeviceReady() {
 
 	
 	$(document).on("touchstart", "#anteprima", function(e){
-		
-		
-		var veicolando;
-		/// prendo veicolo ////
-		document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
-		
-		if(localStorage.getItem("lingua")=="it"){
-			if (document.getElementById("veicolo11").value=="Autovettura"){
-				veicolando = "Autovettura"
-				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-			}
-		}
-		else if(localStorage.getItem("lingua")=="en"){
-			if (document.getElementById("veicolo11").value=="Autovettura"){
-				veicolando = "Car"
-				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-			}
-		}
-		else if (localStorage.getItem("lingua")=="fr"){
-			if (document.getElementById("veicolo11").value=="Autovettura"){
-				veicolando = "Automobile"
-				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-			}
-		}
-		else if (localStorage.getItem("lingua")=="es"){
-			if (document.getElementById("veicolo11").value=="Autovettura"){
-				veicolando = "Autom&oacute;vil"
-				$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-			}
-		}
-			else{
-				   
-		}
-		
-		
-		$.ajax({
-						  type:"GET",
-						  url:"http://purplemiles.com/www2/check_Mezzi_Lingua.php?mezzo="+document.getElementById("veicolo11").value+"",
-						  contentType: "application/json",
-						  //data: {email:email,pin:pin},
-						  timeout: 7000,
-						  jsonp: 'callback',
-						  crossDomain: true,
-						  success:function(result){
-						  
-						  $.each(result, function(i,item){
-								 
-								 if(localStorage.getItem("lingua")=="it"){
-								   veicolando = item.italia;
-								   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-								 }
-								 if(localStorage.getItem("lingua")=="en"){
-								    veicolando = item.inglese;
-									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-								 }
-								 if(localStorage.getItem("lingua")=="fr"){
-								    veicolando = item.francia;
-								    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-								 }
-								 if(localStorage.getItem("lingua")=="es"){
-								    veicolando = item.spagna;
-									$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-								 }
-								 
-							});
-						  
-						  
-						  },
-						  error: function(){
-						  $(".spinner").hide();
-						  
-						   veicolando = document.getElementById("veicolo11").value
-						  $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-						  
-						  },
-						  dataType:"jsonp"});
-				   
-				   
-		document.getElementById("viale7").value = document.getElementById("viale").value;
-		document.getElementById("destinazione7").value = document.getElementById("destinazione").value;
-				   
-		if (document.getElementById("viale7").value == "") {
-			
-			
-		 navigator.notification.alert(
-												alertstart,  // message
-												alertDismissed,         // callback
-												alertattenzione,            // title
-												'OK'                  // buttonName
-												);
-												
-		  $("#da").tap();
-				   
-		  return;
-		}
-				   
-		if (document.getElementById("destinazione7").value == "") {
-
-			
-			navigator.notification.alert(
-				alertend,  // message
-				alertDismissed,         // callback
-				alertattenzione,            // title
-				'OK'                  // buttonName
-		);
-		
-		 	$("#a1").tap();
-				   
-			return;
-	    }
-				   
-				   
-				   /*if(screen.width < 768){
-				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
-				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
-				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
-				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
-				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
-				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
-				   
-				   }
-				   else
-				   {
-				   if(screen.width > 719){
-				   
-				   $("#quando7").attr("width", "90px");
-				   $("#da7").attr("width", "90px");
-				   $("#a27").attr("width", "90px");
-				   $("#piu7").attr("width", "90px");
-				   $("#anteprima7").attr("width", "110px");
-				   $("#offerte7").attr("width", "90px");
-				   
-				   $("#spazioipad7").attr("height","70");
-				   
-				   }
-				   else{
-				   $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
-				   $("#da").html("<img src='img/ico_start1.png' width='45px'>");
-				   $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
-				   $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
-				   $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
-				   $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
-				   
-
-				   }
-				   }*/
-
-				   
-		
-		$("#back3").show();
-				   
-		localStorage.setItem("viale", document.getElementById("viale").value);
-		localStorage.setItem("destinazione", document.getElementById("destinazione").value);
-				   
-	   
-				   
-		localStorage.setItem("datacal", document.getElementById("datacal").value);
-		localStorage.setItem("orario", document.getElementById("Orario").value);
-		localStorage.setItem("minuti", document.getElementById("Minuti").value);
-				
-				   
-
-				   if(document.getElementById("datacal").value==""){
-				     document.getElementById("datacal7").value = "ORA";
-				   }
-				   else{
-				     document.getElementById("datacal7").value = document.getElementById("datacal").value;
-				     document.getElementById("orario7").value = document.getElementById("Orario").value;
-				     document.getElementById("minuti7").value = document.getElementById("Minuti").value;
-				   }
-				   
-				   
-                   if(localStorage.getItem("lingua")=="it"){
-				   
-				   
-                   /*if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
-				   
-				       //alert(document.getElementById("veicolo7").value)
-	
-	                    document.getElementById("veicolo7").value = "Autovettura"
-				   
-				        if (document.getElementById("veicolo7").value=="Autovettura"){
-				          var veicolando = "Autovettura"
-				        }
-				        else {
-				          var veicolando = document.getElementById("veicolo7").value
-				         }
-				   
-				   
-						$("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
                    
+                   
+                   var veicolando;
+                   /// prendo veicolo ////
+                   document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
+                   
+                   if(localStorage.getItem("lingua")=="it"){
+                   if (document.getElementById("veicolo11").value=="Autovettura"){
+                   veicolando = "Autovettura"
+                   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                   }
+                   }
+                   else if(localStorage.getItem("lingua")=="en"){
+                   if (document.getElementById("veicolo11").value=="Autovettura"){
+                   veicolando = "Car"
+                   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                   }
+                   }
+                   else if (localStorage.getItem("lingua")=="fr"){
+                   if (document.getElementById("veicolo11").value=="Autovettura"){
+                   veicolando = "Automobile"
+                   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                   }
+                   }
+                   else if (localStorage.getItem("lingua")=="es"){
+                   if (document.getElementById("veicolo11").value=="Autovettura"){
+                   veicolando = "Autom&oacute;vil"
+                   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                   }
                    }
                    else{
-				   
                    
-                        document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
-				   
-				        if (document.getElementById("veicolo7").value=="Autovettura"){
-					        //var veicolando = "Auto/Taxi/NCC"
-							var veicolando = "Autovettura"
-						}
-				        else {
-						    var veicolando = document.getElementById("veicolo7").value
-				         }
-				   
+                   }
                    
+                   
+                   $.ajax({
+                          type:"GET",
+                          url:"http://purplemiles.com/www2/check_Mezzi_Lingua.php?mezzo="+document.getElementById("veicolo11").value+"",
+                          contentType: "application/json",
+                          //data: {email:email,pin:pin},
+                          timeout: 7000,
+                          jsonp: 'callback',
+                          crossDomain: true,
+                          success:function(result){
+                          
+                          $.each(result, function(i,item){
+                                 
+                                 if(localStorage.getItem("lingua")=="it"){
+                                 veicolando = item.italia;
+                                 $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                                 }
+                                 if(localStorage.getItem("lingua")=="en"){
+                                 veicolando = item.inglese;
+                                 $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                                 }
+                                 if(localStorage.getItem("lingua")=="fr"){
+                                 veicolando = item.francia;
+                                 $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                                 }
+                                 if(localStorage.getItem("lingua")=="es"){
+                                 veicolando = item.spagna;
+                                 $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7veicolo") +": </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                                 }
+                                 
+                                 });
+                          
+                          
+                          },
+                          error: function(){
+                          $(".spinner").hide();
+                          
+                          veicolando = document.getElementById("veicolo11").value
+                          $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                          
+                          },
+                          dataType:"jsonp"});
+                   
+                   
+                   document.getElementById("viale7").value = document.getElementById("viale").value;
+                   document.getElementById("destinazione7").value = document.getElementById("destinazione").value;
+                   
+                   if (document.getElementById("viale7").value == "") {
+                   
+                   
+                   navigator.notification.alert(
+                                                alertstart,  // message
+                                                alertDismissed,         // callback
+                                                alertattenzione,            // title
+                                                'OK'                  // buttonName
+                                                );
+                   
+                   $("#da").tap();
+                   
+                   return;
+                   }
+                   
+                   if (document.getElementById("destinazione7").value == "") {
+                   
+                   
+                   navigator.notification.alert(
+                                                alertend,  // message
+                                                alertDismissed,         // callback
+                                                alertattenzione,            // title
+                                                'OK'                  // buttonName
+                                                );
+                   
+                   $("#a1").tap();
+                   
+                   return;
+                   }
+                   
+                   
+                   /*if(screen.width < 768){
+                    $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+                    $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+                    $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+                    $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+                    $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+                    $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+                    
+                    }
+                    else
+                    {
+                    if(screen.width > 719){
+                    
+                    $("#quando7").attr("width", "90px");
+                    $("#da7").attr("width", "90px");
+                    $("#a27").attr("width", "90px");
+                    $("#piu7").attr("width", "90px");
+                    $("#anteprima7").attr("width", "110px");
+                    $("#offerte7").attr("width", "90px");
+                    
+                    $("#spazioipad7").attr("height","70");
+                    
+                    }
+                    else{
+                    $("#quando").html("<img src='img/ico_quando1.png' width='45px'>");
+                    $("#da").html("<img src='img/ico_start1.png' width='45px'>");
+                    $("#a2").html("<img src='img/ico_finish1.png' width='45px'>");
+                    $("#piu").html("<img src='img/ico_plus3.png' width='55px'>");
+                    $("#anteprima").html("<img src='img/ico_go1.png' width='45px'>");
+                    $("#offerte").html("<img src='img/ico_offerte1.png' width='45px'>");
+                    
+                    
+                    }
+                    }*/
+                   
+                   
+                   
+                   $("#back3").show();
+                   
+                   localStorage.setItem("viale", document.getElementById("viale").value);
+                   localStorage.setItem("destinazione", document.getElementById("destinazione").value);
+                   
+                   
+                   
+                   localStorage.setItem("datacal", document.getElementById("datacal").value);
+                   localStorage.setItem("orario", document.getElementById("Orario").value);
+                   localStorage.setItem("minuti", document.getElementById("Minuti").value);
+                   
+                   
+                   
+                   if(document.getElementById("datacal").value==""){
+                   document.getElementById("datacal7").value = "ORA";
+                   }
+                   else{
+                   document.getElementById("datacal7").value = document.getElementById("datacal").value;
+                   document.getElementById("orario7").value = document.getElementById("Orario").value;
+                   document.getElementById("minuti7").value = document.getElementById("Minuti").value;
+                   }
+                   
+                   
+                   if(localStorage.getItem("lingua")=="it"){
+                   
+                   
+                   /*if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
+                    
+                    //alert(document.getElementById("veicolo7").value)
+                    
+                    document.getElementById("veicolo7").value = "Autovettura"
+                    
+                    if (document.getElementById("veicolo7").value=="Autovettura"){
+                    var veicolando = "Autovettura"
+                    }
+                    else {
+                    var veicolando = document.getElementById("veicolo7").value
+                    }
+                    
+                    
+                    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                    
+                    }
+                    else{
+                    
+                    
+                    document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
+                    
+                    if (document.getElementById("veicolo7").value=="Autovettura"){
+                    //var veicolando = "Auto/Taxi/NCC"
+                    var veicolando = "Autovettura"
+                    }
+                    else {
+                    var veicolando = document.getElementById("veicolo7").value
+                    }
+                    
+                    
                     $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo: </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-                   }*/
+                    }*/
                    
                    if(document.getElementById("passeggeri").value!="01"){
-				     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri:&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
+                   $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>N. Passeggeri:&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
                    }
                    else{
-                     $("#passeggeri7").html("&nbsp;&nbsp;N. Passeggeri:&nbsp; " + document.getElementById("passeggeri").value);
+                   $("#passeggeri7").html("&nbsp;&nbsp;N. Passeggeri:&nbsp; " + document.getElementById("passeggeri").value);
                    }
                    
                    if(document.getElementById("animali").value=="Si"){
-                      $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>Animale a seguito:&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>Animale a seguito:&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                      $("#animali7").html("&nbsp;&nbsp;Animale a seguito:&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+""));
+                   $("#animali7").html("&nbsp;&nbsp;Animale a seguito:&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+""));
                    }
-
+                   
                    if(document.getElementById("fumatori").value=="Si"){
-                     $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>Fumatori:&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>Fumatori:&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#fumatori7").html("&nbsp;&nbsp;Fumatori:&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
+                   $("#fumatori7").html("&nbsp;&nbsp;Fumatori:&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("meno18").value=="Si"){
-                     $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>Minori non accompagnati:&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>Minori non accompagnati:&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#meno187").html("&nbsp;&nbsp;Minori non accompagnati:&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+""));
+                   $("#meno187").html("&nbsp;&nbsp;Minori non accompagnati:&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("disabili").value=="Si"){
-                     $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>Diversamente abili:&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>Diversamente abili:&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#disabili7").html("&nbsp;&nbsp;Diversamente abili:&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+""));
+                   $("#disabili7").html("&nbsp;&nbsp;Diversamente abili:&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("bambini").value=="Si"){
-                     $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>Seggiolino per bambini:&nbsp; " + document.getElementById("bambini").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>Seggiolino per bambini:&nbsp; " + document.getElementById("bambini").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#bambini7").html("&nbsp;&nbsp;Seggiolino per bambini:&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
+                   $("#bambini7").html("&nbsp;&nbsp;Seggiolino per bambini:&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("wifi").value=="Si"){
-                     $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi:&nbsp; " + document.getElementById("wifi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi:&nbsp; " + document.getElementById("wifi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#wifi7").html("&nbsp;&nbsp;WiFi :&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+""));
+                   $("#wifi7").html("&nbsp;&nbsp;WiFi :&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("portapacchi").value=="Si"){
-                     $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>Portapacchi:&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>Portapacchi:&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#portapacchi7").html("&nbsp;&nbsp;Portapacchi :&nbsp;" + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+""));
+                   $("#portapacchi7").html("&nbsp;&nbsp;Portapacchi :&nbsp;" + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+""));
                    }
-
+                   
                    if(document.getElementById("rimorchio").value=="Si"){
-                     $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>Gancio rimorchio:&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>Gancio rimorchio:&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#rimorchio7").html("&nbsp;&nbsp;Gancio rimorchio:&nbsp;" + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+""));
+                   $("#rimorchio7").html("&nbsp;&nbsp;Gancio rimorchio:&nbsp;" + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("bluetooth").value=="Si"){
-                     $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth:&nbsp; " + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth:&nbsp; " + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+"") + "</b></font>");
                    }
                    else{
-                     $("#bluetooth7").html("&nbsp;&nbsp;Gancio rimorchio:&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+""));
+                   $("#bluetooth7").html("&nbsp;&nbsp;Gancio rimorchio:&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+""));
                    }
                    
                    if(document.getElementById("notepass").value!=""){
-                     $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note:&nbsp; " + document.getElementById("notepass").value + "</b></font>");
+                   $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note:&nbsp; " + document.getElementById("notepass").value + "</b></font>");
                    }
                    else{
-                     $("#note7").html("&nbsp;&nbsp;Note:&nbsp;" + document.getElementById("notepass").value);
+                   $("#note7").html("&nbsp;&nbsp;Note:&nbsp;" + document.getElementById("notepass").value);
                    }
                    
-                
-				   if(document.getElementById("datacal").value==""){
-				     $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>Quando:&nbsp; </font></b><br>&nbsp;&nbsp; Adesso, prima possibile <br><br>" );
-				   }
-				   else{
-					  $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Quando:&nbsp; </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
-				   }
-				   
-				   
-				   
-				   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Partenza:&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
                    
-				   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>Destinazione:&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
+                   if(document.getElementById("datacal").value==""){
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>Quando:&nbsp; </font></b><br>&nbsp;&nbsp; Adesso, prima possibile <br><br>" );
+                   }
+                   else{
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Quando:&nbsp; </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
+                   }
+                   
+                   
+                   
+                   $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>Partenza:&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
+                   
+                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>Destinazione:&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
                    }
                    
                    else{
-				   
                    
-				   /*
-				   
-				   
-				   if(localStorage.getItem("lingua")=="en"){
-				     if (localStorage.getItem("veicolo")=="Autovettura"){
-				      var veicolando = "Car"
-				     }
-				   }
-				   else if (localStorage.getItem("lingua")=="fr"){
-				     if (localStorage.getItem("veicolo")=="Autovettura"){
-				       var veicolando = "Automobile"
-				     }
-				   }
-				   else if (localStorage.getItem("lingua")=="es"){
-				     if (localStorage.getItem("veicolo")=="Autovettura"){
-				       var veicolando = "Autom&oacute;vil"
-				     }
-				   }
-				   else{
-				   
-				   }
-				   
-				   if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
-				   
-				   document.getElementById("veicolo7").value = document.getElementById("veicolo11").value
-				   
-				   if (document.getElementById("veicolo7").value=="Autovettura"){
-					var veicolando = "Auto/Taxi/Limo"
-				   }
-				   else {
-					var veicolando = document.getElementById("veicolo7").value
-				   }
-				   
-				   
-				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo:&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-				   
-				   }
-				   else{
-				   
-				   document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
-				   
-				   if (document.getElementById("veicolo7").value=="Autovettura"){
-					var veicolando = "Auto/Taxi/Limo"
-				   }
-				   else {
-					var veicolando = document.getElementById("veicolo7").value
-				   }
-				   
-				   
-				   $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-				   }*/
-
-				   
+                   
+                   /*
+                    
+                    
+                    if(localStorage.getItem("lingua")=="en"){
+                    if (localStorage.getItem("veicolo")=="Autovettura"){
+                    var veicolando = "Car"
+                    }
+                    }
+                    else if (localStorage.getItem("lingua")=="fr"){
+                    if (localStorage.getItem("veicolo")=="Autovettura"){
+                    var veicolando = "Automobile"
+                    }
+                    }
+                    else if (localStorage.getItem("lingua")=="es"){
+                    if (localStorage.getItem("veicolo")=="Autovettura"){
+                    var veicolando = "Autom&oacute;vil"
+                    }
+                    }
+                    else{
+                    
+                    }
+                    
+                    if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
+                    
+                    document.getElementById("veicolo7").value = document.getElementById("veicolo11").value
+                    
+                    if (document.getElementById("veicolo7").value=="Autovettura"){
+                    var veicolando = "Auto/Taxi/Limo"
+                    }
+                    else {
+                    var veicolando = document.getElementById("veicolo7").value
+                    }
+                    
+                    
+                    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo:&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                    
+                    }
+                    else{
+                    
+                    document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
+                    
+                    if (document.getElementById("veicolo7").value=="Autovettura"){
+                    var veicolando = "Auto/Taxi/Limo"
+                    }
+                    else {
+                    var veicolando = document.getElementById("veicolo7").value
+                    }
+                    
+                    
+                    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
+                    }*/
+                   
+                   
                    // QUI
                    if(document.getElementById("passeggeri").value!="01"){
-                     $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7passeggeri") +":&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
+                   $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7passeggeri") +":&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
                    }
                    else{
-                     $("#passeggeri7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7passeggeri") +":&nbsp; " + document.getElementById("passeggeri").value);
+                   $("#passeggeri7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7passeggeri") +":&nbsp; " + document.getElementById("passeggeri").value);
                    }
                    
                    if(document.getElementById("animali").value=="Si"){
@@ -3367,7 +3367,7 @@ function onDeviceReady() {
                    
                    
                    if(document.getElementById("datacal").value==""){
-                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>"+ localStorage.getItem("h7quando") +":&nbsp;</font></b><br>&nbsp;&nbsp; "+ localStorage.getItem("h7quando") +" <br><br>" );
+                   $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>"+ localStorage.getItem("h7quando") +":&nbsp;</font></b><br>&nbsp;&nbsp; "+ localStorage.getItem("h7adesso") +" <br><br>" );
                    }
                    else{
                    $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ localStorage.getItem("h7quando") +":&nbsp; </font></b><br>&nbsp;&nbsp; " + document.getElementById("datacal7").value + ", <b><font color='#cc33cc'>Ora: </font></b>" + document.getElementById("orario7").value + " " + document.getElementById("minuti7").value + "<br><br>");
@@ -3381,36 +3381,37 @@ function onDeviceReady() {
                    
                    
                    }
-				   
-				   
-				   setTimeout(function() {
-							  
-							  myScroll3 = new IScroll('#wrapper3', { click: true });
-							  
-							  
-							  setTimeout (function(){
-								myScroll3.refresh();
-										  
-							  }, 500);
-							  
-							  
-							  document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
-							  
-							  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-					}, 500);
                    
                    
-                   $.mobile.changePage ($("#home7"));
-		
-		e.stopImmediatePropagation();
-				   
-	    e.preventDefault();
-				   
-		return false;
-				   
-		if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
-				   
-	});
+                   setTimeout(function() {
+                              
+                              myScroll3 = new IScroll('#wrapper3', { click: true });
+                              
+                              
+                              setTimeout (function(){
+                                          myScroll3.refresh();
+                                          
+                                          }, 500);
+                              
+                              
+                              document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+                              
+                              document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+                              }, 500);
+                   
+                   
+            $.mobile.changePage ($("#home7"));
+                   
+            e.stopImmediatePropagation();
+                   
+            e.preventDefault();
+                   
+            return false;
+                   
+            if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+                   
+        });
+
 
 	
 	var last_click_time = new Date().getTime();
@@ -7012,478 +7013,477 @@ function prendicittaid(id){
 								  
 								  
 								  function ripetiseleziona () {
-								  
-								  var db;
-								  db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
-								  
-								  db.transaction(function (tx) {
-												 
-												 tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
-															   var len = results.rows.length, i;
-															   
-															   if(localStorage.getItem("lingua")=="it"){
-															   
-															   for (i = 0; i < len; i++){
-															   
-															   $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano.replace("P0011", "'"));
-															   
-															   if(results.rows.item(i).id_traduzione == "datacal"){
-															   
-															   $("#datacal").attr("placeholder",""+results.rows.item(i).italiano.replace("P0011", "'")+"");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h4richiesta"){
-															   h4richiesta = results.rows.item(i).italiano.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7quando"){
-															   h7quando = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7quando",h7quando)
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7adesso"){
-															   h7adesso = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7adesso",h7adesso)
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7partenza"){
-															   h7partenza = results.rows.item(i).italiano.replace("P0011", "'");
-															   
-															   
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7arrivo"){
-															   h7arrivo = results.rows.item(i).italiano.replace("P0011", "'");
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7veicolo"){
-															   h7veicolo = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7veicolo",h7veicolo)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7passeggeri"){
-															   h7passeggeri = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7passeggeri",h7passeggeri)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7fumatori"){
-															   h7fumatori = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7fumatori",h7fumatori)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7animali"){
-															   h7animali = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7animali",h7animali)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7minori"){
-															   h7minori = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7minori",h7minori)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7disabili"){
-															   h7disabili = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7disabili",h7disabili)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7seggiolino"){
-															   h7seggiolino = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7seggiolino",h7seggiolino)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7pacchi"){
-															   h7pacchi = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7pacchi",h7pacchi)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7gancio"){
-															   h7gancio = results.rows.item(i).italiano.replace("P0011", "'");
-															   localStorage.setItem("h7gancio",h7gancio)
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "alertpartenza"){
-															   alertstart = results.rows.item(i).italiano.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "alertdestinazione"){
-															   alertend = results.rows.item(i).italiano.replace("P0011", "'");
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "alertinvio"){
-															   alertinvio = results.rows.item(i).italiano.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "adesso1"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).italiano.replace("P0011", "'") + "&nbsp;");
-															   }
-															   
-															   
-															   
-															   if(results.rows.item(i).id_traduzione == "tardi1"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).italiano.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-															   }
-															   
-															   }
-															   
-															   }
-															   
-															   
-															   if(localStorage.getItem("lingua")=="en"){
-															   
-															   
-															   for (i = 0; i < len; i++){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
-															   
-															   if(results.rows.item(i).id_traduzione == "h4richiesta"){
-															   h4richiesta = results.rows.item(i).inglese.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "datacal"){
-															   
-															   $("#datacal").attr("placeholder",""+results.rows.item(i).inglese.replace("P0011", "'")+"");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7quando"){
-															   h7quando = results.rows.item(i).inglese.replace("P0011", "'");
-															   
-															   localStorage.setItem("h7quando",h7quando)
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7adesso"){
-															   h7adesso = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7adesso",h7adesso)
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7partenza"){
-															   h7partenza = results.rows.item(i).inglese.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7arrivo"){
-															   h7arrivo = results.rows.item(i).inglese.replace("P0011", "'");
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7veicolo"){
-															   h7veicolo = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7veicolo",h7veicolo)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7passeggeri"){
-															   h7passeggeri = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7passeggeri",h7passeggeri)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7fumatori"){
-															   h7fumatori = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7fumatori",h7fumatori)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7animali"){
-															   h7animali = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7animali",h7animali)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7minori"){
-															   h7minori = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7minori",h7minori)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7disabili"){
-															   h7disabili = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7disabili",h7disabili)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7seggiolino"){
-															   h7seggiolino = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7seggiolino",h7seggiolino)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7pacchi"){
-															   h7pacchi = results.rows.item(i).inglese.replace("P0011", "'");
-															   localStorage.setItem("h7pacchi",h7pacchi)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7gancio"){
-															   h7gancio = results.rows.item(i).inglese.replace("P0011", "'");
-															    localStorage.setItem("h7gancio",h7gancio)
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "alertpartenza"){
-															   alertstart = results.rows.item(i).inglese.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "alertdestinazione"){
-															   alertend = results.rows.item(i).inglese.replace("P0011", "'");
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "alertinvio"){
-															   alertinvio = results.rows.item(i).inglese.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "adesso1"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).inglese.replace("P0011", "'") + "&nbsp;");
-															   }
-															   
-															   
-															   
-															   if(results.rows.item(i).id_traduzione == "tardi1"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).inglese.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-															   }
-															   
-															   }
-															   
-															   }
-															   
-															   if(localStorage.getItem("lingua")=="fr"){
-															   
-															   
-															   for (i = 0; i < len; i++){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).francese.replace("P0011", "'"));
-															   
-															   if(results.rows.item(i).id_traduzione == "h4richiesta"){
-															   h4richiesta = results.rows.item(i).francese.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7quando"){
-															   h7quando = results.rows.item(i).francese.replace("P0011", "'");
-															   
-															   localStorage.setItem("h7quando",h7quando)
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "datacal"){
-															   
-															   $("#datacal").attr("placeholder",""+results.rows.item(i).francese.replace("P0011", "'")+"");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7adesso"){
-															   h7adesso = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7adesso",h7adesso)
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7partenza"){
-															   h7partenza = results.rows.item(i).francese.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7arrivo"){
-															   h7arrivo = results.rows.item(i).francese.replace("P0011", "'");
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7veicolo"){
-															   h7veicolo = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7veicolo",h7veicolo)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7passeggeri"){
-															   h7passeggeri = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7passeggeri",h7passeggeri)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7fumatori"){
-															   h7fumatori = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7fumatori",h7fumatori)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7animali"){
-															   h7animali = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7animali",h7animali)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7minori"){
-															   h7minori = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7minori",h7minori)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7disabili"){
-															   h7disabili = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7disabili",h7disabili)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7seggiolino"){
-															   h7seggiolino = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7seggiolino",h7seggiolino)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7pacchi"){
-															   h7pacchi = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7pacchi",h7pacchi)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7gancio"){
-															   h7gancio = results.rows.item(i).francese.replace("P0011", "'");
-															   localStorage.setItem("h7gancio",h7gancio)
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "alertpartenza"){
-															   alertstart = results.rows.item(i).francese.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "alertdestinazione"){
-															   alertend = results.rows.item(i).francese.replace("P0011", "'");
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "alertinvio"){
-															   alertinvio = results.rows.item(i).francese.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "adesso1"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).francese.replace("P0011", "'") + "&nbsp;");
-															   }
-															   
-															   
-															   
-															   if(results.rows.item(i).id_traduzione == "tardi1"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).francese.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "adesso"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("<font size='2'>"+results.rows.item(i).francese.replace("P0011", "'")+"</font>");
-															   }
-															   
-															   }
-															   
-															   }
-															   
-															   if(localStorage.getItem("lingua")=="es"){
-															   
-															   
-															   for (i = 0; i < len; i++){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
-															   
-															   if(results.rows.item(i).id_traduzione == "h4richiesta"){
-															   h4richiesta = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7quando"){
-															   h7quando = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   
-															   localStorage.setItem("h7quando",h7quando)
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "datacal"){
-															   
-															   $("#datacal").attr("placeholder",""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7adesso"){
-															   h7adesso = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7adesso",h7adesso)
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7partenza"){
-															   h7partenza = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "h7arrivo"){
-															   h7arrivo = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7veicolo"){
-															   h7veicolo = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7veicolo",h7veicolo)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7passeggeri"){
-															   h7passeggeri = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7passeggeri",h7passeggeri)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7fumatori"){
-															   h7fumatori = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7fumatori",h7fumatori)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7animali"){
-															   h7animali = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7animali",h7animali)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7minori"){
-															   h7minori = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7minori",h7minori)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7disabili"){
-															   h7disabili = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7disabili",h7disabili)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7seggiolino"){
-															   h7seggiolino = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7seggiolino",h7seggiolino)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7pacchi"){
-															   h7pacchi = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7pacchi",h7pacchi)
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "h7gancio"){
-															   h7gancio = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   localStorage.setItem("h7gancio",h7gancio)
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "alertpartenza"){
-															   alertstart = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "alertdestinazione"){
-															   alertend = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   
-															   }
-															   if(results.rows.item(i).id_traduzione == "alertinvio"){
-															   alertinvio = results.rows.item(i).spagnolo.replace("P0011", "'");
-															   
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "adesso1"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).spagnolo.replace("P0011", "'") + "&nbsp;");
-															   }
-															   
-															   
-															   
-															   if(results.rows.item(i).id_traduzione == "tardi1"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).spagnolo.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-															   }
-															   
-															   if(results.rows.item(i).id_traduzione == "adesso"){
-															   $("#"+ results.rows.item(i).id_traduzione +"").html("<font size='2'>"+results.rows.item(i).spagnolo.replace("P0011", "'")+"</font>");
-															   }
-															   
-															   }
-															   
-															   }
-															   
-															   }, null);
-												 });
-								  
-								  
-								  }
+                                  
+                                  var db;
+                                  db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
+                                  
+                                  db.transaction(function (tx) {
+                                                 
+                                                 tx.executeSql('SELECT * FROM TestiV2', [], function (tx, results) {
+                                                               var len = results.rows.length, i;
+                                                               
+                                                               if(localStorage.getItem("lingua")=="it"){
+                                                               
+                                                               for (i = 0; i < len; i++){
+                                                               
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).italiano.replace("P0011", "'"));
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "datacal"){
+                                                               
+                                                               $("#datacal").attr("placeholder",""+results.rows.item(i).italiano.replace("P0011", "'")+"");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                                               h4richiesta = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7quando"){
+                                                               h7quando = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               
+                                                               localStorage.setItem("h7quando",h7quando)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7adesso"){
+                                                               h7adesso = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7adesso",h7adesso)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7partenza"){
+                                                               h7partenza = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               
+                                                               
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7arrivo"){
+                                                               h7arrivo = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7veicolo"){
+                                                               h7veicolo = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7veicolo",h7veicolo)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7passeggeri"){
+                                                               h7passeggeri = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7passeggeri",h7passeggeri)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7fumatori"){
+                                                               h7fumatori = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7fumatori",h7fumatori)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7animali"){
+                                                               h7animali = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7animali",h7animali)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7minori"){
+                                                               h7minori = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7minori",h7minori)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7disabili"){
+                                                               h7disabili = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7disabili",h7disabili)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7seggiolino"){
+                                                               h7seggiolino = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7seggiolino",h7seggiolino)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7pacchi"){
+                                                               h7pacchi = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7pacchi",h7pacchi)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7gancio"){
+                                                               h7gancio = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               localStorage.setItem("h7gancio",h7gancio)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "alertpartenza"){
+                                                               alertstart = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "alertdestinazione"){
+                                                               alertend = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "alertinvio"){
+                                                               alertinvio = results.rows.item(i).italiano.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "adesso1"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).italiano.replace("P0011", "'") + "&nbsp;");
+                                                               }
+                                                               
+                                                               
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "tardi1"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).italiano.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               
+                                                               if(localStorage.getItem("lingua")=="en"){
+                                                               
+                                                               
+                                                               for (i = 0; i < len; i++){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).inglese.replace("P0011", "'"));
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                                               h4richiesta = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "datacal"){
+                                                               
+                                                               $("#datacal").attr("placeholder",""+results.rows.item(i).inglese.replace("P0011", "'")+"");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7quando"){
+                                                               h7quando = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7quando",h7quando)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7adesso"){
+                                                               h7adesso = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7adesso",h7adesso)
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7partenza"){
+                                                               h7partenza = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7arrivo"){
+                                                               h7arrivo = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7veicolo"){
+                                                               h7veicolo = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7veicolo",h7veicolo)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7passeggeri"){
+                                                               h7passeggeri = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7passeggeri",h7passeggeri)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7fumatori"){
+                                                               h7fumatori = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7fumatori",h7fumatori)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7animali"){
+                                                               h7animali = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7animali",h7animali)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7minori"){
+                                                               h7minori = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7minori",h7minori)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7disabili"){
+                                                               h7disabili = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7disabili",h7disabili)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7seggiolino"){
+                                                               h7seggiolino = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7seggiolino",h7seggiolino)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7pacchi"){
+                                                               h7pacchi = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7pacchi",h7pacchi)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7gancio"){
+                                                               h7gancio = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               localStorage.setItem("h7gancio",h7gancio)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "alertpartenza"){
+                                                               alertstart = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "alertdestinazione"){
+                                                               alertend = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "alertinvio"){
+                                                               alertinvio = results.rows.item(i).inglese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "adesso1"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).inglese.replace("P0011", "'") + "&nbsp;");
+                                                               }
+                                                               
+                                                               
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "tardi1"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).inglese.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               if(localStorage.getItem("lingua")=="fr"){
+                                                               
+                                                               
+                                                               for (i = 0; i < len; i++){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).francese.replace("P0011", "'"));
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                                               h4richiesta = results.rows.item(i).francese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7quando"){
+                                                               h7quando = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7quando",h7quando)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "datacal"){
+                                                               
+                                                               $("#datacal").attr("placeholder",""+results.rows.item(i).francese.replace("P0011", "'")+"");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7adesso"){
+                                                               h7adesso = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7adesso",h7adesso)
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7partenza"){
+                                                               h7partenza = results.rows.item(i).francese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7arrivo"){
+                                                               h7arrivo = results.rows.item(i).francese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7veicolo"){
+                                                               h7veicolo = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7veicolo",h7veicolo)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7passeggeri"){
+                                                               h7passeggeri = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7passeggeri",h7passeggeri)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7fumatori"){
+                                                               h7fumatori = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7fumatori",h7fumatori)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7animali"){
+                                                               h7animali = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7animali",h7animali)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7minori"){
+                                                               h7minori = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7minori",h7minori)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7disabili"){
+                                                               h7disabili = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7disabili",h7disabili)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7seggiolino"){
+                                                               h7seggiolino = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7seggiolino",h7seggiolino)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7pacchi"){
+                                                               h7pacchi = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7pacchi",h7pacchi)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7gancio"){
+                                                               h7gancio = results.rows.item(i).francese.replace("P0011", "'");
+                                                               localStorage.setItem("h7gancio",h7gancio)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "alertpartenza"){
+                                                               alertstart = results.rows.item(i).francese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "alertdestinazione"){
+                                                               alertend = results.rows.item(i).francese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "alertinvio"){
+                                                               alertinvio = results.rows.item(i).francese.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "adesso1"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).francese.replace("P0011", "'") + "&nbsp;");
+                                                               }
+                                                               
+                                                               
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "tardi1"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).francese.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "adesso"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("<font size='2'>"+results.rows.item(i).francese.replace("P0011", "'")+"</font>");
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               if(localStorage.getItem("lingua")=="es"){
+                                                               
+                                                               
+                                                               for (i = 0; i < len; i++){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html(results.rows.item(i).spagnolo.replace("P0011", "'"));
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h4richiesta"){
+                                                               h4richiesta = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7quando"){
+                                                               h7quando = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7quando",h7quando)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "datacal"){
+                                                               
+                                                               $("#datacal").attr("placeholder",""+results.rows.item(i).spagnolo.replace("P0011", "'")+"");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7adesso"){
+                                                               h7adesso = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7adesso",h7adesso)
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7partenza"){
+                                                               h7partenza = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "h7arrivo"){
+                                                               h7arrivo = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7veicolo"){
+                                                               h7veicolo = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7veicolo",h7veicolo)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7passeggeri"){
+                                                               h7passeggeri = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7passeggeri",h7passeggeri)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7fumatori"){
+                                                               h7fumatori = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7fumatori",h7fumatori)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7animali"){
+                                                               h7animali = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7animali",h7animali)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7minori"){
+                                                               h7minori = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7minori",h7minori)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7disabili"){
+                                                               h7disabili = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7disabili",h7disabili)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7seggiolino"){
+                                                               h7seggiolino = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7seggiolino",h7seggiolino)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7pacchi"){
+                                                               h7pacchi = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7pacchi",h7pacchi)
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "h7gancio"){
+                                                               h7gancio = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               localStorage.setItem("h7gancio",h7gancio)
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "alertpartenza"){
+                                                               alertstart = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "alertdestinazione"){
+                                                               alertend = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               if(results.rows.item(i).id_traduzione == "alertinvio"){
+                                                               alertinvio = results.rows.item(i).spagnolo.replace("P0011", "'");
+                                                               
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "adesso1"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;" + results.rows.item(i).spagnolo.replace("P0011", "'") + "&nbsp;");
+                                                               }
+                                                               
+                                                               
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "tardi1"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + results.rows.item(i).spagnolo.replace("P0011", "'") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                                                               }
+                                                               
+                                                               if(results.rows.item(i).id_traduzione == "adesso"){
+                                                               $("#"+ results.rows.item(i).id_traduzione +"").html("<font size='2'>"+results.rows.item(i).spagnolo.replace("P0011", "'")+"</font>");
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               }
+                                                               
+                                                               }, null);
+                                                 });
+                                  
+                                  
+                                  }
 								  
 								  
 								  
