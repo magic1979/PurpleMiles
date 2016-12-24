@@ -3234,63 +3234,10 @@ function onDeviceReady() {
                    }
                    
                    else{
+
                    
-                   
-                   /*
-                    
-                    
-                    if(localStorage.getItem("lingua")=="en"){
-                    if (localStorage.getItem("veicolo")=="Autovettura"){
-                    var veicolando = "Car"
-                    }
-                    }
-                    else if (localStorage.getItem("lingua")=="fr"){
-                    if (localStorage.getItem("veicolo")=="Autovettura"){
-                    var veicolando = "Automobile"
-                    }
-                    }
-                    else if (localStorage.getItem("lingua")=="es"){
-                    if (localStorage.getItem("veicolo")=="Autovettura"){
-                    var veicolando = "Autom&oacute;vil"
-                    }
-                    }
-                    else{
-                    
-                    }
-                    
-                    if (document.getElementById("veicolo").value === null || document.getElementById("veicolo").value=="null" || typeof(document.getElementById("veicolo").value) == 'undefined' || document.getElementById("veicolo").value==0 || document.getElementById("veicolo").value=="") {
-                    
-                    document.getElementById("veicolo7").value = document.getElementById("veicolo11").value
-                    
-                    if (document.getElementById("veicolo7").value=="Autovettura"){
-                    var veicolando = "Auto/Taxi/Limo"
-                    }
-                    else {
-                    var veicolando = document.getElementById("veicolo7").value
-                    }
-                    
-                    
-                    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>Veicolo:&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-                    
-                    }
-                    else{
-                    
-                    document.getElementById("veicolo7").value = document.getElementById("veicolo11").value;
-                    
-                    if (document.getElementById("veicolo7").value=="Autovettura"){
-                    var veicolando = "Auto/Taxi/Limo"
-                    }
-                    else {
-                    var veicolando = document.getElementById("veicolo7").value
-                    }
-                    
-                    
-                    $("#veicolo77").html("&nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7veicolo +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ veicolando +"");
-                    }*/
-                   
-                   
-                   // QUI
-                   if(document.getElementById("passeggeri").value!="01"){
+                   // QUI ALTRE LINGUE
+                   /*if(document.getElementById("passeggeri").value!="01"){
                    $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7passeggeri") +":&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
                    }
                    else{
@@ -3377,7 +3324,7 @@ function onDeviceReady() {
                    
                    $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7partenza +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
                    
-                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7destinazione +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
+                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7destinazione +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );*/
                    
                    
                    }
