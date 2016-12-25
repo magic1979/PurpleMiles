@@ -3237,7 +3237,7 @@ function onDeviceReady() {
 
                    
                    // QUI ALTRE LINGUE
-                   /*if(document.getElementById("passeggeri").value!="01"){
+                   if(document.getElementById("passeggeri").value!="01"){
                    $("#passeggeri7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7passeggeri") +":&nbsp; " + document.getElementById("passeggeri").value + "</b></font>");
                    }
                    else{
@@ -3245,58 +3245,58 @@ function onDeviceReady() {
                    }
                    
                    if(document.getElementById("animali").value=="Si"){
-                   $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7animali") +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#animali7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7animali") +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#animali7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7animali") +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+rispopzioni+""));
+                   $("#animali7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7animali") +":&nbsp; " + document.getElementById("animali").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
                    
                    if(document.getElementById("fumatori").value=="Si"){
-                   $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7fumatori") +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#fumatori7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7fumatori") +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#fumatori7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7fumatori")  +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+rispopzioni+""));
+                   $("#fumatori7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7fumatori")  +":&nbsp; " + document.getElementById("fumatori").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
                    if(document.getElementById("meno18").value=="Si"){
-                   $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7minori")  +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#meno187").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7minori")  +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#meno187").html("&nbsp;&nbsp;"+ localStorage.getItem("h7minori") +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+rispopzioni+""));
+                   $("#meno187").html("&nbsp;&nbsp;"+ localStorage.getItem("h7minori") +":&nbsp; " + document.getElementById("meno18").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
                    
                    if(document.getElementById("disabili").value=="Si"){
-                   $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7disabili") +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#disabili7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7disabili") +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#disabili7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7disabili") +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+rispopzioni+""));
+                   $("#disabili7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7disabili") +":&nbsp; " + document.getElementById("disabili").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
                    if(document.getElementById("bambini").value=="Si"){
-                   $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7seggiolino") +":&nbsp; " + document.getElementById("bambini").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#bambini7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7seggiolino") +":&nbsp; " + document.getElementById("bambini").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#bambini7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7seggiolino") +":&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
+                   $("#bambini7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7seggiolino") +":&nbsp;" + document.getElementById("bambini").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
                    
                    if(document.getElementById("wifi").value=="Si"){
-                   $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi :&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi :&nbsp;" + document.getElementById("wifi").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#wifi7").html("&nbsp;&nbsp;WiFi:&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+""));
+                   $("#wifi7").html("&nbsp;&nbsp;WiFi:&nbsp;" + document.getElementById("wifi").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
                    
                    if(document.getElementById("portapacchi").value=="Si"){
-                   $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7pacchi") +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#portapacchi7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7pacchi") +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#portapacchi7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7pacchi") +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+rispopzioni+""));
+                   $("#portapacchi7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7pacchi") +":&nbsp; " + document.getElementById("portapacchi").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
                    
                    if(document.getElementById("rimorchio").value=="Si"){
-                   $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7gancio") +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#rimorchio7").html("&nbsp;&nbsp;<font color='#000000'><b>"+ localStorage.getItem("h7gancio") +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#rimorchio7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7gancio") +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+""));
-                   }*/
+                   $("#rimorchio7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7gancio") +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
+                   }
                    
                    if(document.getElementById("bluetooth").value=="Si"){
                    $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
