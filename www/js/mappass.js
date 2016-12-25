@@ -3275,7 +3275,7 @@ function onDeviceReady() {
                    }
                    else{
                    $("#bambini7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7seggiolino") +":&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
-                   }
+                   }*/
                    
                    if(document.getElementById("wifi").value=="Si"){
                    $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi :&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
@@ -3310,7 +3310,7 @@ function onDeviceReady() {
                    }
                    else{
                    $("#note7").html("&nbsp;&nbsp;Note :&nbsp;" + document.getElementById("notepass").value);
-                   }*/
+                   }
                    
                    
                    if(document.getElementById("datacal").value==""){
