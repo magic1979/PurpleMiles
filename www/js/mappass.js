@@ -3275,7 +3275,7 @@ function onDeviceReady() {
                    }
                    else{
                    $("#bambini7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7seggiolino") +":&nbsp;" + document.getElementById("bambini").value.replace("Si",""+rispopzioni+""));
-                   }*/
+                   }
                    
                    if(document.getElementById("wifi").value=="Si"){
                    $("#wifi7").html("&nbsp;&nbsp;<font color='#000000'><b>WiFi :&nbsp;" + document.getElementById("wifi").value.replace("Si",""+rispopzioni+"") + "</b></font>");
@@ -3296,7 +3296,7 @@ function onDeviceReady() {
                    }
                    else{
                    $("#rimorchio7").html("&nbsp;&nbsp;"+ localStorage.getItem("h7gancio") +":&nbsp; " + document.getElementById("rimorchio").value.replace("Si",""+rispopzioni+""));
-                   }
+                   }*/
                    
                    if(document.getElementById("bluetooth").value=="Si"){
                    $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+"") + "</b></font>");
