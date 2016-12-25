@@ -3310,7 +3310,7 @@ function onDeviceReady() {
                    }
                    else{
                    $("#note7").html("&nbsp;&nbsp;Note :&nbsp;" + document.getElementById("notepass").value);
-                   }
+                   }*/
                    
                    
                    if(document.getElementById("datacal").value==""){
@@ -3324,7 +3324,7 @@ function onDeviceReady() {
                    
                    $("#viale77").html(" &nbsp;&nbsp;<b><font color='#cc33cc'>"+ h7partenza +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("viale").value +" <br><br>" );
                    
-                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7destinazione +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );*/
+                   $("#destinazione77").html("&nbsp;&nbsp; <b><font color='#cc33cc'>"+ h7destinazione +":&nbsp; </font></b><br>&nbsp;&nbsp; "+ document.getElementById("destinazione").value +" <br><br>" );
                    
                    
                    }
