@@ -3299,18 +3299,19 @@ function onDeviceReady() {
                    }*/
                    
                    if(document.getElementById("bluetooth").value=="Si"){
-                   $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+"") + "</b></font>");
+                   $("#bluetooth7").html("&nbsp;&nbsp;<font color='#000000'><b>Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+localStorage.getItem("rispopzioni")+"") + "</b></font>");
                    }
                    else{
-                   $("#bluetooth7").html("&nbsp;&nbsp;Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+rispopzioni+""));
+                   $("#bluetooth7").html("&nbsp;&nbsp;Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
                    
+				   /*
                    if(document.getElementById("notepass").value!=""){
                    $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note:&nbsp; " + document.getElementById("notepass").value + "</b></font>");
                    }
                    else{
                    $("#note7").html("&nbsp;&nbsp;Note :&nbsp;" + document.getElementById("notepass").value);
-                   }
+                   }*/
                    
                    
                    if(document.getElementById("datacal").value==""){
@@ -6985,6 +6986,11 @@ function prendicittaid(id){
                                                                h4richiesta = results.rows.item(i).italiano.replace("P0011", "'");
                                                                
                                                                }
+															   
+															   if(results.rows.item(i).id_traduzione == "rispopzioni"){
+																	rispopzioni = results.rows.item(i).italiano.replace("P0011", "'");
+																	localStorage.setItem("rispopzioni",rispopzioni)
+																}
                                                                
                                                                if(results.rows.item(i).id_traduzione == "h7quando"){
                                                                h7quando = results.rows.item(i).italiano.replace("P0011", "'");
@@ -7101,6 +7107,11 @@ function prendicittaid(id){
                                                                $("#datacal").attr("placeholder",""+results.rows.item(i).inglese.replace("P0011", "'")+"");
                                                                
                                                                }
+															   
+															   if(results.rows.item(i).id_traduzione == "rispopzioni"){
+																	rispopzioni = results.rows.item(i).inglese.replace("P0011", "'");
+																	localStorage.setItem("rispopzioni",rispopzioni)
+																}
                                                                
                                                                if(results.rows.item(i).id_traduzione == "h7quando"){
                                                                h7quando = results.rows.item(i).inglese.replace("P0011", "'");
@@ -7218,6 +7229,11 @@ function prendicittaid(id){
                                                                $("#datacal").attr("placeholder",""+results.rows.item(i).francese.replace("P0011", "'")+"");
                                                                
                                                                }
+															   
+															   if(results.rows.item(i).id_traduzione == "rispopzioni"){
+																	rispopzioni = results.rows.item(i).francese.replace("P0011", "'");
+																	localStorage.setItem("rispopzioni",rispopzioni)
+																}
                                                                
                                                                if(results.rows.item(i).id_traduzione == "h7adesso"){
                                                                h7adesso = results.rows.item(i).francese.replace("P0011", "'");
@@ -7338,6 +7354,11 @@ function prendicittaid(id){
                                                                h7adesso = results.rows.item(i).spagnolo.replace("P0011", "'");
                                                                localStorage.setItem("h7adesso",h7adesso)
                                                                }
+															   
+															   if(results.rows.item(i).id_traduzione == "rispopzioni"){
+																	rispopzioni = results.rows.item(i).spagnolo.replace("P0011", "'");
+																	localStorage.setItem("rispopzioni",rispopzioni)
+																}
                                                                
                                                                if(results.rows.item(i).id_traduzione == "h7partenza"){
                                                                h7partenza = results.rows.item(i).spagnolo.replace("P0011", "'");
