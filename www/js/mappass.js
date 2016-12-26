@@ -3304,15 +3304,15 @@ function onDeviceReady() {
                    else{
                    $("#bluetooth7").html("&nbsp;&nbsp;Bluetooth :&nbsp;" + document.getElementById("bluetooth").value.replace("Si",""+localStorage.getItem("rispopzioni")+""));
                    }
-                   
-				   /*
-                   if(document.getElementById("notepass").value!=""){
-                   $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note:&nbsp; " + document.getElementById("notepass").value + "</b></font>");
-                   }
-                   else{
-                   $("#note7").html("&nbsp;&nbsp;Note :&nbsp;" + document.getElementById("notepass").value);
-                   }*/
-                   
+				   
+                   if(localStorage.getItem("lingua")!="fr"){
+					   if(document.getElementById("notepass").value!=""){
+					   $("#note7").html("&nbsp;&nbsp;<font color='#000000'><b>Note:&nbsp; " + document.getElementById("notepass").value + "</b></font>");
+					   }
+					   else{
+					   $("#note7").html("&nbsp;&nbsp;Note :&nbsp;" + document.getElementById("notepass").value);
+					   }
+				   }
                    
                    if(document.getElementById("datacal").value==""){
                    $("#posticipata7").html(" &nbsp;&nbsp;<b><font color='#cc33cc'><b>"+ localStorage.getItem("h7quando") +":&nbsp;</font></b><br>&nbsp;&nbsp; "+ localStorage.getItem("h7adesso") +" <br><br>" );

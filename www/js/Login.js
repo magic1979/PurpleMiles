@@ -118,7 +118,8 @@ function onDeviceReady() {
         $("#registrapsw").html("Password");
 		
 		$("#btnaccedi").html("Accedi");
-		$("#btnaccedifb").html("Accedi con facebook");
+		$("#btnaccedifb").html("Accedi con Facebook");
+		$("#btnescifb").html("Esci da Facebook");
 		$("#btnimp").html("Impostazioni");
 		$("#btnpsw").html("Password dimenticata?");
 		$("#btnreg").html("Registrati ora");
@@ -137,7 +138,8 @@ function onDeviceReady() {
         $("#registrapsw").html("Password");
 		
 		$("#btnaccedi").html("Log in");
-		$("#btnaccedifb").html("Log in Facebook");
+		$("#btnaccedifb").html("Facebook login");
+		$("#btnescifb").html("Facebook logout");
 		$("#btnimp").html("Settings");
 		$("#btnpsw").html("Forgot password?");
 		$("#btnreg").html("Register now");
@@ -156,7 +158,8 @@ function onDeviceReady() {
         $("#registrapsw").html("Mot de passe");
 		
 		$("#btnaccedi").html("Se connecter");
-		$("#btnaccedifb").html("Se connecter Facebook");
+		$("#btnaccedifb").html("Se connecter avec Facebook");
+		$("#btnescifb").html("Se d&egrave;connecter de Facebook");
 		$("#btnimp").html("Paramètress");
 		$("#btnpsw").html("Mot de passe oubliè?");
 		$("#btnreg").html("Inscrivez-vous maintenant");
@@ -175,7 +178,8 @@ function onDeviceReady() {
         $("#registrapsw").html("Contrase&ntilde;a");
 		
 		$("#btnaccedi").html("Iniciar");
-		$("#btnaccedifb").html("Iniciar Facebook");
+		$("#btnaccedifb").html("Iniciar con Facebook");
+		$("#btnescifb").html("Cerrar sesi&ograve;n en Facebook");
 		$("#btnimp").html("Ajustes");
 		$("#btnpsw").html("¿Contraseña olvidado?");
 		$("#btnreg").html("Regìstrese ahora");
