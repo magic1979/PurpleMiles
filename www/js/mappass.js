@@ -2033,8 +2033,8 @@ function onDeviceReady() {
 				   
 				    var alertattenzione = localStorage.getItem("sessionAttenzione")
 				    var alerterrore = localStorage.getItem("sessionErrorrete")
-				    var alertstart = localStorage.getItem("sessionStart")
-				    var alertend = localStorage.getItem("sessionEnd")
+				    var alertstart = "Entrez une adresse de dèpart" //localStorage.getItem("sessionStart")
+				    var alertend = "Entrez une adresse de destination" //localStorage.getItem("sessionEnd")
 				    $("#notepass").attr("placeholder","Remarque");
 				   
 				   
@@ -2932,6 +2932,54 @@ function onDeviceReady() {
 
 	
 	$(document).on("touchstart", "#anteprima", function(e){
+		
+				
+				if(localStorage.getItem("lingua")=="it"){
+                   
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                    var alerterrore = localStorage.getItem("sessionErrorrete")
+				    var alertstart = localStorage.getItem("sessionStart")
+				    var alertend = localStorage.getItem("sessionEnd")
+				    $("#notepass").attr("placeholder","Note");
+                   
+                   }
+                   else if(localStorage.getItem("lingua")=="en"){
+                   
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                    var erroreA = localStorage.getItem("sessionErrorrete")
+				    var alertstart = localStorage.getItem("sessionStart")
+				    var alertend = localStorage.getItem("sessionEnd")
+				    $("#notepass").attr("placeholder","Note");
+				   
+                   }
+				   else if(localStorage.getItem("lingua")=="fr"){
+				   
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
+				    var alerterrore = localStorage.getItem("sessionErrorrete")
+				    var alertstart = "Entrez une adresse de dèpart" //localStorage.getItem("sessionStart")
+				    var alertend = "Entrez une adresse de destination" //localStorage.getItem("sessionEnd")
+				    $("#notepass").attr("placeholder","Remarque");
+				   
+				   
+				   }
+				   else if(localStorage.getItem("lingua")=="es"){
+				   
+				    var alertattenzione = localStorage.getItem("sessionAttenzione")
+				    var alerterrore = localStorage.getItem("sessionErrorrete")
+				    var alertstart = localStorage.getItem("sessionStart")
+				    var alertend = localStorage.getItem("sessionEnd")
+				    $("#notepass").attr("placeholder","Notas");
+				   
+				   }
+				   else{
+				   
+                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+                    var erroreA = localStorage.getItem("sessionErrorrete")
+				    var alertstart = "Enter a starting address"
+				    var alertend = "Choose the arrival address"
+				    $("#notepass").attr("placeholder","Note");
+                   
+                   }
                    
                    
                    var veicolando;
