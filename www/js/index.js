@@ -4268,18 +4268,16 @@ function resetta1(focus) {
 		  window.clearInterval(i);
 		 }
 												 
-		window.location.href = "#home"
+		   window.location.href = "index.html"
 		
-		 e.stopImmediatePropagation();
+		   e.stopImmediatePropagation();
 				   
-	   e.preventDefault();
-	   
-	   return false;
-	   
-	   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		   e.preventDefault();
+		   
+		   return false;
+		   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	}
-	
-	
 	
 	
 	muoviti = 1;
@@ -4428,16 +4426,13 @@ function resetta1(focus) {
 						 
 						 //alert(indirizzo)
 						 
-						 
 						 }
 						 
 				}
 						 
-						 
 	  });
 		
 		
-	
 	
 	beaches.push(['Tua Posizione',lat,lng,1,0,0])
 	
@@ -4647,22 +4642,21 @@ function resetta1(focus) {
 		$("#loading").show();
 		
 		
-		// CONTROLLO MAPPA GOOGLE //
+	// CONTROLLO MAPPA GOOGLE //
+		
+	var connectionStatus = false;
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	
+	if(connectionStatus=='online'){
 		
 		google.maps.event.addListenerOnce(map, 'idle', function() {
    			google.maps.event.trigger(map, 'resize');
 		});
 		
 	
-	if (localStorage.getItem("controllo")=="3"){
-		window.location.href = "index.html"
-	}
-		
-
-	var connectionStatus = false;
-	connectionStatus = navigator.onLine ? 'online' : 'offline';
-	
-	if(connectionStatus=='online'){
+		if (localStorage.getItem("controllo")=="3"){
+			window.location.href = "index.html"
+		}
 		
 	}
 	else{
@@ -4671,9 +4665,7 @@ function resetta1(focus) {
 		  window.clearInterval(i);
 		 }
 												 
-		setTimeout(function() {
-			resetta1(1);
-		}, 1000);
+		 window.location.href = "index.html"
 	}
 	
 		
@@ -5066,6 +5058,7 @@ function resetta1(focus) {
 				
 				if(connectionStatus=='online'){
 					
+					
 					if (typeof google === 'object' && typeof google.maps === 'object') {
 				   		for(i=0; i<10000; i++)
 						{
@@ -5075,6 +5068,11 @@ function resetta1(focus) {
 							 resetta1(1);
 						  }, 2000);
 					} else {
+						for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						 
 						window.location.href = "index.html"
 					}
 				
@@ -5087,17 +5085,6 @@ function resetta1(focus) {
 		   },
 		 dataType:"jsonp"});
 
-	
-		//$("#blob1").attr("href", "javascript:alert()");
-
-	   /*var centerControlDiv = document.createElement('div');
-	   centerControlDiv.setAttribute('id', 'sopra');
-	   var centerControl = new CenterControl(centerControlDiv, map);
-	  
-	   centerControlDiv.index = 1;
-	   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);*/
-		
-	  //alert(localStorage.getItem("setGPS"))
 		
 		
 	  if(localStorage.getItem("setGPS") == 0){
@@ -5456,26 +5443,6 @@ function timer(){
 										window.location.href = "index.html"
 									}
 		
-									
-									
-									if (typeof google === 'object' && typeof google.maps === 'object') {
-										
-									} else {
-										for(i=0; i<10000; i++)
-										{
-										  window.clearInterval(i);
-										 }
-										 
-										 var conta = localStorage.getItem("controllo")+1
-										 
-										 localStorage.setItem("controllo",conta);
-										 
-										  setTimeout(function() {
-											 resetta1(1);
-										  }, 1000);
-									}
-									
-									
 									
 									if(localStorage.getItem("nobanner")=="0"){
 									  prendibanner()
@@ -6503,6 +6470,8 @@ function timer(){
 										   },
 										   error: function(){
 											   
+											   window.location.href = "index.html"
+											   
 											   $(document).on("touchstart tap", "#XXX", function(e){
 				   
 		
@@ -6542,31 +6511,8 @@ function timer(){
 										   
 										    $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 										    $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
-											
-											var connectionStatus = false;
-											connectionStatus = navigator.onLine ? 'online' : 'offline';
-											
-											if(connectionStatus=='online'){
-												
-												if (typeof google === 'object' && typeof google.maps === 'object') {
-													for(i=0; i<10000; i++)
-													{
-													  window.clearInterval(i);
-													 }
-													  setTimeout(function() {
-														 resetta1(1);
-													  }, 2000);
-												} else {
-													window.location.href = "index.html"
-												}
-											
-											}
-											else{
-												
-												window.location.href = "index.html"
-											}
-										   
-										    //onResume();
+	
+										    
 										   
 										   },
 										   dataType:"jsonp"});
@@ -6578,9 +6524,7 @@ function timer(){
 												  window.clearInterval(i);
 												 }
 																						 
-												setTimeout(function() {
-													resetta1(1);
-												}, 1000);
+												window.location.href = "index.html"
 											}
 									
 				/////////////////////////FINE vedo se ci sono posticipate////////////////////////////////					
@@ -6707,6 +6651,48 @@ function timer(){
 								    //}, 1000);
 			}
 	else{
+		
+		$(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+			for(i=0; i<10000; i++)
+			{
+			   window.clearInterval(i);
+			}
+		   
+		   localStorage.setItem("dovesono", "0")
+
+			window.location.href = "index.html";
+
+		   
+			e.stopImmediatePropagation();
+					   
+			e.preventDefault();
+					   
+			return false;
+		   
+			if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		});
+										   
+	   document.addEventListener('backbutton', function(e) {
+
+			window.location.href = "index.html"
+								  
+			e.stopImmediatePropagation();
+								  
+			e.preventDefault();
+								  
+			return false;
+								  
+			if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+
+
+		}, false);
+		
+		for(i=0; i<10000; i++)
+		{
+		  window.clearInterval(i);
+		}
 		
 		window.location.href = "index.html";
 		
