@@ -5017,6 +5017,50 @@ function resetta1(focus) {
 		   },
 		   error: function(){
 			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+				
+			   
+			   document.addEventListener('backbutton', function(e) {
+				   
+				   for(i=0; i<10000; i++)
+					{
+					 window.clearInterval(i);
+					}
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
+				
+			   
 			   	var connectionStatus = false;
 				connectionStatus = navigator.onLine ? 'online' : 'offline';
 				
@@ -6458,6 +6502,43 @@ function timer(){
 										   
 										   },
 										   error: function(){
+											   
+											   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+													for(i=0; i<10000; i++)
+													{
+													   window.clearInterval(i);
+													}
+												   
+												   localStorage.setItem("dovesono", "0")
+										
+													window.location.href = "index.html";
+										
+												   
+													e.stopImmediatePropagation();
+															   
+													e.preventDefault();
+															   
+													return false;
+												   
+													if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+												});
+										   
+										   document.addEventListener('backbutton', function(e) {
+							  
+												window.location.href = "index.html"
+																	  
+												e.stopImmediatePropagation();
+																	  
+												e.preventDefault();
+																	  
+												return false;
+																	  
+												if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+								 
+								 
+											}, false);
 										   
 										    $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 										    $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
@@ -6710,6 +6791,43 @@ function scadutaofferta(id,id_richiesta,id_autista){
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+			  
+			 document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   
@@ -7308,6 +7426,21 @@ function magia2C(utente,pass) {
 		   
 		   },
 		   error: function(){
+			   
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		     $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 			 
@@ -7763,13 +7896,44 @@ function elimina2(id_richiesta){
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
 		   
-		     /*navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);*/
+		    document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
+			
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   
 		   // Failed to load the Google Maps
@@ -7816,6 +7980,43 @@ function elimina3(id_richiesta){
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+			   
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		     $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 			 
@@ -7931,6 +8132,43 @@ function cancellapos(id){
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+				
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		    $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 			
@@ -7998,6 +8236,44 @@ function cancella(id){
 			
 		}
 			else{
+				
+				$(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+				
+				document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
+				
 			 $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 			 
 			 // Failed to load the Google Maps
@@ -8026,6 +8302,21 @@ function cancella(id){
 	 
 	 },
 	 error: function(){
+		 
+		 document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 			
 	 $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 	 $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
@@ -11811,6 +12102,43 @@ function lista5() {
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+			   
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
@@ -11999,6 +12327,21 @@ function chatting(pass,id) {
 		   
 		   },
 		   error: function(){
+			   
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
@@ -12181,6 +12524,21 @@ function chatting66(pass,id) {
 		   },
 		   error: function(){
 		   
+		   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
+		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
@@ -12357,6 +12715,43 @@ function chatting5(id) {
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+			   
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
@@ -12591,6 +12986,44 @@ function inviachat(id) {
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+			   
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
+				
 		   $("#spinner6").hide();
 		   $("#spinner4").hide();
 		   
@@ -12736,6 +13169,43 @@ function accetta11() {
 		   },
 		   error: function(){
 		   
+		   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+				
+		   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
+		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
@@ -12865,6 +13335,43 @@ function accetta22() {
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+			   
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
@@ -12988,6 +13495,44 @@ function accetta33() {
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+				
+			   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
+				
 		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
@@ -13209,6 +13754,43 @@ function inviopasseggero(come){
 		   
 		   },
 		   error: function(){
+			   
+			   $(document).on("touchstart tap", "#XXX", function(e){
+				   
+		
+					for(i=0; i<10000; i++)
+					{
+					   window.clearInterval(i);
+					}
+				   
+				   localStorage.setItem("dovesono", "0")
+		
+					window.location.href = "index.html";
+		
+				   
+					e.stopImmediatePropagation();
+							   
+					e.preventDefault();
+							   
+					return false;
+				   
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+				});
+		   
+		   document.addEventListener('backbutton', function(e) {
+							  
+					window.location.href = "index.html"
+								  		  
+					e.stopImmediatePropagation();
+										  
+					e.preventDefault();
+										  
+					return false;
+										  
+					if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	 
+	 
+				}, false);
 		   
 		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
