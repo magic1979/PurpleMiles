@@ -302,6 +302,8 @@ function onDeviceReady() {
                                  }
                                  if(results.rows.item(i).id_traduzione == "alertinvio"){
                                  alertinvio = results.rows.item(i).italiano.replace("P0011", "'");
+								 
+								 localStorage.setItem("alertinvio",alertinvio)
                                  
                                  }
                                  
@@ -559,6 +561,8 @@ function onDeviceReady() {
                                  }
                                  if(results.rows.item(i).id_traduzione == "alertinvio"){
                                    alertinvio = results.rows.item(i).inglese.replace("P0011", "'");
+								   
+								   localStorage.setItem("alertinvio",alertinvio)
                                  
                                  }
                                  
@@ -807,6 +811,8 @@ function onDeviceReady() {
 								 }
 								 if(results.rows.item(i).id_traduzione == "alertinvio"){
 								 alertinvio = results.rows.item(i).francese.replace("P0011", "'");
+								 
+								 localStorage.setItem("alertinvio",alertinvio)
 								 
 								 }
 								 
@@ -1064,6 +1070,8 @@ function onDeviceReady() {
 								 }
 								 if(results.rows.item(i).id_traduzione == "alertinvio"){
 								 alertinvio = results.rows.item(i).spagnolo.replace("P0011", "'");
+								 
+								 localStorage.setItem("alertinvio",alertinvio)
 								 
 								 }
 								 
@@ -2478,30 +2486,35 @@ function onDeviceReady() {
                    if(localStorage.getItem("lingua")=="it"){
                    
                     var alertattenzione = localStorage.getItem("sessionAttenzione")
+					var alertinvio = localStorage.getItem("alertinvio")
                     var richiestaA = "Richiesta"
                    
                    }
                    else if(localStorage.getItem("lingua")=="en"){
                    
                     var alertattenzione = localStorage.getItem("sessionAttenzione")
+					var alertinvio = localStorage.getItem("alertinvio")
                     var richiestaA = "Request"
 				   
                    }
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
 				    var alertattenzione = localStorage.getItem("sessionAttenzione")
+					var alertinvio = localStorage.getItem("alertinvio")
 				    var richiestaA = "Demande"
 				   
 				   }
 				   else if(localStorage.getItem("lingua")=="es"){
 				   
 				    var alertattenzione = localStorage.getItem("sessionAttenzione")
+					var alertinvio = localStorage.getItem("alertinvio")
 				    var richiestaA = "Solicitud"
 				   
 				   }
 				   else{
 				   
                    var alertattenzione = localStorage.getItem("sessionAttenzione")
+				   var alertinvio = localStorage.getItem("alertinvio")
                    var richiestaA = "Request"
                    
                    }

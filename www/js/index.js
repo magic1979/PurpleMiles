@@ -787,10 +787,11 @@ receivedEvent: function(id) {
 	
 	var IDPage;
 	var ODPage;
-	
+	var gate;
 	
 	IDPage = getParameterByName('id');
 	ODPage = getParameterByName('od');
+	gate = getParameterByName('gate');
 	
 	
 	localStorage.setItem("palla1", "0")
@@ -4665,7 +4666,7 @@ function resetta1(focus) {
 		  window.clearInterval(i);
 		 }
 												 
-		 window.location.href = "index.html"
+		 window.location.href = "index.html?id=2"
 	}
 	
 		
@@ -5073,13 +5074,13 @@ function resetta1(focus) {
 						  window.clearInterval(i);
 						 }
 						 
-						window.location.href = "index.html"
+						 window.location.href = "index.html??id=2"
 					}
 				
 				}
 				else{
 					
-					window.location.href = "index.html"
+					window.location.href = "index.html??id=2"
 				}
 	
 		   },
@@ -5440,7 +5441,7 @@ function timer(){
 		//window.location.href = "index.html"
 		
 									if (localStorage.getItem("controllo")=="3"){
-										window.location.href = "index.html"
+										window.location.href = "index.html?id=2"
 									}
 		
 									
@@ -6427,13 +6428,13 @@ function timer(){
 															 resetta1(1);
 														  }, 2000);
 													} else {
-														window.location.href = "index.html"
+														window.location.href = "index.html?id=2"
 													}
 												
 												}
 												else{
 													
-													window.location.href = "index.html"
+													window.location.href = "index.html?id=2"
 												}
 										   
 										   },
@@ -6524,7 +6525,7 @@ function timer(){
 												  window.clearInterval(i);
 												 }
 																						 
-												window.location.href = "index.html"
+												window.location.href = "index.html?id=2"
 											}
 									
 				/////////////////////////FINE vedo se ci sono posticipate////////////////////////////////					
@@ -6632,7 +6633,7 @@ function timer(){
 											  window.clearInterval(i);
 											 }
 																					 
-											window.location.href = "index.html";
+											window.location.href = "index.html?id=2";
 										}
 												 
 									  }, 7000);
@@ -6694,7 +6695,7 @@ function timer(){
 		  window.clearInterval(i);
 		}
 		
-		window.location.href = "index.html";
+		window.location.href = "index.html?id=2";
 		
 		// Failed to load the Google Maps
 		/*if (typeof google === 'object' && typeof google.maps === 'object') {
@@ -7444,13 +7445,13 @@ function magia2C(utente,pass) {
 							 resetta1(1);
 						  }, 2000);
 					} else {
-						window.location.href = "index.html"
+						window.location.href = "index.html?id=2"
 					}
 				
 				}
 				else{
 					
-					window.location.href = "index.html"
+					window.location.href = "index.html?id=2"
 				}
 		   
 		   },
