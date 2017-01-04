@@ -2500,7 +2500,7 @@ function onDeviceReady() {
 				   else if(localStorage.getItem("lingua")=="fr"){
 				   
 				    var alertattenzione = localStorage.getItem("sessionAttenzione")
-					var alertinvio = localStorage.getItem("alertinvio")
+					var alertinvio = "Demande envoyee"
 				    var richiestaA = "Demande"
 				   
 				   }
