@@ -2485,16 +2485,9 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#mappa6", function(e){
 		
-		if(localStorage.getItem("inlinea")=="0"){
-			$("#btninizia2").show();
-			$("#btnGPS").show();
-			$("#Modifica").show();
-	     }
-		 else{
-			 $("#btninizia2").hide();
-			 $("#btnGPS").hide();
-			$("#Modifica").hide();
-		 }
+		$("#btninizia").show();
+		$("#btnGPS").show();
+		$("#Modifica").show();
 		
 		
 		for(i=0; i<10000; i++)
@@ -4298,6 +4291,39 @@ function deg2rad(deg) {
 
 function resetta1(focus) {
 	
+	$(document).on("tap", "#inizia", function(e){
+		
+			var connectionStatus = false;
+			connectionStatus = navigator.onLine ? 'online' : 'offline';
+				   
+			if(connectionStatus=='online'){
+				   
+				   	setTimeout(function() {
+						resetta1(1);
+					}, 200);
+					
+			}
+			else{
+				
+				for(i=0; i<10000; i++)
+				{
+					window.clearInterval(i);
+				}
+			
+				window.location.href = "index.html";
+				
+			}
+				   
+
+		   e.stopImmediatePropagation();
+		   
+		   e.preventDefault();
+		   
+		   return false;
+		   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
+	
 	
 	var connectionStatus = false;
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -5434,6 +5460,40 @@ function posizionegps(){
 	
 		
 function timer(){
+	
+	
+	$(document).on("tap", "#inizia", function(e){
+		
+			var connectionStatus = false;
+			connectionStatus = navigator.onLine ? 'online' : 'offline';
+				   
+			if(connectionStatus=='online'){
+				   
+				   	setTimeout(function() {
+						resetta1(1);
+					}, 200);
+					
+			}
+			else{
+				
+				for(i=0; i<10000; i++)
+				{
+					window.clearInterval(i);
+				}
+			
+				window.location.href = "index.html";
+				
+			}
+				   
+
+		   e.stopImmediatePropagation();
+		   
+		   e.preventDefault();
+		   
+		   return false;
+		   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+	});
 	
 	
 	// ANDROID CHECK LINE //
