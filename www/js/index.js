@@ -2484,9 +2484,9 @@ receivedEvent: function(id) {
 	$(document).on("tap", "#mappa6", function(e){
 		
 		$("#btninizia").show();
-		$("#setGPS").show();
+		$("#btnGPS").show();
 		$("#Modifica").show();
-		$("#lista").show();
+		
 		
 		for(i=0; i<10000; i++)
 		{
@@ -2883,6 +2883,11 @@ receivedEvent: function(id) {
 	
 	
 	$(document).on("touchstart tap", "#inizia", function(e){
+		
+			var connectionStatus = false;
+			connectionStatus = navigator.onLine ? 'online' : 'offline';
+				   
+			if(connectionStatus=='online'){
 				   
 				   if(localStorage.getItem("lingua")=="it"){
 				   
@@ -2919,10 +2924,8 @@ receivedEvent: function(id) {
 				   
 				   }
 		
-				   
 				   //bgGeo.start();
 					
-						
 					$('#modificastart').blur()
 					$('#inizia').blur()
 				   
@@ -2947,18 +2950,31 @@ receivedEvent: function(id) {
 				   
 				   $("#win2header").html(s_partenza);
 				   
+				   
 				   	setTimeout(function() {
 						start();
 					}, 200);
+					
+			}
+			else{
+				
+				for(i=0; i<10000; i++)
+				{
+					window.clearInterval(i);
+				}
+			
+				window.location.href = "index.html";
+				
+			}
 				   
 
-				   e.stopImmediatePropagation();
-				   
-				   e.preventDefault();
-				   
-				   return false;
-				   
-				   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+		   e.stopImmediatePropagation();
+		   
+		   e.preventDefault();
+		   
+		   return false;
+		   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
 	});
 	
 	$(document).on("tap", "#back33", function(e){
