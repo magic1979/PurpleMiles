@@ -2485,10 +2485,13 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#mappa6", function(e){
 		
+		$("#pass1").hide();
+		$("#pass2").hide();
+		$("#pass3").hide();
+		
 		$("#btninizia").show();
 		$("#btnGPS").show();
 		$("#Modifica").show();
-		
 		
 		for(i=0; i<10000; i++)
 		{
@@ -6594,6 +6597,7 @@ function timer(){
 												{
 												  window.clearInterval(i);
 												 }
+												 
 											   $("#mappa6").tap();
 											   localStorage.setItem("inlinea", "0")
 											   
@@ -12506,13 +12510,17 @@ function chatting(pass,id) {
 						  window.clearInterval(i);
 						 }
 						  setTimeout(function() {
-							 resetta1(1);
-						  }, 2000);
+							  
+							 $("#mappa6").tap();
+							 localStorage.setItem("inlinea", "0")
+							
+						  }, 500);
 					} else {
 						for(i=0; i<10000; i++)
 						{
 						  window.clearInterval(i);
 						 }
+						
 						$("#mappa6").tap();
 						localStorage.setItem("inlinea", "0")
 						//window.location.href = "index.html"
@@ -12714,8 +12722,11 @@ function chatting66(pass,id) {
 						  window.clearInterval(i);
 						 }
 						  setTimeout(function() {
-							 resetta1(1);
-						  }, 2000);
+							  
+							 $("#mappa6").tap();
+							 localStorage.setItem("inlinea", "0")
+							
+						  }, 500);
 					} else {
 						for(i=0; i<10000; i++)
 						{
@@ -12939,8 +12950,11 @@ function chatting5(id) {
 						  window.clearInterval(i);
 						 }
 						  setTimeout(function() {
-							 resetta1(1);
-						  }, 2000);
+							  
+							 $("#mappa6").tap();
+							 localStorage.setItem("inlinea", "0")
+							
+						  }, 500);
 					} else {
 						//window.location.href = "index.html"
 						for(i=0; i<10000; i++)
@@ -14094,12 +14108,12 @@ function controllachat(uman) {
 		   },
 		   error: function(){
 		   
-		  /* navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto.',  // message
-										alertDismissed,         // callback
-										'Attenzione',           // title
-										'Ok'                  // buttonName
-										);*/
+		    setTimeout(function() {
+							  
+				 $("#mappa6").tap();
+				 localStorage.setItem("inlinea", "0")
+				
+			  }, 500);
 		   
 		   
 		   },
@@ -14147,12 +14161,12 @@ function controllachat(uman) {
 									 error: function(){
 									 $(".spinner").hide();
 									 
-									 /*navigator.notification.alert(
-																  'Possibile errore di rete, riprova tra qualche minuto',  // message
-																  alertDismissed,         // callback
-																  'Attenzione',            // title
-																  'Done'                  // buttonName
-																  );*/
+									 setTimeout(function() {
+							  
+										 $("#mappa6").tap();
+										 localStorage.setItem("inlinea", "0")
+										
+									  }, 500);
 									 
 									 },
 									 dataType:"jsonp"});
@@ -14340,7 +14354,9 @@ function controllachat2(ric,id) {
 									 },
 									 error: function(){
 									 
-									  controllachat5()
+									  setTimeout(function() {
+											controllachat2(ric,id);
+										}, 5000);
 
 									 
 									 },
@@ -14442,6 +14458,7 @@ function controllachat2(ric,id) {
 									 error: function(){
 									 
 									 
+									 
 									 },
 									 dataType:"jsonp"});
 							  
@@ -14498,8 +14515,11 @@ function checkConnection() {
 	if (states[networkState] == "No network connection" || states[networkState] == "Unknown connection") {
 		
 		setTimeout(function() {
-			resetta1(1);
-		}, 1000);
+							  
+			 $("#mappa6").tap();
+			 localStorage.setItem("inlinea", "0")
+			
+		  }, 1000);
 		
 	}
 
@@ -14552,6 +14572,12 @@ function prendibanner() {
 									 },
 									 error: function(){
 									 
+									 setTimeout(function() {
+							  
+										 $("#mappa6").tap();
+										 localStorage.setItem("inlinea", "0")
+										
+									  }, 1000);
 									 
 									 },
 									 dataType:"jsonp"});
