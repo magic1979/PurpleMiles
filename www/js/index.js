@@ -2419,7 +2419,11 @@ receivedEvent: function(id) {
 						  dataType:"jsonp"});
 				   
 				   
-		resetta1();;
+		for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 
 	});
 	
@@ -2479,6 +2483,11 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#mappa6", function(e){
 		
+		$("#btninizia").show();
+		$("#setGPS").show();
+		$("#Modifica").show();
+		$("#lista").show();
+		
 		for(i=0; i<10000; i++)
 		{
 			window.clearInterval(i);
@@ -2524,6 +2533,14 @@ receivedEvent: function(id) {
 	  }
 	  else
 	  {
+		  
+		  	for(i=0; i<10000; i++)
+			{
+				window.clearInterval(i);
+			}
+		  
+		  	window.location.href = "index.html";
+			
 		
 			if(localStorage.getItem("lingua")=="it"){
 				   
@@ -4666,7 +4683,7 @@ function resetta1(focus) {
 		  window.clearInterval(i);
 		 }
 												 
-		 resetta1();
+		 $("#mappa6").tap();
 	}
 	
 		
@@ -5075,13 +5092,13 @@ function resetta1(focus) {
 						 }
 						 
 						 //window.location.href = "index.html?id=2"
-						 resetta1();
+						 $("#mappa6").tap();
 					}
 				
 				}
 				else{
 					
-					resetta1();
+					$("#mappa6").tap();
 				}
 	
 		   },
@@ -5442,7 +5459,7 @@ function timer(){
 		//window.location.href = "index.html"
 		
 									if (localStorage.getItem("controllo")=="3"){
-										resetta1();
+										$("#mappa6").tap();
 									}
 		
 									
@@ -6429,13 +6446,20 @@ function timer(){
 															 resetta1(1);
 														  }, 2000);
 													} else {
-														resetta1();
+														for(i=0; i<10000; i++)
+														{
+														  window.clearInterval(i);
+														 }
+														$("#mappa6").tap();
 													}
 												
 												}
 												else{
-													
-													resetta1();
+													for(i=0; i<10000; i++)
+														{
+														  window.clearInterval(i);
+														 }
+													$("#mappa6").tap();
 												}
 										   
 										   },
@@ -6473,7 +6497,11 @@ function timer(){
 										   error: function(){
 											   
 											   //window.location.href = "index.html"
-											   resetta1();
+											   for(i=0; i<10000; i++)
+												{
+												  window.clearInterval(i);
+												 }
+											   $("#mappa6").tap();
 											   
 											   $(document).on("touchstart tap", "#XXX", function(e){
 				   
@@ -6527,7 +6555,7 @@ function timer(){
 												  window.clearInterval(i);
 												 }
 																						 
-												resetta1();
+												$("#mappa6").tap();
 											}
 									
 				/////////////////////////FINE vedo se ci sono posticipate////////////////////////////////					
@@ -6635,7 +6663,7 @@ function timer(){
 											  window.clearInterval(i);
 											 }
 																					 
-											resetta1();;
+											$("#mappa6").tap();
 										}
 												 
 									  }, 7000);
@@ -6697,7 +6725,7 @@ function timer(){
 		  window.clearInterval(i);
 		}
 		
-		resetta1();;
+		$("#mappa6").tap();
 		
 		// Failed to load the Google Maps
 		/*if (typeof google === 'object' && typeof google.maps === 'object') {
@@ -7447,13 +7475,21 @@ function magia2C(utente,pass) {
 							 resetta1(1);
 						  }, 2000);
 					} else {
-						resetta1();
+						for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 					}
 				
 				}
 				else{
 					
-					resetta1();
+					for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 				}
 		   
 		   },
@@ -12349,7 +12385,11 @@ function chatting(pass,id) {
 							 resetta1(1);
 						  }, 2000);
 					} else {
-						resetta1();
+						for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 						//window.location.href = "index.html"
 					}
 				
@@ -12357,7 +12397,11 @@ function chatting(pass,id) {
 				else{
 					
 					//window.location.href = "index.html"
-					resetta1();
+					for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 				}
 		   
 		   
@@ -12547,13 +12591,21 @@ function chatting66(pass,id) {
 							 resetta1(1);
 						  }, 2000);
 					} else {
-						resetta1();
+						for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 						//window.location.href = "index.html"
 					}
 				
 				}
 				else{
-					resetta1();
+					for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 					//window.location.href = "index.html"
 				}
 		   
@@ -12763,14 +12815,22 @@ function chatting5(id) {
 						  }, 2000);
 					} else {
 						//window.location.href = "index.html"
-						resetta1();
+						for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 					}
 				
 				}
 				else{
 					
 					//window.location.href = "index.html"
-					resetta1();
+					for(i=0; i<10000; i++)
+						{
+						  window.clearInterval(i);
+						 }
+						$("#mappa6").tap();
 				}
 		   
 		   
