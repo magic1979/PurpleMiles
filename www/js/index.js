@@ -6472,7 +6472,8 @@ function timer(){
 										   },
 										   error: function(){
 											   
-											   window.location.href = "index.html"
+											   //window.location.href = "index.html"
+											   resetta1();
 											   
 											   $(document).on("touchstart tap", "#XXX", function(e){
 				   
@@ -12348,13 +12349,15 @@ function chatting(pass,id) {
 							 resetta1(1);
 						  }, 2000);
 					} else {
-						window.location.href = "index.html"
+						resetta1();
+						//window.location.href = "index.html"
 					}
 				
 				}
 				else{
 					
-					window.location.href = "index.html"
+					//window.location.href = "index.html"
+					resetta1();
 				}
 		   
 		   
@@ -12544,13 +12547,14 @@ function chatting66(pass,id) {
 							 resetta1(1);
 						  }, 2000);
 					} else {
-						window.location.href = "index.html"
+						resetta1();
+						//window.location.href = "index.html"
 					}
 				
 				}
 				else{
-					
-					window.location.href = "index.html"
+					resetta1();
+					//window.location.href = "index.html"
 				}
 		   
 		   },
@@ -12758,13 +12762,15 @@ function chatting5(id) {
 							 resetta1(1);
 						  }, 2000);
 					} else {
-						window.location.href = "index.html"
+						//window.location.href = "index.html"
+						resetta1();
 					}
 				
 				}
 				else{
 					
-					window.location.href = "index.html"
+					//window.location.href = "index.html"
+					resetta1();
 				}
 		   
 		   
