@@ -856,6 +856,8 @@ receivedEvent: function(id) {
 	
 	localStorage.setItem("okprima", "1")
 	
+	localStorage.setItem("inlinea", "1")
+	
 	
 	//$("body").css("display", "none");
 	
@@ -2483,9 +2485,16 @@ receivedEvent: function(id) {
 	
 	$(document).on("tap", "#mappa6", function(e){
 		
-		$("#btninizia").show();
-		$("#btnGPS").show();
-		$("#Modifica").show();
+		if(localStorage.getItem("inlinea")=="0"){
+			$("#btninizia2").show();
+			$("#btnGPS").show();
+			$("#Modifica").show();
+	     }
+		 else{
+			 $("#btninizia2").hide();
+			 $("#btnGPS").hide();
+			$("#Modifica").hide();
+		 }
 		
 		
 		for(i=0; i<10000; i++)
@@ -4630,6 +4639,8 @@ function resetta1(focus) {
 		$("#setGPS").hide();
 		$("#Modifica").hide();
 		$("#lista").hide();
+		
+		$("#btninizia2").hide();
 
         //seleziona();
         
@@ -4700,6 +4711,7 @@ function resetta1(focus) {
 		 }
 												 
 		 $("#mappa6").tap();
+		 localStorage.setItem("inlinea", "0")
 	}
 	
 		
@@ -5109,12 +5121,14 @@ function resetta1(focus) {
 						 
 						 //window.location.href = "index.html?id=2"
 						 $("#mappa6").tap();
+						 localStorage.setItem("inlinea", "0")
 					}
 				
 				}
 				else{
 					
 					$("#mappa6").tap();
+					localStorage.setItem("inlinea", "0")
 				}
 	
 		   },
@@ -5476,6 +5490,7 @@ function timer(){
 		
 									if (localStorage.getItem("controllo")=="3"){
 										$("#mappa6").tap();
+										localStorage.setItem("inlinea", "0")
 									}
 		
 									
@@ -6467,6 +6482,7 @@ function timer(){
 														  window.clearInterval(i);
 														 }
 														$("#mappa6").tap();
+														localStorage.setItem("inlinea", "0")
 													}
 												
 												}
@@ -6476,6 +6492,7 @@ function timer(){
 														  window.clearInterval(i);
 														 }
 													$("#mappa6").tap();
+													localStorage.setItem("inlinea", "0")
 												}
 										   
 										   },
@@ -6518,6 +6535,7 @@ function timer(){
 												  window.clearInterval(i);
 												 }
 											   $("#mappa6").tap();
+											   localStorage.setItem("inlinea", "0")
 											   
 											   $(document).on("touchstart tap", "#XXX", function(e){
 				   
@@ -6572,6 +6590,7 @@ function timer(){
 												 }
 																						 
 												$("#mappa6").tap();
+												localStorage.setItem("inlinea", "0")
 											}
 									
 				/////////////////////////FINE vedo se ci sono posticipate////////////////////////////////					
@@ -6680,6 +6699,7 @@ function timer(){
 											 }
 																					 
 											$("#mappa6").tap();
+											localStorage.setItem("inlinea", "0")
 										}
 												 
 									  }, 7000);
@@ -6742,6 +6762,7 @@ function timer(){
 		}
 		
 		$("#mappa6").tap();
+		localStorage.setItem("inlinea", "0")
 		
 		// Failed to load the Google Maps
 		/*if (typeof google === 'object' && typeof google.maps === 'object') {
@@ -6767,7 +6788,27 @@ function timer(){
 }
 
 
-     $(document).on("tap", "#ritorna", function(e){
+      $(document).on("tap", "#inizia2", function(e){
+
+			for(i=0; i<10000; i++)
+			 {
+			  window.clearInterval(i);
+			 }
+		   
+		   resetta1(1)
+		   
+		   e.stopImmediatePropagation();
+		   
+		   e.preventDefault();
+		   
+		   return false;
+		   
+		   if ($.browser.iphone || $.browser.ipad) $(this).trigger('click');
+			   
+     });
+	 
+	 
+	 $(document).on("tap", "#ritorna", function(e){
 			   localStorage.setItem("ritornaweb","0")
 
 			   //localStorage.setItem("pagina","inizia")
@@ -7037,6 +7078,7 @@ function magia2C(utente,pass) {
 	
 	
 	$("#btninizia").hide();
+	$("#btninizia2").hide();
 	//$("#btnpass").hide();
 
 	$("#lista").hide();
@@ -7496,6 +7538,7 @@ function magia2C(utente,pass) {
 						  window.clearInterval(i);
 						 }
 						$("#mappa6").tap();
+						localStorage.setItem("inlinea", "0")
 					}
 				
 				}
@@ -7506,6 +7549,7 @@ function magia2C(utente,pass) {
 						  window.clearInterval(i);
 						 }
 						$("#mappa6").tap();
+						localStorage.setItem("inlinea", "0")
 				}
 		   
 		   },
@@ -8430,6 +8474,7 @@ function start() {
 	$("#esci").hide();
 	
 	$("#btninizia").hide();
+	$("#btninizia2").hide();
 	$("#lista").hide();
 	$("#loading").show();
 	
@@ -8449,6 +8494,7 @@ function palla1() {
 	//$("#blob").show();
 
 	$("#btninizia").hide();
+	$("#btninizia2").hide();
 	
 	$("#btnpass").show();
 	
@@ -8465,6 +8511,7 @@ function palla2() {
 
 	$("#blob3").show();
 	$("#btninizia").hide();
+	$("#btninizia2").hide();
 	$("#pass2").show();
 	
 	localStorage.setItem("palla2", "1")
@@ -8474,6 +8521,7 @@ function resetta22() {
 	//chiamo e leggo=1
 	$("#blob").show();
 	$("#btninizia").hide();
+	$("#btninizia2").hide();
 	$("#btnpass").show();
 	
 }
@@ -12406,6 +12454,7 @@ function chatting(pass,id) {
 						  window.clearInterval(i);
 						 }
 						$("#mappa6").tap();
+						localStorage.setItem("inlinea", "0")
 						//window.location.href = "index.html"
 					}
 				
@@ -12418,6 +12467,7 @@ function chatting(pass,id) {
 						  window.clearInterval(i);
 						 }
 						$("#mappa6").tap();
+						localStorage.setItem("inlinea", "0")
 				}
 		   
 		   
@@ -12612,6 +12662,7 @@ function chatting66(pass,id) {
 						  window.clearInterval(i);
 						 }
 						$("#mappa6").tap();
+						localStorage.setItem("inlinea", "0")
 						//window.location.href = "index.html"
 					}
 				
@@ -12622,6 +12673,7 @@ function chatting66(pass,id) {
 						  window.clearInterval(i);
 						 }
 						$("#mappa6").tap();
+						localStorage.setItem("inlinea", "0")
 					//window.location.href = "index.html"
 				}
 		   
@@ -12836,6 +12888,7 @@ function chatting5(id) {
 						  window.clearInterval(i);
 						 }
 						$("#mappa6").tap();
+						localStorage.setItem("inlinea", "0")
 					}
 				
 				}
@@ -12847,6 +12900,7 @@ function chatting5(id) {
 						  window.clearInterval(i);
 						 }
 						$("#mappa6").tap();
+						localStorage.setItem("inlinea", "0")
 				}
 		   
 		   
