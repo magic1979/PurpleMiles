@@ -4294,7 +4294,7 @@ function deg2rad(deg) {
 
 function resetta1(focus) {
 	
-	$(document).on("tap", "#inizia", function(e){
+	$(document).on("touchstart", "#inizia", function(e){
 		
 			var connectionStatus = false;
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
@@ -5465,7 +5465,7 @@ function posizionegps(){
 function timer(){
 	
 	
-	$(document).on("tap", "#inizia", function(e){
+	$(document).on("touchstart", "#inizia", function(e){
 		
 			var connectionStatus = false;
 			connectionStatus = navigator.onLine ? 'online' : 'offline';
