@@ -661,7 +661,7 @@ receivedEvent: function(id) {
 		
 		setTimeout(function() {
 			window.location.href = "index.html";
-		}, 2500);
+		}, 2000);
 		
 	}
 	
@@ -2425,9 +2425,11 @@ receivedEvent: function(id) {
 						{
 						  window.clearInterval(i);
 						 }
-						$("#mappa6").tap();
+						 window.location.href = "index.html"
+						 
+						//$("#mappa6").tap();
 
-	});
+		});
 	
     
 	$(document).on("touchstart", "#resetta", function(e){
@@ -2484,6 +2486,10 @@ receivedEvent: function(id) {
 	});
 	
 	$(document).on("tap", "#mappa6", function(e){
+		
+		setTimeout(function() {							
+		   $("#btninizia").show();
+		  }, 2000);
 		
 		$("#pass1").hide();
 		$("#pass2").hide();
@@ -4738,9 +4744,10 @@ function resetta1(focus) {
 		{
 		  window.clearInterval(i);
 		 }
-												 
-		 $("#mappa6").tap();
-		 localStorage.setItem("inlinea", "0")
+		 window.location.href = "index.html"
+		 					 
+		 //$("#mappa6").tap();
+		 //localStorage.setItem("inlinea", "0")
 	}
 	
 		
@@ -5148,16 +5155,17 @@ function resetta1(focus) {
 						  window.clearInterval(i);
 						 }
 						 
-						 //window.location.href = "index.html?id=2"
-						 $("#mappa6").tap();
-						 localStorage.setItem("inlinea", "0")
+						 window.location.href = "index.html"
+						 //$("#mappa6").tap();
+						 //localStorage.setItem("inlinea", "0")
 					}
 				
 				}
 				else{
+					window.location.href = "index.html"
 					
-					$("#mappa6").tap();
-					localStorage.setItem("inlinea", "0")
+					//$("#mappa6").tap();
+					//localStorage.setItem("inlinea", "0")
 				}
 	
 		   },
@@ -5552,8 +5560,9 @@ function timer(){
 		//window.location.href = "index.html"
 		
 									if (localStorage.getItem("controllo")=="3"){
-										$("#mappa6").tap();
-										localStorage.setItem("inlinea", "0")
+										window.location.href = "index.html"
+										//$("#mappa6").tap();
+										//localStorage.setItem("inlinea", "0")
 									}
 		
 									
@@ -6544,8 +6553,11 @@ function timer(){
 														{
 														  window.clearInterval(i);
 														 }
-														$("#mappa6").tap();
-														localStorage.setItem("inlinea", "0")
+														 
+														 window.location.href = "index.html"
+														 
+														//$("#mappa6").tap();
+														//localStorage.setItem("inlinea", "0")
 													}
 												
 												}
@@ -6554,8 +6566,11 @@ function timer(){
 														{
 														  window.clearInterval(i);
 														 }
-													$("#mappa6").tap();
-													localStorage.setItem("inlinea", "0")
+														 
+													window.location.href = "index.html"
+														 
+													//$("#mappa6").tap();
+													//localStorage.setItem("inlinea", "0")
 												}
 										   
 										   },
@@ -6598,8 +6613,10 @@ function timer(){
 												  window.clearInterval(i);
 												 }
 												 
-											   $("#mappa6").tap();
-											   localStorage.setItem("inlinea", "0")
+											   window.location.href = "index.html"
+												 
+											   //$("#mappa6").tap();
+											   //localStorage.setItem("inlinea", "0")
 											   
 											   $(document).on("touchstart tap", "#XXX", function(e){
 				   
@@ -6652,9 +6669,11 @@ function timer(){
 												{
 												  window.clearInterval(i);
 												 }
+													
+												window.location.href = "index.html"
 																						 
-												$("#mappa6").tap();
-												localStorage.setItem("inlinea", "0")
+												//$("#mappa6").tap();
+												//localStorage.setItem("inlinea", "0")
 											}
 									
 				/////////////////////////FINE vedo se ci sono posticipate////////////////////////////////					
@@ -6761,9 +6780,10 @@ function timer(){
 											{
 											  window.clearInterval(i);
 											 }
-																					 
-											$("#mappa6").tap();
-											localStorage.setItem("inlinea", "0")
+											window.location.href = "index.html"
+																		 
+											//$("#mappa6").tap();
+											//localStorage.setItem("inlinea", "0")
 										}
 												 
 									  }, 7000);
@@ -6825,8 +6845,10 @@ function timer(){
 		  window.clearInterval(i);
 		}
 		
-		$("#mappa6").tap();
-		localStorage.setItem("inlinea", "0")
+		window.location.href = "index.html"
+		
+		//$("#mappa6").tap();
+		//localStorage.setItem("inlinea", "0")
 		
 		// Failed to load the Google Maps
 		/*if (typeof google === 'object' && typeof google.maps === 'object') {
@@ -7601,8 +7623,11 @@ function magia2C(utente,pass) {
 						{
 						  window.clearInterval(i);
 						 }
-						$("#mappa6").tap();
-						localStorage.setItem("inlinea", "0")
+						 
+						window.location.href = "index.html"
+						 
+						//$("#mappa6").tap();
+						//localStorage.setItem("inlinea", "0")
 					}
 				
 				}
@@ -7612,8 +7637,10 @@ function magia2C(utente,pass) {
 						{
 						  window.clearInterval(i);
 						 }
-						$("#mappa6").tap();
-						localStorage.setItem("inlinea", "0")
+						 window.location.href = "index.html"
+						 
+						//$("#mappa6").tap();
+						//localStorage.setItem("inlinea", "0")
 				}
 		   
 		   },
@@ -12511,8 +12538,10 @@ function chatting(pass,id) {
 						 }
 						  setTimeout(function() {
 							  
-							 $("#mappa6").tap();
-							 localStorage.setItem("inlinea", "0")
+							  window.location.href = "index.html"
+							  
+							 //$("#mappa6").tap();
+							 //localStorage.setItem("inlinea", "0")
 							
 						  }, 500);
 					} else {
@@ -12521,8 +12550,10 @@ function chatting(pass,id) {
 						  window.clearInterval(i);
 						 }
 						
-						$("#mappa6").tap();
-						localStorage.setItem("inlinea", "0")
+						window.location.href = "index.html"
+						
+						//$("#mappa6").tap();
+						//localStorage.setItem("inlinea", "0")
 						//window.location.href = "index.html"
 					}
 				
@@ -12534,8 +12565,11 @@ function chatting(pass,id) {
 						{
 						  window.clearInterval(i);
 						 }
-						$("#mappa6").tap();
-						localStorage.setItem("inlinea", "0")
+						 
+						 window.location.href = "index.html"
+						 
+						//$("#mappa6").tap();
+						//localStorage.setItem("inlinea", "0")
 				}
 		   
 		   
@@ -12723,8 +12757,10 @@ function chatting66(pass,id) {
 						 }
 						  setTimeout(function() {
 							  
-							 $("#mappa6").tap();
-							 localStorage.setItem("inlinea", "0")
+							  window.location.href = "index.html"
+							  
+							 //$("#mappa6").tap();
+							 //localStorage.setItem("inlinea", "0")
 							
 						  }, 500);
 					} else {
@@ -12734,7 +12770,6 @@ function chatting66(pass,id) {
 						 }
 						$("#mappa6").tap();
 						localStorage.setItem("inlinea", "0")
-						//window.location.href = "index.html"
 					}
 				
 				}
@@ -12743,8 +12778,11 @@ function chatting66(pass,id) {
 						{
 						  window.clearInterval(i);
 						 }
-						$("#mappa6").tap();
-						localStorage.setItem("inlinea", "0")
+						 
+						 window.location.href = "index.html"
+						 
+						//$("#mappa6").tap();
+						//localStorage.setItem("inlinea", "0")
 					//window.location.href = "index.html"
 				}
 		   
@@ -12951,8 +12989,10 @@ function chatting5(id) {
 						 }
 						  setTimeout(function() {
 							  
-							 $("#mappa6").tap();
-							 localStorage.setItem("inlinea", "0")
+							  window.location.href = "index.html"
+							  
+							 //$("#mappa6").tap();
+							 //localStorage.setItem("inlinea", "0")
 							
 						  }, 500);
 					} else {
@@ -12973,8 +13013,10 @@ function chatting5(id) {
 						{
 						  window.clearInterval(i);
 						 }
-						$("#mappa6").tap();
-						localStorage.setItem("inlinea", "0")
+						 window.location.href = "index.html"
+						 
+						//$("#mappa6").tap();
+						//localStorage.setItem("inlinea", "0")
 				}
 		   
 		   
@@ -14109,9 +14151,11 @@ function controllachat(uman) {
 		   error: function(){
 		   
 		    setTimeout(function() {
-							  
-				 $("#mappa6").tap();
-				 localStorage.setItem("inlinea", "0")
+				
+				 window.location.href = "index.html"
+				  
+				 //$("#mappa6").tap();
+				 //localStorage.setItem("inlinea", "0")
 				
 			  }, 500);
 		   
@@ -14162,9 +14206,10 @@ function controllachat(uman) {
 									 $(".spinner").hide();
 									 
 									 setTimeout(function() {
-							  
-										 $("#mappa6").tap();
-										 localStorage.setItem("inlinea", "0")
+							  			 window.location.href = "index.html"
+										 
+										 //$("#mappa6").tap();
+										 //localStorage.setItem("inlinea", "0")
 										
 									  }, 500);
 									 
@@ -14515,9 +14560,10 @@ function checkConnection() {
 	if (states[networkState] == "No network connection" || states[networkState] == "Unknown connection") {
 		
 		setTimeout(function() {
-							  
-			 $("#mappa6").tap();
-			 localStorage.setItem("inlinea", "0")
+			 window.location.href = "index.html"
+			 	  
+			 //$("#mappa6").tap();
+			 //localStorage.setItem("inlinea", "0")
 			
 		  }, 1000);
 		
@@ -14573,9 +14619,10 @@ function prendibanner() {
 									 error: function(){
 									 
 									 setTimeout(function() {
-							  
-										 $("#mappa6").tap();
-										 localStorage.setItem("inlinea", "0")
+							  			window.location.href = "index.html"
+										
+										 //$("#mappa6").tap();
+										 //localStorage.setItem("inlinea", "0")
 										
 									  }, 1000);
 									 
