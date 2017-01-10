@@ -658,10 +658,9 @@ receivedEvent: function(id) {
 		$("#led").html("<img src='img/ledrosso.png' width='25px'>");
 		$("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		
-		
-		setTimeout(function() {
-			window.location.href = "index.html";
-		}, 2000);
+		//setTimeout(function() {
+			//window.location.href = "index.html";
+		//}, 2000);
 		
 	}
 	
@@ -4744,6 +4743,7 @@ function resetta1(focus) {
 		{
 		  window.clearInterval(i);
 		 }
+		 
 		 window.location.href = "index.html"
 		 					 
 		 //$("#mappa6").tap();
@@ -5137,6 +5137,7 @@ function resetta1(focus) {
 			   
 			   	var connectionStatus = false;
 				connectionStatus = navigator.onLine ? 'online' : 'offline';
+				
 				
 				if(connectionStatus=='online'){
 					
@@ -12523,10 +12524,10 @@ function chatting(pass,id) {
 	 
 				}, false);
 		   
-		   $("#led").html("<img src='img/ledrosso.png' width='25px'>");
-		   $("#led5").html("<img src='img/ledrosso.png' width='25px'>");
+		  		$("#led").html("<img src='img/ledrosso.png' width='25px'>");
+		   		$("#led5").html("<img src='img/ledrosso.png' width='25px'>");
 		   
-		   	var connectionStatus = false;
+		   		var connectionStatus = false;
 				connectionStatus = navigator.onLine ? 'online' : 'offline';
 				
 				if(connectionStatus=='online'){
@@ -12536,21 +12537,16 @@ function chatting(pass,id) {
 						{
 						  window.clearInterval(i);
 						 }
-						  setTimeout(function() {
-							  
-							  window.location.href = "index.html"
-							  
-							 //$("#mappa6").tap();
-							 //localStorage.setItem("inlinea", "0")
-							
-						  }, 500);
+						  
 					} else {
 						for(i=0; i<10000; i++)
 						{
 						  window.clearInterval(i);
 						 }
 						
-						window.location.href = "index.html"
+						setTimeout(function() {
+							chatting(pass,id);
+						}, 3000);
 						
 						//$("#mappa6").tap();
 						//localStorage.setItem("inlinea", "0")
@@ -12566,12 +12562,13 @@ function chatting(pass,id) {
 						  window.clearInterval(i);
 						 }
 						 
-						 window.location.href = "index.html"
+						 setTimeout(function() {
+							chatting(pass,id);
+						}, 3000);
 						 
 						//$("#mappa6").tap();
 						//localStorage.setItem("inlinea", "0")
 				}
-		   
 		   
 		   },
 		   dataType:"jsonp"});
@@ -12757,7 +12754,7 @@ function chatting66(pass,id) {
 						 }
 						  setTimeout(function() {
 							  
-							  window.location.href = "index.html"
+							 chatting66(pass,id)
 							  
 							 //$("#mappa6").tap();
 							 //localStorage.setItem("inlinea", "0")
@@ -12768,8 +12765,11 @@ function chatting66(pass,id) {
 						{
 						  window.clearInterval(i);
 						 }
-						$("#mappa6").tap();
-						localStorage.setItem("inlinea", "0")
+						 
+						setTimeout(function() {
+							chatting66(pass,id);
+						}, 3000);
+						
 					}
 				
 				}
@@ -12779,7 +12779,9 @@ function chatting66(pass,id) {
 						  window.clearInterval(i);
 						 }
 						 
-						 window.location.href = "index.html"
+						 setTimeout(function() {
+							chatting66(pass,id);
+						}, 3000);
 						 
 						//$("#mappa6").tap();
 						//localStorage.setItem("inlinea", "0")
@@ -12988,21 +12990,18 @@ function chatting5(id) {
 						  window.clearInterval(i);
 						 }
 						  setTimeout(function() {
-							  
-							  window.location.href = "index.html"
-							  
-							 //$("#mappa6").tap();
-							 //localStorage.setItem("inlinea", "0")
-							
-						  }, 500);
+								chatting5(id);
+							}, 3000);
 					} else {
 						//window.location.href = "index.html"
 						for(i=0; i<10000; i++)
 						{
 						  window.clearInterval(i);
 						 }
-						$("#mappa6").tap();
-						localStorage.setItem("inlinea", "0")
+						 
+						setTimeout(function() {
+							chatting5(id);
+						}, 3000);
 					}
 				
 				}
@@ -13013,7 +13012,10 @@ function chatting5(id) {
 						{
 						  window.clearInterval(i);
 						 }
-						 window.location.href = "index.html"
+						 
+						 setTimeout(function() {
+							chatting5(id);
+						}, 3000);
 						 
 						//$("#mappa6").tap();
 						//localStorage.setItem("inlinea", "0")
@@ -14152,12 +14154,14 @@ function controllachat(uman) {
 		   
 		    setTimeout(function() {
 				
-				 window.location.href = "index.html"
+				 controllachat(2);
+				
+				 //window.location.href = "index.html"
 				  
 				 //$("#mappa6").tap();
 				 //localStorage.setItem("inlinea", "0")
 				
-			  }, 500);
+			  }, 1500);
 		   
 		   
 		   },
@@ -14619,7 +14623,7 @@ function prendibanner() {
 									 error: function(){
 									 
 									 setTimeout(function() {
-							  			window.location.href = "index.html"
+							  			//window.location.href = "index.html"
 										
 										 //$("#mappa6").tap();
 										 //localStorage.setItem("inlinea", "0")
