@@ -4744,10 +4744,10 @@ function resetta1(focus) {
 		  window.clearInterval(i);
 		 }
 		 
-		 window.location.href = "index.html"
+		 //window.location.href = "index.html"
 		 					 
-		 //$("#mappa6").tap();
-		 //localStorage.setItem("inlinea", "0")
+		 $("#mappa6").tap();
+		 localStorage.setItem("inlinea", "0")
 	}
 	
 		
@@ -5561,7 +5561,7 @@ function timer(){
 		//window.location.href = "index.html"
 		
 									if (localStorage.getItem("controllo")=="3"){
-										window.location.href = "index.html"
+										//window.location.href = "index.html"
 										//$("#mappa6").tap();
 										//localStorage.setItem("inlinea", "0")
 									}
@@ -6781,6 +6781,7 @@ function timer(){
 											{
 											  window.clearInterval(i);
 											 }
+											 
 											window.location.href = "index.html"
 																		 
 											//$("#mappa6").tap();
@@ -14310,7 +14311,7 @@ function controllachat2(ric,id) {
 									 
 									    setTimeout(function() {
 											controllachat2(ric,id);
-										}, 5000);
+										}, 3000);
 									 
 									 
 									 },
@@ -14622,13 +14623,13 @@ function prendibanner() {
 									 },
 									 error: function(){
 									 
-									 setTimeout(function() {
+									 //setTimeout(function() {
 							  			//window.location.href = "index.html"
 										
 										 //$("#mappa6").tap();
 										 //localStorage.setItem("inlinea", "0")
 										
-									  }, 1000);
+									  //}, 1000);
 									 
 									 },
 									 dataType:"jsonp"});
